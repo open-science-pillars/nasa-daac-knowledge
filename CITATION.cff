@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: If you use this knowledge bundle, please cite it. Tagged releases are archived to Zenodo; this file gains the concept DOI at first release.
+title: "nasa-daac-knowledge: dataset knowledge bundles for NASA DAACs"
+type: dataset
+authors:
+  - name: Open Science Pillars Community
+repository-code: https://github.com/open-science-pillars/nasa-daac-knowledge
+license: Apache-2.0
