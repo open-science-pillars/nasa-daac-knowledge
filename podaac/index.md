@@ -1,13 +1,9 @@
 # podaac bundle (CANONICAL, SPEC v0.6 §5.7)
 
 The PO.DAAC arc knowledge bundle: ECCO, SWOT, GRACE-FO, GHRSST MUR.
-OKF v0.1 conformant per SPECIFICATION.md v0.5.1 §5. Snapshot
-source-metadata fields are placeholders until the Session 17
-canonical-home handoff (SPEC §5.7):
-
-- Snapshot source repository: (pending; this bundle is currently the original)
-- Snapshot source commit: (n/a until Session 17)
-- Snapshot date: (n/a until Session 17)
+OKF v0.1 conformant per SPEC §5. This is the canonical home; the
+ocean-science and hydrology plugins embed pinned snapshots of these
+concepts (SPEC §5.7).
 
 ## datasets
 

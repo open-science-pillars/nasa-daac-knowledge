@@ -16,8 +16,10 @@ commit and date in their index.md and refresh at plugin releases
 ## Stewardship
 
 CODEOWNERS maps each bundle to its steward; the PO.DAAC bundle is
-held pro tem pending the provider handoff (the Phase-2 exit
-criterion). Review rules per SPEC §5.4 and the
+held by an interim (pro tem) steward pending handoff to a provider
+steward. The handoff trigger: a named provider accepts the CODEOWNERS
+entry and co-reviews three PRs (see the playbook's onboarding section).
+Review rules per SPEC §5.4 and the
 [steward playbook](https://github.com/open-science-pillars/marketplace/blob/main/docs/steward-playbook.md).
 Eval coverage for high-severity gotchas ships with the plugins that
 embed the snapshots (the plugins' evals/ directories); this repo owns
