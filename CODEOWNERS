@@ -1,4 +1,5 @@
 # Bundle stewardship (SPEC v0.6 §5.4, §5.7)
+* @PaulMRamirez
 /podaac/ @PaulMRamirez
 # The PO.DAAC steward entry replaces the interim line at handoff (a named
 # provider accepts this entry and co-reviews three PRs; see the steward playbook)
