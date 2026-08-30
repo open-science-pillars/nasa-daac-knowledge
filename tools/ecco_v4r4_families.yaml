@@ -1,0 +1,407 @@
+# ECCO V4r4 collection family manifest
+# Seed data for the fields layer (podaac/fields/ecco-v4r4/), one concept per family.
+#
+# Provenance flags on variables:
+#   granule-verified-2026-07-04   loaded live in the OSP catalog sweep
+#   catalog                       recorded in ocean-science variable catalog (per the
+#                                 ECCO v4r4 user guide; granule-verify at first load)
+#   guide-pending                 family known, variables not yet enumerated here;
+#                                 MUST be granule-verified at authoring time
+#
+# ShortName provenance: union of the OSP catalog CMR sweep (2026-07-04, 51 llc90
+# V4R4* collections) and the ecco-group.org dataset gallery listing (fetched
+# 2026-08-28). tools/verify_cmr.py re-verifies every name live and reconciles
+# this manifest against the full CMR sweep; treat verify_cmr output as the
+# authority and this file as the seed.
+#
+# Grid/cadence key inside shortnames: 05DEG (interpolated 0.5 degree),
+# LLC0090GRID (native), DAILY, MONTHLY, SNAPSHOT, V4R4B (corrected geodetic
+# re-release), TIME_SERIES (1D global).
+
+meta:
+  product: ECCO V4r4 central estimate
+  period: 1992 through 2017
+  grids: [llc90 native (13 tiles, 50 levels), 0.5 degree interpolated, 1D time series]
+  landing_base: https://podaac.jpl.nasa.gov/dataset/
+  sweep_reference: 2026-08-30 (live per-name check and sweep, 90/90 reconciled clean, recorded in open-science-pillars/marketplace#10); re-run tools/verify_cmr.py --sweep and update
+
+families:
+
+  - slug: geometry
+    title: Grid geometry parameters
+    tags: [model-geometry]
+    primary: ECCO_L4_GEOMETRY_LLC0090GRID_V4R4
+    shortnames:
+      - ECCO_L4_GEOMETRY_LLC0090GRID_V4R4
+      - ECCO_L4_GEOMETRY_05DEG_V4R4
+    variables:
+      - {name: rA, provenance: granule-verified-2026-07-04}
+      - {name: rAw, provenance: granule-verified-2026-07-04}
+      - {name: rAs, provenance: granule-verified-2026-07-04}
+      - {name: rAz, provenance: granule-verified-2026-07-04}
+      - {name: dxG, provenance: granule-verified-2026-07-04}
+      - {name: dyG, provenance: granule-verified-2026-07-04}
+      - {name: dxC, provenance: granule-verified-2026-07-04}
+      - {name: dyC, provenance: granule-verified-2026-07-04}
+      - {name: drF, provenance: granule-verified-2026-07-04}
+      - {name: drC, provenance: granule-verified-2026-07-04}
+      - {name: hFacC, provenance: granule-verified-2026-07-04}
+      - {name: hFacW, provenance: granule-verified-2026-07-04}
+      - {name: hFacS, provenance: granule-verified-2026-07-04}
+      - {name: maskC, provenance: granule-verified-2026-07-04}
+      - {name: maskW, provenance: granule-verified-2026-07-04}
+      - {name: maskS, provenance: granule-verified-2026-07-04}
+      - {name: CS, provenance: granule-verified-2026-07-04}
+      - {name: SN, provenance: granule-verified-2026-07-04}
+      - {name: Depth, provenance: granule-verified-2026-07-04}
+      - {name: PHrefC, provenance: granule-verified-2026-07-04}
+      - {name: PHrefF, provenance: granule-verified-2026-07-04}
+    note: XC, YC, XG, YG, Z, Zl, Zu, Zp1 arrive as coordinates, not data variables.
+
+  - slug: temp-salinity
+    title: Ocean potential temperature and salinity
+    tags: [ocean-temperature, salinity-density]
+    primary: ECCO_L4_TEMP_SALINITY_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_TEMP_SALINITY_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_TEMP_SALINITY_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_TEMP_SALINITY_LLC0090GRID_SNAPSHOT_V4R4
+      - ECCO_L4_TEMP_SALINITY_05DEG_MONTHLY_V4R4
+      - ECCO_L4_TEMP_SALINITY_05DEG_DAILY_V4R4
+    variables:
+      - {name: THETA, provenance: granule-verified-2026-07-04}
+      - {name: SALT, provenance: granule-verified-2026-07-04}
+    note: THETA is potential temperature (degree_C); SALT is practical salinity
+      (PSS-78). Snapshots are the budget bookends.
+
+  - slug: ocean-vel
+    title: Ocean velocity
+    tags: [ocean-circulation]
+    primary: ECCO_L4_OCEAN_VEL_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_OCEAN_VEL_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_OCEAN_VEL_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_OCEAN_VEL_05DEG_MONTHLY_V4R4
+      - ECCO_L4_OCEAN_VEL_05DEG_DAILY_V4R4
+    variables:
+      - {name: UVEL, provenance: catalog}
+      - {name: VVEL, provenance: catalog}
+      - {name: WVELMASS, provenance: catalog}
+    note: 05DEG velocity collections carry east/north components; confirm names
+      at granule verification. This is the velocity ShortName; OBP is a
+      different product.
+
+  - slug: volume-flux-3d
+    title: Ocean three-dimensional volume fluxes
+    tags: [ocean-circulation]
+    primary: ECCO_L4_OCEAN_3D_VOLUME_FLUX_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_OCEAN_3D_VOLUME_FLUX_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_OCEAN_3D_VOLUME_FLUX_LLC0090GRID_DAILY_V4R4
+    variables:
+      - {name: UVELMASS, provenance: catalog}
+      - {name: VVELMASS, provenance: catalog}
+      - {name: WVELMASS, provenance: catalog}
+    note: Mass-weighted transports; flux variables with a MASS suffix already
+      carry hFac (applying it again double-counts).
+
+  - slug: temperature-flux-3d
+    title: Ocean three-dimensional potential temperature fluxes
+    tags: [ocean-heat-budget]
+    primary: ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_DAILY_V4R4
+    variables:
+      - {name: ADVx_TH, provenance: catalog}
+      - {name: ADVy_TH, provenance: catalog}
+      - {name: ADVr_TH, provenance: catalog}
+      - {name: DFxE_TH, provenance: catalog}
+      - {name: DFyE_TH, provenance: catalog}
+      - {name: DFrE_TH, provenance: catalog}
+      - {name: DFrI_TH, provenance: catalog}
+
+  - slug: salinity-flux-3d
+    title: Ocean three-dimensional salinity fluxes
+    tags: [salinity-density]
+    primary: ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_DAILY_V4R4
+    variables:
+      - {name: ADVx_SLT, provenance: catalog}
+      - {name: ADVy_SLT, provenance: catalog}
+      - {name: ADVr_SLT, provenance: catalog}
+      - {name: DFxE_SLT, provenance: catalog}
+      - {name: DFyE_SLT, provenance: catalog}
+      - {name: DFrE_SLT, provenance: catalog}
+      - {name: DFrI_SLT, provenance: catalog}
+      - {name: oceSPtnd, provenance: catalog}
+
+  - slug: heat-flux
+    title: Ocean and sea-ice surface heat fluxes
+    tags: [ocean-heat-budget]
+    primary: ECCO_L4_HEAT_FLUX_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_HEAT_FLUX_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_HEAT_FLUX_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_HEAT_FLUX_05DEG_MONTHLY_V4R4
+      - ECCO_L4_HEAT_FLUX_05DEG_DAILY_V4R4
+    variables:
+      - {name: TFLUX, provenance: catalog}
+      - {name: oceQsw, provenance: catalog}
+      - {name: oceQnet, provenance: catalog}
+    note: TFLUX and oceQsw are the heat-budget forcing terms; EXF component
+      fields ride in this family, enumerate at granule verification.
+
+  - slug: fresh-flux
+    title: Ocean and sea-ice surface freshwater fluxes
+    tags: [surface-water, salinity-density]
+    primary: ECCO_L4_FRESH_FLUX_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_FRESH_FLUX_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_FRESH_FLUX_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_FRESH_FLUX_05DEG_MONTHLY_V4R4
+      - ECCO_L4_FRESH_FLUX_05DEG_DAILY_V4R4
+    variables:
+      - {name: SFLUX, provenance: catalog}
+      - {name: oceFWflx, provenance: catalog}
+    note: EXF component fields ride in this family, enumerate at granule
+      verification. WVELMASS already carries the surface freshwater flux
+      (volume-budget double-count trap, see the recipe).
+
+  - slug: ssh
+    title: Sea surface height
+    tags: [sea-surface-topography, geodesy]
+    primary: ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_SSH_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_SSH_LLC0090GRID_SNAPSHOT_V4R4
+      - ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4B
+      - ECCO_L4_SSH_LLC0090GRID_DAILY_V4R4B
+      - ECCO_L4_SSH_05DEG_MONTHLY_V4R4
+      - ECCO_L4_SSH_05DEG_DAILY_V4R4
+      - ECCO_L4_SSH_05DEG_MONTHLY_V4R4B
+      - ECCO_L4_SSH_05DEG_DAILY_V4R4B
+    variables:
+      - {name: SSH, provenance: catalog}
+      - {name: SSHIBC, provenance: catalog}
+      - {name: SSHNOIBC, provenance: catalog}
+      - {name: ETAN, provenance: catalog}
+    note: V4R4B is the corrected geodetic re-release; never mix V4R4 and V4R4B
+      in one analysis without saying so (release-mixing gotcha). ETAN snapshot
+      feeds the z* scale factor in budgets.
+
+  - slug: obp
+    title: Ocean bottom pressure
+    tags: [ocean-pressure, geodesy]
+    primary: ECCO_L4_OBP_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_OBP_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_OBP_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_OBP_LLC0090GRID_SNAPSHOT_V4R4
+      - ECCO_L4_OBP_LLC0090GRID_MONTHLY_V4R4B
+      - ECCO_L4_OBP_LLC0090GRID_DAILY_V4R4B
+      - ECCO_L4_OBP_05DEG_MONTHLY_V4R4
+      - ECCO_L4_OBP_05DEG_DAILY_V4R4
+      - ECCO_L4_OBP_05DEG_MONTHLY_V4R4B
+      - ECCO_L4_OBP_05DEG_DAILY_V4R4B
+    variables:
+      - {name: OBP, provenance: catalog}
+      - {name: OBPGMAP, provenance: catalog}
+    note: V4R4B rule as for SSH.
+
+  - slug: dens-strat-press
+    title: Ocean density, stratification, and hydrostatic pressure
+    tags: [salinity-density, ocean-pressure]
+    primary: ECCO_L4_DENS_STRAT_PRESS_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_DENS_STRAT_PRESS_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_DENS_STRAT_PRESS_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_DENS_STRAT_PRESS_05DEG_MONTHLY_V4R4
+      - ECCO_L4_DENS_STRAT_PRESS_05DEG_DAILY_V4R4
+    variables:
+      - {name: RHOAnoma, provenance: catalog}
+      - {name: DRHODR, provenance: catalog}
+      - {name: PHIHYD, provenance: catalog}
+
+  - slug: mixed-layer-depth
+    title: Ocean mixed layer depth
+    tags: [ocean-temperature]
+    primary: ECCO_L4_MIXED_LAYER_DEPTH_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_MIXED_LAYER_DEPTH_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_MIXED_LAYER_DEPTH_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_MIXED_LAYER_DEPTH_05DEG_MONTHLY_V4R4
+      - ECCO_L4_MIXED_LAYER_DEPTH_05DEG_DAILY_V4R4
+    variables:
+      - {name: MXLDEPTH, provenance: catalog}
+
+  - slug: stress
+    title: Ocean and sea-ice surface stress
+    tags: [ocean-winds]
+    primary: ECCO_L4_STRESS_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_STRESS_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_STRESS_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_STRESS_05DEG_MONTHLY_V4R4
+      - ECCO_L4_STRESS_05DEG_DAILY_V4R4
+    variables:
+      - {name: EXFtaux, provenance: catalog}
+      - {name: EXFtauy, provenance: catalog}
+      - {name: oceTAUX, provenance: catalog}
+      - {name: oceTAUY, provenance: catalog}
+
+  - slug: atm-state
+    title: Atmosphere surface temperature, humidity, wind, and pressure
+    tags: [atmospheric-temperature, atmospheric-water-vapor, atmospheric-winds, atmospheric-pressure]
+    primary: ECCO_L4_ATM_STATE_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_ATM_STATE_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_ATM_STATE_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_ATM_STATE_05DEG_MONTHLY_V4R4
+      - ECCO_L4_ATM_STATE_05DEG_DAILY_V4R4
+    variables:
+      - {name: EXFatemp, provenance: catalog}
+      - {name: EXFaqh, provenance: catalog}
+      - {name: EXFuwind, provenance: catalog}
+      - {name: EXFvwind, provenance: catalog}
+      - {name: EXFpress, provenance: catalog}
+
+  - slug: bolus
+    title: Gent-McWilliams ocean bolus velocity
+    tags: [ocean-circulation]
+    primary: ECCO_L4_BOLUS_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_BOLUS_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_BOLUS_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_BOLUS_05DEG_MONTHLY_V4R4
+      - ECCO_L4_BOLUS_05DEG_DAILY_V4R4
+    variables:
+      - {name: UVELSTAR, provenance: catalog}
+      - {name: VVELSTAR, provenance: catalog}
+      - {name: WVELSTAR, provenance: catalog}
+    note: Added to Eulerian velocity for tracer transport.
+
+  - slug: bolus-streamfunction
+    title: Gent-McWilliams bolus transport streamfunction
+    tags: [ocean-circulation]
+    primary: ECCO_L4_OCEAN_BOLUS_STREAMFUNCTION_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_OCEAN_BOLUS_STREAMFUNCTION_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_OCEAN_BOLUS_STREAMFUNCTION_LLC0090GRID_DAILY_V4R4
+    variables: []
+    note: guide-pending; granule-verify variable names at authoring.
+
+  - slug: momentum-tend
+    title: Ocean three-dimensional momentum tendency
+    tags: [ocean-circulation]
+    primary: ECCO_L4_OCEAN_3D_MOMENTUM_TEND_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_OCEAN_3D_MOMENTUM_TEND_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_OCEAN_3D_MOMENTUM_TEND_LLC0090GRID_DAILY_V4R4
+    variables: []
+    note: guide-pending; granule-verify variable names at authoring.
+
+  - slug: mix-coeffs
+    title: Ocean 3D Gent-McWilliams, Redi, and background vertical diffusivity coefficients
+    tags: [model-geometry]
+    primary: ECCO_L4_OCEAN_3D_MIX_COEFFS_LLC0090GRID_V4R4
+    shortnames:
+      - ECCO_L4_OCEAN_3D_MIX_COEFFS_LLC0090GRID_V4R4
+      - ECCO_L4_OCEAN_3D_MIX_COEFFS_05DEG_V4R4
+    variables: []
+    note: guide-pending; static single-granule collections; fetch via
+      earthaccess, not ecco_access (static-collection quirk).
+
+  - slug: sea-ice-conc-thickness
+    title: Sea-ice and snow concentration and thickness
+    tags: [sea-ice]
+    primary: ECCO_L4_SEA_ICE_CONC_THICKNESS_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_SEA_ICE_CONC_THICKNESS_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_SEA_ICE_CONC_THICKNESS_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_SEA_ICE_CONC_THICKNESS_LLC0090GRID_SNAPSHOT_V4R4
+      - ECCO_L4_SEA_ICE_CONC_THICKNESS_05DEG_MONTHLY_V4R4
+      - ECCO_L4_SEA_ICE_CONC_THICKNESS_05DEG_DAILY_V4R4
+    variables:
+      - {name: SIarea, provenance: catalog}
+      - {name: SIheff, provenance: catalog}
+      - {name: SIhsnow, provenance: catalog}
+
+  - slug: sea-ice-velocity
+    title: Sea-ice velocity
+    tags: [sea-ice]
+    primary: ECCO_L4_SEA_ICE_VELOCITY_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_SEA_ICE_VELOCITY_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_SEA_ICE_VELOCITY_LLC0090GRID_DAILY_V4R4
+      - ECCO_L4_SEA_ICE_VELOCITY_LLC0090GRID_SNAPSHOT_V4R4
+      - ECCO_L4_SEA_ICE_VELOCITY_05DEG_MONTHLY_V4R4
+      - ECCO_L4_SEA_ICE_VELOCITY_05DEG_DAILY_V4R4
+    variables: []
+    note: guide-pending; granule-verify variable names at authoring.
+
+  - slug: sea-ice-horiz-volume-flux
+    title: Sea-ice and snow horizontal volume fluxes
+    tags: [sea-ice]
+    primary: ECCO_L4_SEA_ICE_HORIZ_VOLUME_FLUX_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_SEA_ICE_HORIZ_VOLUME_FLUX_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_SEA_ICE_HORIZ_VOLUME_FLUX_LLC0090GRID_DAILY_V4R4
+    variables: []
+    note: guide-pending; granule-verify variable names at authoring.
+
+  - slug: sea-ice-salt-plume-flux
+    title: Sea-ice salt plume fluxes
+    tags: [sea-ice, salinity-density]
+    primary: ECCO_L4_SEA_ICE_SALT_PLUME_FLUX_LLC0090GRID_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_SEA_ICE_SALT_PLUME_FLUX_LLC0090GRID_MONTHLY_V4R4
+      - ECCO_L4_SEA_ICE_SALT_PLUME_FLUX_LLC0090GRID_DAILY_V4R4
+    variables: []
+    note: guide-pending; granule-verify variable names at authoring.
+
+  - slug: gmsl-timeseries
+    title: Global mean sea level time series
+    tags: [sea-surface-topography, atmospheric-ocean-indicators]
+    primary: ECCO_L4_GMSL_TIME_SERIES_MONTHLY_V4R4
+    shortnames:
+      - ECCO_L4_GMSL_TIME_SERIES_MONTHLY_V4R4
+      - ECCO_L4_GMSL_TIME_SERIES_DAILY_V4R4
+    variables: []
+    note: guide-pending; 1D global time series, not a mapped grid.
+
+  - slug: gmap-timeseries
+    title: Global mean atmospheric pressure snapshot time series
+    tags: [atmospheric-pressure, geodesy]
+    primary: ECCO_L4_GMAP_TIME_SERIES_SNAPSHOT_V4R4
+    shortnames:
+      - ECCO_L4_GMAP_TIME_SERIES_SNAPSHOT_V4R4
+      - ECCO_L4_GMAP_TIME_SERIES_SNAPSHOT_V4R4B
+    variables: []
+    note: guide-pending; V4R4B rule applies.
+
+  - slug: sbo-core-timeseries
+    title: SBO core products snapshot time series
+    tags: [geodesy]
+    primary: ECCO_L4_SBO_CORE_TIME_SERIES_SNAPSHOT_V4R4
+    shortnames:
+      - ECCO_L4_SBO_CORE_TIME_SERIES_SNAPSHOT_V4R4
+      - ECCO_L4_SBO_CORE_TIME_SERIES_SNAPSHOT_V4R4B
+    variables: []
+    note: guide-pending; geodetic (Special Bureau for the Oceans) quantities;
+      V4R4B rule applies.
+
+  - slug: ancillary
+    title: Ancillary data (model inputs and reproduction files)
+    tags: [ancillary]
+    primary: ECCO_L4_ANCILLARY_DATA_V4R4
+    shortnames:
+      - ECCO_L4_ANCILLARY_DATA_V4R4
+    variables: []
+    note: Expert-user tar files (initial conditions, forcing, grid binaries,
+      observational constraints). The geothermal flux (geothermalFlux.bin)
+      that deep heat budgets require lives here, not in any gridded
+      collection (geothermal-flux gotcha).
