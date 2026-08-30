@@ -84,12 +84,14 @@ families:
       - ECCO_L4_OCEAN_VEL_05DEG_MONTHLY_V4R4
       - ECCO_L4_OCEAN_VEL_05DEG_DAILY_V4R4
     variables:
-      - {name: UVEL, provenance: catalog}
-      - {name: VVEL, provenance: catalog}
-      - {name: WVELMASS, provenance: catalog}
+      - {name: UVEL, provenance: granule-verified-2026-08-30}
+      - {name: VVEL, provenance: granule-verified-2026-08-30}
+      - {name: WVEL, provenance: granule-verified-2026-08-30}
     note: 05DEG velocity collections carry east/north components; confirm names
       at granule verification. This is the velocity ShortName; OBP is a
-      different product.
+      different product. Granule verification on 2026-08-30 found the
+      native collection carries WVEL, not WVELMASS (catalog correction;
+      the mass-weighted transports are volume-flux-3d).
 
   - slug: volume-flux-3d
     title: Ocean three-dimensional volume fluxes
@@ -99,9 +101,9 @@ families:
       - ECCO_L4_OCEAN_3D_VOLUME_FLUX_LLC0090GRID_MONTHLY_V4R4
       - ECCO_L4_OCEAN_3D_VOLUME_FLUX_LLC0090GRID_DAILY_V4R4
     variables:
-      - {name: UVELMASS, provenance: catalog}
-      - {name: VVELMASS, provenance: catalog}
-      - {name: WVELMASS, provenance: catalog}
+      - {name: UVELMASS, provenance: granule-verified-2026-08-30}
+      - {name: VVELMASS, provenance: granule-verified-2026-08-30}
+      - {name: WVELMASS, provenance: granule-verified-2026-08-30}
     note: Mass-weighted transports; flux variables with a MASS suffix already
       carry hFac (applying it again double-counts).
 
@@ -113,13 +115,13 @@ families:
       - ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_MONTHLY_V4R4
       - ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_DAILY_V4R4
     variables:
-      - {name: ADVx_TH, provenance: catalog}
-      - {name: ADVy_TH, provenance: catalog}
-      - {name: ADVr_TH, provenance: catalog}
-      - {name: DFxE_TH, provenance: catalog}
-      - {name: DFyE_TH, provenance: catalog}
-      - {name: DFrE_TH, provenance: catalog}
-      - {name: DFrI_TH, provenance: catalog}
+      - {name: ADVx_TH, provenance: granule-verified-2026-08-30}
+      - {name: ADVy_TH, provenance: granule-verified-2026-08-30}
+      - {name: ADVr_TH, provenance: granule-verified-2026-08-30}
+      - {name: DFxE_TH, provenance: granule-verified-2026-08-30}
+      - {name: DFyE_TH, provenance: granule-verified-2026-08-30}
+      - {name: DFrE_TH, provenance: granule-verified-2026-08-30}
+      - {name: DFrI_TH, provenance: granule-verified-2026-08-30}
 
   - slug: salinity-flux-3d
     title: Ocean three-dimensional salinity fluxes
@@ -129,14 +131,14 @@ families:
       - ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4
       - ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_DAILY_V4R4
     variables:
-      - {name: ADVx_SLT, provenance: catalog}
-      - {name: ADVy_SLT, provenance: catalog}
-      - {name: ADVr_SLT, provenance: catalog}
-      - {name: DFxE_SLT, provenance: catalog}
-      - {name: DFyE_SLT, provenance: catalog}
-      - {name: DFrE_SLT, provenance: catalog}
-      - {name: DFrI_SLT, provenance: catalog}
-      - {name: oceSPtnd, provenance: catalog}
+      - {name: ADVx_SLT, provenance: granule-verified-2026-08-30}
+      - {name: ADVy_SLT, provenance: granule-verified-2026-08-30}
+      - {name: ADVr_SLT, provenance: granule-verified-2026-08-30}
+      - {name: DFxE_SLT, provenance: granule-verified-2026-08-30}
+      - {name: DFyE_SLT, provenance: granule-verified-2026-08-30}
+      - {name: DFrE_SLT, provenance: granule-verified-2026-08-30}
+      - {name: DFrI_SLT, provenance: granule-verified-2026-08-30}
+      - {name: oceSPtnd, provenance: granule-verified-2026-08-30}
 
   - slug: heat-flux
     title: Ocean and sea-ice surface heat fluxes
@@ -148,11 +150,20 @@ families:
       - ECCO_L4_HEAT_FLUX_05DEG_MONTHLY_V4R4
       - ECCO_L4_HEAT_FLUX_05DEG_DAILY_V4R4
     variables:
-      - {name: TFLUX, provenance: catalog}
-      - {name: oceQsw, provenance: catalog}
-      - {name: oceQnet, provenance: catalog}
-    note: TFLUX and oceQsw are the heat-budget forcing terms; EXF component
-      fields ride in this family, enumerate at granule verification.
+      - {name: TFLUX, provenance: granule-verified-2026-08-30}
+      - {name: oceQsw, provenance: granule-verified-2026-08-30}
+      - {name: oceQnet, provenance: granule-verified-2026-08-30}
+      - {name: EXFhl, provenance: granule-verified-2026-08-30}
+      - {name: EXFhs, provenance: granule-verified-2026-08-30}
+      - {name: EXFlwdn, provenance: granule-verified-2026-08-30}
+      - {name: EXFlwnet, provenance: granule-verified-2026-08-30}
+      - {name: EXFqnet, provenance: granule-verified-2026-08-30}
+      - {name: EXFswdn, provenance: granule-verified-2026-08-30}
+      - {name: EXFswnet, provenance: granule-verified-2026-08-30}
+      - {name: SIaaflux, provenance: granule-verified-2026-08-30}
+      - {name: SIatmQnt, provenance: granule-verified-2026-08-30}
+    note: TFLUX and oceQsw are the heat-budget forcing terms; EXF and sea-ice component
+      fields enumerated at granule verification 2026-08-30.
 
   - slug: fresh-flux
     title: Ocean and sea-ice surface freshwater fluxes
@@ -164,10 +175,19 @@ families:
       - ECCO_L4_FRESH_FLUX_05DEG_MONTHLY_V4R4
       - ECCO_L4_FRESH_FLUX_05DEG_DAILY_V4R4
     variables:
-      - {name: SFLUX, provenance: catalog}
-      - {name: oceFWflx, provenance: catalog}
-    note: EXF component fields ride in this family, enumerate at granule
-      verification. WVELMASS already carries the surface freshwater flux
+      - {name: SFLUX, provenance: granule-verified-2026-08-30}
+      - {name: oceFWflx, provenance: granule-verified-2026-08-30}
+      - {name: EXFempmr, provenance: granule-verified-2026-08-30}
+      - {name: EXFevap, provenance: granule-verified-2026-08-30}
+      - {name: EXFpreci, provenance: granule-verified-2026-08-30}
+      - {name: EXFroff, provenance: granule-verified-2026-08-30}
+      - {name: SIacSubl, provenance: granule-verified-2026-08-30}
+      - {name: SIatmFW, provenance: granule-verified-2026-08-30}
+      - {name: SIfwThru, provenance: granule-verified-2026-08-30}
+      - {name: SIrsSubl, provenance: granule-verified-2026-08-30}
+      - {name: SIsnPrcp, provenance: granule-verified-2026-08-30}
+    note: EXF and sea-ice component fields enumerated at granule
+      verification 2026-08-30. WVELMASS already carries the surface freshwater flux
       (volume-budget double-count trap, see the recipe).
 
   - slug: ssh
@@ -185,10 +205,10 @@ families:
       - ECCO_L4_SSH_05DEG_MONTHLY_V4R4B
       - ECCO_L4_SSH_05DEG_DAILY_V4R4B
     variables:
-      - {name: SSH, provenance: catalog}
-      - {name: SSHIBC, provenance: catalog}
-      - {name: SSHNOIBC, provenance: catalog}
-      - {name: ETAN, provenance: catalog}
+      - {name: SSH, provenance: granule-verified-2026-08-30}
+      - {name: SSHIBC, provenance: granule-verified-2026-08-30}
+      - {name: SSHNOIBC, provenance: granule-verified-2026-08-30}
+      - {name: ETAN, provenance: granule-verified-2026-08-30}
     note: V4R4B is the corrected geodetic re-release; never mix V4R4 and V4R4B
       in one analysis without saying so (release-mixing gotcha). ETAN snapshot
       feeds the z* scale factor in budgets.
@@ -208,8 +228,9 @@ families:
       - ECCO_L4_OBP_05DEG_MONTHLY_V4R4B
       - ECCO_L4_OBP_05DEG_DAILY_V4R4B
     variables:
-      - {name: OBP, provenance: catalog}
-      - {name: OBPGMAP, provenance: catalog}
+      - {name: OBP, provenance: granule-verified-2026-08-30}
+      - {name: OBPGMAP, provenance: granule-verified-2026-08-30}
+      - {name: PHIBOT, provenance: granule-verified-2026-08-30}
     note: V4R4B rule as for SSH.
 
   - slug: dens-strat-press

@@ -4,7 +4,7 @@ title: Ocean potential temperature and salinity
 description: "The THETA and SALT family: the tracer state of the V4r4 estimate on native and interpolated grids, with the snapshot collections that bookend budgets."
 tags: [ecco, v4r4, ocean-temperature, salinity-density]
 resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_TEMP_SALINITY_LLC0090GRID_MONTHLY_V4R4
-status: draft
+status: stable
 generated: { by: ecco-scout/claude, at: 2026-08-28T00:00:00Z }
 stale_after: 2027-01-04
 sources:
@@ -18,7 +18,9 @@ sources:
     resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
     title: OSP ECCO variable catalog (sweep of 2026-07-04)
     author: human:PaulMRamirez
-verified: { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+verified:
+  - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+  - { by: human:PaulMRamirez, at: 2026-08-30T20:30:00Z }
 ---
 
 # Ocean potential temperature and salinity
@@ -36,7 +38,7 @@ tendency terms are formed from.
 | Variable | Units | Grid point | Description | Provenance |
 |---|---|---|---|---|
 | `THETA` | degree_C | c center | Potential temperature | granule-verified 2026-07-04 |
-| `SALT` | psu (PSS-78) | c center | Practical salinity | granule-verified 2026-07-04 |
+| `SALT` | 1e-3 | c center | Practical salinity (PSS-78) | granule-verified 2026-08-30 |
 
 # Variants
 

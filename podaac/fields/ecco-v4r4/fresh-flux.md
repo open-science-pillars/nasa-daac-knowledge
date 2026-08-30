@@ -4,7 +4,7 @@ title: Ocean and sea-ice surface freshwater fluxes
 description: "The surface freshwater and salt flux family of the V4r4 estimate: SFLUX and oceFWflx plus forcing components; the salt-budget surface forcing."
 tags: [ecco, v4r4, surface-water, salinity-density]
 resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_FRESH_FLUX_LLC0090GRID_MONTHLY_V4R4
-status: draft
+status: stable
 generated: { by: claude-code/fable-5, at: 2026-08-30T20:15:00Z }
 stale_after: 2027-01-04
 sources:
@@ -18,7 +18,9 @@ sources:
     resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
     title: OSP ECCO variable catalog (sweep of 2026-07-04)
     author: human:PaulMRamirez
-verified: { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+verified:
+  - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+  - { by: human:PaulMRamirez, at: 2026-08-30T20:30:00Z }
 ---
 
 # Ocean and sea-ice surface freshwater fluxes
@@ -26,9 +28,9 @@ verified: { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
 Ocean and sea-ice surface freshwater fluxes from the ECCO V4r4 estimate
 on the native llc90 grid and the interpolated 0.5 degree grid, monthly
 and daily means.[^podaac-landing] `SFLUX` is the salt-budget surface
-forcing term; EXF forcing components ride in this family and are
-enumerated at granule verification (manifest
-note).[^variable-catalog] In the volume budget there is no freshwater
+forcing term; EXF and sea-ice forcing components ride in this family,
+enumerated at granule verification 2026-08-30 (Schema
+below).[^variable-catalog] In the volume budget there is no freshwater
 forcing term at all: `WVELMASS` at the surface already carries the
 freshwater volume flux, and adding `oceFWflx` as a forcing term
 double-counts it (measured in
@@ -38,8 +40,17 @@ double-counts it (measured in
 
 | Variable | Units | Grid point | Description | Provenance |
 |---|---|---|---|---|
-| `SFLUX` | g m-2 s-1 | c center | Total salt flux into the ocean surface; salt-budget forcing term | user guide (verify at first load) |
-| `oceFWflx` | kg m-2 s-1 | c center | Net surface freshwater flux (precipitation minus evaporation plus runoff) | user guide (verify at first load) |
+| `SFLUX` | g m-2 s-1 | c center | Total salt flux into the ocean surface; salt-budget forcing term | granule-verified 2026-08-30 |
+| `oceFWflx` | kg m-2 s-1 | c center | Net surface freshwater flux (precipitation minus evaporation plus runoff) | granule-verified 2026-08-30 |
+| `EXFempmr` | m s-1 | c center | Open ocean net surface freshwater flux from precipitation, evaporation, and runoff | granule-verified 2026-08-30 |
+| `EXFevap` | m s-1 | c center | Open ocean evaporation rate | granule-verified 2026-08-30 |
+| `EXFpreci` | m s-1 | c center | Precipitation rate | granule-verified 2026-08-30 |
+| `EXFroff` | m s-1 | c center | River runoff | granule-verified 2026-08-30 |
+| `SIacSubl` | kg m-2 s-1 | c center | Freshwater flux to the atmosphere from sublimation-deposition of snow or ice | granule-verified 2026-08-30 |
+| `SIatmFW` | kg m-2 s-1 | c center | Net freshwater flux into the open ocean, sea-ice, and snow | granule-verified 2026-08-30 |
+| `SIfwThru` | kg m-2 s-1 | c center | Precipitation through sea-ice | granule-verified 2026-08-30 |
+| `SIrsSubl` | kg m-2 s-1 | c center | Residual sublimation freshwater flux | granule-verified 2026-08-30 |
+| `SIsnPrcp` | kg m-2 s-1 | c center | Snow precipitation on sea-ice | granule-verified 2026-08-30 |
 
 # Variants
 

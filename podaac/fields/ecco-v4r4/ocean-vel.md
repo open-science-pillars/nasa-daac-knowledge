@@ -1,10 +1,10 @@
 ---
 type: Data Collection
 title: Ocean velocity
-description: "The velocity family of the V4r4 estimate: UVEL, VVEL, and the mass-weighted vertical component on native and interpolated grids."
+description: "The velocity family of the V4r4 estimate: UVEL, VVEL, and the vertical velocity WVEL on native and interpolated grids."
 tags: [ecco, v4r4, ocean-circulation]
 resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_OCEAN_VEL_LLC0090GRID_MONTHLY_V4R4
-status: draft
+status: stable
 generated: { by: claude-code/fable-5, at: 2026-08-30T20:15:00Z }
 stale_after: 2027-01-04
 sources:
@@ -18,7 +18,9 @@ sources:
     resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
     title: OSP ECCO variable catalog (sweep of 2026-07-04)
     author: human:PaulMRamirez
-verified: { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+verified:
+  - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+  - { by: human:PaulMRamirez, at: 2026-08-30T20:30:00Z }
 ---
 
 # Ocean velocity
@@ -30,15 +32,18 @@ OBP collections are ocean bottom pressure, a different product (the
 naming confusion this distinction exists to prevent).[^variable-catalog]
 The interpolated collections carry east/north velocity components whose
 exact variable names are confirmed at granule verification (manifest
-note).
+note). Granule verification 2026-08-30: the native monthly granule
+carries `WVEL` (vertical velocity), not `WVELMASS`; the mass-weighted
+transports live in the volume-flux family (a catalog correction
+recorded in the manifest).
 
 # Schema
 
 | Variable | Units | Grid point | Description | Provenance |
 |---|---|---|---|---|
-| `UVEL` | m s-1 | w face | Ocean velocity, model x component | user guide (verify at first load) |
-| `VVEL` | m s-1 | s face | Ocean velocity, model y component | user guide (verify at first load) |
-| `WVELMASS` | m s-1 | vertical face | Mass-weighted vertical velocity | user guide (verify at first load) |
+| `UVEL` | m s-1 | w face | Ocean velocity, model x component | granule-verified 2026-08-30 |
+| `VVEL` | m s-1 | s face | Ocean velocity, model y component | granule-verified 2026-08-30 |
+| `WVEL` | m s-1 | vertical face (k_l) | Vertical velocity | granule-verified 2026-08-30 |
 
 # Variants
 
