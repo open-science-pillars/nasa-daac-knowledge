@@ -12,6 +12,18 @@ the manifest and its coverage meter is the completeness claim.
 
 ## families
 
-Filled as family concepts land; the coverage meter in
+Ten demo-critical families authored; the remaining sixteen arrive via
+good-first issues at the community handoff. The coverage meter in
 tools/check_fields.py tracks progress toward 26/26 families and 90/90
 ShortNames.
+
+- [Grid geometry parameters](geometry.md): areas, edges, partial cells, masks, rotation, bathymetry; the static granule merged into every native-grid analysis.
+- [Ocean potential temperature and salinity](temp-salinity.md): the tracer state, with the snapshot bookends budgets need.
+- [Ocean velocity](ocean-vel.md): UVEL, VVEL, and the mass-weighted vertical component.
+- [Ocean three-dimensional volume fluxes](volume-flux-3d.md): the mass-weighted transports; transport-analysis and volume-budget inputs.
+- [Ocean three-dimensional potential temperature fluxes](temperature-flux-3d.md): the advective and diffusive heat-budget fluxes.
+- [Ocean three-dimensional salinity fluxes](salinity-flux-3d.md): the salt-budget fluxes plus the salt-plume tendency.
+- [Ocean and sea-ice surface heat fluxes](heat-flux.md): TFLUX and the shortwave component that force the heat budget.
+- [Ocean and sea-ice surface freshwater fluxes](fresh-flux.md): SFLUX and oceFWflx; the salt-budget surface forcing.
+- [Sea surface height](ssh.md): dynamic SSH and model sea level anomaly, with the corrected V4R4B re-release.
+- [Ocean bottom pressure](obp.md): OBP and its anomaly, with the corrected V4R4B re-release.
