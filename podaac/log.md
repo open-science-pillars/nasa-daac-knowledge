@@ -4,6 +4,21 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-08-30 · HEATWAVE WATCH phase 1 (kit 9): the Hobday-family MHW
+  definition landed as conventions/mhw-definition-hobday.md (draft,
+  unsigned, queued for steward review). Every number verified against
+  open sources: the 2018 paper's verbatim restatement of the 2016
+  operational definition (90th percentile, at least five days, gaps of
+  two days or less joined), the exact category sentence (moderate
+  1-2x I, strong 2-3x II, severe 3-4x III, extreme >4x IV), the fixed-
+  baseline recommendation, and the reference implementation's defaults
+  (pctile 90, minDuration 5, maxGap 2, windowHalfWidth 5,
+  smoothPercentileWidth 31). Hobday 2016 itself is paywalled; the
+  verification route is stated in the concept and page-level 2016
+  citations are queued for review with the steward's PDF. Baseline
+  window recorded as a parameter, never a constant. Signed
+  human:PaulMRamirez.
+
 - 2026-08-30 · RECEIPTED BRIEFINGS phase 1 (kit 8): the regional sea
   level partition authored as an Attested Computation
   (computations/ecco-regional-sea-level.md, status draft, unsigned;
