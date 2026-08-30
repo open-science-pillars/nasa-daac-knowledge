@@ -57,6 +57,10 @@ concepts (SPEC §5.7).
 - [The OSNAP chapter: great-circle section masks](tutorial/ecco-osnap-tutorial-example.md), status: draft
 - [Thermal forcing direct from S3: the in-region rule](tutorial/ocean-thermal-forcing-s3.md), status: draft
 
+## conventions
+
+- [Marine heatwave definition (Hobday family)](conventions/mhw-definition-hobday.md), status: draft
+
 ## computations (OKF v0.2 section 10)
 
 - [Heat budget closure on the ECCO v4r4 native grid (attested)](computations/ecco-heat-budget.md), status: stable
