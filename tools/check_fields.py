@@ -25,6 +25,9 @@ WARNINGS
       stable requires human-reviewed; see fields-authoring doc)
   F10 manifest family has no concept yet (coverage meter)
   F11 no sources entry pointing at the PO.DAAC landing page or CMR
+  F12 Variants missing the harvested DOI for a claimed ShortName (fires
+      only once tools/ecco_v4r4_dois.yaml exists; DOIs are harvested by
+      tools/ecco_cite.py, never hand-typed)
 
 Usage: check_fields.py FIELDS_DIR data/ecco_v4r4_families.yaml [--strict]
 """
@@ -79,9 +82,16 @@ def main() -> int:
     ap.add_argument("fields_dir", type=Path)
     ap.add_argument("manifest", type=Path)
     ap.add_argument("--strict", action="store_true")
+    ap.add_argument("--dois", type=Path, default=None,
+                    help="shortname-to-DOI mapping (default: "
+                         "<manifest dir>/ecco_v4r4_dois.yaml when present)")
     args = ap.parse_args()
 
     manifest = yaml.safe_load(args.manifest.read_text(encoding="utf-8"))
+    dois_path = args.dois or (args.manifest.parent / "ecco_v4r4_dois.yaml")
+    dois = {}
+    if dois_path.exists():
+        dois = (yaml.safe_load(dois_path.read_text(encoding="utf-8")) or {}).get("dois", {})
     fam_by_slug = {f["slug"]: f for f in manifest["families"]}
     known_sns = {sn: f["slug"] for f in manifest["families"] for sn in f["shortnames"]}
 
@@ -141,6 +151,12 @@ def main() -> int:
         if "podaac.jpl.nasa.gov" not in res_urls and "cmr.earthdata" not in res_urls:
             out.append(("F11", path, "no sources entry for the PO.DAAC landing "
                         "page or the CMR sweep"))
+
+        for sn in sorted(concept_sns & set(dois)):
+            doi = str((dois[sn] or {}).get("doi", ""))
+            if doi and doi not in text:
+                out.append(("F12", path, f"Variants missing harvested DOI "
+                            f"{doi} for {sn}"))
 
     for slug in sorted(set(fam_by_slug) - covered):
         out.append(("F10", args.fields_dir / f"{slug}.md", "family not yet authored"))

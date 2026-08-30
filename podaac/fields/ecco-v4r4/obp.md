@@ -53,15 +53,15 @@ V4R4B lines carry the corrected geodetic re-release for this family; a
 series or comparison spanning V4R4 and V4R4B conflates the correction
 with signal.
 
-- `ECCO_L4_OBP_LLC0090GRID_MONTHLY_V4R4`: native llc90, monthly mean.
-- `ECCO_L4_OBP_LLC0090GRID_DAILY_V4R4`: native llc90, daily mean.
-- `ECCO_L4_OBP_LLC0090GRID_SNAPSHOT_V4R4`: native llc90, instantaneous snapshots.
-- `ECCO_L4_OBP_LLC0090GRID_MONTHLY_V4R4B`: native llc90, monthly mean, corrected V4R4B release.
-- `ECCO_L4_OBP_LLC0090GRID_DAILY_V4R4B`: native llc90, daily mean, corrected V4R4B release.
-- `ECCO_L4_OBP_05DEG_MONTHLY_V4R4`: 0.5 degree interpolated, monthly mean; display and comparison, not budgets.
-- `ECCO_L4_OBP_05DEG_DAILY_V4R4`: 0.5 degree interpolated, daily mean; display and comparison, not budgets.
-- `ECCO_L4_OBP_05DEG_MONTHLY_V4R4B`: 0.5 degree interpolated, monthly mean, corrected V4R4B release.
-- `ECCO_L4_OBP_05DEG_DAILY_V4R4B`: 0.5 degree interpolated, daily mean, corrected V4R4B release.
+- `ECCO_L4_OBP_LLC0090GRID_MONTHLY_V4R4`: native llc90, monthly mean. DOI: 10.5067/ECL5M-OBP44.
+- `ECCO_L4_OBP_LLC0090GRID_DAILY_V4R4`: native llc90, daily mean. DOI: 10.5067/ECL5D-OBP44.
+- `ECCO_L4_OBP_LLC0090GRID_SNAPSHOT_V4R4`: native llc90, instantaneous snapshots. DOI: 10.5067/ECL5S-OBP44.
+- `ECCO_L4_OBP_LLC0090GRID_MONTHLY_V4R4B`: native llc90, monthly mean, corrected V4R4B release. DOI: 10.5067/ECL5M-OBP4B.
+- `ECCO_L4_OBP_LLC0090GRID_DAILY_V4R4B`: native llc90, daily mean, corrected V4R4B release. DOI: 10.5067/ECL5D-OBP4B.
+- `ECCO_L4_OBP_05DEG_MONTHLY_V4R4`: 0.5 degree interpolated, monthly mean; display and comparison, not budgets. DOI: 10.5067/ECG5M-OBP44.
+- `ECCO_L4_OBP_05DEG_DAILY_V4R4`: 0.5 degree interpolated, daily mean; display and comparison, not budgets. DOI: 10.5067/ECG5D-OBP44.
+- `ECCO_L4_OBP_05DEG_MONTHLY_V4R4B`: 0.5 degree interpolated, monthly mean, corrected V4R4B release. DOI: 10.5067/ECG5M-OBP4B.
+- `ECCO_L4_OBP_05DEG_DAILY_V4R4B`: 0.5 degree interpolated, daily mean, corrected V4R4B release. DOI: 10.5067/ECG5D-OBP4B.
 
 # Known issues
 

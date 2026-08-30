@@ -70,8 +70,8 @@ attributes (granule verification 2026-08-30).
 
 Both ShortNames verified in CMR by the 2026-08-30 sweep.[^cmr-sweep]
 
-- `ECCO_L4_GEOMETRY_LLC0090GRID_V4R4`: native llc90, static single granule.
-- `ECCO_L4_GEOMETRY_05DEG_V4R4`: 0.5 degree interpolated, static single granule; display and comparison, not budgets.
+- `ECCO_L4_GEOMETRY_LLC0090GRID_V4R4`: native llc90, static single granule. DOI: 10.5067/ECL5A-GRD44.
+- `ECCO_L4_GEOMETRY_05DEG_V4R4`: 0.5 degree interpolated, static single granule; display and comparison, not budgets. DOI: 10.5067/ECG5A-GRD44.
 
 [^podaac-landing]: PO.DAAC dataset landing page
 [^cmr-sweep]: CMR ShortName sweep, tools/verify_cmr.py

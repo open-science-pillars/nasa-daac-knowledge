@@ -4,6 +4,18 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-08-30 · CITATION PLUMBING (kit 7, Wave 1): per-ShortName DOIs
+  harvested live from CMR, 90/90 with zero missing, into
+  tools/ecco_v4r4_dois.yaml; every manifest family gains a dois
+  mapping and all 43 claimed variants in the ten authored fields
+  concepts carry their harvested DOI line (never hand-typed).
+  tools/ecco_cite.py landed (harvest and cite subcommands; live-run
+  fix disclosed: CMR's collections.json feed omits the DOI field,
+  umm_json carries it as umm.DOI.DOI, observed and patched 2026-08-30
+  before any merge). check_fields gains F12 (authored concept missing
+  a harvested DOI; verified silent on the merged tree and firing in a
+  negative control). Signed human:PaulMRamirez.
+
 - 2026-08-30 · GRANULE SWEEP and steward promotion (fields phase 3,
   open-science-pillars/marketplace#10): one granule per demo family
   verified against its Schema (cached 2010 fixtures plus one 2009-12
