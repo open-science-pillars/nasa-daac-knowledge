@@ -1,0 +1,184 @@
+# Tutorial coverage manifest for the companion bundle (kit 4).
+# Enumerated live from the toctree 2026-08-30 (33 chapters). Tiers:
+# 1 access/grids/loading, 2 budgets/closure/transport, 3 everything else.
+# overlaps: existing bundle concepts a distillation LINKS to instead of
+# duplicating (single-source rule); empty means candidate new companion
+# concept territory. status: seeded (verified in program research),
+# pending (not yet distilled), distilled, linked.
+meta:
+  base: https://ecco-v4-python-tutorial.readthedocs.io/
+  enumerated: 2026-08-30
+  chapters_total: 33
+chapters:
+  - slug: intro
+    title: "The ECCO Ocean and Sea-Ice State Estimate"
+    tier: 3
+    status: pending
+    overlaps:
+      - podaac/datasets/ecco-v4r4.md
+  - slug: fields
+    title: "ECCO v4 state estimate ocean, sea-ice, and atmosphere fields"
+    tier: 3
+    status: pending
+    overlaps:
+      - podaac/fields/ecco-v4r4/index.md
+  - slug: Installing_Python_and_Python_Packages
+    title: "Python and Python Packages"
+    tier: 3
+    status: pending
+  - slug: ECCO_access_intro
+    title: "The ecco_access library"
+    tier: 1
+    status: seeded
+    overlaps:
+      - podaac/datasets/ecco-v4r4.md
+      - podaac/fields/ecco-v4r4/geometry.md
+  - slug: Tutorial_wget_Command_Line_HTTPS_Downloading_ECCO_Datasets_from_PODAAC
+    title: "Using wget to Download ECCO Datasets from PO.DAAC"
+    tier: 1
+    status: pending
+    overlaps:
+      - podaac/datasets/ecco-v4r4.md
+  - slug: AWS_Cloud_getting_started
+    title: "AWS Cloud: getting started and retrieving ECCO datasets"
+    tier: 1
+    status: pending
+  - slug: Tutorial_Introduction
+    title: "Tutorial Overview"
+    tier: 3
+    status: pending
+  - slug: ECCO_v4_data_structure_basics
+    title: "The Dataset and DataArray objects used in the ECCOv4 Python package"
+    tier: 1
+    status: pending
+  - slug: ECCO_v4_Coordinates_and_Dimensions_of_ECCOv4_NetCDF_files
+    title: "Coordinates and Dimensions of ECCOv4 NetCDF files"
+    tier: 1
+    status: pending
+    overlaps:
+      - podaac/fields/ecco-v4r4/geometry.md
+  - slug: ECCO_v4_Loading_the_ECCOv4_native_model_grid_parameters
+    title: "Loading the ECCOv4 native model grid parameters"
+    tier: 1
+    status: pending
+    overlaps:
+      - podaac/fields/ecco-v4r4/geometry.md
+  - slug: ECCO_v4_Loading_the_ECCOv4_state_estimate_fields_on_the_native_model_grid
+    title: "Loading the ECCOv4 state estimate fields on the native model grid"
+    tier: 1
+    status: pending
+    overlaps:
+      - podaac/datasets/ecco-v4r4.md
+  - slug: ECCO_v4_Loading_LLC_compact_binary_files
+    title: "ECCOv4 Loading llc binary files in the compact format"
+    tier: 1
+    status: pending
+  - slug: ECCO_v4_Combining_Multiple_Datasets
+    title: "Combining multiple Datasets"
+    tier: 1
+    status: pending
+  - slug: ECCO_v4_Saving_Datasets_and_DataArrays_to_NetCDF
+    title: "Saving Datasets and DataArrays to NetCDF"
+    tier: 3
+    status: pending
+  - slug: ECCO_v4_Accessing_and_Subsetting_Variables
+    title: "Accessing and Subsetting Variables"
+    tier: 1
+    status: pending
+  - slug: ECCO_v4_Operating_on_Numpy_Arrays
+    title: "Operating on Numpy arrays"
+    tier: 3
+    status: pending
+  - slug: ECCO_v4_Memory_management
+    title: "Memory management in Python"
+    tier: 3
+    status: pending
+  - slug: ECCO_v4_Plotting_Tiles
+    title: "Plotting Tiles"
+    tier: 3
+    status: pending
+  - slug: ECCO_v4_Interpolating_Fields_to_LatLon_Grid
+    title: "Interpolating fields from the model llc grid to a regular lat lon grid"
+    tier: 1
+    status: pending
+    overlaps:
+      - podaac/gotchas/ecco-native-vs-regridded.md
+      - podaac/gotchas/ecco-vector-orientation.md
+  - slug: ECCO_v4_Example_calculations_with_scalar_quantities
+    title: "Example calculations with scalar quantities"
+    tier: 3
+    status: pending
+  - slug: ECCO_v4_Gradient_calc_on_native_grid
+    title: "Calculating gradients and curl on the ECCO native grid"
+    tier: 1
+    status: pending
+  - slug: Intro_to_PO_start
+    title: "Intro to PO Tutorials: Getting Started"
+    tier: 3
+    status: pending
+  - slug: Geostrophic_balance
+    title: "Part 1: Geostrophic balance"
+    tier: 3
+    status: pending
+    overlaps:
+      - podaac/gotchas/ecco-vector-orientation.md
+  - slug: Thermal_wind
+    title: "Part 2: Thermal Wind"
+    tier: 3
+    status: pending
+  - slug: Steric_height
+    title: "Part 3a: Steric height"
+    tier: 3
+    status: pending
+    overlaps:
+      - podaac/fields/ecco-v4r4/dens-strat-press (family pending)
+  - slug: Steric_SSH_OBP
+    title: "Part 3b: Steric height from SSH and OBP"
+    tier: 3
+    status: pending
+    overlaps:
+      - podaac/fields/ecco-v4r4/ssh.md
+      - podaac/fields/ecco-v4r4/obp.md
+  - slug: ECCO_v4_Example_MHT
+    title: "Compute meridional heat transport"
+    tier: 2
+    status: pending
+    overlaps:
+      - podaac/recipes/ecco-mht-26n.md
+      - podaac/gotchas/ecco-mht-basin-scope.md
+  - slug: ECCO_v4_Example_OSNAP
+    title: "Compute MOC along the approximate OSNAP array from ECCO"
+    tier: 2
+    status: pending
+  - slug: ECCO_v4_Volume_budget_closure
+    title: "ECCOv4 Global Volume and Sea Level Budget"
+    tier: 2
+    status: pending
+    overlaps:
+      - podaac/recipes/ecco-volume-budget.md
+      - podaac/computations/ecco-volume-budget.md
+  - slug: ECCO_v4_Heat_budget_closure
+    title: "Global Heat Budget Closure"
+    tier: 2
+    status: seeded
+    overlaps:
+      - podaac/recipes/ecco-heat-budget.md
+      - podaac/computations/ecco-heat-budget.md
+      - podaac/gotchas/ecco-geothermal-flux.md
+  - slug: ECCO_v4_Salt_and_salinity_budget
+    title: "Salt, Salinity and Freshwater Budgets"
+    tier: 2
+    status: pending
+    overlaps:
+      - podaac/recipes/ecco-salt-budget.md
+      - podaac/computations/ecco-salt-budget.md
+  - slug: ECCO_v4_Calculating_the_ECCOv4_ocean_thermal_forcing
+    title: "Calculate ocean thermal forcing from ECCOv4r4 data, direct from PO.DAAC S3 storage"
+    tier: 2
+    status: pending
+    overlaps:
+      - podaac/fields/ecco-v4r4/heat-flux.md
+  - slug: support
+    title: "Getting Help"
+    tier: 3
+    status: pending
