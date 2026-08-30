@@ -54,6 +54,13 @@ All four ShortNames verified in CMR by the 2026-08-30 sweep.[^cmr-sweep]
 - `ECCO_L4_OCEAN_VEL_05DEG_MONTHLY_V4R4`: 0.5 degree interpolated, monthly mean; display and comparison, not budgets. DOI: 10.5067/ECG5M-OVE44.
 - `ECCO_L4_OCEAN_VEL_05DEG_DAILY_V4R4`: 0.5 degree interpolated, daily mean; display and comparison, not budgets. DOI: 10.5067/ECG5D-OVE44.
 
+# Known issues
+
+Native `UVEL` and `VVEL` are grid-relative components, not east and
+north; rotation via the geometry's CS and SN comes before geographic
+interpretation
+([ecco-vector-orientation](../../gotchas/ecco-vector-orientation.md)).
+
 [^podaac-landing]: PO.DAAC dataset landing page
 [^cmr-sweep]: CMR ShortName sweep, tools/verify_cmr.py
 [^variable-catalog]: OSP ECCO variable catalog (sweep of 2026-07-04)

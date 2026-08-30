@@ -4,6 +4,24 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-08-30 · INGEST SWEEP bootstrap (kit 6, tracking
+  open-science-pillars/marketplace#15): miner run across four
+  ECCO-GROUP trackers (82 issues: ECCOv4-py, ECCO-v4-Python-Tutorial,
+  ECCO-v4-Configurations, ECCO-ACCESS), min-hits 3, five clusters
+  staged, steward-triaged at the session gate. Decisions: ONE keeper,
+  gotchas/ecco-vector-orientation.md drafted (grid-relative UVEL/VVEL
+  vs east/north; severity high, eval case pending, status draft,
+  unsigned; cross-linked from fields/ecco-v4r4/ocean-vel.md);
+  interpolated-budgets (7) LINKED to ecco-native-vs-regridded;
+  ecco-access-quirks (6) LINKED to the dataset concept's Access facts,
+  remainder discarded as resolved library bugs; snapshots-and-bookends
+  (3) DISCARDED as lexicon noise; units-signs (3) LINKED, SIaaflux now
+  described in fields/heat-flux; llc-grid-orientation remainder
+  discarded as library-usage issues. Below threshold: geothermal 2,
+  hfac 2, bolus 1, all covered. Cadence: monthly with the
+  product-watch, summaries append to the tracking issue. Signed
+  human:PaulMRamirez.
+
 - 2026-08-30 · CITATION PLUMBING (kit 7, Wave 1): per-ShortName DOIs
   harvested live from CMR, 90/90 with zero missing, into
   tools/ecco_v4r4_dois.yaml; every manifest family gains a dois
