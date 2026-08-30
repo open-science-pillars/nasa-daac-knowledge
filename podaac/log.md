@@ -4,6 +4,23 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-08-30 · RECEIPTED BRIEFINGS phase 1 (kit 8): the regional sea
+  level partition authored as an Attested Computation
+  (computations/ecco-regional-sea-level.md, status draft, unsigned;
+  steward approved the concept, the A1-A5 attester criterion, and the
+  two scope calls at the session gate: v1 attested scope is
+  ECCO-internal with GRACE/altimetry as citable context only, and the
+  v0.1-form sea-level convention trio is cited as-is with upstreaming
+  proposed separately). Computation authored fresh (not extracted):
+  SSH total vs OBP manometric plus model-density steric (RHOAnoma
+  integral, native grid, registered-region masks), receipt with
+  convention-bound bookkeeping fields. A4 tolerance MEASURED per the
+  heat-budget precedent: fixture run us-northeast-coast 2010-01:2010-12
+  (102 cells) gave max monthly area-mean residual 5.085e-04 m; recorded
+  at 1.0e-3 m with ~2x headroom, written into concept and attester
+  together. Demo: sanctioned receipt PASSes; a one-character tamper
+  FAILs A1. Signed human:PaulMRamirez.
+
 - 2026-08-30 · TUTORIAL COMPANION distilled, tiers 1 and 2 (kit 4,
   tracking open-science-pillars/marketplace#16): 18 companion concepts
   under podaac/tutorial/, every claim footnoted to its tutorial page,
