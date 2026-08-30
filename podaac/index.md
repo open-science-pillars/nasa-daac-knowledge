@@ -27,6 +27,7 @@ concepts (SPEC §5.7).
 - [ECCO V4R4 vs V4R4B: mixing releases conflates corrections with signal](gotchas/ecco-release-mixing.md), severity high, status: stable
 - [ECCO meridional heat transport: no basin mask means the full latitude circle](gotchas/ecco-mht-basin-scope.md), severity high, status: stable
 - [SWOT KaRIn ssha_karin: crossover calibration arrives UNAPPLIED](gotchas/swot-crossover-unapplied.md), severity high, status: stable
+- [ECCO native velocities are grid-relative: UVEL and VVEL are not east and north](gotchas/ecco-vector-orientation.md), severity high, status: draft
 
 ## recipes
 
