@@ -1,0 +1,77 @@
+---
+type: Data Collection
+title: Grid geometry parameters
+description: "The llc90 and 0.5 degree grid geometry of the V4r4 estimate: areas, edge lengths, partial cells, masks, rotation, and bathymetry; the static granule merged into every native-grid analysis."
+tags: [ecco, v4r4, model-geometry]
+resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_GEOMETRY_LLC0090GRID_V4R4
+status: draft
+generated: { by: claude-code/fable-5, at: 2026-08-30T20:05:00Z }
+stale_after: 2027-01-04
+sources:
+  - id: podaac-landing
+    resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_GEOMETRY_LLC0090GRID_V4R4
+    title: PO.DAAC dataset landing page
+  - id: cmr-sweep
+    resource: all ECCO_L4_*V4R4* collections in CMR (provider POCLOUD)
+    title: CMR ShortName sweep, tools/verify_cmr.py
+  - id: variable-catalog
+    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
+    title: OSP ECCO variable catalog (sweep of 2026-07-04)
+    author: human:PaulMRamirez
+verified: { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+---
+
+# Grid geometry parameters
+
+Geometric parameters for the lat-lon-cap 90 (llc90) native model grid of
+the ECCO V4r4 ocean and sea-ice state estimate: areas and lengths of
+grid cell sides, horizontal and vertical coordinates of cell centers and
+corners, grid rotation angles, and global domain geometry including
+bathymetry and land/ocean masks.[^podaac-landing] The native collection
+is one static granule (`GRID_GEOMETRY_ECCO_V4r4_native_llc0090.nc`,
+about 8.6 MB), granule-verified 2026-07-04, and is merged into every
+native-grid dataset before analysis; XC, YC, XG, YG, Z, Zl, Zu, and Zp1
+arrive as coordinates, not data variables.[^variable-catalog] Static
+collections are fetched via earthaccess rather than ecco_access:
+observed 2026-07-04, ecco_access 0.3.1 synthesized a nonexistent dated
+granule filename for this collection (archive 404).[^variable-catalog]
+Units and grid placements below follow the granule and user guide where
+the catalog does not record them, and are confirmed against granule
+attributes at the granule-verification pass.
+
+# Schema
+
+| Variable | Units | Grid point | Description | Provenance |
+|---|---|---|---|---|
+| `rA` | m2 | c center | Tracer cell area | granule-verified 2026-07-04 |
+| `rAw` | m2 | w face | West-face cell area | granule-verified 2026-07-04 |
+| `rAs` | m2 | s face | South-face cell area | granule-verified 2026-07-04 |
+| `rAz` | m2 | z corner | Corner (vorticity) cell area | granule-verified 2026-07-04 |
+| `dxG` | m | cell edge (per user guide) | Cell side length in x | granule-verified 2026-07-04 |
+| `dyG` | m | cell edge (per user guide) | Cell side length in y | granule-verified 2026-07-04 |
+| `dxC` | m | cell edge (per user guide) | Center-to-center separation in x | granule-verified 2026-07-04 |
+| `dyC` | m | cell edge (per user guide) | Center-to-center separation in y | granule-verified 2026-07-04 |
+| `drF` | m | c center (vertical) | Cell thickness at centers | granule-verified 2026-07-04 |
+| `drC` | m | c center (vertical) | Center-to-center vertical separation | granule-verified 2026-07-04 |
+| `hFacC` | 1 | c center | Partial-cell open fraction at centers | granule-verified 2026-07-04 |
+| `hFacW` | 1 | w face | Partial-cell open fraction at west faces | granule-verified 2026-07-04 |
+| `hFacS` | 1 | s face | Partial-cell open fraction at south faces | granule-verified 2026-07-04 |
+| `maskC` | 1 | c center | Land/ocean mask at centers | granule-verified 2026-07-04 |
+| `maskW` | 1 | w face | Land/ocean mask at west faces | granule-verified 2026-07-04 |
+| `maskS` | 1 | s face | Land/ocean mask at south faces | granule-verified 2026-07-04 |
+| `CS` | 1 | c center | Grid rotation angle cosine | granule-verified 2026-07-04 |
+| `SN` | 1 | c center | Grid rotation angle sine | granule-verified 2026-07-04 |
+| `Depth` | m | c center | Bathymetry (ocean depth) | granule-verified 2026-07-04 |
+| `PHrefC` | m2 s-2 | c center (vertical) | Reference hydrostatic pressure potential at centers | granule-verified 2026-07-04 |
+| `PHrefF` | m2 s-2 | vertical face | Reference hydrostatic pressure potential at faces | granule-verified 2026-07-04 |
+
+# Variants
+
+Both ShortNames verified in CMR by the 2026-08-30 sweep.[^cmr-sweep]
+
+- `ECCO_L4_GEOMETRY_LLC0090GRID_V4R4`: native llc90, static single granule.
+- `ECCO_L4_GEOMETRY_05DEG_V4R4`: 0.5 degree interpolated, static single granule; display and comparison, not budgets.
+
+[^podaac-landing]: PO.DAAC dataset landing page
+[^cmr-sweep]: CMR ShortName sweep, tools/verify_cmr.py
+[^variable-catalog]: OSP ECCO variable catalog (sweep of 2026-07-04)
