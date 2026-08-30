@@ -4,6 +4,10 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-08-30 · index.md body aligned with v0.2 (window phase 4): conformance
+  line names okf_version and the vendored spec; listing labels verified ->
+  stable; computations section added. No concept content changes.
+
 - 2026-08-30 · OKF v0.2 MIGRATION (window: open-science-pillars/marketplace#6):
   all 17 concepts migrated from OKF v0.1 plus SPEC v0.6 trust extensions
   to OKF v0.2 frontmatter: timestamp -> generated {by, at}; status
