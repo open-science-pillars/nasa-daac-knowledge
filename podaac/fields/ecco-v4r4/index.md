@@ -19,7 +19,7 @@ ShortNames.
 
 - [Grid geometry parameters](geometry.md): areas, edges, partial cells, masks, rotation, bathymetry; the static granule merged into every native-grid analysis.
 - [Ocean potential temperature and salinity](temp-salinity.md): the tracer state, with the snapshot bookends budgets need.
-- [Ocean velocity](ocean-vel.md): UVEL, VVEL, and the mass-weighted vertical component.
+- [Ocean velocity](ocean-vel.md): UVEL, VVEL, and the vertical velocity WVEL.
 - [Ocean three-dimensional volume fluxes](volume-flux-3d.md): the mass-weighted transports; transport-analysis and volume-budget inputs.
 - [Ocean three-dimensional potential temperature fluxes](temperature-flux-3d.md): the advective and diffusive heat-budget fluxes.
 - [Ocean three-dimensional salinity fluxes](salinity-flux-3d.md): the salt-budget fluxes plus the salt-plume tendency.

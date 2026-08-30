@@ -4,7 +4,7 @@ title: Ocean three-dimensional potential temperature fluxes
 description: "The heat-budget flux family of the V4r4 estimate: advective and diffusive potential temperature fluxes on the native grid only."
 tags: [ecco, v4r4, ocean-heat-budget]
 resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_MONTHLY_V4R4
-status: draft
+status: stable
 generated: { by: claude-code/fable-5, at: 2026-08-30T20:15:00Z }
 stale_after: 2027-01-04
 sources:
@@ -18,7 +18,9 @@ sources:
     resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
     title: OSP ECCO variable catalog (sweep of 2026-07-04)
     author: human:PaulMRamirez
-verified: { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+verified:
+  - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+  - { by: human:PaulMRamirez, at: 2026-08-30T20:30:00Z }
 ---
 
 # Ocean three-dimensional potential temperature fluxes
@@ -35,13 +37,13 @@ variant exists; this family is native-grid only (manifest).
 
 | Variable | Units | Grid point | Description | Provenance |
 |---|---|---|---|---|
-| `ADVx_TH` | degC m3 s-1 | w face | Advective potential temperature flux, model x | user guide (verify at first load) |
-| `ADVy_TH` | degC m3 s-1 | s face | Advective potential temperature flux, model y | user guide (verify at first load) |
-| `ADVr_TH` | degC m3 s-1 | vertical face | Advective potential temperature flux, vertical | user guide (verify at first load) |
-| `DFxE_TH` | degC m3 s-1 | w face | Diffusive potential temperature flux, explicit, model x | user guide (verify at first load) |
-| `DFyE_TH` | degC m3 s-1 | s face | Diffusive potential temperature flux, explicit, model y | user guide (verify at first load) |
-| `DFrE_TH` | degC m3 s-1 | vertical face | Diffusive potential temperature flux, explicit, vertical | user guide (verify at first load) |
-| `DFrI_TH` | degC m3 s-1 | vertical face | Diffusive potential temperature flux, implicit, vertical | user guide (verify at first load) |
+| `ADVx_TH` | degree_C m3 s-1 | w face | Advective potential temperature flux, model x | granule-verified 2026-08-30 |
+| `ADVy_TH` | degree_C m3 s-1 | s face | Advective potential temperature flux, model y | granule-verified 2026-08-30 |
+| `ADVr_TH` | degree_C m3 s-1 | vertical face | Advective potential temperature flux, vertical | granule-verified 2026-08-30 |
+| `DFxE_TH` | degree_C m3 s-1 | w face | Diffusive potential temperature flux, explicit, model x | granule-verified 2026-08-30 |
+| `DFyE_TH` | degree_C m3 s-1 | s face | Diffusive potential temperature flux, explicit, model y | granule-verified 2026-08-30 |
+| `DFrE_TH` | degree_C m3 s-1 | vertical face | Diffusive potential temperature flux, explicit, vertical | granule-verified 2026-08-30 |
+| `DFrI_TH` | degree_C m3 s-1 | vertical face | Diffusive potential temperature flux, implicit, vertical | granule-verified 2026-08-30 |
 
 # Variants
 

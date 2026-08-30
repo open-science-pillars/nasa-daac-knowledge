@@ -4,7 +4,7 @@ title: Ocean three-dimensional volume fluxes
 description: "The mass-weighted transport family of the V4r4 estimate: UVELMASS, VVELMASS, WVELMASS, the transport-analysis and volume-budget inputs, native grid only."
 tags: [ecco, v4r4, ocean-circulation]
 resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_OCEAN_3D_VOLUME_FLUX_LLC0090GRID_MONTHLY_V4R4
-status: draft
+status: stable
 generated: { by: claude-code/fable-5, at: 2026-08-30T20:15:00Z }
 stale_after: 2027-01-04
 sources:
@@ -18,7 +18,9 @@ sources:
     resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
     title: OSP ECCO variable catalog (sweep of 2026-07-04)
     author: human:PaulMRamirez
-verified: { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+verified:
+  - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+  - { by: human:PaulMRamirez, at: 2026-08-30T20:30:00Z }
 ---
 
 # Ocean three-dimensional volume fluxes
@@ -39,9 +41,9 @@ interpolated variant exists; this family is native-grid only (manifest).
 
 | Variable | Units | Grid point | Description | Provenance |
 |---|---|---|---|---|
-| `UVELMASS` | m s-1 | w face | Mass-weighted velocity, model x component | user guide (verify at first load) |
-| `VVELMASS` | m s-1 | s face | Mass-weighted velocity, model y component | user guide (verify at first load) |
-| `WVELMASS` | m s-1 | vertical face | Mass-weighted vertical velocity; carries the surface freshwater volume flux at k=0 | user guide (verify at first load) |
+| `UVELMASS` | m s-1 | w face | Mass-weighted velocity, model x component | granule-verified 2026-08-30 |
+| `VVELMASS` | m s-1 m3 m-3 (granule attr as written) | s face | Mass-weighted velocity, model y component | granule-verified 2026-08-30 |
+| `WVELMASS` | m s-1 | vertical face | Mass-weighted vertical velocity; carries the surface freshwater volume flux at k=0 | granule-verified 2026-08-30 |
 
 # Variants
 

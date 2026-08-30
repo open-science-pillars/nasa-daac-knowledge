@@ -4,7 +4,7 @@ title: Ocean three-dimensional salinity fluxes
 description: "The salt-budget flux family of the V4r4 estimate: advective and diffusive salinity fluxes plus the salt-plume tendency, native grid only."
 tags: [ecco, v4r4, salinity-density]
 resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4
-status: draft
+status: stable
 generated: { by: claude-code/fable-5, at: 2026-08-30T20:15:00Z }
 stale_after: 2027-01-04
 sources:
@@ -18,7 +18,9 @@ sources:
     resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
     title: OSP ECCO variable catalog (sweep of 2026-07-04)
     author: human:PaulMRamirez
-verified: { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+verified:
+  - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+  - { by: human:PaulMRamirez, at: 2026-08-30T20:30:00Z }
 ---
 
 # Ocean three-dimensional salinity fluxes
@@ -36,14 +38,14 @@ No interpolated variant exists; this family is native-grid only
 
 | Variable | Units | Grid point | Description | Provenance |
 |---|---|---|---|---|
-| `ADVx_SLT` | psu m3 s-1 | w face | Advective salinity flux, model x | user guide (verify at first load) |
-| `ADVy_SLT` | psu m3 s-1 | s face | Advective salinity flux, model y | user guide (verify at first load) |
-| `ADVr_SLT` | psu m3 s-1 | vertical face | Advective salinity flux, vertical | user guide (verify at first load) |
-| `DFxE_SLT` | psu m3 s-1 | w face | Diffusive salinity flux, explicit, model x | user guide (verify at first load) |
-| `DFyE_SLT` | psu m3 s-1 | s face | Diffusive salinity flux, explicit, model y | user guide (verify at first load) |
-| `DFrE_SLT` | psu m3 s-1 | vertical face | Diffusive salinity flux, explicit, vertical | user guide (verify at first load) |
-| `DFrI_SLT` | psu m3 s-1 | vertical face | Diffusive salinity flux, implicit, vertical | user guide (verify at first load) |
-| `oceSPtnd` | g m-2 s-1 | c center | Salt tendency from the sea-ice salt plume | user guide (verify at first load) |
+| `ADVx_SLT` | 1e-3 m3 s-1 | w face | Advective salinity flux, model x | granule-verified 2026-08-30 |
+| `ADVy_SLT` | 1e-3 m3 s-1 | s face | Advective salinity flux, model y | granule-verified 2026-08-30 |
+| `ADVr_SLT` | 1e-3 m3 s-1 | vertical face | Advective salinity flux, vertical | granule-verified 2026-08-30 |
+| `DFxE_SLT` | 1e-3 m3 s-1 | w face | Diffusive salinity flux, explicit, model x | granule-verified 2026-08-30 |
+| `DFyE_SLT` | 1e-3 m3 s-1 | s face | Diffusive salinity flux, explicit, model y | granule-verified 2026-08-30 |
+| `DFrE_SLT` | 1e-3 m3 s-1 | vertical face | Diffusive salinity flux, explicit, vertical | granule-verified 2026-08-30 |
+| `DFrI_SLT` | 1e-3 m3 s-1 | vertical face | Diffusive salinity flux, implicit, vertical | granule-verified 2026-08-30 |
+| `oceSPtnd` | g m-2 s-1 | c center | Salt tendency from the sea-ice salt plume | granule-verified 2026-08-30 |
 
 # Variants
 

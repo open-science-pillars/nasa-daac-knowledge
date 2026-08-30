@@ -4,7 +4,7 @@ title: Ocean bottom pressure
 description: "The OBP family of the V4r4 estimate: ocean bottom pressure and its anomaly, with snapshot bookends and a corrected V4R4B re-release for this family."
 tags: [ecco, v4r4, ocean-pressure, geodesy]
 resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_OBP_LLC0090GRID_MONTHLY_V4R4
-status: draft
+status: stable
 generated: { by: claude-code/fable-5, at: 2026-08-30T20:15:00Z }
 stale_after: 2027-01-04
 sources:
@@ -18,7 +18,9 @@ sources:
     resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
     title: OSP ECCO variable catalog (sweep of 2026-07-04)
     author: human:PaulMRamirez
-verified: { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+verified:
+  - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+  - { by: human:PaulMRamirez, at: 2026-08-30T20:30:00Z }
 ---
 
 # Ocean bottom pressure
@@ -40,8 +42,9 @@ prevent).[^variable-catalog]
 
 | Variable | Units | Grid point | Description | Provenance |
 |---|---|---|---|---|
-| `OBP` | per user guide | c center | Ocean bottom pressure | user guide (verify at first load) |
-| `OBPGMAP` | per user guide | c center | Ocean bottom pressure including the global mean atmospheric pressure contribution, per the user guide convention | user guide (verify at first load) |
+| `OBP` | m | c center | Ocean bottom pressure | granule-verified 2026-08-30 |
+| `OBPGMAP` | m | c center | Ocean bottom pressure including the global mean atmospheric pressure contribution, per the user guide convention | granule-verified 2026-08-30 |
+| `PHIBOT` | m2 s-2 | c center | Ocean hydrostatic bottom pressure anomaly | granule-verified 2026-08-30 |
 
 # Variants
 

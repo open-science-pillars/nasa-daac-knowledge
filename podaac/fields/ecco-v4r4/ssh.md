@@ -4,7 +4,7 @@ title: Sea surface height
 description: "The SSH family of the V4r4 estimate: dynamic sea surface height and model sea level anomaly, with snapshot bookends for budgets and a corrected V4R4B re-release for this family."
 tags: [ecco, v4r4, sea-surface-topography, geodesy]
 resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4
-status: draft
+status: stable
 generated: { by: claude-code/fable-5, at: 2026-08-30T20:05:00Z }
 stale_after: 2027-01-04
 sources:
@@ -18,7 +18,9 @@ sources:
     resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
     title: OSP ECCO variable catalog (sweep of 2026-07-04)
     author: human:PaulMRamirez
-verified: { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+verified:
+  - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
+  - { by: human:PaulMRamirez, at: 2026-08-30T20:30:00Z }
 ---
 
 # Sea surface height
@@ -38,10 +40,10 @@ mixes the two releases folds the baseline correction into the signal
 
 | Variable | Units | Grid point | Description | Provenance |
 |---|---|---|---|---|
-| `SSH` | m | c center | Dynamic sea surface height | user guide (verify at first load) |
-| `SSHIBC` | m | c center | Inverse-barometer contribution to sea surface height, per the user guide convention | user guide (verify at first load) |
-| `SSHNOIBC` | m | c center | Sea surface height without the inverse-barometer correction | user guide (verify at first load) |
-| `ETAN` | m | c center | Model sea level anomaly; feeds the z* scale factor in budgets | user guide (verify at first load) |
+| `SSH` | m | c center | Dynamic sea surface height | granule-verified 2026-08-30 |
+| `SSHIBC` | m | c center | Inverse-barometer contribution to sea surface height, per the user guide convention | granule-verified 2026-08-30 |
+| `SSHNOIBC` | m | c center | Sea surface height without the inverse-barometer correction | granule-verified 2026-08-30 |
+| `ETAN` | m | c center | Model sea level anomaly; feeds the z* scale factor in budgets | granule-verified 2026-08-30 |
 
 # Variants
 

@@ -4,6 +4,24 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-08-30 · GRANULE SWEEP and steward promotion (fields phase 3,
+  open-science-pillars/marketplace#10): one granule per demo family
+  verified against its Schema (cached 2010 fixtures plus one 2009-12
+  monthly download each for ocean-vel, ssh, obp). 42/43 seeded rows
+  confirmed. ONE ground-truth catch: OCEAN_VEL carries WVEL, not
+  WVELMASS; fixed in manifest and concept together, ocean-science
+  variable catalog correction queued for phase 4. Row fixes from
+  granule attrs: SALT units 1e-3; salinity fluxes 1e-3 m3 s-1;
+  temperature fluxes degree_C m3 s-1; VVELMASS attr recorded verbatim;
+  masks carry no units attr; OBP and OBPGMAP in m; geometry edge
+  placements and drC settled by dims. 20 granule-revealed variables
+  added to manifest and Schemas (9 heat-flux and 9 fresh-flux EXF/SI
+  components, WVEL, PHIBOT), granule-verified 2026-08-30. All ten
+  demo concepts promoted: human:PaulMRamirez verified event appended
+  after the process event, status stable; the steward reviewed the
+  verification table at the session gate and directed the signing.
+  Signed human:PaulMRamirez.
+
 - 2026-08-30 · FIELDS LAYER scaffolding (tracking:
   open-science-pillars/marketplace#10): verify_cmr.py, check_fields.py,
   the 26-family manifest (ecco_v4r4_families.yaml, sweep_reference
