@@ -4,6 +4,15 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-08-30 · FIELDS LAYER scaffolding (tracking:
+  open-science-pillars/marketplace#10): verify_cmr.py, check_fields.py,
+  the 26-family manifest (ecco_v4r4_families.yaml, sweep_reference
+  updated to today), and the contributor template landed in tools/;
+  podaac/fields/ecco-v4r4/index.md scaffolded, no concept files yet.
+  Live pin: all 90 manifest ShortNames FOUND in CMR; sweep reconciles
+  90 in CMR, 90 claimed, exactly one family each, both correction
+  lists empty. Signed human:PaulMRamirez.
+
 - 2026-08-30 · steward review PASSED: computations/ecco-heat-budget.md
   promoted draft to stable with a verified event
   (by: human:PaulMRamirez, at: 2026-08-30T19:40:00Z). Review basis: the
