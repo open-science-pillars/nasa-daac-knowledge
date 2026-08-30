@@ -4,6 +4,27 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-08-30 · OKF v0.2 MIGRATION (window: open-science-pillars/marketplace#6):
+  all 17 concepts migrated from OKF v0.1 plus SPEC v0.6 trust extensions
+  to OKF v0.2 frontmatter: timestamp -> generated {by, at}; status
+  verified -> stable; verified/verified_by -> verified
+  {by: human:PaulMRamirez, at} events preserving the original review
+  dates; evidence -> sources entries with stable ids; stale_after
+  2027-01-04 on every concept; root index gains okf_version "0.2".
+  Footnote pass joined body claims to sources ids per spec 5.1 (25 refs,
+  no claims added or reworded); sources enriched with titles, authors
+  where grounded (team:ecco-consortium for ECCO tutorial resources,
+  human:PaulMRamirez for OSP references). generated.at on ecco-v4r4 and
+  grace-fo-mascons set to 2026-07-06 per the steward-addition entry
+  below; generated.by is knowledge-seeder/claude throughout (log shows
+  no hand-authored concept). Two sources ids deliberately left uncited
+  and flagged rather than force-joined: github-variable-catalog on
+  ecco-mht-basin-scope, github-swot-products on swot-crossover-unapplied.
+  check_okf_v02: 0 errors, 2 warnings (the flagged pair).
+  tools/sync_check.py is EXPECTED RED against plugin snapshots until the
+  ocean-science snapshot refresh (window phase 4; declared in the
+  tracking issue). Signed human:PaulMRamirez.
+
 - 2026-07-06 · steward addition (knowledge-coupling migration follow-up): grace-fo-mascons gains the native-mascon-resolution / small-basin caveat (order 300 km); ecco-v4r4 gains the THETA/SALT tracer-flavor gloss and the double-hFac budget trap. Snapshots re-synced byte-identical.
 
 - 2026-07-05 · steward review PASSED: the five Session-18 concepts

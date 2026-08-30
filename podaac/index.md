@@ -1,3 +1,7 @@
+---
+okf_version: "0.2"
+---
+
 # podaac bundle (CANONICAL, SPEC v0.6 §5.7)
 
 The PO.DAAC arc knowledge bundle: ECCO, SWOT, GRACE-FO, GHRSST MUR.
