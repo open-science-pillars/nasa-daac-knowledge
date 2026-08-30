@@ -4,6 +4,24 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-08-30 · TUTORIAL COMPANION distilled, tiers 1 and 2 (kit 4,
+  tracking open-science-pillars/marketplace#16): 18 companion concepts
+  under podaac/tutorial/, every claim footnoted to its tutorial page,
+  all status draft, unsigned; the steward reviewed the two
+  pattern-setters (access library, heat-budget checkpoints) at the
+  session gate before the batch. Two eval fixtures extracted to the
+  ocean-science plugin (heat and volume budget checkpoints). Findings,
+  neither a signed-concept contradiction: the volume chapter closes
+  the ETAN sea-level identity with oceFWflx while the bundle's
+  interior volume budget closes on transport alone (both true, stated
+  precisely in the companion); the MHT chapter's explicit conversion
+  uses rho 1000 and cp 4000 against the closure chapter's 1029 and
+  3994 (about 2.5 percent; recorded as an upstream-offer note).
+  Load-bearing new facts captured: the ecco_access packaging split at
+  ecco_v4_py 1.8, tiles 7-12 rotated 90 degrees CCW, the V4r5
+  in-cloud section, the in-region S3 rule. Coverage 18/33.
+  Signed human:PaulMRamirez.
+
 - 2026-08-30 · INGEST SWEEP bootstrap (kit 6, tracking
   open-science-pillars/marketplace#15): miner run across four
   ECCO-GROUP trackers (82 issues: ECCOv4-py, ECCO-v4-Python-Tutorial,

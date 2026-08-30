@@ -36,6 +36,27 @@ concepts (SPEC §5.7).
 - [Closed salt budget on the ECCO v4r4 native grid](recipes/ecco-salt-budget.md), status: stable
 - [Closed volume budget on the ECCO v4r4 native grid](recipes/ecco-volume-budget.md), status: stable
 
+## tutorial companion (kit 4; every claim footnotes its tutorial page)
+
+- [The ecco_access library](tutorial/ecco-access-library.md), status: draft
+- [Batch downloading with wget](tutorial/wget-download.md), status: draft
+- [ECCO in the Earthdata Cloud on AWS](tutorial/aws-cloud-access.md), status: draft
+- [NetCDF structure: datasets, granules, xarray objects](tutorial/data-structure-basics.md), status: draft
+- [Coordinates and dimensions](tutorial/coordinates-and-dimensions.md), status: draft
+- [Loading the grid parameters](tutorial/loading-grid-parameters.md), status: draft
+- [Loading state estimate fields](tutorial/loading-state-estimate-fields.md), status: draft
+- [The llc compact binary format](tutorial/llc-compact-binaries.md), status: draft
+- [Combining datasets across grid points](tutorial/combining-datasets.md), status: draft
+- [Accessing and subsetting variables](tutorial/accessing-subsetting-variables.md), status: draft
+- [Interpolating llc90 fields to lat-lon](tutorial/interpolating-to-latlon.md), status: draft
+- [Gradients and curl on the native grid](tutorial/gradients-and-curl.md), status: draft
+- [Heat budget: the tutorial's checkpoints](tutorial/ecco-heat-budget-tutorial-checkpoints.md), status: draft
+- [Volume and sea level budget: the tutorial's checkpoints](tutorial/ecco-volume-budget-tutorial-checkpoints.md), status: draft
+- [Salt budgets: the tutorial's checkpoints](tutorial/ecco-salt-budget-tutorial-checkpoints.md), status: draft
+- [The MHT chapter: scope machinery and a constants inconsistency](tutorial/ecco-mht-tutorial-example.md), status: draft
+- [The OSNAP chapter: great-circle section masks](tutorial/ecco-osnap-tutorial-example.md), status: draft
+- [Thermal forcing direct from S3: the in-region rule](tutorial/ocean-thermal-forcing-s3.md), status: draft
+
 ## computations (OKF v0.2 section 10)
 
 - [Heat budget closure on the ECCO v4r4 native grid (attested)](computations/ecco-heat-budget.md), status: stable

@@ -29,20 +29,23 @@ chapters:
   - slug: ECCO_access_intro
     title: "The ecco_access library"
     tier: 1
-    status: seeded
+    status: distilled
+    concept: podaac/tutorial/ecco-access-library.md
     overlaps:
       - podaac/datasets/ecco-v4r4.md
       - podaac/fields/ecco-v4r4/geometry.md
   - slug: Tutorial_wget_Command_Line_HTTPS_Downloading_ECCO_Datasets_from_PODAAC
     title: "Using wget to Download ECCO Datasets from PO.DAAC"
     tier: 1
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/wget-download.md
     overlaps:
       - podaac/datasets/ecco-v4r4.md
   - slug: AWS_Cloud_getting_started
     title: "AWS Cloud: getting started and retrieving ECCO datasets"
     tier: 1
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/aws-cloud-access.md
   - slug: Tutorial_Introduction
     title: "Tutorial Overview"
     tier: 3
@@ -50,33 +53,39 @@ chapters:
   - slug: ECCO_v4_data_structure_basics
     title: "The Dataset and DataArray objects used in the ECCOv4 Python package"
     tier: 1
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/data-structure-basics.md
   - slug: ECCO_v4_Coordinates_and_Dimensions_of_ECCOv4_NetCDF_files
     title: "Coordinates and Dimensions of ECCOv4 NetCDF files"
     tier: 1
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/coordinates-and-dimensions.md
     overlaps:
       - podaac/fields/ecco-v4r4/geometry.md
   - slug: ECCO_v4_Loading_the_ECCOv4_native_model_grid_parameters
     title: "Loading the ECCOv4 native model grid parameters"
     tier: 1
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/loading-grid-parameters.md
     overlaps:
       - podaac/fields/ecco-v4r4/geometry.md
   - slug: ECCO_v4_Loading_the_ECCOv4_state_estimate_fields_on_the_native_model_grid
     title: "Loading the ECCOv4 state estimate fields on the native model grid"
     tier: 1
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/loading-state-estimate-fields.md
     overlaps:
       - podaac/datasets/ecco-v4r4.md
   - slug: ECCO_v4_Loading_LLC_compact_binary_files
     title: "ECCOv4 Loading llc binary files in the compact format"
     tier: 1
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/llc-compact-binaries.md
   - slug: ECCO_v4_Combining_Multiple_Datasets
     title: "Combining multiple Datasets"
     tier: 1
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/combining-datasets.md
   - slug: ECCO_v4_Saving_Datasets_and_DataArrays_to_NetCDF
     title: "Saving Datasets and DataArrays to NetCDF"
     tier: 3
@@ -84,7 +93,8 @@ chapters:
   - slug: ECCO_v4_Accessing_and_Subsetting_Variables
     title: "Accessing and Subsetting Variables"
     tier: 1
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/accessing-subsetting-variables.md
   - slug: ECCO_v4_Operating_on_Numpy_Arrays
     title: "Operating on Numpy arrays"
     tier: 3
@@ -100,7 +110,8 @@ chapters:
   - slug: ECCO_v4_Interpolating_Fields_to_LatLon_Grid
     title: "Interpolating fields from the model llc grid to a regular lat lon grid"
     tier: 1
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/interpolating-to-latlon.md
     overlaps:
       - podaac/gotchas/ecco-native-vs-regridded.md
       - podaac/gotchas/ecco-vector-orientation.md
@@ -111,7 +122,8 @@ chapters:
   - slug: ECCO_v4_Gradient_calc_on_native_grid
     title: "Calculating gradients and curl on the ECCO native grid"
     tier: 1
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/gradients-and-curl.md
   - slug: Intro_to_PO_start
     title: "Intro to PO Tutorials: Getting Started"
     tier: 3
@@ -142,25 +154,29 @@ chapters:
   - slug: ECCO_v4_Example_MHT
     title: "Compute meridional heat transport"
     tier: 2
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/ecco-mht-tutorial-example.md
     overlaps:
       - podaac/recipes/ecco-mht-26n.md
       - podaac/gotchas/ecco-mht-basin-scope.md
   - slug: ECCO_v4_Example_OSNAP
     title: "Compute MOC along the approximate OSNAP array from ECCO"
     tier: 2
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/ecco-osnap-tutorial-example.md
   - slug: ECCO_v4_Volume_budget_closure
     title: "ECCOv4 Global Volume and Sea Level Budget"
     tier: 2
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/ecco-volume-budget-tutorial-checkpoints.md
     overlaps:
       - podaac/recipes/ecco-volume-budget.md
       - podaac/computations/ecco-volume-budget.md
   - slug: ECCO_v4_Heat_budget_closure
     title: "Global Heat Budget Closure"
     tier: 2
-    status: seeded
+    status: distilled
+    concept: podaac/tutorial/ecco-heat-budget-tutorial-checkpoints.md
     overlaps:
       - podaac/recipes/ecco-heat-budget.md
       - podaac/computations/ecco-heat-budget.md
@@ -168,14 +184,16 @@ chapters:
   - slug: ECCO_v4_Salt_and_salinity_budget
     title: "Salt, Salinity and Freshwater Budgets"
     tier: 2
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/ecco-salt-budget-tutorial-checkpoints.md
     overlaps:
       - podaac/recipes/ecco-salt-budget.md
       - podaac/computations/ecco-salt-budget.md
   - slug: ECCO_v4_Calculating_the_ECCOv4_ocean_thermal_forcing
     title: "Calculate ocean thermal forcing from ECCOv4r4 data, direct from PO.DAAC S3 storage"
     tier: 2
-    status: pending
+    status: distilled
+    concept: podaac/tutorial/ocean-thermal-forcing-s3.md
     overlaps:
       - podaac/fields/ecco-v4r4/heat-flux.md
   - slug: support
