@@ -42,11 +42,11 @@ tendency terms are formed from.
 
 # Variants
 
-- `ECCO_L4_TEMP_SALINITY_LLC0090GRID_MONTHLY_V4R4`: native llc90, monthly mean.
-- `ECCO_L4_TEMP_SALINITY_LLC0090GRID_DAILY_V4R4`: native llc90, daily mean.
-- `ECCO_L4_TEMP_SALINITY_LLC0090GRID_SNAPSHOT_V4R4`: native llc90, instantaneous snapshots (budget bookends).
-- `ECCO_L4_TEMP_SALINITY_05DEG_MONTHLY_V4R4`: 0.5 degree interpolated, monthly mean; display and comparison, not budgets.
-- `ECCO_L4_TEMP_SALINITY_05DEG_DAILY_V4R4`: 0.5 degree interpolated, daily mean; display and comparison, not budgets.
+- `ECCO_L4_TEMP_SALINITY_LLC0090GRID_MONTHLY_V4R4`: native llc90, monthly mean. DOI: 10.5067/ECL5M-OTS44.
+- `ECCO_L4_TEMP_SALINITY_LLC0090GRID_DAILY_V4R4`: native llc90, daily mean. DOI: 10.5067/ECL5D-OTS44.
+- `ECCO_L4_TEMP_SALINITY_LLC0090GRID_SNAPSHOT_V4R4`: native llc90, instantaneous snapshots (budget bookends). DOI: 10.5067/ECL5S-OTS44.
+- `ECCO_L4_TEMP_SALINITY_05DEG_MONTHLY_V4R4`: 0.5 degree interpolated, monthly mean; display and comparison, not budgets. DOI: 10.5067/ECG5M-OTS44.
+- `ECCO_L4_TEMP_SALINITY_05DEG_DAILY_V4R4`: 0.5 degree interpolated, daily mean; display and comparison, not budgets. DOI: 10.5067/ECG5D-OTS44.
 
 # Known issues
 

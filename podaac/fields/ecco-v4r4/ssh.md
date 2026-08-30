@@ -52,15 +52,15 @@ V4R4B lines carry the corrected geodetic re-release for this family; a
 series or comparison spanning V4R4 and V4R4B conflates the correction
 with signal.
 
-- `ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4`: native llc90, monthly mean.
-- `ECCO_L4_SSH_LLC0090GRID_DAILY_V4R4`: native llc90, daily mean.
-- `ECCO_L4_SSH_LLC0090GRID_SNAPSHOT_V4R4`: native llc90, instantaneous snapshots (budget bookends; ETAN for z*).
-- `ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4B`: native llc90, monthly mean, corrected V4R4B release.
-- `ECCO_L4_SSH_LLC0090GRID_DAILY_V4R4B`: native llc90, daily mean, corrected V4R4B release.
-- `ECCO_L4_SSH_05DEG_MONTHLY_V4R4`: 0.5 degree interpolated, monthly mean; display and comparison, not budgets.
-- `ECCO_L4_SSH_05DEG_DAILY_V4R4`: 0.5 degree interpolated, daily mean; display and comparison, not budgets.
-- `ECCO_L4_SSH_05DEG_MONTHLY_V4R4B`: 0.5 degree interpolated, monthly mean, corrected V4R4B release.
-- `ECCO_L4_SSH_05DEG_DAILY_V4R4B`: 0.5 degree interpolated, daily mean, corrected V4R4B release.
+- `ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4`: native llc90, monthly mean. DOI: 10.5067/ECL5M-SSH44.
+- `ECCO_L4_SSH_LLC0090GRID_DAILY_V4R4`: native llc90, daily mean. DOI: 10.5067/ECL5D-SSH44.
+- `ECCO_L4_SSH_LLC0090GRID_SNAPSHOT_V4R4`: native llc90, instantaneous snapshots (budget bookends; ETAN for z*). DOI: 10.5067/ECL5S-SSH44.
+- `ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4B`: native llc90, monthly mean, corrected V4R4B release. DOI: 10.5067/ECL5M-SSH4B.
+- `ECCO_L4_SSH_LLC0090GRID_DAILY_V4R4B`: native llc90, daily mean, corrected V4R4B release. DOI: 10.5067/ECL5D-SSH4B.
+- `ECCO_L4_SSH_05DEG_MONTHLY_V4R4`: 0.5 degree interpolated, monthly mean; display and comparison, not budgets. DOI: 10.5067/ECG5M-SSH44.
+- `ECCO_L4_SSH_05DEG_DAILY_V4R4`: 0.5 degree interpolated, daily mean; display and comparison, not budgets. DOI: 10.5067/ECG5D-SSH44.
+- `ECCO_L4_SSH_05DEG_MONTHLY_V4R4B`: 0.5 degree interpolated, monthly mean, corrected V4R4B release. DOI: 10.5067/ECG5M-SSH4B.
+- `ECCO_L4_SSH_05DEG_DAILY_V4R4B`: 0.5 degree interpolated, daily mean, corrected V4R4B release. DOI: 10.5067/ECG5D-SSH4B.
 
 # Known issues
 

@@ -51,8 +51,8 @@ No interpolated variant exists; this family is native-grid only
 
 Both ShortNames verified in CMR by the 2026-08-30 sweep.[^cmr-sweep]
 
-- `ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4`: native llc90, monthly mean.
-- `ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_DAILY_V4R4`: native llc90, daily mean.
+- `ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4`: native llc90, monthly mean. DOI: 10.5067/ECL5M-3SF44.
+- `ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_DAILY_V4R4`: native llc90, daily mean. DOI: 10.5067/ECL5D-3SF44.
 
 # Known issues
 

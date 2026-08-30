@@ -56,10 +56,10 @@ double-counts it (measured in
 
 All four ShortNames verified in CMR by the 2026-08-30 sweep.[^cmr-sweep]
 
-- `ECCO_L4_FRESH_FLUX_LLC0090GRID_MONTHLY_V4R4`: native llc90, monthly mean.
-- `ECCO_L4_FRESH_FLUX_LLC0090GRID_DAILY_V4R4`: native llc90, daily mean.
-- `ECCO_L4_FRESH_FLUX_05DEG_MONTHLY_V4R4`: 0.5 degree interpolated, monthly mean; display and comparison, not budgets.
-- `ECCO_L4_FRESH_FLUX_05DEG_DAILY_V4R4`: 0.5 degree interpolated, daily mean; display and comparison, not budgets.
+- `ECCO_L4_FRESH_FLUX_LLC0090GRID_MONTHLY_V4R4`: native llc90, monthly mean. DOI: 10.5067/ECL5M-FRE44.
+- `ECCO_L4_FRESH_FLUX_LLC0090GRID_DAILY_V4R4`: native llc90, daily mean. DOI: 10.5067/ECL5D-FRE44.
+- `ECCO_L4_FRESH_FLUX_05DEG_MONTHLY_V4R4`: 0.5 degree interpolated, monthly mean; display and comparison, not budgets. DOI: 10.5067/ECG5M-FRE44.
+- `ECCO_L4_FRESH_FLUX_05DEG_DAILY_V4R4`: 0.5 degree interpolated, daily mean; display and comparison, not budgets. DOI: 10.5067/ECG5D-FRE44.
 
 # Known issues
 
