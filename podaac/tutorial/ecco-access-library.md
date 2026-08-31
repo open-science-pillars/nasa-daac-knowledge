@@ -1,7 +1,7 @@
 ---
 type: convention
 title: "The ecco_access library: packaging, contract, and Earthdata setup"
-description: "Tutorial-companion facts about ECCO access tooling: the ecco_access packaging split at ecco_v4_py 1.8, the two top-level functions, the netrc requirements, and V4r5 in-cloud reachability."
+description: "Tutorial-companion facts about ECCO access tooling: the ecco_access packaging split at ecco_v4_py 1.8, the two top-level functions, how earthaccess finds an Earthdata Login, and V4r5 in-cloud reachability."
 tags: [ecco, tutorial-companion, access]
 generated: { by: claude-code/fable-5, at: 2026-08-30T21:25:00Z }
 status: draft
@@ -39,26 +39,26 @@ exact-ShortName discipline and the static-collection route around
 ecco_access are recorded on
 [the dataset concept](../datasets/ecco-v4r4.md).
 
-**Earthdata setup, per the tutorial.** An Earthdata account is
-required for ECCO output hosted by PO.DAAC; credentials live in
-`~/.netrc` (`_netrc` on Windows) with the
-`machine urs.earthdata.nasa.gov` entry, and the file must be readable
-only by the current user (mode 0600), otherwise the error "netrc
-access too permissive" is raised.[^tut-access-intro] The tutorial
-warns that some password characters cause problems depending on the
-system: backslash, space, hash, quotes, and the greater-than
-sign.[^tut-access-intro]
+**Earthdata setup.** An Earthdata account is required for ECCO output
+hosted by PO.DAAC, and only for retrieving data: searching CMR needs
+no account.[^tut-access-intro] earthaccess finds the credential in
+three places, and at version 0.18.0 its default `login()` strategy
+tries them in this order: the environment (an `EARTHDATA_TOKEN`, or
+username and password variables), then `~/.netrc`, then an interactive
+prompt.[^earthaccess-login] The environment path is the practical one
+in CI and in cloud notebooks, where creating a file is the awkward
+step.
 
-**What the library accepts, recorded from the library.** The paragraph
-above reports the tutorial. earthaccess itself accepts more: at version
-0.18.0 the default `login()` strategy is `all`, which tries the
-environment first (an `EARTHDATA_TOKEN`, or username and password
-variables), then `~/.netrc`, then an interactive
-prompt.[^earthaccess-login] A netrc file is therefore one accepted form
-of the credential rather than a precondition, which matters in CI and
-in cloud notebooks where creating that file is the awkward step. The
-chapter documents only the netrc path; that difference is a candidate
-for the upstream offer, not a correction to the chapter.
+Using `~/.netrc` (`_netrc` on Windows) means a
+`machine urs.earthdata.nasa.gov` entry in a file readable only by the
+current user (mode 0600), otherwise the error "netrc access too
+permissive" is raised, and some password characters cause problems
+depending on the system: backslash, space, hash, quotes, and the
+greater-than sign.[^tut-access-intro]
+
+The tutorial chapter documents the netrc path only. That is narrower
+than the library rather than wrong, and the difference is a candidate
+for the upstream offer.[^tut-access-intro][^earthaccess-login]
 
 **V4r5 reachability.** The chapter carries a section on accessing
 ECCOv4 release 5 output in the AWS Cloud through
