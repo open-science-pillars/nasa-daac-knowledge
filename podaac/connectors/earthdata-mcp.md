@@ -21,7 +21,7 @@ sources:
     title: Tool surface verification (seven tools, parameter schemas)
   - id: remote-smoke
     resource: https://github.com/open-science-pillars/marketplace/issues/20
-    title: "Session 0 remote smoke baseline, 2026-08-30: seven tools listed with schemas over Streamable HTTP; no-login get_collections probe returned the ECCO geometry collection"
+    title: "Remote endpoint smoke baseline, 2026-08-30: seven tools listed with schemas over Streamable HTTP; no-login get_collections probe returned the ECCO geometry collection"
 ---
 
 # NASA Earthdata MCP server
