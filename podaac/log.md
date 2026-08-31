@@ -4,6 +4,17 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-08-30 · EARTHDATA MCP (kit 10): connectors/earthdata-mcp.md
+  landed as the bundle's first connector concept (draft, queued for
+  steward review): the official CMR MCP server's endpoint, transport,
+  seven-tool surface, auth boundary (discovery public, credentials only
+  at earthaccess download), and deprecation flux (near-term
+  stale_after). The ocean-science registration (.mcp.json) predated
+  this documentation: the wire existed with no concept recording its
+  facts. Tool surface verified twice, local build 2026-08-29 and remote
+  endpoint 2026-08-30 (marketplace issue 20 baseline). Gates stay
+  direct REST; get_variables never signs a Schema row (drafted by
+  claude-code/fable-5)
 - 2026-08-30 · HEATWAVE WATCH phase 1 (kit 9): the Hobday-family MHW
   definition landed as conventions/mhw-definition-hobday.md (draft,
   unsigned, queued for steward review). Every number verified against
