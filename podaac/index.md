@@ -68,3 +68,7 @@ concepts (SPEC §5.7).
 - [Volume budget closure on the ECCO v4r4 native grid (attested, draft)](computations/ecco-volume-budget.md), status: draft
 - [Meridional heat transport at 26.5N from ECCO v4r4 (attested, draft)](computations/ecco-mht-26n.md), status: draft
 - [Regional sea level partition from ECCO (attested)](computations/ecco-regional-sea-level.md), status: draft
+
+## connectors
+
+- [NASA Earthdata MCP server (CMR discovery, no login)](connectors/earthdata-mcp.md), status: draft
