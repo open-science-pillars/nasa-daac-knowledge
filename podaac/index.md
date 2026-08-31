@@ -15,7 +15,7 @@ concepts (SPEC §5.7).
 - [SWOT KaRIn Level 2 Low Rate SSH](datasets/swot-karin.md), status: stable
 - [GRACE/GRACE-FO JPL mascon solutions](datasets/grace-fo-mascons.md), status: stable
 - [GHRSST MUR Level 4 SST](datasets/ghrsst-mur.md), status: stable
-- [RAPID-MOCHA transports at 26.5N (observational reference)](datasets/rapid-mocha.md), status: stable (live-ingested Session 10)
+- [RAPID-MOCHA transports at 26.5N (observational reference)](datasets/rapid-mocha.md), status: stable
 
 ## gotchas
 
@@ -36,7 +36,7 @@ concepts (SPEC §5.7).
 - [Closed salt budget on the ECCO v4r4 native grid](recipes/ecco-salt-budget.md), status: stable
 - [Closed volume budget on the ECCO v4r4 native grid](recipes/ecco-volume-budget.md), status: stable
 
-## tutorial companion (kit 4; every claim footnotes its tutorial page)
+## tutorial companion (every claim footnotes its tutorial page)
 
 - [The ecco_access library](tutorial/ecco-access-library.md), status: draft
 - [Batch downloading with wget](tutorial/wget-download.md), status: draft

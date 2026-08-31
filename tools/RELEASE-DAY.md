@@ -1,10 +1,10 @@
 # RELEASE-DAY: the V4r5 day-one playbook
 
 Run this cold the day PO.DAAC publishes ECCO V4r5 (or any successor
-release; substitute the token). Prepared 2026-08-30 by kit 3 of the OSP
-ECCO program; the tripwire is the monthly product-watch, and the moment
-the probe below returns a nonzero V4R5 count, the watch issue converts
-into the kit 3 tracking issue and this playbook fires.
+release; substitute the token). Prepared 2026-08-30. The tripwire is the
+monthly product-watch, and the moment the probe below returns a nonzero
+V4R5 count, the watch issue converts into the release tracking issue and
+this playbook fires.
 
 ## The tripwire (also run monthly with the product-watch)
 
@@ -20,8 +20,7 @@ the number that matters. Baseline recorded 2026-08-30: 0 collections,
 
 ## Release day, step by step
 
-The session prompt, verbatim (osp-ecco-program/3-v4r5-day-one
-PROMPTS.md, Session 2):
+The procedure:
 
 > Read first: tools/RELEASE-DAY.md, the PO.DAAC announcement, the delta
 > tool output.
@@ -29,12 +28,12 @@ PROMPTS.md, Session 2):
 > Task: run release_delta.py --live --draft-dir, open the delta PR the
 > same day: the v4r5 manifest skeleton, the migration-gotcha stub
 > completed with the announcement's facts (period, changes,
-> recommendation status), and a log.md entry. Then run the fields-kit
-> Session 2 and 3 pattern against the ten demo-critical v4r5 families
-> (draft, CMR-sign, granule-verify, steward-sign). Post the day-one
-> summary to Discussions and send the steward (Kit 1) the review link;
+> recommendation status), and a log.md entry. Then run the fields pattern against the
+> ten demo-critical v4r5 families: draft, CMR-sign, granule-verify,
+> steward-sign. Post the day-one
+> summary to Discussions and send the steward the review link;
 > if the handoff landed, this is their first release-moment review. If
-> Wave 5 capsules exist (kit 21), run the re-verification set as the
+> reproduction capsules exist, run the re-verification set as the
 > final beat: the opted-in V4r4 findings re-execute against V4r5,
 > receipts attach, and the pre-briefed authors get their results before
 > anything is public, per the publication policy.
@@ -64,11 +63,12 @@ pulled forward on affected concepts per the steward playbook sweep.
 
 ## Standing rule
 
-Kit 15 (repro-capsules) jumps the Wave 4 order the moment a V4r5 DATE
-is announced, so capsules exist before the release lands; that rule is
-active from today and does not wait for this playbook to fire.
+Reproduction capsules are built the moment a V4r5 DATE is announced,
+not when the data lands, so that capsules exist before the release
+does. That rule is active from today and does not wait for this
+playbook to fire.
 
-## Validity domains on release day (kit 12 wiring)
+## Validity domains on release day
 
 A nonzero new-release collection count also sweeps
 podaac/validity-domains/: every domain whose releases qualifier names

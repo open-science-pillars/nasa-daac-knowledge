@@ -4,7 +4,7 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
-- 2026-08-30 · VALIDITY DOMAINS phase 1 (kit 12): the bundle's first
+- 2026-08-30 · VALIDITY DOMAINS: the bundle's first
   three validity-domain concepts landed under validity-domains/ (all
   draft, queued for steward signature; unsigned domains never
   adjudicate, the attester lists them as advisory). The exclusion
@@ -19,7 +19,7 @@ _Historical note: older entries use build-era shorthand (a "close lint" is a kno
   Arctic is excluded structurally by a 66N region cap). Scale-axis
   limitation stated in the ECCO domain for the steward. (drafted by
   claude-code/fable-5; provenance by the standards-librarian agent)
-- 2026-08-30 · EARTHDATA MCP (kit 10): connectors/earthdata-mcp.md
+- 2026-08-30 · EARTHDATA MCP: connectors/earthdata-mcp.md
   landed as the bundle's first connector concept (draft, queued for
   steward review): the official CMR MCP server's endpoint, transport,
   seven-tool surface, auth boundary (discovery public, credentials only
@@ -30,7 +30,7 @@ _Historical note: older entries use build-era shorthand (a "close lint" is a kno
   endpoint 2026-08-30 (marketplace issue 20 baseline). Gates stay
   direct REST; get_variables never signs a Schema row (drafted by
   claude-code/fable-5)
-- 2026-08-30 · HEATWAVE WATCH phase 1 (kit 9): the Hobday-family MHW
+- 2026-08-30 · HEATWAVE WATCH: the Hobday-family MHW
   definition landed as conventions/mhw-definition-hobday.md (draft,
   unsigned, queued for steward review). Every number verified against
   open sources: the 2018 paper's verbatim restatement of the 2016
@@ -45,7 +45,7 @@ _Historical note: older entries use build-era shorthand (a "close lint" is a kno
   window recorded as a parameter, never a constant. Signed
   human:PaulMRamirez.
 
-- 2026-08-30 · RECEIPTED BRIEFINGS phase 1 (kit 8): the regional sea
+- 2026-08-30 · RECEIPTED BRIEFINGS: the regional sea
   level partition authored as an Attested Computation
   (computations/ecco-regional-sea-level.md, status draft, unsigned;
   steward approved the concept, the A1-A5 attester criterion, and the
@@ -62,8 +62,8 @@ _Historical note: older entries use build-era shorthand (a "close lint" is a kno
   together. Demo: sanctioned receipt PASSes; a one-character tamper
   FAILs A1. Signed human:PaulMRamirez.
 
-- 2026-08-30 · TUTORIAL COMPANION distilled, tiers 1 and 2 (kit 4,
-  tracking open-science-pillars/marketplace#16): 18 companion concepts
+- 2026-08-30 · TUTORIAL COMPANION distilled, tiers 1 and 2
+  (open-science-pillars/marketplace#16): 18 companion concepts
   under podaac/tutorial/, every claim footnoted to its tutorial page,
   all status draft, unsigned; the steward reviewed the two
   pattern-setters (access library, heat-budget checkpoints) at the
@@ -80,8 +80,8 @@ _Historical note: older entries use build-era shorthand (a "close lint" is a kno
   in-cloud section, the in-region S3 rule. Coverage 18/33.
   Signed human:PaulMRamirez.
 
-- 2026-08-30 · INGEST SWEEP bootstrap (kit 6, tracking
-  open-science-pillars/marketplace#15): miner run across four
+- 2026-08-30 · INGEST SWEEP bootstrap
+  (open-science-pillars/marketplace#15): miner run across four
   ECCO-GROUP trackers (82 issues: ECCOv4-py, ECCO-v4-Python-Tutorial,
   ECCO-v4-Configurations, ECCO-ACCESS), min-hits 3, five clusters
   staged, steward-triaged at the session gate. Decisions: ONE keeper,
@@ -98,7 +98,8 @@ _Historical note: older entries use build-era shorthand (a "close lint" is a kno
   product-watch, summaries append to the tracking issue. Signed
   human:PaulMRamirez.
 
-- 2026-08-30 · CITATION PLUMBING (kit 7, Wave 1): per-ShortName DOIs
+- 2026-08-30 · CITATION PLUMBING (open-science-pillars/marketplace#13):
+  per-ShortName DOIs
   harvested live from CMR, 90/90 with zero missing, into
   tools/ecco_v4r4_dois.yaml; every manifest family gains a dois
   mapping and all 43 claimed variants in the ten authored fields
@@ -110,13 +111,14 @@ _Historical note: older entries use build-era shorthand (a "close lint" is a kno
   a harvested DOI; verified silent on the merged tree and firing in a
   negative control). Signed human:PaulMRamirez.
 
-- 2026-08-30 · GRANULE SWEEP and steward promotion (fields phase 3,
-  open-science-pillars/marketplace#10): one granule per demo family
+- 2026-08-30 · GRANULE SWEEP and steward promotion
+  (open-science-pillars/marketplace#10): one granule per demo family
   verified against its Schema (cached 2010 fixtures plus one 2009-12
   monthly download each for ocean-vel, ssh, obp). 42/43 seeded rows
   confirmed. ONE ground-truth catch: OCEAN_VEL carries WVEL, not
   WVELMASS; fixed in manifest and concept together, ocean-science
-  variable catalog correction queued for phase 4. Row fixes from
+  variable catalog correction queued for the snapshot refresh. Row
+  fixes from
   granule attrs: SALT units 1e-3; salinity fluxes 1e-3 m3 s-1;
   temperature fluxes degree_C m3 s-1; VVELMASS attr recorded verbatim;
   masks carry no units attr; OBP and OBPGMAP in m; geometry edge
@@ -140,14 +142,14 @@ _Historical note: older entries use build-era shorthand (a "close lint" is a kno
 - 2026-08-30 · steward review PASSED: computations/ecco-heat-budget.md
   promoted draft to stable with a verified event
   (by: human:PaulMRamirez, at: 2026-08-30T19:40:00Z). Review basis: the
-  phase 3 receipts (sanctioned run PASS at max 5.01e-11 degC/s over
+  attested receipts (sanctioned run PASS at max 5.01e-11 degC/s over
   3,341,772 cell-months; geothermal sabotage FAIL on code_sha256 and
   residual_max), PR open-science-pillars/nasa-daac-knowledge#5. The
   event was written by the build session at the steward's explicit
   direction after their inspection. Salt/volume/MHT skeletons stay
   draft (no extracted code to sign yet).
 
-- 2026-08-30 · index.md body aligned with v0.2 (window phase 4): conformance
+- 2026-08-30 · index.md body aligned with v0.2: conformance
   line names okf_version and the vendored spec; listing labels verified ->
   stable; computations section added. No concept content changes.
 
@@ -169,12 +171,11 @@ _Historical note: older entries use build-era shorthand (a "close lint" is a kno
   ecco-mht-basin-scope, github-swot-products on swot-crossover-unapplied.
   check_okf_v02: 0 errors, 2 warnings (the flagged pair).
   tools/sync_check.py is EXPECTED RED against plugin snapshots until the
-  ocean-science snapshot refresh (window phase 4; declared in the
-  tracking issue). Signed human:PaulMRamirez.
+  ocean-science snapshot refresh (declared in the tracking issue). Signed human:PaulMRamirez.
 
 - 2026-07-06 · steward addition (knowledge-coupling migration follow-up): grace-fo-mascons gains the native-mascon-resolution / small-basin caveat (order 300 km); ecco-v4r4 gains the THETA/SALT tracer-flavor gloss and the double-hFac budget trap. Snapshots re-synced byte-identical.
 
-- 2026-07-05 · steward review PASSED: the five Session-18 concepts
+- 2026-07-05 · steward review PASSED: five concepts
   (recipes/ecco-salt-budget.md, recipes/ecco-volume-budget.md, and gotchas/
   ecco-release-mixing.md, ecco-mht-basin-scope.md, swot-crossover-unapplied.md)
   promoted draft to status: verified (verified_by OSP steward review); datasets
