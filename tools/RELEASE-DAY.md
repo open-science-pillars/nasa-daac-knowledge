@@ -67,3 +67,14 @@ pulled forward on affected concepts per the steward playbook sweep.
 Kit 15 (repro-capsules) jumps the Wave 4 order the moment a V4r5 DATE
 is announced, so capsules exist before the release lands; that rule is
 active from today and does not wait for this playbook to fire.
+
+## Validity domains on release day (kit 12 wiring)
+
+A nonzero new-release collection count also sweeps
+podaac/validity-domains/: every domain whose releases qualifier names
+the superseded token is flagged for steward re-verification (the
+domain statement is falsifiable by exactly this event), and no flagged
+domain adjudicates the new release's collections until re-verified and
+re-signed. The fitness attester needs no change: new-release
+ShortNames simply do not match un-updated product patterns, so the
+honest default is UNADJUDICATED.
