@@ -4,6 +4,21 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-08-30 · VALIDITY DOMAINS phase 1 (kit 12): the bundle's first
+  three validity-domain concepts landed under validity-domains/ (all
+  draft, queued for steward signature; unsigned domains never
+  adjudicate, the attester lists them as advisory). The exclusion
+  projects the signed native-vs-regridded gotcha into declaration
+  space. Both supporting domains went through the librarian pattern
+  first: the ECCO large-scale statistics basis verified against Forget
+  et al. 2015 and the V4r4 synopsis with exact quotes; the MUR
+  mean-state draft was CORRECTED by the pass before authoring (the
+  planned independent-validation and fine-scale-artifact phrasings are
+  not supported by Chin et al. 2017; the landed text claims ingested
+  in situ residuals and ensemble agreement instead, and the summer
+  Arctic is excluded structurally by a 66N region cap). Scale-axis
+  limitation stated in the ECCO domain for the steward. (drafted by
+  claude-code/fable-5; provenance by the standards-librarian agent)
 - 2026-08-30 · EARTHDATA MCP (kit 10): connectors/earthdata-mcp.md
   landed as the bundle's first connector concept (draft, queued for
   steward review): the official CMR MCP server's endpoint, transport,
