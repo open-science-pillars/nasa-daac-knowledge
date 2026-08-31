@@ -11,6 +11,9 @@ sources:
     resource: https://ecco-v4-python-tutorial.readthedocs.io/ECCO_access_intro.html
     title: "ECCO v4 Python Tutorial: The ecco_access library (page updated 2025-11-13)"
     author: team:ecco-consortium
+  - id: earthaccess-login
+    resource: https://github.com/nsidc/earthaccess
+    title: "earthaccess 0.18.0, login() docstring read from the installed package 2026-08-31: default strategy all, trying environment then netrc then interactive"
 ---
 
 # The ecco_access library: packaging, contract, and Earthdata setup
@@ -46,6 +49,17 @@ warns that some password characters cause problems depending on the
 system: backslash, space, hash, quotes, and the greater-than
 sign.[^tut-access-intro]
 
+**What the library accepts, recorded from the library.** The paragraph
+above reports the tutorial. earthaccess itself accepts more: at version
+0.18.0 the default `login()` strategy is `all`, which tries the
+environment first (an `EARTHDATA_TOKEN`, or username and password
+variables), then `~/.netrc`, then an interactive
+prompt.[^earthaccess-login] A netrc file is therefore one accepted form
+of the credential rather than a precondition, which matters in CI and
+in cloud notebooks where creating that file is the awkward step. The
+chapter documents only the netrc path; that difference is a candidate
+for the upstream offer, not a correction to the chapter.
+
 **V4r5 reachability.** The chapter carries a section on accessing
 ECCOv4 release 5 output in the AWS Cloud through
 ecco_access,[^tut-access-intro] which is the in-cloud reachability the
@@ -53,3 +67,4 @@ release-trigger kit's playbook assumes ahead of the PO.DAAC
 publication.
 
 [^tut-access-intro]: ECCO v4 Python Tutorial: The ecco_access library (page updated 2025-11-13)
+[^earthaccess-login]: earthaccess 0.18.0 login() docstring, read from the installed package 2026-08-31
