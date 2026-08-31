@@ -69,6 +69,12 @@ concepts (SPEC §5.7).
 - [Meridional heat transport at 26.5N from ECCO v4r4 (attested, draft)](computations/ecco-mht-26n.md), status: draft
 - [Regional sea level partition from ECCO (attested)](computations/ecco-regional-sea-level.md), status: draft
 
+## validity-domains
+
+- [Exclusion: budget claims on interpolated ECCO grids](validity-domains/no-budgets-on-interpolated.md), exclusion, status: draft
+- [ECCO v4r4 native monthly fields support large-scale statistics over 1992-2017](validity-domains/ecco-large-scale-statistics.md), supporting, status: draft
+- [MUR L4 SST supports basin-scale mean-state claims outside the high Arctic](validity-domains/mur-basin-mean-state.md), supporting, status: draft
+
 ## connectors
 
 - [NASA Earthdata MCP server (CMR discovery, no login)](connectors/earthdata-mcp.md), status: draft
