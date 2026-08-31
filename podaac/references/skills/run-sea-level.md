@@ -18,7 +18,8 @@ committed to the bundle.
 ## 1. Stage the data
 
 Monthly granules for the period, in the `~/ECCO_V4r4` cache layout
-(Earthdata Login via `~/.netrc`): `ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4`,
+(an Earthdata Login is needed to retrieve them, from the environment
+or `~/.netrc`): `ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4`,
 `ECCO_L4_OBP_LLC0090GRID_MONTHLY_V4R4`,
 `ECCO_L4_DENS_STRAT_PRESS_LLC0090GRID_MONTHLY_V4R4`, plus the static
 geometry granule (fetched via earthaccess, per the recorded
