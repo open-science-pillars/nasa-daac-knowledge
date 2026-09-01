@@ -4,6 +4,47 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-01 · PHYSICS CALCULATIONS phase 2: steric height, geostrophic
+  balance with thermal wind, and wind-stress curl with Ekman pumping
+  land as attested computations seven through nine, each with a
+  sanctioned executor, receipt, deterministic attester, and PASS plus
+  tamper-FAIL demos on cached native granules. Steric carries a
+  cross-computation anchor: its reference trend (+135.7772 mm per
+  year, US northeast coast 2010) matches the attested sea-level
+  partition's signed receipt to four decimals from independent code,
+  and a global run cannot pass without the Boussinesq caveat.
+  Geostrophy validates at r 0.9242 over the open-ocean interior with
+  the weaker full-band (0.7921) and polar figures as REQUIRED
+  disclosure fields (a receipt quoting only the flattering number
+  fails); its first run measured r -0.04 and the cause, PHIHYD
+  missing the g ETAN surface loading, is now
+  gotchas/ecco-phihyd-surface-pressure.md, our first gotcha caught by
+  our own receipts rather than by review. Curl is computed entirely
+  in the tile-local frame, where rotation-invariance makes the
+  second-rotation trap structurally impossible; Ekman pumping vs the
+  model's WVEL at 70 m measures r 0.8225 (the independent PO.DAAC
+  implementation records 0.74 for the same comparison). One stress
+  granule (2009-12) was retrieved to the local cache for validation;
+  retrieval stays outside the executors. (drafted by build assistant;
+  steward review pending)
+- 2026-09-01 · PHYSICS CALCULATIONS phase 1: ocean heat content lands
+  as the bundle's sixth attested computation (sanctioned executor,
+  receipt, deterministic attester; reference run on cached 2010
+  granules PASS, one-character tamper and doctored-anchor runs FAIL),
+  with a recipe concept carrying the measured anchors (surface area
+  3.5801E+08 km2 matching the tutorial's published 3.58E+08, volume
+  1.3350E+18 m3, volume-mean THETA 3.61 degC). Four gotcha drafts
+  land alongside, each a trap PROVEN in the field: the PO.DAAC
+  ecco-skills project (podaac/ecco-skills, an independent build with
+  no contact with this bundle) hit the curl second-rotation, the
+  VELMASS hFac double-count, and the geostrophic density factor, all
+  caught by its adversarial evaluations and all previously absent
+  here, plus the daily-granule midnight overlap. That convergence,
+  two teams independently finding the same traps and the same
+  countermeasures, is recorded in each concept's sources with
+  attribution. All drafts await steward signature. Queued: attested
+  executors for steric height, geostrophic balance, thermal wind, and
+  curl. (drafted by claude-code/fable-5)
 - 2026-08-30 · VALIDITY DOMAINS: the bundle's first
   three validity-domain concepts landed under validity-domains/ (all
   draft, queued for steward signature; unsigned domains never
