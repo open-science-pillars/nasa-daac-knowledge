@@ -24,6 +24,23 @@ bar):
             signed pointwise tolerance;
   relative: max monthly |residual| / largest term <= 1e-6.
 
+THREE BUDGETS, one contract (--budget heat, salt, or volume):
+  heat    tendency d(s* THETA)/dt; ADV/DF _TH rim; TFLUX and oceQsw
+          with shortwave penetration, plus geothermal at bottom cells.
+  salt    tendency d(s* SALT)/dt; ADV/DF _SLT rim; forcing is the
+          three-dimensional salt plume tendency oceSPtnd with SFLUX
+          added at the surface level only.
+  volume  tendency d(s*)/dt; rim is UVELMASS times dyG times drF and
+          VVELMASS times dxG times drF (NO partial-cell factor, the
+          MASS suffix carries it); vertical faces are WVELMASS times
+          rA including the surface face, which carries the freshwater
+          flux, so the budget takes NO separate forcing term, and the
+          sabotage set includes ADDING one: the demonstrated
+          double-count must be caught, not merely documented.
+Per-budget bars inherit the signed pointwise tolerances: absolute
+1e-10 degC per s (heat), 1.5e-10 g per kg per s (salt), 1e-11 per s
+(volume); relative 1e-6 for all three.
+
 MUTATION EVIDENCE IN THE RECEIPT. The executor reruns four sabotaged
 variants (geothermal omitted, rim west face shifted one cell,
 vertical face sign flipped, vertical faces omitted) and records that
@@ -79,10 +96,16 @@ import ecco_v4_py as ecco
 
 RHOCONST, C_P = 1029.0, 3994.0
 R_SW, ZETA1, ZETA2 = 0.62, 0.6, 20.0
-ABS_BAR = 1e-10      # degC per s per m3 of volume; the signed pointwise bar
-REL_BAR = 1e-6       # against the largest regional term
+BARS = {  # absolute per-volume (signed pointwise), relative
+    "heat": (1e-10, 1e-6),      # degC per s
+    "salt": (1.5e-10, 1e-6),    # g per kg per s
+    "volume": (1e-11, 1e-6),    # per s
+}
 FLUX = "ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_MONTHLY_V4R4"
 HF = "ECCO_L4_HEAT_FLUX_LLC0090GRID_MONTHLY_V4R4"
+SFLX = "ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4"
+FF = "ECCO_L4_FRESH_FLUX_LLC0090GRID_MONTHLY_V4R4"
+VOLF = "ECCO_L4_OCEAN_3D_VOLUME_FLUX_LLC0090GRID_MONTHLY_V4R4"
 SNP_TS = "ECCO_L4_TEMP_SALINITY_LLC0090GRID_SNAPSHOT_V4R4"
 SNP_SSH = "ECCO_L4_SSH_LLC0090GRID_SNAPSHOT_V4R4"
 GEOM = "geometry/GRID_GEOMETRY_ECCO_V4r4_native_llc0090.nc"
@@ -132,6 +155,7 @@ def resolve_box(grid_all, lat0, lat1, lon0, lon1, depth_m):
 
 def main() -> None:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--budget", choices=sorted(BARS), default="heat")
     ap.add_argument("--region", choices=sorted(REGIONS))
     ap.add_argument("--box", nargs=4, type=float,
                     metavar=("LAT0", "LAT1", "LON0", "LON1"))
@@ -178,7 +202,7 @@ def main() -> None:
         assert d.sizes["time"] == 13, f"{s}: want 13 snapshots"
         return d
 
-    flux, hf = monthly(FLUX), monthly(HF)
+    ABS_BAR, REL_BAR = BARS[args.budget]
     sts, sssh = snaps(SNP_TS), snaps(SNP_SSH)
 
     hfacc = grid.hFacC.values
@@ -192,18 +216,45 @@ def main() -> None:
     depth = grid.Depth.values
     with np.errstate(divide="ignore", invalid="ignore"):
         sfac = np.where(depth > 0, 1.0 + sssh.ETAN.values / depth, 1.0)
-    stheta = sts.THETA.values * sfac[:, None, :, :]
-    g_total = (stheta[1:] - stheta[:-1]) / dts[:, None, None, None]
-    g_total = np.nan_to_num(np.where(hfacc[None] > 0, g_total, 0.0))
+
+    if args.budget == "volume":
+        stend = (sfac[1:] - sfac[:-1]) / dts[:, None, None]
+        g_total = np.where(hfacc[None] > 0, stend[:, None], 0.0)
+    else:
+        trc = (sts.THETA if args.budget == "heat" else sts.SALT).values
+        strc = trc * sfac[:, None, :, :]
+        g_total = (strc[1:] - strc[:-1]) / dts[:, None, None, None]
+        g_total = np.nan_to_num(np.where(hfacc[None] > 0, g_total, 0.0))
     lhs = (g_total[:, :K, j0:j1, i0:i1]
            * vol[None, :K, j0:j1, i0:i1]).sum(axis=(1, 2, 3))
 
-    fx = np.nan_to_num(flux.ADVx_TH.values) + np.nan_to_num(flux.DFxE_TH.values)
-    fy = np.nan_to_num(flux.ADVy_TH.values) + np.nan_to_num(flux.DFyE_TH.values)
-    fr = (np.nan_to_num(flux.ADVr_TH.values)
-          + np.nan_to_num(flux.DFrE_TH.values)
-          + np.nan_to_num(flux.DFrI_TH.values))
-    fr = np.where(hfacc[None] > 0, fr, 0.0)
+    if args.budget == "heat":
+        fl = monthly(FLUX)
+        fx = np.nan_to_num(fl.ADVx_TH.values) + np.nan_to_num(fl.DFxE_TH.values)
+        fy = np.nan_to_num(fl.ADVy_TH.values) + np.nan_to_num(fl.DFyE_TH.values)
+        fr = (np.nan_to_num(fl.ADVr_TH.values)
+              + np.nan_to_num(fl.DFrE_TH.values)
+              + np.nan_to_num(fl.DFrI_TH.values))
+        collections = [FLUX, HF, SNP_TS, SNP_SSH]
+    elif args.budget == "salt":
+        fl = monthly(SFLX)
+        fx = np.nan_to_num(fl.ADVx_SLT.values) + np.nan_to_num(fl.DFxE_SLT.values)
+        fy = np.nan_to_num(fl.ADVy_SLT.values) + np.nan_to_num(fl.DFyE_SLT.values)
+        fr = (np.nan_to_num(fl.ADVr_SLT.values)
+              + np.nan_to_num(fl.DFrE_SLT.values)
+              + np.nan_to_num(fl.DFrI_SLT.values))
+        collections = [SFLX, FF, SNP_TS, SNP_SSH]
+    else:
+        fl = monthly(VOLF)
+        dyg_drf = grid.drF.values[:, None, None] * grid.dyG.values[None]
+        dxg_drf = grid.drF.values[:, None, None] * grid.dxG.values[None]
+        fx = np.nan_to_num(fl.UVELMASS.values) * dyg_drf[None]
+        fy = np.nan_to_num(fl.VVELMASS.values) * dxg_drf[None]
+        fr = np.nan_to_num(fl.WVELMASS.values) * grid.rA.values[None, None]
+        collections = [VOLF, SNP_TS, SNP_SSH]
+    fx = fx.astype(np.float64)
+    fy = fy.astype(np.float64)
+    fr = np.where(hfacc[None] > 0, fr.astype(np.float64), 0.0)
     frp = np.concatenate([fr, np.zeros_like(fr[:, :1])], axis=1)
 
     def rim_flux(iw):
@@ -216,32 +267,66 @@ def main() -> None:
     vert = (frp[:, K, j0:j1, i0:i1].sum(axis=(1, 2))
             - frp[:, 0, j0:j1, i0:i1].sum(axis=(1, 2)))
 
-    Z = grid.Z.values
-    RF = np.concatenate([grid.Zp1.values[:-1], [np.nan]])
-    q1 = R_SW * np.exp(RF[:-1] / ZETA1) + (1 - R_SW) * np.exp(RF[:-1] / ZETA2)
-    q2 = R_SW * np.exp(RF[1:] / ZETA1) + (1 - R_SW) * np.exp(RF[1:] / ZETA2)
-    zcut = int(np.where(Z < -200)[0][0])
-    q1[zcut:] = 0
-    q2[zcut - 1:] = 0
-    tfl = np.nan_to_num(hf.TFLUX.values)
-    qsw = np.nan_to_num(hf.oceQsw.values)
-    forc_sub = (q1[None, :, None, None] * (mskc[None] == 1)
-                - q2[None, :, None, None] * (mskc_dn[None] == 1)) * qsw[:, None]
-    forc_surf = (tfl - (1 - (q1[0] - q2[0])) * qsw) * mskc[0][None]
-    forch = np.concatenate([forc_surf[:, None], forc_sub[:, 1:]], axis=1)
-    hfac_drf = hfacc * grid.drF.values[:, None, None]
-    with np.errstate(divide="ignore", invalid="ignore"):
-        g_forc = np.where(hfac_drf[None] > 0,
-                          (forch / (RHOCONST * C_P)) / hfac_drf[None], 0.0)
-    geo = np.asarray(ecco.read_llc_to_tiles(
-        str(args.data_root), "geothermalFlux.bin", less_output=True))[tile]
-    with np.errstate(divide="ignore", invalid="ignore"):
-        g_geo = np.where(hfac_drf[None] > 0,
-                         ((geo[None, None] * mskb[None])
-                          / (RHOCONST * C_P)) / hfac_drf[None], 0.0)
     vw = vol[None, :K, j0:j1, i0:i1]
-    forc = ((g_forc + g_geo)[:, :K, j0:j1, i0:i1] * vw).sum(axis=(1, 2, 3))
-    geo_int = (g_geo[:, :K, j0:j1, i0:i1] * vw).sum(axis=(1, 2, 3))
+    hfac_drf = hfacc * grid.drF.values[:, None, None]
+    geo_int = sflux_int = sptnd_int = spur_fw = None
+    if args.budget == "heat":
+        hf_ = monthly(HF)
+        Z = grid.Z.values
+        RF = np.concatenate([grid.Zp1.values[:-1], [np.nan]])
+        q1 = R_SW * np.exp(RF[:-1] / ZETA1) + (1 - R_SW) * np.exp(RF[:-1] / ZETA2)
+        q2 = R_SW * np.exp(RF[1:] / ZETA1) + (1 - R_SW) * np.exp(RF[1:] / ZETA2)
+        zcut = int(np.where(Z < -200)[0][0])
+        q1[zcut:] = 0
+        q2[zcut - 1:] = 0
+        tfl = np.nan_to_num(hf_.TFLUX.values)
+        qsw = np.nan_to_num(hf_.oceQsw.values)
+        forc_sub = (q1[None, :, None, None] * (mskc[None] == 1)
+                    - q2[None, :, None, None] * (mskc_dn[None] == 1)) * qsw[:, None]
+        forc_surf = (tfl - (1 - (q1[0] - q2[0])) * qsw) * mskc[0][None]
+        forch = np.concatenate([forc_surf[:, None], forc_sub[:, 1:]], axis=1)
+        with np.errstate(divide="ignore", invalid="ignore"):
+            g_forc = np.where(hfac_drf[None] > 0,
+                              (forch / (RHOCONST * C_P)) / hfac_drf[None], 0.0)
+        geo = np.asarray(ecco.read_llc_to_tiles(
+            str(args.data_root), "geothermalFlux.bin",
+            less_output=True))[tile]
+        with np.errstate(divide="ignore", invalid="ignore"):
+            g_geo = np.where(hfac_drf[None] > 0,
+                             ((geo[None, None] * mskb[None])
+                              / (RHOCONST * C_P)) / hfac_drf[None], 0.0)
+        forc = ((g_forc + g_geo)[:, :K, j0:j1, i0:i1] * vw).sum(axis=(1, 2, 3))
+        geo_int = (g_geo[:, :K, j0:j1, i0:i1] * vw).sum(axis=(1, 2, 3))
+    elif args.budget == "salt":
+        ff_ = monthly(FF)
+        sptnd = np.nan_to_num(fl.oceSPtnd.values)
+        sflux = np.nan_to_num(ff_.SFLUX.values)
+        num = sptnd.copy()
+        num[:, 0] = num[:, 0] + sflux * mskc[0][None]
+        with np.errstate(divide="ignore", invalid="ignore"):
+            g_forc = np.where(hfac_drf[None] > 0,
+                              (num / RHOCONST) / hfac_drf[None], 0.0)
+            g_sf = np.where(hfac_drf[None] > 0,
+                            (np.concatenate(
+                                [(sflux * mskc[0][None])[:, None],
+                                 np.zeros_like(sptnd[:, 1:])], axis=1)
+                             / RHOCONST) / hfac_drf[None], 0.0)
+            g_sp = np.where(hfac_drf[None] > 0,
+                            (sptnd / RHOCONST) / hfac_drf[None], 0.0)
+        forc = (g_forc[:, :K, j0:j1, i0:i1] * vw).sum(axis=(1, 2, 3))
+        sflux_int = (g_sf[:, :K, j0:j1, i0:i1] * vw).sum(axis=(1, 2, 3))
+        sptnd_int = (g_sp[:, :K, j0:j1, i0:i1] * vw).sum(axis=(1, 2, 3))
+    else:
+        forc = np.zeros_like(lhs)
+        ff_ = monthly(FF)
+        fwflx = np.nan_to_num(ff_.oceFWflx.values)
+        with np.errstate(divide="ignore", invalid="ignore"):
+            g_fw = np.where(hfac_drf[None] > 0,
+                            (np.concatenate(
+                                [(fwflx * mskc[0][None])[:, None],
+                                 np.zeros((12, 49) + fwflx.shape[1:])],
+                                axis=1) / RHOCONST) / hfac_drf[None], 0.0)
+        spur_fw = (g_fw[:, :K, j0:j1, i0:i1] * vw).sum(axis=(1, 2, 3))
 
     V = float(vol[:K, j0:j1, i0:i1].sum())
     largest = float(np.abs(np.vstack([lhs, rim, vert, forc])).max())
@@ -261,23 +346,31 @@ def main() -> None:
 
     evidence = []
     rim_shift = rim_flux(i0 + 1)
-    for name, r in [
-        ("geothermal-omitted", res + geo_int),
-        ("rim-west-face-shifted", lhs - (rim_shift + vert + forc)),
-        ("vertical-face-sign-flipped", lhs - (rim - vert + forc)),
-        ("vertical-faces-omitted", lhs - (rim + forc)),
-    ]:
+    muts = [("rim-west-face-shifted", lhs - (rim_shift + vert + forc)),
+            ("vertical-face-sign-flipped", lhs - (rim - vert + forc)),
+            ("vertical-faces-omitted", lhs - (rim + forc))]
+    if args.budget == "heat":
+        muts.insert(0, ("geothermal-omitted", res + geo_int))
+    elif args.budget == "salt":
+        muts.insert(0, ("surface-sflux-omitted", res + sflux_int))
+        muts.insert(1, ("salt-plume-omitted", res + sptnd_int))
+    else:
+        muts.insert(0, ("spurious-freshwater-forcing-added", res - spur_fw))
+    for name, r in muts:
         a, rel = bars(r)
         caught = a > ABS_BAR or rel > REL_BAR
         entry = {"mutation": name, "residual_per_volume": a,
                  "residual_relative": rel, "caught": bool(caught)}
+        aware = {"geothermal-omitted", "surface-sflux-omitted",
+                 "salt-plume-omitted"}
         if not caught:
-            if name == "geothermal-omitted":
+            if name in aware:
                 entry["applicable"] = False
                 entry["note"] = (
-                    f"volume contains {bottom_cells} bottom cells; the "
-                    "geothermal term is below both bars here, so its "
-                    "omission is not demonstrable in this volume")
+                    "this term is below both bars in this volume "
+                    f"({bottom_cells} bottom cells), so its omission "
+                    "is not demonstrable here; physics, not a broken "
+                    "test")
             else:
                 raise SystemExit(
                     f"structural mutation {name} was NOT caught (abs "
@@ -290,14 +383,15 @@ def main() -> None:
     receipt = {
         "run_id": (dt.datetime.now(dt.timezone.utc)
                    .strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8]),
-        "computation": "ecco-regional-heat-budget",
+        "computation": f"ecco-regional-{args.budget}-budget",
         "code_sha256": hashlib.sha256(code).hexdigest(),
         "generated_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
         "bound_parameters": {
-            **mode, "year": args.year,
-            "collections": [FLUX, HF, SNP_TS, SNP_SSH],
-            "geothermal_source": "geothermalFlux.bin, ECCO tutorial "
-                                 "distribution, not a PO.DAAC collection",
+            **mode, "budget": args.budget, "year": args.year,
+            "collections": collections,
+            "geothermal_source": ("geothermalFlux.bin, ECCO tutorial "
+                                  "distribution, not a PO.DAAC collection"
+                                  if args.budget == "heat" else None),
             "rhoConst_kg_m3": RHOCONST, "Cp_J_kg_K": C_P,
             "sw_R": R_SW, "sw_zeta1_m": ZETA1, "sw_zeta2_m": ZETA2,
             "abs_bar_degC_s": ABS_BAR, "rel_bar": REL_BAR,
@@ -339,16 +433,18 @@ def main() -> None:
     args.receipt.parent.mkdir(parents=True, exist_ok=True)
     args.receipt.write_text(json.dumps(receipt, indent=2) + "\n")
     label = mode.get("region") or "explicit box"
-    print(f"run {receipt['run_id']}: {label}, year {args.year}")
+    print(f"run {receipt['run_id']}: {args.budget} budget, {label}, "
+          f"year {args.year}")
     print(f"  volume tile {tile}, j {j0}-{j1}, i {i0}-{i1}, "
           f"0-{-grid.Zp1.values[K]:.0f} m; {int(wet.sum()):,} wet cells, "
           f"{V:.4e} m3")
-    print(f"  residual per volume max {a_ok:.3e} degC/s "
-          f"(bar {ABS_BAR:.0e}); relative max {rel_ok:.3e} "
-          f"(bar {REL_BAR:.0e})")
+    unit = {"heat": "degC/s", "salt": "g/kg/s", "volume": "1/s"}[args.budget]
+    print(f"  residual per volume max {a_ok:.3e} {unit} "
+          f"(bar {ABS_BAR:g}); relative max {rel_ok:.3e} "
+          f"(bar {REL_BAR:g})")
     ncaught = sum(1 for e in evidence if e["caught"])
     na = [e["mutation"] for e in evidence if not e.get("caught")]
-    print(f"  mutations caught: {ncaught}/4"
+    print(f"  mutations caught: {ncaught}/{len(evidence)}"
           + (f" ({', '.join(na)} not applicable here)" if na else ""))
     print(f"  receipt -> {args.receipt}")
 
