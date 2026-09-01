@@ -28,11 +28,16 @@ concepts (SPEC §5.7).
 - [ECCO meridional heat transport: no basin mask means the full latitude circle](gotchas/ecco-mht-basin-scope.md), severity high, status: stable
 - [SWOT KaRIn ssha_karin: crossover calibration arrives UNAPPLIED](gotchas/swot-crossover-unapplied.md), severity high, status: stable
 - [ECCO native velocities are grid-relative: UVEL and VVEL are not east and north](gotchas/ecco-vector-orientation.md), severity high, status: draft
+- [Curl on the native grid needs a SECOND rotation](gotchas/ecco-curl-second-rotation.md), severity high, status: draft
+- [MASS-suffixed velocities are already mass-weighted: hFac double-counts](gotchas/ecco-velmass-hfac-double-count.md), severity high, status: draft
+- [Geostrophic velocity needs the density factor](gotchas/ecco-geostrophic-density-factor.md), severity high, status: draft
+- [Daily granules overlap at midnight](gotchas/ecco-daily-granule-midnight-overlap.md), severity medium, status: draft
 
 ## recipes
 
 - [Closed heat budget on the ECCO v4r4 native grid](recipes/ecco-heat-budget.md), status: stable
 - [Meridional heat transport at 26.5N from ECCO v4r4](recipes/ecco-mht-26n.md), status: stable
+- [Global ocean heat content and its change from ECCO v4r4](recipes/ecco-ocean-heat-content.md), status: draft
 - [Closed salt budget on the ECCO v4r4 native grid](recipes/ecco-salt-budget.md), status: stable
 - [Closed volume budget on the ECCO v4r4 native grid](recipes/ecco-volume-budget.md), status: stable
 
@@ -68,6 +73,7 @@ concepts (SPEC §5.7).
 - [Volume budget closure on the ECCO v4r4 native grid (attested, draft)](computations/ecco-volume-budget.md), status: draft
 - [Meridional heat transport at 26.5N from ECCO v4r4 (attested, draft)](computations/ecco-mht-26n.md), status: draft
 - [Regional sea level partition from ECCO (attested)](computations/ecco-regional-sea-level.md), status: draft
+- [Global ocean heat content from ECCO v4r4 (attested)](computations/ecco-ocean-heat-content.md), status: draft
 
 ## validity-domains
 

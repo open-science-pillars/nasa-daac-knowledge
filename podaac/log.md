@@ -4,6 +4,24 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-01 · PHYSICS CALCULATIONS phase 1: ocean heat content lands
+  as the bundle's sixth attested computation (sanctioned executor,
+  receipt, deterministic attester; reference run on cached 2010
+  granules PASS, one-character tamper and doctored-anchor runs FAIL),
+  with a recipe concept carrying the measured anchors (surface area
+  3.5801E+08 km2 matching the tutorial's published 3.58E+08, volume
+  1.3350E+18 m3, volume-mean THETA 3.61 degC). Four gotcha drafts
+  land alongside, each a trap PROVEN in the field: the PO.DAAC
+  ecco-skills project (podaac/ecco-skills, an independent build with
+  no contact with this bundle) hit the curl second-rotation, the
+  VELMASS hFac double-count, and the geostrophic density factor, all
+  caught by its adversarial evaluations and all previously absent
+  here, plus the daily-granule midnight overlap. That convergence,
+  two teams independently finding the same traps and the same
+  countermeasures, is recorded in each concept's sources with
+  attribution. All drafts await steward signature. Queued: attested
+  executors for steric height, geostrophic balance, thermal wind, and
+  curl. (drafted by claude-code/fable-5)
 - 2026-08-30 · VALIDITY DOMAINS: the bundle's first
   three validity-domain concepts landed under validity-domains/ (all
   draft, queued for steward signature; unsigned domains never
