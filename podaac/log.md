@@ -4,6 +4,29 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-01 · SALT AND VOLUME REGIONAL BUDGETS AND FLUX
+  DECOMPOSITION complete the control-volume set. One sanctioned
+  executor now serves all three budgets under per-budget contracts
+  (bars, collections, sabotage sets), and the heat reference
+  remeasured at 1.352e-14 degC per s with float64 rim accumulation.
+  Salt closes at 3.056e-14 against its 1.5e-10 bar, with its two
+  term-omission sabotages (surface salt flux, salt plume) recording
+  applicable false in the reference volume, physics disclosed rather
+  than a test weakened. Volume closes at 1.068e-15 against the
+  tighter 1e-11 bar, and its sabotage set turns the documented
+  freshwater double-count into a MANDATORY catch: every receipt
+  proves that adding a separate surface forcing term breaks the
+  closure. Flux decomposition lands as the twelfth attested
+  computation with the grouping as a declared parameter rather than
+  a settled question: two mathematical oracles (the four-term
+  identity at 1.1e-16 and the vanishing cross-term means at 3.6e-17,
+  the second being the one with teeth since the identity holds for
+  any split point), all four stored terms in every receipt
+  regardless of grouping, and an attester that fails any reported
+  view disagreeing with the stored terms. Reference: mean-advective
+  +9.04354 PW, eddy -0.06963 PW through the reference region's
+  interior faces. Demos across the set: seven PASS, five distinct
+  FAIL. (drafted by build assistant; steward review pending)
 - 2026-09-01 · SEAM CALIBRATION AND SECTION TRANSPORTS. The llc90
   tile topology (lifted from ecco_v4_py 1.8.1, all 24 connected
   edges) was verified twice before any flux crossed a seam:

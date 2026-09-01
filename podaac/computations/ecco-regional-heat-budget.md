@@ -1,7 +1,7 @@
 ---
 type: Attested Computation
 title: "Regional heat budget over a control volume from ECCO v4r4 (attested)"
-description: "Closed heat budget over a registered region or an explicit box, validated across three independent collections; two bars, mutation evidence in every receipt, and the resolved mask disclosed by digest because no oracle can check it is the water the user meant."
+description: "Closed heat budget over a registered region or an explicit box, validated across three independent collections; two bars, mutation evidence in every receipt, and the resolved mask disclosed by digest because no oracle can check it is the water the user meant. The sanctioned executor also serves the salt and volume budgets under their own contracts."
 tags: [ecco, heat-budget, regional, control-volume, attested, native-grid]
 runtime: python
 parameters:
@@ -68,14 +68,14 @@ machinery lands.
 **Reference run (2026-09-01, cached native granules, year 2010,
 region southeast-atlantic-upper: tile 1 index box, roughly 44S to 10S
 and 18W to 22E, upper 323 m, 27,921 wet cells, 4.1351e15 m3).**
-Residual per volume max 1.632e-14 degC per s; relative max 1.850e-07;
+Residual per volume max 1.352e-14 degC per s; relative max 1.533e-07 (remeasured 2026-09-01 after the executor generalized to salt and volume with float64 rim accumulation);
 all four mutations caught. Attester PASS on the run; FAIL demonstrated
 on a doctored FLATTERING residual (1e-16 trips the two-sided
 reference anchor), on dropped mutation evidence, on a dropped mask
 digest, and on a receipt whose geothermal caught flag contradicts its
 own numbers. Explicit-box tier demonstrated: a requested box of 40S
 to 20S, 10W to 10E at 300 m resolved to 9,600 wet cells and 1.4219e15
-m3, closed at 2.082e-14 with geothermal recorded not applicable, and
+m3, closed at 2.041e-14 with geothermal recorded not applicable, and
 passed attestation on the general contract.
 
 [^design-note]: docs/regional-budget-design.md, the oracle, the retraction, and the disclosure doctrine

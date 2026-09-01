@@ -2,34 +2,32 @@
 # /// script
 # requires-python = ">=3.10"
 # ///
-"""Deterministic attester for the attested ECCO v4r4 regional heat
-budget.
+"""Deterministic attester for the attested ECCO v4r4 regional budgets
+(heat, salt, volume) over a control volume.
 
 No LLM, stdlib only, consumer-side (spec 10.2). PASS (exit 0) only
 when ALL hold, else FAIL (exit 1) naming the field:
 
   1. declared receipt fields present, including the DISCLOSURE set
-     (resolved volume with mask digest and geometry digest) and the
-     MUTATION EVIDENCE (all four named sabotages, each caught): a
-     receipt without its failure demonstrations is not evidence;
+     (resolved volume with mask and geometry digests, wet and bottom
+     cell counts) and the MUTATION EVIDENCE carrying exactly the
+     budget's named sabotage set;
   2. code_sha256 matches the sanctioned computation file;
-  3. bound parameters are the contract exactly (collections,
+  3. bound parameters are the budget's contract exactly (collections,
      constants, the two bars);
-  4. BOTH BARS recomputed from the receipt's own results: absolute
-     per-volume within 1e-10 degC per s AND relative within 1e-6
-     (measured 2026-08-31: geothermal omission passes the absolute
-     bar alone, so one bar is not a criterion);
-  5. every STRUCTURAL mutation actually failed a bar by the numbers
-     it carries, not merely by its caught flag; the geothermal
-     mutation may instead be marked not applicable, but only with an
-     internally consistent story: its own numbers below both bars and
-     the bottom-cell count disclosed (a volume without bottom cells
-     owes no geothermal catch);
-  6. REFERENCE ANCHOR (region southeast-atlantic-upper, year 2010):
-     wet_cells exactly 27,921; volume within 0.1 percent of
-     4.1351e15 m3; residual per volume within a factor of three of
-     the measured 1.632e-14 TWO-SIDED, so a doctored receipt claiming
-     a flattering residual fails the same as a broken one.
+  4. BOTH BARS hold, recomputed from the receipt's results;
+  5. every mutation's caught flag is consistent with its own numbers;
+     structural sabotages must trip a bar, applicability-aware ones
+     (geothermal for heat, the surface salt flux and salt plume for
+     salt) may instead be marked not applicable with numbers under
+     both bars; the volume budget's spurious-freshwater sabotage is
+     ALWAYS structural, because the demonstrated double-count must be
+     caught, not merely documented;
+  6. REFERENCE ANCHORS (southeast-atlantic-upper, 2010): wet_cells
+     exactly 27,921, volume within 0.1 percent of 4.1351e15 m3, and
+     the residual per volume within a factor of three TWO-SIDED of
+     the measured value for the budget (heat 1.352e-14, salt
+     3.056e-14, volume 1.068e-15), so flattering receipts fail too.
 
 Usage: regional_budget_check.py RECEIPT.json [--computation PATH]
 """
@@ -40,22 +38,44 @@ import json
 import sys
 from pathlib import Path
 
-ABS_BAR = 1e-10
-REL_BAR = 1e-6
+FLUX = "ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_MONTHLY_V4R4"
+HF = "ECCO_L4_HEAT_FLUX_LLC0090GRID_MONTHLY_V4R4"
+SFLX = "ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4"
+FF = "ECCO_L4_FRESH_FLUX_LLC0090GRID_MONTHLY_V4R4"
+VOLF = "ECCO_L4_OCEAN_3D_VOLUME_FLUX_LLC0090GRID_MONTHLY_V4R4"
+SNP_TS = "ECCO_L4_TEMP_SALINITY_LLC0090GRID_SNAPSHOT_V4R4"
+SNP_SSH = "ECCO_L4_SSH_LLC0090GRID_SNAPSHOT_V4R4"
+
+CONTRACT = {
+    "heat": {"bars": (1e-10, 1e-6),
+             "collections": [FLUX, HF, SNP_TS, SNP_SSH],
+             "mutations": {"geothermal-omitted", "rim-west-face-shifted",
+                           "vertical-face-sign-flipped",
+                           "vertical-faces-omitted"},
+             "aware": {"geothermal-omitted"},
+             "ref_residual": 1.352e-14},
+    "salt": {"bars": (1.5e-10, 1e-6),
+             "collections": [SFLX, FF, SNP_TS, SNP_SSH],
+             "mutations": {"surface-sflux-omitted", "salt-plume-omitted",
+                           "rim-west-face-shifted",
+                           "vertical-face-sign-flipped",
+                           "vertical-faces-omitted"},
+             "aware": {"surface-sflux-omitted", "salt-plume-omitted"},
+             "ref_residual": 3.056e-14},
+    "volume": {"bars": (1e-11, 1e-6),
+               "collections": [VOLF, SNP_TS, SNP_SSH],
+               "mutations": {"spurious-freshwater-forcing-added",
+                             "rim-west-face-shifted",
+                             "vertical-face-sign-flipped",
+                             "vertical-faces-omitted"},
+               "aware": set(),
+               "ref_residual": 1.068e-15},
+}
 REF_REGION = "southeast-atlantic-upper"
 REF_YEAR = 2010
-REF_RESIDUAL = 1.632e-14
 REF_FACTOR = 3.0
 REF_CELLS = 27921
 REF_VOLUME = 4.1351e15
-COLLECTIONS = [
-    "ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_MONTHLY_V4R4",
-    "ECCO_L4_HEAT_FLUX_LLC0090GRID_MONTHLY_V4R4",
-    "ECCO_L4_TEMP_SALINITY_LLC0090GRID_SNAPSHOT_V4R4",
-    "ECCO_L4_SSH_LLC0090GRID_SNAPSHOT_V4R4",
-]
-MUTATIONS = {"geothermal-omitted", "rim-west-face-shifted",
-             "vertical-face-sign-flipped", "vertical-faces-omitted"}
 
 
 def fail(msg: str) -> int:
@@ -82,70 +102,71 @@ def main() -> int:
               "lon_extent", "wet_cells", "bottom_cells", "volume_m3",
               "mask_sha256", "geometry_sha256"]:
         if f not in rv:
-            return fail(f"disclosure field missing: resolved_volume.{f} "
-                        "(the mask and geometry digests are the "
-                        "contract, not optional)")
+            return fail(f"disclosure field missing: resolved_volume.{f}")
 
     want = hashlib.sha256(args.computation.read_bytes()).hexdigest()
     if r["code_sha256"] != want:
         return fail("code_sha256 does not match the sanctioned computation")
 
     bp = r["bound_parameters"]
-    if (bp.get("collections") != COLLECTIONS
+    budget = bp.get("budget")
+    if budget not in CONTRACT:
+        return fail(f"unknown budget {budget!r}")
+    c = CONTRACT[budget]
+    abs_bar, rel_bar = c["bars"]
+    if (bp.get("collections") != c["collections"]
             or bp.get("rhoConst_kg_m3") != 1029.0
             or bp.get("Cp_J_kg_K") != 3994.0
-            or bp.get("abs_bar_degC_s") != ABS_BAR
-            or bp.get("rel_bar") != REL_BAR):
-        return fail("constants, collections, or bars differ from the contract")
+            or bp.get("abs_bar_degC_s") != abs_bar
+            or bp.get("rel_bar") != rel_bar):
+        return fail("constants, collections, or bars differ from the "
+                    f"{budget} contract")
 
     res = r["results"]
     a = res.get("residual_per_volume_max_degC_s")
     rel = res.get("residual_relative_max")
     if a is None or rel is None:
         return fail("results missing the two bar figures")
-    if a > ABS_BAR:
-        return fail(f"absolute bar failed: {a} > {ABS_BAR}")
-    if rel > REL_BAR:
-        return fail(f"relative bar failed: {rel} > {REL_BAR}")
+    if a > abs_bar:
+        return fail(f"absolute bar failed: {a} > {abs_bar}")
+    if rel > rel_bar:
+        return fail(f"relative bar failed: {rel} > {rel_bar}")
 
     ev = r["mutation_evidence"]
-    names = {e.get("mutation") for e in ev}
-    if names != MUTATIONS:
-        return fail(f"mutation evidence must carry exactly {sorted(MUTATIONS)}; "
-                    f"got {sorted(n for n in names if n)}")
+    if {e.get("mutation") for e in ev} != c["mutations"]:
+        return fail(f"{budget} mutation evidence must carry exactly "
+                    f"{sorted(c['mutations'])}")
     for e in ev:
-        tripped = (e.get("residual_per_volume", 0) > ABS_BAR
-                   or e.get("residual_relative", 0) > REL_BAR)
-        if tripped:
-            continue
-        if (e.get("mutation") == "geothermal-omitted"
-                and e.get("applicable") is False):
-            if e.get("caught"):
-                return fail("geothermal-omitted marked caught but its "
-                            "numbers trip no bar")
-            continue
-        return fail(f"mutation {e.get('mutation')} did not fail a bar "
-                    "by its own numbers; the test cannot fail, so "
-                    "this receipt is not evidence")
+        tripped = (e.get("residual_per_volume", 0) > abs_bar
+                   or e.get("residual_relative", 0) > rel_bar)
+        if e.get("caught") and not tripped:
+            return fail(f"mutation {e['mutation']} marked caught but its "
+                        "numbers trip no bar")
+        if not e.get("caught"):
+            if e.get("mutation") not in c["aware"]:
+                return fail(f"structural mutation {e['mutation']} uncaught")
+            if e.get("applicable") is not False or tripped:
+                return fail(f"mutation {e['mutation']} inconsistently "
+                            "marked inapplicable")
 
     if (bp.get("mode") == "registered" and bp.get("region") == REF_REGION
             and bp.get("year") == REF_YEAR):
         if rv["wet_cells"] != REF_CELLS:
             return fail(f"reference wet_cells {rv['wet_cells']} != {REF_CELLS}")
         if abs(rv["volume_m3"] - REF_VOLUME) / REF_VOLUME > 0.001:
-            return fail(f"reference volume {rv['volume_m3']} not within "
-                        f"0.1 percent of {REF_VOLUME}")
-        if not (REF_RESIDUAL / REF_FACTOR <= a <= REF_RESIDUAL * REF_FACTOR):
+            return fail(f"reference volume {rv['volume_m3']} off")
+        ref = c["ref_residual"]
+        if not (ref / REF_FACTOR <= a <= ref * REF_FACTOR):
             return fail(f"reference residual {a} outside a factor of "
-                        f"{REF_FACTOR} of the measured {REF_RESIDUAL} "
+                        f"{REF_FACTOR} of the measured {ref} "
                         "(two-sided: flattering claims fail too)")
-        print(f"PASS run {r['run_id']}: sanctioned code, both bars, all "
-              f"four mutations demonstrated, and the reference anchors "
-              f"hold (residual {a:.3e} vs measured {REF_RESIDUAL:.3e})")
+        print(f"PASS run {r['run_id']}: {budget} budget, sanctioned code, "
+              f"both bars, evidence consistent, reference anchors hold "
+              f"(residual {a:.3e} vs measured {ref:.3e})")
         return 0
 
-    print(f"PASS run {r['run_id']}: sanctioned code, both bars, "
-          f"mutation evidence consistent "
+    print(f"PASS run {r['run_id']}: {budget} budget, sanctioned code, "
+          f"both bars, evidence consistent "
           f"({bp.get('region') or 'explicit box'}, year {bp.get('year')})")
     return 0
 
