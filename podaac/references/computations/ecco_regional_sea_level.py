@@ -129,6 +129,18 @@ def compute(region: str, period: str, root: Path) -> dict:
     }
 
 
+def data_identity(root):
+    """Which tree fed this run. The root, and the RECORD.json stamp the
+    verify tool leaves in a tree it has checked against its manifest
+    (record name, manifest sha256, verification time, report sha256).
+    A tree with no stamp is recorded as unverified, never invented."""
+    root = Path(root).expanduser().resolve()
+    stamp = root / "RECORD.json"
+    return {"data_root": str(root),
+            "record": json.loads(stamp.read_text()) if stamp.exists()
+            else "unverified: no RECORD.json in this tree"}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--region", required=True, choices=sorted(REGIONS),
@@ -154,6 +166,7 @@ def main() -> int:
         "run_id": (datetime.datetime.now(datetime.timezone.utc)
                    .strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8]),
         "code_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "data": data_identity(args.data_root),
         "bound_parameters": {"region": args.region, "period": args.period},
         **stats,
     }

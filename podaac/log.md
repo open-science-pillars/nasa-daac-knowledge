@@ -4,6 +4,29 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-01 · THE SCIENCE RECORD AND THE FIXTURE BOUNDARY. Two
+  manifested, verified, stamped trees: the 2010 fixture cache (144
+  files, 3.08 GB, exact) stays as it is for gates, anchors, and CI;
+  the science record (3,432 files, 64.57 GB, 1992-01 through 2017-12
+  monthly plus month-boundary snapshots) is where sanctioned
+  computations run for real results. Every granule hashed against
+  the archive checksum (SHA-512 from CMR; geometry and geothermal
+  local), zero undeclared files, verifier proven to refuse a flipped
+  byte, a missing granule, and a stray file. Every executor now
+  records the tree that fed it (data root plus the RECORD.json stamp:
+  record name, manifest and report hashes, verification time) and
+  every attester refuses a receipt without that stamp; the eleven
+  computation concepts declare the field and the rule (edit made
+  after signature, additive, for the steward's review at merge).
+  First result on the record: regional heat budget 2005 closes at
+  5.931e-15 degC per s, all four sabotages caught, exhibit receipt
+  committed beside the manifests. Coverage: heat and volume budgets
+  closable 1992-02 through 2017-11; the salt budget waits on two
+  collections the record does not hold (20.97 GB, measured). Tools:
+  science_record_manifest, science_record_fetch (checksum check
+  extended from MD5 and SHA-256 to any archive hash; it had verified
+  the download by size only), science_record_verify. Boundary and
+  coverage note: docs/science-record.md
 - 2026-09-01 · steward review passed: the eight control-volume
   concepts verified (verified_by human:PaulMRamirez) and promoted
   draft to stable: the regional heat, salt, and volume budget

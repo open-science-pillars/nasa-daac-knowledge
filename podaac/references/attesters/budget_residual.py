@@ -65,6 +65,15 @@ def main() -> int:
                     f"match sanctioned computation {want[:12]}... "
                     f"({args.computation.name}): not the sanctioned code")
 
+    data = receipt.get("data")
+    if (not isinstance(data, dict)
+            or not isinstance(data.get("record"), dict)):
+        return fail("data",
+                    "receipt names no verified data tree: data.record must "
+                    "be the RECORD.json stamp the verify tool leaves in "
+                    "a tree checked against its manifest; nothing is "
+                    "attested against unmanifested data")
+
     bound = receipt["bound_parameters"]
     if not isinstance(bound, dict):
         return fail("bound_parameters", "not a mapping")

@@ -10,7 +10,7 @@ parameters:
 computation: references/computations/ecco_heat_budget.py
 executor:
   resource: references/skills/run-golden.md
-  receipt: [run_id, code_sha256, bound_parameters, residual_max, residual_p999, cells_evaluated]
+  receipt: [run_id, code_sha256, data, bound_parameters, residual_max, residual_p999, cells_evaluated]
 attester:
   resource: references/attesters/budget_residual.py
 generated: { by: claude-code/fable-5, at: 2026-08-30T19:20:00Z }
@@ -72,6 +72,14 @@ set above, and both residuals within the pass bar. A rewritten
 computation, an undeclared parameter, or a formulation error (a dropped
 geothermal term drives deep-cell residuals orders above
 tolerance[^github-budget-formulation]) fails mechanically.
+
+**Data provenance.** The receipt also carries a `data` block: the data
+root and the `RECORD.json` stamp the verify tool leaves in a tree it has
+checked against its manifest (record name, manifest SHA-256,
+verification time, report SHA-256). The attester refuses a receipt
+whose `data.record` is not that stamp, so nothing is attested against a
+tree this bundle has not manifested and verified. The two trees and
+the rule are in docs/science-record.md.
 
 [^github-budget-formulation]: OSP ocean-science reference: ECCO v4r4 heat budget formulation (native grid)
 [^readthedocs-ecco-v4-heat-budget-closure]: ECCO v4 Python tutorial: heat budget closure notebook

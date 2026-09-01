@@ -57,6 +57,15 @@ def main() -> int:
         return fail("A1", f"receipt {str(r['code_sha256'])[:12]}... does not match "
                     f"sanctioned computation {want[:12]}...")
 
+    data = r.get("data")
+    if (not isinstance(data, dict)
+            or not isinstance(data.get("record"), dict)):
+        return fail("A1b",
+                    "receipt names no verified data tree: data.record must "
+                    "be the RECORD.json stamp the verify tool leaves in "
+                    "a tree checked against its manifest; nothing is "
+                    "attested against unmanifested data")
+
     bound = r["bound_parameters"]
     if not isinstance(bound, dict) or set(bound) != {"region", "period"}:
         return fail("A2", "bound_parameters must bind exactly region and period")

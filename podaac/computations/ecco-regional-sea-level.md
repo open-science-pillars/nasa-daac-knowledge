@@ -10,7 +10,7 @@ parameters:
 computation: references/computations/ecco_regional_sea_level.py
 executor:
   resource: references/skills/run-sea-level.md
-  receipt: [run_id, code_sha256, bound_parameters, ssh_variant, months, cells_evaluated, trend_total_mm_yr, trend_mass_mm_yr, trend_steric_mm_yr, partition_residual_max]
+  receipt: [run_id, code_sha256, data, bound_parameters, ssh_variant, months, cells_evaluated, trend_total_mm_yr, trend_mass_mm_yr, trend_steric_mm_yr, partition_residual_max]
 attester:
   resource: references/attesters/sea_level_partition.py
 generated: { by: claude-code/fable-5, at: 2026-08-30T22:40:00Z }
@@ -96,6 +96,14 @@ ECCO v4r4 ends at 2017-12: every v1 briefing is a retrospective,
 methodological demonstration and says so; the operational cadence
 arrives with V4r5. Produced by Open Science Pillars (personal-hat open
 source), not a NASA or JPL product.
+
+**Data provenance.** The receipt also carries a `data` block: the data
+root and the `RECORD.json` stamp the verify tool leaves in a tree it has
+checked against its manifest (record name, manifest SHA-256,
+verification time, report SHA-256). The attester refuses a receipt
+whose `data.record` is not that stamp, so nothing is attested against a
+tree this bundle has not manifested and verified. The two trees and
+the rule are in docs/science-record.md.
 
 [^convention-slbc]: OSP convention: sea level budget closure (steward-verified 2026-07-06, v0.1-form)
 [^gotcha-ssh-ib]: OSP gotcha: ECCO SSH inverse-barometer variants (steward-verified 2026-07-06, v0.1-form)

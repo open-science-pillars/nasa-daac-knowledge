@@ -9,7 +9,7 @@ parameters:
 computation: references/computations/ecco_curl_ekman.py
 executor:
   resource: references/computations/ecco_curl_ekman.py
-  receipt: [run_id, code_sha256, bound_parameters, results, method_caveat]
+  receipt: [run_id, code_sha256, data, bound_parameters, results, method_caveat]
 attester:
   resource: references/attesters/curl_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:35:00Z }
@@ -60,6 +60,14 @@ median absolute difference 2.97E-07 m per s, median absolute curl
 dropped caveat and on a one-line code tamper. The independent PO.DAAC
 implementation of the same comparison records correlation
 0.74.[^ecco-skills-corroboration]
+
+**Data provenance.** The receipt also carries a `data` block: the data
+root and the `RECORD.json` stamp the verify tool leaves in a tree it has
+checked against its manifest (record name, manifest SHA-256,
+verification time, report SHA-256). The attester refuses a receipt
+whose `data.record` is not that stamp, so nothing is attested against a
+tree this bundle has not manifested and verified. The two trees and
+the rule are in docs/science-record.md.
 
 [^gradients-curl]: tutorial/gradients-and-curl.md, staggered locations and metrics
 [^vector-orientation]: gotchas/ecco-vector-orientation.md, tile-local components

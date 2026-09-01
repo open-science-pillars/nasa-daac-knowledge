@@ -10,7 +10,7 @@ parameters:
 computation: references/computations/ecco_section_transport.py
 executor:
   resource: references/computations/ecco_section_transport.py
-  receipt: [run_id, code_sha256, bound_parameters, resolved_section, results, mutation_evidence, caveats]
+  receipt: [run_id, code_sha256, data, bound_parameters, resolved_section, results, mutation_evidence, caveats]
 attester:
   resource: references/attesters/section_transport_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T15:20:00Z }
@@ -72,6 +72,14 @@ both sections; FAIL on a heat mean doctored toward the anchor (the
 two-sided measured band catches what the anchor band alone would
 admit); FAIL on the dropped unanchored caveat; FAIL on a sabotage
 removed from the evidence.
+
+**Data provenance.** The receipt also carries a `data` block: the data
+root and the `RECORD.json` stamp the verify tool leaves in a tree it has
+checked against its manifest (record name, manifest SHA-256,
+verification time, report SHA-256). The attester refuses a receipt
+whose `data.record` is not that stamp, so nothing is attested against a
+tree this bundle has not manifested and verified. The two trees and
+the rule are in docs/science-record.md.
 
 [^transport-golden]: ocean-science verification, the independent 1.098 PW anchor
 [^regional-budget]: computations/ecco-regional-heat-budget.md, the contract this extends
