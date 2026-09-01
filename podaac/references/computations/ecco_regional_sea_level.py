@@ -40,9 +40,14 @@ SSH_VARIANT = "SSH"      # one variant, stated, never mixed (ssh-ib-variants)
 # unregistered region fails attestation (A2) instead of improvising a
 # mask. Bounds are (lon_min, lon_max, lat_min, lat_max), degrees east.
 REGIONS = {
-    "us-northeast-coast": (-75.0, -65.0, 35.0, 45.0),
-    "gulf-of-mexico": (-98.0, -81.0, 18.0, 31.0),
-    "north-sea": (-2.0, 9.0, 51.0, 60.0),
+    # Boxes are KEYED, not positional. Two sanctioned computations once
+    # stored these as bare tuples in opposite orders, so the same region
+    # names resolved to different water (gulf-of-mexico differed by 8
+    # percent in area, north-sea by 18.5). Keys make that class of error
+    # impossible to reintroduce silently.
+    "us-northeast-coast": {"lat": (35.0, 45.0), "lon": (-75.0, -65.0)},
+    "gulf-of-mexico": {"lat": (18.0, 31.0), "lon": (-98.0, -81.0)},
+    "north-sea": {"lat": (51.0, 60.0), "lon": (-2.0, 9.0)},
 }
 
 SPAN = ("1992-01", "2017-12")   # ECCO v4r4; briefings state this boundary
@@ -65,7 +70,9 @@ def monthly(root: Path, short_name: str, a: str, b: str) -> xr.Dataset:
 
 
 def compute(region: str, period: str, root: Path) -> dict:
-    lon0, lon1, lat0, lat1 = REGIONS[region]
+    box = REGIONS[region]
+    lat0, lat1 = box["lat"]
+    lon0, lon1 = box["lon"]
     a, b = parse_period(period)
 
     grid = xr.open_dataset(root / "geometry" / "GRID_GEOMETRY_ECCO_V4r4_native_llc0090.nc")

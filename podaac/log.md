@@ -4,6 +4,27 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-01 · THREE DEFECTS FIXED in artifacts that already carried a
+  steward signature. (1) The region registries in the sea level partition
+  and steric height computations stored boxes as bare tuples in OPPOSITE
+  orders, so the same region names resolved to different water:
+  gulf-of-mexico differed by 8.0 percent in area, north-sea by 18.5.
+  us-northeast-coast happened to agree, which is why the steric
+  cross-computation anchor never caught it. Both registries now key their
+  bounds by name rather than position, so the ordering error cannot
+  recur, and both unify on the sea level partition's boxes. Receipts
+  regenerated; the cross-computation anchor still reads +135.7772 mm/yr
+  from both sides over 102 cells, and gulf-of-mexico now resolves to 185
+  cells from both. (2) The heat budget recipe asserted the residual sits
+  at "median 0.15x the snapshot quantization floor, 99.6 percent of cells
+  within 3x". That had no derivation on record and does not reproduce:
+  measured over the 3,341,772 baseline cell-months the residual is median
+  0.66x the floor with 96.4 percent within 3x and 99.7 percent within
+  10x. The corrected statement now defines the floor explicitly and cites
+  a derivation script kept beside it. The qualitative claim, that the
+  residual is storage quantization rather than formulation error,
+  survives. (3) See the ocean-science log for the volume budget golden.
+  (fixed by build assistant; steward review)
 - 2026-09-01 · steward review passed: the thirteen physics-calculations
   concepts verified (verified_by human:PaulMRamirez) and promoted draft
   to stable: the attested OHC, steric height, geostrophic balance with
