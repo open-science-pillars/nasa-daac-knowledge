@@ -6,7 +6,8 @@ tags: [ecco, granules, daily, temporal-query, access]
 severity: medium
 dataset: ../datasets/ecco-v4r4.md
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:11:19Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-01T05:53:24Z }
+status: stable
 stale_after: 2027-01-04
 sources:
   - id: ecco-skills-eval

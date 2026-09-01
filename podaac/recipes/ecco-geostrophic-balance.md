@@ -7,7 +7,8 @@ inputs: "ECCO_L4_DENS_STRAT_PRESS_LLC0090GRID_MONTHLY_V4R4 (PHIHYD, RHOAnoma); E
 expected: "Month 2009-12 at 351 m (measured 2026-09-01): r = 0.9242 against the model's currents over the open-ocean interior (10-55 deg, seafloor deeper than 3000 m, 20,771 cells); r = 0.7921 over the full 10-55 band; thermal wind identity 351 to 722 m r = 0.6102"
 expected_uncertainty: "Two traps produce plausible wrong fields: PHIHYD without g ETAN (measured r -0.04) and a missing density factor. The balance test itself has domain limits: shelf and slope cells drag r from 0.92 to 0.79, and poleward of 55 degrees a centered-difference tracer-point scheme has no signal (r near 0); report those bands, do not validate on them. The tutorial's staggered helper reaches 0.998 where this scheme reads 0.92"
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:35:00Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-01T05:53:24Z }
+status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-computation

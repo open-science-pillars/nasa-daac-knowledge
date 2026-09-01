@@ -4,6 +4,14 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-01 · steward review passed: the thirteen physics-calculations
+  concepts verified (verified_by human:PaulMRamirez) and promoted draft
+  to stable: the attested OHC, steric height, geostrophic balance with
+  thermal wind, and wind-stress curl computations, their four recipes,
+  and the five gotchas (curl second rotation, VELMASS hFac
+  double-count, geostrophic density factor, daily-granule midnight
+  overlap, PHIHYD surface pressure). The four reserved eval-case ids
+  remain owed by the eval-commons seed
 - 2026-09-01 · PHYSICS CALCULATIONS phase 2: steric height, geostrophic
   balance with thermal wind, and wind-stress curl with Ekman pumping
   land as attested computations seven through nine, each with a

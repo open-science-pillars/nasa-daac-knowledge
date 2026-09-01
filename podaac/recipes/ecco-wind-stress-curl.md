@@ -7,7 +7,8 @@ inputs: "ECCO_L4_STRESS_LLC0090GRID_MONTHLY_V4R4 (oceTAUX, oceTAUY); ECCO_L4_OCE
 expected: "Month 2009-12 (measured 2026-09-01): Ekman pumping vs model WVEL at the 70 m interface, open-ocean interior, r = 0.8225 over 20,751 cells; median absolute curl 9.25E-08 N m-3"
 expected_uncertainty: "The model's WVEL contains eddies, mixing, and topographic steering, not only Ekman pumping, so moderate correlation is the CORRECT outcome; near-perfect agreement would itself be suspect. Exclude the equatorial band (f near zero) and shelf seas (coastal upwelling is not wind-curl driven at grid scale)"
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:35:00Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-01T05:53:24Z }
+status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-computation

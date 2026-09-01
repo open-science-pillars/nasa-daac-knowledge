@@ -7,7 +7,8 @@ inputs: "ECCO_L4_DENS_STRAT_PRESS_LLC0090GRID_MONTHLY_V4R4 (RHOAnoma) for the ch
 expected: "Reference region us-northeast-coast, 2010-01 through 2010-12 (measured 2026-09-01): steric trend +135.7772 mm per year over 102 wet columns, matching the attested sea-level partition's signed receipt to four decimals; regional area-mean steric height near -19.6 m"
 expected_uncertainty: "Any area-mean outside -60 to 0 m is suspect. A GLOBAL mean steric height is a Boussinesq diagnostic: the model conserves volume, not mass, so global steric change does not translate to modeled sea-surface rise and the attested form refuses to report it without that caveat"
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:35:00Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-01T05:53:24Z }
+status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-computation

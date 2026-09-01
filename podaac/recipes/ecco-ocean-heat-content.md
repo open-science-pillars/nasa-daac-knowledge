@@ -7,7 +7,8 @@ inputs: "ECCO_L4_TEMP_SALINITY_LLC0090GRID_MONTHLY_V4R4 (THETA) for the chosen m
 expected: "Grid anchors any correct run reproduces: ocean surface area 3.5801E+08 km2 (tutorial publishes 3.58E+08), ocean volume 1.3350E+18 m3, 2,406,992 wet cells. Reference months (measured 2026-09-01): volume-mean THETA 3.6085 degC (2010-01), 3.6068 degC (2010-12); OHC change 2010-01 to 2010-12 = -9.485E+21 J"
 expected_uncertainty: "Absolute OHC is baseline-relative (potential temperature vs 0 degC) and not physically meaningful alone; report changes. Volume-mean THETA outside 2 to 6 degC is suspect (provisional band). Two documented approximations bound interpretation: the fixed-volume weighting omits the z-star free-surface volume term, and monthly means alias sub-monthly variability relative to snapshots"
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:11:19Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-01T05:53:24Z }
+status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-computation
