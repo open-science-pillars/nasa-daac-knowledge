@@ -4,6 +4,29 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-01 · PHYSICS CALCULATIONS phase 2: steric height, geostrophic
+  balance with thermal wind, and wind-stress curl with Ekman pumping
+  land as attested computations seven through nine, each with a
+  sanctioned executor, receipt, deterministic attester, and PASS plus
+  tamper-FAIL demos on cached native granules. Steric carries a
+  cross-computation anchor: its reference trend (+135.7772 mm per
+  year, US northeast coast 2010) matches the attested sea-level
+  partition's signed receipt to four decimals from independent code,
+  and a global run cannot pass without the Boussinesq caveat.
+  Geostrophy validates at r 0.9242 over the open-ocean interior with
+  the weaker full-band (0.7921) and polar figures as REQUIRED
+  disclosure fields (a receipt quoting only the flattering number
+  fails); its first run measured r -0.04 and the cause, PHIHYD
+  missing the g ETAN surface loading, is now
+  gotchas/ecco-phihyd-surface-pressure.md, our first gotcha caught by
+  our own receipts rather than by review. Curl is computed entirely
+  in the tile-local frame, where rotation-invariance makes the
+  second-rotation trap structurally impossible; Ekman pumping vs the
+  model's WVEL at 70 m measures r 0.8225 (the independent PO.DAAC
+  implementation records 0.74 for the same comparison). One stress
+  granule (2009-12) was retrieved to the local cache for validation;
+  retrieval stays outside the executors. (drafted by build assistant;
+  steward review pending)
 - 2026-09-01 · PHYSICS CALCULATIONS phase 1: ocean heat content lands
   as the bundle's sixth attested computation (sanctioned executor,
   receipt, deterministic attester; reference run on cached 2010
