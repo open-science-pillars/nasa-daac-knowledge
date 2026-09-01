@@ -39,9 +39,9 @@ concepts (SPEC §5.7).
 - [Geostrophic velocity and thermal wind on the native grid](recipes/ecco-geostrophic-balance.md), status: stable
 - [Closed heat budget on the ECCO v4r4 native grid](recipes/ecco-heat-budget.md), status: stable
 - [Meridional heat transport at 26.5N from ECCO v4r4](recipes/ecco-mht-26n.md), status: stable
-- [Closing a heat budget over a region of ECCO v4r4](recipes/ecco-regional-heat-budget.md), status: draft
-- [Transport across a section of the ECCO v4r4 native grid](recipes/ecco-section-transport.md), status: draft
-- [Splitting a flux into mean and eddy parts without an argument](recipes/ecco-flux-decomposition.md), status: draft
+- [Closing a heat budget over a region of ECCO v4r4](recipes/ecco-regional-heat-budget.md), status: stable
+- [Transport across a section of the ECCO v4r4 native grid](recipes/ecco-section-transport.md), status: stable
+- [Splitting a flux into mean and eddy parts without an argument](recipes/ecco-flux-decomposition.md), status: stable
 - [Global ocean heat content and its change from ECCO v4r4](recipes/ecco-ocean-heat-content.md), status: stable
 - [Closed salt budget on the ECCO v4r4 native grid](recipes/ecco-salt-budget.md), status: stable
 - [Steric height and its trend from ECCO v4r4 density](recipes/ecco-steric-height.md), status: stable
@@ -84,11 +84,11 @@ concepts (SPEC §5.7).
 - [Regional steric height from ECCO v4r4 (attested)](computations/ecco-steric-height.md), status: stable
 - [Geostrophic balance and thermal wind from ECCO v4r4 (attested)](computations/ecco-geostrophic-balance.md), status: stable
 - [Wind-stress curl and Ekman pumping from ECCO v4r4 (attested)](computations/ecco-wind-stress-curl.md), status: stable
-- [Regional heat budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-heat-budget.md), status: draft
-- [Section transports on the ECCO v4r4 native grid (attested)](computations/ecco-section-transport.md), status: draft
-- [Regional salt budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-salt-budget.md), status: draft
-- [Regional volume budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-volume-budget.md), status: draft
-- [Reynolds flux decomposition from ECCO v4r4 (attested)](computations/ecco-flux-decomposition.md), status: draft
+- [Regional heat budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-heat-budget.md), status: stable
+- [Section transports on the ECCO v4r4 native grid (attested)](computations/ecco-section-transport.md), status: stable
+- [Regional salt budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-salt-budget.md), status: stable
+- [Regional volume budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-volume-budget.md), status: stable
+- [Reynolds flux decomposition from ECCO v4r4 (attested)](computations/ecco-flux-decomposition.md), status: stable
 
 ## validity-domains
 

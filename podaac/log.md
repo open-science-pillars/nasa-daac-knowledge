@@ -4,6 +4,15 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-01 · steward review passed: the eight control-volume
+  concepts verified (verified_by human:PaulMRamirez) and promoted
+  draft to stable: the regional heat, salt, and volume budget
+  computations, the section transport computation, the flux
+  decomposition computation, and the three recipes beside them. The
+  control-volume layer is complete and signed: budgets over registered
+  regions and explicit boxes, seam-calibrated section transports, and
+  grouping-disclosed flux decomposition, every receipt carrying its
+  sabotage evidence
 - 2026-09-01 · SALT AND VOLUME REGIONAL BUDGETS AND FLUX
   DECOMPOSITION complete the control-volume set. One sanctioned
   executor now serves all three budgets under per-budget contracts

@@ -15,7 +15,8 @@ executor:
 attester:
   resource: references/attesters/regional_budget_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T15:00:00Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-01T15:55:00Z }
+status: stable
 stale_after: 2027-01-04
 sources:
   - id: design-note

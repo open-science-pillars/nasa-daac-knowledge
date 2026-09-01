@@ -7,7 +7,8 @@ inputs: "ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX (ADV*_TH, DF*_TH); ECCO_L4_OCEAN_3D_V
 expected: "global-26.5n, year 2010 (measured 2026-09-01): heat transport mean +1.0963 PW, agreeing with an independent implementation's 1.098 to 0.002 PW; volume mean -0.43 Sv. Seam calibration: 683,496 seam-adjacent cell months close at max 2.1e-11 degC per s, inside the interior budget tolerance"
 expected_uncertainty: "Sections are masks, never index rows. Cross-tile ghost cells are mandatory: zeroing them turns every inside-bordering tile edge into spurious section faces (the recorded sabotage). Heat fluxes take no weighting, mass velocities take dyG or dxG times drF and no hFac; mixing those conventions is the recorded trap. A transport with no independent benchmark must say so; smooth transports make a one-row path error small, so check the receipt's mask digest and extent, not just its number"
 generated: { by: claude-code/fable-5, at: 2026-09-01T15:20:00Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-01T15:55:00Z }
+status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-computation
