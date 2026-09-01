@@ -4,6 +4,30 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-01 · REGIONAL HEAT BUDGET lands as the tenth attested
+  computation, promoting the design note's demonstration into a
+  sanctioned executor and attester. The contract carries the design
+  note's two findings as machinery: TWO BARS (the absolute per-volume
+  bar alone certifies a budget missing geothermal, measured 1.24e-12
+  inside 1e-10, so the relative bar is required beside it) and
+  MUTATION EVIDENCE in every receipt (four sabotages rerun per
+  execution; a structural sabotage that cannot fail aborts the run
+  receiptless; the geothermal sabotage is applicability-aware after a
+  300 m open-ocean box measured its omission below both bars, which
+  is physics, not a broken test). Control volumes come in two tiers,
+  a keyed registry (first entry southeast-atlantic-upper, the
+  reference volume: 27,921 wet cells, 4.1351e15 m3, residual per
+  volume 1.632e-14 degC per s) and an explicit lat-lon box resolved
+  to one tile's index rectangle with the requested and resolved
+  bounds, wet and bottom cell counts, mask digest, and geometry
+  digest all disclosed in the receipt, because no oracle can check a
+  mask is the water the user meant. Attester demos: PASS reference,
+  PASS explicit box, FAIL on a doctored flattering residual
+  (two-sided anchor), FAIL on dropped mutation evidence, FAIL on a
+  dropped mask digest, FAIL on a caught flag contradicting its own
+  numbers. Single-tile v1 limit stated; seam-crossing volumes wait
+  for seam calibration. (drafted by build assistant; steward review
+  pending)
 - 2026-09-01 · THREE DEFECTS FIXED in artifacts that already carried a
   steward signature. (1) The region registries in the sea level partition
   and steric height computations stored boxes as bare tuples in OPPOSITE
