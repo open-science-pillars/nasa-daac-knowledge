@@ -40,9 +40,14 @@ RHO0 = 1029.0
 COLLECTION = "ECCO_L4_DENS_STRAT_PRESS_LLC0090GRID_MONTHLY_V4R4"
 GEOMETRY = "geometry/GRID_GEOMETRY_ECCO_V4r4_native_llc0090.nc"
 REGIONS = {
-    "us-northeast-coast": (35.0, 45.0, -75.0, -65.0),
-    "gulf-of-mexico": (18.0, 31.0, -98.0, -80.0),
-    "north-sea": (51.0, 61.0, -4.0, 9.0),
+    # Boxes are KEYED, not positional. Two sanctioned computations once
+    # stored these as bare tuples in opposite orders, so the same region
+    # names resolved to different water (gulf-of-mexico differed by 8
+    # percent in area, north-sea by 18.5). Keys make that class of error
+    # impossible to reintroduce silently.
+    "us-northeast-coast": {"lat": (35.0, 45.0), "lon": (-75.0, -65.0)},
+    "gulf-of-mexico": {"lat": (18.0, 31.0), "lon": (-98.0, -81.0)},
+    "north-sea": {"lat": (51.0, 60.0), "lon": (-2.0, 9.0)},
     "global": None,
 }
 
@@ -72,7 +77,8 @@ def main() -> int:
     if box is None:
         inbox = maskC0
     else:
-        lat0, lat1, lon0, lon1 = box
+        lat0, lat1 = box["lat"]
+        lon0, lon1 = box["lon"]
         inbox = ((yc >= lat0) & (yc <= lat1)
                  & (xc >= lon0) & (xc <= lon1) & maskC0)
     w = rA * inbox
