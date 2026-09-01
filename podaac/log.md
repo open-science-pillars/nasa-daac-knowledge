@@ -4,6 +4,31 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-01 · SEAM CALIBRATION AND SECTION TRANSPORTS. The llc90
+  tile topology (lifted from ecco_v4_py 1.8.1, all 24 connected
+  edges) was verified twice before any flux crossed a seam:
+  geometrically (nearest-cell mapping within one local spacing;
+  same-axis joins parallel, cross-axis joins reversed, no sign flip)
+  and by physics, the sharper test: the pointwise heat budget
+  evaluated on all 683,496 seam-adjacent cell months of 2010 with the
+  stitched cross-tile faces closes at max 2.1e-11 degC per s, p99.9
+  6.6e-12, median 5.4e-14, INSIDE the interior tolerances on every
+  one of the 13 tiles, so no separate seam tolerance exists and none
+  is needed. On that verified topology, section transports land as
+  the eleventh attested computation: signed indicator-gradient face
+  masks over stored faces with cross-tile ghost cells, five sabotages
+  recorded in every receipt (the ghost-zeroing one is the error a
+  topology-ignorant section tool commits silently), and the honesty
+  rule that an unanchored transport's receipt must declare itself.
+  Reference runs: the global 26.5 north circle (360 faces) measures
+  heat transport +1.0963 PW against an independent implementation's
+  1.098, cross-implementation agreement to 0.002 PW from disjoint
+  code paths, volume net -0.43 Sv; an interior 15 south segment (90
+  faces, one tile) measures -0.28 PW and -10.56 Sv as disclosure.
+  Demos: PASS both, FAIL doctored-toward-the-anchor (the two-sided
+  measured band catches what the anchor band admits), FAIL dropped
+  unanchored caveat, FAIL a sabotage removed from evidence. (drafted
+  by build assistant; steward review pending)
 - 2026-09-01 · REGIONAL HEAT BUDGET lands as the tenth attested
   computation, promoting the design note's demonstration into a
   sanctioned executor and attester. The contract carries the design
