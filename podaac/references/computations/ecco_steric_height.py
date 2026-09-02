@@ -12,9 +12,13 @@ weighting, the same steric formulation the attested regional sea level
 partition uses, which is exactly the point: for the registered
 reference region and period, this computation must reproduce the
 steric trend that the sea-level partition's signed receipt already
-carries. Area means are rA-weighted over wet surface cells; trends are
-a linear fit across the requested months (per month, scaled to mm/yr),
-matching the partition's convention.
+carries. Area means are rA-weighted over wet surface cells. The trend and its
+interval come from the one sanctioned trend method (ecco_trend_ci.py,
+imported from beside this file and named by hash in the receipt's
+interval block): a least-squares slope across the requested months,
+jointly with the monthly climatology over complete years, per month
+scaled to mm/yr, so no consumer meets the trend without the interval
+and the attester recomputes both from the series in the receipt.
 
 Regions are the registry the sea-level computation uses; "global" adds
 the whole-ocean mean, and any global-mean steric statement carries the
@@ -29,6 +33,7 @@ Usage:
 import argparse
 import datetime
 import hashlib
+import importlib.util
 import json
 import uuid
 from pathlib import Path
@@ -52,10 +57,13 @@ REGIONS = {
 }
 
 
-def trend_mm_yr(series):
-    x = np.arange(len(series), dtype=float)
-    slope = np.polyfit(x, np.asarray(series), 1)[0]   # m per month
-    return slope * 12.0 * 1000.0
+def trend_interval_mm_yr(series):
+    """The trend and its interval, from the one sanctioned method."""
+    path = Path(__file__).with_name("ecco_trend_ci.py")
+    spec = importlib.util.spec_from_file_location("ecco_trend_ci", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.interval_block([s * 1000.0 for s in series], "mm/year")
 
 
 def data_identity(root):
@@ -127,7 +135,8 @@ def main() -> int:
                          .strftime("%Y-%m-%dT%H:%M:%SZ")),
     }
     if len(series) >= 3:
-        receipt["steric_trend_mm_yr"] = trend_mm_yr(series)
+        receipt["steric_trend_interval"] = trend_interval_mm_yr(series)
+        receipt["steric_trend_mm_yr"] = receipt["steric_trend_interval"]["trend"]
     if args.region == "global":
         receipt["boussinesq_caveat"] = (
             "a Boussinesq model conserves volume, so a global-mean steric "
@@ -141,6 +150,14 @@ def main() -> int:
         print(f"  {m}: area-mean steric height {s:+.6f} m")
     if "steric_trend_mm_yr" in receipt:
         print(f"  steric trend: {receipt['steric_trend_mm_yr']:+.4f} mm/yr")
+        iv = receipt["steric_trend_interval"]
+        if iv["stated"]:
+            print(f"  95% interval: [{iv['ci_low']:+.4f}, {iv['ci_high']:+.4f}] "
+                  f"mm/yr (r1 {iv['r1']:+.4f}, n_eff {iv['n_eff']:.2f} of "
+                  f"{iv['n']}, deseasonalize {iv['deseasonalize']}; "
+                  f"{'significant' if iv['significant_at_confidence'] else 'NOT significant'})")
+        else:
+            print(f"  no interval stated: {iv['reason']}")
     print(f"  receipt -> {args.receipt}")
     return 0
 

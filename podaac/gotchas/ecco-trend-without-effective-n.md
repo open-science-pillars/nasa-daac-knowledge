@@ -50,18 +50,22 @@ wobble in this box is seven times the trend, and that +135.7772 is a
 description of 2010, not a rate.[^steric-height][^attested-trend]
 
 The correction is not optional and it is not sufficient on its own.
-Shrink the sample to n_eff = n (1 - r1) / (1 + r1) and put the
-interval on n_eff - 2 degrees of freedom: the calibration that ships
-with the computation measures 92 to 95 percent coverage for series of
-120 months or more, against 45 to 49 percent for the uncorrected
-interval at r1 0.8. But r1 estimated from a handful of residuals is
-biased toward zero, so over twelve or twenty-four months even the
-corrected interval covers only 82 to 86 percent of the time, and the
-tool refuses to state one at all when fewer than one degree of
-freedom remains. Twelve months is a year, not a trend. Fit trends
-over the record, report the interval beside the slope, and read an
-n_eff below about ten as the series telling you it has nothing to
-say about the long term.[^attested-trend]
+Shrink the sample to n_eff = n (1 - r1) / (1 + r1), never above n,
+and put the interval on n_eff - 2 degrees of freedom: the calibration
+that ships with the computation measures 92 to 95 percent coverage
+for series of 120 months or more, against 47 to 49 percent for the
+uncorrected interval at r1 0.8. But r1 estimated from a handful of
+residuals is biased toward zero, so over twenty-four months even the
+corrected interval covers only 67 to 86 percent of the time, over
+twelve 74 to 95, and the tool refuses to state one at all when fewer
+than one degree of freedom remains. Twelve months is a year, not a
+trend. Fit trends over the record, report the interval beside the
+slope, and read an n_eff below about ten as the series telling you it
+has nothing to say about the long term. Over the full record the same
+steric series gives +2.7999 mm per year with interval [+1.5103,
++4.0895]: r1 +0.893 leaves 17.6 effective months of 312, the honest
+half width is nearly five times the naive one, and the trend is still
+a rate.[^attested-trend]
 
 [^santer-2008]: Santer et al. 2008, doi:10.1002/joc.1756
 [^steric-height]: computations/ecco-steric-height.md, the signed reference run and its anchor

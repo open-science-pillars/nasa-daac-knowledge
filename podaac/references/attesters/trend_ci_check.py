@@ -23,13 +23,19 @@ every intermediate. PASS (exit 0) only when ALL hold, else FAIL
      (at least two);
   5. the series is consecutive calendar months, at least 6 of them;
   6. THE RECOMPUTE: from series and bound parameters alone, this file
-     rebuilds the deseasonalized series, the OLS slope, the residual
-     lag-1 autocorrelation r1, n_eff = n(1-r1)/(1+r1), the standard
+     rebuilds the deseasonalized series, the OLS slope (joint with
+     the climatology: calendar-month means off the time index as
+     well as the series, or the climatology absorbs a known fraction
+     of the trend), the residual
+     lag-1 autocorrelation r1, n_eff = n(1-r1)/(1+r1) capped at n, the standard
      error on n_eff-2 degrees of freedom (at least one, or no
      interval is attested), the t quantile on those degrees of
      freedom, and the interval; each must match the
      receipt's value within 1e-9 relative (measured agreement: below
-     1e-12, the two implementations differ only in summation order);
+     1e-12, the two implementations differ only in summation order).
+     The recompute lives in trend_recompute.py beside this file, the
+     one independent chain every attester in this bundle runs when it
+     meets an interval, standalone or embedded in another receipt;
   7. the results block is consistent with the intermediates: trend is
      the slope times months per year, the interval is trend plus and
      minus the half width, the units string ends in /year, and the
@@ -45,12 +51,10 @@ import math
 import sys
 from pathlib import Path
 
-CONFIDENCE = 0.95
-MONTHS_PER_YEAR = 12.0
-MIN_MONTHS = 6
-CLIM_MIN_YEARS = 2
-MIN_DOF = 1.0
-REL_TOL = 1e-9
+from trend_recompute import (CONFIDENCE, MONTHS_PER_YEAR, MIN_MONTHS,
+                             CLIM_MIN_YEARS, MIN_DOF, close, consecutive,
+                             recompute, t_quantile)
+
 FIELDS = ["run_id", "code_sha256", "data", "bound_parameters", "series",
           "intermediates", "results"]
 INTERMEDIATES = ["n", "slope_per_month", "intercept", "sxx", "r1", "n_eff",
@@ -61,104 +65,6 @@ INTERMEDIATES = ["n", "slope_per_month", "intercept", "sxx", "r1", "n_eff",
 def fail(msg: str) -> int:
     print(f"FAIL: {msg}")
     return 1
-
-
-# ---- independent recompute: written from the method statement, not
-# ---- copied from the executor's structure
-
-def betacf(a, b, x, max_iter=500, eps=1e-15):
-    tiny = 1e-300
-    qab, qap, qam = a + b, a + 1.0, a - 1.0
-    c, d = 1.0, 1.0 - qab * x / qap
-    d = 1.0 / (d if abs(d) > tiny else tiny)
-    h = d
-    for m in range(1, max_iter + 1):
-        m2 = 2 * m
-        aa = m * (b - m) * x / ((qam + m2) * (a + m2))
-        d = 1.0 + aa * d
-        d = 1.0 / (d if abs(d) > tiny else tiny)
-        c = 1.0 + aa / (c if abs(c) > tiny else tiny)
-        h *= d * c
-        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))
-        d = 1.0 + aa * d
-        d = 1.0 / (d if abs(d) > tiny else tiny)
-        c = 1.0 + aa / (c if abs(c) > tiny else tiny)
-        delta = d * c
-        h *= delta
-        if abs(delta - 1.0) < eps:
-            return h
-    raise ArithmeticError("incomplete beta did not converge")
-
-
-def betainc(a, b, x):
-    if x <= 0.0:
-        return 0.0
-    if x >= 1.0:
-        return 1.0
-    lbeta = math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b)
-    front = math.exp(lbeta + a * math.log(x) + b * math.log(1.0 - x))
-    if x < (a + 1.0) / (a + b + 2.0):
-        return front * betacf(a, b, x) / a
-    return 1.0 - front * betacf(b, a, 1.0 - x) / b
-
-
-def t_cdf(t, df):
-    x = df / (df + t * t)
-    tail = 0.5 * betainc(df / 2.0, 0.5, x)
-    return 1.0 - tail if t >= 0 else tail
-
-
-def t_quantile(p, df):
-    lo, hi = 0.0, 1.0
-    while t_cdf(hi, df) < p:
-        hi *= 2.0
-        if hi > 1e12:
-            raise ArithmeticError("t quantile out of range")
-    for _ in range(200):
-        mid = 0.5 * (lo + hi)
-        if t_cdf(mid, df) < p:
-            lo = mid
-        else:
-            hi = mid
-        if hi - lo < 1e-13 * max(1.0, hi):
-            break
-    return 0.5 * (lo + hi)
-
-
-def recompute(values, deseasonalize):
-    y = list(values)
-    n = len(y)
-    if deseasonalize == "climatology":
-        years = n // 12
-        clim = [sum(y[k::12]) / years for k in range(12)]
-        y = [v - clim[i % 12] for i, v in enumerate(y)]
-    tbar = (n - 1) / 2.0
-    ybar = sum(y) / n
-    sxx = sum((i - tbar) ** 2 for i in range(n))
-    slope = sum((i - tbar) * (v - ybar) for i, v in enumerate(y)) / sxx
-    intercept = ybar - slope * tbar
-    e = [v - intercept - slope * i for i, v in enumerate(y)]
-    ss = sum(v * v for v in e)
-    r1 = sum(a * b for a, b in zip(e, e[1:])) / ss
-    n_eff = n * (1.0 - r1) / (1.0 + r1)
-    dof = n_eff - 2.0
-    if dof < MIN_DOF:
-        return None
-    se = math.sqrt(ss / dof / sxx)
-    tq = t_quantile(0.5 + CONFIDENCE / 2.0, dof)
-    return {"n": n, "series_fit": y, "slope_per_month": slope,
-            "intercept": intercept, "sxx": sxx, "r1": r1, "n_eff": n_eff,
-            "dof": dof, "se_per_month": se, "t_quantile": tq,
-            "naive_se_per_month": math.sqrt(ss / (n - 2) / sxx)}
-
-
-def close(a, b):
-    return abs(a - b) <= REL_TOL * max(1.0, abs(a), abs(b))
-
-
-def consecutive(dates):
-    ym = [int(d[:4]) * 12 + int(d[5:7]) - 1 for d in dates]
-    return all(b - a == 1 for a, b in zip(ym, ym[1:]))
 
 
 def main() -> int:
@@ -224,7 +130,7 @@ def main() -> int:
                     f"complete years, at least {CLIM_MIN_YEARS}")
 
     mine = recompute([v * bp["scale"] for v in values], des)
-    if mine is None:
+    if mine is None or not mine["interval"]:
         return fail(f"effective sample size leaves fewer than {MIN_DOF} "
                     "degrees of freedom; no interval can be attested")
     got = r["intermediates"]

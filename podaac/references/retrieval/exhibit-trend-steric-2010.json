@@ -1,13 +1,13 @@
 {
-  "run_id": "20260902T045241Z-9fb893a0",
+  "run_id": "20260902T052335Z-97fef865",
   "computation": "trend-ci",
-  "code_sha256": "6e6f67dadce35d655b63ad47a43d9977e550e657eca7f46c0ac820491e865297",
+  "code_sha256": "4a03a106e15f2fc470d4d720d04818f25f6b0d1eba3483ecc8efc5e75e94de30",
   "data": {
     "source": "podaac/references/retrieval/exhibit-steric-2010.json",
-    "source_sha256": "3a1de54775b36355b9a5415cda42ab3d6c3ccebd39e087268832cabec346eeb6",
+    "source_sha256": "27b659fc38b3d0e6bbce86b55362982b7c2e3711439e35d96159902238ed84e8",
     "source_receipt": {
-      "run_id": "20260902T044518Z-903d9703",
-      "code_sha256": "e01119f1b9e733f2eb19b261f47f700a3d91c38b16e596f4d41696248139b42b",
+      "run_id": "20260902T052318Z-023b67a8",
+      "code_sha256": "efde39a167aded571af13513d6eb3da110a6010820252c89b039dfec784fbf97",
       "field": "steric_mean_m_by_month"
     },
     "record": {
@@ -18,7 +18,7 @@
       "granules": 144
     }
   },
-  "generated_utc": "2026-09-02T04:52:41.330259+00:00",
+  "generated_utc": "2026-09-02T05:23:35.852956+00:00",
   "bound_parameters": {
     "field": "steric_mean_m_by_month",
     "value_units": "m",
@@ -29,7 +29,7 @@
     "time_unit": "month",
     "trend_per": "year",
     "months_per_year": 12.0,
-    "method": "OLS slope; lag-1 autocorrelation of residuals; n_eff = n(1-r1)/(1+r1); residual variance on n_eff-2 dof; two-sided interval from Student's t on n_eff-2 dof (Santer et al. 2008)"
+    "method": "OLS slope, jointly with the monthly climatology when one is removed (calendar-month means off the series and the time index); lag-1 autocorrelation of residuals; n_eff = n(1-r1)/(1+r1) capped at n; residual variance on n_eff-2 dof; two-sided interval from Student's t on n_eff-2 dof (Santer et al. 2008)"
   },
   "series": {
     "dates": [

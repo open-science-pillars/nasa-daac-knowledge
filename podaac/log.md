@@ -4,6 +4,47 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-02 · THE TREND NEVER TRAVELS BARE. computations/ecco-steric-height.md,
+  recipes/ecco-steric-height.md (both edits after signature, for the
+  steward's review at merge), computations/ecco-regional-sea-level.md,
+  references/skills/run-sea-level.md, computations/ecco-trend-ci.md,
+  recipes/ecco-trend-ci.md, gotchas/ecco-trend-without-effective-n.md,
+  new gotchas/ecco-trend-deseasonalize-jointly.md, docs/science-record.md.
+  The steric and sea-level executors no longer fit trends of their
+  own: each calls the sanctioned trend method's interval_block and
+  embeds trend plus interval (named by the method's hash) beside its
+  trend field, and one shared stdlib recompute chain
+  (references/attesters/trend_recompute.py) serves all three attesters.
+  The partition receipt now carries its three anomaly series and the
+  residual series, so the residual, its maximum, and every trend are
+  recomputed rather than believed (new criterion A6; nineteen tampers
+  across both receipts each fail naming their field). Run on the
+  verified record, 1992-01 through 2017-12: steric +2.7999 mm/yr, 95
+  percent [+1.5103, +4.0895] (r1 +0.893, 17.6 effective months of
+  312), identical to every digit from both computations, and the
+  anchor now holds over the record as well as over 2010; partition
+  total +5.2452 [+4.0623, +6.4281], mass +2.4535 [+2.1701, +2.7370],
+  residual max 8.282e-04 m inside the 1.0e-3 bar. The 2010 anchor
+  +135.7772 is unchanged and now states [-701.5, +973.1] beside it
+  everywhere it appears; every 2010 trend is undistinguishable from
+  zero and the concepts say so. Two method defects found by the
+  retrofit and fixed: the climatology was removed before the fit,
+  which hands it 143/(144Y^2-1) of the trend (a quarter at two years;
+  the concept's claim of orthogonality was false), so trend and
+  climatology are now fitted jointly (Frisch-Waugh-Lovell), and the
+  effective sample size is capped at n, since r1 estimated from a
+  short residual series is biased negative and the uncapped formula
+  gave the 2010 manometric trend 38 effective months from 12. A
+  precision artifact explained: the partition's fixture residual
+  reads 5.061e-04 m, not 5.085e-04, once the period mean is formed in
+  double (the inputs are float32; the per-month arithmetic is
+  untouched so the anchor holds). Calibration rerun on the final
+  method: 91.8 to 95.1 percent in the asserted regime, naive 47 to 49
+  at r1 0.8; charging the climatology's parameters to the degrees of
+  freedom was measured and rejected (it refuses a third of the
+  120-month, r1 0.8 trials); the cap lifts 12-month white-noise
+  coverage from 86 to 95 percent. Five exhibits regenerated and pass
+  from a fresh clone
 - 2026-09-02 · computations/ecco-trend-ci.md, recipes/ecco-trend-ci.md,
   gotchas/ecco-trend-without-effective-n.md: a sanctioned trend with
   an honest interval (OLS, residual lag-1 r1, n_eff = n(1-r1)/(1+r1),

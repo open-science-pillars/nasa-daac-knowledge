@@ -1,7 +1,7 @@
 ---
 type: Attested Computation
 title: "Linear trend with an honest interval from a monthly series (attested)"
-description: "Sanctioned trend-with-interval for any monthly series a sanctioned receipt carries: OLS slope, lag-1 autocorrelation of the residuals, effective sample size, and a two-sided 95 percent interval on the effective degrees of freedom; the receipt carries the series and every intermediate so the attester recomputes the whole chain, and a Monte Carlo calibration with a negative control ships beside it."
+description: "Sanctioned trend-with-interval for any monthly series a sanctioned receipt carries: OLS slope fitted jointly with the monthly climatology, lag-1 autocorrelation of the residuals, effective sample size capped at the sample, and a two-sided 95 percent interval on the effective degrees of freedom; the receipt carries the series and every intermediate so the attester recomputes the whole chain, other sanctioned computations embed the same block beside their own trends, and a Monte Carlo calibration with a negative control ships beside it."
 tags: [ecco, trend, uncertainty, confidence-interval, autocorrelation, attested]
 runtime: python
 parameters:
@@ -31,7 +31,13 @@ sources:
     title: "The Monte Carlo coverage report the calibration writes: fifteen configurations, the asserted band, and the measured collapse of the naive interval"
   - id: steric-height
     resource: ecco-steric-height.md
-    title: "The attested steric height whose reference series is this computation's reference run, and whose signed trend carried no interval"
+    title: "The attested steric height whose reference series is this computation's reference run, and whose receipt now embeds this method's interval block beside its trend"
+  - id: sea-level-partition
+    resource: ecco-regional-sea-level.md
+    title: "The attested sea-level partition whose three trends each embed this method's interval block"
+  - id: joint-gotcha
+    resource: ../gotchas/ecco-trend-deseasonalize-jointly.md
+    title: "Why the climatology is fitted jointly: removed first, it keeps 143/(144Y^2 - 1) of the trend; not removed at all, a raw fit over complete years carries a seasonal projection"
   - id: naked-trend
     resource: ../gotchas/ecco-trend-without-effective-n.md
     title: "The gotcha this computation exists to close: a trend fit without an effective-sample-size correction overstates certainty"
@@ -48,20 +54,32 @@ so a trend inherits the data provenance of the quantity it was fit
 to.[^santer-2008]
 
 The method, fixed in the sanctioned file and declared in every
-receipt: (1) deseasonalize by monthly climatology, the mean of each
-calendar month subtracted, permitted only over complete years (a
-multiple of 12 months, at least 24) so the climatology is orthogonal
-to the trend and cannot absorb part of it, or `none`, and the receipt
-says which; (2) ordinary least squares slope against time in months;
-(3) lag-1 autocorrelation r1 of the residuals; (4) effective sample
-size n_eff = n (1 - r1) / (1 + r1); (5) residual variance on n_eff - 2
-degrees of freedom and the slope's standard error from it; (6) the
-interval from Student's t on n_eff - 2 degrees of freedom, fractional
-and evaluated exactly (regularized incomplete beta, no scipy). Below
-one effective degree of freedom the tool refuses to state an interval
-at all: the series is too short or too autocorrelated for a finite
-one, and the receipt says so instead of printing a number. Changing
-any step is a new computation, not an edit to this file.
+receipt: (1) remove the monthly climatology jointly with the trend:
+the mean of each calendar month is subtracted from the series and
+from the time index alike, so the slope that follows is the
+least-squares estimate of trend and climatology fitted together (the
+Frisch-Waugh-Lovell identity; the same numbers as the
+thirteen-parameter regression). The two are not orthogonal, even over
+complete years: the calendar-month means of time form a sawtooth that
+carries 143/(144Y^2 - 1) of any trend over Y years, a quarter of it
+at two years, and subtracting the climatology from the series alone
+hands that fraction to the climatology.[^joint-gotcha] Complete years
+(a multiple of 12 months, at least 24) are required so every calendar
+month is estimated from the same number of years; otherwise `none`,
+and the receipt says which; (2) ordinary least squares slope against
+time in months; (3) lag-1 autocorrelation r1 of the residuals; (4)
+effective sample size n_eff = n (1 - r1) / (1 + r1), capped at n: a
+sample cannot be more effective than itself, and r1 estimated from a
+short residual series is biased negative, which would otherwise hand
+a short series an interval narrower than the independent-samples one;
+(5) residual variance on n_eff - 2 degrees of freedom and the slope's
+standard error from it; (6) the interval from Student's t on n_eff - 2
+degrees of freedom, fractional and evaluated exactly (regularized
+incomplete beta, no scipy). Below one effective degree of freedom the
+tool refuses to state an interval at all: the series is too short or
+too autocorrelated for a finite one, and the receipt says so instead
+of printing a number. Changing any step is a new computation, not an
+edit to this file.
 
 **Attestation contract.** The receipt carries the series itself
 (dates and values), the deseasonalized series, and every intermediate
@@ -84,7 +102,28 @@ tampers (a nudged r1, a nudged series value, a dropped source
 receipt, an unverified tree, a flipped significance flag, a nudged
 trend, the naive half width substituted for the honest one, a
 climatology claimed over twelve months, wrong units, a month gap, a
-wrong code hash) each fail naming their field.
+wrong code hash) each fail naming their field. The recompute is one
+shared stdlib chain, written from the method statement rather than
+copied from the executor, and every attester that meets this method's
+block imports it.
+
+**Embedded beside other trends.** The steric height and sea-level
+partition computations do not fit trends of their own: each calls
+this file's `interval_block` on its monthly series and embeds the
+result beside its trend field (`steric_trend_mm_yr`, the three
+`trend_X_mm_yr`), the block naming this file by hash, and their
+attesters recompute it through the same shared chain from the series
+in that receipt.[^steric-height][^sea-level-partition] One method,
+one hash, one recompute behind every trend the bundle reports, and
+the cross-computation anchor those two share stays on the central
+value while the interval travels beside it. Over the full record the
+steric series gives +2.7999 mm per year, interval [+1.5103, +4.0895],
+r1 +0.893, 17.6 effective months of 312, from both computations to
+every digit. A raw least-squares fit through the same 312 months reads
++2.9932: the seasonal projection the joint fit removes. Removing the
+climatology first and fitting second, as an earlier form of this
+method did, reads +2.7958: the 143/(144Y^2 - 1) attenuation at 26
+years, small here and a quarter of the trend at two.[^joint-gotcha]
 
 **Calibration with teeth.** A confidence interval is a promise about
 coverage, and the promise is tested on the sanctioned code itself:
@@ -100,20 +139,28 @@ negative control collapses: the same trials scored with the naive
 interval (n - 2 degrees of freedom, no effective-sample-size
 correction, what a bare polyfit with a textbook standard error gives)
 must cover below 80 percent at phi 0.8. Measured 2026-09-02: honest
-coverage 92.0 to 95.0 percent in the asserted regime; naive coverage
-45 to 49 percent at phi 0.8 and 71 to 73 percent at phi 0.5 at every
-length. The band is set from measurement, not from hope: the
-correction is known to under-cover because r1 estimated from
-residuals is biased toward zero (estimated n_eff 16.7 against a true
-13.3 at 120 months, phi 0.8), and two variants that charge the
-climatology's parameters to the degrees of freedom gained under one
-point at phi 0 and nothing at phi 0.8, so the method stands as
-stated. Short series are measured and reported, not asserted: at 60
-months 90 to 92 percent; at 12 or 24 months 82 to 86 percent, and the
-tool declines to state an interval in up to 7 percent of trials
-because fewer than one degree of freedom remains. Removing the
-correction from a copy of the executor makes the calibration fail
-four ways.[^calibration-report]
+coverage 91.8 to 95.1 percent in the asserted regime; naive coverage
+47 to 49 percent at phi 0.8 and 71 to 73 percent at phi 0.5 at 120
+months or more, and below 80 percent at phi 0.8 at every length. The
+band is set from measurement, not from hope: the correction is known
+to under-cover because r1 estimated from residuals is biased toward
+zero (estimated n_eff 16.6 against a true 13.3 at 120 months, phi
+0.8). Two alternatives were measured on the same seeded trials and
+one adopted. Charging the climatology's thirteen parameters to the
+degrees of freedom (n_eff - 13) lifts the survivors' coverage to 97.5
+percent at phi 0.8 only by refusing an interval in 688 of 2000 trials
+at 120 months and in more than half of the 24-month trials, which is
+the hard cases dropped rather than covered, so it was rejected.
+Capping n_eff at n costs nothing where r1 is positive and repairs the
+white-noise cases where a short residual series estimates r1 below
+zero: coverage at phi 0 rises from 86 to 95 percent at 12 months, 78
+to 86 at 24, 92 to 94 at 60 and 120, so it stands in the method.
+Short series are measured and reported, not asserted: at 60 months 89
+to 94 percent; at 24 months 67 to 86 percent and at 12 months 74 to
+95, the low ends at phi 0.8, and the tool declines to state an
+interval in up to 7 percent of trials there because fewer than one
+degree of freedom remains. Removing the correction from a copy of the
+executor makes the calibration fail four ways.[^calibration-report]
 
 **Reference run (2026-09-02, fixture tree, from the attested steric
 receipt).** The series behind the bundle's signed steric trend: the
@@ -144,3 +191,5 @@ docs/science-record.md.
 [^calibration-report]: references/calibration/trend-ci-coverage.json, the seeded Monte Carlo report
 [^steric-height]: computations/ecco-steric-height.md, the signed reference trend and its receipt
 [^naked-trend]: gotchas/ecco-trend-without-effective-n.md, the trap this closes
+[^sea-level-partition]: computations/ecco-regional-sea-level.md, three trends, three embedded blocks
+[^joint-gotcha]: gotchas/ecco-trend-deseasonalize-jointly.md, the sawtooth in the calendar-month means of time
