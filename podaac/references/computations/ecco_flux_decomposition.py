@@ -67,6 +67,18 @@ REGIONS = {
 GROUPINGS = ["full-four-term", "time-mean-eddy", "anomaly"]
 
 
+def data_identity(root):
+    """Which tree fed this run. The root, and the RECORD.json stamp the
+    verify tool leaves in a tree it has checked against its manifest
+    (record name, manifest sha256, verification time, report sha256).
+    A tree with no stamp is recorded as unverified, never invented."""
+    root = Path(root).expanduser().resolve()
+    stamp = root / "RECORD.json"
+    return {"data_root": str(root),
+            "record": json.loads(stamp.read_text()) if stamp.exists()
+            else "unverified: no RECORD.json in this tree"}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--region", choices=sorted(REGIONS), required=True)
@@ -164,6 +176,7 @@ def main() -> None:
                    .strftime("%Y%m%dT%H%M%SZ") + "-" + uuid.uuid4().hex[:8]),
         "computation": "ecco-flux-decomposition",
         "code_sha256": hashlib.sha256(code).hexdigest(),
+        "data": data_identity(args.data_root),
         "generated_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
         "bound_parameters": {
             "region": args.region, "grouping": args.grouping,

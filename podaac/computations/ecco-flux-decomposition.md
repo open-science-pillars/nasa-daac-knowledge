@@ -11,7 +11,7 @@ parameters:
 computation: references/computations/ecco_flux_decomposition.py
 executor:
   resource: references/computations/ecco_flux_decomposition.py
-  receipt: [run_id, code_sha256, bound_parameters, resolved_faces, results, mutation_evidence, caveats]
+  receipt: [run_id, code_sha256, data, bound_parameters, resolved_faces, results, mutation_evidence, caveats]
 attester:
   resource: references/attesters/fluxdecomp_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T15:40:00Z }
@@ -59,6 +59,14 @@ decomposition, not a basin transport; the receipt says so). Attester
 PASS on all three groupings of the same run; FAIL demonstrated on a
 reported view doctored against the stored terms and on a stored term
 deleted from the receipt.
+
+**Data provenance.** The receipt also carries a `data` block: the data
+root and the `RECORD.json` stamp the verify tool leaves in a tree it has
+checked against its manifest (record name, manifest SHA-256,
+verification time, report SHA-256). The attester refuses a receipt
+whose `data.record` is not that stamp, so nothing is attested against a
+tree this bundle has not manifested and verified. The two trees and
+the rule are in docs/science-record.md.
 
 [^design-note]: docs/regional-budget-design.md, the grouping-as-disclosure position
 [^velmass-gotcha]: gotchas/ecco-velmass-hfac-double-count.md

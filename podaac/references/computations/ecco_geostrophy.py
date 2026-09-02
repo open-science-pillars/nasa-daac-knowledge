@@ -87,6 +87,18 @@ def to_c_y(face_field):
     return out
 
 
+def data_identity(root):
+    """Which tree fed this run. The root, and the RECORD.json stamp the
+    verify tool leaves in a tree it has checked against its manifest
+    (record name, manifest sha256, verification time, report sha256).
+    A tree with no stamp is recorded as unverified, never invented."""
+    root = Path(root).expanduser().resolve()
+    stamp = root / "RECORD.json"
+    return {"data_root": str(root),
+            "record": json.loads(stamp.read_text()) if stamp.exists()
+            else "unverified: no RECORD.json in this tree"}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--month", required=True)
@@ -182,6 +194,7 @@ def main() -> int:
         "run_id": (datetime.datetime.now(datetime.timezone.utc)
                    .strftime("%Y%m%dT%H%M%SZ") + "-" + str(uuid.uuid4())[:8]),
         "code_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "data": data_identity(args.data_root),
         "bound_parameters": {
             "month": args.month, "depth_m": args.depth_m,
             "depth2_m": args.depth2_m,

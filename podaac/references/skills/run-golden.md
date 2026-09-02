@@ -28,6 +28,19 @@ uv run --with marimo,numpy,xarray,netcdf4,earthaccess,ecco_access,ecco_v4_py \
 
 An already-populated cache is used as-is; nothing is re-downloaded.
 
+Then verify the tree against its manifest and stamp it; the attester
+refuses a receipt from an unstamped tree (docs/science-record.md):
+
+```bash
+uv run tools/science_record_verify.py \
+  --manifest podaac/references/retrieval/fixtures-2010-manifest.json \
+  --data-root ~/ECCO_V4r4 --checksum all --exact --stamp
+```
+
+The fixture cache is for gates, reference anchors, and rehearsal. For
+real results over 1992-2017, point `--data-root` at the science record
+(`~/ECCO_V4r4_record`, its own manifest and stamp, same document).
+
 ## 2. Run the sanctioned computation
 
 From the bundle root (`podaac/`), bind the declared parameters (`year`
@@ -40,7 +53,8 @@ uv run references/computations/ecco_heat_budget.py \
 ```
 
 The receipt carries exactly the declared fields: `run_id`, `code_sha256`,
-`bound_parameters`, `residual_max`, `residual_p999`, `cells_evaluated`.
+`data` (the tree's root and `RECORD.json` stamp), `bound_parameters`,
+`residual_max`, `residual_p999`, `cells_evaluated`.
 
 ## 3. Attest the receipt
 
@@ -52,6 +66,6 @@ Exit 0 prints `PASS` with the run id and residuals; exit 1 prints `FAIL`
 naming the failing field. A consumer refuses to display a value whose
 receipt fails attestation, and surfaces the verdict either way
 (spec 10.5). PASS requires the receipt's `code_sha256` to match the
-sanctioned computation file, the bound parameters to match the declared
-set, and the residuals to sit within the recipe tolerances
+sanctioned computation file, `data.record` to be a verify-tool stamp,
+the bound parameters to match the declared set, and the residuals to sit within the recipe tolerances
 (`residual_max <= 1e-10`, `residual_p999 <= 1e-11` degC/s).

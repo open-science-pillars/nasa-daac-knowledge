@@ -11,7 +11,7 @@ parameters:
 computation: references/computations/ecco_regional_budget.py
 executor:
   resource: references/computations/ecco_regional_budget.py
-  receipt: [run_id, code_sha256, bound_parameters, resolved_volume, results, mutation_evidence, caveats]
+  receipt: [run_id, code_sha256, data, bound_parameters, resolved_volume, results, mutation_evidence, caveats]
 attester:
   resource: references/attesters/regional_budget_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T15:00:00Z }
@@ -78,6 +78,14 @@ own numbers. Explicit-box tier demonstrated: a requested box of 40S
 to 20S, 10W to 10E at 300 m resolved to 9,600 wet cells and 1.4219e15
 m3, closed at 2.041e-14 with geothermal recorded not applicable, and
 passed attestation on the general contract.
+
+**Data provenance.** The receipt also carries a `data` block: the data
+root and the `RECORD.json` stamp the verify tool leaves in a tree it has
+checked against its manifest (record name, manifest SHA-256,
+verification time, report SHA-256). The attester refuses a receipt
+whose `data.record` is not that stamp, so nothing is attested against a
+tree this bundle has not manifested and verified. The two trees and
+the rule are in docs/science-record.md.
 
 [^design-note]: docs/regional-budget-design.md, the oracle, the retraction, and the disclosure doctrine
 [^pointwise-budget]: computations/ecco-heat-budget.md, the inherited formulation and tolerance

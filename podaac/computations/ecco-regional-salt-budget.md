@@ -11,7 +11,7 @@ parameters:
 computation: references/computations/ecco_regional_budget.py
 executor:
   resource: references/computations/ecco_regional_budget.py
-  receipt: [run_id, code_sha256, bound_parameters, resolved_volume, results, mutation_evidence, caveats]
+  receipt: [run_id, code_sha256, data, bound_parameters, resolved_volume, results, mutation_evidence, caveats]
 attester:
   resource: references/attesters/regional_budget_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T15:40:00Z }
@@ -51,6 +51,14 @@ both to mandatory catches.
 Residual per volume max 3.056e-14 g per kg per s against the 1.5e-10
 bar; relative 5.594e-07. Attester PASS; FAIL demonstrated on a caught
 flag contradicting its own numbers.
+
+**Data provenance.** The receipt also carries a `data` block: the data
+root and the `RECORD.json` stamp the verify tool leaves in a tree it has
+checked against its manifest (record name, manifest SHA-256,
+verification time, report SHA-256). The attester refuses a receipt
+whose `data.record` is not that stamp, so nothing is attested against a
+tree this bundle has not manifested and verified. The two trees and
+the rule are in docs/science-record.md.
 
 [^regional-heat]: computations/ecco-regional-heat-budget.md, the shared contract
 [^pointwise-salt]: recipes/ecco-salt-budget.md, the inherited formulation

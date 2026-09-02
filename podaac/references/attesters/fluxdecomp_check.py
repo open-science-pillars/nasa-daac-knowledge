@@ -79,6 +79,14 @@ def main() -> int:
     if r["code_sha256"] != want:
         return fail("code_sha256 does not match the sanctioned computation")
 
+    data = r.get("data")
+    if (not isinstance(data, dict)
+            or not isinstance(data.get("record"), dict)):
+        return fail("receipt names no verified data tree: data.record must "
+                    "be the RECORD.json stamp the verify tool leaves in "
+                    "a tree checked against its manifest; nothing is "
+                    "attested against unmanifested data")
+
     bp = r["bound_parameters"]
     if (bp.get("collections") != COLLECTIONS
             or bp.get("rhoConst_kg_m3") != 1029.0

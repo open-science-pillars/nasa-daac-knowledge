@@ -9,7 +9,7 @@ parameters:
 computation: references/computations/ecco_ohc.py
 executor:
   resource: references/computations/ecco_ohc.py
-  receipt: [run_id, code_sha256, bound_parameters, anchors, months, ohc_change_J, cells_evaluated, ohc_baseline_caveat]
+  receipt: [run_id, code_sha256, data, bound_parameters, anchors, months, ohc_change_J, cells_evaluated, ohc_baseline_caveat]
 attester:
   resource: references/attesters/ohc_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:11:19Z }
@@ -58,6 +58,14 @@ ecco-skills project, which reached them with different code and no
 contact with this bundle: area exact to the tutorial, volume within
 0.4 percent, volume-mean THETA 3.594 degC for its
 month.[^ecco-skills-corroboration]
+
+**Data provenance.** The receipt also carries a `data` block: the data
+root and the `RECORD.json` stamp the verify tool leaves in a tree it has
+checked against its manifest (record name, manifest SHA-256,
+verification time, report SHA-256). The attester refuses a receipt
+whose `data.record` is not that stamp, so nothing is attested against a
+tree this bundle has not manifested and verified. The two trees and
+the rule are in docs/science-record.md.
 
 [^budget-formulation]: OSP budget formulation reference, constants section
 [^tutorial-scalar]: ECCO v4 tutorial scalar-quantities chapter, the published ocean surface area
