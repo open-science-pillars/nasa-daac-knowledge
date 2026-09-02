@@ -4,7 +4,8 @@ title: "Consistency versus confrontation"
 description: "The distinction every claim in this bundle is labelled by: internal consistency (a budget that closes, two computations that agree, an independent implementation that reproduces a number) shows a method agrees with itself; confrontation (an independent observation at a fixed version, with its own uncertainty, not assimilated) shows it agrees with the world; only the second supports a scientific claim, and the acceptable deviation is what the measured comparison and its uncertainty say it is."
 tags: [doctrine, attestation, confrontation, consistency, observations, convention]
 generated: { by: claude-code/fable-5, at: 2026-09-02T19:00:00Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-02T22:58:09Z }
+status: stable
 stale_after: 2027-03-02
 sources:
   - id: heat-budget

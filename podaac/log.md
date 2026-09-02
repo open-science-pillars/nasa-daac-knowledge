@@ -4,6 +4,17 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-02 · steward review passed: recipes/ecco-rapid-amoc-26n.md,
+  conventions/consistency-versus-confrontation.md,
+  computations/ecco-amoc-26n.md and
+  computations/ecco-rapid-amoc-confrontation.md verified (verified_by
+  human:PaulMRamirez, applied on the steward's explicit instruction),
+  status draft to stable; datasets/rapid-mocha.md re-verified after
+  its post-signature edits (the release on record, two gotchas, the
+  pointer to the recipe), the verified event refreshed to the
+  re-review. The scores those concepts state were shown to the steward
+  at the measurement before any concept stated them. (claude, for the
+  steward)
 - 2026-09-02 · THE FIRST CONFRONTATION, STATED. recipes/ecco-rapid-amoc-26n.md
   (new, draft, unsigned): the model's Atlantic overturning at 26.5N
   beside the RAPID array's delivered record over 2004-04 through
