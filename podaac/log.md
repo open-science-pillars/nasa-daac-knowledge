@@ -4,6 +4,31 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-02 · THE OBSERVATION HAS A VERSION. docs/rapid-26n-record.md
+  (new): the RAPID-MOCHA-WBTS 26N overturning release v2024.1a (DOI
+  10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1, OGL v3) retrieved to a
+  tree outside the repository, hashed, manifested and stamped by the
+  new tools/obs_record_manifest.py, which reads version and DOI from
+  the netCDF attributes and refuses a build whose files disagree or a
+  tree whose bytes do not match (refusals demonstrated: one flipped
+  byte, one stray file, one wrong expected version). Every claim in
+  the note was checked live against the delivered files: 14,599
+  twelve-hourly samples 2004-04-02 to 2024-03-27, exactly 20 absent at
+  the ends as the README says, overlap with the ECCO record 2004-04
+  through 2017-12 (165 months, 164 complete). The BODC DOI package
+  could not be taken (sixteen transfers closed early by the server);
+  the rapid.ac.uk direct files carry the same version and DOI inside
+  them and are refreshed in place, so identity is by hash and
+  attribute, never by URL. datasets/rapid-mocha.md gains the AMOC
+  series' own version and DOI in its version line, a paragraph
+  pointing to the note, and two known issues (in-place refresh; the
+  v2024-1a / 2025 inconsistency inside meridional_transports.nc):
+  an edit after the 2026-07-04 signature, flagged here, obliging a
+  fresh signature when merged. Nothing is computed against the
+  observation yet; the confrontation executor and its attester come
+  next, and no score is stated until the attester recomputes it.
+  Manifest and report: references/retrieval/rapid-26n-*.json.
+  (claude)
 - 2026-09-02 · steward review passed: computations/ecco-steric-height.md and
   recipes/ecco-steric-height.md re-verified after the interval edits
   (verified_by human:PaulMRamirez); the verified event is refreshed to
