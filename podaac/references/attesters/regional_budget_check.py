@@ -47,14 +47,14 @@ SNP_TS = "ECCO_L4_TEMP_SALINITY_LLC0090GRID_SNAPSHOT_V4R4"
 SNP_SSH = "ECCO_L4_SSH_LLC0090GRID_SNAPSHOT_V4R4"
 
 CONTRACT = {
-    "heat": {"bars": (1e-10, 1e-6),
+    "heat": {"bars": (1e-10, 1e-6), "units": "degC/s",
              "collections": [FLUX, HF, SNP_TS, SNP_SSH],
              "mutations": {"geothermal-omitted", "rim-west-face-shifted",
                            "vertical-face-sign-flipped",
                            "vertical-faces-omitted"},
              "aware": {"geothermal-omitted"},
              "ref_residual": 1.352e-14},
-    "salt": {"bars": (1.5e-10, 1e-6),
+    "salt": {"bars": (1.5e-10, 1e-6), "units": "g/kg/s",
              "collections": [SFLX, FF, SNP_TS, SNP_SSH],
              "mutations": {"surface-sflux-omitted", "salt-plume-omitted",
                            "rim-west-face-shifted",
@@ -62,7 +62,7 @@ CONTRACT = {
                            "vertical-faces-omitted"},
              "aware": {"surface-sflux-omitted", "salt-plume-omitted"},
              "ref_residual": 3.056e-14},
-    "volume": {"bars": (1e-11, 1e-6),
+    "volume": {"bars": (1e-11, 1e-6), "units": "1/s",
                "collections": [VOLF, SNP_TS, SNP_SSH],
                "mutations": {"spurious-freshwater-forcing-added",
                              "rim-west-face-shifted",
@@ -125,16 +125,20 @@ def main() -> int:
     if (bp.get("collections") != c["collections"]
             or bp.get("rhoConst_kg_m3") != 1029.0
             or bp.get("Cp_J_kg_K") != 3994.0
-            or bp.get("abs_bar_degC_s") != abs_bar
+            or bp.get("abs_bar") != abs_bar
+            or bp.get("abs_bar_units") != c["units"]
             or bp.get("rel_bar") != rel_bar):
-        return fail("constants, collections, or bars differ from the "
-                    f"{budget} contract")
+        return fail("constants, collections, bars, or bar units differ "
+                    f"from the {budget} contract")
 
     res = r["results"]
-    a = res.get("residual_per_volume_max_degC_s")
+    a = res.get("residual_per_volume_max")
     rel = res.get("residual_relative_max")
     if a is None or rel is None:
         return fail("results missing the two bar figures")
+    if (res.get("units") or {}).get("residual_per_volume") != c["units"]:
+        return fail(f"results must state residual units {c['units']!r} "
+                    f"for the {budget} budget")
     if a > abs_bar:
         return fail(f"absolute bar failed: {a} > {abs_bar}")
     if rel > rel_bar:

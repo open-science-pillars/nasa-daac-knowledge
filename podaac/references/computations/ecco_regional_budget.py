@@ -101,6 +101,11 @@ BARS = {  # absolute per-volume (signed pointwise), relative
     "salt": (1.5e-10, 1e-6),    # g per kg per s
     "volume": (1e-11, 1e-6),    # per s
 }
+UNITS = {  # residual per unit volume, and the budget terms themselves
+    "heat": {"residual_per_volume": "degC/s", "largest_term": "degC m3/s"},
+    "salt": {"residual_per_volume": "g/kg/s", "largest_term": "g/kg m3/s"},
+    "volume": {"residual_per_volume": "1/s", "largest_term": "m3/s"},
+}
 FLUX = "ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_MONTHLY_V4R4"
 HF = "ECCO_L4_HEAT_FLUX_LLC0090GRID_MONTHLY_V4R4"
 SFLX = "ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4"
@@ -407,7 +412,9 @@ def main() -> None:
                                   if args.budget == "heat" else None),
             "rhoConst_kg_m3": RHOCONST, "Cp_J_kg_K": C_P,
             "sw_R": R_SW, "sw_zeta1_m": ZETA1, "sw_zeta2_m": ZETA2,
-            "abs_bar_degC_s": ABS_BAR, "rel_bar": REL_BAR,
+            "abs_bar": ABS_BAR,
+            "abs_bar_units": UNITS[args.budget]["residual_per_volume"],
+            "rel_bar": REL_BAR,
         },
         "resolved_volume": {
             "tile": tile, "j": [j0, j1], "i": [i0, i1], "k_cells": K,
@@ -424,11 +431,12 @@ def main() -> None:
         },
         "results": {
             "months": int(res.size),
-            "residual_per_volume_max_degC_s": a_ok,
+            "residual_per_volume_max": a_ok,
             "residual_relative_max": rel_ok,
-            "largest_term_degC_m3_s": largest,
-            "monthly_residual_per_volume_degC_s":
+            "largest_term": largest,
+            "monthly_residual_per_volume":
                 [float(x) for x in np.abs(res) / V],
+            "units": UNITS[args.budget],
         },
         "mutation_evidence": evidence,
         "caveats": {
@@ -451,7 +459,7 @@ def main() -> None:
     print(f"  volume tile {tile}, j {j0}-{j1}, i {i0}-{i1}, "
           f"0-{-grid.Zp1.values[K]:.0f} m; {int(wet.sum()):,} wet cells, "
           f"{V:.4e} m3")
-    unit = {"heat": "degC/s", "salt": "g/kg/s", "volume": "1/s"}[args.budget]
+    unit = UNITS[args.budget]["residual_per_volume"]
     print(f"  residual per volume max {a_ok:.3e} {unit} "
           f"(bar {ABS_BAR:g}); relative max {rel_ok:.3e} "
           f"(bar {REL_BAR:g})")

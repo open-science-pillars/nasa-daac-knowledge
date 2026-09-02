@@ -4,6 +4,19 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-02 · regional budget receipts: unit labels corrected. The
+  shared executor named its residual and bar keys with a degC suffix
+  for all three budgets, so salt (g per kg per s) and volume (per s)
+  receipts carried a heat label on correct numbers. Keys are now
+  budget-neutral (residual_per_volume_max, largest_term, abs_bar) and
+  every receipt states its units explicitly; the attester makes the
+  stated units part of the contract and refuses a receipt whose units
+  are not the budget's own (shown: a salt receipt claiming degC per s
+  fails on either field, a receipt with no units fails). Reference
+  residuals unchanged to the digit (heat 1.352e-14, salt 3.056e-14,
+  volume 1.068e-15); both record exhibits regenerated under the new
+  code hash. Heat concept contract sentence added (the salt and
+  volume variants inherit it); edit after signature, for review
 - 2026-09-02 · science record extended with the two collections the
   salt budget reads (OCEAN_3D_SALINITY_FLUX and FRESH_FLUX, 624
   granules, 20.97 GB): manifest regenerated with every existing row
