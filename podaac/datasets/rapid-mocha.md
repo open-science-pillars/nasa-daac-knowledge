@@ -42,6 +42,9 @@ the overlap with the ECCO record (2004-04 through 2017-12, 165 months)
 and the terms of use are recorded in
 [docs/rapid-26n-record.md](../../docs/rapid-26n-record.md); a
 computation that reads the tree carries its stamp in the receipt.
+The confrontation the bundle builds on this release, with its
+colocation choices, representativeness gap and measured scores, is
+[the overturning recipe](../recipes/ecco-rapid-amoc-26n.md).
 
 ## Uncertainty
 

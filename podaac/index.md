@@ -50,6 +50,8 @@ concepts (SPEC §5.7).
 - [Closed volume budget on the ECCO v4r4 native grid](recipes/ecco-volume-budget.md), status: stable
 - [Wind-stress curl and Ekman pumping on the native grid](recipes/ecco-wind-stress-curl.md), status: stable
 - [A trend with an honest interval from any ECCO monthly series](recipes/ecco-trend-ci.md), status: draft
+- [ECCO overturning at 26.5N confronted with the RAPID array](recipes/ecco-rapid-amoc-26n.md), status: draft (the first confrontation pair: the other side is an observation at a fixed version)
+- Sea level from altimetry against ECCO SSH: the second confrontation pair, queued and not built; no recipe, computation or attester exists for it yet and nothing states a score
 
 ## tutorial companion (every claim footnotes its tutorial page)
 
@@ -75,6 +77,7 @@ concepts (SPEC §5.7).
 ## conventions
 
 - [Marine heatwave definition (Hobday family)](conventions/mhw-definition-hobday.md), status: draft
+- [Consistency versus confrontation](conventions/consistency-versus-confrontation.md), status: draft
 
 ## computations (OKF v0.2 section 10)
 
@@ -93,6 +96,8 @@ concepts (SPEC §5.7).
 - [Regional volume budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-volume-budget.md), status: stable
 - [Reynolds flux decomposition from ECCO v4r4 (attested)](computations/ecco-flux-decomposition.md), status: stable
 - [Linear trend with an honest interval from a monthly series (attested)](computations/ecco-trend-ci.md), status: draft
+- [Atlantic overturning at 26.5N from ECCO v4r4 (attested)](computations/ecco-amoc-26n.md), status: draft
+- [ECCO overturning against RAPID at 26.5N (attested)](computations/ecco-rapid-amoc-confrontation.md), status: draft
 
 ## validity-domains
 

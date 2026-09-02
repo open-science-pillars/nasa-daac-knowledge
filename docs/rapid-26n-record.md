@@ -135,14 +135,23 @@ samples, `days since 1950-01-01`, every step 10 days, 2004-04-06 to
 coordinates), `amoc_sigma0`, `amoc_sigma2`, `heat_trans` (PW),
 `frwa_trans` (Sv), and the streamfunctions in depth, sigma0 and sigma2
 coordinates. The README says the depth-space overturning here is the
-same series as in the other files at 10-day resolution; that claim is
-checkable and will be checked when the confrontation is built, because
-which RAPID quantity is the counterpart of a model streamfunction
-maximum is a colocation decision the recipe has to state.
+same series as in the other files at 10-day resolution. Checked
+(podaac/references/derivations/rapid_colocation_checks.py, output
+beside it): it is a ten-day average of the twelve-hourly series, not
+a subsample of it; at coinciding times the two differ by up to
+4.85 Sv and their monthly means by up to 1.90 Sv. Which RAPID
+quantity is the counterpart of a model streamfunction maximum is a
+colocation decision the recipe states
+(podaac/recipes/ecco-rapid-amoc-26n.md): the twelve-hourly
+`moc_mar_hc10`, calendar-month averaged.
 
 **`moc_vertical.nc`**: the streamfunction profile in depth space,
 `stream_function_mar` (depth 307 levels, time 14,599), same time axis
-as the transports.
+as the transports. The profile is delivered unfiltered: its maximum
+over depth differs from `moc_mar_hc10` by up to 14 Sv on a
+twelve-hourly sample, and a sixth-order zero-phase Butterworth
+low-pass at one cycle per ten days followed by the maximum reproduces
+the series to a standard deviation of 0.15 Sv (same derivation).
 
 ## The overlap with the ECCO record
 
@@ -153,7 +162,9 @@ which 164 carry every twelve-hourly sample valid; April 2004 carries
 48 of its 58 samples because the first five days are absent. In
 twelve-hourly samples the overlap holds 10,034 valid values. Whether
 April 2004 enters the monthly series as a partial month or is dropped
-is a colocation choice for the recipe to state, not a fact of the data.
+is a colocation choice for the recipe to state, not a fact of the
+data; the recipe admits a month at half its samples valid, so April
+2004 enters and the overlap is 165 months.
 
 ## Uncertainty as the programme states it
 
