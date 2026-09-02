@@ -75,3 +75,7 @@ provides no formal uncertainty for it.
 - [ecco-mht-basin-scope](../gotchas/ecco-mht-basin-scope.md): a
   meridional heat transport with no basin mask is the full latitude
   circle, not the Atlantic section RAPID observes.
+- [ecco-trend-without-effective-n](../gotchas/ecco-trend-without-effective-n.md):
+  monthly series are serially correlated; a trend without an
+  effective-sample-size interval overstates certainty, and the
+  bundle's own twelve-month steric trend is the example.

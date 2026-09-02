@@ -1,0 +1,187 @@
+{
+ "computation": "trend-ci",
+ "code_sha256": "6e6f67dadce35d655b63ad47a43d9977e550e657eca7f46c0ac820491e865297",
+ "generated_utc": "2026-09-02T04:49:43.631722+00:00",
+ "seed": 20260902,
+ "trials_per_configuration": 2000,
+ "true_trend_per_month": 0.02,
+ "season_amplitude": 1.0,
+ "noise_variance": 1.0,
+ "assertion": {
+  "regime": "n >= 120 and phi <= 0.8",
+  "coverage_band": [
+   0.9,
+   0.975
+  ],
+  "negative_control": "naive coverage below 0.8 at phi 0.8"
+ },
+ "rows": [
+  {
+   "n": 12,
+   "phi": 0.0,
+   "deseasonalize": "none",
+   "trials": 2000,
+   "no_interval": 2,
+   "coverage": 0.8638638638638638,
+   "naive_coverage": 0.9424424424424425,
+   "n_eff_true": 12.0,
+   "n_eff_mean_estimated": 19.596298575554012
+  },
+  {
+   "n": 12,
+   "phi": 0.5,
+   "deseasonalize": "none",
+   "trials": 2000,
+   "no_interval": 9,
+   "coverage": 0.8146659969864389,
+   "naive_coverage": 0.7880462079357107,
+   "n_eff_true": 4.0,
+   "n_eff_mean_estimated": 11.357048803931733
+  },
+  {
+   "n": 12,
+   "phi": 0.8,
+   "deseasonalize": "none",
+   "trials": 2000,
+   "no_interval": 76,
+   "coverage": 0.7219334719334719,
+   "naive_coverage": 0.5826403326403327,
+   "n_eff_true": 1.333333333333333,
+   "n_eff_mean_estimated": 9.314180633874802
+  },
+  {
+   "n": 24,
+   "phi": 0.0,
+   "deseasonalize": "climatology",
+   "trials": 2000,
+   "no_interval": 0,
+   "coverage": 0.8455,
+   "naive_coverage": 0.882,
+   "n_eff_true": 24.0,
+   "n_eff_mean_estimated": 31.4496384632069
+  },
+  {
+   "n": 24,
+   "phi": 0.5,
+   "deseasonalize": "climatology",
+   "trials": 2000,
+   "no_interval": 9,
+   "coverage": 0.8503264691109995,
+   "naive_coverage": 0.6564540431943747,
+   "n_eff_true": 8.0,
+   "n_eff_mean_estimated": 14.010613405663648
+  },
+  {
+   "n": 24,
+   "phi": 0.8,
+   "deseasonalize": "climatology",
+   "trials": 2000,
+   "no_interval": 141,
+   "coverage": 0.8461538461538461,
+   "naive_coverage": 0.44862829478214095,
+   "n_eff_true": 2.666666666666666,
+   "n_eff_mean_estimated": 8.47225017612642
+  },
+  {
+   "n": 60,
+   "phi": 0.0,
+   "deseasonalize": "climatology",
+   "trials": 2000,
+   "no_interval": 0,
+   "coverage": 0.9215,
+   "naive_coverage": 0.9325,
+   "n_eff_true": 60.0,
+   "n_eff_mean_estimated": 64.10028288311828
+  },
+  {
+   "n": 60,
+   "phi": 0.5,
+   "deseasonalize": "climatology",
+   "trials": 2000,
+   "no_interval": 0,
+   "coverage": 0.916,
+   "naive_coverage": 0.7165,
+   "n_eff_true": 20.0,
+   "n_eff_mean_estimated": 23.685162849386106
+  },
+  {
+   "n": 60,
+   "phi": 0.8,
+   "deseasonalize": "climatology",
+   "trials": 2000,
+   "no_interval": 5,
+   "coverage": 0.9032581453634085,
+   "naive_coverage": 0.4521303258145363,
+   "n_eff_true": 6.666666666666664,
+   "n_eff_mean_estimated": 10.484618929599435
+  },
+  {
+   "n": 120,
+   "phi": 0.0,
+   "deseasonalize": "climatology",
+   "trials": 2000,
+   "no_interval": 0,
+   "coverage": 0.9255,
+   "naive_coverage": 0.9385,
+   "n_eff_true": 120.0,
+   "n_eff_mean_estimated": 123.8345235136338
+  },
+  {
+   "n": 120,
+   "phi": 0.5,
+   "deseasonalize": "climatology",
+   "trials": 2000,
+   "no_interval": 0,
+   "coverage": 0.938,
+   "naive_coverage": 0.729,
+   "n_eff_true": 40.0,
+   "n_eff_mean_estimated": 43.31804374950372
+  },
+  {
+   "n": 120,
+   "phi": 0.8,
+   "deseasonalize": "climatology",
+   "trials": 2000,
+   "no_interval": 0,
+   "coverage": 0.9205,
+   "naive_coverage": 0.4775,
+   "n_eff_true": 13.333333333333329,
+   "n_eff_mean_estimated": 16.69203142369285
+  },
+  {
+   "n": 312,
+   "phi": 0.0,
+   "deseasonalize": "climatology",
+   "trials": 2000,
+   "no_interval": 0,
+   "coverage": 0.942,
+   "naive_coverage": 0.943,
+   "n_eff_true": 312.0,
+   "n_eff_mean_estimated": 313.5841580479917
+  },
+  {
+   "n": 312,
+   "phi": 0.5,
+   "deseasonalize": "climatology",
+   "trials": 2000,
+   "no_interval": 0,
+   "coverage": 0.932,
+   "naive_coverage": 0.7125,
+   "n_eff_true": 104.0,
+   "n_eff_mean_estimated": 107.126283312524
+  },
+  {
+   "n": 312,
+   "phi": 0.8,
+   "deseasonalize": "climatology",
+   "trials": 2000,
+   "no_interval": 0,
+   "coverage": 0.95,
+   "naive_coverage": 0.487,
+   "n_eff_true": 34.66666666666666,
+   "n_eff_mean_estimated": 37.945583121176
+  }
+ ],
+ "failures": [],
+ "verdict": "PASS"
+}

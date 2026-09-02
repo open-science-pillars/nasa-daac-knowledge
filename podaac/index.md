@@ -33,6 +33,7 @@ concepts (SPEC §5.7).
 - [Geostrophic velocity needs the density factor](gotchas/ecco-geostrophic-density-factor.md), severity high, status: stable
 - [Daily granules overlap at midnight](gotchas/ecco-daily-granule-midnight-overlap.md), severity medium, status: stable
 - [Geostrophic velocity from PHIHYD alone omits the surface pressure](gotchas/ecco-phihyd-surface-pressure.md), severity high, status: stable
+- [A trend fit without an effective-sample-size correction overstates certainty](gotchas/ecco-trend-without-effective-n.md), severity high, status: draft
 
 ## recipes
 
@@ -47,6 +48,7 @@ concepts (SPEC §5.7).
 - [Steric height and its trend from ECCO v4r4 density](recipes/ecco-steric-height.md), status: stable
 - [Closed volume budget on the ECCO v4r4 native grid](recipes/ecco-volume-budget.md), status: stable
 - [Wind-stress curl and Ekman pumping on the native grid](recipes/ecco-wind-stress-curl.md), status: stable
+- [A trend with an honest interval from any ECCO monthly series](recipes/ecco-trend-ci.md), status: draft
 
 ## tutorial companion (every claim footnotes its tutorial page)
 
@@ -89,6 +91,7 @@ concepts (SPEC §5.7).
 - [Regional salt budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-salt-budget.md), status: stable
 - [Regional volume budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-volume-budget.md), status: stable
 - [Reynolds flux decomposition from ECCO v4r4 (attested)](computations/ecco-flux-decomposition.md), status: stable
+- [Linear trend with an honest interval from a monthly series (attested)](computations/ecco-trend-ci.md), status: draft
 
 ## validity-domains
 

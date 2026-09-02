@@ -4,6 +4,21 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-02 · computations/ecco-trend-ci.md, recipes/ecco-trend-ci.md,
+  gotchas/ecco-trend-without-effective-n.md: a sanctioned trend with
+  an honest interval (OLS, residual lag-1 r1, n_eff = n(1-r1)/(1+r1),
+  Student's t on n_eff-2 degrees of freedom, exact fractional
+  quantile, no scipy). The receipt carries the series and every
+  intermediate; the attester recomputes the whole chain and refuses
+  a series that did not arrive inside a sanctioned receipt from a
+  verified tree; eleven tampers each fail. Calibration with teeth:
+  2000-trial seeded Monte Carlo over AR(1) series, coverage asserted
+  within 90 to 97.5 percent at 120 months or more (measured 92.0 to
+  95.0), negative control asserted (naive interval collapses to 45
+  to 49 percent at r1 0.8); removing the correction fails it four
+  ways. Reference run on our own signed steric series: +135.7772 mm
+  per year over 2010 has r1 +0.555, n_eff 3.43, interval [-701.5,
+  +973.1]; the gotcha is named for that trap. All three draft
 - 2026-09-02 · regional budget receipts: unit labels corrected. The
   shared executor named its residual and bar keys with a degC suffix
   for all three budgets, so salt (g per kg per s) and volume (per s)

@@ -169,7 +169,10 @@ fed from the record over its full span: ocean heat content, steric
 height, geostrophic balance and thermal wind, wind-stress curl, the
 sea-level partition, the pointwise heat budget, the regional heat,
 salt and volume budgets, section transports and the flux
-decomposition.
+decomposition. The trend-with-interval computation reads no tree
+directly: it takes a monthly series out of another computation's
+receipt and copies that receipt's stamp forward, so its attester
+enforces the same rule one step removed.
 
 ## First result on the record
 
