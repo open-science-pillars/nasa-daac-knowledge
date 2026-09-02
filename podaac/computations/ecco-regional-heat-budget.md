@@ -46,7 +46,10 @@ attested pointwise budget.[^pointwise-budget]
 **Attestation contract.** TWO BARS, both required: the absolute
 per-volume residual within 1e-10 degC per s (the signed pointwise
 tolerance) AND the residual relative to the largest regional term
-within 1e-6. Measured 2026-08-31: omitting geothermal flux lands at
+within 1e-6. The receipt states the units of its residual and bar
+(degC per s here; g per kg per s and per s for the salt and volume
+variants) and the attester refuses a receipt whose stated units are
+not the budget's own. Measured 2026-08-31: omitting geothermal flux lands at
 1.24e-12, inside the absolute bar, and is caught only by the relative
 bar, so one bar is not a criterion.[^geothermal-gotcha] Every receipt
 carries MUTATION EVIDENCE: the executor reruns four sabotages
