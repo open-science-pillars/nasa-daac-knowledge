@@ -15,7 +15,7 @@ the coverage statement for the record as verified on 2026-09-01.
 | record name | `ecco-v4r4-fixtures-2010` | `ecco-v4r4-science-record` |
 | manifest | `podaac/references/retrieval/fixtures-2010-manifest.json` | `podaac/references/retrieval/science-record-manifest.json` |
 | verification report | `fixtures-2010-verification.json` (same directory) | `science-record-verification.json` (same directory) |
-| contents | 144 files, 3.08 GB: the 2010 months of the collections the computations read, the 2009-12 month a few of them need, the 2011-01 boundary snapshots, the geometry granule, the tutorial geothermal file | 3,432 files, 64.57 GB: nine monthly collections 1992-01 through 2017-12, two snapshot collections at 311 month boundaries, geometry, geothermal |
+| contents | 144 files, 3.08 GB: the 2010 months of the collections the computations read, the 2009-12 month a few of them need, the 2011-01 boundary snapshots, the geometry granule, the tutorial geothermal file | 4,056 files, 85.54 GB: eleven monthly collections 1992-01 through 2017-12, two snapshot collections at 311 month boundaries, geometry, geothermal |
 | purpose | gates, CI, attester selftests, the reference anchors, demonstrations | real results over the full 1992-2017 span |
 | rule | stays exactly as it is; verified with `--exact` so nothing undeclared may live there | grows only by manifest: extend the manifest, fetch, re-verify, re-stamp |
 
@@ -26,7 +26,7 @@ year. A run on the science record for any other region or year is held
 to the closure bars and the mutation evidence in its receipt, never to
 the anchors.
 
-The two trees share 116 granules (the 2010 fixtures are a subset of
+The two trees share 142 granules (the 2010 fixtures are a subset of
 the record) plus the geometry granule and the geothermal file. On this
 machine those are hardlinks: identical bytes, one copy on disk, and both
 manifests carry the same archive checksum for each. Nothing else is
@@ -71,10 +71,10 @@ sentence in a document.
      "data_root": "/Users/.../ECCO_V4r4_record",
      "record": {
        "record": "ecco-v4r4-science-record",
-       "manifest_sha256": "1dd31973416ec47744afac3da238fb22357336119c05730e31f047d38f98cd6b",
-       "verified_utc": "2026-09-01T22:14:43.129298+00:00",
-       "report_sha256": "e6a01dccd90caf702e71dcccbcc17e37c3aa87d60654d20eac1cc3a7d96effe6",
-       "granules": 3432
+       "manifest_sha256": "d67caebf699864ea358c37813d75c503a302832bc0380ee69a89760d69f9f61f",
+       "verified_utc": "2026-09-02T04:27:14.258145+00:00",
+       "report_sha256": "fd7353151c4496e0b10073bfbdadf483d929918291768de24854c24ac91304d4",
+       "granules": 4056
      }
    }
    ```
@@ -96,11 +96,17 @@ run. Which tree fed a result is a fact in the receipt, not a memory.
 
 ## What was verified on 2026-09-01
 
-**Science record.** 3,432 of 3,432 rows present. Every size within the
-bar. Every file hashed and matched: 3,430 SHA-512 against the CMR
-checksum, geometry and geothermal SHA-256 against the local values in
-the manifest. Zero undeclared files. Report:
-`science-record-verification.json`.
+**Science record.** First pass, nine monthly collections: 3,432 of
+3,432 rows present, every size within the bar, every file hashed and
+matched (3,430 SHA-512 against the CMR checksum, geometry and
+geothermal SHA-256 against the local values in the manifest), zero
+undeclared files. Extended the same day with the two collections the
+salt budget reads (`OCEAN_3D_SALINITY_FLUX` and `FRESH_FLUX`, 624
+granules, 20.97 GB): the manifest regenerated with the existing 3,432
+rows unchanged, the fetch tool brought the 624 new rows in, and the
+whole tree was re-verified from scratch: 4,056 of 4,056 present, all
+hashed and matched, zero undeclared files. The committed report,
+`science-record-verification.json`, is the extended one.
 
 This was the first full integrity check of the record. The fetch tool
 that ran the download verified each granule by size only, because its
@@ -131,7 +137,8 @@ keeps this from recurring unnoticed.
 
 **Monthly collections, all 312 months 1992-01 through 2017-12:**
 TEMP_SALINITY, DENS_STRAT_PRESS, SSH, OBP, OCEAN_VEL,
-OCEAN_3D_VOLUME_FLUX, OCEAN_3D_TEMPERATURE_FLUX, HEAT_FLUX, STRESS.
+OCEAN_3D_VOLUME_FLUX, OCEAN_3D_TEMPERATURE_FLUX,
+OCEAN_3D_SALINITY_FLUX, HEAT_FLUX, FRESH_FLUX, STRESS.
 
 **Snapshot collections (TEMP_SALINITY and SSH):** the archive holds
 daily snapshots (9,496 per collection). The record keeps the first day
@@ -148,25 +155,21 @@ snapshot inputs exist at its start and at the start of the next month
 |---|---|---|
 | heat | 1992-02 through 2017-11 (310 months) | 2010-01 through 2010-12 |
 | volume | 1992-02 through 2017-11 (310 months) | 2010-01 through 2010-12 |
-| salt | none | 2010-01 through 2010-12 |
+| salt | 1992-02 through 2017-11 (310 months) | 2010-01 through 2010-12 |
 
-The salt budget cannot run on the record yet. It reads two collections
-the record does not hold: `ECCO_L4_OCEAN_3D_SALINITY_FLUX` (312
-granules, 18.99 GB) and `ECCO_L4_FRESH_FLUX` (312 granules, 1.98 GB),
-measured against CMR on 2026-09-01. Adding them is 20.97 GB and one
-manifest edit: add the two short names to the monthly list in the
-manifest tool, regenerate the manifest, run the fetch tool (it is
-resumable and skips every row already present and matching), then
-verify with `--exact --stamp` and commit the new manifest and report.
-The fixtures hold both for 2010, so the salt budget's gate coverage is
-unaffected.
+Extending the record is one manifest edit: add the short names to the
+monthly list in the manifest tool, regenerate the manifest (existing
+rows do not change), run the fetch tool (resumable; it skips every row
+already present and matching), then verify with `--exact --stamp` and
+commit the new manifest and report. That is how the two salt-budget
+collections were added.
 
-**By computation.** Ocean heat content, steric height, geostrophic
-balance and thermal wind, wind-stress curl, the sea-level partition,
-the pointwise heat budget, the regional heat and volume budgets,
-section transports and the flux decomposition can all be fed from the
-record over its full span. The regional salt budget runs on the
-fixtures only until the two collections are added.
+**By computation.** Every attested computation in this bundle can be
+fed from the record over its full span: ocean heat content, steric
+height, geostrophic balance and thermal wind, wind-stress curl, the
+sea-level partition, the pointwise heat budget, the regional heat,
+salt and volume budgets, section transports and the flux
+decomposition.
 
 ## First result on the record
 
@@ -179,6 +182,14 @@ sign flipped 0.410; vertical faces omitted 0.205), attester PASS. The
 receipt is at `podaac/references/retrieval/exhibit-regional-heat-2005.json`
 and its `data.record` is the science record stamp above. This is an
 exhibit that the boundary works end to end, not a signed finding.
+
+The regional salt budget over the same region and year, run after the
+record was extended: residual per unit volume
+1.946e-14 g per kg per s against the 1.5e-10 bar,
+relative
+3.86e-07 against 1e-6, 3 of 3 applicable
+sabotages caught, attester PASS. Receipt:
+`podaac/references/retrieval/exhibit-regional-salt-2005.json`.
 
 A run on the record takes roughly ninety seconds where the same run on
 the fixtures takes a few, because the loaders open every granule in a

@@ -4,6 +4,17 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-02 · science record extended with the two collections the
+  salt budget reads (OCEAN_3D_SALINITY_FLUX and FRESH_FLUX, 624
+  granules, 20.97 GB): manifest regenerated with every existing row
+  unchanged, fetched, and the whole tree re-verified from scratch
+  (4,056 of 4,056 present, every file hashed against the archive,
+  zero undeclared, stamped). All three regional budgets are now
+  closable 1992-02 through 2017-11. Second exhibit on the record:
+  regional salt budget 2005 closes at 1.946e-14 g per kg per s
+  against 1.5e-10, three of three applicable sabotages caught; the
+  heat exhibit re-run on the extended record reproduces 5.931e-15
+  exactly. Boundary doc updated
 - 2026-09-01 · THE SCIENCE RECORD AND THE FIXTURE BOUNDARY. Two
   manifested, verified, stamped trees: the 2010 fixture cache (144
   files, 3.08 GB, exact) stays as it is for gates, anchors, and CI;
