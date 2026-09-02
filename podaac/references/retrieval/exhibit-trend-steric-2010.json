@@ -1,0 +1,107 @@
+{
+  "run_id": "20260902T045241Z-9fb893a0",
+  "computation": "trend-ci",
+  "code_sha256": "6e6f67dadce35d655b63ad47a43d9977e550e657eca7f46c0ac820491e865297",
+  "data": {
+    "source": "podaac/references/retrieval/exhibit-steric-2010.json",
+    "source_sha256": "3a1de54775b36355b9a5415cda42ab3d6c3ccebd39e087268832cabec346eeb6",
+    "source_receipt": {
+      "run_id": "20260902T044518Z-903d9703",
+      "code_sha256": "e01119f1b9e733f2eb19b261f47f700a3d91c38b16e596f4d41696248139b42b",
+      "field": "steric_mean_m_by_month"
+    },
+    "record": {
+      "record": "ecco-v4r4-fixtures-2010",
+      "manifest_sha256": "b28adfd936881fd7f4210db58b288c5be4aa3b04efcce2687b0ea7dc86d6084b",
+      "verified_utc": "2026-09-01T22:14:54.853026+00:00",
+      "report_sha256": "8629e141a10da773064ca2873b62101f53d507f55de4b6e1236ef2806b046fb8",
+      "granules": 144
+    }
+  },
+  "generated_utc": "2026-09-02T04:52:41.330259+00:00",
+  "bound_parameters": {
+    "field": "steric_mean_m_by_month",
+    "value_units": "m",
+    "scale": 1000.0,
+    "report_units": "mm",
+    "deseasonalize": "none",
+    "confidence": 0.95,
+    "time_unit": "month",
+    "trend_per": "year",
+    "months_per_year": 12.0,
+    "method": "OLS slope; lag-1 autocorrelation of residuals; n_eff = n(1-r1)/(1+r1); residual variance on n_eff-2 dof; two-sided interval from Student's t on n_eff-2 dof (Santer et al. 2008)"
+  },
+  "series": {
+    "dates": [
+      "2010-01",
+      "2010-02",
+      "2010-03",
+      "2010-04",
+      "2010-05",
+      "2010-06",
+      "2010-07",
+      "2010-08",
+      "2010-09",
+      "2010-10",
+      "2010-11",
+      "2010-12"
+    ],
+    "values": [
+      -19.57678985595703,
+      -19.612972259521484,
+      -19.63198471069336,
+      -19.60859489440918,
+      -19.57192039489746,
+      -19.517784118652344,
+      -19.48086929321289,
+      -19.461660385131836,
+      -19.46163558959961,
+      -19.47689437866211,
+      -19.512836456298828,
+      -19.56345558166504
+    ],
+    "units": "m"
+  },
+  "intermediates": {
+    "n": 12,
+    "series_fit": [
+      -19576.78985595703,
+      -19612.972259521484,
+      -19631.98471069336,
+      -19608.59489440918,
+      -19571.92039489746,
+      -19517.784118652344,
+      -19480.86929321289,
+      -19461.660385131836,
+      -19461.63558959961,
+      -19476.89437866211,
+      -19512.836456298828,
+      -19563.45558166504
+    ],
+    "slope_per_month": 11.314765556708917,
+    "intercept": -19602.014370453664,
+    "sxx": 143.0,
+    "r1": 0.5551972902659268,
+    "n_eff": 3.432125653907347,
+    "dof": 1.432125653907347,
+    "se_per_month": 10.846705962032644,
+    "t_quantile": 6.432713874587307,
+    "naive_se_per_month": 4.104766236905838
+  },
+  "results": {
+    "trend": 135.777186680507,
+    "ci_low": -701.5078845459282,
+    "ci_high": 973.062257906942,
+    "half_width": 837.2850712264351,
+    "units": "mm/year",
+    "n": 12,
+    "n_eff": 3.432125653907347,
+    "r1": 0.5551972902659268,
+    "naive_half_width": 109.75186956925945,
+    "significant_at_confidence": false
+  },
+  "caveats": {
+    "deseasonalize": "no deseasonalization: the seasonal cycle is in the residuals and inflates r1 and the interval; with fewer than two complete years no climatology can be formed",
+    "interval": "the interval is a statement about sampling under an AR(1) residual model, not about model or observational error in the series"
+  }
+}
