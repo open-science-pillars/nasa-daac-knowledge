@@ -4,6 +4,126 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-02 · steward review passed: recipes/ecco-rapid-amoc-26n.md,
+  conventions/consistency-versus-confrontation.md,
+  computations/ecco-amoc-26n.md and
+  computations/ecco-rapid-amoc-confrontation.md verified (verified_by
+  human:PaulMRamirez, applied on the steward's explicit instruction),
+  status draft to stable; datasets/rapid-mocha.md re-verified after
+  its post-signature edits (the release on record, two gotchas, the
+  pointer to the recipe), the verified event refreshed to the
+  re-review. The scores those concepts state were shown to the steward
+  at the measurement before any concept stated them. (claude, for the
+  steward)
+- 2026-09-02 · THE FIRST CONFRONTATION, STATED. recipes/ecco-rapid-amoc-26n.md
+  (new, draft, unsigned): the model's Atlantic overturning at 26.5N
+  beside the RAPID array's delivered record over 2004-04 through
+  2017-12 (165 months). Colocation: calendar-month means of the
+  twelve-hourly ten-day-filtered series (a month enters at half its
+  samples valid) against the model's monthly-mean streamfunction
+  maximum under the array's own zero-net convention, Atlantic scope,
+  face row 26.1N; the array's methodology papers cited (McCarthy et
+  al. 2015, Cunningham et al. 2007, Kanzow et al. 2007, DOIs verified
+  against Crossref). Representativeness in both directions, with the
+  western boundary measured: the cable's 31.71 Sv passes through a
+  strait the grid does not have, whose stand-in is four 861 m faces
+  carrying 27.08 Sv (references/derivations/ecco_western_boundary_26n.py,
+  output beside it). Metrics and sensitivities stated; the measured
+  scores stated for the first time in prose after being shown at the
+  measurement: bias -3.2322 Sv [-3.7484, -2.7160], RMSD 3.8394
+  [3.3268, 4.2911] (2.07 Sv of it not the bias), correlation +0.7729
+  [+0.6818, +0.8404], anomaly correlation +0.7850 [+0.7045, +0.8455],
+  neither trend significant. Independence stated as a degree: no
+  transport series is among the v4r4 constraints (synopsis Table 2,
+  fetched and read), mooring hydrography is, and whether the array's
+  own is among it the synopsis does not say. computations/ecco-amoc-26n.md
+  and computations/ecco-rapid-amoc-confrontation.md (new, draft): the
+  concept pages for the two sanctioned computations and the attester
+  that landed with their receipts (PASS on the real run, FAIL on nine
+  doctored variants). (claude)
+- 2026-09-02 · THE DOCTRINE THE BUNDLE HAS NEEDED SINCE ITS FIRST
+  ANCHOR. conventions/consistency-versus-confrontation.md (new,
+  draft): internal consistency (closure, cross-computation anchors,
+  agreement with an independent implementation of the same integral)
+  shows a method agrees with itself; confrontation (an observation
+  the estimate did not see, at a fixed version, with its own
+  uncertainty) shows it agrees with the world; only the second
+  supports a scientific claim; a quoted published spread is a third,
+  weaker kind and must not call itself validation; the acceptable
+  deviation is what the measured comparison and its uncertainty say,
+  never a reviewer's call; independence is a degree and is stated.
+  index.md: the recipe, the convention and the two computations
+  listed; the second confrontation pair, sea level from altimetry
+  against ECCO SSH, queued in the recipes section as not built. (claude)
+- 2026-09-02 · THREE COLOCATION QUESTIONS ANSWERED BY MEASUREMENT.
+  references/derivations/rapid_colocation_checks.py (new, output
+  rapid-colocation-checks.json beside it): the record note had left
+  open which observed quantity is the counterpart of a model
+  streamfunction maximum and whether the ten-day product is the same
+  series. Measured on the overlap: the delivered series is not the
+  maximum of the delivered profile sample by sample (the profile is
+  unfiltered, differences up to 14 Sv), but low-passing the profile
+  (sixth-order zero-phase Butterworth, one cycle per ten days) and
+  maximising reproduces it to sd 0.15 Sv; the maximum of the monthly
+  mean profile sits 0.12 Sv below the mean of the twelve-hourly
+  maxima (at most 0.53 in a month), the max-of-mean asymmetry of the
+  colocation, small against the bias and favouring the model; the
+  observed monthly-mean maximum sits at 1009 m on average against the
+  model's 880 m; the ten-day product is a ten-day average, not a
+  subsample (up to 4.85 Sv apart at coinciding times, monthly means
+  up to 1.90 Sv apart), so a comparison built on it is a different
+  comparison. docs/rapid-26n-record.md: the two open questions now
+  point at the measurements. datasets/rapid-mocha.md: one sentence
+  pointing at the recipe (a further post-signature edit; the concept
+  needs a fresh signature at merge). (claude)
+- 2026-09-02 · TWO SANCTIONED COMPUTATIONS AND ONE ATTESTER FOR THE
+  OVERTURNING. references/computations/ecco_amoc_26n.py: the Atlantic
+  overturning at 26.5N from the signed section machinery restricted
+  by ECCO's own basin codes (references/derivations/llc90_basin_codes.py,
+  masks under references/masks/), three conventions with the
+  per-level transports in every receipt, the ecco_v4_py 1.8.1 anchor
+  for 2010 enforced on both integration directions (11.7709 and
+  12.8615 Sv, agreement to four decimals), two structural sabotages
+  caught (sign flip 14.33 Sv, south faces 7.49 Sv) and two scope
+  choices disclosed (Gulf of Mexico +0.15 Sv, one row north 0.21 Sv).
+  references/computations/ecco_rapid_amoc_confrontation.py: the
+  monthly colocation, four scores with 95 percent intervals from the
+  attested uncertainty chain, series digests, and the observation's
+  version, DOI, hash, licence, citation, acknowledgement and published
+  RMS uncertainty in the receipt. references/attesters/rapid_confrontation_check.py:
+  stdlib; refuses a receipt missing any provenance field, pins the
+  release and the file hash, recomputes every score, interval, digest
+  and descriptive block, and with the model receipt on disk
+  recomputes its primary series from the per-level transports, its
+  anchor and its sabotage flags. Receipts of the real runs under
+  references/retrieval/ (exhibit-amoc-26n-record.json,
+  exhibit-rapid-amoc-26n-confrontation.json). The scores stayed in
+  the receipts until they had been shown. (claude)
+- 2026-09-02 · THE OBSERVATION HAS A VERSION. docs/rapid-26n-record.md
+  (new): the RAPID-MOCHA-WBTS 26N overturning release v2024.1a (DOI
+  10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1, OGL v3) retrieved to a
+  tree outside the repository, hashed, manifested and stamped by the
+  new tools/obs_record_manifest.py, which reads version and DOI from
+  the netCDF attributes and refuses a build whose files disagree or a
+  tree whose bytes do not match (refusals demonstrated: one flipped
+  byte, one stray file, one wrong expected version). Every claim in
+  the note was checked live against the delivered files: 14,599
+  twelve-hourly samples 2004-04-02 to 2024-03-27, exactly 20 absent at
+  the ends as the README says, overlap with the ECCO record 2004-04
+  through 2017-12 (165 months, 164 complete). The BODC DOI package
+  could not be taken (sixteen transfers closed early by the server);
+  the rapid.ac.uk direct files carry the same version and DOI inside
+  them and are refreshed in place, so identity is by hash and
+  attribute, never by URL. datasets/rapid-mocha.md gains the AMOC
+  series' own version and DOI in its version line, a paragraph
+  pointing to the note, and two known issues (in-place refresh; the
+  v2024-1a / 2025 inconsistency inside meridional_transports.nc):
+  an edit after the 2026-07-04 signature, flagged here, obliging a
+  fresh signature when merged. Nothing is computed against the
+  observation yet; the confrontation executor and its attester come
+  next, and no score is stated until the attester recomputes it.
+  Manifest and report: references/retrieval/rapid-26n-*.json.
+  (claude)
 - 2026-09-02 · steward review passed: computations/ecco-steric-height.md and
   recipes/ecco-steric-height.md re-verified after the interval edits
   (verified_by human:PaulMRamirez); the verified event is refreshed to
