@@ -194,6 +194,19 @@ relative
 sabotages caught, attester PASS. Receipt:
 `podaac/references/retrieval/exhibit-regional-salt-2005.json`.
 
+The first trends on the record, each with the interval the
+sanctioned trend method states for it: over the US northeast coast,
+1992-01 through 2017-12, steric height rises +2.7999 mm per year,
+95 percent interval [+1.5103, +4.0895] (r1 +0.893, 17.6 effective
+months of 312), identical to every digit from the steric computation
+and from the sea-level partition, whose total and manometric trends
+over the same months are +5.2452 [+4.0623, +6.4281] and +2.4535
+[+2.1701, +2.7370], with a maximum partition residual of 8.282e-04 m
+against the 1.0e-3 bar. Receipts:
+`podaac/references/retrieval/exhibit-steric-record.json` and
+`exhibit-sea-level-record.json`; the 2010 fixture runs of both ship
+beside them and carry the intervals a single year deserves.
+
 A run on the record takes roughly ninety seconds where the same run on
 the fixtures takes a few, because the loaders open every granule in a
 collection directory before selecting the months they need. The result

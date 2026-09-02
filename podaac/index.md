@@ -34,6 +34,7 @@ concepts (SPEC §5.7).
 - [Daily granules overlap at midnight](gotchas/ecco-daily-granule-midnight-overlap.md), severity medium, status: stable
 - [Geostrophic velocity from PHIHYD alone omits the surface pressure](gotchas/ecco-phihyd-surface-pressure.md), severity high, status: stable
 - [A trend fit without an effective-sample-size correction overstates certainty](gotchas/ecco-trend-without-effective-n.md), severity high, status: draft
+- [Deseasonalize jointly with the trend, or the climatology keeps part of it](gotchas/ecco-trend-deseasonalize-jointly.md), severity high, status: draft
 
 ## recipes
 

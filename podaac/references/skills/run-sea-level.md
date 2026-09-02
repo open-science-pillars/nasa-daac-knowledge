@@ -34,9 +34,15 @@ uv run references/computations/ecco_regional_sea_level.py \
   --receipt /tmp/sea-level-receipt.json
 ```
 
-The receipt carries exactly the declared fields, including the
-convention-bound bookkeeping (`ssh_variant`, `months`) and the three
-trends in mm per year.
+The receipt carries exactly the declared fields: the convention-bound
+bookkeeping (`ssh_variant`, `months`), the three monthly anomaly
+series and the residual series (`series_by_month`), the three trends
+in mm per year, and beside each trend the interval block the one
+sanctioned trend method states for it (`trend_total_interval`,
+`trend_mass_interval`, `trend_steric_interval`, each naming that
+method's file by hash). Over the full record, pass
+`--period 1992-01:2017-12 --data-root ~/ECCO_V4r4_record`; months
+are read one at a time, so the run costs the memory of one month.
 
 ## 3. Attest the receipt
 
@@ -46,7 +52,10 @@ uv run references/attesters/sea_level_partition.py /tmp/sea-level-receipt.json
 
 PASS requires the sanctioned code hash, exactly the declared parameters
 with a registered region and in-span period, `ssh_variant` exactly
-`SSH`, the partition residual within the recorded measured tolerance,
-and nonzero months and cells. While no tolerance is recorded, every
-run fails A4 by design; the tolerance is written into the concept and
-the attester together, from the sanctioned fixture run.
+`SSH`, the partition residual within the recorded measured tolerance
+and recomputed from the series in the receipt, nonzero months and
+cells, and every trend and interval recomputed from those series by
+the shared attester chain (or a refusal of an interval the recompute
+reproduces). While no tolerance is recorded, every run fails A4 by
+design; the tolerance is written into the concept and the attester
+together, from the sanctioned fixture run.

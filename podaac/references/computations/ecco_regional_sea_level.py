@@ -16,14 +16,21 @@ anomaly series of total sea level (the SSH variant, stated in the
 receipt), the manometric piece (OBP), and an INDEPENDENT steric piece
 from the model's own density anomaly (RHOAnoma integrated over depth
 with partial cells), all on the native llc90 grid. The receipt carries
-the three trends, the maximum monthly partition residual, and the
-convention-bound bookkeeping fields. Consumers bind values for the
-declared parameters and MUST NOT edit this file; the attester hashes it.
+the three monthly anomaly series and the residual series, the three
+trends each with the interval the sanctioned trend-with-interval
+method states for it (ecco_trend_ci.py, imported from beside this file
+and named by hash in each block), the maximum monthly partition
+residual, and the convention-bound bookkeeping fields. Months are read
+one at a time, so the full record costs the memory of one month.
+Consumers bind values for the declared parameters and MUST NOT edit
+this file; the attester hashes it and recomputes every trend, interval
+and residual from the series in the receipt.
 """
 
 import argparse
 import datetime
 import hashlib
+import importlib.util
 import json
 import re
 import sys
@@ -82,7 +89,7 @@ def compute(region: str, period: str, root: Path) -> dict:
     n_months = int(ssh.sizes["time"])
     assert n_months == int(obp.sizes["time"]) == int(dens.sizes["time"]), \
         "matching-period rule violated: the three inputs cover different months"
-    assert n_months >= 2, "need at least two months"
+    assert n_months >= 3, "need at least three months for a slope"
 
     xc, yc = grid.XC.values, grid.YC.values                  # (13, 90, 90)
     wet = grid.maskC.values[0] > 0                            # surface wet
@@ -91,42 +98,64 @@ def compute(region: str, period: str, root: Path) -> dict:
     wsum = float(w.sum())
     assert wsum > 0, f"region {region} selects no wet cells"
 
-    def area_mean(field2d):                                   # (t, 13, 90, 90)
+    def area_mean(field2d):                                   # (13, 90, 90)
         v = np.nan_to_num(field2d)
-        return (v * w[None]).sum(axis=(1, 2, 3)) / wsum
-
-    total = area_mean(ssh[SSH_VARIANT].values)                # m
-    mass = area_mean(obp["OBP"].values)                       # m (equiv. sea level)
+        return float((v * w).sum() / wsum)
 
     # Independent steric: -(1/rho0) * integral of RHOAnoma over depth,
     # partial cells in (hFacC * drF); model-consistent density, never a
-    # foreign equation of state.
+    # foreign equation of state. One month in memory at a time.
     hfac_drf = grid.hFacC.values * grid.drF.values[:, None, None, None]  # (50,13,90,90)
-    rho = np.nan_to_num(dens["RHOAnoma"].values)              # (t, 50, 13, 90, 90)
-    steric_h = -(rho * hfac_drf[None]).sum(axis=1) / RHO0     # (t, 13, 90, 90), m
-    steric = area_mean(steric_h)
+    total, mass, steric = [], [], []
+    for i in range(n_months):
+        total.append(area_mean(ssh[SSH_VARIANT].isel(time=i).values))   # m
+        mass.append(area_mean(obp["OBP"].isel(time=i).values))          # m (equiv. sea level)
+        rho = np.nan_to_num(dens["RHOAnoma"].isel(time=i).values)       # (50, 13, 90, 90)
+        steric.append(area_mean(-(rho * hfac_drf).sum(axis=0) / RHO0))  # m
+    dates = [str(np.datetime_as_string(t, unit="M"))
+             for t in ssh["time"].values]
+    total, mass, steric = (np.asarray(total), np.asarray(mass),
+                           np.asarray(steric))
 
     def anom(s):
         return s - s.mean()
 
     ta, ma, sa = anom(total), anom(mass), anom(steric)
     resid = ta - ma - sa
-    months_ax = np.arange(n_months, dtype=float)
 
-    def trend_mm_yr(s):
-        slope = np.polyfit(months_ax, s, 1)[0]                # m / month
-        return float(slope * 12.0 * 1000.0)
+    def interval(s):
+        return trend_interval_mm_yr([float(v) * 1000.0 for v in s])
 
+    blocks = {part: interval(s) for part, s in
+              (("total", ta), ("mass", ma), ("steric", sa))}
     return {
         "ssh_variant": SSH_VARIANT,
         "months": n_months,
         "cells_evaluated": int(inbox.sum()),
-        "trend_total_mm_yr": round(trend_mm_yr(ta), 4),
-        "trend_mass_mm_yr": round(trend_mm_yr(ma), 4),
-        "trend_steric_mm_yr": round(trend_mm_yr(sa), 4),
+        "trend_total_mm_yr": round(blocks["total"]["trend"], 4),
+        "trend_mass_mm_yr": round(blocks["mass"]["trend"], 4),
+        "trend_steric_mm_yr": round(blocks["steric"]["trend"], 4),
+        "trend_total_interval": blocks["total"],
+        "trend_mass_interval": blocks["mass"],
+        "trend_steric_interval": blocks["steric"],
         "partition_residual_max": float(np.abs(resid).max()),
-        "residual_series_mm": [round(float(r) * 1000.0, 4) for r in resid],
+        "series_by_month": {
+            "dates": dates,
+            "total_anomaly_m": [float(v) for v in ta],
+            "mass_anomaly_m": [float(v) for v in ma],
+            "steric_anomaly_m": [float(v) for v in sa],
+            "residual_mm": [round(float(r) * 1000.0, 4) for r in resid],
+        },
     }
+
+
+def trend_interval_mm_yr(series_mm):
+    """Each trend and its interval, from the one sanctioned method."""
+    path = Path(__file__).with_name("ecco_trend_ci.py")
+    spec = importlib.util.spec_from_file_location("ecco_trend_ci", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.interval_block(series_mm, "mm/year")
 
 
 def data_identity(root):
@@ -153,14 +182,20 @@ def main() -> int:
     args = ap.parse_args()
 
     stats = compute(args.region, args.period, args.data_root)
-    series = stats.pop("residual_series_mm")
     print(f"region {args.region}, {stats['months']} months, "
           f"{stats['cells_evaluated']} cells", file=sys.stderr)
-    print(f"trends mm/yr: total {stats['trend_total_mm_yr']}, "
-          f"mass {stats['trend_mass_mm_yr']}, steric {stats['trend_steric_mm_yr']}",
-          file=sys.stderr)
+    for part in ("total", "mass", "steric"):
+        iv = stats[f"trend_{part}_interval"]
+        band = (f"95% [{iv['ci_low']:+.4f}, {iv['ci_high']:+.4f}] "
+                f"(r1 {iv['r1']:+.4f}, n_eff {iv['n_eff']:.2f} of {iv['n']}, "
+                f"deseasonalize {iv['deseasonalize']}; "
+                f"{'significant' if iv['significant_at_confidence'] else 'NOT significant'})"
+                if iv["stated"] else f"no interval stated: {iv['reason']}")
+        print(f"trend {part} {stats[f'trend_{part}_mm_yr']:+.4f} mm/yr, {band}",
+              file=sys.stderr)
     print(f"partition residual max {stats['partition_residual_max']:.3e} m; "
-          f"monthly series (mm): {series}", file=sys.stderr)
+          f"monthly series (mm): {stats['series_by_month']['residual_mm']}",
+          file=sys.stderr)
 
     receipt = {
         "run_id": (datetime.datetime.now(datetime.timezone.utc)

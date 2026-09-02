@@ -18,12 +18,27 @@ when ALL hold, else FAIL (exit 1) naming the field:
      attested sea-level partition's receipt records, +135.7772 mm/yr,
      within 0.05 mm/yr (measured agreement 2026-09-01: identical to
      four decimals), and cells_in_region must be exactly 102, the
-     registered box's wet-cell count;
+     registered box's wet-cell count; the same anchor holds over the
+     full record (1992-01 through 2017-12), where the partition's
+     receipt records +2.7999 mm/yr (measured agreement 2026-09-02:
+     the two interval blocks agree to every digit). The anchor is
+     on the central value; the interval travels beside it;
   5. sanity everywhere: every area-mean steric height within -60 to 0
      m (measured: -19.6 regional, -30.9 global);
   6. a global run must carry the Boussinesq caveat field, so no
      consumer can quote a global-mean steric change as modeled
-     sea-surface rise.
+     sea-surface rise;
+  7. THE TREND AND ITS INTERVAL: any run of three months or more
+     carries steric_trend_interval, the block the sanctioned trend
+     method embeds (named by that file's hash), and steric_trend_mm_yr
+     is that block's trend; the block is recomputed here from the
+     monthly series in the receipt by the shared chain in
+     trend_recompute.py (joint fit with the climatology over complete
+     years, lag-1 autocorrelation, effective sample size, Student's t),
+     every number within 1e-9 relative, or the refusal of an interval
+     is one the recompute reproduces. The 2010 reference interval is
+     [-701.5, +973.1] mm/yr around +135.8: twelve months cannot tell
+     that trend from zero, and the receipt says so beside the anchor.
 
 Usage: steric_check.py RECEIPT.json [--computation PATH]
 """
@@ -34,9 +49,14 @@ import json
 import sys
 from pathlib import Path
 
+from trend_recompute import DEFAULT_METHOD, check_block, close
+
 REF_REGION = "us-northeast-coast"
 REF_MONTHS = [f"2010-{m:02d}" for m in range(1, 13)]
 REF_TREND = 135.7772
+REF_RECORD_MONTHS = [f"{y}-{m:02d}" for y in range(1992, 2018)
+                     for m in range(1, 13)]
+REF_RECORD_TREND = 2.7999
 REF_TREND_TOL = 0.05
 REF_CELLS = 102
 RHO0 = 1029.0
@@ -57,6 +77,9 @@ def main() -> int:
     ap.add_argument("--computation", type=Path,
                     default=Path(__file__).parent.parent
                     / "computations" / "ecco_steric_height.py")
+    ap.add_argument("--method", type=Path, default=DEFAULT_METHOD,
+                    help="the sanctioned trend method the interval block "
+                         "must name by hash")
     args = ap.parse_args()
     r = json.loads(args.receipt.read_text(encoding="utf-8"))
 
@@ -89,26 +112,51 @@ def main() -> int:
     for m, s in r["steric_mean_m_by_month"].items():
         if not (-60.0 <= s <= 0.0):
             return fail(f"steric mean {s} m outside [-60, 0] for {m}")
+    if list(r["steric_mean_m_by_month"]) != months:
+        return fail("steric_mean_m_by_month does not cover the bound months "
+                    "in order")
 
-    if bp["region"] == REF_REGION and months == REF_MONTHS:
+    if len(months) >= 3:
+        block = r.get("steric_trend_interval")
+        series_mm = [float(v) * 1000.0
+                     for v in r["steric_mean_m_by_month"].values()]
+        err = check_block(block, series_mm, args.method)
+        if err:
+            return fail(f"steric_trend_interval: {err}")
         t = r.get("steric_trend_mm_yr")
-        if t is None or abs(t - REF_TREND) > REF_TREND_TOL:
+        if not isinstance(t, (int, float)) or not close(t, block["trend"]):
+            return fail(f"steric_trend_mm_yr {t} is not the sanctioned "
+                        f"method's trend {block['trend']}")
+        iv = (f"; trend {block['trend']:+.4f} mm/yr, 95% interval "
+              f"[{block['ci_low']:+.4f}, {block['ci_high']:+.4f}] recomputed"
+              if block["stated"] else
+              f"; trend {block['trend']:+.4f} mm/yr, no interval "
+              f"(recompute agrees: {block['reason']})")
+    else:
+        iv = ""
+
+    anchors = {tuple(REF_MONTHS): REF_TREND,
+               tuple(REF_RECORD_MONTHS): REF_RECORD_TREND}
+    if bp["region"] == REF_REGION and tuple(months) in anchors:
+        ref = anchors[tuple(months)]
+        t = r.get("steric_trend_mm_yr")
+        if t is None or abs(t - ref) > REF_TREND_TOL:
             return fail(f"reference trend {t} mm/yr not within "
                         f"{REF_TREND_TOL} of the sea-level partition's "
-                        f"signed {REF_TREND}")
+                        f"{ref} over these {len(months)} months")
         if r["cells_in_region"] != REF_CELLS:
             return fail(f"cells_in_region {r['cells_in_region']} != {REF_CELLS}")
         print(f"PASS run {r['run_id']}: sanctioned code, contract "
               f"parameters, and the cross-computation anchor holds "
-              f"(steric trend {t:+.4f} mm/yr vs the signed partition's "
-              f"{REF_TREND:+.4f})")
+              f"(steric trend {t:+.4f} mm/yr vs the partition's "
+              f"{ref:+.4f} over {len(months)} months{iv})")
         return 0
 
     if bp["region"] == "global" and "boussinesq_caveat" not in r:
         return fail("global run without the Boussinesq caveat field")
 
     print(f"PASS run {r['run_id']}: sanctioned code, contract parameters, "
-          f"and sanity bounds hold ({bp['region']}, {len(months)} months)")
+          f"and sanity bounds hold ({bp['region']}, {len(months)} months{iv})")
     return 0
 
 

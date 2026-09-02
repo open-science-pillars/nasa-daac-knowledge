@@ -10,14 +10,28 @@ fixes ONE method for turning a monthly series into a trend and a
 two-sided 95 percent confidence interval that accounts for the serial
 correlation every geophysical monthly series carries:
 
-  1. deseasonalize by monthly climatology: the mean of each calendar
-     month is subtracted; allowed only over complete years (n a
-     multiple of 12, at least 24 months) so the climatology is
-     orthogonal to the trend and cannot absorb part of it; otherwise
-     "none", and the receipt says which;
+  1. deseasonalize by monthly climatology, JOINTLY with the trend:
+     the mean of each calendar month is subtracted from the series
+     and from the time index alike, so the slope that follows is the
+     least-squares estimate of trend and climatology fitted together
+     (the Frisch-Waugh-Lovell identity: identical to the thirteen
+     parameter regression). The two are not orthogonal, even over
+     complete years: the calendar-month means of time form a sawtooth
+     carrying 143/(144Y^2-1) of any trend, a quarter of it at two
+     years, and subtracting the climatology from the series alone
+     hands that fraction to the climatology. Complete years (n a
+     multiple of 12, at least 24 months) are required so every
+     calendar month is estimated from the same number of years;
+     otherwise "none", and the receipt says which;
   2. ordinary least squares trend against time in months;
   3. lag-1 autocorrelation r1 of the OLS residuals;
-  4. effective sample size n_eff = n (1 - r1) / (1 + r1);
+  4. effective sample size n_eff = n (1 - r1) / (1 + r1), capped at
+     n: a sample cannot be more effective than itself, and r1
+     estimated from a short residual series is biased negative, so
+     the uncapped formula would hand a short series an interval
+     NARROWER than the independent-samples one (measured: 24 months
+     of white noise estimated n_eff 33; capping lifts coverage there
+     from 78 to 86 percent and from 86 to 95 at twelve months);
   5. residual variance with n_eff - 2 degrees of freedom and the
      standard error of the slope from it;
   6. the two-sided 95 percent interval from Student's t on n_eff - 2
@@ -30,6 +44,13 @@ after deseasonalization, slope, r1, n_eff, standard error, the t
 quantile) is in the receipt, so the attester recomputes the whole
 chain from the series itself rather than sampling it. Changing the
 method is a new computation, not an edit to this file.
+
+Other sanctioned computations that report a trend of their own
+(steric height, the sea-level partition) do not reimplement any of
+this: they call interval_block() from this file and embed its result
+beside their trend, and the block carries this file's hash so their
+attesters can bind the interval to the one sanctioned method and
+recompute it from the series in that receipt.
 
 Input is a JSON file: either a receipt from another sanctioned
 computation with a monthly field named by --field (a mapping of
@@ -142,26 +163,48 @@ def t_quantile(p, df):
     return 0.5 * (lo + hi)
 
 
-def trend_ci(values, deseasonalize):
-    """The whole chain. values: consecutive monthly values (any units).
-    Returns every intermediate; the trend is per month."""
+def fit(values, deseasonalize):
+    """The least-squares half of the chain: the trend itself, stated
+    for any series of at least three months. values: consecutive
+    monthly values (any units). With climatology the calendar-month
+    means come off the series AND the time index, so the slope is the
+    joint estimate of trend and climatology. The slope is per month."""
     y = [float(v) for v in values]
     n = len(y)
-    if n < MIN_MONTHS:
-        raise ValueError(f"need at least {MIN_MONTHS} months, got {n}")
+    if n < 3:
+        raise ValueError(f"need at least 3 months for a slope, got {n}")
+    t = [float(i) for i in range(n)]
     if deseasonalize == "climatology":
         if n % 12 or n < 12 * CLIM_MIN_YEARS:
             raise ValueError("climatology deseasonalization needs complete "
                              f"years and at least {CLIM_MIN_YEARS} of them; "
                              f"got {n} months. Declare --deseasonalize none")
-        clim = [sum(y[k::12]) / (n // 12) for k in range(12)]
+        years = n // 12
+        clim = [sum(y[k::12]) / years for k in range(12)]
         y = [v - clim[i % 12] for i, v in enumerate(y)]
+        tclim = [sum(t[k::12]) / years for k in range(12)]
+        t = [v - tclim[i % 12] for i, v in enumerate(t)]
     elif deseasonalize != "none":
         raise ValueError(f"unknown deseasonalization {deseasonalize!r}")
-    t = [float(i) for i in range(n)]
     slope, intercept, resid, sxx = ols(t, y)
+    return {"n": n, "series_fit": y, "time_fit": t,
+            "slope_per_month": slope, "intercept": intercept,
+            "residuals": resid, "sxx": sxx}
+
+
+def trend_ci(values, deseasonalize):
+    """The whole chain: the fit, then the interval. Returns every
+    intermediate; the trend is per month."""
+    f = fit(values, deseasonalize)
+    n = f["n"]
+    if n < MIN_MONTHS:
+        raise ValueError(f"an interval needs at least {MIN_MONTHS} months, "
+                         f"got {n}")
+    slope, intercept, resid, sxx = (f["slope_per_month"], f["intercept"],
+                                    f["residuals"], f["sxx"])
+    y = f["series_fit"]
     r1 = lag1(resid)
-    n_eff = n * (1.0 - r1) / (1.0 + r1)
+    n_eff = min(float(n), n * (1.0 - r1) / (1.0 + r1))
     dof = n_eff - 2.0
     if dof < MIN_DOF:
         raise ValueError(f"effective sample size {n_eff:.2f} leaves "
@@ -180,6 +223,55 @@ def trend_ci(values, deseasonalize):
         "half_width_per_month": tq * se,
         "naive_se_per_month": naive_se,
     }
+
+
+def default_deseasonalize(n):
+    """The one policy for a series of n months: climatology over
+    complete years when there are at least two of them, otherwise
+    none. Embedded blocks must follow it; the attesters check."""
+    return ("climatology" if n % 12 == 0 and n >= 12 * CLIM_MIN_YEARS
+            else "none")
+
+
+def interval_block(values, units_per_year):
+    """The trend and interval another sanctioned computation embeds
+    as its own. values: the consecutive monthly series in the units
+    the caller reports (scaled already); trend and interval come back
+    per year in units_per_year. The trend is this file's fit (joint
+    with the climatology over complete years), so no computation in
+    the bundle states a trend by any other arithmetic. When the chain
+    refuses an interval (fewer than six months, or under one degree
+    of freedom) the block says so with stated false and the reason,
+    and no interval is invented; the trend stays if a slope exists."""
+    block = {
+        "method": "trend-ci",
+        "method_code_sha256":
+            hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "confidence": CONFIDENCE,
+        "units": units_per_year,
+        "n": len(values),
+        "deseasonalize": default_deseasonalize(len(values)),
+    }
+    try:
+        block["trend"] = (fit(values, block["deseasonalize"])["slope_per_month"]
+                          * 12.0)
+        c = trend_ci(values, block["deseasonalize"])
+    except ValueError as e:
+        block.update({"stated": False, "reason": str(e)})
+        return block
+    trend = c["slope_per_month"] * 12.0
+    half = c["half_width_per_month"] * 12.0
+    naive_half = (t_quantile(0.5 + CONFIDENCE / 2.0, c["n"] - 2)
+                  * c["naive_se_per_month"] * 12.0)
+    block.update({
+        "stated": True,
+        "trend": trend, "ci_low": trend - half, "ci_high": trend + half,
+        "half_width": half, "naive_half_width": naive_half,
+        "r1": c["r1"], "n_eff": c["n_eff"], "dof": c["dof"],
+        "se": c["se_per_month"] * 12.0, "t_quantile": c["t_quantile"],
+        "significant_at_confidence": bool((trend - half) * (trend + half) > 0),
+    })
+    return block
 
 
 # ---- executor plumbing
@@ -263,10 +355,12 @@ def main() -> int:
             "deseasonalize": args.deseasonalize,
             "confidence": CONFIDENCE, "time_unit": "month",
             "trend_per": "year", "months_per_year": per_year,
-            "method": "OLS slope; lag-1 autocorrelation of residuals; "
-                      "n_eff = n(1-r1)/(1+r1); residual variance on "
-                      "n_eff-2 dof; two-sided interval from Student's t "
-                      "on n_eff-2 dof (Santer et al. 2008)",
+            "method": "OLS slope, jointly with the monthly climatology "
+                      "when one is removed (calendar-month means off the "
+                      "series and the time index); lag-1 autocorrelation "
+                      "of residuals; n_eff = n(1-r1)/(1+r1) capped at n; residual "
+                      "variance on n_eff-2 dof; two-sided interval from "
+                      "Student's t on n_eff-2 dof (Santer et al. 2008)",
         },
         "series": {"dates": dates, "values": values,
                    "units": args.value_units},
