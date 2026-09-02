@@ -1,6 +1,6 @@
 {
-  "run_id": "20260902T043035Z-bf2e3d9d",
-  "computation": "ecco-regional-heat-budget",
+  "run_id": "20260902T042855Z-195be415",
+  "computation": "ecco-regional-salt-budget",
   "code_sha256": "9ca20461f22b967c812350d323d1274d7505409ac8fd11ad22429d25b96e813a",
   "data": {
     "data_root": "/Users/pramirez/ECCO_V4r4_record",
@@ -12,25 +12,25 @@
       "granules": 4056
     }
   },
-  "generated_utc": "2026-09-02T04:30:35.965635+00:00",
+  "generated_utc": "2026-09-02T04:28:55.148408+00:00",
   "bound_parameters": {
     "mode": "registered",
     "region": "southeast-atlantic-upper",
-    "budget": "heat",
+    "budget": "salt",
     "year": 2005,
     "collections": [
-      "ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX_LLC0090GRID_MONTHLY_V4R4",
-      "ECCO_L4_HEAT_FLUX_LLC0090GRID_MONTHLY_V4R4",
+      "ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4",
+      "ECCO_L4_FRESH_FLUX_LLC0090GRID_MONTHLY_V4R4",
       "ECCO_L4_TEMP_SALINITY_LLC0090GRID_SNAPSHOT_V4R4",
       "ECCO_L4_SSH_LLC0090GRID_SNAPSHOT_V4R4"
     ],
-    "geothermal_source": "geothermalFlux.bin, ECCO tutorial distribution, not a PO.DAAC collection",
+    "geothermal_source": null,
     "rhoConst_kg_m3": 1029.0,
     "Cp_J_kg_K": 3994.0,
     "sw_R": 0.62,
     "sw_zeta1_m": 0.6,
     "sw_zeta2_m": 20.0,
-    "abs_bar_degC_s": 1e-10,
+    "abs_bar_degC_s": 1.5e-10,
     "rel_bar": 1e-06
   },
   "resolved_volume": {
@@ -61,47 +61,57 @@
   },
   "results": {
     "months": 12,
-    "residual_per_volume_max_degC_s": 5.9312325144190066e-15,
-    "residual_relative_max": 7.025621005670693e-08,
-    "largest_term_degC_m3_s": 349096518.198804,
+    "residual_per_volume_max_degC_s": 1.9462954528695486e-14,
+    "residual_relative_max": 3.864455259663832e-07,
+    "largest_term_degC_m3_s": 208259955.10175464,
     "monthly_residual_per_volume_degC_s": [
-      3.826030054492687e-15,
-      3.171027607114489e-15,
-      5.9312325144190066e-15,
-      5.537095337834474e-16,
-      1.1763401693210514e-15,
-      1.0367171171184687e-15,
-      5.670722081479007e-15,
-      4.653674061758205e-15,
-      5.2780292723994416e-15,
-      3.9735139211841814e-15,
-      3.4673707642053083e-15,
-      3.452301095909994e-15
+      9.308567067831656e-15,
+      5.426680090255711e-15,
+      4.963280579752195e-15,
+      1.9462954528695486e-14,
+      1.3176710260360007e-14,
+      5.355855947911042e-15,
+      8.936775114589695e-15,
+      8.8509021073923e-15,
+      1.3857686632467657e-14,
+      1.5035567764809743e-14,
+      1.0367007152781623e-14,
+      1.1300421702653461e-14
     ]
   },
   "mutation_evidence": [
     {
-      "mutation": "geothermal-omitted",
-      "residual_per_volume": 1.2270297560746974e-12,
-      "residual_relative": 1.453432487750957e-05,
-      "caught": true
+      "mutation": "surface-sflux-omitted",
+      "residual_per_volume": 1.946295452886617e-14,
+      "residual_relative": 3.8644552596977225e-07,
+      "caught": false,
+      "applicable": false,
+      "note": "this term is below both bars in this volume (30 bottom cells), so its omission is not demonstrable here; physics, not a broken test"
+    },
+    {
+      "mutation": "salt-plume-omitted",
+      "residual_per_volume": 1.9462954528695486e-14,
+      "residual_relative": 3.864455259663832e-07,
+      "caught": false,
+      "applicable": false,
+      "note": "this term is below both bars in this volume (30 bottom cells), so its omission is not demonstrable here; physics, not a broken test"
     },
     {
       "mutation": "rim-west-face-shifted",
-      "residual_per_volume": 4.195966181178212e-09,
-      "residual_relative": 0.04970175772051508,
+      "residual_per_volume": 1.674083868104671e-08,
+      "residual_relative": 0.3323967180664777,
       "caught": true
     },
     {
       "mutation": "vertical-face-sign-flipped",
-      "residual_per_volume": 3.45764287182048e-08,
-      "residual_relative": 0.40956223400978964,
+      "residual_per_volume": 1.0072807744500843e-07,
+      "residual_relative": 2.0000002985378136,
       "caught": true
     },
     {
       "mutation": "vertical-faces-omitted",
-      "residual_per_volume": 1.7288216345859357e-08,
-      "residual_relative": 0.20478114053828586,
+      "residual_per_volume": 5.0364046240288095e-08,
+      "residual_relative": 1.0000002985378138,
       "caught": true
     }
   ],

@@ -1,7 +1,7 @@
 {
- "verified_utc": "2026-09-01T22:14:43.129298+00:00",
+ "verified_utc": "2026-09-02T04:27:14.258145+00:00",
  "manifest": "podaac/references/retrieval/science-record-manifest.json",
- "manifest_sha256": "1dd31973416ec47744afac3da238fb22357336119c05730e31f047d38f98cd6b",
+ "manifest_sha256": "d67caebf699864ea358c37813d75c503a302832bc0380ee69a89760d69f9f61f",
  "record": "ecco-v4r4-science-record",
  "data_root": "/Users/pramirez/ECCO_V4r4_record",
  "tool_sha256": "116ad0d57b358e3846275f7f6b6a5a938cdde185b93969009f89df198476c4d8",
@@ -70,6 +70,22 @@
    "checksum_planned": 312,
    "checksum_ok": 312
   },
+  "ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4": {
+   "declared": 312,
+   "present": 312,
+   "size_ok": 312,
+   "size_max_rel_dev": 3.0496614259723955e-06,
+   "checksum_planned": 312,
+   "checksum_ok": 312
+  },
+  "ECCO_L4_FRESH_FLUX_LLC0090GRID_MONTHLY_V4R4": {
+   "declared": 312,
+   "present": 312,
+   "size_ok": 312,
+   "size_max_rel_dev": 3.0243723099683607e-05,
+   "checksum_planned": 312,
+   "checksum_ok": 312
+  },
   "ECCO_L4_STRESS_LLC0090GRID_MONTHLY_V4R4": {
    "declared": 312,
    "present": 312,
@@ -117,8 +133,8 @@
    "SHA-256",
    "SHA-512"
   ],
-  "hashed": 3432,
-  "ok": 3432
+  "hashed": 4056,
+  "ok": 4056
  },
  "undeclared_files": [],
  "coverage": {
@@ -178,6 +194,20 @@
    "months": 312,
    "missing_inside_span": []
   },
+  "ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4": {
+   "granules": 312,
+   "first": "1992-01",
+   "last": "2017-12",
+   "months": 312,
+   "missing_inside_span": []
+  },
+  "ECCO_L4_FRESH_FLUX_LLC0090GRID_MONTHLY_V4R4": {
+   "granules": 312,
+   "first": "1992-01",
+   "last": "2017-12",
+   "months": 312,
+   "missing_inside_span": []
+  },
   "ECCO_L4_STRESS_LLC0090GRID_MONTHLY_V4R4": {
    "granules": 312,
    "first": "1992-01",
@@ -215,11 +245,9 @@
     "months": 310
    },
    "salt": {
-    "months": 0,
-    "absent_collections": [
-     "ECCO_L4_OCEAN_3D_SALINITY_FLUX_LLC0090GRID_MONTHLY_V4R4",
-     "ECCO_L4_FRESH_FLUX_LLC0090GRID_MONTHLY_V4R4"
-    ]
+    "first": "1992-02",
+    "last": "2017-11",
+    "months": 310
    },
    "volume": {
     "first": "1992-02",
