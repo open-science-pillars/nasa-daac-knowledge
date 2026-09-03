@@ -4,6 +4,11 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-03 · index.md findings section refined: each entry carries
+  the finding's ladder position and confrontation kind so consumers can
+  voice both; tools/run_checks.sh now runs check_okf_v02 with
+  --findings for this bundle, so the finding checks are part of the
+  gate from here on. Claude Code.
 - 2026-09-02 · findings/us-northeast-sea-level-rise.md ADDED, status
   draft, the bundle's first finding: the regional sea level partition
   over the box 35 to 45N, 75 to 65W (total 5.25 mm/yr [4.06, 6.43],

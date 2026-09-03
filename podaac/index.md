@@ -112,9 +112,13 @@ concepts (SPEC §5.7).
 A finding is a claim bound to receipts: one question, one answer with
 its interval, the computations and the observation that support it,
 its validity verdict, and what would overturn it. It is the unit a
-reader cites, and it stays draft until a steward signs it.
+reader cites, and it stays draft until a steward signs it. Each entry
+carries the finding's position on its ladder and whether it is
+confronted, because a consumer (a briefing, a skill) voices both and
+quotes the finding's numbers through it rather than restating them.
+The gate runs the finding checks (`check_okf_v02.py podaac --findings`).
 
-- [Sea level rise off the US northeast coast in ECCO v4r4, partitioned and confronted](findings/us-northeast-sea-level-rise.md), status: draft
+- [Sea level rise off the US northeast coast in ECCO v4r4, partitioned and confronted](findings/us-northeast-sea-level-rise.md), status: draft (unsigned), verdict UNADJUDICATED, confronted against NASA-SSH V1.1
 
 ## connectors
 
