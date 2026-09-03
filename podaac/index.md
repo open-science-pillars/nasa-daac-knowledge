@@ -16,6 +16,7 @@ concepts (SPEC §5.7).
 - [GRACE/GRACE-FO JPL mascon solutions](datasets/grace-fo-mascons.md), status: stable
 - [GHRSST MUR Level 4 SST](datasets/ghrsst-mur.md), status: stable
 - [RAPID-MOCHA transports at 26.5N (observational reference)](datasets/rapid-mocha.md), status: stable
+- [NASA-SSH simple gridded sea surface height anomaly (observational reference)](datasets/nasa-ssh.md), status: draft
 
 ## gotchas
 
@@ -51,7 +52,7 @@ concepts (SPEC §5.7).
 - [Wind-stress curl and Ekman pumping on the native grid](recipes/ecco-wind-stress-curl.md), status: stable
 - [A trend with an honest interval from any ECCO monthly series](recipes/ecco-trend-ci.md), status: draft
 - [ECCO overturning at 26.5N confronted with the RAPID array](recipes/ecco-rapid-amoc-26n.md), status: stable (the first confrontation pair: the other side is an observation at a fixed version)
-- Sea level from altimetry against ECCO SSH: the second confrontation pair, queued and not built; no recipe, computation or attester exists for it yet and nothing states a score
+- ECCO regional sea level against NASA-SSH altimetry: the second confrontation pair, built as a [computation](computations/ecco-ssh-vs-altimetry.md) with no recipe of its own (the partition recipe and the trend recipe together are the method); the scores are in its receipt
 
 ## tutorial companion (every claim footnotes its tutorial page)
 
@@ -98,12 +99,26 @@ concepts (SPEC §5.7).
 - [Linear trend with an honest interval from a monthly series (attested)](computations/ecco-trend-ci.md), status: draft
 - [Atlantic overturning at 26.5N from ECCO v4r4 (attested)](computations/ecco-amoc-26n.md), status: stable
 - [ECCO overturning against RAPID at 26.5N (attested)](computations/ecco-rapid-amoc-confrontation.md), status: stable
+- [ECCO regional sea level against NASA-SSH altimetry (attested)](computations/ecco-ssh-vs-altimetry.md), status: draft
 
 ## validity-domains
 
 - [Exclusion: budget claims on interpolated ECCO grids](validity-domains/no-budgets-on-interpolated.md), exclusion, status: draft
 - [ECCO v4r4 native monthly fields support large-scale statistics over 1992-2017](validity-domains/ecco-large-scale-statistics.md), supporting, status: draft
 - [MUR L4 SST supports basin-scale mean-state claims outside the high Arctic](validity-domains/mur-basin-mean-state.md), supporting, status: draft
+
+## findings (SPEC §5.10, candidate)
+
+A finding is a claim bound to receipts: one question, one answer with
+its interval, the computations and the observation that support it,
+its validity verdict, and what would overturn it. It is the unit a
+reader cites, and it stays draft until a steward signs it. Each entry
+carries the finding's position on its ladder and whether it is
+confronted, because a consumer (a briefing, a skill) voices both and
+quotes the finding's numbers through it rather than restating them.
+The gate runs the finding checks (`check_okf_v02.py podaac --findings`).
+
+- [Sea level rise off the US northeast coast in ECCO v4r4, partitioned and confronted](findings/us-northeast-sea-level-rise.md), status: draft (unsigned), verdict UNADJUDICATED, confronted against NASA-SSH V1.1
 
 ## connectors
 

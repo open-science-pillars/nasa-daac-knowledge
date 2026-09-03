@@ -4,6 +4,47 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-03 · index.md findings section refined: each entry carries
+  the finding's ladder position and confrontation kind so consumers can
+  voice both; tools/run_checks.sh now runs check_okf_v02 with
+  --findings for this bundle, so the finding checks are part of the
+  gate from here on. Claude Code.
+- 2026-09-02 · findings/us-northeast-sea-level-rise.md ADDED, status
+  draft, the bundle's first finding: the regional sea level partition
+  over the box 35 to 45N, 75 to 65W (total 5.25 mm/yr [4.06, 6.43],
+  manometric 2.45 [2.17, 2.74], steric 2.80 [1.51, 4.09], 95 percent,
+  from references/retrieval/exhibit-sea-level-record.json), verdict
+  UNADJUDICATED (references/retrieval/fitness-sea-level-record.json,
+  the governing domain is unsigned), confronted against NASA-SSH V1.1
+  with independence stated as low (the estimate was fitted to these
+  missions). Every number in it resolves to a receipt leaf under the
+  findings checker. Signature is the steward's. Claude Code.
+- 2026-09-02 · computations/ecco-ssh-vs-altimetry.md ADDED, status
+  draft, the second confrontation pair: ECCO box-mean sea level
+  against the NASA-SSH V1.1 simple grid over 1993-01 to 2017-12 (300
+  months). Executor references/computations/ecco_ssh_vs_altimetry.py
+  (reads the partition's region registry from source without importing
+  it; records the empty grids in the box), attester
+  references/attesters/altimetry_confrontation_check.py (re-hashes the
+  tree, re-derives the model side from the partition receipt,
+  recomputes every score; PASS on the reference receipt, FAIL on five
+  doctored variants). Scores in
+  references/retrieval/exhibit-ssh-vs-altimetry-record.json: r 0.91
+  [0.84, 0.95], RMSD 29.3 mm, trend difference +1.99 mm/yr [1.39,
+  2.59], ECCO 5.18 against altimetry 3.19. Eight globally empty grids
+  thin four months to two or three grids, so the reference run binds
+  min grids two. The index recipe line that said "queued and not
+  built" now points at the computation. Claude Code.
+- 2026-09-02 · datasets/nasa-ssh.md ADDED, status draft, the NASA-SSH
+  V1.1 simple gridded SSHA record as an observational reference (DOI
+  10.5067/NSREF-SG0V11, 1315 weekly grids 1992-10-26 to 2018-01-01,
+  CC BY 4.0), with docs/nasa-ssh-record.md (tree, manifest, verification,
+  the eight empty grids, terms), references/retrieval/nasa-ssh-manifest.json
+  and nasa-ssh-verification.json. tools/obs_record_fetch.py ADDED
+  (CMR-listed granule fetch with MD5 sidecar verification, netrc for
+  retrieval only) and tools/obs_record_manifest.py generalized (version
+  from product_version, DOI from id, scalar time; RAPID manifest
+  regression identical). Claude Code.
 - 2026-09-02 · steward review passed: recipes/ecco-rapid-amoc-26n.md,
   conventions/consistency-versus-confrontation.md,
   computations/ecco-amoc-26n.md and

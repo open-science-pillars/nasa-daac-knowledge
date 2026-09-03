@@ -5,13 +5,16 @@
 """Manifest and verify an observational data tree, and stamp it.
 
 The science record's manifest vouches for ECCO granules with the
-archive's own checksums. An observational record has no CMR behind
-it: the programme that made it serves the files, revises them in
-place, and identifies the release inside the files (a version and a
+archive's own checksums. An observational record may have no CMR
+behind it: the programme that made it serves the files, revises them
+in place, and identifies the release inside the files (a version and a
 DOI in the netCDF global attributes). So the tree is hashed locally at
 retrieval, the identity is READ FROM THE FILES rather than declared,
 and the fetch record the retriever left in the tree (SOURCE.json:
-URLs, server timestamps, retrieval time) is carried into the manifest.
+URLs, server timestamps or archive checksums, retrieval time) is
+carried into the manifest. An archived record fetched through CMR by
+obs_record_fetch.py is treated the same way: the archive's checksums
+are verified at fetch, and the identity is still read from the files.
 
   build   --data-root TREE --out MANIFEST [--version V --doi D]
           hashes every file (SHA-256), reads version and DOI from every
@@ -48,15 +51,22 @@ def sha256(p: Path) -> str:
 def nc_identity(p: Path) -> dict:
     """Version and DOI as the file states them, plus its time axis."""
     import netCDF4 as nc
+    import numpy as np
     ds = nc.Dataset(p)
     attrs = {a.lower(): str(getattr(ds, a)).strip() for a in ds.ncattrs()}
-    version = attrs.get("version") or attrs.get("dataset_version")
+    # Producers name these differently: RAPID writes version and doi,
+    # PO.DAAC's NASA-SSH grids write product_version and put the DOI in
+    # id. Read every name that means the same thing, in that order.
+    version = (attrs.get("version") or attrs.get("dataset_version")
+               or attrs.get("product_version"))
     doi = attrs.get("doi", "")
+    if not doi and re.match(r"^(doi:)?\s*10\.\d{4,}/", attrs.get("id", ""), re.I):
+        doi = attrs["id"]
     doi = re.sub(r"^doi:\s*", "", doi, flags=re.I).strip()
     out = {"version": version, "doi": doi}
     if "time" in ds.variables:
         t = ds.variables["time"]
-        vals = t[:]
+        vals = np.atleast_1d(t[:])        # a scalar time is one epoch
         d = nc.num2date(vals[[0, -1]], t.units,
                         getattr(t, "calendar", "standard"))
         out["time"] = {"n": int(len(vals)), "first": str(d[0]),
