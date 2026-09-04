@@ -21,8 +21,10 @@ version 4 release 4 state estimate: the MITgcm on the llc90 grid
 of observations by adjusting controls (initial conditions, atmospheric
 forcing, mixing parameters), never by inserting data increments. Period
 1992 through 2017, monthly and daily means plus daily snapshots.
-Product family and archive: PO.DAAC, ShortNames per this plugin's
-variable catalog (51 llc90 collections verified against CMR
+Product family and archive: PO.DAAC, ShortNames per the fields
+concepts ([fields index](../fields/ecco-v4r4/index.md), one concept per
+collection family, each carrying the CMR sweep that confirmed its
+ShortNames; 51 llc90 collections first verified against CMR
 2026-07-04); project page https://ecco-group.org/products-ECCO-V4r4.htm.
 
 **Structure.** Native output dims `(time, tile, k, j, i)` with 2D
@@ -30,7 +32,8 @@ curvilinear coordinates; C-grid staggering; partial cells (hFac).
 Tracer flavors: `THETA` is potential temperature, `SALT` is practical
 salinity (PSS-78). Flux variables with a MASS suffix (or documented as
 cell-integrated) already carry hFac; applying the partial-cell factor a
-second time double-counts it, a standard budget bug.
+second time double-counts it, a standard budget bug
+([ecco-velmass-hfac-double-count](../gotchas/ecco-velmass-hfac-double-count.md)).
 Convenience 0.5 degree interpolated collections exist (`05DEG` in the
 ShortName) for display and comparison; conservation properties live
 only on the native grid (see
@@ -39,10 +42,32 @@ only on the native grid (see
 **Access.** Time-ranged collections load with ecco_access using EXACT
 ShortNames (bare variable-name queries open an interactive picker,
 which hangs scripted use; observed 2026-07-04); static collections
-(geometry, mixing coefficients) via earthaccess, since ecco_access
-synthesizes nonexistent dated filenames for them (observed 2026-07-04).
+(geometry, mixing coefficients) load through earthaccess instead
+([ecco-access-static-collections](../gotchas/ecco-access-static-collections.md)).
 Earthdata Login required. A 2010 native THETA year is about 209 MB and
 loaded in seconds in verification.
+
+## Citation
+
+PO.DAAC prescribes one citation form for every V4r4 collection (the
+Citation block on each dataset landing page, for example the
+[temperature and salinity landing page](https://podaac.jpl.nasa.gov/dataset/ECCO_L4_TEMP_SALINITY_LLC0090GRID_MONTHLY_V4R4)),
+with the collection title, its DOI, and the access date filled per
+collection:
+
+> ECCO Consortium, Fukumori, I., Wang, O., Fenty, I., Forget, G.,
+> Heimbach, P., & Ponte, R. M.. 2021. [Collection title] (Version 4
+> Release 4). Ver. V4r4. PO.DAAC, CA, USA. Dataset accessed
+> [YYYY-MM-DD] at https://doi.org/10.5067/[collection DOI suffix]
+
+The creator list, the 2021 year, and the PO.DAAC publisher are the
+same for all 90 collections; CMR carries the creator list and the
+publisher in each collection's citation record, with a release date of
+2021-04-19. Cite every collection an analysis touched, not the product
+as a whole. The per-collection DOIs live with the fields
+concepts and in `tools/ecco_v4r4_dois.yaml`, and `tools/ecco_cite.py
+cite` renders this form for a list of ShortNames (its selftest checks
+the creator list, year, and publisher above against its template).
 
 ## Uncertainty
 
@@ -71,7 +96,9 @@ provides no formal uncertainty for it.
 - [ecco-geothermal-flux](../gotchas/ecco-geothermal-flux.md)
 - [ecco-release-mixing](../gotchas/ecco-release-mixing.md): SSH and OBP
   have corrected `V4R4B` collections; mixing releases conflates baseline
-  corrections with signal (variable catalog, Variants section).
+  corrections with signal (Variants sections of the
+  [SSH](../fields/ecco-v4r4/ssh.md) and [OBP](../fields/ecco-v4r4/obp.md)
+  fields concepts).
 - [ecco-mht-basin-scope](../gotchas/ecco-mht-basin-scope.md): a
   meridional heat transport with no basin mask is the full latitude
   circle, not the Atlantic section RAPID observes.
@@ -79,3 +106,10 @@ provides no formal uncertainty for it.
   monthly series are serially correlated; a trend without an
   effective-sample-size interval overstates certainty, and the
   bundle's own twelve-month steric trend is the example.
+- [ecco-velmass-hfac-double-count](../gotchas/ecco-velmass-hfac-double-count.md):
+  the MASS-suffixed velocities already carry hFac; a transport that
+  applies it again is biased low.
+- [ecco-access-static-collections](../gotchas/ecco-access-static-collections.md):
+  ecco_access 0.3.1 guesses a dated filename for the static
+  collections; fetch geometry and mixing coefficients through CMR with
+  earthaccess.

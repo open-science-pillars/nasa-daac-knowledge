@@ -31,7 +31,7 @@ sources:
     title: "The Monte Carlo coverage report the calibration writes: fifteen configurations, the asserted band, and the measured collapse of the naive interval"
   - id: steric-height
     resource: ecco-steric-height.md
-    title: "The attested steric height whose reference series is this computation's reference run, and whose receipt now embeds this method's interval block beside its trend"
+    title: "The attested steric height whose reference series is this computation's reference run, whose receipt embeds this method's interval block beside its trend, and whose record run owns the full-record trend and interval this file cites rather than quotes"
   - id: sea-level-partition
     resource: ecco-regional-sea-level.md
     title: "The attested sea-level partition whose three trends each embed this method's interval block"
@@ -117,13 +117,16 @@ in that receipt.[^steric-height][^sea-level-partition] One method,
 one hash, one recompute behind every trend the bundle reports, and
 the cross-computation anchor those two share stays on the central
 value while the interval travels beside it. Over the full record the
-steric series gives +2.7999 mm per year, interval [+1.5103, +4.0895],
-r1 +0.893, 17.6 effective months of 312, from both computations to
-every digit. A raw least-squares fit through the same 312 months reads
-+2.9932: the seasonal projection the joint fit removes. Removing the
-climatology first and fitting second, as an earlier form of this
-method did, reads +2.7958: the 143/(144Y^2 - 1) attenuation at 26
-years, small here and a quarter of the trend at two.[^joint-gotcha]
+steric series gives the trend and interval block the steric height
+computation's record receipt carries, and the partition's record
+receipt carries the same block to every digit; those two receipts own
+the record numbers and this file states none of them.[^steric-height]
+A raw least-squares fit through the same 312 months reads +2.9932 mm
+per year, above the joint value by the seasonal projection the joint
+fit removes. Removing the climatology first and fitting second, as an
+earlier form of this method did, reads +2.7958: the 143/(144Y^2 - 1)
+attenuation at 26 years, small here and a quarter of the trend at
+two.[^joint-gotcha]
 
 **Calibration with teeth.** A confidence interval is a promise about
 coverage, and the promise is tested on the sanctioned code itself:
@@ -189,7 +192,7 @@ docs/science-record.md.
 
 [^santer-2008]: Santer et al. 2008, doi:10.1002/joc.1756, the effective-sample-size treatment
 [^calibration-report]: references/calibration/trend-ci-coverage.json, the seeded Monte Carlo report
-[^steric-height]: computations/ecco-steric-height.md, the signed reference trend and its receipt
+[^steric-height]: computations/ecco-steric-height.md, the signed reference trend, its receipt, and the record run that owns the full-record numbers
 [^naked-trend]: gotchas/ecco-trend-without-effective-n.md, the trap this closes
 [^sea-level-partition]: computations/ecco-regional-sea-level.md, three trends, three embedded blocks
 [^joint-gotcha]: gotchas/ecco-trend-deseasonalize-jointly.md, the sawtooth in the calendar-month means of time

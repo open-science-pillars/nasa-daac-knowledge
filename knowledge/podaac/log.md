@@ -4,6 +4,101 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-04 · CANONICAL CONTENT DRAFTS: this bundle takes over the
+  ECCO knowledge that lived only in the ocean-science plugin, and
+  every provider concept that cited a plugin file now cites a durable
+  authority instead (the rows below; the W9 count of the checker falls
+  from 26 to 4, the four survivors being pinned commit URLs to files
+  that stay with the plugin by design). Nothing signed here: 27 stable
+  concepts changed text (26 of this bundle and one moved-in gotcha) and
+  await a steward re-sign; the four byte-identical moves keep their
+  signatures (build assistant)
+- 2026-09-04 · conventions/ecco-budget-formulation.md (draft): the
+  constants, term definitions, sign conventions and discretization
+  shared by the heat, salt and volume budgets, sourced to the ECCO
+  tutorial notebooks and the sanctioned heat budget code; tolerances
+  and residuals stay with the computations and recipes (build
+  assistant)
+- 2026-09-04 · seven concepts re-sourced from the plugin's formulation
+  reference to the convention (computations ecco-heat-budget and
+  ecco-ocean-heat-content, gotchas ecco-geothermal-flux and
+  ecco-native-vs-regridded, recipes ecco-heat-budget, ecco-salt-budget,
+  ecco-volume-budget); the heat baseline paragraph cites the in-bundle
+  attester; re-sign owed on all seven (build assistant)
+- 2026-09-04 · gotchas/ecco-ssh-ib-variants.md moved into this bundle
+  byte-identical from ocean-science at 14a4eea, signature carried as it
+  stands (build assistant)
+- 2026-09-04 · gotchas/ecco-boussinesq-global-steric.md moved into this
+  bundle byte-identical from ocean-science at 14a4eea, signature
+  carried as it stands (build assistant)
+- 2026-09-04 · gotchas/ecco-native-density-eos.md moved into this
+  bundle byte-identical from ocean-science at 14a4eea, signature
+  carried as it stands (build assistant)
+- 2026-09-04 · conventions/sea-level-budget-closure.md moved into this
+  bundle byte-identical from ocean-science at 14a4eea, signature
+  carried as it stands (build assistant)
+- 2026-09-04 · gotchas/ecco-mxldepth-criterion.md moved into this
+  bundle from ocean-science at 14a4eea; its mld-criteria link now pins
+  that commit because the MLD criteria convention stays with the
+  plugin; re-sign owed (build assistant)
+- 2026-09-04 · gotchas/ecco-access-static-collections.md (draft): the
+  ecco_access static-collection quirk gets its own concept, sourced to
+  the observation record, the ecco-access 0.3.1 release and the
+  tutorial access and grid pages; datasets/ecco-v4r4.md and
+  fields/ecco-v4r4/geometry.md link it instead of restating it (build
+  assistant)
+- 2026-09-04 · datasets/ecco-v4r4.md: a Citation section records the
+  PO.DAAC prescribed form and ecco_cite --selftest checks its template
+  against it; ShortName authority is now the fields index; the hFac
+  double-count and static-collection gotchas linked from Structure,
+  Access and Known issues; re-sign owed (build assistant)
+- 2026-09-04 · fields/ecco-v4r4/geometry.md: the plugin variable
+  catalog source retired; the granule name cited to the CMR granule
+  record, the merge and coordinate facts to the tutorial pages, the
+  access quirk to its gotcha; re-sign owed (build assistant)
+- 2026-09-04 · nine ECCO fields concepts (fresh-flux, heat-flux, obp,
+  ocean-vel, salinity-flux-3d, ssh, temp-salinity, temperature-flux-3d,
+  volume-flux-3d) re-sourced: the plugin variable catalog gives way to
+  the family manifest (tools/ecco_v4r4_families.yaml) for the
+  granule-verified enumerations, the CMR sweep for ShortName facts, and
+  the ECCO tutorial notebooks for the z* scale factor, the geothermal
+  ancillary input and the hFac weighting in the MASS velocities;
+  temp-salinity dims re-verified against the manifested 2010 fixtures;
+  re-sign owed on all nine (build assistant)
+- 2026-09-04 · gotchas/ecco-release-mixing.md and recipes/ecco-mht-26n.md
+  cite the in-bundle fields concepts instead of the plugin catalog;
+  gotchas/ecco-mht-basin-scope.md drops an uncited catalog source;
+  re-sign owed on all three (build assistant)
+- 2026-09-04 · computations/ecco-section-transport.md and
+  recipes/ecco-section-transport.md pin their ocean-science citations
+  (the independent transport_analysis.py implementation and the
+  meridional-transport skill) to commit 14a4eea; the computation also
+  cites the in-bundle recipe for the 1.098 PW anchor; re-sign owed
+  (build assistant)
+- 2026-09-04 · datasets/swot-karin.md gains a Variants section: ten
+  KaRIn L2 LR SSH collections and 22 nadir altimeter collections
+  verified by a public CMR sweep with concept ids and DOIs, plus a
+  per-family granule holdings probe (Version C from cycle 001 on
+  2023-07-26, Version D from cycle 473 on 2023-03-27, the cal/val phase
+  only in D); re-sign owed (build assistant)
+- 2026-09-04 · gotchas/swot-calval-orbit-phases.md re-sourced: the
+  orbit timeline and cycle ranges cite the Version D release note
+  (Table 2, section 3), the probe evidence cites the dataset concept;
+  re-probed 2026-09-04; re-sign owed (build assistant)
+- 2026-09-04 · gotchas/swot-crossover-unapplied.md re-sourced: the
+  unapplied height_cor_xover cites the L2_LR_SSH product description
+  (D-56407 Rev C, 4.1.8) and the Version D release note known issues;
+  the unused plugin citation removed; re-sign owed (build assistant)
+- 2026-09-04 · the trend-ci computation, its recipe and the two trend
+  gotchas cite computations/ecco-steric-height.md for the full-record
+  steric trend and interval instead of quoting the digits; the steric
+  and partition receipts own the record, the trend-ci family states
+  only its own 2010 reference run (build assistant)
+- 2026-09-04 · computations/ecco-regional-sea-level.md sources the sea
+  level budget closure convention and the SSH inverse-barometer gotcha
+  from this bundle (conventions/sea-level-budget-closure.md,
+  gotchas/ecco-ssh-ib-variants.md) instead of the plugin (build
+  assistant)
 - 2026-09-04 · connectors/earthdata-mcp.md (draft): the local-smoke source
   now cites tools/mcp_smoke.py by path, the tool having landed in this
   repository; the DOI mapping gains its check, ecco_cite --selftest

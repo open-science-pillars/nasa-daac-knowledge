@@ -17,10 +17,12 @@ generated: { by: claude-code/fable-5, at: 2026-08-30T19:20:00Z }
 verified: { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
 status: stable
 sources:
-  - id: github-budget-formulation
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/budget-formulation.md
-    title: "OSP ocean-science reference: ECCO v4r4 heat budget formulation (native grid)"
-    author: human:PaulMRamirez
+  - id: budget-formulation
+    resource: ../conventions/ecco-budget-formulation.md
+    title: "Bundle convention: ECCO v4r4 budget formulation on the native grid"
+  - id: attester
+    resource: ../references/attesters/budget_residual.py
+    title: "The deterministic attester: the pass bar it enforces, recorded with its 2x headroom over the measured max"
   - id: readthedocs-ecco-v4-heat-budget-closure
     resource: https://ecco-v4-python-tutorial.readthedocs.io/ECCO_v4_Heat_budget_closure.html
     title: "ECCO v4 Python tutorial: heat budget closure notebook"
@@ -31,8 +33,8 @@ sources:
 
 The sanctioned computation lives at the `computation:` path (file form,
 spec 10.3): the four-term budget, tendency minus (advection + diffusion +
-forcing), exactly as the budget-formulation reference quotes from the
-ECCO v4 tutorial,[^github-budget-formulation][^readthedocs-ecco-v4-heat-budget-closure]
+forcing), exactly as the [budget formulation convention](../conventions/ecco-budget-formulation.md)
+records from the ECCO v4 tutorial,[^budget-formulation][^readthedocs-ecco-v4-heat-budget-closure]
 extracted 2026-08-30 from the ocean-science golden notebook
 (`verification/ocean_budget.py`) with parameter binding and receipt
 emission added and no numerical change. The narrative recipe
@@ -51,7 +53,7 @@ only declared parameters bound:
 Baseline measurement (2026-07-04, year 2010, region tile1-interior,
 3,341,772 cell-months): max 4.95e-11, p99.9 7.3e-12, median 5.7e-14
 degC/s; the tolerance carries 2x headroom over the measured
-max.[^github-budget-formulation]
+max.[^attester]
 
 ## Parameters
 
@@ -71,7 +73,7 @@ the sanctioned computation file, `bound_parameters` to match the declared
 set above, and both residuals within the pass bar. A rewritten
 computation, an undeclared parameter, or a formulation error (a dropped
 geothermal term drives deep-cell residuals orders above
-tolerance[^github-budget-formulation]) fails mechanically.
+tolerance[^budget-formulation]) fails mechanically.
 
 **Data provenance.** The receipt also carries a `data` block: the data
 root and the `RECORD.json` stamp the verify tool leaves in a tree it has
@@ -81,5 +83,6 @@ whose `data.record` is not that stamp, so nothing is attested against a
 tree this bundle has not manifested and verified. The two trees and
 the rule are in docs/science-record.md.
 
-[^github-budget-formulation]: OSP ocean-science reference: ECCO v4r4 heat budget formulation (native grid)
+[^budget-formulation]: Bundle convention: ECCO v4r4 budget formulation on the native grid
+[^attester]: The deterministic attester: the pass bar it enforces, recorded with its 2x headroom over the measured max
 [^readthedocs-ecco-v4-heat-budget-closure]: ECCO v4 Python tutorial: heat budget closure notebook

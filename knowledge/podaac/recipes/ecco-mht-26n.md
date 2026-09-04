@@ -32,10 +32,12 @@ sources:
   - id: doi-2010jcli3997
     resource: https://doi.org/10.1175/2010JCLI3997.1
     title: "Johns et al. 2011, J. Climate, doi:10.1175/2010JCLI3997.1"
-  - id: github-variable-catalog
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
-    title: "OSP ocean-science reference: ECCO v4r4 variable catalog (llc90 native grid)"
-    author: human:PaulMRamirez
+  - id: fields-temperature-flux-3d
+    resource: ../fields/ecco-v4r4/temperature-flux-3d.md
+    title: "Fields concept: ocean three-dimensional potential temperature fluxes (ADVx_TH, ADVy_TH and the diffusive terms, native grid only)"
+  - id: fields-geometry
+    resource: ../fields/ecco-v4r4/geometry.md
+    title: "Fields concept: grid geometry parameters (the static geometry granule)"
 status: stable
 verified: { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
 stale_after: 2027-01-04
@@ -44,7 +46,7 @@ stale_after: 2027-01-04
 # Meridional heat transport at 26.5N from ECCO v4r4
 
 The validated pattern: load the monthly 3D temperature-flux collection
-and the geometry granule[^github-variable-catalog], merge, and compute the section heat transport
+and the geometry granule[^fields-temperature-flux-3d][^fields-geometry], merge, and compute the section heat transport
 at 26.5N with ecco_v4_py's section machinery (masks over native faces;
 the flux diagnostics include bolus and sub-monthly covariance by
 construction, per the meridional-transport skill's framing). Output
@@ -77,4 +79,5 @@ the RAPID-observed mean near 1.3 PW (evidence links above).[^ac-rapidmoc][^doi-2
 
 [^ac-rapidmoc]: RAPID-MOC project page (rapid.ac.uk)
 [^doi-2010jcli3997]: Johns et al. 2011, J. Climate, doi:10.1175/2010JCLI3997.1
-[^github-variable-catalog]: OSP ocean-science reference: ECCO v4r4 variable catalog (llc90 native grid)
+[^fields-temperature-flux-3d]: fields/ecco-v4r4/temperature-flux-3d.md
+[^fields-geometry]: fields/ecco-v4r4/geometry.md

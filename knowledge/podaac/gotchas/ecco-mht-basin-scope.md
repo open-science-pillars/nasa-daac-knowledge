@@ -11,10 +11,6 @@ sources:
   - id: ecco-mht-26n
     resource: ../recipes/ecco-mht-26n.md
     title: "Bundle recipe: Meridional heat transport at 26.5N from ECCO v4r4"
-  - id: github-variable-catalog
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
-    title: "OSP ocean-science reference: ECCO v4r4 variable catalog (llc90 native grid)"
-    author: human:PaulMRamirez
 status: stable
 verified: { by: human:PaulMRamirez, at: 2026-07-05T00:00:00Z }
 stale_after: 2027-01-04

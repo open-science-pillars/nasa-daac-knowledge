@@ -14,10 +14,9 @@ sources:
   - id: cmr-sweep
     resource: all ECCO_L4_*V4R4* collections in CMR (provider POCLOUD)
     title: CMR ShortName sweep, tools/verify_cmr.py
-  - id: variable-catalog
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
-    title: OSP ECCO variable catalog (sweep of 2026-07-04)
-    author: human:PaulMRamirez
+  - id: family-manifest
+    resource: ../../../../tools/ecco_v4r4_families.yaml
+    title: ECCO V4r4 family manifest, the per-variable record of the granule verifications of 2026-07-04 and 2026-08-30 (held to each Schema by tools/check_fields.py)
 verified:
   - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
   - { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
@@ -29,14 +28,14 @@ Ocean bottom pressure and model ocean bottom pressure anomaly from the
 ECCO V4r4 estimate, on the native llc90 grid and the interpolated 0.5
 degree grid, monthly and daily means plus instantaneous
 snapshots.[^podaac-landing] Ocean bottom pressure and sea surface
-height are the two V4r4 families that ship a corrected V4R4B re-release
+height are the two gridded V4r4 families that ship a corrected V4R4B re-release
 alongside the original V4R4 collections; an analysis that mixes the two
 releases folds the baseline correction into the signal (the
 release-mixing gotcha below records the
-mechanism).[^variable-catalog] This is the bottom-pressure ShortName
+mechanism).[^cmr-sweep] This is the bottom-pressure ShortName
 family; the OCEAN_VEL collections are velocity, a different product
-(the naming confusion the catalog row exists to
-prevent).[^variable-catalog]
+(the naming confusion this distinction exists to
+prevent).[^cmr-sweep]
 
 # Schema
 
@@ -71,4 +70,4 @@ baseline correction with the geophysical signal
 
 [^podaac-landing]: PO.DAAC dataset landing page
 [^cmr-sweep]: CMR ShortName sweep, tools/verify_cmr.py
-[^variable-catalog]: OSP ECCO variable catalog (sweep of 2026-07-04)
+[^family-manifest]: ECCO V4r4 family manifest, tools/ecco_v4r4_families.yaml

@@ -16,7 +16,7 @@ sources:
     title: "The attested trend-with-interval computation, its calibration report, and the reference run on the steric series"
   - id: steric-height
     resource: ../computations/ecco-steric-height.md
-    title: "The signed steric height computation whose reference trend, +135.7772 mm per year over twelve months, carried no interval"
+    title: "The signed steric height computation whose reference trend, +135.7772 mm per year over twelve months, carried no interval, and whose record run owns the full-record trend and interval"
   - id: santer-2008
     resource: https://doi.org/10.1002/joc.1756
     title: "Santer et al. 2008: the effective-sample-size correction for trends in autocorrelated series"
@@ -62,11 +62,11 @@ than one degree of freedom remains. Twelve months is a year, not a
 trend. Fit trends over the record, report the interval beside the
 slope, and read an n_eff below about ten as the series telling you it
 has nothing to say about the long term. Over the full record the same
-steric series gives +2.7999 mm per year with interval [+1.5103,
-+4.0895]: r1 +0.893 leaves 17.6 effective months of 312, the honest
-half width is nearly five times the naive one, and the trend is still
-a rate.[^attested-trend]
+steric series is a rate: the steric height computation's record
+receipt carries the trend beside an honest interval several times the
+naive one that still excludes zero, and the numbers live there, not
+here.[^steric-height][^attested-trend]
 
 [^santer-2008]: Santer et al. 2008, doi:10.1002/joc.1756
-[^steric-height]: computations/ecco-steric-height.md, the signed reference run and its anchor
+[^steric-height]: computations/ecco-steric-height.md, the signed reference run, its anchor, and the record run
 [^attested-trend]: computations/ecco-trend-ci.md, reference run and calibration report

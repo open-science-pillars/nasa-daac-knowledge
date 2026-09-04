@@ -18,8 +18,8 @@ status: stable
 stale_after: 2027-01-04
 sources:
   - id: budget-formulation
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/budget-formulation.md
-    title: "OSP ECCO budget formulation reference: the MITgcm constants rhoConst 1029 and Cp 3994"
+    resource: ../conventions/ecco-budget-formulation.md
+    title: "Bundle convention, ECCO v4r4 budget formulation: the MITgcm constants rhoConst 1029 and Cp 3994"
   - id: tutorial-scalar
     resource: https://ecco-v4-python-tutorial.readthedocs.io/ECCO_v4_Example_calculations_with_scalar_quantities.html
     title: "ECCO v4 Python tutorial, scalar quantities: publishes total ocean surface area 3.58E+08 km2, the grid anchor"
@@ -33,7 +33,7 @@ sources:
 OHC as the volume-weighted sum of potential temperature over wet
 cells, rhoConst times Cp times the sum of THETA times rA times drF
 times hFacC, with the MITgcm constants the budget formulation
-records (rhoConst 1029 kg m-3, Cp 3994 J kg-1 K-1).[^budget-formulation]
+convention records (rhoConst 1029 kg m-3, Cp 3994 J kg-1 K-1).[^budget-formulation]
 THETA is potential temperature, so an absolute OHC is relative to an
 arbitrary 0 degC baseline; the receipt carries that caveat as a
 required field and the attester fails any receipt that drops it.
@@ -67,6 +67,6 @@ whose `data.record` is not that stamp, so nothing is attested against a
 tree this bundle has not manifested and verified. The two trees and
 the rule are in docs/science-record.md.
 
-[^budget-formulation]: OSP budget formulation reference, constants section
+[^budget-formulation]: Bundle convention, ECCO v4r4 budget formulation, constants section
 [^tutorial-scalar]: ECCO v4 tutorial scalar-quantities chapter, the published ocean surface area
 [^ecco-skills-corroboration]: podaac/ecco-skills OHC acceptance record, an independent implementation reaching the same anchors

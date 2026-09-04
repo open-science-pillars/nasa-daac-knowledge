@@ -14,10 +14,18 @@ sources:
   - id: cmr-sweep
     resource: all ECCO_L4_*V4R4* collections in CMR (provider POCLOUD)
     title: CMR ShortName sweep, tools/verify_cmr.py
-  - id: variable-catalog
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
-    title: OSP ECCO variable catalog (sweep of 2026-07-04)
-    author: human:PaulMRamirez
+  - id: cmr-granule
+    resource: https://cmr.earthdata.nasa.gov/search/granules.umm_json?short_name=ECCO_L4_GEOMETRY_LLC0090GRID_V4R4
+    title: "CMR granule record for the native collection: one granule, GRID_GEOMETRY_ECCO_V4r4_native_llc0090.nc (queried 2026-09-04)"
+  - id: tut-grid-params
+    resource: https://ecco-v4-python-tutorial.readthedocs.io/ECCO_v4_Loading_the_ECCOv4_native_model_grid_parameters.html
+    title: "ECCO v4 Python Tutorial: Loading the ECCOv4 native model grid parameters (the opened geometry dataset, its coordinates and data variables)"
+  - id: tut-load-native
+    resource: https://ecco-v4-python-tutorial.readthedocs.io/ECCO_v4_Loading_the_ECCOv4_state_estimate_fields_on_the_native_model_grid.html
+    title: "ECCO v4 Python Tutorial: Loading the ECCOv4 state estimate fields on the native model grid (combining datasets with xarray.merge)"
+  - id: static-gotcha
+    resource: ../../gotchas/ecco-access-static-collections.md
+    title: "The static-collection access gotcha: ecco_access 0.3.1 and the earthaccess route"
 verified:
   - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
   - { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
@@ -31,12 +39,12 @@ grid cell sides, horizontal and vertical coordinates of cell centers and
 corners, grid rotation angles, and global domain geometry including
 bathymetry and land/ocean masks.[^podaac-landing] The native collection
 is one static granule (`GRID_GEOMETRY_ECCO_V4r4_native_llc0090.nc`,
-about 8.6 MB), granule-verified 2026-07-04, and is merged into every
-native-grid dataset before analysis; XC, YC, XG, YG, Z, Zl, Zu, and Zp1
-arrive as coordinates, not data variables.[^variable-catalog] Static
-collections are fetched via earthaccess rather than ecco_access:
-observed 2026-07-04, ecco_access 0.3.1 synthesized a nonexistent dated
-granule filename for this collection (archive 404).[^variable-catalog]
+about 8.6 MB), granule-verified 2026-07-04,[^cmr-granule] and is merged
+into every native-grid dataset before analysis;[^tut-load-native] XC,
+YC, XG, YG, Z, Zl, Zu, and Zp1 arrive as coordinates, not data
+variables.[^tut-grid-params] Static collections are fetched via
+earthaccess rather than ecco_access
+([ecco-access-static-collections](../../gotchas/ecco-access-static-collections.md)).[^static-gotcha]
 Units and grid placements below are confirmed against granule
 attributes (granule verification 2026-08-30).
 
@@ -75,4 +83,7 @@ Both ShortNames verified in CMR by the 2026-08-30 sweep.[^cmr-sweep]
 
 [^podaac-landing]: PO.DAAC dataset landing page
 [^cmr-sweep]: CMR ShortName sweep, tools/verify_cmr.py
-[^variable-catalog]: OSP ECCO variable catalog (sweep of 2026-07-04)
+[^cmr-granule]: CMR granule record for ECCO_L4_GEOMETRY_LLC0090GRID_V4R4 (queried 2026-09-04)
+[^tut-grid-params]: ECCO v4 Python Tutorial: Loading the ECCOv4 native model grid parameters
+[^tut-load-native]: ECCO v4 Python Tutorial: Loading the ECCOv4 state estimate fields on the native model grid
+[^static-gotcha]: gotchas/ecco-access-static-collections.md
