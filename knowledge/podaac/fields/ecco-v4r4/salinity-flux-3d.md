@@ -14,10 +14,9 @@ sources:
   - id: cmr-sweep
     resource: all ECCO_L4_*V4R4* collections in CMR (provider POCLOUD)
     title: CMR ShortName sweep, tools/verify_cmr.py
-  - id: variable-catalog
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
-    title: OSP ECCO variable catalog (sweep of 2026-07-04)
-    author: human:PaulMRamirez
+  - id: family-manifest
+    resource: ../../../../tools/ecco_v4r4_families.yaml
+    title: ECCO V4r4 family manifest, the per-variable record of the granule verifications of 2026-07-04 and 2026-08-30 (held to each Schema by tools/check_fields.py)
 verified:
   - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
   - { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
@@ -28,7 +27,7 @@ verified:
 Ocean three-dimensional salinity fluxes from the ECCO V4r4 estimate on
 the native llc90 grid, monthly and daily means: the advective and
 diffusive salt-budget fluxes plus the three-dimensional salt-plume
-tendency `oceSPtnd`.[^podaac-landing][^variable-catalog] The salt-budget
+tendency `oceSPtnd`.[^podaac-landing][^family-manifest] The salt-budget
 recipe consumes the monthly collection with the fresh-flux family and
 the snapshot bookends ([ecco-salt-budget](../../recipes/ecco-salt-budget.md)).
 No interpolated variant exists; this family is native-grid only
@@ -61,4 +60,4 @@ Budgets built from these fluxes close only on the native grid
 
 [^podaac-landing]: PO.DAAC dataset landing page
 [^cmr-sweep]: CMR ShortName sweep, tools/verify_cmr.py
-[^variable-catalog]: OSP ECCO variable catalog (sweep of 2026-07-04)
+[^family-manifest]: ECCO V4r4 family manifest, tools/ecco_v4r4_families.yaml

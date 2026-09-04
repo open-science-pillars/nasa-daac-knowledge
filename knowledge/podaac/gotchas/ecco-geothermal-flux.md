@@ -18,10 +18,9 @@ sources:
     resource: https://github.com/ECCO-GROUP/ECCO-v4-Python-Tutorial/blob/master/misc/geothermalFlux.bin
     title: "geothermalFlux.bin, ECCO v4 Python tutorial repository (misc directory)"
     author: team:ecco-consortium
-  - id: github-budget-formulation
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/budget-formulation.md
-    title: "OSP ocean-science reference: ECCO v4r4 heat budget formulation (native grid)"
-    author: human:PaulMRamirez
+  - id: budget-formulation
+    resource: ../conventions/ecco-budget-formulation.md
+    title: "Bundle convention: ECCO v4r4 budget formulation on the native grid"
 status: stable
 verified: { by: human:PaulMRamirez, at: 2026-07-04T00:00:00Z }
 stale_after: 2027-01-04
@@ -46,15 +45,16 @@ thing to check on any ECCO heat-budget residual.
 
 **Correct approach.** Fetch the ancillary file, build the bottom-masked
 3D field, and add it to the surface forcing before the unit conversion,
-exactly as the budget-formulation reference quotes from the tutorial
-(term 4, verified line by line 2026-07-04).[^github-budget-formulation] Salt and volume budgets do
+exactly as the [budget formulation convention](../conventions/ecco-budget-formulation.md)
+records from the tutorial (term 4, verified line by line
+2026-07-04).[^budget-formulation] Salt and volume budgets do
 not carry a geothermal term; this is heat-budget specific.
 
 **Verification.** The linked tutorial's forcing section constructs
 GEOFLX and includes it in G_forcing; its closure demonstration fails
-without the term (the traps table in the budget-formulation reference
-records the signature).[^readthedocs-ecco-v4-heat-budget-closure][^github-budget-formulation]
+without the term (the traps table in the budget formulation
+convention records the signature).[^readthedocs-ecco-v4-heat-budget-closure][^budget-formulation]
 
 [^readthedocs-ecco-v4-heat-budget-closure]: ECCO v4 Python tutorial: heat budget closure notebook
 [^github-geothermalflux]: geothermalFlux.bin, ECCO v4 Python tutorial repository (misc directory)
-[^github-budget-formulation]: OSP ocean-science reference: ECCO v4r4 heat budget formulation (native grid)
+[^budget-formulation]: Bundle convention: ECCO v4r4 budget formulation on the native grid

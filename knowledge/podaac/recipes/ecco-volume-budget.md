@@ -8,10 +8,9 @@ inputs: "ECCO v4r4 native-grid collections: ETAN snapshots (SSH snapshot) for th
 expected: "Pointwise ABSOLUTE residual on interior wet cells (2010, tile 1, 3.34M cell-months, measured 2026-07-05): max 4.6e-12 1/s, p99.9 5.4e-13, median 1.8e-14; the budget closes to float32 round-off"
 expected_uncertainty: "Tolerance is ABSOLUTE (float32 quantization floor). Golden asserts max <= 1e-11 1/s and p99.9 <= 1e-12 (about 2x measured). The critical formulation check: with a separate oceFWflx forcing term added, the surface-layer residual jumps to order 1e-8 (six orders above round-off); the closure is the detector for that double-count"
 sources:
-  - id: github-budget-formulation
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/budget-formulation.md
-    title: "OSP ocean-science reference: ECCO v4r4 heat budget formulation (native grid)"
-    author: human:PaulMRamirez
+  - id: budget-formulation
+    resource: ../conventions/ecco-budget-formulation.md
+    title: "Bundle convention: ECCO v4r4 budget formulation on the native grid"
   - id: ecco-native-vs-regridded
     resource: ../gotchas/ecco-native-vs-regridded.md
     title: "Bundle gotcha: ECCO budgets and transports close only on the native llc90 grid"
@@ -34,7 +33,8 @@ stale_after: 2027-01-04
 
 There is **no separate forcing term.** `WVELMASS` at the surface already
 carries the freshwater volume flux (P minus E plus runoff), so the
-budget closes on transport convergence alone.[^github-budget-formulation]
+budget closes on transport convergence alone (the shared architecture is
+the [budget formulation convention](../conventions/ecco-budget-formulation.md)).[^budget-formulation]
 
 **The double-count trap (measured 2026-07-05).** Adding `oceFWflx` as a
 surface forcing term (by analogy with the heat budget's forcing) drives
@@ -51,5 +51,5 @@ expected values above; the budget closes to float32 round-off.
 pointwise. Regridded inputs are refused
 ([ecco-native-vs-regridded](../gotchas/ecco-native-vs-regridded.md)).[^ecco-native-vs-regridded]
 
-[^github-budget-formulation]: OSP ocean-science reference: ECCO v4r4 heat budget formulation (native grid)
+[^budget-formulation]: Bundle convention: ECCO v4r4 budget formulation on the native grid
 [^ecco-native-vs-regridded]: Bundle gotcha: ECCO budgets and transports close only on the native llc90 grid

@@ -17,10 +17,9 @@ sources:
   - id: nasa-ecco-l4-temp-salinity-05deg-monthly-v4r4
     resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_TEMP_SALINITY_05DEG_MONTHLY_V4R4
     title: "PO.DAAC collection page: ECCO_L4_TEMP_SALINITY_05DEG_MONTHLY_V4R4"
-  - id: github-budget-formulation
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/budget-formulation.md
-    title: "OSP ocean-science reference: ECCO v4r4 heat budget formulation (native grid)"
-    author: human:PaulMRamirez
+  - id: budget-formulation
+    resource: ../conventions/ecco-budget-formulation.md
+    title: "Bundle convention: ECCO v4r4 budget formulation on the native grid"
 status: stable
 verified: { by: human:PaulMRamirez, at: 2026-07-04T00:00:00Z }
 stale_after: 2027-01-04
@@ -44,8 +43,8 @@ interpolation. Nothing errors; the numbers are simply wrong.
 
 **Correct approach.** Budgets and transports are computed on the native
 grid with tile-aware operators and the geometry granule merged in
-(formulation per the linked reference, verified against the ECCO
-tutorial 2026-07-04).[^github-budget-formulation] Regridded fields serve for maps and pointwise
+(formulation per the [budget formulation convention](../conventions/ecco-budget-formulation.md),
+verified against the ECCO tutorial 2026-07-04).[^budget-formulation] Regridded fields serve for maps and pointwise
 comparison against gridded observations. No correct budget formulation
 exists on regridded ECCO; the native-grid path is the only valid route.
 (Refusal of regridded-budget requests is workflow behavior owned by the
@@ -58,4 +57,4 @@ closure demonstration is native-grid throughout.[^readthedocs-ecco-v4-heat-budge
 
 [^readthedocs-ecco-v4-heat-budget-closure]: ECCO v4 Python tutorial: heat budget closure notebook
 [^nasa-ecco-l4-temp-salinity-05deg-monthly-v4r4]: PO.DAAC collection page: ECCO_L4_TEMP_SALINITY_05DEG_MONTHLY_V4R4
-[^github-budget-formulation]: OSP ocean-science reference: ECCO v4r4 heat budget formulation (native grid)
+[^budget-formulation]: Bundle convention: ECCO v4r4 budget formulation on the native grid

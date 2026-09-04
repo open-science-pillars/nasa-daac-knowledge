@@ -14,10 +14,12 @@ sources:
   - id: nasa-ecco-l4-ssh-llc0090grid-monthly-v4r4b
     resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4B
     title: "PO.DAAC collection page: ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4B"
-  - id: github-variable-catalog
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
-    title: "OSP ocean-science reference: ECCO v4r4 variable catalog (llc90 native grid)"
-    author: human:PaulMRamirez
+  - id: fields-ssh
+    resource: ../fields/ecco-v4r4/ssh.md
+    title: "Fields concept: sea surface height, whose Variants section lists the V4R4 and V4R4B ShortNames verified in CMR"
+  - id: fields-obp
+    resource: ../fields/ecco-v4r4/obp.md
+    title: "Fields concept: ocean bottom pressure, whose Variants section lists the V4R4 and V4R4B ShortNames verified in CMR"
 status: stable
 verified: { by: human:PaulMRamirez, at: 2026-07-05T00:00:00Z }
 stale_after: 2027-01-04
@@ -44,9 +46,11 @@ fields have no B variant, so V4R4 is their release, and any cross-field
 mix is stated. Each field's release is named.
 
 **Verification.** Both collection pages resolve as distinct ShortNames
-(evidence)[^nasa-ecco-l4-ssh-llc0090grid-monthly-v4r4][^nasa-ecco-l4-ssh-llc0090grid-monthly-v4r4b]; the variable catalog's Variants section records which
-fields have a B release.[^github-variable-catalog]
+(evidence)[^nasa-ecco-l4-ssh-llc0090grid-monthly-v4r4][^nasa-ecco-l4-ssh-llc0090grid-monthly-v4r4b]; the Variants sections of the sea surface height and ocean
+bottom pressure fields concepts record which collections have a B
+release, verified in CMR by the ShortName sweep.[^fields-ssh][^fields-obp]
 
 [^nasa-ecco-l4-ssh-llc0090grid-monthly-v4r4]: PO.DAAC collection page: ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4
 [^nasa-ecco-l4-ssh-llc0090grid-monthly-v4r4b]: PO.DAAC collection page: ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4B
-[^github-variable-catalog]: OSP ocean-science reference: ECCO v4r4 variable catalog (llc90 native grid)
+[^fields-ssh]: fields/ecco-v4r4/ssh.md, Variants
+[^fields-obp]: fields/ecco-v4r4/obp.md, Variants

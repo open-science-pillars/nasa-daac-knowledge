@@ -14,10 +14,12 @@ sources:
   - id: cmr-sweep
     resource: all ECCO_L4_*V4R4* collections in CMR (provider POCLOUD)
     title: CMR ShortName sweep, tools/verify_cmr.py
-  - id: variable-catalog
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
-    title: OSP ECCO variable catalog (sweep of 2026-07-04)
-    author: human:PaulMRamirez
+  - id: family-manifest
+    resource: ../../../../tools/ecco_v4r4_families.yaml
+    title: ECCO V4r4 family manifest, the per-variable record of the granule verifications of 2026-07-04 and 2026-08-30 (held to each Schema by tools/check_fields.py)
+  - id: tut-volume
+    resource: https://ecco-v4-python-tutorial.readthedocs.io/ECCO_v4_Volume_budget_closure.html
+    title: "ECCO v4 Python tutorial: global volume and sea level budget notebook"
 verified:
   - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
   - { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
@@ -28,9 +30,9 @@ verified:
 Ocean three-dimensional volume fluxes from the ECCO V4r4 estimate on the
 native llc90 grid, monthly and daily means: the mass-weighted transports
 that transport analyses and the volume budget
-consume.[^podaac-landing][^variable-catalog] Flux variables with a MASS
+consume.[^podaac-landing][^family-manifest] Flux variables with a MASS
 suffix already carry the partial-cell factor hFac; applying it a second
-time double-counts it.[^variable-catalog] `WVELMASS` at the surface
+time double-counts it.[^tut-volume] `WVELMASS` at the surface
 already carries the freshwater volume flux, so the volume budget closes
 on transport convergence alone; a separate freshwater forcing term
 double-counts (recorded with measurements in
@@ -61,4 +63,5 @@ the surface freshwater double-count trap is recorded in
 
 [^podaac-landing]: PO.DAAC dataset landing page
 [^cmr-sweep]: CMR ShortName sweep, tools/verify_cmr.py
-[^variable-catalog]: OSP ECCO variable catalog (sweep of 2026-07-04)
+[^family-manifest]: ECCO V4r4 family manifest, tools/ecco_v4r4_families.yaml
+[^tut-volume]: ECCO v4 Python tutorial: global volume and sea level budget notebook

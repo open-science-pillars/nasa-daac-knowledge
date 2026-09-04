@@ -14,10 +14,12 @@ sources:
   - id: cmr-sweep
     resource: all ECCO_L4_*V4R4* collections in CMR (provider POCLOUD)
     title: CMR ShortName sweep, tools/verify_cmr.py
-  - id: variable-catalog
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
-    title: OSP ECCO variable catalog (sweep of 2026-07-04)
-    author: human:PaulMRamirez
+  - id: family-manifest
+    resource: ../../../../tools/ecco_v4r4_families.yaml
+    title: ECCO V4r4 family manifest, the per-variable record of the granule verifications of 2026-07-04 and 2026-08-30 (held to each Schema by tools/check_fields.py)
+  - id: readthedocs-ecco-v4-heat-budget-closure
+    resource: https://ecco-v4-python-tutorial.readthedocs.io/ECCO_v4_Heat_budget_closure.html
+    title: "ECCO v4 Python tutorial: heat budget closure notebook"
 verified:
   - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
   - { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
@@ -29,10 +31,10 @@ Ocean and sea-ice surface heat fluxes from the ECCO V4r4 estimate on
 the native llc90 grid and the interpolated 0.5 degree grid, monthly and
 daily means.[^podaac-landing] `TFLUX` and `oceQsw` are the heat-budget
 forcing terms; EXF and sea-ice forcing components ride in this family, enumerated
-at granule verification 2026-08-30 (Schema below).[^variable-catalog] The geothermal flux is not in this family or
+at granule verification 2026-08-30 (Schema below).[^family-manifest] The geothermal flux is not in this family or
 any PO.DAAC gridded collection; it is a static model input in the
 ancillary data, and deep heat budgets fail without it
-(see Known issues).[^variable-catalog]
+(see Known issues).[^readthedocs-ecco-v4-heat-budget-closure]
 
 # Schema
 
@@ -68,4 +70,5 @@ PO.DAAC collection carries
 
 [^podaac-landing]: PO.DAAC dataset landing page
 [^cmr-sweep]: CMR ShortName sweep, tools/verify_cmr.py
-[^variable-catalog]: OSP ECCO variable catalog (sweep of 2026-07-04)
+[^family-manifest]: ECCO V4r4 family manifest, tools/ecco_v4r4_families.yaml
+[^readthedocs-ecco-v4-heat-budget-closure]: ECCO v4 Python tutorial: heat budget closure notebook

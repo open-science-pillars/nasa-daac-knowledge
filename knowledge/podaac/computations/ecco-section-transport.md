@@ -19,8 +19,11 @@ status: stable
 stale_after: 2027-01-04
 sources:
   - id: transport-golden
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/verification/transport_analysis.py
+    resource: https://github.com/open-science-pillars/ocean-science/blob/14a4eeab071d6f7d10f04e72c4878fef87c8b8de/verification/transport_analysis.py
     title: "The independent implementation this computation is anchored against: meridional heat transport via ecco_v4_py, 2010 global mean 1.098 PW at 26.5 north"
+  - id: mht-26n-recipe
+    resource: ../recipes/ecco-mht-26n.md
+    title: "The recipe that records the 1.098 PW global-circle anchor and its 2010 monthly series"
   - id: regional-budget
     resource: ecco-regional-heat-budget.md
     title: "The attested regional budget whose two-bar and mutation-evidence contract this computation extends to sections"
@@ -63,7 +66,7 @@ the numbers it travels with.
 global-26.5n, the closed latitude circle, 360 faces: heat transport
 mean +1.0963 PW against the independent implementation's 1.098, an
 0.002 PW cross-implementation agreement from disjoint code
-paths;[^transport-golden] volume mean -0.43 Sv, the real net
+paths;[^transport-golden][^mht-26n-recipe] volume mean -0.43 Sv, the real net
 throughflow scale. fifteen-s-southeast-atlantic, an open 90-face
 segment within one tile: heat -0.28 PW, volume -10.56 Sv, and its
 receipt must carry the unanchored caveat; the attester fails a
@@ -81,6 +84,7 @@ whose `data.record` is not that stamp, so nothing is attested against a
 tree this bundle has not manifested and verified. The two trees and
 the rule are in docs/science-record.md.
 
-[^transport-golden]: ocean-science verification, the independent 1.098 PW anchor
+[^transport-golden]: ocean-science verification/transport_analysis.py at the pinned commit, the independent implementation
+[^mht-26n-recipe]: recipes/ecco-mht-26n.md, the recorded 1.098 PW global-circle anchor
 [^regional-budget]: computations/ecco-regional-heat-budget.md, the contract this extends
 [^vector-orientation]: gotchas/ecco-vector-orientation.md

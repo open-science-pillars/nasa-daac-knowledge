@@ -9,8 +9,11 @@ Two subcommands. `harvest` queries CMR for each ShortName in the family
 manifest and writes shortname-to-DOI mappings (CMR carries the DOI in
 collection metadata), ready to merge into the manifest and the fields
 concepts. `cite` emits the ECCO Consortium citation block for a list of
-ShortNames in the PO.DAAC-prescribed template, so an analysis can cite
-exactly what it touched:
+ShortNames, so an analysis can cite exactly what it touched. The
+prescribed form (creator list, year, publisher, DOI, access date) is
+recorded on the dataset concept, knowledge/podaac/datasets/ecco-v4r4.md
+(Citation section, quoting the PO.DAAC landing pages); this tool
+renders those elements in reference-list order:
 
   ECCO Consortium, Fukumori, I., Wang, O., Fenty, I., Forget, G.,
   Heimbach, P., & Ponte, R. M. (2021). <Dataset Title> (Version 4
@@ -21,7 +24,10 @@ exactly what it touched:
 DOI mapping. The manifest's per-family `dois:` blocks and the `DOI:`
 rows in the fields concepts quote it, and `--selftest` cross-checks
 every quoted DOI against it (run by tools/run_checks.sh), so a DOI can
-only change in one place and the copies cannot drift unnoticed.
+only change in one place and the copies cannot drift unnoticed. The
+selftest also checks that the creator list, year, and publisher this
+template renders still appear in the dataset concept's Citation
+section, so the two cannot drift either.
 
 Usage:
   ecco_cite.py harvest tools/ecco_v4r4_families.yaml [--out dois.yaml]
@@ -61,6 +67,11 @@ HERE = Path(__file__).resolve().parent
 DOIS_FILE = HERE / "ecco_v4r4_dois.yaml"
 FAMILIES_FILE = HERE / "ecco_v4r4_families.yaml"
 FIELDS_DIR = HERE.parent / "knowledge" / "podaac" / "fields" / "ecco-v4r4"
+# The dataset concept records the prescribed citation form; these are the
+# elements shared by every collection, which format_citation must match.
+CITATION_CONCEPT = HERE.parent / "knowledge" / "podaac" / "datasets" / "ecco-v4r4.md"
+CITATION_ELEMENTS = ("ECCO Consortium, Fukumori, I., Wang, O., Fenty, I., Forget, G.,",
+                     "Heimbach, P., & Ponte, R. M.", "2021", "PO.DAAC")
 # A fields concept lists a collection as `SHORTNAME`: ... DOI: 10.5067/SUFFIX.
 DOI_ROW = re.compile(r"`(ECCO_[A-Z0-9_]+)`[^\n]*?DOI:\s*(10\.5067/[A-Za-z0-9-]+)")
 
@@ -165,6 +176,17 @@ def selftest() -> int:
         ok = ok and not crosscheck()
     else:
         print("crosscheck: skipped (authority, manifest, or fields concepts not beside this file)")
+    if CITATION_CONCEPT.exists():
+        text = CITATION_CONCEPT.read_text(encoding="utf-8")
+        section = text.split("## Citation", 1)[1].split("\n## ", 1)[0] if "## Citation" in text else ""
+        missing = [e for e in CITATION_ELEMENTS if e not in section or e not in c]
+        print(f"citation form: {CITATION_CONCEPT.name} Citation section and the template "
+              f"share {len(CITATION_ELEMENTS) - len(missing)}/{len(CITATION_ELEMENTS)} elements")
+        for e in missing:
+            print(f"  missing from the concept or the template: {e!r}")
+        ok = ok and not missing
+    else:
+        print("citation form: skipped (dataset concept not beside this file)")
     print("selftest:", "PASS" if ok else "FAIL")
     return 0 if ok else 1
 

@@ -4,7 +4,7 @@ title: "A trend with an honest interval from any ECCO monthly series"
 description: "How to turn a monthly series out of a sanctioned receipt into a trend with a 95 percent interval that respects serial correlation: fit the trend jointly with the climatology over complete years, estimate r1, shrink the sample to n_eff (never above n), and let the t distribution on the effective degrees of freedom set the width."
 tags: [ecco, trend, uncertainty, confidence-interval, autocorrelation, recipe]
 inputs: "A receipt from a sanctioned computation carrying a monthly {YYYY-MM: value} field over consecutive months (steric_mean_m_by_month from the steric height computation is the reference), its data.record stamp intact"
-expected: "Reference series us-northeast-coast steric height, 2010-01 through 2010-12, scaled to mm, deseasonalize none (measured 2026-09-02): trend +135.7772 mm per year, r1 +0.555, n_eff 3.43 of 12, 95 percent interval [-701.5, +973.1] mm per year; naive half width 109.8, honest 837.3. The same series over the full record, 1992-01 through 2017-12, climatology removed jointly: trend +2.7999 mm per year, r1 +0.893, n_eff 17.6 of 312, interval [+1.5103, +4.0895]"
+expected: "Reference series us-northeast-coast steric height, 2010-01 through 2010-12, scaled to mm, deseasonalize none (measured 2026-09-02): trend +135.7772 mm per year, r1 +0.555, n_eff 3.43 of 12, 95 percent interval [-701.5, +973.1] mm per year; naive half width 109.8, honest 837.3. The same series over the full record, 1992-01 through 2017-12, climatology removed jointly, gives the record trend and interval that ../computations/ecco-steric-height.md owns and states; this recipe cites them there and quotes none of the digits"
 expected_uncertainty: "The interval is calibrated in the regime it is meant for: at 120 months or more and lag-1 autocorrelation up to 0.8 the measured coverage is 91.8 to 95.1 percent (asserted band 90 to 97.5). At 24 months coverage is 67 to 86 percent and at 12 months 74 to 95, worst at high autocorrelation, and the tool declines to state an interval in up to 7 percent of trials; treat any n_eff below about 10 as a description of the window, not a trend. The interval is a statement about sampling under an AR(1) residual model, not about model or observational error in the series"
 generated: { by: claude-code/fable-5, at: 2026-09-02T05:10:00Z }
 status: draft
@@ -15,7 +15,7 @@ sources:
     title: "The attested computation this recipe walks: method, contract, calibration, reference run"
   - id: steric-height
     resource: ../computations/ecco-steric-height.md
-    title: "The attested steric height whose receipt supplies the reference series"
+    title: "The attested steric height whose receipt supplies the reference series and whose record run owns the full-record trend and interval"
   - id: naked-trend
     resource: ../gotchas/ecco-trend-without-effective-n.md
     title: "Why the interval is not optional: the trap this recipe avoids"
@@ -56,12 +56,13 @@ so that run declares `none` and the receipt says so. The regime the
 tool is built for is the full record: 312 months, where the
 calibration measures 92 to 95 percent coverage and the naive interval
 covers under half the time once r1 reaches 0.8, and where the same
-steric series comes back as +2.7999 mm per year with interval
-[+1.5103, +4.0895], a rate at last.[^attested-computation] The steric
+steric series comes back as the record trend with the interval the
+steric height computation's receipt carries, a rate at
+last.[^attested-computation][^steric-height] The steric
 and sea-level computations embed this block beside their own trends,
 so a run of either already carries the interval; the standalone tool
 is for any other monthly field a sanctioned receipt holds.
 
 [^attested-computation]: computations/ecco-trend-ci.md, method, contract, calibration
-[^steric-height]: computations/ecco-steric-height.md, the signed reference trend
+[^steric-height]: computations/ecco-steric-height.md, the signed reference trend and the record run that owns the full-record numbers
 [^naked-trend]: gotchas/ecco-trend-without-effective-n.md

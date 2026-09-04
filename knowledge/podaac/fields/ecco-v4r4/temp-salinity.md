@@ -14,10 +14,12 @@ sources:
   - id: cmr-sweep
     resource: all ECCO_L4_*V4R4* collections in CMR (provider POCLOUD)
     title: CMR ShortName sweep, tools/verify_cmr.py
-  - id: variable-catalog
-    resource: https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
-    title: OSP ECCO variable catalog (sweep of 2026-07-04)
-    author: human:PaulMRamirez
+  - id: family-manifest
+    resource: ../../../../tools/ecco_v4r4_families.yaml
+    title: ECCO V4r4 family manifest, the per-variable record of the granule verifications of 2026-07-04 and 2026-08-30 (held to each Schema by tools/check_fields.py)
+  - id: fixtures-2010
+    resource: ../../references/retrieval/fixtures-2010-manifest.json
+    title: The manifested 2010 native fixtures (SHA-512 per granule) the dims were re-verified against
 verified:
   - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
   - { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
@@ -28,8 +30,10 @@ verified:
 The tracer state of the ECCO V4r4 estimate, 1992 through 2017: potential
 temperature and practical salinity on the native llc90 grid (13 tiles, 50
 levels) and the interpolated 0.5 degree grid.[^podaac-landing] The
-monthly llc90 collection was granule-verified live on 2026-07-04 (12
-granules, dims time/k/tile/j/i = 12/50/13/90/90).[^variable-catalog] The
+monthly llc90 collection was granule-verified live on 2026-07-04 and
+re-verified 2026-09-04 against the manifested 2010 fixtures: 12 monthly
+granules, each time/k/tile/j/i = 1/50/13/90/90, so 12/50/13/90/90
+concatenated.[^family-manifest][^fixtures-2010] The
 snapshot collection carries the month-boundary states that budget
 tendency terms are formed from.
 
@@ -41,6 +45,8 @@ tendency terms are formed from.
 | `SALT` | 1e-3 | c center | Practical salinity (PSS-78) | granule-verified 2026-08-30 |
 
 # Variants
+
+All five ShortNames verified in CMR by the 2026-08-30 sweep.[^cmr-sweep]
 
 - `ECCO_L4_TEMP_SALINITY_LLC0090GRID_MONTHLY_V4R4`: native llc90, monthly mean. DOI: 10.5067/ECL5M-OTS44.
 - `ECCO_L4_TEMP_SALINITY_LLC0090GRID_DAILY_V4R4`: native llc90, daily mean. DOI: 10.5067/ECL5D-OTS44.
@@ -55,4 +61,6 @@ collections do not close budgets
 ([ecco-native-vs-regridded](../../gotchas/ecco-native-vs-regridded.md)).
 
 [^podaac-landing]: PO.DAAC dataset landing page
-[^variable-catalog]: OSP ECCO variable catalog (sweep of 2026-07-04)
+[^cmr-sweep]: CMR ShortName sweep, tools/verify_cmr.py
+[^family-manifest]: ECCO V4r4 family manifest, tools/ecco_v4r4_families.yaml
+[^fixtures-2010]: references/retrieval/fixtures-2010-manifest.json, the manifested 2010 native fixtures
