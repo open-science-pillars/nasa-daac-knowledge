@@ -7,7 +7,7 @@ inputs: "The verified ECCO v4r4 record tree (the mass-weighted volume flux colle
 expected: "Over 2004-04 through 2017-12, 165 calendar months (measured 2026-09-02): model mass-balanced overturning mean 13.96 Sv (sd 2.52), observed 17.20 Sv (sd 3.28); bias -3.23 Sv, 95 percent interval [-3.75, -2.72]; RMSD 3.84 Sv [3.33, 4.29], of which 2.07 Sv is not the bias; correlation +0.77 [+0.68, +0.84]; anomaly correlation +0.79 [+0.70, +0.85]; trends -0.14 and -0.11 Sv per year, neither distinguishable from zero"
 expected_uncertainty: "The intervals are sampling intervals under a lag-1 autocorrelation model (the bias keeps 65 effective months of 165) and carry no measurement error: the array's published RMS uncertainty is 1.5 Sv on ten-day values and 0.9 Sv on annual values, and the model's own error is not quantified here. Colocation choices move the model mean by up to about 1 Sv (the streamfunction convention), 0.21 Sv (one grid row), 0.15 Sv (the Gulf of Mexico) and the observed mean by 0.12 Sv (maximum of the monthly mean instead of mean of the maxima); none of them reaches the bias"
 generated: { by: claude-code/fable-5, at: 2026-09-02T18:40:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-02T22:58:09Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T02:40:20Z }
 status: stable
 stale_after: 2027-03-02
 sources:

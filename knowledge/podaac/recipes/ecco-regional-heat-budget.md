@@ -7,7 +7,7 @@ inputs: "ECCO_L4_OCEAN_3D_TEMPERATURE_FLUX (ADV*_TH, DF*_TH); ECCO_L4_HEAT_FLUX 
 expected: "Reference volume (southeast Atlantic, upper 323 m, year 2010, measured 2026-09-01): residual per volume max 1.632e-14 degC per s against the 1e-10 bar; relative max 1.850e-07 against 1e-6; geothermal omission fails the relative bar at 1.4e-05 while passing the absolute bar"
 expected_uncertainty: "Both bars are required: the absolute bar alone certifies a budget missing geothermal flux (measured 1.24e-12, inside 1e-10). The rim must be read from raw face fluxes on a path disjoint from any divergence field, or the closure test is circular. No oracle checks the mask is the region you meant: read the receipt's resolved extent before believing the number. Volumes within one tile interior only, until seam-calibrated sections land"
 generated: { by: claude-code/fable-5, at: 2026-09-01T15:00:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-01T15:55:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T02:40:20Z }
 status: stable
 stale_after: 2027-01-04
 sources:

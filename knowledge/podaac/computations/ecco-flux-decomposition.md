@@ -15,7 +15,7 @@ executor:
 attester:
   resource: references/attesters/fluxdecomp_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T15:40:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-01T15:55:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T02:40:20Z }
 status: stable
 stale_after: 2027-01-04
 sources:

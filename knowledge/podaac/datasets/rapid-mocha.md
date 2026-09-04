@@ -7,7 +7,7 @@ generated: { by: knowledge-seeder/claude, at: 2026-07-04T00:00:00Z }
 resource: https://doi.org/10.17604/3nfq-va20
 version: "MOCHA MHT v.2020 via dataset DOI 10.17604/3nfq-va20; RAPID AMOC series v2024.1a, DOI 10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1, BODC (retrieved from rapid.ac.uk and verified against the file attributes 2026-09-02; earlier access verified 2026-07-04)"
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-09-02T22:58:09Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T02:40:20Z }
 stale_after: 2027-01-04
 ---
 
