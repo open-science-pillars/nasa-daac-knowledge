@@ -17,6 +17,19 @@ canonical concept here wins on any conflict; snapshots record source
 commit and date in their index.md and refresh at plugin releases
 (`tools/sync_check.py` verifies byte-identity).
 
+## Tools
+
+`tools/` carries the gate (`run_checks.sh`: OKF conformance, fields
+conformance, and every tool selftest, all offline), the ECCO product
+watch (`verify_cmr.py`, `release_delta.py`, `RELEASE-DAY.md`), the DOI
+authority and citation formatter (`ecco_v4r4_dois.yaml`, `ecco_cite.py`;
+the selftest cross-checks every DOI the concepts and the family manifest
+quote against the authority), the community-issue miner that drafts
+gotcha candidates (`mine_sources.py`, needs `GITHUB_TOKEN`), the
+Earthdata MCP tool-surface smoke (`mcp_smoke.py`, network), the snapshot
+check and refresh (`sync_check.py`), and the science and observation
+record tooling (`science_record_*.py`, `obs_record_*.py`).
+
 ## Stewardship
 
 CODEOWNERS maps each bundle to its steward; the PO.DAAC bundle is
