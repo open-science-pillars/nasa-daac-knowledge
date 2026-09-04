@@ -17,8 +17,8 @@ sources:
     resource: https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html
     title: CMR Search API documentation (public search, token optional)
   - id: local-smoke
-    resource: tools/mcp_smoke.py run against a local build, 2026-08-29
-    title: Tool surface verification (seven tools, parameter schemas)
+    resource: ../../../tools/mcp_smoke.py
+    title: "Tool surface verification (seven tools, parameter schemas), run against a local build 2026-08-29"
   - id: remote-smoke
     resource: https://github.com/open-science-pillars/marketplace/issues/20
     title: "Remote endpoint smoke baseline, 2026-08-30: seven tools listed with schemas over Streamable HTTP; no-login get_collections probe returned the ECCO geometry collection"

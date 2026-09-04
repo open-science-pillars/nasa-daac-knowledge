@@ -4,6 +4,11 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-04 · connectors/earthdata-mcp.md (draft): the local-smoke source
+  now cites tools/mcp_smoke.py by path, the tool having landed in this
+  repository; the DOI mapping gains its check, ecco_cite --selftest
+  cross-checks every DOI quoted in the fields concepts and the family
+  manifest against tools/ecco_v4r4_dois.yaml (build assistant)
 - 2026-09-03 · steward review passed: nineteen stable concepts whose text
   had been edited after their signatures, measured against each one's
   signing commit, re-verified (verified_by human:PaulMRamirez); each

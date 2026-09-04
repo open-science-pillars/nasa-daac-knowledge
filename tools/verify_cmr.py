@@ -43,7 +43,7 @@ except ImportError:
     sys.exit(2)
 
 CMR = "https://cmr.earthdata.nasa.gov/search/collections.json"
-UA = {"User-Agent": "osp-ecco-fields-kit/1.0 (verify_cmr)"}
+UA = {"User-Agent": "osp-nasa-daac-knowledge/1.0 (verify_cmr)"}
 
 SELFTEST_FIXTURE = {
     "feed": {"entry": [
