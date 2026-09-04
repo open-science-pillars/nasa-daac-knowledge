@@ -3,19 +3,22 @@ type: convention
 title: "Sea level budget closure: a correction-consistency problem first"
 description: "The altimetry = ocean-mass + steric budget closes only under consistent GIA, reference-frame, atmospheric-pressure, smoothing, and period bookkeeping; the deep-steric term below the Argo sampling floor is nonzero and must be acknowledged."
 tags: [sea-level, budget, steric, manometric, gia, closure, altimetry, grace, argo]
-timestamp: 2026-07-05
+generated: { by: claude-code/opus-4.8, at: 2026-07-05T00:00:00Z }
+sources:
+  - id: wcrp-2018
+    resource: https://doi.org/10.5194/essd-10-1551-2018
+    title: "WCRP Global Sea Level Budget Group (2018), Global sea-level budget 1993 to present, Earth System Science Data 10, 1551 to 1590"
 verified: { by: human:PaulMRamirez, at: 2026-07-06T00:00:00Z }
 status: stable
-evidence:
-  - https://doi.org/10.5194/essd-10-1551-2018
+stale_after: 2027-03-04
 ---
 
 # Sea level budget closure: a correction-consistency problem first
 
 **The budget.** Regional and global sea level closes as altimetry
 (geocentric sea surface height) equals the manometric (ocean-mass) piece
-from gravimetry plus the steric piece from hydrography. The identity
-holds within uncertainties ONLY when the three estimates are bookkept
+from gravimetry plus the steric piece from hydrography.[^wcrp-2018] The
+identity holds within uncertainties ONLY when the three estimates are bookkept
 consistently; apparent non-closure is a correction-consistency finding
 before it is a missing-physics finding, so the corrections table is
 worked first.
@@ -41,7 +44,7 @@ worked first.
   over its sampled depth range only (the upper ocean); the steric
   contribution below the Argo sampling floor is not measured by it and
   is NOT zero. A budget that treats Argo-era steric as full-depth steric
-  omits a real term.
+  omits a real term.[^wcrp-2018]
 
 **Wrong-result mode.** A budget assembled from mismatched corrections
 shows apparent non-closure that is an artifact of the bookkeeping, not
@@ -57,3 +60,5 @@ specifically, the SSH-variant IB convention
 Boussinesq global-mean correction
 ([ecco-boussinesq-global-steric](../gotchas/ecco-boussinesq-global-steric.md))
 enter the same bookkeeping.
+
+[^wcrp-2018]: WCRP Global Sea Level Budget Group (2018), Earth System Science Data 10, doi:10.5194/essd-10-1551-2018

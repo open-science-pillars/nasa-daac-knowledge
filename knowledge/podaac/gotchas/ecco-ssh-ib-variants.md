@@ -3,27 +3,30 @@ type: dataset-gotcha
 title: "ECCO SSH inverse-barometer variants: pick the convention and never mix them"
 description: "ECCO ships several sea-surface-height variables differing by inverse-barometer and reference conventions; mixing them, or mismatching altimetry's IB convention in a comparison, silently shifts trends and attributions."
 tags: [ecco, ssh, sea-level, inverse-barometer, altimetry, conventions]
-timestamp: 2026-07-05
+generated: { by: claude-code/opus-4.8, at: 2026-07-05T00:00:00Z }
 severity: medium
 # medium, not high: the variants are documented product behavior and the
 # error bites through convention inconsistency in a comparison or
 # decomposition, not through silently wrong single-variable statistics; no
 # Phase-1 eval case is specified yet, and steward review sets it if elevated.
 dataset: ../datasets/ecco-v4r4.md
-evidence:
-  - https://github.com/open-science-pillars/ocean-science/blob/main/skills/ecco/references/variable-catalog.md
+sources:
+  - id: fields-ssh
+    resource: ../fields/ecco-v4r4/ssh.md
+    title: "The SSH fields concept: SSH, SSHIBC, SSHNOIBC and ETAN with their conventions, granule-verified 2026-08-30, and the collections' Variants"
 verified: { by: human:PaulMRamirez, at: 2026-07-06T00:00:00Z }
 status: stable
+stale_after: 2027-03-04
 ---
 
 # ECCO SSH inverse-barometer variants: pick the convention and never mix them
 
 **Mechanism.** ECCO v4r4's sea surface height is not a single field. The
-family (variable catalog, Variants section) differs by inverse-barometer
-(IB) and reference conventions: `SSH` (IB-corrected, GIA-free model sea
+family (the [SSH fields concept](../fields/ecco-v4r4/ssh.md) lists
+it) differs by inverse-barometer (IB) and reference conventions: `SSH` (IB-corrected, GIA-free model sea
 level), `SSHNOIBC` (without the IB correction), `SSHIBC` (the IB
 correction field itself), and the model native `ETAN`. They are distinct
-quantities, not interchangeable spellings of one variable.
+quantities, not interchangeable spellings of one variable.[^fields-ssh]
 
 **Wrong-result mode.** Two forms: (1) a series, map, or decomposition
 assembled from more than one SSH variant folds the convention difference
@@ -36,10 +39,13 @@ careless query returns a self-consistent but mislabeled answer.
 match the question and states it; a comparison against altimetry picks
 the variant matching that altimetry product's IB convention (and says
 so); the chosen variant is named in the methods convention block. The
-concrete variant list is read from the variable catalog at analysis
+concrete variant list is read from the SSH fields concept at analysis
 time, since which variants exist is product state, not a fixed rule.
 
-**Verification.** The variable catalog's Variants section (evidence)
-enumerates the SSH family and its conventions; the convention offset
+**Verification.** The SSH fields concept enumerates the SSH family with
+each variable's convention, granule-verified 2026-08-30;[^fields-ssh]
+the convention offset
 between `SSH` and `SSHNOIBC` is visible directly by differencing the two
 collections for any month.
+
+[^fields-ssh]: fields/ecco-v4r4/ssh.md, the SSH family's variables and Variants
