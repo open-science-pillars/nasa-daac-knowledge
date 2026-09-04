@@ -30,6 +30,13 @@ WARNINGS (SHOULDs and OSP rules)
   W6  log.md date heading not ISO YYYY-MM-DD (spec 9)
   W7  legacy v0.1/v0.6 key present (timestamp, verified_by, evidence,
       or a v0.6 status value): migration incomplete
+  W8  a source resource or body link cites an org repository file at an
+      unpinned ref (blob/main, raw/master, tree/HEAD): cite a commit or
+      tag so the citation cannot drift
+  W9  (with --provider REPO) a provider concept cites a file in another
+      org repository, usually a plugin: provider knowledge must not
+      depend on a plugin file; upstream the fact or cite the provider's
+      own source
 
 FINDINGS (OSP candidate section 5.10; only under --findings, which
 touches `type: finding` concepts and nothing else)
@@ -59,6 +66,7 @@ touches `type: finding` concepts and nothing else)
   FW5 links to a retracted finding
 
 Usage: check_okf_v02.py BUNDLE_DIR [--strict] [--findings [--explain]]
+                        [--provider REPO]
 """
 
 import argparse
@@ -82,6 +90,11 @@ STATUSES = {"draft", "stable", "deprecated"}
 LEGACY_STATUSES = {"verified", "stale", "superseded", "disputed"}
 FOOT_REF = re.compile(r"\[\^([\w-]+)\](?!:)")
 FOOT_DEF = re.compile(r"^\[\^([\w-]+)\]:", re.M)
+ORG = "open-science-pillars"
+ORG_FILE_URL = re.compile(rf"https?://github\.com/{ORG}/([\w.-]+)/(blob|raw|tree)/([^/\s)]+)/")
+UNPINNED_REFS = {"main", "master", "HEAD"}
+MD_LINK = re.compile(r"\]\((https?://[^)\s]+)\)")
+PROVIDER_REPO = None   # set by --provider: this bundle's own org repository, enables W9
 
 
 def split_frontmatter(text: str):
@@ -172,6 +185,21 @@ def check_concept(path: Path, out: list, tiers: dict):
                 src_ids.add(str(entry["id"]))
             if isinstance(entry, dict) and "author" in entry:
                 check_actor(entry["author"], "sources[].author", out, path)
+
+    cites = []
+    for entry in sources if isinstance(sources, list) else []:
+        if isinstance(entry, dict) and isinstance(entry.get("resource"), str):
+            cites.append((f"sources '{entry.get('id', '?')}'", entry["resource"]))
+    cites += [("body link", url) for url in MD_LINK.findall(body)]
+    for where, url in cites:
+        m = ORG_FILE_URL.match(url)
+        if not m:
+            continue
+        repo, _, ref = m.groups()
+        if ref in UNPINNED_REFS:
+            out.append(("W8", path, f"{where} cites {repo} at {ref}: unpinned org URL, cite a commit or tag"))
+        if PROVIDER_REPO and repo != PROVIDER_REPO:
+            out.append(("W9", path, f"{where} cites a file in {repo}: provider knowledge must not depend on a plugin file"))
 
     refs = set(FOOT_REF.findall(body)) | set(FOOT_DEF.findall(body))
     for r in sorted(refs - src_ids):
@@ -661,7 +689,12 @@ def main() -> int:
                          "type: finding concepts; nothing else changes")
     ap.add_argument("--explain", action="store_true",
                     help="with --findings: print how each number resolved")
+    ap.add_argument("--provider", metavar="REPO",
+                    help="this bundle is a provider (canonical) bundle living in org "
+                         "repository REPO; enables W9 for citations into other org repositories")
     args = ap.parse_args()
+    global PROVIDER_REPO
+    PROVIDER_REPO = args.provider
 
     out: list = []
     tiers: dict = {}

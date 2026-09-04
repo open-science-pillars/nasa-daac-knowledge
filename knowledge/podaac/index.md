@@ -116,7 +116,7 @@ reader cites, and it stays draft until a steward signs it. Each entry
 carries the finding's position on its ladder and whether it is
 confronted, because a consumer (a briefing, a skill) voices both and
 quotes the finding's numbers through it rather than restating them.
-The gate runs the finding checks (`check_okf_v02.py podaac --findings`).
+The gate runs the finding checks (`check_okf_v02.py knowledge/podaac --findings`).
 
 - [Sea level rise off the US northeast coast in ECCO v4r4, partitioned and confronted](findings/us-northeast-sea-level-rise.md), status: draft (unsigned), verdict UNADJUDICATED, confronted against NASA-SSH V1.1
 
