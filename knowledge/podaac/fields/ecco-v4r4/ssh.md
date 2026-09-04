@@ -20,7 +20,7 @@ sources:
     author: human:PaulMRamirez
 verified:
   - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
-  - { by: human:PaulMRamirez, at: 2026-08-30T20:30:00Z }
+  - { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
 ---
 
 # Sea surface height

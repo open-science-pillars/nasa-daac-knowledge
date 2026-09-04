@@ -37,7 +37,7 @@ sources:
     title: "OSP ocean-science reference: ECCO v4r4 variable catalog (llc90 native grid)"
     author: human:PaulMRamirez
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-07-04T00:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
 stale_after: 2027-01-04
 ---
 
