@@ -21,7 +21,7 @@ sources:
     resource: ../fields/ecco-v4r4/obp.md
     title: "Fields concept: ocean bottom pressure, whose Variants section lists the V4R4 and V4R4B ShortNames verified in CMR"
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-07-05T00:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 stale_after: 2027-01-04
 ---
 

@@ -6,7 +6,8 @@ tags: [ecco, v4r4, access, ecco_access, earthaccess, geometry, static]
 severity: medium
 dataset: ../datasets/ecco-v4r4.md
 generated: { by: claude-code/fable-5, at: 2026-09-04T19:03:36Z }
-status: draft
+status: stable
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 stale_after: 2027-03-04
 sources:
   - id: observation-record

@@ -4,6 +4,23 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-04 · STEWARD SIGNING: the steward read every diff against
+  the last-signed text and signed all 33 at 20:45:44Z. Promoted from
+  draft to stable: conventions/ecco-budget-formulation and
+  gotchas/ecco-access-static-collections. Re-signed after the
+  re-sourcing pass: the three computations (ecco-heat-budget,
+  ecco-ocean-heat-content, ecco-section-transport), datasets/ecco-v4r4
+  and datasets/swot-karin, the ten fields/ecco-v4r4 concepts, gotchas
+  ecco-geothermal-flux, ecco-mht-basin-scope, ecco-native-vs-regridded,
+  ecco-release-mixing, swot-calval-orbit-phases and
+  swot-crossover-unapplied, and the five recipes (ecco-heat-budget,
+  ecco-mht-26n, ecco-salt-budget, ecco-section-transport,
+  ecco-volume-budget). Re-signed after their migration: the five
+  concepts that moved in from ocean-science. stale_after left as it
+  stood on the re-signs, as at the previous mass re-sign. The five
+  trend and regional sea level drafts stay drafts. Index rows for the
+  two promotions now read stable. (human:PaulMRamirez, recorded by the
+  build assistant)
 - 2026-09-04 · gotchas/ecco-ssh-ib-variants, gotchas/ecco-boussinesq-global-steric,
   gotchas/ecco-native-density-eos, gotchas/ecco-mxldepth-criterion and
   conventions/sea-level-budget-closure: the five concepts that moved in

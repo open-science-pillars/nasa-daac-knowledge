@@ -14,7 +14,7 @@ sources:
   - id: fields-ssh
     resource: ../fields/ecco-v4r4/ssh.md
     title: "The SSH fields concept: SSH, SSHIBC, SSHNOIBC and ETAN with their conventions, granule-verified 2026-08-30, and the collections' Variants"
-verified: { by: human:PaulMRamirez, at: 2026-07-06T00:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 status: stable
 stale_after: 2027-03-04
 ---

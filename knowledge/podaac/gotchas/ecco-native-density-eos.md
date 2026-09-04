@@ -13,7 +13,7 @@ sources:
   - id: teos-10
     resource: https://www.teos-10.org/
     title: "TEOS-10, the international thermodynamic equation of seawater and its Gibbs SeaWater toolbox; the equation of state a generic recomputation reaches for"
-verified: { by: human:PaulMRamirez, at: 2026-07-06T00:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 status: stable
 stale_after: 2027-03-04
 ---

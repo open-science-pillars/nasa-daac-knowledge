@@ -39,7 +39,7 @@ sources:
     resource: ../fields/ecco-v4r4/geometry.md
     title: "Fields concept: grid geometry parameters (the static geometry granule)"
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 stale_after: 2027-01-04
 ---
 

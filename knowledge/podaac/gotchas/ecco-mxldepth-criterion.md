@@ -16,7 +16,7 @@ sources:
   - id: kara-2000
     resource: https://doi.org/10.1029/2000JC900072
     title: "Kara, Rochford and Hurlburt (2000), An optimal definition for ocean mixed layer depth, Journal of Geophysical Research: Oceans 105(C7)"
-verified: { by: human:PaulMRamirez, at: 2026-07-06T00:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 status: stable
 stale_after: 2027-03-04
 ---

@@ -17,7 +17,7 @@ sources:
   - id: steric-computation
     resource: ../computations/ecco-steric-height.md
     title: "The attested steric height computation: a global run cannot pass attestation without the Boussinesq caveat field in its receipt"
-verified: { by: human:PaulMRamirez, at: 2026-07-06T00:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 status: stable
 stale_after: 2027-03-04
 ---

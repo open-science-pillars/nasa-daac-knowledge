@@ -40,7 +40,7 @@ concepts (SPEC §5.7).
 - [ECCO is Boussinesq: global-mean steric sea level needs the mass-conservation correction](gotchas/ecco-boussinesq-global-steric.md), severity medium, status: stable
 - [ECCO MXLDEPTH uses the model's own MLD criterion, not yours](gotchas/ecco-mxldepth-criterion.md), severity high, status: stable
 - [ECCO density and stratification come from its own equation of state; a foreign EOS makes phantom differences](gotchas/ecco-native-density-eos.md), severity high, status: stable
-- [ecco_access guesses a dated filename for the static collections; fetch them through CMR](gotchas/ecco-access-static-collections.md), severity medium, status: draft
+- [ecco_access guesses a dated filename for the static collections; fetch them through CMR](gotchas/ecco-access-static-collections.md), severity medium, status: stable
 
 ## recipes
 
@@ -85,7 +85,7 @@ concepts (SPEC §5.7).
 - [Marine heatwave definition (Hobday family)](conventions/mhw-definition-hobday.md), status: draft
 - [Consistency versus confrontation](conventions/consistency-versus-confrontation.md), status: stable
 - [Sea level budget closure: a correction-consistency problem first](conventions/sea-level-budget-closure.md), status: stable
-- [ECCO v4r4 budget formulation on the native grid](conventions/ecco-budget-formulation.md), status: draft
+- [ECCO v4r4 budget formulation on the native grid](conventions/ecco-budget-formulation.md), status: stable
 
 ## computations (OKF v0.2 section 10)
 

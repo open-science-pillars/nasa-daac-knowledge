@@ -8,7 +8,7 @@ sources:
   - id: wcrp-2018
     resource: https://doi.org/10.5194/essd-10-1551-2018
     title: "WCRP Global Sea Level Budget Group (2018), Global sea-level budget 1993 to present, Earth System Science Data 10, 1551 to 1590"
-verified: { by: human:PaulMRamirez, at: 2026-07-06T00:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 status: stable
 stale_after: 2027-03-04
 ---

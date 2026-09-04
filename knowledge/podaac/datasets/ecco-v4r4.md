@@ -7,7 +7,7 @@ generated: { by: knowledge-seeder/claude, at: 2026-07-06T00:00:00Z }
 resource: https://podaac.jpl.nasa.gov/dataset/ECCO_L4_TEMP_SALINITY_LLC0090GRID_MONTHLY_V4R4
 version: "V4r4, 1992-2017 (ShortNames CMR-verified and native granules live-loaded 2026-07-04)"
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 trainings:
   - https://ecco-v4-python-tutorial.readthedocs.io/
 stale_after: 2027-01-04

@@ -22,7 +22,7 @@ sources:
     resource: ../conventions/ecco-budget-formulation.md
     title: "Bundle convention: ECCO v4r4 budget formulation on the native grid"
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-07-04T00:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 stale_after: 2027-01-04
 ---
 

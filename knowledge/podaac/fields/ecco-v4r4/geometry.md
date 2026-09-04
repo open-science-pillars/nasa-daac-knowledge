@@ -28,7 +28,7 @@ sources:
     title: "The static-collection access gotcha: ecco_access 0.3.1 and the earthaccess route"
 verified:
   - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
-  - { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
+  - { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 ---
 
 # Grid geometry parameters

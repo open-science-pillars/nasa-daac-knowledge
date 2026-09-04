@@ -15,7 +15,7 @@ sources:
     resource: ../gotchas/ecco-native-vs-regridded.md
     title: "Bundle gotcha: ECCO budgets and transports close only on the native llc90 grid"
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-07-05T00:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 stale_after: 2027-01-04
 ---
 
