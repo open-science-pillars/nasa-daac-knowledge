@@ -4,6 +4,18 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-04 · STEWARD SIGNING: the trend family promoted from draft
+  to stable and signed at 22:08:00Z on the steward's instruction:
+  computations/ecco-trend-ci, recipes/ecco-trend-ci,
+  gotchas/ecco-trend-without-effective-n,
+  gotchas/ecco-trend-deseasonalize-jointly and
+  computations/ecco-regional-sea-level (its title loses the draft
+  label). Before signing: the four exhibits pass their attesters from
+  the working tree, the executor's sha256 equals the one the
+  calibration report and the trend exhibit carry, and every coverage
+  figure in the computation text was read back against the report's
+  rows. stale_after untouched. Index rows read stable. (human:PaulMRamirez,
+  recorded by the build assistant)
 - 2026-09-04 · STEWARD SIGNING: the steward read every diff against
   the last-signed text and signed all 33 at 20:45:44Z. Promoted from
   draft to stable: conventions/ecco-budget-formulation and
