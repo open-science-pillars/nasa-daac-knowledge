@@ -1,11 +1,10 @@
 # Bundle stewardship (SPEC v0.6 §5.4, §5.7)
 * @PaulMRamirez
-/podaac/ @PaulMRamirez
+/knowledge/podaac/ @PaulMRamirez
 # The PO.DAAC steward entry replaces the interim line at handoff (a named
 # provider accepts this entry and co-reviews three PRs; see the steward playbook)
 
-# esdis cross-archive requirements bundle (kit 11): interim entry; the
-# Science Enabling Team steward entries replace this line at the
-# Session 2 co-build signing, their names landing with their first
-# verified events, never before.
-/esdis/ @PaulMRamirez
+# esdis cross-archive requirements bundle: interim entry; the Science
+# Enabling Team steward entries replace this line at the co-build signing,
+# their names landing with their first verified events, never before.
+/knowledge/esdis/ @PaulMRamirez

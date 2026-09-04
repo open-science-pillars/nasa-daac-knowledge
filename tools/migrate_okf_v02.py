@@ -191,7 +191,7 @@ def migrate_root_index(path: Path, report: list) -> str | None:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("bundle", type=Path, help="bundle directory, e.g. podaac/")
+    ap.add_argument("bundle", type=Path, help="bundle directory, e.g. knowledge/podaac/")
     ap.add_argument("--steward", required=True,
                     help="steward actor for verified events, e.g. human:PaulMRamirez")
     ap.add_argument("--generated-by", required=True,

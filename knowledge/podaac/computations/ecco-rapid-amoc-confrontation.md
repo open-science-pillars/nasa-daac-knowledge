@@ -24,7 +24,7 @@ sources:
     resource: ecco-amoc-26n.md
     title: "The attested overturning computation whose receipt is the model side"
   - id: rapid-record
-    resource: ../../docs/rapid-26n-record.md
+    resource: ../../../docs/rapid-26n-record.md
     title: "The record note for release v2024.1a: the tree, its manifest, the file hashes, the overlap, the published uncertainty, the terms"
   - id: rapid-doi
     resource: https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1
@@ -126,10 +126,10 @@ bound, a changed series value with its digest left alone, the DOI
 removed, the licence removed, an unstamped observation tree, a
 different release version, and a doctored model receipt.
 
-    uv run podaac/references/computations/ecco_rapid_amoc_confrontation.py \
+    uv run knowledge/podaac/references/computations/ecco_rapid_amoc_confrontation.py \
         --ecco-receipt amoc.json --rapid-root ~/RAPID_26N/rapid.ac.uk-2026-09-02 \
         --receipt confrontation.json
-    cd podaac/references/attesters && \
+    cd knowledge/podaac/references/attesters && \
         uv run rapid_confrontation_check.py confrontation.json --model-receipt amoc.json
 
 A PASS here is a different kind of statement from a PASS on the

@@ -24,7 +24,7 @@ Three modes, combinable:
                 no network: proves the tooling without Earthdata access.
 
 CMR collection search is public (no auth). Usage:
-  verify_cmr.py data/ecco_v4r4_families.yaml [--sweep] [--sign podaac/fields/ecco-v4r4]
+  verify_cmr.py data/ecco_v4r4_families.yaml [--sweep] [--sign knowledge/podaac/fields/ecco-v4r4]
 """
 
 import argparse

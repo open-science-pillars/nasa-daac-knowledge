@@ -39,11 +39,11 @@ never above n; and let Student's t on n_eff - 2 degrees of freedom
 set the interval. Report the trend, the interval, r1 and n_eff
 together. Never the trend alone.[^naked-trend]
 
-    uv run podaac/references/computations/ecco_trend_ci.py \
+    uv run knowledge/podaac/references/computations/ecco_trend_ci.py \
         --source steric_receipt.json --field steric_mean_m_by_month \
         --value-units m --scale 1000 --report-units mm \
         --deseasonalize climatology --receipt trend_receipt.json
-    uv run podaac/references/attesters/trend_ci_check.py trend_receipt.json
+    uv run knowledge/podaac/references/attesters/trend_ci_check.py trend_receipt.json
 
 The number to reproduce is a warning rather than an anchor: the
 bundle's signed steric trend, +135.7772 mm per year over the twelve

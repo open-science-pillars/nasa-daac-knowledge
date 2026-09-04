@@ -20,7 +20,7 @@ status: stable
 stale_after: 2027-01-04
 sources:
   - id: design-note
-    resource: ../../docs/regional-budget-design.md
+    resource: ../../../docs/regional-budget-design.md
     title: "The design note's flux-decomposition position: the grouping is a scope choice to disclose, not a correctness question to settle"
   - id: velmass-gotcha
     resource: ../gotchas/ecco-velmass-hfac-double-count.md

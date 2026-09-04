@@ -47,7 +47,7 @@ uv run tools/release_delta.py tools/ecco_v4r4_families.yaml \
 # 2. Complete the gotcha stub from the ANNOUNCEMENT's facts (period
 #    extension, renames, baseline changes, mixing rule); never from memory.
 # 3. Same-day delta PR: skeleton to tools/, completed gotcha to
-#    podaac/gotchas/, log.md entry, run tools/run_checks.sh first.
+#    knowledge/podaac/gotchas/, log.md entry, run tools/run_checks.sh first.
 # 4. Fields-kit pattern on the ten demo-critical v4r5 families:
 #    draft from the skeleton and landing pages, verify_cmr --sign,
 #    granule-verify, steward signs (their hands or their explicit
@@ -71,7 +71,7 @@ playbook to fire.
 ## Validity domains on release day
 
 A nonzero new-release collection count also sweeps
-podaac/validity-domains/: every domain whose releases qualifier names
+knowledge/podaac/validity-domains/: every domain whose releases qualifier names
 the superseded token is flagged for steward re-verification (the
 domain statement is falsifiable by exactly this event), and no flagged
 domain adjudicates the new release's collections until re-verified and

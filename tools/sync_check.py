@@ -8,7 +8,7 @@ Exit 0 if every overlapping concept file is byte-identical; 1 otherwise.
 import sys
 from pathlib import Path
 
-canon = Path(__file__).resolve().parent.parent / "podaac"
+canon = Path(__file__).resolve().parent.parent / "knowledge" / "podaac"
 target = Path(sys.argv[1])
 bad, checked = [], 0
 for f in canon.rglob("*.md"):

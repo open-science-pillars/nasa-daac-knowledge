@@ -4,6 +4,14 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-03 · bundle moved from podaac/ to knowledge/podaac/ (git mv)
+  so each OSP repository keeps its bundle under knowledge/. Code and
+  receipts under references/ are byte-identical (shas unchanged);
+  the only concept edits are repository-relative paths in shell
+  examples and links to docs/, which gain the extra level. Paths
+  written as podaac/... in entries and commit-pinned links below
+  resolve at their commits; the live path is knowledge/podaac/... ·
+  steward
 - 2026-09-03 · index.md findings section refined: each entry carries
   the finding's ladder position and confrontation kind so consumers can
   voice both; tools/run_checks.sh now runs check_okf_v02 with

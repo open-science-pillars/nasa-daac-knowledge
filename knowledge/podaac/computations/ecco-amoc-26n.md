@@ -119,7 +119,7 @@ months, primary mean 14.4702 Sv, depth of the mean maximum 880 m,
 anchor held on both conventions, both structural sabotages caught,
 run 2026-09-02 on the verified v4r4 record tree.
 
-    uv run podaac/references/computations/ecco_amoc_26n.py \
+    uv run knowledge/podaac/references/computations/ecco_amoc_26n.py \
         --period 1992-01:2017-12 --scope atlantic \
         --data-root ~/ECCO_V4r4_record --receipt amoc.json
 

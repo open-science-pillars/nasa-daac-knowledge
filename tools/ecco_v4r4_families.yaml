@@ -1,5 +1,5 @@
 # ECCO V4r4 collection family manifest
-# Seed data for the fields layer (podaac/fields/ecco-v4r4/), one concept per family.
+# Seed data for the fields layer (knowledge/podaac/fields/ecco-v4r4/), one concept per family.
 #
 # Provenance flags on variables:
 #   granule-verified-2026-07-04   loaded live in the OSP catalog sweep
