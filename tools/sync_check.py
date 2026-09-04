@@ -17,6 +17,8 @@ knowledge/. The plugin declares that copy in knowledge/snapshot.yaml:
     scope:                         # exactly one of include or exclude
       include:                     # explicit files or directories (trailing slash)
         - datasets/grace-fo-mascons.md
+        - gotchas/grace-coastal-leakage.md   # the dataset links both gotchas;
+        - gotchas/grace-gia-correction.md    # omit one and the check reports DANGLING
       # exclude:                   # everything in the bundle except these
       #   - tutorial/
 
