@@ -11,8 +11,8 @@ knowledge/. The plugin declares that copy in knowledge/snapshot.yaml:
     source:
       repository: open-science-pillars/nasa-daac-knowledge
       bundle: knowledge/podaac     # the bundle's path in that repository at the pinned commit
-      commit: 1b8dd064d68d
-      date: 2026-08-31
+      commit: 9224fe5a83e4           # normally the steward's signing commit
+      date: 2026-09-03
     copy_dir: snapshot-podaac      # relative to knowledge/; "." = beside local concepts
     scope:                         # exactly one of include or exclude
       include:                     # explicit files or directories (trailing slash)
