@@ -19,7 +19,7 @@ sources:
     title: ECCO V4r4 family manifest, the per-variable record of the granule verifications of 2026-07-04 and 2026-08-30 (held to each Schema by tools/check_fields.py)
 verified:
   - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
-  - { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
+  - { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 ---
 
 # Ocean and sea-ice surface freshwater fluxes

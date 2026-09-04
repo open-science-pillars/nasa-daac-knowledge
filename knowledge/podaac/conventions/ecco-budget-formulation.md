@@ -4,7 +4,8 @@ title: "ECCO v4r4 budget formulation on the native grid"
 description: "The constants, term definitions, sign conventions and discretization shared by the heat, salt and volume budgets on the llc90 grid, as the ECCO v4 Python tutorial notebooks state them and the sanctioned heat budget code implements them; tolerances and reference residuals are owned by the computations and recipes, not here."
 tags: [ecco, budgets, formulation, native-grid, llc90, heat-budget, salt-budget, volume-budget, convention]
 generated: { by: claude-code/fable-5, at: 2026-09-04T19:01:47Z }
-status: draft
+status: stable
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 stale_after: 2027-03-04
 sources:
   - id: tut-heat

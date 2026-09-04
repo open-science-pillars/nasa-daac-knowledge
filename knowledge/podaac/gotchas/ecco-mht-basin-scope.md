@@ -12,7 +12,7 @@ sources:
     resource: ../recipes/ecco-mht-26n.md
     title: "Bundle recipe: Meridional heat transport at 26.5N from ECCO v4r4"
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-07-05T00:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 stale_after: 2027-01-04
 ---
 

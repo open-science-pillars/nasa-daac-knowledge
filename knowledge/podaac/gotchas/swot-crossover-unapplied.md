@@ -18,7 +18,7 @@ sources:
     resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/web-misc/swot_mission_docs/SWOT_VersionD_KaRIn_Products_Release_Note_20250423b.pdf
     title: "Release Note: SWOT Version D KaRIn Science Data Products, JPL, 2025-04-23: section 7 known issues, crossover correction not applied to reported SSH and SSHA"
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-07-05T00:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 stale_after: 2027-01-04
 ---
 

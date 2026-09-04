@@ -4,6 +4,45 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-04 · STEWARD SIGNING: the steward read every diff against
+  the last-signed text and signed all 33 at 20:45:44Z. Promoted from
+  draft to stable: conventions/ecco-budget-formulation and
+  gotchas/ecco-access-static-collections. Re-signed after the
+  re-sourcing pass: the three computations (ecco-heat-budget,
+  ecco-ocean-heat-content, ecco-section-transport), datasets/ecco-v4r4
+  and datasets/swot-karin, the ten fields/ecco-v4r4 concepts, gotchas
+  ecco-geothermal-flux, ecco-mht-basin-scope, ecco-native-vs-regridded,
+  ecco-release-mixing, swot-calval-orbit-phases and
+  swot-crossover-unapplied, and the five recipes (ecco-heat-budget,
+  ecco-mht-26n, ecco-salt-budget, ecco-section-transport,
+  ecco-volume-budget). Re-signed after their migration: the five
+  concepts that moved in from ocean-science. stale_after left as it
+  stood on the re-signs, as at the previous mass re-sign. The five
+  trend and regional sea level drafts stay drafts. Index rows for the
+  two promotions now read stable. (human:PaulMRamirez, recorded by the
+  build assistant)
+- 2026-09-04 · gotchas/ecco-ssh-ib-variants, gotchas/ecco-boussinesq-global-steric,
+  gotchas/ecco-native-density-eos, gotchas/ecco-mxldepth-criterion and
+  conventions/sea-level-budget-closure: the five concepts that moved in
+  from the ocean-science plugin leave the legacy `timestamp` and
+  `evidence` keys behind for the bundle's `generated` and `sources`
+  form (the checker's W7 count falls from 10 to 0). Each now cites a
+  durable authority with footnotes: the SSH fields concept for the IB
+  variants; Greatbatch (1994) and the attested steric computation for
+  the Boussinesq caveat; the density collection's own RHOAnoma and
+  DRHODR attributes (a modified UNESCO equation of state driven by
+  potential temperature at constant pressure, read from the 2009-12
+  granule) plus TEOS-10 for the native EOS; the WCRP (2018) budget
+  paper for closure; the mixed-layer collection's own MXLDEPTH
+  attributes (the Kara et al. 2000 temperature criterion, 0.8 degrees C
+  colder than the surface) plus Kara et al. for the MLD criterion,
+  which the body now states exactly instead of "generally not". The
+  native EOS gotcha's verification paragraph no longer claims a pending
+  reproducing check as if the concept were a draft: it says what was
+  read from the granule and that no recomputed-versus-shipped check
+  exists here yet. Plugin-internal comments (harness rules, plugin
+  evals paths) removed. Signatures untouched; all five owe a re-sign at
+  the sitting, as they already did. (build assistant)
 - 2026-09-04 · CANONICAL CONTENT DRAFTS: this bundle takes over the
   ECCO knowledge that lived only in the ocean-science plugin, and
   every provider concept that cited a plugin file now cites a durable

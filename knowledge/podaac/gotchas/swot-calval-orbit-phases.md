@@ -21,7 +21,7 @@ sources:
     resource: ../datasets/swot-karin.md
     title: "SWOT KaRIn Level 2 Low Rate SSH, the dataset concept: Variants and the family holdings probe"
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-07-04T00:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 stale_after: 2027-01-04
 ---
 

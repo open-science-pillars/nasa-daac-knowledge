@@ -22,7 +22,7 @@ sources:
     title: The manifested 2010 native fixtures (SHA-512 per granule) the dims were re-verified against
 verified:
   - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
-  - { by: human:PaulMRamirez, at: 2026-09-04T02:58:02Z }
+  - { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 ---
 
 # Ocean potential temperature and salinity
