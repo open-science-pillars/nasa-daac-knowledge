@@ -14,8 +14,11 @@ same way everywhere. Gate before any PR: `bash tools/run_checks.sh`.
 Plugins (ocean-science, hydrology) embed PINNED SNAPSHOTS of these
 concepts so installs are self-contained (SPEC §0.5). Precedence: the
 canonical concept here wins on any conflict; snapshots record source
-commit and date in their index.md and refresh at plugin releases
-(`tools/sync_check.py` verifies byte-identity).
+commit, date, copy directory and scope in a `knowledge/snapshot.yaml`
+manifest (and the pin in their index.md) and refresh at releases:
+`tools/sync_check.py <plugin>/knowledge` verifies the copy against the
+canonical bundle at the pinned commit (stale, missing, extra, dangling
+links, pin drift) and `--refresh <commit>` rewrites it.
 
 ## Stewardship
 
