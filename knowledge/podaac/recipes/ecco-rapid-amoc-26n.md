@@ -21,7 +21,7 @@ sources:
     resource: ../datasets/rapid-mocha.md
     title: "The RAPID-MOCHA dataset concept: what the array is, its products and their versions"
   - id: rapid-record
-    resource: ../../docs/rapid-26n-record.md
+    resource: ../../../docs/rapid-26n-record.md
     title: "The record note for release v2024.1a: files, hashes, overlap, the programme's uncertainty table, the processing events inside the overlap, the terms of use"
   - id: rapid-doi
     resource: https://doi.org/10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1
@@ -296,15 +296,15 @@ From the repository root, the model series over its whole record
 anchor is checked), then the confrontation, then the attester from
 its own directory:
 
-    uv run podaac/references/computations/ecco_amoc_26n.py \
+    uv run knowledge/podaac/references/computations/ecco_amoc_26n.py \
         --period 1992-01:2017-12 --scope atlantic \
         --data-root ~/ECCO_V4r4_record --receipt amoc.json
 
-    uv run podaac/references/computations/ecco_rapid_amoc_confrontation.py \
+    uv run knowledge/podaac/references/computations/ecco_rapid_amoc_confrontation.py \
         --ecco-receipt amoc.json --rapid-root ~/RAPID_26N/rapid.ac.uk-2026-09-02 \
         --receipt confrontation.json
 
-    cd podaac/references/attesters && \
+    cd knowledge/podaac/references/attesters && \
         uv run rapid_confrontation_check.py confrontation.json \
             --model-receipt amoc.json
 

@@ -20,7 +20,7 @@ status: stable
 stale_after: 2027-01-04
 sources:
   - id: design-note
-    resource: ../../docs/regional-budget-design.md
+    resource: ../../../docs/regional-budget-design.md
     title: "The regional budget design note: the two-bar finding, the tautology retraction, the disclosure doctrine, and the measured demonstration this computation promotes"
   - id: pointwise-budget
     resource: ecco-heat-budget.md

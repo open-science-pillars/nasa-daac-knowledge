@@ -1,5 +1,5 @@
 ---
-# Fields concept template (podaac/fields/ecco-v4r4/<slug>.md)
+# Fields concept template (knowledge/podaac/fields/ecco-v4r4/<slug>.md)
 # The <slug> MUST match a family slug in data/ecco_v4r4_families.yaml;
 # add the family to the manifest first if it is new (single source of truth).
 type: Data Collection

@@ -13,7 +13,7 @@ sources:
     resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/web-misc/nasa-ssh/NASA-SSH_V1_1_UserGuide.pdf
     title: "NASA-SSH V1.1 User Guide (PO.DAAC): the gridding, the corrections, the mean sea surface, and what it does and does not say about uncertainty"
   - id: record-note
-    resource: ../../docs/nasa-ssh-record.md
+    resource: ../../../docs/nasa-ssh-record.md
     title: "The record note: the tree on the machine, its manifest, how it was fetched and verified, and what the files say when read live"
   - id: prandi-2021
     resource: https://doi.org/10.1038/s41597-020-00786-7

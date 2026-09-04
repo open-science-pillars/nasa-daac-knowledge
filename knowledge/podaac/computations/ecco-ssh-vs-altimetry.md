@@ -26,7 +26,7 @@ sources:
     resource: ../datasets/nasa-ssh.md
     title: "The observational record: NASA-SSH V1.1 simple grids, its conventions, its uncertainty statement and its independence from the estimate"
   - id: record-note
-    resource: ../../docs/nasa-ssh-record.md
+    resource: ../../../docs/nasa-ssh-record.md
     title: "The record note for release V1.1: the tree, its manifest, the archive checksums, the empty grids, the terms"
   - id: nasa-ssh-doi
     resource: https://doi.org/10.5067/NSREF-SG0V11
@@ -165,10 +165,10 @@ changed observed series value with its digest left alone, the
 independence statement with a field removed, and a confronted model
 value that no longer derives from the partition receipt.
 
-    uv run podaac/references/computations/ecco_ssh_vs_altimetry.py \
+    uv run knowledge/podaac/references/computations/ecco_ssh_vs_altimetry.py \
         --partition-receipt partition.json --obs-root ~/NASA_SSH/podaac-2026-09-02 \
         --period 1993-01:2017-12 --min-grids 2 --receipt comparison.json
-    cd podaac/references/attesters && \
+    cd knowledge/podaac/references/attesters && \
         uv run altimetry_confrontation_check.py comparison.json \
             --model-receipt partition.json --obs-root ~/NASA_SSH/podaac-2026-09-02
 

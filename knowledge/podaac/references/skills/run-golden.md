@@ -33,7 +33,7 @@ refuses a receipt from an unstamped tree (docs/science-record.md):
 
 ```bash
 uv run tools/science_record_verify.py \
-  --manifest podaac/references/retrieval/fixtures-2010-manifest.json \
+  --manifest knowledge/podaac/references/retrieval/fixtures-2010-manifest.json \
   --data-root ~/ECCO_V4r4 --checksum all --exact --stamp
 ```
 

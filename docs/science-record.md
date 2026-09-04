@@ -13,7 +13,7 @@ the coverage statement for the record as verified on 2026-09-01.
 |---|---|---|
 | root | `~/ECCO_V4r4` | `~/ECCO_V4r4_record` |
 | record name | `ecco-v4r4-fixtures-2010` | `ecco-v4r4-science-record` |
-| manifest | `podaac/references/retrieval/fixtures-2010-manifest.json` | `podaac/references/retrieval/science-record-manifest.json` |
+| manifest | `knowledge/podaac/references/retrieval/fixtures-2010-manifest.json` | `knowledge/podaac/references/retrieval/science-record-manifest.json` |
 | verification report | `fixtures-2010-verification.json` (same directory) | `science-record-verification.json` (same directory) |
 | contents | 144 files, 3.08 GB: the 2010 months of the collections the computations read, the 2009-12 month a few of them need, the 2011-01 boundary snapshots, the geometry granule, the tutorial geothermal file | 4,056 files, 85.54 GB: eleven monthly collections 1992-01 through 2017-12, two snapshot collections at 311 month boundaries, geometry, geothermal |
 | purpose | gates, CI, attester selftests, the reference anchors, demonstrations | real results over the full 1992-2017 span |
@@ -182,7 +182,7 @@ on: residual per unit volume 5.931e-15 degC/s against the 1e-10 bar,
 relative residual 7.03e-8 against 1e-6, all four mutations caught
 (geothermal omitted 1.45e-5 relative; rim face shifted 0.050; vertical
 sign flipped 0.410; vertical faces omitted 0.205), attester PASS. The
-receipt is at `podaac/references/retrieval/exhibit-regional-heat-2005.json`
+receipt is at `knowledge/podaac/references/retrieval/exhibit-regional-heat-2005.json`
 and its `data.record` is the science record stamp above. This is an
 exhibit that the boundary works end to end, not a signed finding.
 
@@ -192,7 +192,7 @@ record was extended: residual per unit volume
 relative
 3.86e-07 against 1e-6, 3 of 3 applicable
 sabotages caught, attester PASS. Receipt:
-`podaac/references/retrieval/exhibit-regional-salt-2005.json`.
+`knowledge/podaac/references/retrieval/exhibit-regional-salt-2005.json`.
 
 The first trends on the record, each with the interval the
 sanctioned trend method states for it: over the US northeast coast,
@@ -203,7 +203,7 @@ and from the sea-level partition, whose total and manometric trends
 over the same months are +5.2452 [+4.0623, +6.4281] and +2.4535
 [+2.1701, +2.7370], with a maximum partition residual of 8.282e-04 m
 against the 1.0e-3 bar. Receipts:
-`podaac/references/retrieval/exhibit-steric-record.json` and
+`knowledge/podaac/references/retrieval/exhibit-steric-record.json` and
 `exhibit-sea-level-record.json`; the 2010 fixture runs of both ship
 beside them and carry the intervals a single year deserves.
 
@@ -222,22 +222,22 @@ the manifest and verify tools hold no credentials at all.
 ```
 # build the record manifest from the declared collections and span
 uv run tools/science_record_manifest.py \
-    --out podaac/references/retrieval/science-record-manifest.json
+    --out knowledge/podaac/references/retrieval/science-record-manifest.json
 
 # derive a manifest from a tree that already exists (CMR must vouch for every file)
 uv run tools/science_record_manifest.py --from-tree ~/ECCO_V4r4 \
     --record ecco-v4r4-fixtures-2010 \
-    --out podaac/references/retrieval/fixtures-2010-manifest.json
+    --out knowledge/podaac/references/retrieval/fixtures-2010-manifest.json
 
 # fetch what the manifest declares and the tree lacks (resumable; default root is the record)
 uv run tools/science_record_fetch.py \
-    --manifest podaac/references/retrieval/science-record-manifest.json
+    --manifest knowledge/podaac/references/retrieval/science-record-manifest.json
 
 # verify a tree against its manifest, hash everything, refuse undeclared files, stamp it
 uv run tools/science_record_verify.py \
-    --manifest podaac/references/retrieval/science-record-manifest.json \
+    --manifest knowledge/podaac/references/retrieval/science-record-manifest.json \
     --data-root ~/ECCO_V4r4_record --checksum all --exact --stamp \
-    --report podaac/references/retrieval/science-record-verification.json
+    --report knowledge/podaac/references/retrieval/science-record-verification.json
 ```
 
 Re-verify after any change to a tree, and commit the new report beside

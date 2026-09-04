@@ -59,7 +59,7 @@ sources:
     resource: ../datasets/nasa-ssh.md
     title: "NASA-SSH simple gridded sea surface height anomaly (observational reference): the record, its conventions and its uncertainty statement"
   - id: nasa-ssh-record
-    resource: ../../docs/nasa-ssh-record.md
+    resource: ../../../docs/nasa-ssh-record.md
     title: "The NASA-SSH record note: the tree, the manifest, the gridding parameters read from the files, the empty grids"
   - id: ecco-v4r4
     resource: ../datasets/ecco-v4r4.md

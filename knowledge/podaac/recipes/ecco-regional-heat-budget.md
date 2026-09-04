@@ -15,7 +15,7 @@ sources:
     resource: ../computations/ecco-regional-heat-budget.md
     title: "The attested computation this recipe walks: contract, mutation evidence, reference run"
   - id: design-note
-    resource: ../../docs/regional-budget-design.md
+    resource: ../../../docs/regional-budget-design.md
     title: "The design note: why two bars, why the disjoint rim path, what no oracle can check"
 ---
 

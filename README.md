@@ -1,9 +1,13 @@
 # nasa-daac-knowledge
 
 CANONICAL HOME for per-DAAC dataset knowledge bundles (SPEC v0.6
-§5.7), starting with `podaac/`: the peculiarities that make naive
-analyses of PO.DAAC-archived products silently wrong, as reviewable
-OKF concepts with evidence links, statuses, and steward sign-off.
+§5.7), one bundle per provider under `knowledge/`: `knowledge/podaac/`
+holds the peculiarities that make naive analyses of PO.DAAC-archived
+products silently wrong, as reviewable OKF concepts with sources,
+statuses, and steward sign-off; `knowledge/esdis/` holds the
+cross-archive requirements bundle. Every OSP repository that carries a
+bundle keeps it under `knowledge/`, so tools and readers find it the
+same way everywhere. Gate before any PR: `bash tools/run_checks.sh`.
 
 ## How this relates to the plugins
 

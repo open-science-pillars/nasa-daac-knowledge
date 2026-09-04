@@ -61,8 +61,8 @@ record beside this one, never an overwrite.
 | record name | `nasa-ssh-ref-simple-grid-v1.1` |
 | contents | 1315 grids, `NASA-SSH_alt_ref_simple_grid_v1_1_19921026.nc` through `..._20180101.nc`, one every seven days, 1,483,856,623 bytes |
 | fetch record | `SOURCE.json` in the tree (above) |
-| manifest | `podaac/references/retrieval/nasa-ssh-manifest.json` (SHA-256 per file, identity read from the netCDF attributes of every file, the fetch record carried in); SHA-256 of the manifest `578b8f29b8cd7aff69be3eea74fa330f32e0bad4635e38b6e37d0b97f3e3e449` |
-| verification report | `podaac/references/retrieval/nasa-ssh-verification.json`: declared 1315, present 1315, checksum ok 1315, undeclared 0, stamped 2026-09-03T05:37:50Z |
+| manifest | `knowledge/podaac/references/retrieval/nasa-ssh-manifest.json` (SHA-256 per file, identity read from the netCDF attributes of every file, the fetch record carried in); SHA-256 of the manifest `578b8f29b8cd7aff69be3eea74fa330f32e0bad4635e38b6e37d0b97f3e3e449` |
+| verification report | `knowledge/podaac/references/retrieval/nasa-ssh-verification.json`: declared 1315, present 1315, checksum ok 1315, undeclared 0, stamped 2026-09-03T05:37:50Z |
 | tools | `tools/obs_record_fetch.py` (fetch and archive-checksum verification), `tools/obs_record_manifest.py` (`build --version V1.1 --doi 10.5067/NSREF-SG0V11`, `verify --stamp`) |
 | stamp | `RECORD.json` in the tree: record name, manifest SHA-256, verification time, report SHA-256, file count; machine-local, not committed |
 
