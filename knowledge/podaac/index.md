@@ -34,8 +34,8 @@ concepts (SPEC §5.7).
 - [Geostrophic velocity needs the density factor](gotchas/ecco-geostrophic-density-factor.md), severity high, status: stable
 - [Daily granules overlap at midnight](gotchas/ecco-daily-granule-midnight-overlap.md), severity medium, status: stable
 - [Geostrophic velocity from PHIHYD alone omits the surface pressure](gotchas/ecco-phihyd-surface-pressure.md), severity high, status: stable
-- [A trend fit without an effective-sample-size correction overstates certainty](gotchas/ecco-trend-without-effective-n.md), severity high, status: draft
-- [Deseasonalize jointly with the trend, or the climatology keeps part of it](gotchas/ecco-trend-deseasonalize-jointly.md), severity high, status: draft
+- [A trend fit without an effective-sample-size correction overstates certainty](gotchas/ecco-trend-without-effective-n.md), severity high, status: stable
+- [Deseasonalize jointly with the trend, or the climatology keeps part of it](gotchas/ecco-trend-deseasonalize-jointly.md), severity high, status: stable
 - [ECCO SSH inverse-barometer variants: pick the convention and never mix them](gotchas/ecco-ssh-ib-variants.md), severity medium, status: stable
 - [ECCO is Boussinesq: global-mean steric sea level needs the mass-conservation correction](gotchas/ecco-boussinesq-global-steric.md), severity medium, status: stable
 - [ECCO MXLDEPTH uses the model's own MLD criterion, not yours](gotchas/ecco-mxldepth-criterion.md), severity high, status: stable
@@ -55,7 +55,7 @@ concepts (SPEC §5.7).
 - [Steric height and its trend from ECCO v4r4 density](recipes/ecco-steric-height.md), status: stable
 - [Closed volume budget on the ECCO v4r4 native grid](recipes/ecco-volume-budget.md), status: stable
 - [Wind-stress curl and Ekman pumping on the native grid](recipes/ecco-wind-stress-curl.md), status: stable
-- [A trend with an honest interval from any ECCO monthly series](recipes/ecco-trend-ci.md), status: draft
+- [A trend with an honest interval from any ECCO monthly series](recipes/ecco-trend-ci.md), status: stable
 - [ECCO overturning at 26.5N confronted with the RAPID array](recipes/ecco-rapid-amoc-26n.md), status: stable (the first confrontation pair: the other side is an observation at a fixed version)
 - ECCO regional sea level against NASA-SSH altimetry: the second confrontation pair, built as a [computation](computations/ecco-ssh-vs-altimetry.md) with no recipe of its own (the partition recipe and the trend recipe together are the method); the scores are in its receipt
 
@@ -93,7 +93,7 @@ concepts (SPEC §5.7).
 - [Salt budget closure on the ECCO v4r4 native grid (attested, draft)](computations/ecco-salt-budget.md), status: draft
 - [Volume budget closure on the ECCO v4r4 native grid (attested, draft)](computations/ecco-volume-budget.md), status: draft
 - [Meridional heat transport at 26.5N from ECCO v4r4 (attested, draft)](computations/ecco-mht-26n.md), status: draft
-- [Regional sea level partition from ECCO (attested)](computations/ecco-regional-sea-level.md), status: draft
+- [Regional sea level partition from ECCO (attested)](computations/ecco-regional-sea-level.md), status: stable
 - [Global ocean heat content from ECCO v4r4 (attested)](computations/ecco-ocean-heat-content.md), status: stable
 - [Regional steric height from ECCO v4r4 (attested)](computations/ecco-steric-height.md), status: stable
 - [Geostrophic balance and thermal wind from ECCO v4r4 (attested)](computations/ecco-geostrophic-balance.md), status: stable
@@ -103,7 +103,7 @@ concepts (SPEC §5.7).
 - [Regional salt budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-salt-budget.md), status: stable
 - [Regional volume budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-volume-budget.md), status: stable
 - [Reynolds flux decomposition from ECCO v4r4 (attested)](computations/ecco-flux-decomposition.md), status: stable
-- [Linear trend with an honest interval from a monthly series (attested)](computations/ecco-trend-ci.md), status: draft
+- [Linear trend with an honest interval from a monthly series (attested)](computations/ecco-trend-ci.md), status: stable
 - [Atlantic overturning at 26.5N from ECCO v4r4 (attested)](computations/ecco-amoc-26n.md), status: stable
 - [ECCO overturning against RAPID at 26.5N (attested)](computations/ecco-rapid-amoc-confrontation.md), status: stable
 - [ECCO regional sea level against NASA-SSH altimetry (attested)](computations/ecco-ssh-vs-altimetry.md), status: draft
