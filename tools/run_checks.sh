@@ -15,6 +15,8 @@ run() { echo; echo "== $*"; "$@" || fail=1; }
 case "${SIGNATURE_DEBT:-fail}" in report) sig=--report ;; *) sig= ;; esac
 run uv run tools/check_okf_v02.py knowledge/podaac --findings --provider nasa-daac-knowledge
 run uv run tools/check_okf_v02.py knowledge/esdis --provider nasa-daac-knowledge
+run uv run tools/check_negative.py knowledge/podaac
+run uv run tools/check_negative.py knowledge/esdis
 run uv run tools/signature_check.py knowledge/podaac $sig
 run uv run tools/signature_check.py knowledge/esdis $sig
 run uv run tools/check_fields.py knowledge/podaac/fields/ecco-v4r4 tools/ecco_v4r4_families.yaml
@@ -28,6 +30,7 @@ run uv run tools/check_script_deps.py knowledge tools
 run uv run tools/check_prose.py --selftest
 run uv run tools/sign.py --selftest
 run uv run tools/reattest.py --selftest
+run uv run tools/check_negative.py --selftest
 run uv run tools/check_prose.py .
 # Sibling plugin clones, when present, have their local concepts checked
 # for owed signatures, their scripts for undeclared dependencies and their

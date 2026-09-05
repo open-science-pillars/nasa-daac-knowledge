@@ -130,6 +130,43 @@ The gate runs the finding checks (`check_okf_v02.py knowledge/podaac --findings`
 
 - [Sea level rise off the US northeast coast in ECCO v4r4, partitioned and confronted](findings/us-northeast-sea-level-rise.md), status: draft (unsigned), verdict UNADJUDICATED, confronted against NASA-SSH V1.1
 
+## dead-ends (a candidate type in the specification)
+
+A dead-end is the record of an attempt that did not work: the goal, the
+method tried, the failure with its symptom and cause (or the word
+unknown), the dated observations with the actor and the thread each
+came from, and what would make the attempt worth retrying. It differs
+from a gotcha in what the reader is left holding: a gotcha is a trap
+that yields a wrong result silently and names the correct approach; a
+dead-end yields no result or an invalid one and may have no route
+around it. Its truth condition is attribution (the cited attempts exist
+and say what the record says), so a dead-end is never deleted: a
+steward reopens it with the evidence, and the record of what was tried
+stays citable as history. Each carries `load_bearing` (high, medium,
+low), the gotcha severity rule applied to negative knowledge: high
+requires the eval case that measures the behavior. The gate runs
+`check_negative.py knowledge/podaac`.
+
+No entries yet. Candidates come from the community miner (dead-end
+phrasings in ECCO-GROUP threads) and from the design notes; each enters
+as a draft and stays one until the steward signs.
+
+## field-states (a candidate type in the specification)
+
+A field-state is a statement about the state of discourse: the question,
+the date it was read, its state (disputed, open, converging), and the
+positions held, each with who holds it and its sources. It is signed as
+a record that the field has not adjudicated, never as an adjudication,
+and the checker fails one that carries a verdict, a claim, or an answer.
+It carries `stale_after` by requirement (current discourse is dated by
+nature), `bears_on` naming the concepts whose voicing depends on the
+question, and `load_bearing` on the same rule as a dead-end. A change in
+the state is a new field-state that supersedes this one, never an edit
+after signature.
+
+No entries yet. A dispute is read by a person from the literature; each
+enters as a draft and stays one until the steward signs.
+
 ## connectors
 
 - [NASA Earthdata MCP server (CMR discovery, no login)](connectors/earthdata-mcp.md), status: draft
