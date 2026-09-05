@@ -43,24 +43,39 @@ compares versions as semver and semver forbids a leading zero.
    inputs, never a candidate for hand-editing the output.
 5. **Release.** A GitHub release on the tag with RELEASE-NOTES.md as
    the body and CREDITS.md attached as an asset.
-6. **Mint.** Zenodo deposit of the release archive; the contributor
-   list is CREDITS.md verbatim (names and roles as derived); the
-   automated-instruments section goes in the Zenodo description, not
-   the author list.
-7. **Record.** The Zenodo DOI lands as a log.md entry at the top of
-   each shipped bundle (one line: date, version, DOI, derived
-   contributor count), and the README badge row gains or updates the
-   DOI badge, labeled with the version string, not the tag name.
-8. **Catalog.** A one-line PR to open-science-pillars/marketplace
+6. **Catalog.** A one-line PR to open-science-pillars/marketplace
    moving this plugin's `ref` to the new tag. From that merge, users
    receive the release with
    `claude plugin update nasa-daac-knowledge@open-science-pillars` (or
-   automatically where they enabled auto-update for the marketplace),
-   and a domain plugin whose floor sits below this version receives it
-   on its next update with no change of its own.
-9. **Announce (optional, steward's clock).** Discussions post; the
+   automatically where they enabled auto-update for the marketplace).
+   Updating a domain plugin does not move this one: a domain plugin
+   release that raises its floor past a user's installed version shows
+   that plugin disabled until the user runs the update command above,
+   so a domain plugin's release notes say so when its floor moves.
+7. **Announce (optional, steward's clock).** Discussions post; the
    credit list travels with it.
 
-Recording rule: steps 3 through 8 happen in one sitting so the tag,
-the release, the DOI and the catalog never drift apart. First release
-candidate is staged on open-science-pillars/marketplace#25.
+Recording rule: steps 3 through 6 happen in one sitting so the tag,
+the release and the catalog never drift apart. First release
+candidate was staged on open-science-pillars/marketplace#25.
+
+## At 1.0.0: the Zenodo deposit and the DOI
+
+Zenodo archiving and the DOI are deferred until the first 1.0.0
+release of a plugin that depends on this bundle, tracked on
+open-science-pillars/marketplace#55 and on this repository's own
+tracking issue; a citable plugin needs a citable bundle, and no
+earlier release is one anyone should cite. Until then CITATION.cff
+says so and steps 1 through 7 are the whole release. When that
+release comes, two steps join step 5 in the same sitting:
+
+- **Mint.** Zenodo deposit of the release archive; the contributor
+  list is CREDITS.md verbatim (names and roles as derived); the
+  automated-instruments section goes in the Zenodo description, not
+  the author list.
+- **Record.** The Zenodo DOI lands as a log.md entry at the top of
+  each shipped bundle (one line: date, version, DOI, derived
+  contributor count), in CITATION.cff as the concept DOI with the
+  steward and provider organization added as authors (steward
+  playbook, Credit), and in the README badge row as a DOI badge
+  labeled with the version string, not the tag name.

@@ -29,14 +29,18 @@ The plugin carries knowledge and tools only, no skills or agents;
 installed skills find its bundles through core's consult-knowledge
 convention. Releases carry calendar versions (2026.9.1): `claude plugin
 list` shows which one is installed, and
-`claude plugin update nasa-daac-knowledge@open-science-pillars` (or an
-update of a domain plugin that already has it installed as a
-dependency) fetches the newest, because this marketplace does not
-update installs on its own unless you enable that. A domain plugin
-installed before it declared this dependency does not gain it from an
-update: `claude plugin list` shows that plugin disabled with an error
-naming the install command above, and running it (or `/reload-plugins`
-in a session) resolves it.
+`claude plugin update nasa-daac-knowledge@open-science-pillars` fetches
+the newest, because this marketplace does not update installs on its
+own unless you enable that. Updating a domain plugin does not update
+this one: when the new release of a domain plugin raises its floor
+past the version you have, `claude plugin list` shows that plugin
+disabled with an error naming the floor and the installed version
+(observed 2026-09-05: "Requires nasa-daac-knowledge >=2026.9.2,
+installed 2026.9.1"), and the update command above resolves it. The
+same holds for a domain plugin installed before it declared this
+dependency: its update does not install this plugin, the error names
+the install command above, and running it (or `/reload-plugins` in a
+session) resolves it.
 
 ## How this relates to the plugins
 
