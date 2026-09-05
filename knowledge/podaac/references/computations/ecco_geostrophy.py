@@ -37,9 +37,24 @@ concepts).
    -(g/(rho0 f)) * grad(rho): an internal identity whose agreement is
    discretization-limited. Reported: Pearson correlation.
 
+PER-CELL FIELDS (optional, --fields PATH): the receipt's scalars answer
+"does the balance hold"; a map answers "where". With --fields the run
+also writes the per-cell arrays behind the scalars to a NumPy .npz
+beside the receipt (XC, YC, CS, SN, Depth, the geostrophic and model
+velocity components at the validation depth in the tile frame, the
+thermal-wind shear pair, and the exact masks the scalars were taken
+over) and records in the receipt, under `fields`, the file's path and
+sha256 plus each array's shape, dtype and sha256. A renderer that
+verifies those hashes is drawing the numbers this receipt vouches for
+and nothing else; the attester fails a receipt whose fields file is
+missing or altered. Components are in the tile frame: a map of a
+scalar (speed, a difference, a mask) needs no rotation, a vector map
+to east and north needs the CS and SN rotation shipped in the file.
+
 Usage:
   ecco_geostrophy.py --month 2009-12 [--depth-m 350] [--depth2-m 700]
       [--data-root ~/ECCO_V4r4] [--receipt geos_receipt.json]
+      [--fields geos_fields.npz]
 """
 
 import argparse
@@ -75,6 +90,19 @@ def centered(field, spacing, axis):
     return out
 
 
+def load(ds, name):
+    """A variable with its fill value turned into NaN. ECCO granules
+    mark land and dry faces with _FillValue 9.97e+36, not NaN, and
+    np.asarray on the masked array netCDF4 returns silently keeps the
+    fill. The scored cells never held a fill (a fill in a centered
+    difference makes it non-finite or absurd, and the domain masks
+    excluded every such cell), so this changes no scalar; it keeps the
+    fill out of the per-cell fields a map is drawn from. The dtype is
+    preserved so the arithmetic, and every reference anchor, stays
+    bit-identical to the runs that set them."""
+    return np.ma.filled(np.ma.masked_invalid(ds[name][0]), np.nan)
+
+
 def to_c_x(face_field):
     out = np.full_like(face_field, np.nan)
     out[..., :, :-1] = 0.5 * (face_field[..., :, :-1] + face_field[..., :, 1:])
@@ -85,6 +113,26 @@ def to_c_y(face_field):
     out = np.full_like(face_field, np.nan)
     out[..., :-1, :] = 0.5 * (face_field[..., :-1, :] + face_field[..., 1:, :])
     return out
+
+
+def write_fields(path, arrays, note):
+    """Per-cell arrays beside the receipt, hashed twice: the file as a
+    whole (what the stdlib attester checks) and each array's raw bytes
+    (what a renderer with NumPy checks, and what makes two runs on the
+    same data comparable array by array)."""
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    arrays = {k: np.ascontiguousarray(v) for k, v in arrays.items()}
+    np.savez_compressed(path, **arrays)
+    return {
+        "path": str(path),
+        "format": "npz",
+        "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "arrays": {k: {"shape": list(v.shape), "dtype": str(v.dtype),
+                       "sha256": hashlib.sha256(v.tobytes()).hexdigest()}
+                   for k, v in arrays.items()},
+        "note": note,
+    }
 
 
 def data_identity(root):
@@ -106,10 +154,15 @@ def main() -> int:
     ap.add_argument("--depth2-m", type=float, default=700.0)
     ap.add_argument("--data-root", type=Path, default=Path.home() / "ECCO_V4r4")
     ap.add_argument("--receipt", type=Path, default=Path("geos_receipt.json"))
+    ap.add_argument("--fields", type=Path, default=None,
+                    help="also write the per-cell arrays to this .npz and "
+                         "record their hashes in the receipt")
     args = ap.parse_args()
 
     g = netCDF4.Dataset(args.data_root / GEOMETRY)
     yc = np.asarray(g["YC"][:])
+    xc = np.asarray(g["XC"][:])
+    cs = np.asarray(g["CS"][:]); sn = np.asarray(g["SN"][:])
     dxC = np.asarray(g["dxC"][:]); dyC = np.asarray(g["dyC"][:])
     hFacC = np.asarray(g["hFacC"][:])
     Z = np.asarray(g["Z"][:])
@@ -120,17 +173,17 @@ def main() -> int:
     dens = netCDF4.Dataset(
         args.data_root / DENS /
         f"OCEAN_DENS_STRAT_PRESS_mon_mean_{args.month}_ECCO_V4r4_native_llc0090.nc")
-    phi = np.asarray(dens["PHIHYD"][0])
-    rhoa = np.asarray(dens["RHOAnoma"][0])
+    phi = load(dens, "PHIHYD")
+    rhoa = load(dens, "RHOAnoma")
     sshds = netCDF4.Dataset(
         args.data_root / SSH /
         f"SEA_SURFACE_HEIGHT_mon_mean_{args.month}_ECCO_V4r4_native_llc0090.nc")
-    etan = np.asarray(sshds["ETAN"][0])
+    etan = load(sshds, "ETAN")
     phi = phi + G * etan[None, :, :, :]   # FULL pressure potential
     vel = netCDF4.Dataset(
         args.data_root / VEL /
         f"OCEAN_VELOCITY_mon_mean_{args.month}_ECCO_V4r4_native_llc0090.nc")
-    uvel = np.asarray(vel["UVEL"][0]); vvel = np.asarray(vel["VVEL"][0])
+    uvel = load(vel, "UVEL"); vvel = load(vel, "VVEL")
 
     # dxC/dyC live on face locations; use their C-point average as the
     # centered-difference metric (correlation-grade validation, not a
@@ -224,6 +277,20 @@ def main() -> int:
         "generated_at": (datetime.datetime.now(datetime.timezone.utc)
                          .strftime("%Y-%m-%dT%H:%M:%SZ")),
     }
+    if args.fields is not None:
+        receipt["fields"] = write_fields(args.fields, {
+            "XC": xc, "YC": yc, "CS": cs, "SN": sn, "Depth": depth,
+            "u_geostrophic": u_g, "v_geostrophic": v_g,
+            "u_model": u_c, "v_model": v_c,
+            "shear_u_geostrophic": shear_u, "shear_v_geostrophic": shear_v,
+            "shear_u_thermal_wind": tw_u, "shear_v_thermal_wind": tw_v,
+            "mask_interior": valid, "mask_full_band": band,
+            "mask_polar": polar, "mask_thermal_wind": valid2,
+        }, ("velocity components at depth_used_m and shear components "
+            "between the two depths, all at C points in the tile frame; "
+            "the masks are exactly the cells each receipt scalar was "
+            "computed over; rotate with CS and SN before any east-north "
+            "vector map"))
     args.receipt.write_text(json.dumps(receipt, indent=2) + "\n",
                             encoding="utf-8")
     print(f"run {receipt['run_id']}: month {args.month}")
@@ -237,6 +304,9 @@ def main() -> int:
               f"n = {polar.sum():,} (reported, not validated)")
     print(f"  thermal wind identity {-Z[k1]:.0f} to {-Z[k2]:.0f} m: "
           f"r = {r_tw:.4f}, n = {valid2.sum():,}")
+    if args.fields is not None:
+        print(f"  fields -> {args.fields} "
+              f"(sha256 {receipt['fields']['sha256'][:12]}...)")
     print(f"  receipt -> {args.receipt}")
     return 0
 

@@ -9,7 +9,7 @@ parameters:
 computation: references/computations/ecco_ohc.py
 executor:
   resource: references/computations/ecco_ohc.py
-  receipt: [run_id, code_sha256, data, bound_parameters, anchors, months, ohc_change_J, cells_evaluated, ohc_baseline_caveat]
+  receipt: [run_id, code_sha256, data, bound_parameters, anchors, months, ohc_J_by_month, ohc_change_J, cells_evaluated, ohc_baseline_caveat]
 attester:
   resource: references/attesters/ohc_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:11:19Z }
@@ -26,6 +26,9 @@ sources:
   - id: ecco-skills-corroboration
     resource: https://github.com/podaac/ecco-skills
     title: "podaac/ecco-skills compute-ocean-heat-content acceptance record: independently measured the same anchors (area exact to the tutorial, volume within 0.4 percent of literature, volume-mean THETA 3.594 degC)"
+  - id: trend-ci
+    resource: ecco-trend-ci.md
+    title: "Attested computation, trend with interval: reads a monthly mapping out of a sanctioned receipt and copies its data stamp forward"
 ---
 
 # Global ocean heat content from ECCO v4r4 (attested)
@@ -45,8 +48,32 @@ the two constants), the grid anchors hold (ocean surface area within
 0.5 percent of the tutorial-published 3.58E+08 km2, measured deviation
 0.003 percent; ocean volume within 1 percent of the literature
 1.335E+18 m3, measured deviation under 0.01 percent; exactly 2,406,992
-wet cells), and every month's volume-mean THETA sits in the
-provisional 2 to 6 degC physical band.[^tutorial-scalar]
+wet cells), every month's volume-mean THETA sits in the
+provisional 2 to 6 degC physical band, and the monthly series
+`ohc_J_by_month` covers the bound months in order and agrees with the
+per-month list to the last bit.[^tutorial-scalar]
+
+**The monthly series is a receipt field, not a by-product.** The
+receipt carries the monthly OHC as `ohc_J_by_month`, a `{YYYY-MM: J}`
+mapping, because that is the form the trend-with-interval computation
+reads (`ecco_trend_ci.py --source ohc_receipt.json --field
+ohc_J_by_month --value-units J --scale 1e-21 --report-units ZJ`). A
+deseasonalized OHC series or an OHC trend fitted that way inherits
+this receipt's run id, code hash and data stamp, and its attester
+recomputes the chain from the series in the trend receipt; a series
+retyped into a bare file attests FAIL by construction, whatever its
+arithmetic.[^trend-ci] The deseasonalized monthly series a plot wants
+is the trend receipt's `intermediates.series_fit`.
+
+**Reference chain on the science record (2026-09-05).** All 312
+months 1992-01 to 2017-12 in one run: OHC change +1.8099E+23 J,
+attester PASS. The trend over that series with the seasonal cycle
+removed: +8.06 ZJ/yr, 95 percent interval [+3.48, +12.63], lag-1
+autocorrelation 0.978 leaving 3.5 effective samples of 312, trend
+attester PASS with the OHC receipt's stamp copied forward. The wide
+interval is the honest one: a 26-year OHC series carries decadal
+persistence, and the naive interval (half width 0.10 ZJ/yr) would
+overstate the certainty forty-fold.
 
 **Reference run (2026-09-01, cached native granules).** Surface area
 3.5801E+08 km2; volume 1.3350E+18 m3; volume-mean THETA 3.6085 degC
@@ -70,3 +97,4 @@ the rule are in docs/science-record.md.
 [^budget-formulation]: Bundle convention, ECCO v4r4 budget formulation, constants section
 [^tutorial-scalar]: ECCO v4 tutorial scalar-quantities chapter, the published ocean surface area
 [^ecco-skills-corroboration]: podaac/ecco-skills OHC acceptance record, an independent implementation reaching the same anchors
+[^trend-ci]: computations/ecco-trend-ci.md, the one sanctioned trend method and its chain-of-custody rule

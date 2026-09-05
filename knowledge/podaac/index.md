@@ -98,6 +98,7 @@ concepts (SPEC §5.7).
 - [Regional steric height from ECCO v4r4 (attested)](computations/ecco-steric-height.md), status: stable
 - [Geostrophic balance and thermal wind from ECCO v4r4 (attested)](computations/ecco-geostrophic-balance.md), status: stable
 - [Wind-stress curl and Ekman pumping from ECCO v4r4 (attested)](computations/ecco-wind-stress-curl.md), status: stable
+- [Thermal-wind reconstruction from a level of no motion in ECCO v4r4 (attested)](computations/ecco-thermal-wind-reconstruction.md), status: draft
 - [Regional heat budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-heat-budget.md), status: stable
 - [Section transports on the ECCO v4r4 native grid (attested)](computations/ecco-section-transport.md), status: stable
 - [Regional salt budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-salt-budget.md), status: stable

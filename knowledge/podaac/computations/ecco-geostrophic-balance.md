@@ -11,7 +11,7 @@ parameters:
 computation: references/computations/ecco_geostrophy.py
 executor:
   resource: references/computations/ecco_geostrophy.py
-  receipt: [run_id, code_sha256, data, bound_parameters, geostrophic, thermal_wind]
+  receipt: [run_id, code_sha256, data, bound_parameters, geostrophic, thermal_wind, fields]
 attester:
   resource: references/attesters/geos_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:35:00Z }
@@ -69,6 +69,20 @@ helper reaches 0.998 on the same comparison, the bar an implementation
 using ecco_po_tutorials should be held to.[^ecco-skills-corroboration]
 The contract binds the receipt to THIS method's measured numbers, not
 to the stronger method's.[^tutorial-geostrophic]
+
+**Per-cell fields, on request.** The scalars answer whether the
+balance holds; a map answers where. Run with `--fields PATH` and the
+executor also writes the per-cell arrays behind the scalars to a NumPy
+`.npz` (XC, YC, CS, SN, Depth; the geostrophic and model velocity
+components at the validation depth, in the tile frame; the thermal-wind
+shear pair between the two depths; and the exact masks each scalar was
+computed over) and records, under `fields` in the receipt, the file's
+path and SHA-256 plus each array's shape, dtype and SHA-256. The
+attester then requires the file to exist and hash as recorded, so a
+figure drawn from it can only show what the receipt vouches for; a
+receipt without the block is attested as before. Scalar maps (a speed,
+a difference, a mask) need no rotation; a vector map to east and north
+needs the CS and SN rotation shipped in the file.
 
 **Data provenance.** The receipt also carries a `data` block: the data
 root and the `RECORD.json` stamp the verify tool leaves in a tree it has

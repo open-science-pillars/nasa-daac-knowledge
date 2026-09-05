@@ -22,7 +22,12 @@ when ALL hold, else FAIL (exit 1) naming the field:
      wind r within 0.05 of the measured 0.6102;
   5. any other month: r_velocity in [0.85, 0.98] and thermal wind r
      in [0.45, 0.85], provisional bands to be tightened as months
-     accumulate.
+     accumulate;
+  6. when the receipt carries a `fields` block (the run was asked for
+     per-cell arrays), the .npz it names exists and hashes to the
+     recorded sha256, and every array entry carries a shape and a
+     sha256; a receipt whose fields file is missing or altered fails,
+     so a map drawn from it can only show what the receipt vouches for.
 
 Usage: geos_check.py RECEIPT.json [--computation PATH]
 """
@@ -52,6 +57,38 @@ GEO_FIELDS = ["r_velocity", "median_abs_diff_m_s", "n_points",
 def fail(msg: str) -> int:
     print(f"FAIL: {msg}")
     return 1
+
+
+def check_fields(r, receipt_path):
+    """The optional per-cell fields file: when the receipt carries a
+    `fields` block, the file it names must exist (beside the receipt
+    if not at the recorded path) and hash to the recorded sha256, so a
+    map drawn from it shows the numbers this receipt vouches for.
+    Returns None when the block holds, else the failure message."""
+    if "fields" not in r:
+        return None
+    fb = r["fields"]
+    if (not isinstance(fb, dict) or not fb.get("path")
+            or not isinstance(fb.get("sha256"), str)
+            or len(fb["sha256"]) != 64
+            or not isinstance(fb.get("arrays"), dict) or not fb["arrays"]):
+        return "fields block present but malformed (needs path, sha256, arrays)"
+    candidates = [Path(fb["path"]), receipt_path.parent / Path(fb["path"]).name]
+    found = next((c for c in candidates if c.is_file()), None)
+    if found is None:
+        return (f"fields file {fb['path']} not found at its recorded path "
+                "or beside the receipt: a receipt that names per-cell "
+                "fields is attested with them or not at all")
+    got = hashlib.sha256(found.read_bytes()).hexdigest()
+    if got != fb["sha256"]:
+        return (f"fields file {found} does not hash to the receipt's "
+                f"sha256 ({got[:12]}... vs {fb['sha256'][:12]}...)")
+    for name, spec in fb["arrays"].items():
+        if (not isinstance(spec, dict) or not isinstance(spec.get("shape"), list)
+                or not isinstance(spec.get("sha256"), str)
+                or len(spec["sha256"]) != 64):
+            return f"fields.arrays.{name} lacks shape or sha256"
+    return None
 
 
 def main() -> int:
@@ -94,6 +131,10 @@ def main() -> int:
         return fail("constants or collections differ from the contract")
     if geo.get("validation_domain") != DOMAIN:
         return fail("validation domain differs from the contract")
+
+    problem = check_fields(r, args.receipt)
+    if problem:
+        return fail(problem)
 
     rv = geo["r_velocity"]
     tw = r["thermal_wind"].get("r_shear")

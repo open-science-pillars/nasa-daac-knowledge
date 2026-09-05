@@ -10,8 +10,8 @@ produced by references/computations/ecco_ohc.py and returns PASS
 naming the failing field:
 
   1. every declared receipt field is present (run_id, code_sha256,
-     bound_parameters, anchors, months, cells_evaluated,
-     ohc_baseline_caveat);
+     bound_parameters, anchors, months, ohc_J_by_month,
+     cells_evaluated, ohc_baseline_caveat);
   2. code_sha256 equals the sha256 of the sanctioned computation file,
      so a rewritten or swapped computation fails mechanically;
   3. bound_parameters match the contract exactly: months (a list of
@@ -26,7 +26,12 @@ naming the failing field:
      band [2.0, 6.0] degC (band pending oceanographer confirmation;
      measured 3.6085 and 3.6068 for 2010-01 and 2010-12);
   6. the potential-temperature baseline caveat travels in the receipt,
-     so no consumer can quote an absolute OHC without it.
+     so no consumer can quote an absolute OHC without it;
+  7. ohc_J_by_month, the {YYYY-MM: J} mapping downstream computations
+     read (the trend-with-interval computation takes it by --field),
+     covers exactly the bound months in order and agrees with the
+     per-month list to the last bit, so the series a consumer fits is
+     the series this receipt vouches for and not a retyped copy.
 
 Usage: ohc_check.py RECEIPT.json [--computation PATH]
 """
@@ -46,7 +51,8 @@ CELLS = 2406992
 CONSTANTS = {"rhoConst_kg_m3": 1029.0, "Cp_J_kg_K": 3994.0}
 COLLECTION = "ECCO_L4_TEMP_SALINITY_LLC0090GRID_MONTHLY_V4R4"
 FIELDS = ["run_id", "code_sha256", "bound_parameters", "anchors",
-          "months", "cells_evaluated", "ohc_baseline_caveat"]
+          "months", "ohc_J_by_month", "cells_evaluated",
+          "ohc_baseline_caveat"]
 
 
 def fail(msg: str) -> int:
@@ -116,9 +122,19 @@ def main() -> int:
     if "relative to an arbitrary 0 degC" not in r["ohc_baseline_caveat"]:
         return fail("baseline caveat missing or reworded")
 
+    by_month = r["ohc_J_by_month"]
+    if not isinstance(by_month, dict) or list(by_month) != months:
+        return fail("ohc_J_by_month does not cover the bound months in order")
+    if [m.get("month") for m in r["months"]] != months:
+        return fail("months list does not cover the bound months in order")
+    for m in r["months"]:
+        if by_month.get(m["month"]) != m.get("ohc_J"):
+            return fail(f"ohc_J_by_month disagrees with the months list "
+                        f"for {m['month']}")
+
     print(f"PASS run {r['run_id']}: sanctioned code, bound parameters, "
-          f"grid anchors, THETA sanity, and the baseline caveat all hold "
-          f"({len(r['months'])} month(s))")
+          f"grid anchors, THETA sanity, the baseline caveat, and the "
+          f"monthly series all hold ({len(r['months'])} month(s))")
     return 0
 
 

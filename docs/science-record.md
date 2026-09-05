@@ -166,7 +166,8 @@ collections were added.
 
 **By computation.** Every attested computation in this bundle can be
 fed from the record over its full span: ocean heat content, steric
-height, geostrophic balance and thermal wind, wind-stress curl, the
+height, geostrophic balance and thermal wind, the thermal-wind
+reconstruction from a level of no motion, wind-stress curl, the
 sea-level partition, the pointwise heat budget, the regional heat,
 salt and volume budgets, section transports and the flux
 decomposition. The trend-with-interval computation reads no tree

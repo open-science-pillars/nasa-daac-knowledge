@@ -23,6 +23,16 @@ Anchors computed alongside, for the attester:
 - total ocean volume, (rA * drF * hFacC).sum();
 - per-month volume-mean THETA, a physical-sanity scalar.
 
+The receipt carries the monthly OHC twice on purpose: `months`, a
+list of per-month records with the volume-mean THETA beside each
+value, and `ohc_J_by_month`, the same values as a {YYYY-MM: J}
+mapping in month order. The mapping is the form every downstream
+sanctioned computation reads (the trend-with-interval computation
+takes `--field ohc_J_by_month` and copies this receipt's data stamp
+forward), so a deseasonalized OHC series or trend inherits its
+provenance from this receipt instead of from a hand-built file. The
+attester requires both and fails a receipt whose two forms disagree.
+
 Inputs are the cached native monthly TEMP_SALINITY granules plus the
 geometry granule (the fixture layout under --data-root). Deterministic:
 same inputs, same numbers.
@@ -30,6 +40,8 @@ same inputs, same numbers.
 Usage:
   ecco_ohc.py --months 2010-01 2010-12 [--data-root ~/ECCO_V4r4]
       [--receipt ohc_receipt.json]
+  ecco_trend_ci.py --source ohc_receipt.json --field ohc_J_by_month \
+      --value-units J --scale 1e-21 --report-units ZJ
 """
 
 import argparse
@@ -108,6 +120,7 @@ def main() -> int:
             "ocean_volume_m3": total_volume,
         },
         "months": months_out,
+        "ohc_J_by_month": {m["month"]: m["ohc_J"] for m in months_out},
         "ohc_baseline_caveat": ("THETA is potential temperature, so each "
                                 "ohc_J is relative to an arbitrary 0 degC "
                                 "baseline; only changes are physical"),
