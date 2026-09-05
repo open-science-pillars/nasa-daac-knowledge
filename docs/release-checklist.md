@@ -5,50 +5,65 @@ releases. Credit is derived, never edited: if the credit list looks
 wrong, fix the frontmatter events or CODEOWNERS and re-derive; never
 the output.
 
-1. **Freeze and gate.** Main is green: check_okf_v02 zero errors on
-   every bundle root shipping in the release, and no concept owes a
-   signature: `uv run tools/signature_check.py <bundle>` lists every
-   stable concept edited since its signing commit (`--diff` shows the
-   edit), and a merged edit to a stable concept is re-signed before the
-   freeze, so the tag is a commit the steward has signed (SPEC 5.4,
-   merge then sign).
-2. **Tag.** An annotated tag on main (vYYYY.MM.N), DCO-signed like any
-   commit.
-3. **Derive.** From the marketplace clone:
-   uv run tools/derive_credit.py <this repo>/podaac <this repo>/esdis
+The bundles ship as one plugin (`.claude-plugin/plugin.json`) that the
+domain plugins depend on at a version floor, so a release is three
+things: the version bump that lets installs see it, the tag the
+installer resolves, and the catalog line that names it. Versions are
+calendar semver, `YYYY.M.N` with no zero padding (2026.9.1, then
+2026.9.2 for a second release in the same month), because the installer
+compares versions as semver and semver forbids a leading zero.
+
+1. **Freeze and gate.** Main is green: `bash tools/run_checks.sh`
+   (check_okf_v02 zero errors on every bundle root shipping in the
+   release; no concept owes a signature, as
+   `uv run tools/signature_check.py <bundle>` measures it, listing every
+   stable concept edited since its signing commit with `--diff` showing
+   the edit; a merged edit to a stable concept is re-signed before the
+   freeze, so the tag is a commit the steward has signed, SPEC 5.4,
+   merge then sign), and `claude plugin validate .` passes.
+2. **Bump.** `version` in `.claude-plugin/plugin.json` and in
+   CITATION.cff, in the same PR as the last content change of the
+   release; merge it. The bump is what reaches installs: an install
+   keeps its cached copy until the version string changes.
+3. **Tag.** From the repository root, on the merge commit:
+   `claude plugin tag --push -m "nasa-daac-knowledge %s"` (add a short
+   body after the subject). It derives `nasa-daac-knowledge--v<version>`
+   from plugin.json, checks the catalog entry agrees, and refuses a dirty
+   tree or an existing tag. The tag is what a dependent plugin's version
+   floor resolves against, so it exists before any plugin declares a
+   floor at this version.
+4. **Derive.** From the marketplace clone:
+   uv run tools/derive_credit.py <this repo>/knowledge/podaac <this repo>/knowledge/esdis
    --since <previous release date> --out-dir release-staging/
    producing CREDITS.md and RELEASE-NOTES.md. Read both; the sanity
    rule applies: every human name must be explicable
    from an event or CODEOWNERS line, and any surprise is a bug in the
    inputs, never a candidate for hand-editing the output.
-4. **Release.** A GitHub release on the tag with RELEASE-NOTES.md as
+5. **Release.** A GitHub release on the tag with RELEASE-NOTES.md as
    the body and CREDITS.md attached as an asset.
-5. **Mint.** Zenodo deposit of the release archive; the contributor
+6. **Mint.** Zenodo deposit of the release archive; the contributor
    list is CREDITS.md verbatim (names and roles as derived); the
    automated-instruments section goes in the Zenodo description, not
    the author list.
-6. **Record.** The Zenodo DOI lands as a log.md entry at the top of
-   each shipped bundle (one line: date, release tag, DOI, derived
+7. **Record.** The Zenodo DOI lands as a log.md entry at the top of
+   each shipped bundle (one line: date, version, DOI, derived
    contributor count), and the README badge row gains or updates the
-   DOI badge.
-7. **Refresh the snapshots.** Every plugin that pins a copy of a
-   shipped bundle (knowledge/snapshot.yaml names the source bundle,
-   commit, copy directory, and scope) is refreshed to the tagged
-   commit from this clone:
-   uv run tools/sync_check.py <plugin>/knowledge --refresh <tag>
-   which refuses a commit that owes signatures (the pin rule, SPEC
-   5.7), then rewrites the in-scope files, prunes out-of-scope copies
-   in a subdirectory layout, and moves the manifest and index.md pin
-   lines;
-   the plugin's own check_okf_v02 run stays green and the plugin's PR
-   carries the tag in its title. Between releases, run_checks.sh keeps
-   verifying each sibling clone at its pin and reports how far behind
-   the pin sits; BEHIND is information, not a failure.
-8. **Announce (optional, steward's clock).** Discussions post; the
+   DOI badge, labeled with the version string, not the tag name.
+8. **Catalog.** A one-line PR to open-science-pillars/marketplace
+   moving this plugin's `ref` to the new tag. From that merge, users
+   receive the release with
+   `claude plugin update nasa-daac-knowledge@open-science-pillars` (or
+   automatically where they enabled auto-update for the marketplace),
+   and a domain plugin whose floor sits below this version receives it
+   on its next update with no change of its own.
+9. **Announce (optional, steward's clock).** Discussions post; the
    credit list travels with it.
 
-Recording rule: steps 2 through 6 happen in one sitting so the tag,
-the release, and the DOI never drift apart; step 7 follows in the same
-sitting or the next, and the plugin release that ships the refreshed
-copy pins nothing older than this tag. First release candidate
-is staged on open-science-pillars/marketplace#25.
+Recording rule: steps 3 through 8 happen in one sitting so the tag,
+the release, the DOI and the catalog never drift apart. While a domain
+plugin still carries a pinned copy of a shipped bundle
+(`knowledge/snapshot.yaml`), `uv run tools/sync_check.py
+<plugin>/knowledge --refresh <tag>` moves the copy to the tagged commit
+in that plugin's next release; the copies are being retired in favor of
+the dependency and this sentence goes with them. First release
+candidate is staged on open-science-pillars/marketplace#25.
