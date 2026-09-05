@@ -22,8 +22,7 @@ at `~/ECCO_V4r4`; an Earthdata Login is needed on the first fetch,
 from the environment or `~/.netrc`):
 
 ```bash
-uv run --with marimo,numpy,xarray,netcdf4,earthaccess,ecco_access,ecco_v4_py \
-  python ocean-science/verification/fixtures/fetch_ecco_2010.py
+uv run ocean-science/verification/fixtures/fetch_ecco_2010.py
 ```
 
 An already-populated cache is used as-is; nothing is re-downloaded.
