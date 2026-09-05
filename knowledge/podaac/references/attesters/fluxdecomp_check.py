@@ -5,7 +5,7 @@
 """Deterministic attester for the attested ECCO v4r4 flux
 decomposition.
 
-No LLM, stdlib only, consumer-side (spec 10.2). PASS (exit 0) only
+No LLM, stdlib only, consumer-side (OKF v0.2 §10.2). PASS (exit 0) only
 when ALL hold, else FAIL (exit 1) naming the field:
 
   1. declared receipt fields present, including all four stored terms

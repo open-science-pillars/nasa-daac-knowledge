@@ -4,6 +4,22 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-05 · RE-ATTESTATION of references/computations/ecco_heat_budget.py
+  (sha256 00ffba3b13ba -> 05de42d3ff95), a deliberate docstring-only
+  edit: the citation "(spec 10.3)" now reads "(OKF v0.2 §10.3)", two
+  stale paths in the header now point at the bundle convention
+  (conventions/ecco-budget-formulation.md) and the contract concept
+  (computations/ecco-heat-budget.md), and the receipt list names the
+  `data` block the code already emits. No numeric line changed.
+  Evidence, all on the fixture cache (year 2010, tile1-interior): a
+  receipt from the previous file FAILS against the new one on
+  code_sha256, as the contract requires; a fresh run reproduces the
+  reference numbers exactly (residual max 5.013e-11, p99.9 7.346e-12
+  degC/s, 3,341,772 cells) and attests PASS; a one-character tamper of
+  the new file FAILS. The ten attester docstrings that cited
+  "(spec 10.2)" now cite OKF v0.2 §10.2 by name; attesters hash the
+  computation, not themselves, so no receipt is affected by that. The
+  concept body is unchanged and owes nothing. (steward)
 - 2026-09-05 · STEWARD RE-SIGNING at 20:22:37Z, entered on the
   steward's explicit instruction: computations/ecco-heat-budget.md and
   recipes/ecco-heat-budget.md. The wording pass that replaced

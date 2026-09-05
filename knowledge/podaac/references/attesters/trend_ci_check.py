@@ -4,7 +4,7 @@
 # ///
 """Deterministic attester for an attested trend with interval.
 
-No LLM, stdlib only, consumer-side (spec 10.2). This attester does
+No LLM, stdlib only, consumer-side (OKF v0.2 §10.2). This attester does
 not sample the receipt: it recomputes the ENTIRE chain from the
 series the receipt carries, with its own arithmetic, and compares
 every intermediate. PASS (exit 0) only when ALL hold, else FAIL

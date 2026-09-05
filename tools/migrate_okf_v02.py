@@ -11,18 +11,18 @@ other byte, including YAML comments inside frontmatter, is preserved so
 review diffs stay minimal. Idempotent: a file already carrying a
 `generated:` key is reported and skipped.
 
-Transforms (spec references are OKF v0.2, GoogleCloudPlatform/knowledge-catalog):
-  timestamp: X                 ->  generated: { by: <--generated-by>, at: X }   (spec 13.1)
-  status: verified             ->  status: stable                               (spec 5.4)
-  status: stale                ->  status: stable  (+ stale_after today)        (spec 5.5)
-  status: superseded           ->  status: deprecated                           (spec 5.4)
+Transforms (OKF v0.2 §references are OKF v0.2, GoogleCloudPlatform/knowledge-catalog):
+  timestamp: X                 ->  generated: { by: <--generated-by>, at: X }   (OKF v0.2 §13.1)
+  status: verified             ->  status: stable                               (OKF v0.2 §5.4)
+  status: stale                ->  status: stable  (+ stale_after today)        (OKF v0.2 §5.5)
+  status: superseded           ->  status: deprecated                           (OKF v0.2 §5.4)
   status: disputed             ->  left in place, WARN (manual call)
   verified: DATE
-  verified_by: STR             ->  verified: { by: <--steward>, at: DATE }      (spec 5.2, 7)
-  evidence:                    ->  sources: (id + resource per entry)           (spec 5.1)
+  verified_by: STR             ->  verified: { by: <--steward>, at: DATE }      (OKF v0.2 §5.2, 7)
+  evidence:                    ->  sources: (id + resource per entry)           (OKF v0.2 §5.1)
     - URL
-  (root index.md)              ->  prepend okf_version: "0.2" frontmatter       (spec 12)
-  (all concepts)               ->  add stale_after if --stale-after given       (spec 5.5)
+  (root index.md)              ->  prepend okf_version: "0.2" frontmatter       (OKF v0.2 §12)
+  (all concepts)               ->  add stale_after if --stale-after given       (OKF v0.2 §5.5)
 
 Usage:
   migrate_okf_v02.py BUNDLE_DIR --steward human:ID --generated-by ACTOR
@@ -175,7 +175,7 @@ def migrate_concept(path: Path, args, report: list) -> str | None:
     report.append(f"EDIT  {path}\n        " + "\n        ".join(actions))
     if sources_ids:
         report.append(f"TODO  {path}: footnote pass, join body claims to sources ids "
-                      f"[{', '.join(sorted(sources_ids))}] (spec 5.1)")
+                      f"[{', '.join(sorted(sources_ids))}] (OKF v0.2 §5.1)")
     return "\n".join(out) + "\n" + body
 
 
@@ -184,7 +184,7 @@ def migrate_root_index(path: Path, report: list) -> str | None:
     if text.startswith("---"):
         report.append(f"OK    {path}: root index already carries frontmatter")
         return None
-    report.append(f"EDIT  {path}\n        prepend okf_version 0.2 frontmatter (spec 12)")
+    report.append(f"EDIT  {path}\n        prepend okf_version 0.2 frontmatter (OKF v0.2 §12)")
     return '---\nokf_version: "0.2"\n---\n\n' + text
 
 
@@ -205,10 +205,10 @@ def main() -> int:
 
     if not args.steward.startswith("human:"):
         print("--steward must be a human: actor; the human-reviewed trust tier "
-              "keys on that prefix (spec 5.3, 7)", file=sys.stderr)
+              "keys on that prefix (OKF v0.2 §5.3, 7)", file=sys.stderr)
         return 2
     if not ACTOR_RE.match(args.generated_by):
-        print("--generated-by must follow the actor convention (spec 7)", file=sys.stderr)
+        print("--generated-by must follow the actor convention (OKF v0.2 §7)", file=sys.stderr)
         return 2
 
     report: list = []
