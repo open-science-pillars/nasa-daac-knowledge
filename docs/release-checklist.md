@@ -60,10 +60,5 @@ compares versions as semver and semver forbids a leading zero.
    credit list travels with it.
 
 Recording rule: steps 3 through 8 happen in one sitting so the tag,
-the release, the DOI and the catalog never drift apart. While a domain
-plugin still carries a pinned copy of a shipped bundle
-(`knowledge/snapshot.yaml`), `uv run tools/sync_check.py
-<plugin>/knowledge --refresh <tag>` moves the copy to the tagged commit
-in that plugin's next release; the copies are being retired in favor of
-the dependency and this sentence goes with them. First release
+the release, the DOI and the catalog never drift apart. First release
 candidate is staged on open-science-pillars/marketplace#25.
