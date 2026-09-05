@@ -8,8 +8,9 @@ Cross-archive metadata requirement concepts: what a rule demands, where
 it is written, how it is checked, and honestly which of those is a
 mandate versus a reviewed practice. Consumed by the archive-observatory
 sweeper and harness; stewarded separately from podaac/ via CODEOWNERS
-scoping. Scaffolded ahead of the co-build; Science Enabling Team
-signatures land at the co-build, never before.
+scoping. Scaffolded ahead of the co-build; the Application Support and
+Science Enabling Team (ASSET) signatures land at the co-build, never
+before.
 
 ## requirements
 

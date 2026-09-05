@@ -2,6 +2,15 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-04 · index.md and the five requirement concepts that name the
+  team (doi-registered, related-urls-present,
+  collection-granule-consistency, spatial-extent, temporal-extent):
+  the Science Enabling Teams are being renamed the Application Support
+  and Science Enabling Teams (ASSETs), and the concepts say so. Wording
+  only; no rule, class, or check mapping changed, and every concept
+  stays a draft. Earlier entries keep the name in use when they were
+  written. (claude-code/fable-5)
+
 - 2026-08-30 · bundle scaffolded with eight requirement concepts, drafted
   ahead of the Science Enabling Team co-build: all drafts, no
   signatures, and the incoming stewards' names reserved for signing

@@ -23,7 +23,8 @@ citation; a schema version bump re-verifies it at the next sweep.
 
 **Check binding.** Structural: spatial-extent-present (cmr-structural,
 the observatory sweeper). pyQuARC candidates, proposed and pending
-Science Enabling Team confirmation:
+confirmation by the Application Support and Science Enabling Team
+(ASSET):
 spatial_extent_requirement_fulfillment_check, with
 granule_spatial_representation_check adjacent on the granule side.
 

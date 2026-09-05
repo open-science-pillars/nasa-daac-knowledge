@@ -27,7 +27,8 @@ attribution.
 
 **Check binding.** Structural: related-urls-present (cmr-structural,
 the observatory sweeper). pyQuARC candidates, proposed and pending
-Science Enabling Team confirmation: online_access_url_presence_check,
+confirmation by the Application Support and Science Enabling Team
+(ASSET): online_access_url_presence_check,
 get_data_url_check.
 
 [^pyquarc-readme]: pyQuARC README on the ARC framework basis

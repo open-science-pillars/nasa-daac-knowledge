@@ -30,8 +30,8 @@ compatible".[^pyquarc-readme] The class is SHOULD with ARC attribution.
 **Check binding.** Unmapped in pyQuARC v1.3.0: no check id in the
 current mapping covers cross-record consistency broadly (the closest,
 granule_spatial_representation_check, covers one shared field and is
-too narrow to propose). The mapping awaits the Science Enabling Team's
-working knowledge.
+too narrow to propose). The mapping awaits the working knowledge of the
+Application Support and Science Enabling Team (ASSET).
 
 [^pyquarc-readme]: pyQuARC README, common-information consistency sentence
 [^arc-paper]: Bugbee et al. 2021, consistency definition and granule sampling
