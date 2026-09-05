@@ -79,8 +79,8 @@ what is on main resolves.
 ## Tools
 
 `tools/` carries the gate (`run_checks.sh`: OKF conformance, fields
-conformance, the script-dependency check, and every tool selftest, all
-offline), the readiness check (`doctor.py`), the ECCO product
+conformance, the script-dependency check, the wording check, and every
+tool selftest, all offline), the readiness check (`doctor.py`), the ECCO product
 watch (`verify_cmr.py`, `release_delta.py`, `RELEASE-DAY.md`), the DOI
 authority and citation formatter (`ecco_v4r4_dois.yaml`, `ecco_cite.py`;
 the selftest cross-checks every DOI the concepts and the family manifest
@@ -89,8 +89,14 @@ gotcha candidates (`mine_sources.py`, needs `GITHUB_TOKEN`), the
 Earthdata MCP tool-surface smoke (`mcp_smoke.py`, network), the owed-signature check
 (`signature_check.py`: which stable concepts changed after their
 steward signed them, measured by the signing commit; the
-merge-then-sign rule), and the science and observation record tooling
-(`science_record_*.py`, `obs_record_*.py`).
+merge-then-sign rule), the signing tool (`sign.py`: appends the
+steward's verified event to each named concept and one entry to the
+bundle log, so paying a signature debt is one command and one commit),
+the wording check (`check_prose.py`: specification rules cited by name
+rather than section number, no program bookkeeping in what a reader
+meets, no em or en dashes; in `run_checks.sh` and in each plugin's CI),
+and the science and observation record tooling (`science_record_*.py`,
+`obs_record_*.py`).
 
 ## Stewardship
 
