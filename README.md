@@ -95,8 +95,14 @@ bundle log, so paying a signature debt is one command and one commit),
 the wording check (`check_prose.py`: specification rules cited by name
 rather than section number, no program bookkeeping in what a reader
 meets, no em or en dashes; in `run_checks.sh` and in each plugin's CI),
-and the science and observation record tooling (`science_record_*.py`,
-`obs_record_*.py`).
+the re-attestation driver (`reattest.py`: after a deliberate edit to a
+sanctioned computation, one command runs the file on the fixture cache
+with its reference arguments, attests the fresh receipt, shows the
+previous version's receipt failing against the new file and a tamper
+of the new file failing, and drafts the log entry with both hashes;
+`tools/reference_runs.yaml` holds the reference arguments per
+computation), and the science and observation record tooling
+(`science_record_*.py`, `obs_record_*.py`).
 
 ## Stewardship
 
