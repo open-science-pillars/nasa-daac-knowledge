@@ -4,6 +4,13 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-05 · recipes/ecco-thermal-wind-reconstruction.md (new, draft):
+  the walk from a density field to a current, thermal-wind shear in the
+  tile frame integrated from a 3000 m level of no motion, scored
+  absolute and relative with the reference speed reported; the
+  fill-aware read and the face masks as steps, the mixed-layer failure
+  as the where. Sibling of the attested computation, indexed after the
+  wind-stress-curl recipe.
 - 2026-09-05 · STEWARD SIGNING at 16:14:15Z, entered on the steward's
   explicit instruction after the receipt-joins merge. Re-signed, clearing
   the three owed signatures: computations/ecco-geostrophic-balance,

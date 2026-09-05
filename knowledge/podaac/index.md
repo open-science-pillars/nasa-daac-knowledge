@@ -55,6 +55,7 @@ concepts (SPEC §5.7).
 - [Steric height and its trend from ECCO v4r4 density](recipes/ecco-steric-height.md), status: stable
 - [Closed volume budget on the ECCO v4r4 native grid](recipes/ecco-volume-budget.md), status: stable
 - [Wind-stress curl and Ekman pumping on the native grid](recipes/ecco-wind-stress-curl.md), status: stable
+- [Reconstruct the current from density alone: thermal wind from a level of no motion](recipes/ecco-thermal-wind-reconstruction.md), status: draft
 - [A trend with an honest interval from any ECCO monthly series](recipes/ecco-trend-ci.md), status: stable
 - [ECCO overturning at 26.5N confronted with the RAPID array](recipes/ecco-rapid-amoc-26n.md), status: stable (the first confrontation pair: the other side is an observation at a fixed version)
 - ECCO regional sea level against NASA-SSH altimetry: the second confrontation pair, built as a [computation](computations/ecco-ssh-vs-altimetry.md) with no recipe of its own (the partition recipe and the trend recipe together are the method); the scores are in its receipt
