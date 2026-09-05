@@ -41,8 +41,7 @@ among the chapter's reasons, floating sea-ice displaces a volume of
 seawater equal to its weight, so ETAN follows ice growth and
 melt.[^tut-volume]
 
-**Eval fixture.** Extracted to the ocean-science plugin at
-`evals/fixtures/tutorial/volume-budget-checkpoints.yaml`, chapter
-cited.
+**Eval fixture.** Extracted to the ecco-agent-evals repository at
+`fixtures/tutorial/volume-budget-checkpoints.yaml`, chapter cited.
 
 [^tut-volume]: ECCO v4 Python Tutorial: ECCOv4 Global Volume and Sea Level Budget (updated 2025-08-21)

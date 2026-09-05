@@ -73,7 +73,8 @@ entry and co-reviews three PRs (see the playbook's onboarding section).
 Review rules per SPEC §5.4 and the
 [steward playbook](https://github.com/open-science-pillars/marketplace/blob/main/docs/steward-playbook.md).
 Eval coverage for high-severity gotchas ships with the plugins that
-depend on this bundle (their evals/ directories); this repo owns
-concept truth, not agent testing.
+depend on this bundle (their evals/ directories, or the eval
+repository a plugin declares as the home of its cases); this repo
+owns concept truth, not agent testing.
 
 License: Apache-2.0. Cite via CITATION.cff.
