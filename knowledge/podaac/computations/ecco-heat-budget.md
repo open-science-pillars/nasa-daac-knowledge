@@ -14,7 +14,9 @@ executor:
 attester:
   resource: references/attesters/budget_residual.py
 generated: { by: claude-code/fable-5, at: 2026-08-30T19:20:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
+  - { by: human:PaulMRamirez, at: 2026-09-05T20:22:37Z }
 status: stable
 sources:
   - id: budget-formulation
