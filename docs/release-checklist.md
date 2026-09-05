@@ -7,8 +7,11 @@ the output.
 
 1. **Freeze and gate.** Main is green: check_okf_v02 zero errors on
    every bundle root shipping in the release, and no concept owes a
-   signature (a merged edit to a stable concept is re-signed before the
-   freeze, so the tag is a commit the steward has signed).
+   signature: `uv run tools/signature_check.py <bundle>` lists every
+   stable concept edited since its signing commit (`--diff` shows the
+   edit), and a merged edit to a stable concept is re-signed before the
+   freeze, so the tag is a commit the steward has signed (SPEC 5.4,
+   merge then sign).
 2. **Tag.** An annotated tag on main (vYYYY.MM.N), DCO-signed like any
    commit.
 3. **Derive.** From the marketplace clone:
@@ -33,8 +36,10 @@ the output.
    commit, copy directory, and scope) is refreshed to the tagged
    commit from this clone:
    uv run tools/sync_check.py <plugin>/knowledge --refresh <tag>
-   which rewrites the in-scope files, prunes out-of-scope copies in a
-   subdirectory layout, and moves the manifest and index.md pin lines;
+   which refuses a commit that owes signatures (the pin rule, SPEC
+   5.7), then rewrites the in-scope files, prunes out-of-scope copies
+   in a subdirectory layout, and moves the manifest and index.md pin
+   lines;
    the plugin's own check_okf_v02 run stays green and the plugin's PR
    carries the tag in its title. Between releases, run_checks.sh keeps
    verifying each sibling clone at its pin and reports how far behind

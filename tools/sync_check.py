@@ -32,6 +32,9 @@ Verdicts (any of the first five fails the check):
   EXTRA      file in copy_dir that is not in scope (subdirectory layout only)
   DANGLING   copied concept links to a canonical file outside the scope
   PIN-DRIFT  index.md's "Snapshot source commit" disagrees with the manifest
+  PIN-OWED   the canonical bundle owes signatures at the pin: a stable
+             concept changed after its steward signed it (SPEC 5.4;
+             measured by tools/signature_check.py)
   BEHIND     informational: commits since the pin that touch in-scope files
 
 Usage:
@@ -40,7 +43,10 @@ Usage:
   sync_check.py <plugin-knowledge-dir> --refresh [COMMIT]
         rewrite the copy from canonical at COMMIT (default HEAD), prune
         out-of-scope files in a subdirectory layout, update the manifest
-        and the index.md pin lines, then re-run the check
+        and the index.md pin lines, then re-run the check. The pin rule
+        (SPEC 5.7) is enforced first: a COMMIT at which canonical owes
+        signatures is refused, with the owed concepts listed, so a
+        snapshot never carries an edit its steward has not signed
   sync_check.py --selftest
   --canonical <repo>   canonical repository (default: the repo this tool lives in)
 
@@ -57,6 +63,9 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from signature_check import audit as signature_audit  # noqa: E402  (the pin rule)
 
 import yaml
 
@@ -154,6 +163,9 @@ def check(kdir, manifest, repo, ref=None):
     pin = index_pin(kdir)
     if pin and not (pin.startswith(src["commit"]) or src["commit"].startswith(pin)):
         drift.append(f"index.md says {pin}, snapshot.yaml says {src['commit']}")
+    owed = [f"{rel} (signed {at} in {sha}; {len(later)} later commits)"
+            for rel, at, sha, later, _, _ in signature_audit(repo, bundle, ref)["owed"]
+            if rel[len(bundle) + 1:] in scoped_set]
     behind = None
     try:
         commits = git(repo, "rev-list", "--count", f"{src['commit']}..HEAD", "--", bundle).strip()
@@ -168,7 +180,7 @@ def check(kdir, manifest, repo, ref=None):
           f"layout {'flat, EXTRA not checked' if flat else manifest['copy_dir']})")
     fail = False
     for label, items in (("STALE", stale), ("MISSING", missing), ("EXTRA", extra),
-                         ("DANGLING", dangling), ("PIN-DRIFT", drift)):
+                         ("DANGLING", dangling), ("PIN-DRIFT", drift), ("PIN-OWED", owed)):
         if items:
             fail = True
             print(f"{label} ({len(items)}):", *items, sep="\n  ")
@@ -190,6 +202,13 @@ def refresh(kdir, manifest, repo, commit):
     short = full[:12]
     date = git(repo, "show", "-s", "--format=%cs", full).strip()
     scoped, _ = scoped_files(repo, bundle, full, manifest["scope"])
+    owed = [o for o in signature_audit(repo, bundle, full)["owed"] if o[0][len(bundle) + 1:] in set(scoped)]
+    if owed:
+        print(f"refresh REFUSED: {src['repository']} {bundle} owes {len(owed)} signature"
+              f"{'s' if len(owed) != 1 else ''} at {short} (the pin rule, SPEC 5.7: a snapshot pins "
+              "a commit at which canonical owes none; sign there first, then pin the signing commit):",
+              *(f"{rel} (signed {at} in {sha})" for rel, at, sha, _, _, _ in owed), sep="\n  ")
+        return 1
     copy = (kdir / manifest["copy_dir"]).resolve()
     flat = copy == kdir.resolve()
     written = 0
@@ -325,6 +344,30 @@ def selftest():
         assert rc == 0 and "BEHIND: none" in out, out
         assert (kdir / "snapshot-podaac" / "datasets" / "a.md").read_text().startswith("# a v2")
 
+        # the pin rule: a signed concept edited without a re-sign makes its
+        # commit unpinnable (refresh refused) and an existing pin there PIN-OWED
+        signed = "---\ntype: dataset-gotcha\nstatus: stable\nverified: { by: human:t, at: 2026-01-01T00:00:00Z }\n---\n# s\n"
+        (b / "gotchas" / "s.md").write_text(signed)
+        c3 = commit(repo, "c3 sign s")
+        rc, out = run(refresh, kdir, m, repo, c3)
+        assert rc == 0 and "PIN-OWED" not in out, out
+        (b / "gotchas" / "s.md").write_text(signed.replace("# s", "# s, sharpened"))
+        c4 = commit(repo, "c4 edit s unsigned")
+        rc, out = run(refresh, kdir, m, repo, c4)
+        assert rc == 1 and "refresh REFUSED" in out and "gotchas/s.md" in out, out
+        assert c3[:12] in (kdir / "snapshot.yaml").read_text(), "a refused refresh must not move the pin"
+        (kdir / "snapshot.yaml").write_text((kdir / "snapshot.yaml").read_text().replace(c3[:12], c4[:12]))
+        (kdir / "index.md").write_text((kdir / "index.md").read_text().replace(c3[:12], c4[:12]))
+        rc, out = run(check, kdir, load_manifest(kdir), repo)
+        assert rc == 1 and "PIN-OWED (1)" in out and "gotchas/s.md" in out, out
+        (b / "gotchas" / "s.md").write_text(signed.replace("# s", "# s, sharpened").replace(
+            "verified: { by: human:t, at: 2026-01-01T00:00:00Z }",
+            "verified:\n  - { by: human:t, at: 2026-01-01T00:00:00Z }\n  - { by: human:t, at: 2026-01-02T00:00:00Z }"))
+        c5 = commit(repo, "c5 re-sign s")
+        rc, out = run(refresh, kdir, load_manifest(kdir), repo, c5)
+        assert rc == 0 and "PIN-OWED" not in out and "sync_check: OK" in out, out
+        c2 = c5   # the later cases pin the newest clean commit
+
         # include form, flat layout: only listed files, EXTRA not checked, locals untouched
         (kdir / "snapshot.yaml").write_text(
             f"source:\n  repository: example/canon\n  bundle: knowledge/podaac\n  commit: {c2[:12]}\n"
@@ -342,7 +385,7 @@ def selftest():
             raise AssertionError("scope validation did not fire")
         except SystemExit as e:
             assert "exactly one" in str(e)
-    print("sync_check selftest: OK (refresh, STALE, MISSING, EXTRA, DANGLING, PIN-DRIFT, BEHIND, include, flat, validation)")
+    print("sync_check selftest: OK (refresh, STALE, MISSING, EXTRA, DANGLING, PIN-DRIFT, PIN-OWED, refusal, BEHIND, include, flat, validation)")
     return 0
 
 
