@@ -4,6 +4,14 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-05 · STEWARD RE-SIGNING at 20:22:37Z, entered on the
+  steward's explicit instruction: computations/ecco-heat-budget.md and
+  recipes/ecco-heat-budget.md. The wording pass that replaced
+  specification section numbers with the rules' names edited both
+  bodies after their 2026-09-04 signatures, so each owed a signature
+  under the merge-then-sign rule; tools/signature_check.py found the
+  debt by the signing commit. The steward read the diffs and signed
+  again, the earlier events kept as history. (steward)
 - 2026-09-05 · STEWARD SIGNING at 16:39:22Z, entered on the steward's
   explicit instruction. Promoted from draft to stable with a first
   human event: recipes/ecco-thermal-wind-reconstruction. Index row
