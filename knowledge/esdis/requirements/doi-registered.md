@@ -45,7 +45,8 @@ mandate is produced and cited.
 
 **Check binding.** Structural: doi-present (cmr-structural, the
 observatory sweeper, reading the UMM DOI.DOI value). pyQuARC
-candidates, proposed and pending Science Enabling Team confirmation:
+candidates, proposed and pending confirmation by the Application
+Support and Science Enabling Team (ASSET):
 doi_validity_check, doi_authority_presence_check,
 eosdis_doi_authority_check, doi_missing_reason_enumeration_check. The
 last exists because a missing DOI is an anticipated schema state, which

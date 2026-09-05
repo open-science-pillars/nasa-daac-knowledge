@@ -26,7 +26,8 @@ re-verifies it at the next sweep.
 
 **Check binding.** Structural: temporal-extent-present
 (cmr-structural, the observatory sweeper). pyQuARC candidate, proposed
-and pending Science Enabling Team confirmation:
+and pending confirmation by the Application Support and Science
+Enabling Team (ASSET):
 temporal_extent_requirement_check.
 
 [^umm-c-schema]: UMM-C v1.18.4 top-level required array, fetched 2026-08-30
