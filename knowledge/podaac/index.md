@@ -2,12 +2,13 @@
 okf_version: "0.2"
 ---
 
-# podaac bundle (CANONICAL, SPEC v0.6 §5.7)
+# podaac bundle (CANONICAL)
 
 The PO.DAAC arc knowledge bundle: ECCO, SWOT, GRACE-FO, GHRSST MUR.
-OKF v0.2 conformant (okf_version: "0.2"; the vendored spec text lives in marketplace docs/upstream). This is the canonical home; the
-ocean-science and hydrology plugins embed pinned snapshots of these
-concepts (SPEC §5.7).
+OKF v0.2 conformant (okf_version: "0.2"; the vendored spec text lives in marketplace docs/upstream). This is the canonical home
+per the specification (docs/SPECIFICATION.md in
+open-science-pillars/marketplace); the ocean-science and hydrology
+plugins reach these concepts as a declared, installed dependency.
 
 ## datasets
 
@@ -116,7 +117,7 @@ concepts (SPEC §5.7).
 - [ECCO v4r4 native monthly fields support large-scale statistics over 1992-2017](validity-domains/ecco-large-scale-statistics.md), supporting, status: draft
 - [MUR L4 SST supports basin-scale mean-state claims outside the high Arctic](validity-domains/mur-basin-mean-state.md), supporting, status: draft
 
-## findings (SPEC §5.10, candidate)
+## findings (a candidate type in the specification)
 
 A finding is a claim bound to receipts: one question, one answer with
 its interval, the computations and the observation that support it,

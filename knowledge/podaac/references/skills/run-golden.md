@@ -10,10 +10,11 @@ status: draft
 
 The executor contract for
 [the heat-budget computation](../../computations/ecco-heat-budget.md)
-(spec 10.2): a runner, human or agent, follows these steps exactly. The
-runner binds VALUES for the declared parameters and never edits the
-computation file; the attester hashes it (spec 10.3). Receipts and
-verdicts are runtime artifacts, never committed to the bundle (spec 10.5).
+(OKF v0.2 §10.2): a runner, human or agent, follows these steps
+exactly. The runner binds VALUES for the declared parameters and never
+edits the computation file; the attester hashes it (OKF v0.2 §10.3).
+Receipts and verdicts are runtime artifacts, never committed to the
+bundle (OKF v0.2 §10.5).
 
 ## 1. Stage the data
 
@@ -64,7 +65,7 @@ uv run references/attesters/budget_residual.py /tmp/heat-budget-receipt.json
 Exit 0 prints `PASS` with the run id and residuals; exit 1 prints `FAIL`
 naming the failing field. A consumer refuses to display a value whose
 receipt fails attestation, and surfaces the verdict either way
-(spec 10.5). PASS requires the receipt's `code_sha256` to match the
+(OKF v0.2 §10.5). PASS requires the receipt's `code_sha256` to match the
 sanctioned computation file, `data.record` to be a verify-tool stamp,
 the bound parameters to match the declared set, and the residuals to sit within the recipe tolerances
 (`residual_max <= 1e-10`, `residual_p999 <= 1e-11` degC/s).

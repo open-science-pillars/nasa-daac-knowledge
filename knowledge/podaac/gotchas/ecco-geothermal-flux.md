@@ -7,8 +7,9 @@ generated: { by: knowledge-seeder/claude, at: 2026-07-04T00:00:00Z }
 severity: high
 dataset: ../datasets/ecco-v4r4.md
 eval_case: geothermal-omission
-# eval case authored per SPEC §4.1; id fixed here so the
-# linter's dangling check closes when the case lands.
+# eval case authored per the high-severity rule (every high-severity
+# gotcha ships a matching eval case); id fixed here so the linter's
+# dangling check closes when the case lands.
 sources:
   - id: readthedocs-ecco-v4-heat-budget-closure
     resource: https://ecco-v4-python-tutorial.readthedocs.io/ECCO_v4_Heat_budget_closure.html

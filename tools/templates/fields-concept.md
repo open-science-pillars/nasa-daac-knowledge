@@ -30,8 +30,8 @@ sources:
 # <Family title>
 
 <Two to four declarative sentences: what the family is, its role, its
-period and grids. Facts only; no imperatives (SPEC 5.8). Cite sources
-with [^id] footnotes.>
+period and grids. Facts only; no imperatives (knowledge is
+declarative). Cite sources with [^id] footnotes.>
 
 # Schema
 

@@ -18,7 +18,7 @@ expected_uncertainty:
   - quantity: "numerical tolerance"
     statement: "the residual expectation IS the uncertainty statement for this identity: pass within the attested computation concept's tolerances (../computations/ecco-heat-budget.md), investigate above them using the formulation traps table (residual signatures map to specific omissions); closure failure is a formulation error, never data noise"
   - quantity: "domain caveat"
-    statement: "pointwise closure holds on any spatial subset; domain-integrated closure holds only on closed domains with boundary transports accounted (SPEC §6 encodes this for fixtures)"
+    statement: "pointwise closure holds on any spatial subset; domain-integrated closure holds only on closed domains with boundary transports accounted (the specification's closure-testing rule for golden-notebook fixtures encodes this)"
 sources:
   - id: readthedocs-ecco-v4-heat-budget-closure
     resource: https://ecco-v4-python-tutorial.readthedocs.io/ECCO_v4_Heat_budget_closure.html

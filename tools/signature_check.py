@@ -4,7 +4,7 @@
 # dependencies = ["pyyaml"]
 # ///
 """Owed signatures: which stable concepts changed after their steward
-signed them (SPEC 5.4, the merge-then-sign rule).
+signed them (the merge-then-sign rule).
 
 A steward's signature (`verified: {by: human:<id>, at}`) binds the
 concept text as of the SIGNING COMMIT, the commit that introduced that
@@ -274,7 +274,7 @@ def selftest():
 
 
 def main():
-    ap = argparse.ArgumentParser(description="owed signatures (SPEC 5.4)")
+    ap = argparse.ArgumentParser(description="owed signatures under the merge-then-sign rule")
     ap.add_argument("bundle", nargs="?", type=Path)
     ap.add_argument("--at", metavar="COMMIT", help="check the bundle as of COMMIT instead of the working tree")
     ap.add_argument("--diff", action="store_true", help="print each owed diff (verified events excluded)")

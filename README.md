@@ -1,16 +1,15 @@
 # nasa-daac-knowledge
 
-CANONICAL HOME for per-DAAC dataset knowledge bundles (SPEC v0.6
-§5.7), one bundle per provider under `knowledge/`: `knowledge/podaac/`
-holds the peculiarities that make naive analyses of PO.DAAC-archived
-products silently wrong, as reviewable OKF concepts with sources,
-statuses, and steward sign-off; `knowledge/esdis/` holds the
-cross-archive requirements bundle. Every OSP repository that carries a
-bundle keeps it under `knowledge/`, so tools and readers find it the
-same way everywhere. Gate before any PR: `bash tools/run_checks.sh`;
-the same routine runs on every pull request, on main, and on each
-release tag (`.github/workflows/gate.yml`), where a signature owed is
-a failure.
+CANONICAL HOME for per-DAAC dataset knowledge bundles, one bundle per
+provider under `knowledge/`: `knowledge/podaac/` holds the peculiarities
+that make naive analyses of PO.DAAC-archived products silently wrong, as
+reviewable OKF concepts with sources, statuses, and steward sign-off;
+`knowledge/esdis/` holds the cross-archive requirements bundle. Every
+OSP repository that carries a bundle keeps it under `knowledge/`, so
+tools and readers find it the same way everywhere. Gate before any PR:
+`bash tools/run_checks.sh`; the same routine runs on every pull request,
+on main, and on each release tag (`.github/workflows/gate.yml`), where a
+signature owed is a failure.
 
 ## Install
 
@@ -45,8 +44,8 @@ session) resolves it.
 ## How this relates to the plugins
 
 The provider bundle is the canonical home: on any conflict the concept
-here wins over a plugin-local one (SPEC 5.7). Domain plugins reach it as
-an installed dependency, never by path and never by a copy: a plugin
+here wins over a plugin-local one. Domain plugins reach it as an
+installed dependency, never by path and never by a copy: a plugin
 cites a concept here by its bundle path (`knowledge/podaac/...`), and
 core's consult-knowledge convention resolves that through the
 installer's record of installed plugins. A plugin raises its version
@@ -89,9 +88,9 @@ quote against the authority), the community-issue miner that drafts
 gotcha candidates (`mine_sources.py`, needs `GITHUB_TOKEN`), the
 Earthdata MCP tool-surface smoke (`mcp_smoke.py`, network), the owed-signature check
 (`signature_check.py`: which stable concepts changed after their
-steward signed them, measured by the signing commit; SPEC 5.4), and the
-science and observation record tooling (`science_record_*.py`,
-`obs_record_*.py`).
+steward signed them, measured by the signing commit; the
+merge-then-sign rule), and the science and observation record tooling
+(`science_record_*.py`, `obs_record_*.py`).
 
 ## Stewardship
 
@@ -99,7 +98,8 @@ CODEOWNERS maps each bundle to its steward; the PO.DAAC bundle is
 held by an interim (pro tem) steward pending handoff to a provider
 steward. The handoff trigger: a named provider accepts the CODEOWNERS
 entry and co-reviews three PRs (see the playbook's onboarding section).
-Review rules per SPEC §5.4 and the
+Review rules per the specification's stewardship section
+(docs/SPECIFICATION.md in open-science-pillars/marketplace) and the
 [steward playbook](https://github.com/open-science-pillars/marketplace/blob/main/docs/steward-playbook.md).
 Eval coverage for high-severity gotchas ships with the plugins that
 depend on this bundle (their evals/ directories, or the eval
