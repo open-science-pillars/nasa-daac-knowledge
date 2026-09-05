@@ -25,9 +25,11 @@ claude plugin install nasa-daac-knowledge@open-science-pillars
 The plugin carries knowledge and tools only, no skills or agents;
 installed skills find its bundles through core's consult-knowledge
 convention. Releases carry calendar versions (2026.9.1): `claude plugin
-list` shows which one is installed, and `claude plugin update` fetches
-the newest, because this marketplace does not update installs on its
-own unless you enable that.
+list` shows which one is installed, and
+`claude plugin update nasa-daac-knowledge@open-science-pillars` (or an
+update of the domain plugin that depends on it) fetches the newest,
+because this marketplace does not update installs on its own unless you
+enable that.
 
 ## How this relates to the plugins
 

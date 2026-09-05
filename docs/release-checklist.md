@@ -51,10 +51,11 @@ compares versions as semver and semver forbids a leading zero.
    DOI badge, labeled with the version string, not the tag name.
 8. **Catalog.** A one-line PR to open-science-pillars/marketplace
    moving this plugin's `ref` to the new tag. From that merge, users
-   receive the release with `claude plugin update` (or automatically
-   where they enabled auto-update for the marketplace), and a domain
-   plugin whose floor sits below this version receives it on its next
-   update with no change of its own.
+   receive the release with
+   `claude plugin update nasa-daac-knowledge@open-science-pillars` (or
+   automatically where they enabled auto-update for the marketplace),
+   and a domain plugin whose floor sits below this version receives it
+   on its next update with no change of its own.
 9. **Announce (optional, steward's clock).** Discussions post; the
    credit list travels with it.
 
