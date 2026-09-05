@@ -7,7 +7,8 @@ inputs: "ECCO_L4_DENS_STRAT_PRESS_LLC0090GRID_MONTHLY_V4R4 (RHOAnoma); ECCO_L4_O
 expected: "Month 2009-12 (measured 2026-09-05): over the open-ocean interior (10-55 deg, seafloor deeper than 3000 m, wet at the reference level, 19,315 columns), 100-1000 m absolute r = 0.9900 with RMS error 15 percent of the model current, relative r = 0.9989 with 5 percent; shear r = 0.9757; below the reference level absolute r = 0.152 with RMS error 108 percent against relative r = 0.978; median model speed at the reference level 3.6 mm/s"
 expected_uncertainty: "Two scores, never one for the other: the absolute score is the reconstruction's skill, the relative score is the shear's skill, and their gap is the cost of assuming no motion at 3000 m. The deep band is where that cost lands (absolute r 0.15); quoting the relative 0.98 there answers a question nobody asked. The top 100 m has no thermal-wind skill (shear r 0.03) because mixed-layer shear is not geostrophic; where the winter mixed layer is deeper than about 100 m the failure follows it down. A fill value read as a number, or a face-masked velocity averaged without its own mask, ruins the gradient silently: r near zero with no error"
 generated: { by: claude-code/fable-5, at: 2026-09-05T16:20:00Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-05T16:39:22Z }
+status: stable
 stale_after: 2027-03-05
 sources:
   - id: attested-computation
