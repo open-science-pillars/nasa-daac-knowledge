@@ -1,0 +1,56 @@
+# The reference runs of the sanctioned computations, in the form
+# tools/reattest.py reruns: the arguments each Attested Computation
+# concept documents as its reference run on the fixture cache, so a
+# deliberate edit to a computation is re-attested with one command
+# rather than a hunt through the concept for the parameters. A run
+# names its computation (under knowledge/podaac/references/computations),
+# its arguments, and the data root it reads (a key of data_roots, or
+# none for a computation that reads another run's receipt, named in
+# needs and substituted for "{receipt:NAME}"). The attester is read
+# from the concept whose frontmatter names the computation; a run may
+# name its own.
+data_roots:
+  fixtures: ~/ECCO_V4r4          # the verified fixture cache, record ecco-v4r4-fixtures-2010
+  record: ~/ECCO_V4r4_record     # the verified science record, 1992 to 2017
+runs:
+  heat-budget:
+    computation: ecco_heat_budget.py
+    args: [--year, "2010", --region, tile1-interior]
+  ohc:
+    computation: ecco_ohc.py
+    args: [--months, "2010-01", "2010-12"]
+  geostrophy:
+    computation: ecco_geostrophy.py
+    args: [--month, "2009-12"]
+  curl-ekman:
+    computation: ecco_curl_ekman.py
+    args: [--month, "2009-12"]
+  thermal-wind:
+    computation: ecco_thermal_wind_reconstruction.py
+    args: [--month, "2009-12"]
+  flux-decomposition:
+    computation: ecco_flux_decomposition.py
+    args: [--region, southeast-atlantic-upper, --grouping, full-four-term, --year, "2010"]
+  regional-heat:
+    computation: ecco_regional_budget.py
+    args: [--budget, heat, --region, southeast-atlantic-upper, --year, "2010"]
+  regional-salt:
+    computation: ecco_regional_budget.py
+    args: [--budget, salt, --region, southeast-atlantic-upper, --year, "2010"]
+  regional-volume:
+    computation: ecco_regional_budget.py
+    args: [--budget, volume, --region, southeast-atlantic-upper, --year, "2010"]
+  section-transport:
+    computation: ecco_section_transport.py
+    args: [--section, global-26.5n, --year, "2010"]
+  steric:
+    computation: ecco_steric_height.py
+    args: [--region, us-northeast-coast, --months, "2010-01", "2010-02", "2010-03", "2010-04", "2010-05", "2010-06", "2010-07", "2010-08", "2010-09", "2010-10", "2010-11", "2010-12"]
+  sea-level:
+    computation: ecco_regional_sea_level.py
+    args: [--region, us-northeast-coast, --period, "2010-01:2010-12"]
+  trend-ci:
+    computation: ecco_trend_ci.py
+    needs: steric
+    data_root: none
+    args: [--source, "{receipt:steric}", --field, steric_mean_m_by_month, --value-units, m, --scale, "1000", --report-units, mm, --deseasonalize, none]

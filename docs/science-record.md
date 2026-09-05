@@ -214,6 +214,42 @@ collection directory before selecting the months they need. The result
 is unaffected; selecting files by name before opening is the obvious
 follow-on if record runs become routine.
 
+## Re-attesting an edited computation
+
+Every receipt carries the sha256 of the computation file that produced
+it, and every attester hashes the sanctioned file before it reads a
+number, so an edit to a computation, however small, invalidates every
+receipt that came before it. That is the contract doing its job, and it
+is why an edit is never casual. The file is re-run on the fixture cache
+with its reference arguments, the fresh receipt is attested, the
+previous version's receipt is shown to fail against the new file, a
+tamper of the new file is shown to fail, and the bundle log records all
+of it with both hashes. `tools/reattest.py` runs those steps in order
+and refuses to call the result a pass unless each one lands as the
+contract says it must; `tools/reference_runs.yaml` holds the reference
+arguments per computation, and the attester comes from the concept that
+names the computation.
+
+```
+# the ritual for one computation, by its registry name
+uv run tools/reattest.py --run heat-budget --note '<why the file changed>'
+
+# against a version other than HEAD, keeping the receipts somewhere citable
+uv run tools/reattest.py --run steric --old <ref> --keep receipts/steric-2026-09
+
+# the registry
+uv run tools/reattest.py --list
+```
+
+The tool prints a drafted log entry and writes nothing into the bundle:
+the steward reads the evidence, edits the note, and commits the entry
+with the code change. When the working tree matches the reference
+version the old-file steps are skipped and the draft reads as a
+re-verification, which is also what a fresh clone should produce for
+every registered run. A computation the ecco-budget-badge repository
+mirrors (the heat budget and its attester) is mirrored again at a tag
+once the entry lands.
+
 ## Operating the trees
 
 All tools run with `uv run`; only the fetch tool authenticates (through
