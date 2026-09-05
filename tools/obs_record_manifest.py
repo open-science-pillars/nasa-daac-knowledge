@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["netcdf4"]
+# dependencies = ["netcdf4", "numpy"]
 # ///
 """Manifest and verify an observational data tree, and stamp it.
 

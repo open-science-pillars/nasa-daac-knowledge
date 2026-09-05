@@ -22,11 +22,15 @@ run uv run tools/ecco_cite.py --selftest
 run uv run tools/mine_sources.py --selftest
 run uv run tools/release_delta.py tools/ecco_v4r4_families.yaml --selftest
 run uv run tools/signature_check.py --selftest
+run uv run tools/check_script_deps.py --selftest
+run uv run tools/check_script_deps.py knowledge tools
 # Sibling plugin clones, when present, have their local concepts checked
-# for owed signatures; an absent sibling is not a failure here.
+# for owed signatures and their scripts for undeclared dependencies; an
+# absent sibling is not a failure here.
 for plugin in ../ocean-science ../hydrology; do
   if [ -d "$plugin/knowledge" ]; then
     run uv run tools/signature_check.py "$plugin/knowledge" $sig
+    run uv run tools/check_script_deps.py "$plugin"
   fi
 done
 echo

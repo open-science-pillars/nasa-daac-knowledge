@@ -49,10 +49,35 @@ installer's record of installed plugins. A plugin raises its version
 floor when it needs a newer bundle and never pins an exact version, so
 a correction here reaches every install that updates.
 
+## Running the tools
+
+Everything runnable here, and in the plugins that depend on this one,
+is a Python script that declares its own dependencies in a PEP 723
+header, and `uv` builds the environment from that header on first run.
+The one requirement is uv itself:
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+The one rule is to run a script through uv, `uv run <script>`, never
+`python script.py` and never `uv run python script.py`: both skip the
+header, and the run fails with `No module named netCDF4` (or numpy, or
+matplotlib) at first import. Nothing needs installing by hand; nothing
+needs a virtualenv. `uv run tools/doctor.py` confirms uv is present and
+lists every script and the packages it will resolve;
+`uv run tools/doctor.py --warm` builds every environment now, so a
+first run on a new machine or an offline one starts at once (give it
+the other plugins' paths too, `claude plugin list` shows them). The
+gate (`check_script_deps.py`, in `run_checks.sh` and in each plugin's
+CI) fails any script whose imports are not covered by its header, so
+what is on main resolves.
+
 ## Tools
 
 `tools/` carries the gate (`run_checks.sh`: OKF conformance, fields
-conformance, and every tool selftest, all offline), the ECCO product
+conformance, the script-dependency check, and every tool selftest, all
+offline), the readiness check (`doctor.py`), the ECCO product
 watch (`verify_cmr.py`, `release_delta.py`, `RELEASE-DAY.md`), the DOI
 authority and citation formatter (`ecco_v4r4_dois.yaml`, `ecco_cite.py`;
 the selftest cross-checks every DOI the concepts and the family manifest
