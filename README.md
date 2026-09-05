@@ -101,8 +101,13 @@ with its reference arguments, attests the fresh receipt, shows the
 previous version's receipt failing against the new file and a tamper
 of the new file failing, and drafts the log entry with both hashes;
 `tools/reference_runs.yaml` holds the reference arguments per
-computation), and the science and observation record tooling
-(`science_record_*.py`, `obs_record_*.py`).
+computation), the negative-knowledge checker (`check_negative.py`: a
+dead-end records who tried what, when, and why it failed, a field-state
+records the positions a field holds on a question as of a date, neither
+adjudicates, both carry a load-bearing key on the gotcha severity rule,
+and both are reopened or superseded rather than deleted; `--candidates`
+scans text for dead-end phrasings), and the science and observation
+record tooling (`science_record_*.py`, `obs_record_*.py`).
 
 ## Stewardship
 
