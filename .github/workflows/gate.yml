@@ -2,9 +2,9 @@ name: gate
 # The repository's check routine, tools/run_checks.sh, on every change:
 # both bundles conform to OKF v0.2, every tool passes its selftest, and
 # the signature debt is measured. The debt is reported on pull requests
-# and on main (SPEC 5.4: a concept may owe a signature between a merge
-# and its re-sign) and enforced on a release tag, which must owe none.
-# The plugin manifest validates with the Claude Code CLI.
+# and on main (merge-then-sign: a concept may owe a signature between a
+# merge and its re-sign) and enforced on a release tag, which must owe
+# none. The plugin manifest validates with the Claude Code CLI.
 on:
   pull_request:
   push:

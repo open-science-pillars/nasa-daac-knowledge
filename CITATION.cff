@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: If you use this knowledge bundle, please cite it. Zenodo archiving begins with the first 1.0.0 release of a plugin that depends on this bundle; this file gains the concept DOI then (SPEC 2.3).
+message: If you use this knowledge bundle, please cite it. Zenodo archiving begins with the first 1.0.0 release of a plugin that depends on this bundle; this file gains the concept DOI then.
 title: "nasa-daac-knowledge: dataset knowledge bundles for NASA DAACs"
 type: dataset
 version: "2026.9.2"

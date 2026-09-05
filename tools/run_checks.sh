@@ -2,8 +2,9 @@
 # The repo check routine: conformance gates plus every tool selftest.
 # All offline; run before any knowledge PR. Exit nonzero on any failure.
 #
-# Signature debt (SPEC 5.4, merge-then-sign) fails the routine by default,
-# which is the release rule: a tag lands on a commit that owes nothing.
+# Signature debt (merge-then-sign: a merged edit to a signed concept owes
+# a new signature) fails the routine by default, which is the release
+# rule: a tag lands on a commit that owes nothing.
 # SIGNATURE_DEBT=report tools/run_checks.sh lists the debt and passes,
 # for a pull request or main, where a concept may owe a signature
 # between a merge and its re-sign.

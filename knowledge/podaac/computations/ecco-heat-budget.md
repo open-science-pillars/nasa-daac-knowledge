@@ -32,7 +32,7 @@ sources:
 # Heat budget closure on the ECCO v4r4 native grid (attested)
 
 The sanctioned computation lives at the `computation:` path (file form,
-spec 10.3): the four-term budget, tendency minus (advection + diffusion +
+OKF v0.2 §10.3): the four-term budget, tendency minus (advection + diffusion +
 forcing), exactly as the [budget formulation convention](../conventions/ecco-budget-formulation.md)
 records from the ECCO v4 tutorial,[^budget-formulation][^readthedocs-ecco-v4-heat-budget-closure]
 extracted 2026-08-30 from the ocean-science golden notebook

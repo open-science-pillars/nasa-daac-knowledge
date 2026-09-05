@@ -1,4 +1,5 @@
-# Bundle stewardship (SPEC v0.6 §5.4, §5.7)
+# Bundle stewardship, per the specification's stewardship and canonical-home
+# rules (docs/SPECIFICATION.md in open-science-pillars/marketplace)
 * @PaulMRamirez
 /knowledge/podaac/ @PaulMRamirez
 # The PO.DAAC steward entry replaces the interim line at handoff (a named
