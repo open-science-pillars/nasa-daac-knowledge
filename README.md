@@ -85,7 +85,9 @@ watch (`verify_cmr.py`, `release_delta.py`, `RELEASE-DAY.md`), the DOI
 authority and citation formatter (`ecco_v4r4_dois.yaml`, `ecco_cite.py`;
 the selftest cross-checks every DOI the concepts and the family manifest
 quote against the authority), the community-issue miner that drafts
-gotcha candidates (`mine_sources.py`, needs `GITHUB_TOKEN`), the
+gotcha candidates and routes can-I-use-X-for-Y questions and
+phrasings of a failed attempt to the validity-domain and dead-end
+registers (`mine_sources.py`, needs `GITHUB_TOKEN`), the
 Earthdata MCP tool-surface smoke (`mcp_smoke.py`, network), the owed-signature check
 (`signature_check.py`: which stable concepts changed after their
 steward signed them, measured by the signing commit; the

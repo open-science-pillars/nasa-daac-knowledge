@@ -147,9 +147,11 @@ low), the gotcha severity rule applied to negative knowledge: high
 requires the eval case that measures the behavior. The gate runs
 `check_negative.py knowledge/podaac`.
 
-No entries yet. Candidates come from the community miner (dead-end
-phrasings in ECCO-GROUP threads) and from the design notes; each enters
-as a draft and stays one until the steward signs.
+- [The discrete divergence identity was tried as the oracle for regional budget closure; it holds for any array](dead-ends/divergence-identity-as-budget-oracle.md), status: draft (unsigned), load_bearing medium, subject computations/ecco-regional-heat-budget.md; observed 2026-08-31 in the regional budget design note, which retracted it; reopens never as an oracle (a rim read from raw face fluxes is a different method)
+
+Candidates come from the community miner (dead-end phrasings in
+ECCO-GROUP threads) and from the design notes; each enters as a draft
+and stays one until the steward signs.
 
 ## field-states (a candidate type in the specification)
 
@@ -164,8 +166,10 @@ question, and `load_bearing` on the same rule as a dead-end. A change in
 the state is a new field-state that supersedes this one, never an edit
 after signature.
 
-No entries yet. A dispute is read by a person from the literature; each
-enters as a draft and stays one until the steward signs.
+- [Whether the Atlantic overturning has weakened over the observational era is disputed](field-states/amoc-observational-era-weakening.md), status: draft (unsigned), state disputed as of 2026-09-05, four positions on five sources, load_bearing medium, bears on computations/ecco-amoc-26n.md and recipes/ecco-rapid-amoc-26n.md; stale after 2027-03-05
+
+A dispute is read by a person from the literature; each enters as a
+draft and stays one until the steward signs.
 
 ## connectors
 

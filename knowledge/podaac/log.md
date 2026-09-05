@@ -4,6 +4,21 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-05 · dead-ends/divergence-identity-as-budget-oracle.md and
+  field-states/amoc-observational-era-weakening.md (both new, draft):
+  the first entries of the two negative-knowledge types. The dead-end
+  records the discrete divergence identity tried as the oracle for
+  regional budget closure and retracted in docs/regional-budget-design.md
+  (observed 2026-08-31) because the identity holds for any array; it
+  names the replacement evidence (disjoint data paths, two bars,
+  mutation controls) under Do instead. Proposed at load_bearing high;
+  entered at medium, with its eval case drafted as a candidate in
+  ecco-agent-evals, until the case lands. The field-state records four
+  positions on whether the Atlantic overturning has weakened over the
+  observational era, as of 2026-09-05, every DOI re-resolved at entry to
+  its cited title; load_bearing medium; it bears on the AMOC computation
+  and recipe and takes no side. Both pass check_negative.py with no
+  code firing and stay draft until the steward signs. (claude-code/fable-5)
 - 2026-09-05 · RE-ATTESTATION of references/computations/ecco_heat_budget.py
   (sha256 00ffba3b13ba -> 05de42d3ff95), a deliberate docstring-only
   edit: the citation "(spec 10.3)" now reads "(OKF v0.2 §10.3)", two
