@@ -39,13 +39,12 @@ in a session) resolves it.
 
 The provider bundle is the canonical home: on any conflict the concept
 here wins over a plugin-local one (SPEC 5.7). Domain plugins reach it as
-an installed dependency, never by path and never by a copy. Until their
-copies are removed, ocean-science and hydrology still carry a pinned
-snapshot of these concepts (`knowledge/snapshot-podaac/`, declared in
-`knowledge/snapshot.yaml`); `tools/sync_check.py <plugin>/knowledge`
-verifies such a copy against the canonical bundle at its pin (stale,
-missing, extra, dangling links, pin drift, a pin that owes signatures)
-and `--refresh <commit>` rewrites it at a commit the steward has signed.
+an installed dependency, never by path and never by a copy: a plugin
+cites a concept here by its bundle path (`knowledge/podaac/...`), and
+core's consult-knowledge convention resolves that through the
+installer's record of installed plugins. A plugin raises its version
+floor when it needs a newer bundle and never pins an exact version, so
+a correction here reaches every install that updates.
 
 ## Tools
 
@@ -56,8 +55,7 @@ authority and citation formatter (`ecco_v4r4_dois.yaml`, `ecco_cite.py`;
 the selftest cross-checks every DOI the concepts and the family manifest
 quote against the authority), the community-issue miner that drafts
 gotcha candidates (`mine_sources.py`, needs `GITHUB_TOKEN`), the
-Earthdata MCP tool-surface smoke (`mcp_smoke.py`, network), the snapshot
-check and refresh (`sync_check.py`), the owed-signature check
+Earthdata MCP tool-surface smoke (`mcp_smoke.py`, network), the owed-signature check
 (`signature_check.py`: which stable concepts changed after their
 steward signed them, measured by the signing commit; SPEC 5.4), and the
 science and observation record tooling (`science_record_*.py`,

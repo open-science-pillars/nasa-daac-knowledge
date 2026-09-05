@@ -18,8 +18,8 @@ ignoring only the `verified` events themselves.
 
   signature_check.py BUNDLE_DIR             the working tree owes what?
   signature_check.py BUNDLE_DIR --at COMMIT the bundle as of COMMIT (the
-                                            pin rule: a snapshot refresh
-                                            pins a commit that owes none)
+                                            release rule: a release tag
+                                            lands on a commit that owes none)
   signature_check.py BUNDLE_DIR --diff      print each owed diff
   signature_check.py BUNDLE_DIR --report    list but exit 0
   signature_check.py --selftest

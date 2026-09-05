@@ -14,15 +14,11 @@ run uv run tools/verify_cmr.py tools/ecco_v4r4_families.yaml --selftest
 run uv run tools/ecco_cite.py --selftest
 run uv run tools/mine_sources.py --selftest
 run uv run tools/release_delta.py tools/ecco_v4r4_families.yaml --selftest
-run uv run tools/sync_check.py --selftest
 run uv run tools/signature_check.py --selftest
-# Sibling plugin clones that declare a snapshot manifest are checked at
-# their pin (including whether the pin owes signatures) and their local
-# concepts for owed signatures; a plugin without a manifest is not a
-# failure here.
+# Sibling plugin clones, when present, have their local concepts checked
+# for owed signatures; an absent sibling is not a failure here.
 for plugin in ../ocean-science ../hydrology; do
-  if [ -f "$plugin/knowledge/snapshot.yaml" ]; then
-    run uv run tools/sync_check.py "$plugin/knowledge"
+  if [ -d "$plugin/knowledge" ]; then
     run uv run tools/signature_check.py "$plugin/knowledge"
   fi
 done
