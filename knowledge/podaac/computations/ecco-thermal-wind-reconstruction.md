@@ -15,7 +15,8 @@ executor:
 attester:
   resource: references/attesters/thermal_wind_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-05T15:50:00Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-05T16:14:15Z }
+status: stable
 stale_after: 2027-03-05
 sources:
   - id: tutorial-thermal-wind
