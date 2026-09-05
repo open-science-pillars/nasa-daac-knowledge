@@ -18,7 +18,8 @@ commit, date, copy directory and scope in a `knowledge/snapshot.yaml`
 manifest (and the pin in their index.md) and refresh at releases:
 `tools/sync_check.py <plugin>/knowledge` verifies the copy against the
 canonical bundle at the pinned commit (stale, missing, extra, dangling
-links, pin drift) and `--refresh <commit>` rewrites it.
+links, pin drift, a pin that owes signatures) and `--refresh <commit>`
+rewrites it at a commit the steward has signed.
 
 ## Tools
 
@@ -30,8 +31,11 @@ the selftest cross-checks every DOI the concepts and the family manifest
 quote against the authority), the community-issue miner that drafts
 gotcha candidates (`mine_sources.py`, needs `GITHUB_TOKEN`), the
 Earthdata MCP tool-surface smoke (`mcp_smoke.py`, network), the snapshot
-check and refresh (`sync_check.py`), and the science and observation
-record tooling (`science_record_*.py`, `obs_record_*.py`).
+check and refresh (`sync_check.py`), the owed-signature check
+(`signature_check.py`: which stable concepts changed after their
+steward signed them, measured by the signing commit; SPEC 5.4), and the
+science and observation record tooling (`science_record_*.py`,
+`obs_record_*.py`).
 
 ## Stewardship
 

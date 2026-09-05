@@ -7,17 +7,23 @@ fail=0
 run() { echo; echo "== $*"; "$@" || fail=1; }
 run uv run tools/check_okf_v02.py knowledge/podaac --findings --provider nasa-daac-knowledge
 run uv run tools/check_okf_v02.py knowledge/esdis --provider nasa-daac-knowledge
+run uv run tools/signature_check.py knowledge/podaac
+run uv run tools/signature_check.py knowledge/esdis
 run uv run tools/check_fields.py knowledge/podaac/fields/ecco-v4r4 tools/ecco_v4r4_families.yaml
 run uv run tools/verify_cmr.py tools/ecco_v4r4_families.yaml --selftest
 run uv run tools/ecco_cite.py --selftest
 run uv run tools/mine_sources.py --selftest
 run uv run tools/release_delta.py tools/ecco_v4r4_families.yaml --selftest
 run uv run tools/sync_check.py --selftest
+run uv run tools/signature_check.py --selftest
 # Sibling plugin clones that declare a snapshot manifest are checked at
-# their pin; a plugin without a manifest is not a failure here.
+# their pin (including whether the pin owes signatures) and their local
+# concepts for owed signatures; a plugin without a manifest is not a
+# failure here.
 for plugin in ../ocean-science ../hydrology; do
   if [ -f "$plugin/knowledge/snapshot.yaml" ]; then
     run uv run tools/sync_check.py "$plugin/knowledge"
+    run uv run tools/signature_check.py "$plugin/knowledge"
   fi
 done
 echo
