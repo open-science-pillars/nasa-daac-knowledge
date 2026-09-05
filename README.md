@@ -27,9 +27,13 @@ installed skills find its bundles through core's consult-knowledge
 convention. Releases carry calendar versions (2026.9.1): `claude plugin
 list` shows which one is installed, and
 `claude plugin update nasa-daac-knowledge@open-science-pillars` (or an
-update of the domain plugin that depends on it) fetches the newest,
-because this marketplace does not update installs on its own unless you
-enable that.
+update of a domain plugin that already has it installed as a
+dependency) fetches the newest, because this marketplace does not
+update installs on its own unless you enable that. A domain plugin
+installed before it declared this dependency does not gain it from an
+update: `claude plugin list` shows that plugin disabled with an error
+naming the install command above, and running it (or `/reload-plugins`
+in a session) resolves it.
 
 ## How this relates to the plugins
 
