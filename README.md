@@ -9,17 +9,37 @@ cross-archive requirements bundle. Every OSP repository that carries a
 bundle keeps it under `knowledge/`, so tools and readers find it the
 same way everywhere. Gate before any PR: `bash tools/run_checks.sh`.
 
+## Install
+
+The bundles ship as one plugin, `nasa-daac-knowledge`, in the Open
+Science Pillars marketplace. The domain plugins that use these concepts
+(ocean-science, hydrology) declare it as a dependency, so installing one
+of them installs this plugin at a version that satisfies their floor,
+with nothing else to do. To install it on its own:
+
+```bash
+claude plugin marketplace add open-science-pillars/marketplace
+claude plugin install nasa-daac-knowledge@open-science-pillars
+```
+
+The plugin carries knowledge and tools only, no skills or agents;
+installed skills find its bundles through core's consult-knowledge
+convention. Releases carry calendar versions (2026.9.1): `claude plugin
+list` shows which one is installed, and `claude plugin update` fetches
+the newest, because this marketplace does not update installs on its
+own unless you enable that.
+
 ## How this relates to the plugins
 
-Plugins (ocean-science, hydrology) embed PINNED SNAPSHOTS of these
-concepts so installs are self-contained (SPEC §0.5). Precedence: the
-canonical concept here wins on any conflict; snapshots record source
-commit, date, copy directory and scope in a `knowledge/snapshot.yaml`
-manifest (and the pin in their index.md) and refresh at releases:
-`tools/sync_check.py <plugin>/knowledge` verifies the copy against the
-canonical bundle at the pinned commit (stale, missing, extra, dangling
-links, pin drift, a pin that owes signatures) and `--refresh <commit>`
-rewrites it at a commit the steward has signed.
+The provider bundle is the canonical home: on any conflict the concept
+here wins over a plugin-local one (SPEC 5.7). Domain plugins reach it as
+an installed dependency, never by path and never by a copy. Until their
+copies are removed, ocean-science and hydrology still carry a pinned
+snapshot of these concepts (`knowledge/snapshot-podaac/`, declared in
+`knowledge/snapshot.yaml`); `tools/sync_check.py <plugin>/knowledge`
+verifies such a copy against the canonical bundle at its pin (stale,
+missing, extra, dangling links, pin drift, a pin that owes signatures)
+and `--refresh <commit>` rewrites it at a commit the steward has signed.
 
 ## Tools
 
@@ -46,7 +66,7 @@ entry and co-reviews three PRs (see the playbook's onboarding section).
 Review rules per SPEC §5.4 and the
 [steward playbook](https://github.com/open-science-pillars/marketplace/blob/main/docs/steward-playbook.md).
 Eval coverage for high-severity gotchas ships with the plugins that
-embed the snapshots (the plugins' evals/ directories); this repo owns
+depend on this bundle (their evals/ directories); this repo owns
 concept truth, not agent testing.
 
 License: Apache-2.0. Cite via CITATION.cff.
