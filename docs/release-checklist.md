@@ -20,7 +20,9 @@ compares versions as semver and semver forbids a leading zero.
    stable concept edited since its signing commit with `--diff` showing
    the edit; a merged edit to a stable concept is re-signed before the
    freeze, so the tag is a commit the steward has signed, per the
-   merge-then-sign rule), and `claude plugin validate .` passes. The tag
+   merge-then-sign rule; `uv run tools/sign.py <concept>... --log
+   <bundle>/log.md --note '<why>'` writes the events and the log entry
+   in one step, on the steward's word), and `claude plugin validate .` passes. The tag
    push runs the same routine in CI with the debt enforced; a red
    run there means the tag moved onto a commit that owes a signature.
 2. **Bump.** `version` in `.claude-plugin/plugin.json` and in

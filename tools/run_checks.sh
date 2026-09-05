@@ -25,13 +25,17 @@ run uv run tools/release_delta.py tools/ecco_v4r4_families.yaml --selftest
 run uv run tools/signature_check.py --selftest
 run uv run tools/check_script_deps.py --selftest
 run uv run tools/check_script_deps.py knowledge tools
+run uv run tools/check_prose.py --selftest
+run uv run tools/sign.py --selftest
+run uv run tools/check_prose.py .
 # Sibling plugin clones, when present, have their local concepts checked
-# for owed signatures and their scripts for undeclared dependencies; an
-# absent sibling is not a failure here.
+# for owed signatures, their scripts for undeclared dependencies and their
+# prose for the wording rules; an absent sibling is not a failure here.
 for plugin in ../ocean-science ../hydrology; do
   if [ -d "$plugin/knowledge" ]; then
     run uv run tools/signature_check.py "$plugin/knowledge" $sig
     run uv run tools/check_script_deps.py "$plugin"
+    run uv run tools/check_prose.py "$plugin"
   fi
 done
 echo
