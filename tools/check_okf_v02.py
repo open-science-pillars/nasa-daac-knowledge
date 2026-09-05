@@ -7,10 +7,10 @@
 
 Checks a bundle directory against OKF v0.2 (GoogleCloudPlatform/
 knowledge-catalog, okf/SPEC.md) plus the OSP conventions layered on it.
-Errors are conformance failures (spec 11); warnings are spec SHOULDs and
+Errors are conformance failures (OKF v0.2 §11); warnings are spec SHOULDs and
 OSP house rules. Exit 1 on any error, or on warnings too with --strict.
 
-ERRORS (spec 11 conformance)
+ERRORS (OKF v0.2 §11 conformance)
   E1  concept has no parseable YAML frontmatter
   E2  frontmatter missing a non-empty `type`
   E3  `generated` present but malformed (needs mapping with `by`)
@@ -18,16 +18,16 @@ ERRORS (spec 11 conformance)
   E5  `status` outside draft | stable | deprecated
   E6  `stale_after` not YYYY-MM-DD
   E7  `sources` entry missing `resource`
-  E8  actor value violates the convention (spec 7)
-  E9  non-root index.md carries frontmatter (spec 8, 12)
+  E8  actor value violates the convention (OKF v0.2 §7)
+  E9  non-root index.md carries frontmatter (OKF v0.2 §8, 12)
 
 WARNINGS (SHOULDs and OSP rules)
-  W1  body footnote ref has no matching sources id (spec 5.1 join)
+  W1  body footnote ref has no matching sources id (OKF v0.2 §5.1 join)
   W2  sources id never referenced by a body footnote
   W3  root index.md missing okf_version
   W4  concept unverified or machine-confirmed only (tier report)
-  W5  stale: today >= stale_after (spec 5.5)
-  W6  log.md date heading not ISO YYYY-MM-DD (spec 9)
+  W5  stale: today >= stale_after (OKF v0.2 §5.5)
+  W6  log.md date heading not ISO YYYY-MM-DD (OKF v0.2 §9)
   W7  legacy v0.1/v0.6 key present (timestamp, verified_by, evidence,
       or a v0.6 status value): migration incomplete
   W8  a source resource or body link cites an org repository file at an
@@ -725,7 +725,7 @@ def main() -> int:
     print(f"errors: {len(errors)}  warnings: {len(warns)}")
     if errors or (args.strict and warns):
         return 1
-    print("conformant with OKF v0.2 (spec 11)" +
+    print("conformant with OKF v0.2 (§11)" +
           ("" if not warns else "; warnings above are SHOULDs, not failures"))
     return 0
 

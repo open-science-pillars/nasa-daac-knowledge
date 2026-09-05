@@ -4,7 +4,7 @@
 # ///
 """Deterministic attester for the attested ECCO v4r4 ocean heat content.
 
-No LLM, stdlib only, consumer-side (spec 10.2). Reads a receipt JSON
+No LLM, stdlib only, consumer-side (OKF v0.2 §10.2). Reads a receipt JSON
 produced by references/computations/ecco_ohc.py and returns PASS
 (exit 0) only when ALL of the following hold, otherwise FAIL (exit 1)
 naming the failing field:

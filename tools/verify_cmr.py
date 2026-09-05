@@ -16,7 +16,7 @@ Three modes, combinable:
   --sign DIR    for each fields concept in DIR whose Variants ShortNames
                 all verified FOUND, append a verified event
                 { by: process:cmr-shortname-sweep, at: <now> } to its
-                frontmatter (OKF v0.2 spec 5.2, 7): the machine-confirmed
+                frontmatter (OKF v0.2 §5.2, §7): the machine-confirmed
                 rung of the promotion ladder. Line-surgical; skipped when
                 the event already exists.
 
