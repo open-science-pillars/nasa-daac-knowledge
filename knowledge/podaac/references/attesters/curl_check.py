@@ -20,7 +20,12 @@ when ALL hold, else FAIL (exit 1) naming the field:
      0.02 of the measured 0.8225 TWO-SIDED (a doctored 0.99 fails the
      same as a broken 0.4); n_points exactly 20,751; median |curl|
      within a factor of two of the measured 9.25e-8 N m-3;
-  5. any other month: r in [0.70, 0.92], provisional.
+  5. any other month: r in [0.70, 0.92], provisional;
+  6. when the receipt carries a `fields` block (the run was asked for
+     per-cell arrays), the .npz it names exists and hashes to the
+     recorded sha256, and every array entry carries a shape and a
+     sha256; a receipt whose fields file is missing or altered fails,
+     so a map drawn from it can only show what the receipt vouches for.
 
 Usage: curl_check.py RECEIPT.json [--computation PATH]
 """
@@ -45,6 +50,38 @@ DOMAIN = "10-55 deg latitude, seafloor deeper than 3000 m"
 def fail(msg: str) -> int:
     print(f"FAIL: {msg}")
     return 1
+
+
+def check_fields(r, receipt_path):
+    """The optional per-cell fields file: when the receipt carries a
+    `fields` block, the file it names must exist (beside the receipt
+    if not at the recorded path) and hash to the recorded sha256, so a
+    map drawn from it shows the numbers this receipt vouches for.
+    Returns None when the block holds, else the failure message."""
+    if "fields" not in r:
+        return None
+    fb = r["fields"]
+    if (not isinstance(fb, dict) or not fb.get("path")
+            or not isinstance(fb.get("sha256"), str)
+            or len(fb["sha256"]) != 64
+            or not isinstance(fb.get("arrays"), dict) or not fb["arrays"]):
+        return "fields block present but malformed (needs path, sha256, arrays)"
+    candidates = [Path(fb["path"]), receipt_path.parent / Path(fb["path"]).name]
+    found = next((c for c in candidates if c.is_file()), None)
+    if found is None:
+        return (f"fields file {fb['path']} not found at its recorded path "
+                "or beside the receipt: a receipt that names per-cell "
+                "fields is attested with them or not at all")
+    got = hashlib.sha256(found.read_bytes()).hexdigest()
+    if got != fb["sha256"]:
+        return (f"fields file {found} does not hash to the receipt's "
+                f"sha256 ({got[:12]}... vs {fb['sha256'][:12]}...)")
+    for name, spec in fb["arrays"].items():
+        if (not isinstance(spec, dict) or not isinstance(spec.get("shape"), list)
+                or not isinstance(spec.get("sha256"), str)
+                or len(spec["sha256"]) != 64):
+            return f"fields.arrays.{name} lacks shape or sha256"
+    return None
 
 
 def main() -> int:
@@ -88,6 +125,10 @@ def main() -> int:
             or bp.get("wvel_interface_m") != 70.0):
         return fail("constants, collections, or domain differ from "
                     "the contract")
+
+    problem = check_fields(r, args.receipt)
+    if problem:
+        return fail(problem)
 
     rv = res["r_ekman_vs_wvel"]
     if bp.get("month") == REF_MONTH:

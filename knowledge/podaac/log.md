@@ -4,6 +4,37 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-05 · computations/ecco-thermal-wind-reconstruction.md (new,
+  draft) with references/computations/ecco_thermal_wind_reconstruction.py
+  and references/attesters/thermal_wind_check.py: the current
+  reconstructed from density alone, thermal-wind shear integrated from
+  a 3000 m level of no motion, scored against the model's actual
+  current (absolute) and against the model's current minus its own
+  current at the reference level (relative) in four depth bands. Both
+  scores, every band and the model's speed at the reference level are
+  required receipt fields. Reference month 2009-12: 100 to 1000 m
+  absolute r 0.9900, relative r 0.9989, shear r 0.9757; below the
+  reference absolute r 0.152 against relative r 0.978. Eleven
+  mutations FAIL, six months PASS. (build assistant)
+- 2026-09-05 · computations/ecco-geostrophic-balance.md and
+  computations/ecco-wind-stress-curl.md (stable, RE-SIGN OWED): the
+  executors take an optional --fields PATH and write the per-cell
+  arrays behind the scalars to a NumPy .npz, recording the file's
+  SHA-256 and each array's shape, dtype and SHA-256 under `fields` in
+  the receipt; the attesters require the file to exist and hash as
+  recorded when the block is present. The loaders now turn the
+  granule fill value (9.97E+36, not NaN) into NaN before arithmetic
+  with the dtype preserved, so the per-cell arrays carry no fill and
+  every scored scalar is bit-identical to the reference runs (r 0.9242
+  and 0.6102 over 20,771; r 0.8225 over 20,751). (build assistant)
+- 2026-09-05 · computations/ecco-ocean-heat-content.md (stable,
+  RE-SIGN OWED): the receipt carries the monthly series as
+  `ohc_J_by_month`, the mapping the trend-with-interval computation
+  reads, and the attester fails a receipt whose mapping and per-month
+  list disagree or do not cover the bound months in order. First
+  chain on the science record: 312 months, OHC change +1.8099E+23 J,
+  trend +8.06 ZJ/yr [+3.48, +12.63] with n_eff 3.5, both PASS.
+  (build assistant)
 - 2026-09-04 · tutorial/ecco-heat-budget-tutorial-checkpoints.md and
   tutorial/ecco-volume-budget-tutorial-checkpoints.md (both draft):
   the Eval fixture paragraph names where the extracted checkpoint

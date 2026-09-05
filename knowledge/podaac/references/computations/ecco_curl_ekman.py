@@ -38,6 +38,21 @@ INPUTS (local files only; retrieval is a separate, credentialed step)
 
 Emits a JSON receipt: run_id, code sha256, bound parameters, measured
 correlations and medians, cells evaluated.
+
+PER-CELL FIELDS (optional, --fields PATH): the receipt's scalars say
+whether Ekman pumping tracks the model's vertical velocity; a map says
+WHERE the wind drives surface water down (w_ek < 0, the subtropical
+gyres) and where it draws it up (w_ek > 0, the subpolar gyres and the
+Southern Ocean). With --fields the run also writes the per-cell arrays
+behind the scalars to a NumPy .npz (XC, YC, CS, SN, Depth, the
+cell-centered stresses in the tile frame, curl, w_ek, the model WVEL
+at the compared interface, and the exact mask the scalars were taken
+over) and records in the receipt, under `fields`, the file's path and
+sha256 plus each array's shape, dtype and sha256. A renderer that
+verifies those hashes draws the numbers this receipt vouches for and
+nothing else; the attester fails a receipt whose fields file is missing
+or altered. curl, w_ek and WVEL are scalars and need no rotation; the
+stress components are in the tile frame and do.
 """
 from __future__ import annotations
 
@@ -56,6 +71,39 @@ OMEGA = 7.2921e-5
 STRESS = "ECCO_L4_STRESS_LLC0090GRID_MONTHLY_V4R4"
 VEL = "ECCO_L4_OCEAN_VEL_LLC0090GRID_MONTHLY_V4R4"
 GEOM = "geometry/GRID_GEOMETRY_ECCO_V4r4_native_llc0090.nc"
+
+
+def load(ds, name):
+    """A variable with its fill value turned into NaN. ECCO granules
+    mark land and dry faces with _FillValue 9.97e+36, not NaN, and
+    np.asarray on the masked array netCDF4 returns silently keeps the
+    fill. The scored cells never held a fill (a fill in a centered
+    difference makes it non-finite or absurd, and the domain masks
+    excluded every such cell), so this changes no scalar; it keeps the
+    fill out of the per-cell fields a map is drawn from. The dtype is
+    preserved so the arithmetic, and every reference anchor, stays
+    bit-identical to the runs that set them."""
+    return np.ma.filled(np.ma.masked_invalid(ds[name][0]), np.nan)
+
+
+def write_fields(path, arrays, note):
+    """Per-cell arrays beside the receipt, hashed twice: the file as a
+    whole (what the stdlib attester checks) and each array's raw bytes
+    (what a renderer with NumPy checks, and what makes two runs on the
+    same data comparable array by array)."""
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    arrays = {k: np.ascontiguousarray(v) for k, v in arrays.items()}
+    np.savez_compressed(path, **arrays)
+    return {
+        "path": str(path),
+        "format": "npz",
+        "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "arrays": {k: {"shape": list(v.shape), "dtype": str(v.dtype),
+                       "sha256": hashlib.sha256(v.tobytes()).hexdigest()}
+                   for k, v in arrays.items()},
+        "note": note,
+    }
 
 
 def data_identity(root):
@@ -77,10 +125,16 @@ def main() -> None:
     ap.add_argument("--month", default="2009-12")
     ap.add_argument("--wvel-depth-m", type=float, default=70.0)
     ap.add_argument("--receipt", type=Path, required=True)
+    ap.add_argument("--fields", type=Path, default=None,
+                    help="also write the per-cell arrays to this .npz and "
+                         "record their hashes in the receipt")
     args = ap.parse_args()
 
     grid = netCDF4.Dataset(args.data_root / GEOM)
     yc = np.asarray(grid["YC"][:])
+    xc = np.asarray(grid["XC"][:])
+    cs = np.asarray(grid["CS"][:])
+    sn = np.asarray(grid["SN"][:])
     dxC = np.asarray(grid["dxC"][:])
     dyC = np.asarray(grid["dyC"][:])
     depth = np.asarray(grid["Depth"][:])
@@ -91,15 +145,15 @@ def main() -> None:
         args.data_root / STRESS /
         f"OCEAN_AND_ICE_SURFACE_STRESS_mon_mean_{args.month}"
         "_ECCO_V4r4_native_llc0090.nc")
-    taux_w = np.asarray(st["oceTAUX"][0])   # at west faces (i_g)
-    tauy_s = np.asarray(st["oceTAUY"][0])   # at south faces (j_g)
+    taux_w = load(st, "oceTAUX")   # at west faces (i_g)
+    tauy_s = load(st, "oceTAUY")   # at south faces (j_g)
 
     vds = netCDF4.Dataset(
         args.data_root / VEL /
         f"OCEAN_VELOCITY_mon_mean_{args.month}_ECCO_V4r4_native_llc0090.nc")
     Zl = np.asarray(vds["Zl"][:])
     kw = int(np.argmin(np.abs(Zl + args.wvel_depth_m)))
-    wvel = np.asarray(vds["WVEL"][0][kw])
+    wvel = load(vds, "WVEL")[kw]
 
     # Staggered stresses to cell centers (local frame throughout).
     taux = np.full_like(yc, np.nan)
@@ -164,6 +218,17 @@ def main() -> None:
             "not only Ekman pumping, so r validates sign and pattern, "
             "not equality."),
     }
+    if args.fields is not None:
+        receipt["fields"] = write_fields(args.fields, {
+            "XC": xc, "YC": yc, "CS": cs, "SN": sn, "Depth": depth,
+            "taux_tile_frame": taux, "tauy_tile_frame": tauy,
+            "curl_tau": curl, "w_ekman": w_ek, "w_model": wvel,
+            "mask_interior": valid,
+        }, ("curl_tau in N m-3 and w_ekman and w_model in m s-1 at C "
+            "points, w_model the model WVEL at wvel_interface_m; "
+            "mask_interior is exactly the cells the receipt scalars "
+            "were computed over; the stresses are tile-frame components "
+            "and need the CS and SN rotation before an east-north map"))
     args.receipt.parent.mkdir(parents=True, exist_ok=True)
     args.receipt.write_text(json.dumps(receipt, indent=2) + "\n")
     print(f"run {receipt['run_id']}: month {args.month}")
@@ -171,6 +236,9 @@ def main() -> None:
           f"interior: r = {r_ek:.4f}, median |diff| = {med:.2e} m/s, "
           f"n = {valid.sum():,}")
     print(f"  median |curl| = {curl_abs_med:.2e} N m-3")
+    if args.fields is not None:
+        print(f"  fields -> {args.fields} "
+              f"(sha256 {receipt['fields']['sha256'][:12]}...)")
     print(f"  receipt -> {args.receipt}")
 
 
