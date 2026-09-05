@@ -7,7 +7,10 @@ products silently wrong, as reviewable OKF concepts with sources,
 statuses, and steward sign-off; `knowledge/esdis/` holds the
 cross-archive requirements bundle. Every OSP repository that carries a
 bundle keeps it under `knowledge/`, so tools and readers find it the
-same way everywhere. Gate before any PR: `bash tools/run_checks.sh`.
+same way everywhere. Gate before any PR: `bash tools/run_checks.sh`;
+the same routine runs on every pull request, on main, and on each
+release tag (`.github/workflows/gate.yml`), where a signature owed is
+a failure.
 
 ## Install
 
