@@ -725,7 +725,7 @@ def main() -> int:
     print(f"errors: {len(errors)}  warnings: {len(warns)}")
     if errors or (args.strict and warns):
         return 1
-    print("conformant with OKF v0.2 (OKF v0.2 §11)" +
+    print("conformant with OKF v0.2 (§11)" +
           ("" if not warns else "; warnings above are SHOULDs, not failures"))
     return 0
 
