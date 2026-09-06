@@ -4,6 +4,16 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-06 · STEWARD RE-SIGNING of knowledge/podaac/dead-
+  ends/divergence-identity-as-budget-oracle.md, knowledge/podaac/field-
+  states/amoc-observational-era-weakening.md: first signatures on the
+  steward's instruction, both promoted draft to stable in the signing
+  commit; the dead-end goes to load_bearing high with eval_case
+  regional-closure-oracle now that the case lands in ecco-agent-evals
+  (the load-bearing rule: nothing at high without its case), the field-
+  state stays at medium The new verified event is appended on the
+  steward's word, the earlier events kept as history. (steward)
+
 - 2026-09-05 · dead-ends/divergence-identity-as-budget-oracle.md and
   field-states/amoc-observational-era-weakening.md (both new, draft):
   the first entries of the two negative-knowledge types. The dead-end
