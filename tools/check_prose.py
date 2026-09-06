@@ -19,8 +19,10 @@ drifted often enough to cost a sweep across every repository:
               numbers their authors publish (OKF v0.2 and CF sections
               are fine) and are not flagged.
   scaffolding program bookkeeping stays out of artifacts: kit, session
-              and wave numbers belong in tracking issues, runbooks and
-              commit messages, never in a file a user reads.
+              and wave identifiers, whether numbered or lettered (a kit
+              named by a letter and a number, a wave named by a letter),
+              belong in tracking issues, runbooks and commit messages,
+              never in a file a user reads.
   dash        no em or en dashes; a colon, comma, parenthesis or period
               does the work.
 
@@ -59,7 +61,10 @@ RULES = {
         + r"|\bSPEC [0-9]+\.[0-9]"
         + r"|\(spec [0-9]+\.[0-9]"
         + r"|\bharness rule [0-9]"),
-    "scaffolding": re.compile(r"\b(kit|session|wave) [0-9]+\b", re.I),
+    "scaffolding": re.compile(
+        r"\b(?:[Kk]it|[Ss]ession|[Ww]ave) [0-9]+\b"
+        r"|\b[Kk]it [A-Z][0-9]+\b"
+        r"|\b[Ww]ave [A-Z]\b"),
     "dash": re.compile("[\u2013\u2014]"),
 }
 
@@ -115,13 +120,15 @@ def selftest() -> int:
             "The merge-then-sign rule (the specification, docs/SPECIFICATION.md\n"
             "in open-science-pillars/marketplace) and OKF v0.2 " + sect + "10.2 are\n"
             "both cited the right way; CF " + sect + "2.5.1 too. A session in Claude\n"
-            "Code, a kit of parts, and a wave breaking are all fine words.\n",
+            "Code, a kit of parts, and a wave breaking are all fine words;\n"
+            "so is to wave a hand at a kit H, or a kit of H3 parts.\n",
             encoding="utf-8")
         (root / "drift.md").write_text(
             "Per SPEC " + sect + "5.4 the edit merges (SPEC " + "5.1 says so).\n"
             "This came from " + "kit " + "12, " + "Session " + "3 of "
             + "wave " + "4.\nA dash " + "\u2014" + " here, and one " + "\u2013"
-            + " there.\nAlso (spec " + "10.3) and harness rule " + "9.\n",
+            + " there.\nAlso (spec " + "10.3) and harness rule " + "9.\n"
+            "Cut in " + "kit " + "H3, " + "Session " + "2 of " + "Wave " + "A.\n",
             encoding="utf-8")
         (root / "knowledge" / "log.md").write_text(
             "- 2026-01-01 " + "\u2014" + " SPEC " + sect + "5.4 kept as written\n",
@@ -139,7 +146,7 @@ def selftest() -> int:
         by_file = {p.name for p, _, _, _ in findings}
         assert by_file == {"drift.md", "pr-1-verdict.md"}, by_file
         assert rules.count("citation") == 2, rules
-        assert rules.count("scaffolding") == 2, rules
+        assert rules.count("scaffolding") == 3, rules
         assert rules.count("dash") == 1, rules
         assert files == 3, files
         findings, _ = scan(root, ["reviews/*"])
