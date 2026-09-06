@@ -96,11 +96,20 @@ def sign_text(text: str, by: str, at: str):
     return "\n".join(lines), f"appended as event {last - idx + 1}"
 
 
-def log_entry(paths, note: str, day: str) -> str:
+def log_entry(paths, note: str, day: str, first: bool = False) -> str:
+    """The bundle's log line for this signing act.
+
+    A concept signed for the first time has no earlier events to keep,
+    so the entry says so; a concept signed again does, and the sentence
+    about history is what the merge-then-sign rule asks the log to
+    record."""
     names = ", ".join(paths)
-    body = (f"{day} · STEWARD RE-SIGNING of {names}: {note} The new verified "
-            "event is appended on the steward's word, the earlier events "
-            "kept as history. (steward)")
+    act = "SIGNING" if first else "RE-SIGNING"
+    tail = ("The verified event is written on the steward's word."
+            if first else
+            "The new verified event is appended on the steward's word, "
+            "the earlier events kept as history.")
+    body = f"{day} · STEWARD {act} of {names}: {note} {tail} (steward)"
     return textwrap.fill(body, width=72, initial_indent="- ",
                          subsequent_indent="  ")
 
@@ -143,6 +152,13 @@ def selftest() -> int:
         add_log(log, log_entry(["a.md", "b.md"], "the wording sweep changed them.", "2026-09-05"))
         text = log.read_text(encoding="utf-8")
         assert text.index("2026-09-05 · STEWARD RE-SIGNING of a.md, b.md") < text.index("older entry")
+        assert "earlier events kept as history" in text
+        firstlog = Path(d) / "first.md"
+        firstlog.write_text("# log\n\nNewest first.\n", encoding="utf-8")
+        add_log(firstlog, log_entry(["a.md"], "the first signature.", "2026-09-05", first=True))
+        ftext = firstlog.read_text(encoding="utf-8")
+        assert "STEWARD SIGNING of a.md" in ftext and "RE-SIGNING" not in ftext
+        assert "kept as history" not in ftext
         assert "\n\n- 2026-01-01" in text and text.startswith("# log\n\nNewest first.\n\n- 2026-09-05")
         empty = Path(d) / "empty.md"
         empty.write_text("# log\n\nNewest first.\n", encoding="utf-8")
@@ -176,6 +192,7 @@ def main() -> int:
     if args.log and not args.note:
         ap.error("--log needs --note, the reason the log records")
     rc = 0
+    notes = []
     for path in args.concepts:
         try:
             new, note = sign_text(path.read_text(encoding="utf-8"), by, at)
@@ -185,9 +202,11 @@ def main() -> int:
             continue
         if not args.dry_run:
             path.write_text(new, encoding="utf-8")
+        notes.append(note)
         print(f"{'would sign' if args.dry_run else 'signed'} {path}: {note}")
     if args.log and rc == 0:
-        entry = log_entry([p.as_posix() for p in args.concepts], args.note.strip(), at[:10])
+        entry = log_entry([p.as_posix() for p in args.concepts], args.note.strip(),
+                          at[:10], first=all(n.startswith("first signature") for n in notes))
         if not args.dry_run:
             add_log(args.log, entry)
         print(("would add to " if args.dry_run else "logged in ") + args.log.as_posix())
