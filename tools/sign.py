@@ -110,8 +110,11 @@ def log_entry(paths, note: str, day: str, first: bool = False) -> str:
             "The new verified event is appended on the steward's word, "
             "the earlier events kept as history.")
     body = f"{day} · STEWARD {act} of {names}: {note} {tail} (steward)"
+    # break_on_hyphens=False keeps a concept path in one piece: a path
+    # broken across lines at one of its hyphens is no longer a path.
     return textwrap.fill(body, width=72, initial_indent="- ",
-                         subsequent_indent="  ")
+                         subsequent_indent="  ", break_on_hyphens=False,
+                         break_long_words=False)
 
 
 def add_log(log: Path, entry: str) -> None:
@@ -159,6 +162,12 @@ def selftest() -> int:
         ftext = firstlog.read_text(encoding="utf-8")
         assert "STEWARD SIGNING of a.md" in ftext and "RE-SIGNING" not in ftext
         assert "kept as history" not in ftext
+        # A hyphenated concept path survives the wrapping in one piece.
+        wrapped = Path(d) / "wrap.md"
+        wrapped.write_text("# log\n\nNewest first.\n", encoding="utf-8")
+        add_log(wrapped, log_entry(["knowledge/gotchas/mod16-fill-over-water-barren-urban.md"],
+                                   "a path long enough to need wrapping in the entry.", "2026-09-06"))
+        assert "knowledge/gotchas/mod16-fill-over-water-barren-urban.md" in wrapped.read_text(encoding="utf-8")
         assert "\n\n- 2026-01-01" in text and text.startswith("# log\n\nNewest first.\n\n- 2026-09-05")
         empty = Path(d) / "empty.md"
         empty.write_text("# log\n\nNewest first.\n", encoding="utf-8")
