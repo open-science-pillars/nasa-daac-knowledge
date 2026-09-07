@@ -65,9 +65,29 @@ import yaml
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent
-BUNDLE = REPO / "knowledge" / "podaac"
+BUNDLE = REPO / "knowledge" / "podaac"          # the default bundle, not the only one
 COMPUTATIONS = BUNDLE / "references" / "computations"
 REGISTRY = HERE / "reference_runs.yaml"
+
+
+def bundle_paths(bundle: Path):
+    """A bundle root and the repository that holds it.
+
+    The ritual runs a computation in ITS repository, not in this one: a
+    sibling plugin's computation resolves its own relative paths, and
+    the log entry it drafts is bundle relative. The repository is
+    derived from the bundle rather than assumed, so any bundle in any
+    checkout works."""
+    bundle = bundle.resolve()
+    if not bundle.is_dir():
+        raise SystemExit(f"REFUSED: no such bundle: {bundle}")
+    try:
+        top = subprocess.run(["git", "-C", str(bundle), "rev-parse", "--show-toplevel"],
+                             capture_output=True, text=True, check=True).stdout.strip()
+        repo = Path(top)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        repo = bundle.parent
+    return bundle, repo, bundle / "references" / "computations"
 
 
 def sha256(path: Path) -> str:
@@ -80,6 +100,7 @@ def frontmatter(text: str) -> str:
 
 
 def attester_for(computation: Path, bundle: Path = BUNDLE):
+    """The attester a concept in this bundle names for this computation."""
     """The attester the concept names for this computation, resolved
     against the bundle; None when no concept names it."""
     target = computation.resolve()
@@ -224,7 +245,10 @@ class Ritual:
         evidence.append("a one-byte tamper of the new file FAILS")
         body = (f"{day} · {head} of {rel} {shas}: {note or '<why the file changed, and what did not>'} "
                 f"Evidence, {where}: " + "; ".join(evidence) + ". (<who>)")
-        return textwrap.fill(body, width=72, initial_indent="- ", subsequent_indent="  ")
+        # break_on_hyphens=False keeps a path in one piece: a path broken
+        # across lines at one of its hyphens is no longer a path.
+        return textwrap.fill(body, width=72, initial_indent="- ", subsequent_indent="  ",
+                             break_on_hyphens=False, break_long_words=False)
 
 
 def selftest() -> int:
@@ -328,6 +352,9 @@ def main() -> int:
     ap.add_argument("computation", nargs="?", type=Path)
     ap.add_argument("args", nargs="*", help="the computation's arguments, after --")
     ap.add_argument("--run", help="a run name from tools/reference_runs.yaml")
+    ap.add_argument("--bundle", type=Path, default=BUNDLE,
+                    help="the knowledge bundle the computation belongs to (default this repository's podaac "
+                         "bundle); the ritual runs in the repository that holds it")
     ap.add_argument("--attester", type=Path)
     ap.add_argument("--data-root", type=Path, help="override the registry's data root")
     ap.add_argument("--old", default="HEAD", help="the reference version, a git ref (default HEAD)")
@@ -336,6 +363,7 @@ def main() -> int:
     ap.add_argument("--list", action="store_true", help="list the registry runs")
     ap.add_argument("--selftest", action="store_true")
     a = ap.parse_args()
+    bundle, repo, computations = bundle_paths(a.bundle)
     if a.selftest:
         return selftest()
     reg = load_registry()
@@ -359,19 +387,19 @@ def main() -> int:
         # and their receipts substituted; only the named run is attested.
         for dep in order[:-1]:
             spec = reg["runs"][dep]
-            comp = COMPUTATIONS / spec["computation"]
+            comp = computations / spec["computation"]
             out = keep / f"receipt_{dep}.json"
             rc, text = run_cmd(["uv", "run", comp, *resolve_args(spec, reg, receipts, a.data_root),
-                                "--receipt", out], REPO)
+                                "--receipt", out], repo)
             if rc != 0:
                 print(f"needed run {dep} failed:\n{text[-600:]}")
                 return 1
             receipts[dep] = out
             print(f"needed run {dep}: receipt {out}")
         spec = reg["runs"][a.run]
-        computation = COMPUTATIONS / spec["computation"]
+        computation = computations / spec["computation"]
         args = resolve_args(spec, reg, receipts, a.data_root)
-        attester = a.attester or (BUNDLE / spec["attester"] if spec.get("attester") else None)
+        attester = a.attester or (bundle / spec["attester"] if spec.get("attester") else None)
     else:
         if not a.computation:
             ap.error("give --run NAME or a COMPUTATION.py")
@@ -382,15 +410,16 @@ def main() -> int:
         attester = a.attester
     if not computation.is_file():
         ap.error(f"no such computation: {computation}")
-    attester = attester or attester_for(computation)
+    attester = attester or attester_for(computation, bundle)
     if attester is None or not attester.is_file():
         ap.error("no attester: no concept names this computation; give --attester")
-    rel = computation.resolve().relative_to(BUNDLE.resolve()).as_posix() \
-        if computation.resolve().is_relative_to(BUNDLE.resolve()) else computation.as_posix()
+    rel = computation.resolve().relative_to(bundle).as_posix() \
+        if computation.resolve().is_relative_to(bundle) else computation.as_posix()
 
-    print(f"re-attesting {rel} with {attester.relative_to(BUNDLE) if attester.is_relative_to(BUNDLE) else attester}")
+    print(f"re-attesting {rel} with {attester.relative_to(bundle) if attester.is_relative_to(bundle) else attester}")
+    print(f"  bundle: {bundle}")
     print(f"  args: {' '.join(str(x) for x in args)}")
-    ritual = Ritual(computation, attester, args, keep)
+    ritual = Ritual(computation, attester, args, keep, repo=repo)
     ok = ritual.perform(a.old)
     print(ritual.report(a.note, rel))
     print()
