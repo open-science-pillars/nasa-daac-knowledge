@@ -4,6 +4,29 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-07 · knowledge/podaac/datasets/opera-dswx-hls.md,
+  knowledge/podaac/datasets/opera-dswx-s1.md,
+  knowledge/podaac/gotchas/dswx-class-mismatch.md (high, eval case
+  dswx-class-mismatch) and
+  knowledge/podaac/gotchas/swath-footprint-is-not-an-observation.md
+  (high, eval case swath-footprint-is-not-an-observation) authored as
+  drafts, no verified event. Both class tables are quoted from the
+  product specifications (DSWx-HLS v1.0.1 D-107395 Rev B Table 4-1;
+  DSWx-S1 Rev A D-108761) rather than inferred from the values, after
+  a first reading of a granule mistook class 253 for snow when the
+  specification calls it cloud and cloud shadow. Measured over the
+  Tulare Lake bed on 2026-09-07 and recorded on
+  open-science-pillars/marketplace issue 72: a March 2023 DSWx-HLS
+  tile is 57.44 per cent cloud and 41.37 per cent fill with one per
+  cent of the scene classified at all; DSWx-S1 returns zero granules
+  over the box for the whole 2023 reflood and its archive begins
+  2023-12-01; and of the first eight SWOT LakeSP granules a
+  bounding-box search returned for late July 2023, only two hold any
+  feature inside the box, both from the same pass, so the first
+  observation is 2023-07-30 where the search offers 2023-07-27. The
+  granules also carry production dates years after their acquisitions,
+  so a receipt records both. (claude-code/fable-5)
+
 - 2026-09-06 · STEWARD RE-SIGNING of knowledge/podaac/dead-
   ends/divergence-identity-as-budget-oracle.md, knowledge/podaac/field-
   states/amoc-observational-era-weakening.md: first signatures on the

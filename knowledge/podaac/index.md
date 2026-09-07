@@ -15,12 +15,16 @@ plugins reach these concepts as a declared, installed dependency.
 - [ECCO v4 Release 4 ocean state estimate](datasets/ecco-v4r4.md), status: stable
 - [SWOT KaRIn Level 2 Low Rate SSH](datasets/swot-karin.md), status: stable
 - [GRACE/GRACE-FO JPL mascon solutions](datasets/grace-fo-mascons.md), status: stable
+- [OPERA DSWx-HLS: surface water extent from optical imagery, with cloud as the dominant class](datasets/opera-dswx-hls.md), status: draft
+- [OPERA DSWx-S1: surface water extent from radar, which sees through cloud and did not exist before December 2023](datasets/opera-dswx-s1.md), status: draft
 - [GHRSST MUR Level 4 SST](datasets/ghrsst-mur.md), status: stable
 - [RAPID-MOCHA transports at 26.5N (observational reference)](datasets/rapid-mocha.md), status: stable
 - [NASA-SSH simple gridded sea surface height anomaly (observational reference)](datasets/nasa-ssh.md), status: draft
 
 ## gotchas
 
+- [The two DSWx products collide on the same integers: an area timeline that spans them measures the product change](gotchas/dswx-class-mismatch.md), severity high, status: draft
+- [A catalogue match on a swath granule is not an observation of your place](gotchas/swath-footprint-is-not-an-observation.md), severity high, status: draft
 - [ECCO budgets and transports close only on the native llc90 grid](gotchas/ecco-native-vs-regridded.md), severity high, status: stable
 - [ECCO heat budgets need the geothermal flux, which is not a PO.DAAC collection](gotchas/ecco-geothermal-flux.md), severity high, status: stable
 - [SWOT orbit phases: cal/val and science data are not one record](gotchas/swot-calval-orbit-phases.md), severity high, status: stable
