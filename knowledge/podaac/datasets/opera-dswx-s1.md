@@ -4,9 +4,10 @@ title: "OPERA DSWx-S1: surface water extent from radar, which sees through cloud
 description: "Dynamic Surface Water Extent from Sentinel-1, 30 m on MGRS tiles. The water layer carries not water, open water and inundated vegetation, with HAND and layover or shadow masks; there is no cloud class because radar does not need one. The archive begins 2023-12-01, so the product an analyst reaches for during a cloudy flood is absent from every event before that date."
 tags: [opera, dswx, sentinel-1, radar, surface-water, flood, podaac]
 generated: { by: claude-code/fable-5, at: 2026-09-07T20:05:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-08T04:19:56Z }
 resource: https://podaac.jpl.nasa.gov/dataset/OPERA_L3_DSWX-S1_V1
 version: "Product version 1.0 in CMR (collection C2949811996-POCLOUD); the specification read here is Rev A, JPL D-108761"
-status: draft
+status: stable
 stale_after: 2027-03-07
 citation:
   access_date_required: true

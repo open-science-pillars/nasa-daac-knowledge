@@ -4,10 +4,11 @@ title: "A catalogue match on a swath granule is not an observation of your place
 description: "A spatial search returns granules whose footprint intersects the query box, and for a wide-swath product a footprint spans continents. Measured over the Tulare Lake bed: of the first eight SWOT LakeSP granules a bounding-box search returned for late July and August 2023, only two contain any lake feature inside the box, and both are the same pass. The other six hold thousands of features elsewhere. A date taken from the search rather than from the file is a date on which nothing was observed."
 tags: [swot, lakesp, cmr, search, swath, footprint, observation, podaac]
 generated: { by: claude-code/fable-5, at: 2026-09-07T20:15:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-08T04:19:56Z }
 severity: high
 dataset: ../datasets/swot-karin.md
 eval_case: swath-footprint-is-not-an-observation
-status: draft
+status: stable
 stale_after: 2027-03-07
 sources:
   - id: record
