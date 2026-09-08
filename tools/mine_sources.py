@@ -70,6 +70,54 @@ LEXICON = {
                             "proves nothing", "workaround", "no longer works"],
 }
 
+# The hydrology source set. The ECCO lexicon above is about one model;
+# these needles are about the gauge and satellite records this program's
+# hydrology work reads, and they are the phrasings its own kits kept
+# tripping over. The two routed buckets below are shared rather than
+# duplicated, because a dead end is a dead end in any domain.
+HYDROLOGY_LEXICON = {
+    "approval-and-revision": ["provisional", "approved", "revised", "estimated value",
+                              "changed after", "value changed"],
+    "vertical-datum": ["navd", "ngvd", "datum", "geoid", "gage datum", "gauge datum",
+                       "egm2008", "elevation reference"],
+    "collection-and-version": ["collection_name", "version c", "version d", "riversp",
+                               "lakesp", "which version", "reprocess"],
+    "run-mixing": ["imerg", "final run", "late run", "early run", "which run"],
+    "fill-and-flags": ["fill value", "-9999", "no data", "qc flag", "quality flag",
+                       "masked", "nodata"],
+    "footprint-and-scale": ["mascon", "footprint", "too small", "resolve", "grid scale",
+                            "coarse for"],
+    "regulation": ["regulated", "dam", "reservoir release", "operating rule", "diversion"],
+    "units": ["cfs", "cubic feet per second", "acre-feet", "acre feet", "unit mismatch",
+              "convert to metric"],
+    "search-versus-observation": ["bounding box", "no features", "empty granule",
+                                  "footprint match", "returns nothing"],
+    "rating-curve": ["rating curve", "stage-discharge", "extrapolat", "shifted rating"],
+}
+
+# The trackers each set harvests. Only GitHub issue trackers can be
+# harvested by this tool; the hydrology producers also publish a blog, a
+# news feed and a changelog, which are named here so their absence is a
+# recorded gap rather than an oversight.
+SOURCE_SETS = {
+    "ecco": {
+        "repos": ["ECCO-GROUP/ECCOv4-py", "ECCO-GROUP/ECCO-v4-Python-Tutorial"],
+        "lexicon": None,        # the module-level LEXICON
+        "not_harvestable": [],
+    },
+    "hydrology": {
+        "repos": ["DOI-USGS/dataretrieval-python", "DOI-USGS/dataRetrieval",
+                  "podaac/hydrocron"],
+        "lexicon": "HYDROLOGY_LEXICON",
+        "not_harvestable": [
+            "the USGS Water Data for the Nation blog, which is not an issue tracker",
+            "the GPM mission news feed, which is not an issue tracker",
+            "the OpenET changelog, which is not an issue tracker",
+            "the NLDI service, which has no public issue tracker found on 2026-09-08",
+        ],
+    },
+}
+
 # Buckets that route to a register rather than the gotcha ladder. The
 # register is the tracking issue where a steward triages the cluster;
 # a stub drafted for a routed bucket carries the register's concept type
@@ -106,11 +154,12 @@ def fetch_issues(repo: str, token: str | None, pages: int = 3) -> list:
     return out
 
 
-def cluster(issues: list) -> dict:
-    hits = {k: [] for k in LEXICON}
+def cluster(issues: list, lexicon: dict | None = None) -> dict:
+    lexicon = lexicon or LEXICON
+    hits = {k: [] for k in lexicon}
     for i in issues:
         text = ((i.get("title") or "") + " " + (i.get("body") or "")).lower()
-        for topic, needles in LEXICON.items():
+        for topic, needles in lexicon.items():
             if any(n in text for n in needles):
                 hits[topic].append({"title": i.get("title", ""),
                                     "url": i.get("html_url", "")})
@@ -267,9 +316,10 @@ def selftest() -> int:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--repos", nargs="+",
-                    default=["ECCO-GROUP/ECCOv4-py",
-                             "ECCO-GROUP/ECCO-v4-Python-Tutorial"])
+    ap.add_argument("--source-set", choices=sorted(SOURCE_SETS), default="ecco",
+                    help="which producers to harvest, with the lexicon that fits them")
+    ap.add_argument("--repos", nargs="+", default=None,
+                    help="override the source set's repositories")
     ap.add_argument("--min-hits", type=int, default=3)
     ap.add_argument("--draft-dir", type=Path)
     ap.add_argument("--selftest", action="store_true")
@@ -278,14 +328,22 @@ def main() -> int:
     if args.selftest:
         return selftest()
 
+    chosen = SOURCE_SETS[args.source_set]
+    repos = args.repos or chosen["repos"]
+    lexicon = globals()[chosen["lexicon"]] if chosen["lexicon"] else LEXICON
+    print(f"source set {args.source_set}: {len(repos)} tracker(s), "
+          f"{len(lexicon)} lexicon buckets")
+    for gap in chosen["not_harvestable"]:
+        print(f"  not harvested: {gap}")
+
     token = os.environ.get("GITHUB_TOKEN")
     issues = []
-    for repo in args.repos:
+    for repo in repos:
         batch = fetch_issues(repo, token)
         print(f"{repo}: {len(batch)} issues fetched")
         issues += batch
 
-    hits = cluster(issues)
+    hits = cluster(issues, lexicon)
     for topic, ev in sorted(hits.items(), key=lambda kv: -len(kv[1])):
         if ev:
             reg = route(topic)
