@@ -4,9 +4,10 @@ title: "OPERA DSWx-HLS: surface water extent from optical imagery, with cloud as
 description: "Dynamic Surface Water Extent from Harmonized Landsat Sentinel-2, 30 m, ten GeoTIFF layers per granule on MGRS tiles. The water layer carries three water classes (not water, open water, partial surface water) plus snow, cloud, ocean and fill, and over a mountain scene in spring the cloud class routinely dominates: a March 2023 tile over the southern Sierra is 57 per cent cloud and 41 per cent fill. Granules are reprocessed, so an acquisition from 2023 can carry a 2026 production date."
 tags: [opera, dswx, hls, surface-water, flood, optical, podaac]
 generated: { by: claude-code/fable-5, at: 2026-09-07T20:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-08T04:19:56Z }
 resource: https://podaac.jpl.nasa.gov/dataset/OPERA_L3_DSWX-HLS_V1
 version: "Product version 1.0 in CMR (collection C2617126679-POCLOUD); the specification read here is v1.0.1, JPL D-107395 Rev B of 2024-07-10, and observed granules carry the v1.1 suffix in their filenames"
-status: draft
+status: stable
 stale_after: 2027-03-07
 citation:
   access_date_required: true

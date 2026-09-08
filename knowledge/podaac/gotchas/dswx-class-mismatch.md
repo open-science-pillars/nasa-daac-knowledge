@@ -4,10 +4,11 @@ title: "The two DSWx products collide on the same integers: an area timeline tha
 description: "DSWx-HLS and DSWx-S1 share a name, a grid and a layer called WTR, and carve the world differently. Class 2 is partial surface water in the optical product and unused in the radar one; class 3 is inundated vegetation in the radar product and unused in the optical one. Above the data range they collide outright: 252 and 253 are snow and cloud in the optical product while 250 and 251 are HAND and layover masks in the radar one. A timeline that unions the water classes across the two measures the changeover, and nothing raises an error."
 tags: [opera, dswx, hls, sentinel-1, surface-water, flood, class-table, timeline]
 generated: { by: claude-code/fable-5, at: 2026-09-07T20:10:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-08T04:19:56Z }
 severity: high
 dataset: ../datasets/opera-dswx-hls.md
 eval_case: dswx-class-mismatch
-status: draft
+status: stable
 stale_after: 2027-03-07
 sources:
   - id: hls-spec
