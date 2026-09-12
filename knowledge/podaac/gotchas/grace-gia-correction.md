@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere, geosphere]
 title: "GRACE GIA correction: a model choice already baked into the product"
 description: "A specific glacial isostatic adjustment model is pre-applied to mascon products; comparisons across products or literature with different GIA choices shift trends."
 tags: [grace, gia, trends, corrections]

@@ -1,5 +1,6 @@
 ---
 type: Data Collection
+spheres: [hydrosphere]
 title: Sea surface height
 description: "The SSH family of the V4r4 estimate: dynamic sea surface height and model sea level anomaly, with snapshot bookends for budgets and a corrected V4R4B re-release for this family."
 tags: [ecco, v4r4, sea-surface-topography, geodesy]

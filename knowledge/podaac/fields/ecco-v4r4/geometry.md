@@ -1,5 +1,6 @@
 ---
 type: Data Collection
+spheres: [hydrosphere]
 title: Grid geometry parameters
 description: "The llc90 and 0.5 degree grid geometry of the V4r4 estimate: areas, edge lengths, partial cells, masks, rotation, and bathymetry; the static granule merged into every native-grid analysis."
 tags: [ecco, v4r4, model-geometry]

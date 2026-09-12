@@ -1,5 +1,6 @@
 ---
 type: Data Collection
+spheres: [hydrosphere]
 title: Ocean three-dimensional potential temperature fluxes
 description: "The heat-budget flux family of the V4r4 estimate: advective and diffusive potential temperature fluxes on the native grid only."
 tags: [ecco, v4r4, ocean-heat-budget]

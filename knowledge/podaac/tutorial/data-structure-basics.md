@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "ECCO NetCDF structure: datasets, granules, and the xarray objects"
 description: "Tutorial-companion facts: each dataset carries a few variables, one file per time coordinate is a granule, and the Dataset/DataArray objects are the working structures."
 tags: [ecco, tutorial-companion, netcdf, structure]

@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Accessing and subsetting ECCO variables"
 description: "Tutorial-companion pointer: dot and dictionary access, and the bracket, sel, isel, and where subsetting routes; xarray-generic procedure with no ECCO-specific trap."
 tags: [ecco, tutorial-companion, loading]

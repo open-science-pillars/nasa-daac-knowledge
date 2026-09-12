@@ -1,5 +1,6 @@
 ---
 type: Data Collection
+spheres: [hydrosphere]
 title: Ocean potential temperature and salinity
 description: "The THETA and SALT family: the tracer state of the V4r4 estimate on native and interpolated grids, with the snapshot collections that bookend budgets."
 tags: [ecco, v4r4, ocean-temperature, salinity-density]

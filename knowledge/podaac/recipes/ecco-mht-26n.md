@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "Meridional heat transport at 26.5N from ECCO v4r4"
 description: "Validated pattern for Atlantic MHT at 26.5N on the native grid, with the expected mean range and the RAPID-comparison spread."
 tags: [ecco, mht, amoc, rapid, transport]

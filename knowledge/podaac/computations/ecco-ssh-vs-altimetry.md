@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "ECCO regional sea level against NASA-SSH altimetry (attested)"
 description: "The comparison of the attested regional sea level partition's total series with the NASA-SSH gridded altimetry record over the same box and their consecutive overlap: root-mean-square difference, correlation, anomaly correlation and the trend of the difference, each with a 95 percent sampling interval from the attested uncertainty chain; the observation's version, DOI, grids digest, licence, citation, published uncertainty and a statement of its independence from the estimate in the receipt; a stdlib attester that recomputes every score and refuses a receipt missing any of them."
 tags: [ecco, altimetry, nasa-ssh, sea-level, confrontation, observations, attested]

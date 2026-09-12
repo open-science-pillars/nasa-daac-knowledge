@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Marine heatwave definition (Hobday family)"
 description: "The operational MHW definition and category scale this bundle computes against: 90th-percentile seasonal threshold, five-day minimum, two-day gap joining, fixed baseline as a stated parameter, categories as multiples of the climatology-to-threshold difference."
 tags: [marine-heatwave, sst, convention]

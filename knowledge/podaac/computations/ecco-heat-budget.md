@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Heat budget closure on the ECCO v4r4 native grid (attested)"
 description: "Sanctioned four-term heat budget computation; a run passes attestation only within the recorded residual tolerances on unmodified code."
 tags: [ecco, heat-budget, closure, attested, native-grid]

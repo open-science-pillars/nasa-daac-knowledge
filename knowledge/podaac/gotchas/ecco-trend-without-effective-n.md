@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "A trend fit without an effective-sample-size correction overstates certainty"
 description: "Monthly ocean series are serially correlated, so a least-squares trend with a textbook standard error, or with no error bar at all, claims far more certainty than the data hold; the bundle's own signed steric trend of +135.7772 mm per year over 2010 is the example, and with an honest interval it is not distinguishable from zero."
 tags: [ecco, trend, uncertainty, autocorrelation, confidence-interval, steric-height]

@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Atlantic overturning at 26.5N from ECCO v4r4 (attested)"
 description: "The meridional overturning across the Atlantic at the RAPID latitude, month by month on the native grid: Atlantic-only section faces from the signed section machinery and ECCO's own basin codes, three streamfunction conventions with the mass-balanced one primary and the per-level transports in every receipt, an enforced anchor on ecco_v4_py for 2010, two structural sabotages caught and two scope choices measured."
 tags: [ecco, amoc, overturning, transport, section, "26n", attested, native-grid]

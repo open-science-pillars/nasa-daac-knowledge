@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "Daily ECCO granules overlap at midnight the way monthlies do at month edges"
 description: "A temporal query keyed to day boundaries can match two adjacent daily granules; selecting daily granules needs a mid-day query time plus filename filtering, the daily twin of the month-edge rule."
 tags: [ecco, granules, daily, temporal-query, access]

@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "The OSNAP chapter: section masks from great-circle arcs"
 description: "Tutorial-companion facts: transport and overturning along the approximate OSNAP lines via great-circle-arc masks, streamfunction in depth space, compared against OSNAP observations."
 tags: [ecco, tutorial-companion, transport, osnap]

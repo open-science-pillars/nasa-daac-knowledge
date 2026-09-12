@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "Closed heat budget on the ECCO v4r4 native grid"
 description: "Validated pattern for the four-term heat budget with the machine-precision residual expectation."
 tags: [ecco, heat-budget, closure, native-grid]

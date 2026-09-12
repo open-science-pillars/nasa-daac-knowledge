@@ -1,5 +1,6 @@
 ---
 type: Data Collection
+spheres: [hydrosphere]
 title: Ocean bottom pressure
 description: "The OBP family of the V4r4 estimate: ocean bottom pressure and its anomaly, with snapshot bookends and a corrected V4R4B re-release for this family."
 tags: [ecco, v4r4, ocean-pressure, geodesy]

@@ -1,5 +1,6 @@
 ---
 type: Data Collection
+spheres: [hydrosphere]
 title: Ocean three-dimensional salinity fluxes
 description: "The salt-budget flux family of the V4r4 estimate: advective and diffusive salinity fluxes plus the salt-plume tendency, native grid only."
 tags: [ecco, v4r4, salinity-density]

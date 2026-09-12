@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Global ocean heat content from ECCO v4r4 (attested)"
 description: "Sanctioned volume-weighted OHC computation with grid anchors; a run passes attestation only with the sanctioned code, the contract parameters, tutorial-anchored geometry, and the potential-temperature baseline caveat in the receipt."
 tags: [ecco, ocean-heat-content, ohc, attested, native-grid]

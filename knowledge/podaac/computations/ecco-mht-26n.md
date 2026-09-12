@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Meridional heat transport at 26.5N from ECCO v4r4 (attested, draft)"
 description: "Draft contract for the attested MHT computation; the sanctioned computation is not yet extracted from the transport_analysis golden."
 tags: [ecco, mht, transport, rapid, attested]

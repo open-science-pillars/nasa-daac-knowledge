@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Geostrophic balance and thermal wind from ECCO v4r4 (attested)"
 description: "Sanctioned geostrophic velocity from the full pressure potential (g ETAN plus PHIHYD), validated against the model's own currents; the weaker full-band and polar figures are REQUIRED receipt fields, so a receipt quoting only the favorable interior correlation fails attestation."
 tags: [ecco, geostrophy, thermal-wind, attested, native-grid]

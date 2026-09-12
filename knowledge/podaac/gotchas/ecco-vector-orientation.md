@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "ECCO native velocities are grid-relative: UVEL and VVEL are not east and north"
 description: "On the llc90 curvilinear tiles UVEL and VVEL point along model x and y; treating them as eastward and northward, or interpolating them component-wise like scalars, silently misdirects currents."
 tags: [ecco, velocity, vectors, llc90, rotation]

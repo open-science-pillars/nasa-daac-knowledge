@@ -1,5 +1,6 @@
 ---
 type: Data Collection
+spheres: [hydrosphere]
 title: Ocean and sea-ice surface freshwater fluxes
 description: "The surface freshwater and salt flux family of the V4r4 estimate: SFLUX and oceFWflx plus forcing components; the salt-budget surface forcing."
 tags: [ecco, v4r4, surface-water, salinity-density]

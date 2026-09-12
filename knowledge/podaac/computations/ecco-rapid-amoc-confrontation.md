@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "ECCO overturning against RAPID at 26.5N (attested)"
 description: "The confrontation of the model's Atlantic overturning with the array's delivered record: calendar-month means of the twelve-hourly ten-day-filtered observed series against the model's mass-balanced streamfunction maximum over their consecutive overlap; bias, root-mean-square difference, correlation and anomaly correlation each with a 95 percent sampling interval from the attested uncertainty chain; the observation's version, DOI, hash, licence, citation and published uncertainty in the receipt; a stdlib attester that recomputes every score and refuses a receipt missing any of them."
 tags: [ecco, rapid, amoc, overturning, confrontation, observations, "26n", attested]

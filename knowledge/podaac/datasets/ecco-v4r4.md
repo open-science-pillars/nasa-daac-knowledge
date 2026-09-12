@@ -1,5 +1,6 @@
 ---
 type: dataset
+spheres: [hydrosphere]
 title: ECCO v4 Release 4 ocean state estimate
 description: "Dynamically consistent global ocean state estimate, 1992-2017, llc90 native grid; budgets close exactly; no formal error fields."
 tags: [ecco, state-estimate, llc90, podaac, ocean]

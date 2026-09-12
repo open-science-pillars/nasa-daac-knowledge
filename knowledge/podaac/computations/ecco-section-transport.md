@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Section transports on the ECCO v4r4 native grid (attested)"
 description: "Volume and heat transport across registered sections by signed indicator-gradient face masks over a budget-verified tile topology; anchored against an independent implementation, with five sabotages recorded in every receipt and unanchored sections required to say so."
 tags: [ecco, transport, section, seam, attested, native-grid]

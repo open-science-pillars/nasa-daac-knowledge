@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Regional sea level partition from ECCO (attested)"
 description: "Sanctioned regional partition of ECCO sea level into manometric and steric parts: the receipt carries the three monthly anomaly series, a machine-checked closure residual recomputed from them, each trend with the interval the one sanctioned trend method states for it, and convention-bound bookkeeping fields."
 tags: [ecco, sea-level, steric, manometric, attested, native-grid]

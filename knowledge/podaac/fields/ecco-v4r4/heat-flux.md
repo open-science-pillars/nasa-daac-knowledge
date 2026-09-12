@@ -1,5 +1,6 @@
 ---
 type: Data Collection
+spheres: [hydrosphere]
 title: Ocean and sea-ice surface heat fluxes
 description: "The surface heat-flux family of the V4r4 estimate: TFLUX and the shortwave component that force the heat budget, with net flux and forcing components."
 tags: [ecco, v4r4, ocean-heat-budget]

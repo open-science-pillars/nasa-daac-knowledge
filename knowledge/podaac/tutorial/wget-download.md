@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Batch downloading ECCO granules with wget"
 description: "Tutorial-companion facts for the wget path: Earthdata account, netrc plus urs_cookies files, granule list, GNU wget batch."
 tags: [ecco, tutorial-companion, access]

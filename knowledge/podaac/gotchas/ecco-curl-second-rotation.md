@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "Curl on the native grid needs a SECOND rotation: the derivative vectors rotate too"
 description: "Rotating UVEL and VVEL to east and north is not enough for curl or any derivative-of-vector quantity; the derivative components are themselves grid-relative vectors and need the same CS and SN rotation, or the curl is silently wrong on the rotated faces."
 tags: [ecco, llc90, curl, rotation, vectors]

@@ -1,5 +1,6 @@
 ---
 type: validity-domain
+spheres: [hydrosphere]
 title: "Exclusion: budget claims on interpolated ECCO grids"
 description: "Budget and transport claims are excluded on every 0.5 degree interpolated ECCO collection: the native-grid closure property does not survive interpolation."
 tags: [validity-domain, ecco, budgets, exclusion]

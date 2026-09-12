@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "ECCO overturning at 26.5N confronted with the RAPID array"
 description: "How the model's Atlantic overturning at the array latitude is placed beside the observed one: calendar-month colocation of the array's ten-day-filtered twelve-hourly series against the model's monthly-mean streamfunction maximum under the array's own zero-net convention, the representativeness gap named in both directions, four metrics with what each is sensitive to, and the measured scores with sampling intervals over 2004-04 through 2017-12: bias -3.23 Sv, RMSD 3.84 Sv, correlation +0.77, anomaly correlation +0.79."
 tags: [ecco, rapid, amoc, overturning, confrontation, observations, "26n", recipe]

@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "ECCO MXLDEPTH uses the model's own MLD criterion, not yours"
 description: "ECCO ships a diagnosed MXLDEPTH computed with the model's internal criterion; splicing it into a series built under a different density or temperature criterion measures the criteria, not the ocean."
 tags: [ecco, mixed-layer, mxldepth, criterion, mld]

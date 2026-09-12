@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Regional volume budget over a control volume from ECCO v4r4 (attested)"
 description: "The volume variant of the regional budget contract, whose sabotage set makes the documented freshwater double-count a mandatory catch: every receipt proves that ADDING a separate surface forcing term breaks the closure."
 tags: [ecco, volume-budget, regional, control-volume, attested, native-grid]

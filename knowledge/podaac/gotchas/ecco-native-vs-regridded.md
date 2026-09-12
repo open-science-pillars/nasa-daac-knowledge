@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "ECCO budgets and transports close only on the native llc90 grid"
 description: "The interpolated 0.5 degree ECCO product does not conserve; budgets computed on it fail closure by construction, and the flux ingredients do not exist there."
 tags: [ecco, budgets, regridding, llc90]

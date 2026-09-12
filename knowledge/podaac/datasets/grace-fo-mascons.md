@@ -1,5 +1,6 @@
 ---
 type: dataset
+spheres: [hydrosphere, geosphere]
 title: GRACE/GRACE-FO JPL mascon solutions
 description: "Monthly mass anomaly (equivalent water thickness) on 3-degree mascons, RL06.3 version 4; formal per-mascon uncertainty grids ship with the data."
 tags: [grace, grace-fo, mascons, mass, podaac]

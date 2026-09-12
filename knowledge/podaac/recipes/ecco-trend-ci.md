@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "A trend with an honest interval from any ECCO monthly series"
 description: "How to turn a monthly series out of a sanctioned receipt into a trend with a 95 percent interval that respects serial correlation: fit the trend jointly with the climatology over complete years, estimate r1, shrink the sample to n_eff (never above n), and let the t distribution on the effective degrees of freedom set the width."
 tags: [ecco, trend, uncertainty, confidence-interval, autocorrelation, recipe]

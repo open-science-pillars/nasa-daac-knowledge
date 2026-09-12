@@ -1,0 +1,14 @@
+# Canonical classification of this repository (ADR A, docs/decisions in the
+# marketplace repository). GitHub topics, the sphere view and every runtime
+# manifest are rendered from this file, never the other way round.
+schema_version: 1
+repository:
+  name: nasa-daac-knowledge
+  kind: provider
+  status: available
+  audience: Provider knowledge bundles (PO.DAAC, ESDIS), signed by their stewards; installed as a dependency
+    of the domain capabilities
+classification:
+  spheres: []
+  primary_sphere: null
+  discipline: null

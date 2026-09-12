@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "Steric height and its trend from ECCO v4r4 density"
 description: "Column-integrated steric height from RHOAnoma on the native grid: the hFac weighting, the region registry, and the Boussinesq limit that makes a global mean a diagnostic, not a sea level."
 tags: [ecco, steric-height, sea-level, recipe, native-grid]

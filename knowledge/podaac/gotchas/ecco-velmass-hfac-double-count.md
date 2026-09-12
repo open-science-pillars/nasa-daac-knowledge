@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "The MASS-suffixed velocities are already mass-weighted: multiplying by hFac double-counts"
 description: "UVELMASS and VVELMASS already include the hFac open-fraction weighting; a section transport that multiplies them by hFac again is silently biased low, and the official helper uses UVELMASS times drF times dyG with no hFac."
 tags: [ecco, transport, hfac, velmass, native-grid]

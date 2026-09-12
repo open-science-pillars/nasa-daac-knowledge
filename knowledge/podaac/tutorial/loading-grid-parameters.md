@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Loading the native model grid parameters"
 description: "Tutorial-companion facts: the grid is one NetCDF file under ECCO_L4_GEOMETRY_LLC0090GRID_V4R4, opened with plain open_dataset."
 tags: [ecco, tutorial-companion, grid, access]

@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "ECCO heat budgets need the geothermal flux, which is not a PO.DAAC collection"
 description: "Deep and full-depth ECCO heat budgets fail closure unless the static geothermal flux ancillary field is added at the bottom wet cell."
 tags: [ecco, heat-budget, geothermal, ancillary]

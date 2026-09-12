@@ -1,5 +1,6 @@
 ---
 type: Data Collection
+spheres: [hydrosphere]
 title: Ocean velocity
 description: "The velocity family of the V4r4 estimate: UVEL, VVEL, and the vertical velocity WVEL on native and interpolated grids."
 tags: [ecco, v4r4, ocean-circulation]

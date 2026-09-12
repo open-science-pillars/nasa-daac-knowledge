@@ -1,5 +1,6 @@
 ---
 type: dataset
+spheres: [hydrosphere]
 title: "OPERA DSWx-HLS: surface water extent from optical imagery, with cloud as the dominant class"
 description: "Dynamic Surface Water Extent from Harmonized Landsat Sentinel-2, 30 m, ten GeoTIFF layers per granule on MGRS tiles. The water layer carries three water classes (not water, open water, partial surface water) plus snow, cloud, ocean and fill, and over a mountain scene in spring the cloud class routinely dominates: a March 2023 tile over the southern Sierra is 57 per cent cloud and 41 per cent fill. Granules are reprocessed, so an acquisition from 2023 can carry a 2026 production date."
 tags: [opera, dswx, hls, surface-water, flood, optical, podaac]

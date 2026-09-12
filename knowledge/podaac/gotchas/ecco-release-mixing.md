@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "ECCO V4R4 vs V4R4B: mixing releases conflates corrections with signal"
 description: "SSH and OBP ship corrected V4R4B collections alongside V4R4; a time series or comparison spanning both silently mixes a baseline correction into the signal."
 tags: [ecco, v4r4, v4r4b, release, ssh, obp]

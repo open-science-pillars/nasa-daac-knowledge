@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "ECCO in the NASA Earthdata Cloud on AWS"
 description: "Tutorial-companion facts: the 2021-2022 PO.DAAC migration to AWS, in-cloud advantages, and the S3 open methods the chapter demonstrates."
 tags: [ecco, tutorial-companion, access, cloud]

@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "Geostrophic velocity from PHIHYD alone omits the surface pressure: add g times ETAN"
 description: "PHIHYD is the hydrostatic pressure anomaly BELOW the free-surface contribution; geostrophic velocity from its gradient alone correlates near zero with the model's currents, and the fix is adding g times ETAN before taking horizontal gradients."
 tags: [ecco, geostrophy, pressure, etan, ssh, native-grid]
