@@ -97,7 +97,7 @@ bundle log, so paying a signature debt is one command and one commit),
 the wording check (`check_prose.py`: specification rules cited by name
 rather than section number, no program bookkeeping in what a reader
 meets, no em or en dashes; in `run_checks.sh` and in each plugin's CI),
-the re-attestation driver (`reattest.py`: after a deliberate edit to a
+the badge writer (`ecco_budget_badge.py`: runs the heat budget attester on a receipt and writes the verdict as a shields.io badge; an adopter's workflow is `tools/templates/ecco-budget-badge-workflow.yml`, pinned by release tag; the ecco-budget-badge repository that carried copies of these files was retired on 2026-09-12), the re-attestation driver (`reattest.py`: after a deliberate edit to a
 sanctioned computation, one command runs the file on the fixture cache
 with its reference arguments, attests the fresh receipt, shows the
 previous version's receipt failing against the new file and a tamper

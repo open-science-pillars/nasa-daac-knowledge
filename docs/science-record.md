@@ -246,9 +246,9 @@ the steward reads the evidence, edits the note, and commits the entry
 with the code change. When the working tree matches the reference
 version the old-file steps are skipped and the draft reads as a
 re-verification, which is also what a fresh clone should produce for
-every registered run. A computation the ecco-budget-badge repository
-mirrors (the heat budget and its attester) is mirrored again at a tag
-once the entry lands.
+every registered run. The heat budget and its attester are the files
+the badge writer in tools/ runs; an adopter pins this repository by
+release tag, so a new entry reaches adopters at the next tag.
 
 ## Operating the trees
 
