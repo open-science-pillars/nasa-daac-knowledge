@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "nasa-daac-knowledge",
   "version": "2026.9.3",
   "description": "Provider knowledge bundles from NASA DAACs: PO.DAAC (ECCO, SWOT, GRACE-FO, MUR, NASA-SSH, RAPID) and the ESDIS metadata requirements. Facts about data, signed by their stewards; no skills.",
@@ -6,6 +7,7 @@
     "name": "Open Science Pillars Community"
   },
   "homepage": "https://github.com/open-science-pillars/nasa-daac-knowledge",
+  "repository": "https://github.com/open-science-pillars/nasa-daac-knowledge",
   "license": "Apache-2.0",
   "keywords": [
     "knowledge",
@@ -18,5 +20,19 @@
     "mur",
     "nasa-ssh",
     "metadata"
-  ]
+  ],
+  "extensions": {
+    "io.github.open-science-pillars": {
+      "kind": "provider",
+      "status": "available",
+      "spheres": [],
+      "primary_sphere": null,
+      "discipline": null,
+      "package_type": "knowledge",
+      "dependencies": {
+        "capabilities": [],
+        "knowledge": []
+      }
+    }
+  }
 }
