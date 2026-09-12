@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "Deseasonalize jointly with the trend, or the climatology keeps part of it"
 description: "Removing a monthly climatology first and fitting a trend second hands the climatology 143/(144Y^2 - 1) of the trend over Y complete years, a quarter of it at two years; a raw fit that skips the climatology carries a seasonal projection instead. The fix is one least-squares fit of trend and climatology together, which the bundle's sanctioned trend method now does; the record steric series reads +2.9932 raw and +2.7958 sequential against the joint value the steric height computation's record receipt owns."
 tags: [ecco, trend, climatology, deseasonalize, least-squares, steric-height]

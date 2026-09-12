@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Regional steric height from ECCO v4r4 (attested)"
 description: "Sanctioned column-integral steric height over registered regions; the trend travels with the interval the one sanctioned trend method states for it, the reference runs' trends must match the attested sea-level partition's receipts over 2010 and over the full record, and a global run cannot pass attestation without the Boussinesq caveat in the receipt."
 tags: [ecco, steric-height, sea-level, attested, native-grid]

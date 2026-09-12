@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "ecco_access guesses a dated filename for the static collections; fetch them through CMR"
 description: "Given a V4r4 collection with no time dimension (geometry, mixing coefficients) and no date range, ecco_access 0.3.1 synthesized a dated granule filename that the archive answers with a 404 and estimated a 75.8 GB download for a single-granule collection; fetch static collections with earthaccess, whose granule names come from CMR."
 tags: [ecco, v4r4, access, ecco_access, earthaccess, geometry, static]

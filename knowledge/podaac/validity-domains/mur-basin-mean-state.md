@@ -1,5 +1,6 @@
 ---
 type: validity-domain
+spheres: [hydrosphere]
 title: "MUR L4 SST supports basin-scale mean-state claims outside the high Arctic"
 description: "Supporting domain: mean-state claims on MUR v4.1 at basin scale, 2002 onward, below 66N; the honest basis is near-zero residuals against ingested in situ data and ensemble-level agreement, not independent validation."
 tags: [validity-domain, mur, sst, mean-state, supporting]

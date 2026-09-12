@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "Reconstruct the current from density alone: thermal wind from a level of no motion"
 description: "The route from a density field to a current: thermal-wind shear in the tile frame, integrated from a 3000 m level of no motion on the model's own levels, then scored two ways against the model's real current so the cost of the assumption is part of the answer."
 tags: [ecco, thermal-wind, geostrophy, level-of-no-motion, recipe, native-grid]

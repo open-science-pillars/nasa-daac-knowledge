@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Reynolds flux decomposition from ECCO v4r4 (attested)"
 description: "The meridional heat flux split about a declared time mean, with the grouping as a declared parameter rather than a settled question; two mathematical oracles, all four terms in every receipt regardless of grouping, and a view that cannot contradict the data."
 tags: [ecco, flux-decomposition, reynolds, eddy, attested, native-grid]

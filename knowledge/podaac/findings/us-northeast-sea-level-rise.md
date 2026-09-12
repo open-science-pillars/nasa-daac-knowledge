@@ -1,5 +1,6 @@
 ---
 type: finding
+spheres: [hydrosphere]
 title: "Sea level rise off the US northeast coast in ECCO v4r4, partitioned and confronted"
 description: "In the ECCO v4r4 ocean state estimate, sea level averaged over the box from 35 to 45 degrees north and 75 to 65 degrees west rose at 5.25 mm/yr over 1992 through 2017 (95 percent interval 4.06 to 6.43), of which 2.45 mm/yr is water added to the column and 2.80 mm/yr is expansion of the water in it; over 1993 through 2017 the estimate's rise exceeds the NASA-SSH altimetry record's in the same box by 1.99 mm/yr (1.39 to 2.59), a disagreement the estimate's own fit to altimetry did not close."
 tags: [finding, ecco, sea-level, steric, manometric, altimetry, nasa-ssh, us-northeast-coast, trend, confrontation]

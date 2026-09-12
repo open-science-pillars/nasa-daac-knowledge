@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "Closed salt budget on the ECCO v4r4 native grid"
 description: "The four-term salt budget (z* tendency, advective and diffusive convergence, surface salt flux plus the brine plume) closes pointwise to float32 round-off on the native llc90 grid."
 tags: [ecco, salt-budget, native-grid, closure, llc90]

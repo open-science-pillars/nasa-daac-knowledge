@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Salt budget closure on the ECCO v4r4 native grid (attested, draft)"
 description: "Draft contract for the attested salt budget; the sanctioned computation is not yet extracted from the salt_budget golden."
 tags: [ecco, salt-budget, closure, attested, native-grid]

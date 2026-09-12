@@ -1,5 +1,6 @@
 ---
 type: validity-domain
+spheres: [hydrosphere]
 title: "ECCO v4r4 native monthly fields support large-scale statistics over 1992-2017"
 description: "Supporting domain: mean state, trend, and variability claims on the native llc90 monthly fields, global ocean, within the estimation period; the verified basis is dynamical consistency and fit to the modern observation system at the large scales V4 aims to resolve."
 tags: [validity-domain, ecco, statistics, supporting]

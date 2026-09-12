@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "ECCO meridional heat transport: no basin mask means the full latitude circle"
 description: "calc_meridional_heat_trsp without a basin_name integrates the whole latitude circle (Atlantic + Pacific + Indian), not the Atlantic section RAPID observes."
 tags: [ecco, mht, heat-transport, basin, rapid, scope]

@@ -14,7 +14,8 @@ concept OWES a signature until a new human event follows. This tool
 measures the debt by the signing commit, not by dates: for every stable
 concept with a human event it finds the commit that introduced the
 latest one, then compares that commit's text with the text under test,
-ignoring only the `verified` events themselves.
+ignoring the `verified` events themselves and the classification
+keys (`spheres`, `gcmd`), which place a concept without changing its claim.
 
   signature_check.py BUNDLE_DIR             the working tree owes what?
   signature_check.py BUNDLE_DIR --at COMMIT the bundle as of COMMIT (the
@@ -85,13 +86,23 @@ def human_events(fm):
     return out
 
 
+# Frontmatter keys outside the signed text: the signature events
+# themselves, and the classification keys (which spheres a claim spans,
+# its GCMD keywords) that place a concept in the organization without
+# changing what it claims. Adding or correcting one is not an edit the
+# steward re-signs.
+UNSIGNED_KEYS = ("verified", "spheres", "gcmd")
+
+
 def signed_text(text):
-    """The text a signature binds: frontmatter minus `verified`, then the body."""
+    """The text a signature binds: frontmatter minus the unsigned keys,
+    then the body."""
     fm, body = parse(text)
     if fm is None:
         return text
     fm = dict(fm)
-    fm.pop("verified", None)
+    for key in UNSIGNED_KEYS:
+        fm.pop(key, None)
     return yaml.safe_dump(fm, sort_keys=True, default_flow_style=False, allow_unicode=True) \
         + "\n---\n" + body.rstrip() + "\n"
 

@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "ECCO is Boussinesq: global-mean steric sea level needs the mass-conservation correction"
 description: "Boussinesq models conserve volume, not mass; ECCO's global-mean steric sea level needs the standard global (Greatbatch) correction before global budgets, though regional patterns are unaffected."
 tags: [ecco, boussinesq, steric, global-mean, sea-level, greatbatch]

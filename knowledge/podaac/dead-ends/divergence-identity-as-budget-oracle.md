@@ -1,5 +1,6 @@
 ---
 type: dead-end
+spheres: [hydrosphere]
 title: "The discrete divergence identity was tried as the oracle for regional budget closure; it holds for any array"
 description: "Summing a box's pointwise convergence and comparing it to the flux through the box rim was proposed as the evidence that a regional heat budget validates itself; the identity is algebra, returned exactly zero on random data, and was retracted in the design note that records it. Regional closure is evidenced by disjoint data paths, two bars, and shipped mutation controls instead."
 tags: [ecco, v4r4, budgets, regional, oracle, dead-end]

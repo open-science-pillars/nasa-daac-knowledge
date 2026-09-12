@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Heat budget closure: the tutorial's own checkpoints"
 description: "The checkpoint numbers the tutorial's closure chapter itself produces: the summed-residual bound, the histogram scale, and the geothermal-omission signature; pass bars stay owned by the attested computation."
 tags: [ecco, tutorial-companion, heat-budget, closure]

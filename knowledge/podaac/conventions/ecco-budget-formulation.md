@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "ECCO v4r4 budget formulation on the native grid"
 description: "The constants, term definitions, sign conventions and discretization shared by the heat, salt and volume budgets on the llc90 grid, as the ECCO v4 Python tutorial notebooks state them and the sanctioned heat budget code implements them; tolerances and reference residuals are owned by the computations and recipes, not here."
 tags: [ecco, budgets, formulation, native-grid, llc90, heat-budget, salt-budget, volume-budget, convention]

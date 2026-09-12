@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Interpolating llc90 fields to regular lat-lon grids"
 description: "Tutorial-companion facts: tiles 7-12 are rotated 90 degrees counter-clockwise relative to tiles 0-5; resample_to_latlon handles scalars; vectors have their own section and their own trap."
 tags: [ecco, tutorial-companion, regridding, llc90]

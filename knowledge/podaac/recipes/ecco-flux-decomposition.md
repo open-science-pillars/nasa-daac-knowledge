@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "Splitting a flux into mean and eddy parts without an argument"
 description: "Reynolds decomposition where the grouping is disclosed rather than debated: declare the mean window, verify the cross terms vanish, report the view you need, and ship all four terms so any reader can re-group."
 tags: [ecco, flux-decomposition, reynolds, eddy, recipe, native-grid]

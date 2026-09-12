@@ -1,0 +1,13 @@
+# Package identity, content and declared dependencies (ADR B). The Claude
+# manifest .claude-plugin/plugin.json is a projection of this file and the
+# gate fails when the two disagree.
+schema_version: 1
+package:
+  name: nasa-daac-knowledge
+  version: 2026.9.3
+  type: knowledge
+content:
+  knowledge: ./knowledge
+dependencies:
+  capabilities: []
+  knowledge: []

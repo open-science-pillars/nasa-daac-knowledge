@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "ECCO SSH inverse-barometer variants: pick the convention and never mix them"
 description: "ECCO ships several sea-surface-height variables differing by inverse-barometer and reference conventions; mixing them, or mismatching altimetry's IB convention in a comparison, silently shifts trends and attributions."
 tags: [ecco, ssh, sea-level, inverse-barometer, altimetry, conventions]

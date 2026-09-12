@@ -20,6 +20,14 @@ ERRORS (OKF v0.2 §11 conformance)
   E7  `sources` entry missing `resource`
   E8  actor value violates the convention (OKF v0.2 §7)
   E9  non-root index.md carries frontmatter (OKF v0.2 §8, 12)
+  E10 (OSP) a scientific concept has no `spheres` list: every concept
+      except the `requirement` and `connector` types names the Earth
+      science spheres its claim spans (atmosphere, biosphere,
+      cryosphere, geosphere, hydrosphere); the empty list is allowed
+      only in a bundle whose root index declares
+      `sphere_scope: cross-cutting` (the core conventions)
+  E11 (OSP) a sphere value outside the five, or `gcmd` not a list of
+      strings
 
 WARNINGS (SHOULDs and OSP rules)
   W1  body footnote ref has no matching sources id (OKF v0.2 §5.1 join)
@@ -87,6 +95,9 @@ except ImportError:
 ACTOR_RE = re.compile(r"^(human:|process:|team:)\S+$|^[\w.-]+/[\w.@-]+$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 STATUSES = {"draft", "stable", "deprecated"}
+SPHERES = {"atmosphere", "biosphere", "cryosphere", "geosphere", "hydrosphere"}
+SPHERE_EXEMPT_TYPES = {"requirement", "connector"}
+CROSS_CUTTING_BUNDLE = False   # set from the root index's sphere_scope
 LEGACY_STATUSES = {"verified", "stale", "superseded", "disputed"}
 FOOT_REF = re.compile(r"\[\^([\w-]+)\](?!:)")
 FOOT_DEF = re.compile(r"^\[\^([\w-]+)\]:", re.M)
@@ -161,6 +172,22 @@ def check_concept(path: Path, out: list, tiers: dict):
     tiers[t] = tiers.get(t, 0) + 1
     if t != "human-reviewed":
         out.append(("W4", path, f"trust tier: {t}"))
+
+    ctype = str(fm.get("type") or "").strip()
+    if ctype and ctype not in SPHERE_EXEMPT_TYPES:
+        spheres = fm.get("spheres")
+        if not isinstance(spheres, list):
+            out.append(("E10", path, "missing `spheres` list: a scientific concept names the spheres its claim spans"))
+        else:
+            bad = [x for x in spheres if x not in SPHERES]
+            if bad:
+                out.append(("E11", path, f"spheres {bad} outside {sorted(SPHERES)}"))
+            if not spheres and not CROSS_CUTTING_BUNDLE:
+                out.append(("E10", path, "empty `spheres`: only a bundle whose root index declares "
+                                         "sphere_scope: cross-cutting may leave it empty"))
+    gcmd = fm.get("gcmd")
+    if gcmd is not None and (not isinstance(gcmd, list) or not all(isinstance(x, str) for x in gcmd)):
+        out.append(("E11", path, "`gcmd` must be a list of strings"))
 
     status = fm.get("status")
     if status is not None and status not in STATUSES:
@@ -695,6 +722,13 @@ def main() -> int:
     args = ap.parse_args()
     global PROVIDER_REPO
     PROVIDER_REPO = args.provider
+
+    global CROSS_CUTTING_BUNDLE
+    root_index = args.bundle / "index.md"
+    if root_index.is_file():
+        raw, _ = split_frontmatter(root_index.read_text(encoding="utf-8"))
+        root_fm = (yaml.safe_load(raw) or {}) if raw is not None else {}
+        CROSS_CUTTING_BUNDLE = isinstance(root_fm, dict) and root_fm.get("sphere_scope") == "cross-cutting"
 
     out: list = []
     tiers: dict = {}

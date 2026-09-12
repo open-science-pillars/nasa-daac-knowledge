@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Combining ECCO datasets centered on different grid points"
 description: "Tutorial-companion facts: c-, u-, and v-centered variables merge into one Dataset with xarray.merge, the grid parameters alongside."
 tags: [ecco, tutorial-companion, loading, grid]

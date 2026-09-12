@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "Global ocean heat content and its change from ECCO v4r4"
 description: "Volume-weighted OHC on the native grid: the weighting that matters, the baseline that makes absolutes meaningless, and measured anchors a correct run reproduces."
 tags: [ecco, ocean-heat-content, recipe, native-grid]

@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "Wind-stress curl and Ekman pumping on the native grid"
 description: "The rotation-proof route to curl: compute in the tile-local frame where curl's rotation-invariance makes the trap structurally impossible, then validate Ekman pumping against the model's own vertical velocity."
 tags: [ecco, wind-stress, curl, ekman, recipe, native-grid]

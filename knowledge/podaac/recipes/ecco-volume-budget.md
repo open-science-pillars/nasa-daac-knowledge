@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "Closed volume budget on the ECCO v4r4 native grid"
 description: "The z* volume budget closes pointwise to round-off on transport convergence ALONE; the surface freshwater flux is already carried in WVELMASS, so adding it as a forcing term double-counts."
 tags: [ecco, volume-budget, native-grid, closure, llc90, freshwater]

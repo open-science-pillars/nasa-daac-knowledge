@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "The MHT chapter: scope machinery and a constants inconsistency worth knowing"
 description: "Tutorial-companion facts: the chapter computes global and Atlantic MHT with basin masks at 26N, and its explicit unit conversion uses rho 1000 and cp 4000, unlike the closure chapter's 1029 and 3994."
 tags: [ecco, tutorial-companion, mht, transport]

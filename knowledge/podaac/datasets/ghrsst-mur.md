@@ -1,5 +1,6 @@
 ---
 type: dataset
+spheres: [hydrosphere]
 title: GHRSST MUR Level 4 SST
 description: "Gap-free daily 0.01-degree foundation SST analysis (v4.1, with a 0.25-degree companion); the analysis_error field is the product's own uncertainty estimate."
 tags: [ghrsst, mur, sst, level4, podaac]

@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "Transport across a section of the ECCO v4r4 native grid"
 description: "Sections as signed face masks from an indicator gradient: the topology that must be budget-verified before any flux crosses a seam, the per-collection weighting that flips between datasets, and the honesty rule for unanchored transports."
 tags: [ecco, transport, section, seam, recipe, native-grid]

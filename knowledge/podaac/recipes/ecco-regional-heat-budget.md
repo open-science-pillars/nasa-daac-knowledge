@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "Closing a heat budget over a region of ECCO v4r4"
 description: "The control-volume budget done honestly: three independent collections, two bars because one certifies missing physics, sabotage as shipped evidence, and full disclosure of the water actually integrated."
 tags: [ecco, heat-budget, regional, control-volume, recipe, native-grid]

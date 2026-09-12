@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Thermal-wind reconstruction from a level of no motion in ECCO v4r4 (attested)"
 description: "Sanctioned reconstruction of the current from density alone: thermal-wind shear integrated from a 3000 m level of no motion, scored against the model's actual current (absolute) and against the model's current minus its own current at the reference level (relative); both scores, every depth band and the model's speed at the reference level are REQUIRED receipt fields, so a receipt quoting only the flattering relative score fails attestation."
 tags: [ecco, thermal-wind, geostrophy, level-of-no-motion, attested, native-grid]

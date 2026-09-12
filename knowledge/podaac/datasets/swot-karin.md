@@ -1,5 +1,6 @@
 ---
 type: dataset
+spheres: [hydrosphere]
 title: SWOT KaRIn Level 2 Low Rate SSH
 description: "Wide-swath interferometric SSH, two 50 km swaths with a nadir gap, four product tiers, two version families; baseline recorded here with a verification date."
 tags: [swot, karin, ssh, altimetry, podaac]

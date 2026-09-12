@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Regional heat budget over a control volume from ECCO v4r4 (attested)"
 description: "Closed heat budget over a registered region or an explicit box, validated across three independent collections; two bars, mutation evidence in every receipt, and the resolved mask disclosed by digest because no oracle can check it is the water the user meant. The sanctioned executor also serves the salt and volume budgets under their own contracts."
 tags: [ecco, heat-budget, regional, control-volume, attested, native-grid]

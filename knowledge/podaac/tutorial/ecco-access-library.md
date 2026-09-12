@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "The ecco_access library: packaging, contract, and Earthdata setup"
 description: "Tutorial-companion facts about ECCO access tooling: the ecco_access packaging split at ecco_v4_py 1.8, the two top-level functions, how earthaccess finds an Earthdata Login, and V4r5 in-cloud reachability."
 tags: [ecco, tutorial-companion, access]

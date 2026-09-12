@@ -1,5 +1,6 @@
 ---
 type: Reference
+spheres: [hydrosphere]
 title: "Run instructions: attested ECCO heat budget"
 description: "Executor instructions for the attested heat budget: stage the fixture cache, run the sanctioned computation for a receipt, attest the receipt."
 generated: { by: claude-code/fable-5, at: 2026-08-30T19:20:00Z }

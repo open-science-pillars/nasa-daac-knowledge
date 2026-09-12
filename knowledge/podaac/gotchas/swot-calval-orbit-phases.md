@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "SWOT orbit phases: cal/val and science data are not one record"
 description: "Date ranges spanning July 2023 mix a 1-day repeat and a 21-day orbit with different cycle numbering; cal/val data exists only in the D version family."
 tags: [swot, orbit, calval, cycles]

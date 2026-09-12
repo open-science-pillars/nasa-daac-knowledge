@@ -1,5 +1,6 @@
 ---
 type: dataset
+spheres: [hydrosphere]
 title: "NASA-SSH simple gridded sea surface height anomaly (observational reference)"
 description: "The JPL gridded sea surface height anomaly from the reference altimetry missions only (TOPEX/Poseidon and the Jason series), half-degree grids every seven days from ten days of passes, on a fixed mean sea surface with the atmospheric correction applied; the bundle's second observational record, used to confront ECCO's regional sea level."
 tags: [altimetry, sea-surface-height, sea-level, nasa-ssh, observations, confrontation]

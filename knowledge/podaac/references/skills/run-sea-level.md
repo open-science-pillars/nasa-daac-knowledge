@@ -1,5 +1,6 @@
 ---
 type: Reference
+spheres: [hydrosphere]
 title: "Run instructions: attested regional sea level partition"
 description: "Executor instructions for the sea level partition: stage the monthly inputs, run the sanctioned computation for a receipt, attest the receipt."
 generated: { by: claude-code/fable-5, at: 2026-08-30T22:50:00Z }

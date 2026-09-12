@@ -1,5 +1,6 @@
 ---
 type: dataset
+spheres: [hydrosphere]
 title: RAPID-MOCHA transports at 26.5N (observational reference)
 description: "The moored-array AMOC and heat-transport observations at 26.5N; the canonical scriptable download is the dataset DOI, not the project pages."
 tags: [rapid, mocha, amoc, mht, observations, "26n"]

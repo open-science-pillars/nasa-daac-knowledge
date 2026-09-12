@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "The llc compact binary format and read_llc_to_tiles"
 description: "Tutorial-companion facts: MITgcm compact files pack the 13 tiles unintuitively; read_llc_to_tiles reorganizes them into the 13-tile layout."
 tags: [ecco, tutorial-companion, binary, llc90]

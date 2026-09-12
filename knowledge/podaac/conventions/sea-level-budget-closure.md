@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Sea level budget closure: a correction-consistency problem first"
 description: "The altimetry = ocean-mass + steric budget closes only under consistent GIA, reference-frame, atmospheric-pressure, smoothing, and period bookkeeping; the deep-steric term below the Argo sampling floor is nonzero and must be acknowledged."
 tags: [sea-level, budget, steric, manometric, gia, closure, altimetry, grace, argo]

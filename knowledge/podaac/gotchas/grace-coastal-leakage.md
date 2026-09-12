@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere, geosphere]
 title: "GRACE mascon coastal leakage: land signal bleeds into ocean mascons"
 description: "Mascons straddling coastlines mix land hydrology and ice loss into nearshore ocean mass estimates; the CRI filter mitigates, never eliminates."
 tags: [grace, leakage, coastal, mascons]

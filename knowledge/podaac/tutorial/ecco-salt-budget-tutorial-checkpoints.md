@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Salt, salinity, and freshwater budgets: the tutorial's own checkpoints"
 description: "The chapter's acceptance signals: the salt-budget residual summed over depth and time is essentially zero; salinity residuals are larger but small against the tendencies; extensive vs intensive discipline."
 tags: [ecco, tutorial-companion, salt-budget]

@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Coordinates and dimensions of ECCO v4 NetCDF files"
 description: "Tutorial-companion facts: coordinate labels place every field on the Arakawa C-grid; the dimension coordinates are i, j, k, tile, and time."
 tags: [ecco, tutorial-companion, grid, netcdf]

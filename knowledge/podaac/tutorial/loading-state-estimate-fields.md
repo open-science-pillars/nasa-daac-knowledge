@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Loading state estimate fields on the native grid"
 description: "Tutorial-companion facts: cloud-distributed NetCDF since March 2023, one granule per time, open_mfdataset for multiples, Dask for the very large."
 tags: [ecco, tutorial-companion, access, loading]

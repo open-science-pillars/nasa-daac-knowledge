@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Wind-stress curl and Ekman pumping from ECCO v4r4 (attested)"
 description: "Sanctioned curl computed entirely in the local tile frame (curl is rotation-invariant, so the rotation trap cannot occur), with Ekman pumping validated against the model's own vertical velocity; the method caveat is a required receipt field."
 tags: [ecco, wind-stress, curl, ekman, attested, native-grid]

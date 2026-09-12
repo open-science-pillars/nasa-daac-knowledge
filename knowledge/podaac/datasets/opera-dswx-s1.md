@@ -1,5 +1,6 @@
 ---
 type: dataset
+spheres: [hydrosphere]
 title: "OPERA DSWx-S1: surface water extent from radar, which sees through cloud and did not exist before December 2023"
 description: "Dynamic Surface Water Extent from Sentinel-1, 30 m on MGRS tiles. The water layer carries not water, open water and inundated vegetation, with HAND and layover or shadow masks; there is no cloud class because radar does not need one. The archive begins 2023-12-01, so the product an analyst reaches for during a cloudy flood is absent from every event before that date."
 tags: [opera, dswx, sentinel-1, radar, surface-water, flood, podaac]

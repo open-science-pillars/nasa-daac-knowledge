@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Volume and sea level budget: the tutorial's own checkpoints"
 description: "The ETAN budget chapter's acceptance signals: tendency agreement within 1e-6 m, residuals below 1e-11 m/s, and the ETAN caveats; a different identity from the interior volume budget, stated precisely."
 tags: [ecco, tutorial-companion, volume-budget, sea-level]

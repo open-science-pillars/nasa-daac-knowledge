@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "Geostrophic velocity from ECCO pressure needs the density factor, not bare PHIHYD gradients"
 description: "The hydrostatic pressure anomaly PHIHYD is pressure over reference density; geostrophic velocity is the gradient of rhoConst times PHIHYD divided by in-situ density times f, and dropping the density factor gives plausible but wrong currents."
 tags: [ecco, geostrophy, pressure, density, native-grid]

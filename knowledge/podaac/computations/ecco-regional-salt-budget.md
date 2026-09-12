@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Regional salt budget over a control volume from ECCO v4r4 (attested)"
 description: "The salt variant of the regional budget contract: SLT fluxes at the rim, the three-dimensional salt plume tendency with the surface salt flux at the top level only, and applicability-aware sabotages that record honestly when a term cannot matter in the chosen volume."
 tags: [ecco, salt-budget, regional, control-volume, attested, native-grid]

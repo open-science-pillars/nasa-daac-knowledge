@@ -1,5 +1,6 @@
 ---
 type: recipe
+spheres: [hydrosphere]
 title: "Geostrophic velocity and thermal wind on the native grid"
 description: "The full pressure potential (g ETAN plus PHIHYD), the density factor, and where a balance test has signal: the open-ocean interior validates at r 0.92, the shelf and the poles legitimately do not."
 tags: [ecco, geostrophy, thermal-wind, recipe, native-grid]

@@ -1,5 +1,6 @@
 ---
 type: dataset-gotcha
+spheres: [hydrosphere]
 title: "ECCO density and stratification come from its own equation of state; a foreign EOS makes phantom differences"
 description: "ECCO ships in-situ density anomaly (RHOAnoma) and the vertical density gradient (DRHODR) from the model's own equation of state; recomputing density or stratification from THETA and SALT with a different EOS produces artifacts that corrupt density-space water-mass boundaries and any stratification or budget diagnostic."
 tags: [ecco, density, eos, stratification, water-masses]

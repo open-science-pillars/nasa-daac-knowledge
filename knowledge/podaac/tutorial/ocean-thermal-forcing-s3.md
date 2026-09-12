@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Thermal forcing direct from PO.DAAC S3: the in-region rule"
 description: "Tutorial-companion facts: reading ECCO straight from the PO.DAAC S3 bucket requires running in AWS us-west-2, avoids local copies and egress charges, and authenticates via Earthdata netrc."
 tags: [ecco, tutorial-companion, cloud, access]

@@ -1,5 +1,6 @@
 ---
 type: convention
+spheres: [hydrosphere]
 title: "Gradients and curl on the native llc grid"
 description: "Tutorial-companion facts: tile x/y axes do not align with parallels and meridians; SN and CS take their expected values on unrotated tiles; edge connectivity drives native differencing."
 tags: [ecco, tutorial-companion, grid, llc90]

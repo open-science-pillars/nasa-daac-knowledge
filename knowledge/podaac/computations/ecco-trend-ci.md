@@ -1,5 +1,6 @@
 ---
 type: Attested Computation
+spheres: [hydrosphere]
 title: "Linear trend with an honest interval from a monthly series (attested)"
 description: "Sanctioned trend-with-interval for any monthly series a sanctioned receipt carries: OLS slope fitted jointly with the monthly climatology, lag-1 autocorrelation of the residuals, effective sample size capped at the sample, and a two-sided 95 percent interval on the effective degrees of freedom; the receipt carries the series and every intermediate so the attester recomputes the whole chain, other sanctioned computations embed the same block beside their own trends, and a Monte Carlo calibration with a negative control ships beside it."
 tags: [ecco, trend, uncertainty, confidence-interval, autocorrelation, attested]
