@@ -151,7 +151,7 @@ low), the gotcha severity rule applied to negative knowledge: high
 requires the eval case that measures the behavior. The gate runs
 `check_negative.py knowledge/podaac`.
 
-- [The discrete divergence identity was tried as the oracle for regional budget closure; it holds for any array](dead-ends/divergence-identity-as-budget-oracle.md), status: stable, load_bearing high (eval case regional-closure-oracle in ecco-agent-evals), subject computations/ecco-regional-heat-budget.md; observed 2026-08-31 in the regional budget design note, which retracted it; reopens never as an oracle (a rim read from raw face fluxes is a different method)
+- [The discrete divergence identity was tried as the oracle for regional budget closure; it holds for any array](dead-ends/divergence-identity-as-budget-oracle.md), status: stable, load_bearing high (eval case regional-closure-oracle in agent-evals, under ecco/), subject computations/ecco-regional-heat-budget.md; observed 2026-08-31 in the regional budget design note, which retracted it; reopens never as an oracle (a rim read from raw face fluxes is a different method)
 
 Candidates come from the community miner (dead-end phrasings in
 ECCO-GROUP threads) and from the design notes; each enters as a draft

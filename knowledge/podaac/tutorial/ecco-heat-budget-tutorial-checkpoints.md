@@ -44,8 +44,8 @@ closure and do not conflict; no layer-decision issue arises from this
 chapter.
 
 **Eval fixture.** The checkpoints above are extracted as a grader
-fixture in the ecco-agent-evals repository
-(`fixtures/tutorial/heat-budget-checkpoints.yaml`), chapter cited, for
+fixture in the agent-evals repository
+(`ecco/fixtures/tutorial/heat-budget-checkpoints.yaml`), chapter cited, for
 tutorial-fidelity cases.
 
 [^tut-heat-closure]: ECCO v4 Python Tutorial: Global Heat Budget Closure
