@@ -1,11 +1,21 @@
-# Bundle stewardship, per the specification's stewardship and canonical-home
-# rules (docs/SPECIFICATION.md in open-science-pillars/marketplace)
-* @PaulMRamirez
-/knowledge/podaac/ @PaulMRamirez
-# The PO.DAAC steward entry replaces the interim line at handoff (a named
-# provider accepts this entry and co-reviews three PRs; see the steward playbook)
+# Ownership by team (ADR A, decision 10; the registry is osp/teams.yaml in
+# build-kit), per the specification's stewardship and canonical-home rules
+# (docs/SPECIFICATION.md in open-science-pillars/marketplace). The tools,
+# gates and releases are the foundation team's; each bundle is its
+# stewards'. One person occupies every team during the interim solo period;
+# a provider steward accepts a bundle by joining its team (the steward
+# playbook), never by an edit here.
+* @open-science-pillars/foundation-maintainers
 
-# esdis cross-archive requirements bundle: interim entry; the Science
-# Enabling Team steward entries replace this line at the co-build signing,
-# their names landing with their first verified events, never before.
-/knowledge/esdis/ @PaulMRamirez
+# The PO.DAAC bundle.
+/knowledge/podaac/  @open-science-pillars/podaac-stewards
+
+# The ESDIS cross-archive requirements bundle; the ASSET steward entries
+# join the team at the co-build signing, their names landing with their
+# first verified events, never before.
+/knowledge/esdis/   @open-science-pillars/esdis-stewards
+
+# Runtime projections (ADR B): the Claude package files are the Cowork
+# projection of .osp/package.yaml and belong to the runtime maintainers.
+/.claude-plugin/  @open-science-pillars/runtime-cowork-maintainers
+/.mcp.json        @open-science-pillars/runtime-cowork-maintainers
