@@ -11,6 +11,20 @@ tools and readers find it the same way everywhere. Gate before any PR:
 on main, and on each release tag (`.github/workflows/gate.yml`), where a
 signature owed is a failure.
 
+## Provider authority
+
+A provider repository (`.osp/repository.yaml`, kind provider): its
+bundles are keyed by the organization that signs their facts, and a
+steward's approval is the authority, runtime-independent. Every
+scientific concept names the Earth science spheres its claim spans in
+`spheres` (hydrosphere throughout here, geosphere added on GRACE); the
+tag states the scope of the claim and moves no authority, and it sits
+outside the text a signature binds. One signed concept feeds every
+runtime's projection; nothing is re-approved per runtime, and a
+packaging-only change needs no scientific re-approval. A provider steward
+accepts a bundle by joining its steward team (`podaac-stewards`,
+`esdis-stewards`), which CODEOWNERS already names.
+
 ## Install
 
 The bundles ship as one plugin, `nasa-daac-knowledge`, in the Open
