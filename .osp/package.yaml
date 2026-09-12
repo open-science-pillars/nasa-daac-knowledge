@@ -1,6 +1,7 @@
-# Package identity, content and declared dependencies (ADR B). The Claude
-# manifest .claude-plugin/plugin.json is a projection of this file and the
-# gate fails when the two disagree.
+# Package identity, content, dependencies, presentation metadata and REACH
+# (ADR B). The Claude package files and the Agent Plugins package are
+# rendered from this file by build-kit's osp.py render; the gate fails on
+# a hand edit to any of them.
 schema_version: 1
 package:
   name: nasa-daac-knowledge
@@ -11,3 +12,17 @@ content:
 dependencies:
   capabilities: []
   knowledge: []
+metadata:
+  description: 'Provider knowledge bundles from NASA DAACs: PO.DAAC (ECCO, SWOT, GRACE-FO, MUR, NASA-SSH,
+    RAPID) and the ESDIS metadata requirements. Facts about data, signed by their stewards; no skills.'
+  keywords:
+  - knowledge
+  - okf
+  - podaac
+  - esdis
+  - ecco
+  - swot
+  - grace
+  - mur
+  - nasa-ssh
+  - metadata
