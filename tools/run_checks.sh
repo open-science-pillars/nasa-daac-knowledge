@@ -31,6 +31,7 @@ run uv run tools/check_prose.py --selftest
 run uv run tools/sign.py --selftest
 run uv run tools/reattest.py --selftest
 run uv run tools/check_negative.py --selftest
+run uv run tools/receipt_identity.py --selftest
 run uv run tools/check_prose.py .
 # Sibling plugin clones, when present, have their local concepts checked
 # for owed signatures, their scripts for undeclared dependencies and their
