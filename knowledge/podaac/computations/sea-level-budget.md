@@ -15,6 +15,7 @@ executor:
 attester:
   resource: references/attesters/sea_level_budget_check.py
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
 status: stable
 stale_after: 2027-03-13
 sources:

@@ -5,6 +5,7 @@ title: "Degree-1 and C20/C30 replacements: large-scale mass trends from GRACE re
 description: "GRACE senses no degree-1 (geocenter) term and its C20 oblateness term is unreliable, so the mascon product substitutes a modeled geocenter series and satellite-laser-ranging values for C20 (and C30 in the later record). The substitutions move ice-sheet and ocean-mass trends by amounts comparable to the formal errors. Comparing a mascon trend with a spherical-harmonic result that used different substitutions, or applying the substitutions again, attributes the difference to the ice or the ocean."
 tags: [grace, grace-fo, degree-1, geocenter, c20, c30, oblateness, tn-13, tn-14, trends, mascons]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
 severity: medium
 # medium, as with the GIA gotcha: the substitutions are documented
 # product behavior and bite through comparison inconsistency or

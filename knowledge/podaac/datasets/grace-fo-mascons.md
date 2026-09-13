@@ -15,7 +15,9 @@ sources:
     resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_Months_RL06.csv
     title: "GRACE and GRACE-FO RL06 month list (PO.DAAC): the solutions that exist and the months with no coverage"
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-07-04T00:00:00Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-07-04T00:00:00Z }
+  - { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
 stale_after: 2027-01-04
 ---
 

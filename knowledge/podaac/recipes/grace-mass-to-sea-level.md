@@ -5,6 +5,7 @@ title: "From a regional GRACE mass change to a sea level equivalent, with its un
 description: "How a mass change over an ice sheet, a glacier region or a basin, summed at mascon scale from the JPL mascon product, becomes a contribution to global mean sea level in millimeters, and which uncertainty terms travel with it: the formal error, coastal leakage, the GIA model, the low-degree replacements and the inter-mission gap, each stated separately."
 tags: [grace, grace-fo, mascons, ice-sheet, sea-level, sea-level-equivalent, mass-balance, budget]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
 inputs:
   - dataset: ../datasets/grace-fo-mascons.md
   - collections: "TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4 (the CRI-filtered grid, with its mascon placement and formal-uncertainty files); the unfiltered grid TELLUS_GRAC-GRFO_MASCON_GRID_RL06.3_V4 for the leakage comparison"
