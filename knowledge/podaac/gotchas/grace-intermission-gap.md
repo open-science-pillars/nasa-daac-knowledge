@@ -54,8 +54,10 @@ irregular and nothing in the data marks where a mission ended.[^nasa-tellus-grac
 
 **Wrong-result mode.** Three fits go wrong on a series treated as
 continuous. A linear trend across the gap absorbs any offset between
-the two missions (an inter-mission bias, which the projects estimate
-but do not eliminate) as if it were mass change. An acceleration
+the two missions as if it were mass change (an inter-mission bias,
+which the projects bound against independent mass estimates rather
+than measure: the GRACE-FO team reports no evidence of one at the
+level of those estimates, a bound, not a proof).[^landerer-2020] An acceleration
 (a quadratic term) across an eleven-month hole is fit to two segments
 that do not overlap; the hole falls near one end of most windows, so
 the annual cycle it removes aliases into the quadratic. And a window
@@ -69,9 +71,12 @@ any trend or acceleration statement. Fit with a model that carries the
 annual and semi-annual cycles as terms and with the gap acknowledged
 as a hole, never interpolated. For a window that spans the gap, say
 how the inter-mission continuity was handled and cite the independent
-evidence for it: for the ice sheets, the continuity analyses that
-bridge the gap with altimetry and the input-output method are the
-reference.[^velicogna-2020] For a window that ends or starts near the
+evidence for it: for the ice sheets, the continuity analysis that
+fills the gap with the mass budget (input-output) method and finds the
+two missions consistent across it at continental and regional scales
+is the reference,[^velicogna-2020] and for the global record the
+GRACE-FO performance paper's comparison against independent
+estimates.[^landerer-2020] For a window that ends or starts near the
 gap, prefer a window that does not cross it and say why. Quote the
 formal error and the systematic terms (leakage, GIA, the low-degree
 replacements) separately; a formal error alone under-states a trend
@@ -95,10 +100,14 @@ the release note states that the time-correlation procedure of the
 solution spans both missions and that the GRACE-FO months carry an
 additional calibrated uncertainty for the missing GRACE-D
 accelerometer, which is the product's own account of continuity, not
-an independent check on it;[^release-note] each paper's DOI resolved
-to its journal page at doi.org, and the pages themselves sat behind a
-bot check, so the papers are cited on their titles and abstracts as
-published and the maintainer's review opens them.
+an independent check on it;[^release-note] both papers' records were
+verified against the Crossref registry the same day (title, authors,
+journal, year) and their abstracts read there: Landerer and others
+2020 states the eleven-month gap and reports no inter-mission bias at
+the level of independent estimates over June 2018 through December
+2019, and Velicogna and others 2020 fills the gap with the mass budget
+method and finds the series consistent across it; the journal pages
+themselves sit behind a bot check.
 
 [^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]: PO.DAAC collection page: TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
 [^grace-tellus]: GRACE Tellus project site: mission timeline and data availability

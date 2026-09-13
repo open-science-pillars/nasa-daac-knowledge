@@ -130,9 +130,11 @@ quoted here until then.[^computation]
 product versions, the steric estimate and its depth floor, the GIA
 model and low-degree series the mass term carries, the ocean mask, the
 window, the months missing and the gap handling. The mascon product's
-release note was read on 2026-09-13; the journal sources resolve by
-DOI but their pages were not readable from the session, so the
-maintainer's review opens them before the recipe goes stable.[^release-note]
+release note was read on 2026-09-13, every DOI was verified against
+the Crossref registry the same day, and the 2018 budget paper was
+read in full; the Elsevier page behind Roemmich and Gilson 2009 sits
+behind a bot check, so that paper is cited on its registry
+record.[^release-note][^wcrp-2018][^roemmich-gilson-2009]
 
 [^convention-slbc]: conventions/sea-level-budget-closure.md
 [^computation]: computations/sea-level-budget.md

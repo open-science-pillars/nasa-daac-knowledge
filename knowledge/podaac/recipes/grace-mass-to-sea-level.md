@@ -15,7 +15,7 @@ expected:
   - quantity: "regional mass change in gigatonnes and its trend in gigatonnes per year"
     statement: "one centimeter of equivalent water thickness over one square kilometer is 1e-5 gigatonnes, so the region's mass in gigatonnes is the sum over its mascons of anomaly (cm) times mascon area (km2) times 1e-5; the trend is the slope of a fit that carries annual and semi-annual terms and treats the 2017 to 2018 gap as a hole"
   - quantity: "sea level equivalent in millimeters of global mean sea level"
-    statement: "one millimeter of global mean sea level is the mass of one millimeter of water over the ocean's area: about 362 gigatonnes for an ocean area of 3.62e8 km2, and the recipe states the ocean area it used, since published budgets differ in the third digit; a mass loss of the region is a sea level rise of that mass divided by that constant"
+    statement: "one millimeter of global mean sea level is the mass of one millimeter of water over the ocean's area: about 362 gigatonnes for an ocean area of 3.62e8 km2 (the 2018 budget rounds to 360), and the recipe states the constant it used, since published budgets differ in the third digit; a mass loss of the region is a sea level rise of that mass divided by that constant"
   - quantity: "numeric anchor"
     statement: "none recorded yet: this recipe is a draft; the attested computation that closes the sea level budget (the sea-level-budget-closure roadmap deliverable, in ocean-science) will record the first anchor and its tolerance"
 expected_uncertainty:
@@ -88,8 +88,9 @@ from a land hydrology model and are for hydrology, not for ice.[^wiese-2016]
    with the bridging evidence cited.[^velicogna-2020]
 3. **Sea level equivalent.** One millimeter of global mean sea level
    is the mass of a millimeter of water over the ocean's area, about
-   362 gigatonnes for 3.62e8 square kilometers; the statement names the
-   area it used, because published budgets differ in the third
+   362 gigatonnes for 3.62e8 square kilometers, where the 2018 budget
+   rounds to 360 gigatonnes per millimeter; the statement names the
+   constant it used, because published budgets differ in the third
    digit.[^wcrp-2018] A mass loss contributes a rise of that mass
    divided by the constant.
 
@@ -128,9 +129,11 @@ low-signal land mascons; a July 2025 fix corrected the GAD mass added
 back to the ocean part of land/ocean mascons, and only files whose
 series extends past March 2025 carry it, so a coastal ice-sheet sum
 names the file's last month beside the version;[^release-note] the
-WCRP 2018 budget paper answered on the journal's site;[^wcrp-2018] the
-remaining DOIs resolved to their journal pages behind a bot check, so
-the maintainer's review opens them.
+WCRP 2018 budget paper was read in full on the journal's site, and the
+360 gigatonnes per millimeter figure is its;[^wcrp-2018] every DOI was
+verified against the Crossref registry the same day (title, authors,
+journal, year) and the Velicogna abstract read there; the Wiley
+journal pages sit behind a bot check.
 
 [^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]: PO.DAAC collection page: TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
 [^watkins-2015]: Watkins and others, 2015, Journal of Geophysical Research: Solid Earth, doi:10.1002/2014JB011547

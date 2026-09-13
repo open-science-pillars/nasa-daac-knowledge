@@ -16,6 +16,19 @@ _Historical note: older entries use build-era shorthand (a "close lint" is a kno
   instruction The new verified event is appended on the steward's word,
   the earlier events kept as history. (steward)
 
+- 2026-09-13 · gotchas/grace-intermission-gap.md, gotchas/grace-low-degree-replacements.md,
+  recipes/grace-mass-to-sea-level.md, computations/sea-level-budget.md,
+  recipes/sea-level-budget.md: every cited DOI verified against the Crossref
+  registry (title, authors, journal, year) and the abstracts of the GRACE
+  papers read there; the WCRP 2018 budget read in full. The gap gotcha now
+  states the inter-mission bias as a bound from independent estimates and
+  names the mass budget method as the ice-sheet bridge; the low-degree
+  gotcha carries the trend changes Loomis 2019 quantifies and the
+  accelerometer dates behind the C30 replacement; the mass recipe carries
+  the budget's 360 gigatonnes per millimeter; the computation names Purkey
+  and Johnson 2010 as the deep-steric term the budget carries and the
+  budget's 2005 onward table as the comparison for the first real-data run.
+  (knowledge-seeder/claude)
 - 2026-09-13 · datasets/grace-fo-mascons.md, gotchas/grace-intermission-gap.md,
   gotchas/grace-low-degree-replacements.md, recipes/grace-mass-to-sea-level.md,
   computations/sea-level-budget.md and recipes/sea-level-budget.md: the

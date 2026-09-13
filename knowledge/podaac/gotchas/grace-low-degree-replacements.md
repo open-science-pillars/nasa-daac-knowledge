@@ -55,8 +55,11 @@ motion), and GRACE's estimate of C20, the oblateness term, is
 degraded by aliasing. Both terms carry large-scale mass signal, so
 the projects substitute them: a modeled geocenter series estimated
 from GRACE with an ocean and a GIA model, and C20 from satellite
-laser ranging, with C30 also replaced in the later record after the
-accelerometer degradation on GRACE and on GRACE-FO.[^sun-2016][^loomis-2019]
+laser ranging, with C30 also replaced once either mission flew
+without two working accelerometers (GRACE from October 2016, GRACE-FO
+from the start), which is when the missions observe C30 poorly;
+laser-ranging C30 is usable from 2012, when LARES
+launched.[^sun-2016][^loomis-2019][^loomis-2020]
 The mascon product arrives with these substitutions already applied.
 For RL06.3M version 4 the release note states them: C20 and C30 from
 TN-14 version 3 across the whole series (C20 from TN-14 since the 2020
@@ -76,8 +79,11 @@ April 2002 and C30 from March 2012 onward, and names Loomis and others
 
 **Wrong-result mode.** The substituted terms project onto the largest
 scales, which is exactly where ice-sheet mass balance and global ocean
-mass live, so the choice of series moves those trends by amounts the
-cited work quantifies as comparable to the formal errors.[^loomis-2019]
+mass live, so the choice of series moves those trends: the GSFC C20
+series against the earlier CSR TN-11 changes the Antarctic and
+Greenland mass trends by 15.4 and 3.5 gigatonnes per year and the sea
+level budget by 0.08 millimeters per year, amounts comparable to the
+formal errors.[^loomis-2019]
 Two traps follow. Comparing a mascon trend with a spherical-harmonic
 result whose author applied a different geocenter or C20 series (or
 none) attributes the difference to the ice sheet or the ocean.
@@ -106,8 +112,11 @@ both files were read (TN-13 JPL RL0601, updated August 2024 with its
 last point in May 2024; TN-14 version 3, created 31 August 2026,
 spanning April 2002 through June 2026);[^tn-13-jpl][^tn-14] the
 product release note was read and is the source for which series this
-product applies;[^release-note] the two papers' DOIs resolved to their
-journal pages, which sat behind a bot check.
+product applies;[^release-note] the four papers' records were
+verified against the Crossref registry the same day (title, authors,
+journal, year) and their abstracts read there, which is where the
+trend changes and the accelerometer dates above come from; the journal
+pages themselves sit behind a bot check.
 
 [^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]: PO.DAAC collection page: TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
 [^grace-tellus]: GRACE Tellus project site: the technical notes on the replacements

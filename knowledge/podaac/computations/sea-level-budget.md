@@ -61,6 +61,9 @@ sources:
   - id: frederikse-2020
     resource: https://doi.org/10.1038/s41586-020-2591-3
     title: "Frederikse and others (2020), The causes of sea-level rise since 1900, Nature 584, 393 to 397"
+  - id: purkey-johnson-2010
+    resource: https://doi.org/10.1175/2010JCLI3682.1
+    title: "Purkey and Johnson (2010), Warming of global abyssal and deep Southern Ocean waters between the 1990s and 2000s: contributions to global heat and sea level rise budgets, Journal of Climate 23, 6336 to 6351 (the deep-steric term the 2018 budget carries)"
   - id: argo-doi
     resource: https://doi.org/10.17882/42182
     title: "Argo (2000 onward), Argo float data and metadata from the Global Data Assembly Centre (Argo GDAC), SEANOE"
@@ -136,9 +139,14 @@ the attester refuses a receipt missing any of them:[^convention-slbc]
 - **Deep steric**: the sampled depth floor of the steric term and the
   systematic below it, stated as a value with its own uncertainty and
   never folded into the noise. The stated value, 0.1 mm per year with
-  an uncertainty of 0.1, is the order the 2018 budget quotes for the
-  ocean below 2000 m and is a stated assumption until a real-data run
-  states its own from the source it cites.[^wcrp-2018]
+  an uncertainty of 0.1, is the order of the term the 2018 budget
+  carries below 2000 m, which it takes as the Purkey and Johnson 2010
+  linear trend for 1990 to 2010 extrapolated: abyssal warming below
+  4000 m, 0.053 with an uncertainty of 0.017, plus deep Southern Ocean
+  warming between 1000 and 4000 m, 0.093 with an uncertainty of 0.081,
+  in millimeters per year. It is a stated assumption until a real-data
+  run states its own from the source it
+  cites.[^wcrp-2018][^purkey-johnson-2010]
 - **Gap handling**: the months missing from the period (the
   inter-mission gap and the battery-management months), the rule that
   a month with no solution in any term is a hole dropped from every
@@ -243,6 +251,12 @@ months missing). Altimetry +3.4553 mm per year, 95 percent interval
 uncertainties 0.2420, plus the deep-steric uncertainty 0.1);
 `closed_within_uncertainty` true. The imposed truth is altimetry 3.5,
 mass 2.1, steric 1.3 and a residual of 0.1, each inside its interval.
+Those rates are the order of the 2018 budget's table for 2005 onward
+(sea level 3.5 with an uncertainty of 0.2, full-depth thermosteric 1.3
+with an uncertainty of 0.4, thermosteric plus GRACE ocean mass 3.6
+with an uncertainty of 0.4, residual minus 0.1 with an uncertainty of
+0.3, in millimeters per year), which is also the published comparison
+the first real-data run reports against.[^wcrp-2018]
 The refusal case the gate and the ocean-science golden exercise is
 2016-01 through 2019-12 with no bridge: exit 3, attested as a
 refusal. The registry entry `sea-level-budget` in
@@ -269,11 +283,14 @@ or JPL product.
 **Verification.** The bundle-path sources are this bundle's own
 concepts. The mascon product's release note and month list were read
 on 2026-09-13 and are the basis of the GAD entry and the fixture's
-month list above;[^release-note][^months-rl06] the four DOIs resolve
-(the ESSD paper answered; the Nature, SEANOE and Elsevier pages sat
-behind a bot check), so the maintainer's review opens them and checks
-the deep-steric figure against the 2018 budget before the concept goes
-stable. The chain is verified on every
+month list above;[^release-note][^months-rl06] every DOI was verified
+against the Crossref registry the same day (title, authors, journal,
+year); the 2018 budget paper was read in full on the journal's site,
+and the deep-steric entry and the fixture paragraph cite what it
+carries;[^wcrp-2018][^purkey-johnson-2010] the Nature abstract and the
+SEANOE landing page were read;[^frederikse-2020][^argo-doi] the
+Elsevier page sits behind a bot check, so Roemmich and Gilson 2009 is
+cited on its registry record.[^roemmich-gilson-2009] The chain is verified on every
 change by the repository's check routine, which runs the attester's
 selftest and the end-to-end fixture run and refusal.
 
@@ -293,3 +310,4 @@ selftest and the end-to-end fixture run and refusal.
 [^roemmich-gilson-2009]: Roemmich and Gilson (2009), Progress in Oceanography 82, doi:10.1016/j.pocean.2009.03.004
 [^release-note]: JPL GRACE mascon solution release notes, RL06.3M version 4
 [^months-rl06]: GRACE and GRACE-FO RL06 month list, PO.DAAC
+[^purkey-johnson-2010]: Purkey and Johnson (2010), Journal of Climate 23, doi:10.1175/2010JCLI3682.1
