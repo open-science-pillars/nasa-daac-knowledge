@@ -1,6 +1,6 @@
 ---
 type: dataset
-spheres: [hydrosphere, geosphere]
+spheres: [hydrosphere, geosphere, cryosphere]
 title: GRACE/GRACE-FO JPL mascon solutions
 description: "Monthly mass anomaly (equivalent water thickness) on 3-degree mascons, RL06.3 version 4; formal per-mascon uncertainty grids ship with the data."
 tags: [grace, grace-fo, mascons, mass, podaac]
@@ -32,6 +32,19 @@ product documentation) is already applied to the standard product.
 Month gaps exist (battery management eras, the 2017-2018
 GRACE-to-GRACE-FO gap).
 
+**Land-ice use.** The mascon product is the standard GRACE input for
+ice-sheet and glacier mass balance and for the mass term of the sea
+level budget: a region is a set of whole mascons, its mass is the sum
+of anomaly times mascon area, and the trend converts to a sea level
+equivalent at about 362 gigatonnes per millimeter (the recipe
+[grace-mass-to-sea-level](../recipes/grace-mass-to-sea-level.md)
+carries the steps and every uncertainty term). Units are centimeters
+of equivalent water thickness against the product's baseline period,
+which the product documentation names, as it names the applied GIA
+model and the degree-1 and C20/C30 series; every mass statement
+repeats those four names. The scale factors distributed with the CRI
+grid come from a land hydrology model and are not applied over ice.
+
 ## Uncertainty
 
 - **Formal per-mascon uncertainty grids ship with the product**:
@@ -53,5 +66,9 @@ GRACE-to-GRACE-FO gap).
 
 - [grace-coastal-leakage](../gotchas/grace-coastal-leakage.md)
 - [grace-gia-correction](../gotchas/grace-gia-correction.md)
-- The 2017-2018 inter-mission gap breaks trend fits that treat the
-  record as continuous; fit with the gap acknowledged.
+- [grace-intermission-gap](../gotchas/grace-intermission-gap.md): the
+  2017 to 2018 inter-mission gap breaks trend and acceleration fits that
+  treat the record as continuous.
+- [grace-low-degree-replacements](../gotchas/grace-low-degree-replacements.md):
+  the degree-1 and C20/C30 series the product applies move large-scale
+  trends; nothing is re-applied.

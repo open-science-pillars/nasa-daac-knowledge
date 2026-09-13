@@ -32,6 +32,8 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [SWOT orbit phases: cal/val and science data are not one record](gotchas/swot-calval-orbit-phases.md), severity high, status: stable
 - [GRACE mascon coastal leakage: land signal bleeds into ocean mascons](gotchas/grace-coastal-leakage.md), severity high, status: stable
 - [GRACE GIA correction: a model choice already baked into the product](gotchas/grace-gia-correction.md), severity medium, status: stable
+- [The GRACE to GRACE-FO gap: an eleven-month hole that a continuous-looking series hides, and every trend or acceleration fit across it inherits](gotchas/grace-intermission-gap.md), severity high, status: draft
+- [Degree-1 and C20/C30 replacements: large-scale mass trends from GRACE rest on terms the satellites do not measure, already substituted in the mascon product](gotchas/grace-low-degree-replacements.md), severity medium, status: draft
 - [ECCO V4R4 vs V4R4B: mixing releases conflates corrections with signal](gotchas/ecco-release-mixing.md), severity high, status: stable
 - [ECCO meridional heat transport: no basin mask means the full latitude circle](gotchas/ecco-mht-basin-scope.md), severity high, status: stable
 - [SWOT KaRIn ssha_karin: crossover calibration arrives UNAPPLIED](gotchas/swot-crossover-unapplied.md), severity high, status: stable
@@ -51,6 +53,7 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 
 ## recipes
 
+- [From a regional GRACE mass change to a sea level equivalent, with its uncertainty](recipes/grace-mass-to-sea-level.md), status: draft
 - [Geostrophic velocity and thermal wind on the native grid](recipes/ecco-geostrophic-balance.md), status: stable
 - [Closed heat budget on the ECCO v4r4 native grid](recipes/ecco-heat-budget.md), status: stable
 - [Meridional heat transport at 26.5N from ECCO v4r4](recipes/ecco-mht-26n.md), status: stable

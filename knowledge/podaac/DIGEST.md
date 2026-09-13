@@ -6,9 +6,9 @@ If you know one of these products, each row's last link opens an issue with the 
 
 ## Summary
 
-105 concepts, 8 products.
+108 concepts, 8 products.
 
-- unverified: 32
+- unverified: 35
 - machine-confirmed: 0
 - human-reviewed: 73
 - provider-confirmed: 0
@@ -119,7 +119,7 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 
 ## GRACE/GRACE-FO JPL mascon solutions
 
-[datasets/grace-fo-mascons.md](datasets/grace-fo-mascons.md): 4 concepts.
+[datasets/grace-fo-mascons.md](datasets/grace-fo-mascons.md): 7 concepts.
 
 | Concept | Type | Severity | Status | Tier | Latest verified | Sources | |
 |---|---|---|---|---|---|---|---|
@@ -127,6 +127,9 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 | [Sea level budget closure: a correction-consistency problem first](conventions/sea-level-budget-closure.md) | convention |  | stable | human-reviewed | 2026-09-04 | 1 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fconventions%2Fsea-level-budget-closure.md&concept=knowledge%2Fpodaac%2Fconventions%2Fsea-level-budget-closure.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
 | [GRACE mascon coastal leakage: land signal bleeds into ocean mascons](gotchas/grace-coastal-leakage.md) | dataset-gotcha | high | stable | human-reviewed | 2026-07-04 | 2 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fgrace-coastal-leakage.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fgrace-coastal-leakage.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
 | [GRACE GIA correction: a model choice already baked into the product](gotchas/grace-gia-correction.md) | dataset-gotcha | medium | stable | human-reviewed | 2026-07-04 | 2 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fgrace-gia-correction.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fgrace-gia-correction.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
+| [The GRACE to GRACE-FO gap: an eleven-month hole that a continuous-looking series hides, and every trend or acceleration fit across it inherits](gotchas/grace-intermission-gap.md) | dataset-gotcha | high | draft | unverified |  | 5 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fgrace-intermission-gap.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fgrace-intermission-gap.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
+| [Degree-1 and C20/C30 replacements: large-scale mass trends from GRACE rest on terms the satellites do not measure, already substituted in the mascon product](gotchas/grace-low-degree-replacements.md) | dataset-gotcha | medium | draft | unverified |  | 5 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fgrace-low-degree-replacements.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fgrace-low-degree-replacements.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
+| [From a regional GRACE mass change to a sea level equivalent, with its uncertainty](recipes/grace-mass-to-sea-level.md) | recipe |  | draft | unverified |  | 9 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Frecipes%2Fgrace-mass-to-sea-level.md&concept=knowledge%2Fpodaac%2Frecipes%2Fgrace-mass-to-sea-level.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
 
 ## NASA-SSH simple gridded sea surface height anomaly (observational reference)
 
