@@ -15,12 +15,16 @@ run() { echo; echo "== $*"; "$@" || fail=1; }
 case "${SIGNATURE_DEBT:-fail}" in report) sig=--report ;; *) sig= ;; esac
 run uv run tools/check_okf_v02.py knowledge/podaac --findings --provider nasa-daac-knowledge
 run uv run tools/check_okf_v02.py knowledge/esdis --provider nasa-daac-knowledge
+run uv run tools/check_okf_v02.py knowledge/nsidc --provider nasa-daac-knowledge
 run uv run tools/check_negative.py knowledge/podaac
 run uv run tools/check_negative.py knowledge/esdis
+run uv run tools/check_negative.py knowledge/nsidc
 run uv run tools/signature_check.py knowledge/podaac $sig
 run uv run tools/signature_check.py knowledge/esdis $sig
+run uv run tools/signature_check.py knowledge/nsidc $sig
 run uv run tools/digest.py knowledge/podaac --check
 run uv run tools/digest.py knowledge/esdis --check
+run uv run tools/digest.py knowledge/nsidc --check
 run uv run tools/check_fields.py knowledge/podaac/fields/ecco-v4r4 tools/ecco_v4r4_families.yaml
 run uv run tools/verify_cmr.py tools/ecco_v4r4_families.yaml --selftest
 run uv run tools/ecco_cite.py --selftest

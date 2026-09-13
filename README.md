@@ -5,8 +5,10 @@ archive under `knowledge/`: `knowledge/podaac/` holds the peculiarities
 that make naive analyses of PO.DAAC-archived products (ECCO, SWOT,
 GRACE-FO, MUR, NASA-SSH, RAPID) silently wrong, as reviewable OKF
 concepts with sources, statuses and steward sign-off; `knowledge/esdis/`
-holds the cross-archive metadata requirements. It carries no skills and
-no agents: you use it through
+holds the cross-archive metadata requirements; `knowledge/nsidc/`
+holds the NSIDC DAAC land ice products (ICESat-2 ATL15, the MEaSUREs
+ITS_LIVE and InSAR velocity mosaics), the cryosphere's first concepts.
+It carries no skills and no agents: you use it through
 [ocean-science](https://github.com/open-science-pillars/ocean-science)
 and [hydrology](https://github.com/open-science-pillars/hydrology),
 which declare it as a dependency and cite its concepts by bundle path,
