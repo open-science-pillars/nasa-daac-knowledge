@@ -4,6 +4,16 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-13 · gotchas/grace-intermission-gap.md (severity high, eval case
+  grace-intermission-gap in agent-evals), gotchas/grace-low-degree-replacements.md
+  (severity medium) and recipes/grace-mass-to-sea-level.md drafted for the
+  land-ice knowledge deliverable (build-kit roadmap landice-grace-knowledge,
+  issue #123); datasets/grace-fo-mascons.md gains a land-ice use paragraph,
+  the cryosphere sphere and links to the two gotchas (a signature is owed
+  until the maintainer re-signs). Sources are cited by DOI and product page
+  and were not fetched from the drafting environment; status draft pending
+  the maintainer's review, with a PO.DAAC contact to be invited through the
+  digest
 - 2026-09-12 · index.md and the two tutorial checkpoint concepts
   (drafts): the eval repository is named agent-evals and its ECCO
   set lives under ecco/ (renamed from ecco-agent-evals, ADR A in the
