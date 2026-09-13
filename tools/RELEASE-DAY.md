@@ -31,8 +31,7 @@ The procedure:
 > recommendation status), and a log.md entry. Then run the fields pattern against the
 > ten demo-critical v4r5 families: draft, CMR-sign, granule-verify,
 > steward-sign. Post the day-one
-> summary to Discussions and send the steward the review link;
-> if the handoff landed, this is their first release-moment review. If
+> summary to Discussions and send the steward the review link. If
 > reproduction capsules exist, run the re-verification set as the
 > final beat: the opted-in V4r4 findings re-execute against V4r5,
 > receipts attach, and the pre-briefed authors get their results before
@@ -65,8 +64,8 @@ pulled forward on affected concepts per the steward playbook sweep.
 
 Reproduction capsules are built the moment a V4r5 DATE is announced,
 not when the data lands, so that capsules exist before the release
-does. That rule is active from today and does not wait for this
-playbook to fire.
+does. That rule has been in effect since 2026-08-31, the day this
+playbook was committed, and does not wait for the playbook to fire.
 
 ## Validity domains on release day
 

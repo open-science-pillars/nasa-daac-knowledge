@@ -5,9 +5,10 @@ releases. Credit is derived, never edited: if the credit list looks
 wrong, fix the frontmatter events or CODEOWNERS and re-derive; never
 the output.
 
-The bundles ship as one plugin (`.claude-plugin/plugin.json`) that the
-domain plugins depend on at a version floor, so a release is three
-things: the version bump that lets installs see it, the tag the
+The bundles ship as one plugin that the domain plugins depend on at a
+version floor; its manifest (`.claude-plugin/plugin.json`) and the Agent
+Plugins package are rendered from `.osp/package.yaml` and never edited
+by hand. A release is three things: the version bump that lets installs see it, the tag the
 installer resolves, and the catalog line that names it. Versions are
 calendar semver, `YYYY.M.N` with no zero padding (2026.9.1, then
 2026.9.2 for a second release in the same month), because the installer
@@ -25,15 +26,26 @@ compares versions as semver and semver forbids a leading zero.
    in one step, on the steward's word), and `claude plugin validate .` passes. The tag
    push runs the same routine in CI with the debt enforced; a red
    run there means the tag moved onto a commit that owes a signature.
-2. **Bump.** `version` in `.claude-plugin/plugin.json` and in
-   CITATION.cff, in the same PR as the last content change of the
-   release; merge it. The bump is what reaches installs: an install
-   keeps its cached copy until the version string changes.
+2. **Bump.** The release candidate is one command from a workspace
+   holding this repository and build-kit side by side:
+   `uv run build-kit/scripts/release.py candidate . --version <YYYY.M.N>
+   --summary "<what the release carries>" --pr`. It sets `version` in
+   `.osp/package.yaml` and in CITATION.cff, re-renders the manifests
+   (`uv run build-kit/scripts/osp.py render .`), regenerates the release
+   lock, runs the gate's own checks and opens the pull request; the
+   procedure is the marketplace repository's
+   [release candidate guide](https://github.com/open-science-pillars/marketplace/blob/main/docs/release-candidate-guide.md).
+   Done by hand, it is the same edits (`.osp/package.yaml`, CITATION.cff,
+   then `osp.py render .` and `osp.py lock .`), never an edit to
+   `.claude-plugin/plugin.json`. Merge it. The bump is what reaches
+   installs: an install keeps its cached copy until the version string
+   changes.
 3. **Tag.** From the repository root, on the merge commit:
-   `claude plugin tag --push -m "nasa-daac-knowledge %s"` (add a short
-   body after the subject). It derives `nasa-daac-knowledge--v<version>`
-   from plugin.json, checks the catalog entry agrees, and refuses a dirty
-   tree or an existing tag. The tag is what a dependent plugin's version
+   `uv run build-kit/scripts/release.py tag . --push` (or
+   `claude plugin tag --push -m "nasa-daac-knowledge %s"`, which it
+   wraps). It derives `nasa-daac-knowledge--v<version>` from the rendered
+   manifest, checks the catalog entry agrees, and refuses a dirty tree or
+   an existing tag. The tag is what a dependent plugin's version
    floor resolves against, so it exists before any plugin declares a
    floor at this version.
 4. **Derive.** From the marketplace clone:

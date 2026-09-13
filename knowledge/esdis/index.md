@@ -6,11 +6,11 @@ okf_version: "0.2"
 
 Cross-archive metadata requirement concepts: what a rule demands, where
 it is written, how it is checked, and honestly which of those is a
-mandate versus a reviewed practice. Consumed by the archive-observatory
-sweeper and harness; stewarded separately from podaac/ via CODEOWNERS
-scoping. Scaffolded ahead of the co-build; the Application Support and
-Science Enabling Team (ASSET) signatures land at the co-build, never
-before.
+mandate versus a reviewed practice. The archive-observatory repository's
+metadata sweeper and its harness read these requirements; the bundle is
+stewarded separately from podaac/ through CODEOWNERS scoping. Every
+concept stays a draft until the Application Support and Science
+Enabling Team (ASSET) signs it.
 
 ## requirements
 
