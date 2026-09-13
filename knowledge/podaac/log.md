@@ -4,6 +4,30 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-13 · datasets/oscar-v2.md, gotchas/oscar-is-geostrophic-plus-ekman.md
+  (high), gotchas/oscar-versions-and-latency.md (medium),
+  datasets/smap-sss-jpl.md, gotchas/smap-sss-coastal-and-sea-ice-contamination.md
+  (high), gotchas/smap-sss-two-producers-differ.md (medium) and
+  gotchas/smap-sss-cold-water-sensitivity.md (medium): seven draft
+  concepts for two products the bundle lacked. Sources read on
+  2026-09-13: the three OSCAR v2 CMR records (POCLOUD) with their
+  granule ranges and collection pages, the OSCAR v2.0 User's Handbook
+  (October 2021) in full; the JPL CAP V5 and RSS V6 CMR records with
+  granule ranges and collection pages, the JPL V5.0 user's guide in
+  full, the RSS V6.0 release notes (the summary, changes, resolution,
+  known issues, land, sea-ice, flag, L3, uncertainty and format
+  sections), the Aquarius end-of-mission ATBD's uncertainty chapter,
+  the RSS and Aquarius known-issues READMEs, and one JPL monthly
+  granule (August 2026) opened for its variable names and deleted;
+  every DOI verified against the Crossref registry (title, authors,
+  journal, year) with the abstracts read there where the registry
+  carries them. Unreachable: the producer's OSCAR validation page
+  (esr.org, blocked by the network policy), the RSS website, and the
+  JPL ATBD directory (404). The two high-severity gotchas name eval
+  cases oscar-is-geostrophic-plus-ekman and
+  smap-sss-coastal-and-sea-ice-contamination, drafted in agent-evals
+  under ecco/cases/; their manifest registration is the coordinator's
+  follow-up. (knowledge-seeder/claude)
 - 2026-09-13 · STEWARD RE-SIGNING of
   knowledge/podaac/gotchas/grace-intermission-gap.md,
   knowledge/podaac/gotchas/grace-low-degree-replacements.md,

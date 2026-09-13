@@ -6,9 +6,9 @@ If you know one of these products, each row's last link opens an issue with the 
 
 ## Summary
 
-111 concepts, 8 products.
+118 concepts, 10 products.
 
-- unverified: 33
+- unverified: 40
 - machine-confirmed: 0
 - human-reviewed: 78
 - provider-confirmed: 0
@@ -164,6 +164,16 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 | [OPERA DSWx-S1: surface water extent from radar, which sees through cloud and did not exist before December 2023](datasets/opera-dswx-s1.md) | dataset |  | stable | human-reviewed | 2026-09-08 | 4 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fdatasets%2Fopera-dswx-s1.md&concept=knowledge%2Fpodaac%2Fdatasets%2Fopera-dswx-s1.md&product=OPERA+DSWx-S1%3A+surface+water+extent+from+radar%2C+which+sees+through+cloud+and+did+not+exist+before+December+2023) |
 | [The two DSWx products collide on the same integers: an area timeline that spans them measures the product change](gotchas/dswx-class-mismatch.md) | dataset-gotcha | high | stable | human-reviewed | 2026-09-08 | 5 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fdswx-class-mismatch.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fdswx-class-mismatch.md&product=OPERA+DSWx-S1%3A+surface+water+extent+from+radar%2C+which+sees+through+cloud+and+did+not+exist+before+December+2023) |
 
+## OSCAR version 2 surface currents (final, interim and near-real-time)
+
+[datasets/oscar-v2.md](datasets/oscar-v2.md): 3 concepts.
+
+| Concept | Type | Severity | Status | Tier | Latest verified | Sources | |
+|---|---|---|---|---|---|---|---|
+| [OSCAR version 2 surface currents (final, interim and near-real-time)](datasets/oscar-v2.md) | dataset |  | draft | unverified |  | 11 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fdatasets%2Foscar-v2.md&concept=knowledge%2Fpodaac%2Fdatasets%2Foscar-v2.md&product=OSCAR+version+2+surface+currents+%28final%2C+interim+and+near-real-time%29) |
+| [OSCAR is a diagnosed geostrophic plus Ekman current, not a measured total current: tides, inertial motion and the rest of the ageostrophic flow are absent by construction, and the equatorial band is the model's own solution](gotchas/oscar-is-geostrophic-plus-ekman.md) | dataset-gotcha | high | draft | unverified |  | 6 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Foscar-is-geostrophic-plus-ekman.md&concept=knowledge%2Fpodaac%2Fgotchas%2Foscar-is-geostrophic-plus-ekman.md&product=OSCAR+version+2+surface+currents+%28final%2C+interim+and+near-real-time%29) |
+| [OSCAR final, interim and nrt are three products with different inputs, and version 2 is not the third-degree OSCAR: a series that steps between them carries the input change as ocean change](gotchas/oscar-versions-and-latency.md) | dataset-gotcha | medium | draft | unverified |  | 7 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Foscar-versions-and-latency.md&concept=knowledge%2Fpodaac%2Fgotchas%2Foscar-versions-and-latency.md&product=OSCAR+version+2+surface+currents+%28final%2C+interim+and+near-real-time%29) |
+
 ## RAPID-MOCHA transports at 26.5N (observational reference)
 
 [datasets/rapid-mocha.md](datasets/rapid-mocha.md): 7 concepts.
@@ -177,6 +187,17 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 | [ECCO meridional heat transport: no basin mask means the full latitude circle](gotchas/ecco-mht-basin-scope.md) | dataset-gotcha | high | stable | human-reviewed | 2026-09-04 | 1 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fecco-mht-basin-scope.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fecco-mht-basin-scope.md&product=RAPID-MOCHA+transports+at+26.5N+%28observational+reference%29) |
 | [Meridional heat transport at 26.5N from ECCO v4r4](recipes/ecco-mht-26n.md) | recipe |  | stable | human-reviewed | 2026-09-04 | 4 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Frecipes%2Fecco-mht-26n.md&concept=knowledge%2Fpodaac%2Frecipes%2Fecco-mht-26n.md&product=RAPID-MOCHA+transports+at+26.5N+%28observational+reference%29) |
 | [ECCO overturning at 26.5N confronted with the RAPID array](recipes/ecco-rapid-amoc-26n.md) | recipe |  | stable | human-reviewed | 2026-09-04 | 14 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Frecipes%2Fecco-rapid-amoc-26n.md&concept=knowledge%2Fpodaac%2Frecipes%2Fecco-rapid-amoc-26n.md&product=RAPID-MOCHA+transports+at+26.5N+%28observational+reference%29) |
+
+## SMAP sea surface salinity, JPL CAP Level 3 (with the RSS product as the alternative producer)
+
+[datasets/smap-sss-jpl.md](datasets/smap-sss-jpl.md): 4 concepts.
+
+| Concept | Type | Severity | Status | Tier | Latest verified | Sources | |
+|---|---|---|---|---|---|---|---|
+| [SMAP sea surface salinity, JPL CAP Level 3 (with the RSS product as the alternative producer)](datasets/smap-sss-jpl.md) | dataset |  | draft | unverified |  | 15 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fdatasets%2Fsmap-sss-jpl.md&concept=knowledge%2Fpodaac%2Fdatasets%2Fsmap-sss-jpl.md&product=SMAP+sea+surface+salinity%2C+JPL+CAP+Level+3+%28with+the+RSS+product+as+the+alternative+producer%29) |
+| [SMAP salinity near coasts and the sea-ice edge: land and ice inside the antenna's view bias the retrieval by up to several salinity units, and a coastal or ice-edge series is a series of the product's own exclusion decisions](gotchas/smap-sss-coastal-and-sea-ice-contamination.md) | dataset-gotcha | high | draft | unverified |  | 7 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fsmap-sss-coastal-and-sea-ice-contamination.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fsmap-sss-coastal-and-sea-ice-contamination.md&product=SMAP+sea+surface+salinity%2C+JPL+CAP+Level+3+%28with+the+RSS+product+as+the+alternative+producer%29) |
+| [SMAP salinity in cold water: the radiometer's sensitivity to salinity falls with sea surface temperature, both producers flag SST below 5 C, and high-latitude values carry errors several times the tropical figures](gotchas/smap-sss-cold-water-sensitivity.md) | dataset-gotcha | medium | draft | unverified |  | 6 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fsmap-sss-cold-water-sensitivity.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fsmap-sss-cold-water-sensitivity.md&product=SMAP+sea+surface+salinity%2C+JPL+CAP+Level+3+%28with+the+RSS+product+as+the+alternative+producer%29) |
+| [JPL CAP and RSS SMAP salinity are two products from one radiometer: different input calibration, algorithm, smoothing, ancillary data, coverage and uncertainty, so a series does not mix them and an anomaly does not borrow the other's climatology](gotchas/smap-sss-two-producers-differ.md) | dataset-gotcha | medium | draft | unverified |  | 9 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fsmap-sss-two-producers-differ.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fsmap-sss-two-producers-differ.md&product=SMAP+sea+surface+salinity%2C+JPL+CAP+Level+3+%28with+the+RSS+product+as+the+alternative+producer%29) |
 
 ## SWOT KaRIn Level 2 Low Rate SSH
 

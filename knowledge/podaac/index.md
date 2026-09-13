@@ -22,6 +22,8 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [GHRSST MUR Level 4 SST](datasets/ghrsst-mur.md), status: stable
 - [RAPID-MOCHA transports at 26.5N (observational reference)](datasets/rapid-mocha.md), status: stable
 - [NASA-SSH simple gridded sea surface height anomaly (observational reference)](datasets/nasa-ssh.md), status: draft
+- [OSCAR version 2 surface currents (final, interim and near-real-time)](datasets/oscar-v2.md), status: draft
+- [SMAP sea surface salinity, JPL CAP Level 3 (with the RSS product as the alternative producer)](datasets/smap-sss-jpl.md), status: draft
 
 ## gotchas
 
@@ -50,6 +52,11 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [ECCO MXLDEPTH uses the model's own MLD criterion, not yours](gotchas/ecco-mxldepth-criterion.md), severity high, status: stable
 - [ECCO density and stratification come from its own equation of state; a foreign EOS makes phantom differences](gotchas/ecco-native-density-eos.md), severity high, status: stable
 - [ecco_access guesses a dated filename for the static collections; fetch them through CMR](gotchas/ecco-access-static-collections.md), severity medium, status: stable
+- [OSCAR is a diagnosed geostrophic plus Ekman current, not a measured total current: tides, inertial motion and the rest of the ageostrophic flow are absent by construction, and the equatorial band is the model's own solution](gotchas/oscar-is-geostrophic-plus-ekman.md), severity high, status: draft
+- [OSCAR final, interim and nrt are three products with different inputs, and version 2 is not the third-degree OSCAR: a series that steps between them carries the input change as ocean change](gotchas/oscar-versions-and-latency.md), severity medium, status: draft
+- [SMAP salinity near coasts and the sea-ice edge: land and ice inside the antenna's view bias the retrieval by up to several salinity units, and a coastal or ice-edge series is a series of the product's own exclusion decisions](gotchas/smap-sss-coastal-and-sea-ice-contamination.md), severity high, status: draft
+- [JPL CAP and RSS SMAP salinity are two products from one radiometer: different input calibration, algorithm, smoothing, ancillary data, coverage and uncertainty, so a series does not mix them and an anomaly does not borrow the other's climatology](gotchas/smap-sss-two-producers-differ.md), severity medium, status: draft
+- [SMAP salinity in cold water: the radiometer's sensitivity to salinity falls with sea surface temperature, both producers flag SST below 5 C, and high-latitude values carry errors several times the tropical figures](gotchas/smap-sss-cold-water-sensitivity.md), severity medium, status: draft
 
 ## recipes
 
