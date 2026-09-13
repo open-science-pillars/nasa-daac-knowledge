@@ -766,6 +766,10 @@ def selftest() -> int:
         "no-at.md": "verified: { by: human:Steward, role: provider }\n",
         "machine.md": "verified: { by: process:sweep, at: 2026-01-02T00:00:00Z }\n",
         "none.md": "",
+        # an open ask (solicit.py --mark) on a gotcha: `review` is accepted on
+        # any concept type, not only on a finding
+        "asked.md": ("verified: { by: human:Steward, at: 2026-01-02T00:00:00Z }\n"
+                     "review: https://github.com/open-science-pillars/nasa-daac-knowledge/issues/12\n"),
     }
     with tempfile.TemporaryDirectory() as d:
         bundle = Path(d) / "b"
@@ -786,17 +790,17 @@ def selftest() -> int:
     assert codes.get("bad-source.md") == {"E12"}, (codes, out)
     assert codes.get("no-at.md") == {"E4"}, (codes, out)   # E4 as before; the tier still reads `by`
     assert codes.get("provider-no-source.md") == {"W10"}, (codes, out)
-    for clean in ("plain.md", "maintainer.md", "provider.md"):
+    for clean in ("plain.md", "maintainer.md", "provider.md", "asked.md"):
         assert clean not in codes, (clean, codes, out)
     assert codes.get("machine.md") == {"W4"} and codes.get("none.md") == {"W4"}, (codes, out)
     assert "DIGEST.md" not in out, out
     # provider.md, provider-no-source.md and no-at.md carry a provider role;
-    # plain, maintainer, bad-role and bad-source are human-reviewed
-    assert "provider-confirmed 3" in out and "human-reviewed 4" in out, out
-    assert "machine-confirmed 1" in out and "unverified 1" in out and "concepts: 9" in out, out
+    # plain, maintainer, bad-role, bad-source and asked are human-reviewed
+    assert "provider-confirmed 3" in out and "human-reviewed 5" in out, out
+    assert "machine-confirmed 1" in out and "unverified 1" in out and "concepts: 10" in out, out
     assert tier({"by": "human:x", "at": "t", "role": "community"}) == "human-reviewed"
     assert tier([{"by": "process:x", "at": "t"}, {"by": "human:x", "at": "t", "role": "provider"}]) == "provider-confirmed"
-    print("check_okf_v02 selftest: ok (E4, E12, W10, the four tiers, DIGEST.md skipped)")
+    print("check_okf_v02 selftest: ok (E4, E12, W10, the four tiers, review on any type, DIGEST.md skipped)")
     return 0
 
 

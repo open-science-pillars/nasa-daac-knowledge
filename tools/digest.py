@@ -159,6 +159,7 @@ class Concept:
         self.severity = str(fm.get("severity") or "").strip()
         self.tier = tier(fm)
         self.verified = latest_verified(fm)
+        self.review = str(fm.get("review") or "").strip()   # an open ask, set by solicit.py --mark
         sources = fm.get("sources")
         self.sources = len(sources) if isinstance(sources, list) else 0
         self.products: list = []
@@ -268,8 +269,9 @@ def cell(text: str) -> str:
 
 def row(c: Concept, prefix: str, product: str) -> str:
     link = confirm_link(f"{prefix}/{c.rel}", product)
+    asked = f"[Asked]({cell(c.review)}), " if c.review else ""
     return (f"| [{cell(c.title)}]({c.rel}) | {cell(c.type)} | {cell(c.severity)} | {cell(c.status)} "
-            f"| {c.tier} | {c.verified} | {c.sources} | [Confirm or correct]({link}) |")
+            f"| {c.tier} | {c.verified} | {c.sources} | {asked}[Confirm or correct]({link}) |")
 
 
 HEADER = ("| Concept | Type | Severity | Status | Tier | Latest verified | Sources | |\n"
@@ -290,7 +292,8 @@ def render(bundle: Path) -> str:
              "If you know one of these products, each row's last link opens an issue "
              "with the concept and product filled in: say whether the claim is right, "
              "and correct it if not. Your answer is recorded on the concept as a "
-             "verified event in your name, with a link to your reply.", "",
+             "verified event in your name, with a link to your reply. A row marked Asked "
+             "already has an open issue (the maintainer asked someone); answer there.", "",
              "## Summary", "",
              f"{len(concepts)} concepts, {len(datasets)} products.", ""]
     for t in TIERS:
@@ -351,6 +354,7 @@ def selftest() -> int:
                               "confrontation: { status: confronted, observation: /datasets/beta.md }\n---\nClaim.\n"),
         "conventions/doctrine.md": ("---\ntype: convention\ntitle: A doctrine\nstatus: stable\n"
                                     "verified: { by: human:Steward, at: 2026-01-02T00:00:00Z }\n"
+                                    "review: https://github.com/open-science-pillars/nasa-daac-knowledge/issues/12\n"
                                     "---\nSee [the trap](../gotchas/trap.md); nothing about a product.\n"),
         "log.md": "# log\n",
     }
@@ -392,6 +396,11 @@ def selftest() -> int:
         assert "product=Alpha+product" in link, link
         doctrine_link = re.search(r"\[Confirm or correct\]\((\S+)\)", rest).group(1)
         assert "product=" not in doctrine_link, doctrine_link
+        # a concept under an open ask (review set) carries the Asked mark
+        # before its confirm link; no other row does
+        assert ("| 0 | [Asked](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/12), "
+                "[Confirm or correct](") in rest, rest
+        assert text.count("[Asked](") == 1, text
         # the digest, once present, is not a concept and does not change the render
         (bundle / "DIGEST.md").write_text(text, encoding="utf-8")
         assert render(bundle) == text
@@ -414,7 +423,7 @@ def selftest() -> int:
         assert r.returncode == 1 and "missing" in r.stdout, r.stdout + r.stderr
     assert names_shortname("ALPHA_L4_HEAT", "ALPHA_L4_HEAT_FLUX_X") and not names_shortname("ALPHA_L4_HE", "ALPHA_L4_HEAT_FLUX_X")
     assert not names_shortname("ALPHA_L4_HEAT_FLUX_X", "ALPHA_L4_HEAT") and not names_shortname("SHORT_A", "SHORT_A_B")
-    print("digest selftest: ok (joins by path, directory and ShortName; tiers; links; --check; --stdout)")
+    print("digest selftest: ok (joins by path, directory and ShortName; tiers; links; the Asked mark; --check; --stdout)")
     return 0
 
 
