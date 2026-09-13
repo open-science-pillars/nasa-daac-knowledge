@@ -101,11 +101,11 @@ every rung of that ladder and required at none:
 - **Consulted.** They read the bundle's `DIGEST.md` ("What this
   bundle claims about your products", one row per concept about their
   product, rendered by `digest.py`) and answer a "confirm this
-  concept" issue from its Confirm or correct link. The steward records
-  the answer on their behalf:
-  `uv run tools/sign.py <concept> --role provider --by human:<their id>
-  --source <the reply URL> --log knowledge/<bundle>/log.md --note
-  '<what they confirmed>'`. The event lands as
+  concept" issue, one they open from its Confirm or correct link or
+  one the steward opens for them with `solicit.py`. The steward
+  records the answer on their behalf with `record.py <issue>` (which
+  runs `sign.py`'s edit: `--role provider --by human:<their id>
+  --source <the reply URL>`, plus the log entry). The event lands as
   `{ by, at, role: provider, source }` and the concept becomes
   provider-confirmed; the checker's W10 asks for the source on any
   provider event recorded without one.
@@ -113,6 +113,14 @@ every rung of that ladder and required at none:
   their product.
 - **Steward.** They join the bundle's CODEOWNERS team and sign with
   `sign.py --role provider` themselves.
+
+The confirmation loop, from the steward's side, is five steps:
+
+1. Pick the concepts from the digest: a product's rows, or every stable concept with no provider event.
+2. `uv run tools/solicit.py knowledge/<bundle> --product "<title>" --to @<them> --mark`, then the same with `--apply`: one issue per concept, the concept inline, the digest marks the row Asked.
+3. They reply on the issue with one word: confirmed, correction, or not (my product).
+4. `uv run tools/record.py <issue number>`, then with `--apply`: confirmed writes the event and the log entry; a correction is the steward's to fix, followed by a fresh ask.
+5. Open the pull request with the printed commit message, `Confirm <path> (closes #N)`; its merge closes the issue.
 
 Review rules per the specification's stewardship section
 (docs/SPECIFICATION.md in open-science-pillars/marketplace) and the
@@ -167,7 +175,9 @@ what is on main resolves.
 | `check_prose.py` | The wording rules: specification rules cited by name rather than section number, no program bookkeeping in what a reader meets, no em or en dashes | `run_checks.sh`; each plugin's CI |
 | `signature_check.py` | Which stable concepts changed after their steward signed them, measured by the signing commit (the merge-then-sign rule) | `run_checks.sh`, reported on pull requests and main, enforced on a release tag |
 | `sign.py` | Appends a verified event to each named concept and one entry to the bundle log, so paying a signature debt is one command and one commit; `--role provider --by human:<id> --source <reply URL>` records a provider person's confirmation on their behalf (`--role community` a user's), the source being where they gave it | The steward |
-| `digest.py` | Renders a bundle's `DIGEST.md`, what the bundle claims about each product: one row per concept with its tier, latest verified date and a Confirm or correct link that opens the confirm-concept issue prefilled; `--check` fails when the committed digest is stale | `run_checks.sh` for `--check`; the steward after a concept change, and the page a provider person reads first |
+| `digest.py` | Renders a bundle's `DIGEST.md`, what the bundle claims about each product: one row per concept with its tier, latest verified date, an Asked mark when a confirm issue is open for it (`review:` in its frontmatter) and a Confirm or correct link that opens the confirm-concept issue prefilled; `--check` fails when the committed digest is stale | `run_checks.sh` for `--check`; the steward after a concept change, and the page a provider person reads first |
+| `solicit.py` | Opens one confirm-concept issue per selected concept (`--concept`, `--product`, `--unconfirmed`), the concept rendered inline and the people asked mentioned (`--to @handle`); skips a concept whose issue is open; `--mark` writes `review: <issue url>` on the concept; every write is a printed dry run until `--apply` | The steward, asking a provider person to confirm |
+| `record.py` | Reads a confirm-concept issue and its comments, finds the reply (confirmed, correction, not mine), and on confirmed writes the provider event in the replier's name with the reply as source, removes `review:`, adds the log entry and prints the commit message whose merge closes the issue; a correction is printed for the steward to fix; dry run until `--apply` | The steward, when the person has replied |
 | `verify_cmr.py`, `release_delta.py`, `RELEASE-DAY.md` | The ECCO product watch: the family manifest against CMR, the delta a new release introduces, and the day-one playbook | The steward, monthly and on release day |
 | `ecco_v4r4_dois.yaml`, `ecco_cite.py` | The DOI authority and the citation formatter; the selftest cross-checks every DOI the concepts and the family manifest quote against the authority | The cite-ecco skill in ocean-science; `run_checks.sh` for the selftest |
 | `mine_sources.py` | The community-issue miner: drafts gotcha candidates and routes can-I-use-X-for-Y questions and phrasings of a failed attempt to the validity-domain and dead-end registers; needs `GITHUB_TOKEN` | The steward, at a sweep |

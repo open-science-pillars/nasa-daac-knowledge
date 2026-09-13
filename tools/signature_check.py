@@ -14,8 +14,9 @@ concept OWES a signature until a new human event follows. This tool
 measures the debt by the signing commit, not by dates: for every stable
 concept with a human event it finds the commit that introduced the
 latest one, then compares that commit's text with the text under test,
-ignoring the `verified` events themselves and the classification
-keys (`spheres`, `gcmd`), which place a concept without changing its claim.
+ignoring the `verified` events themselves, the classification keys
+(`spheres`, `gcmd`), which place a concept without changing its claim,
+and `review`, the URL of an open ask or review (process metadata).
 
   signature_check.py BUNDLE_DIR             the working tree owes what?
   signature_check.py BUNDLE_DIR --at COMMIT the bundle as of COMMIT (the
@@ -87,11 +88,13 @@ def human_events(fm):
 
 
 # Frontmatter keys outside the signed text: the signature events
-# themselves, and the classification keys (which spheres a claim spans,
+# themselves, the classification keys (which spheres a claim spans,
 # its GCMD keywords) that place a concept in the organization without
-# changing what it claims. Adding or correcting one is not an edit the
-# steward re-signs.
-UNSIGNED_KEYS = ("verified", "spheres", "gcmd")
+# changing what it claims, and `review`, the URL of the open issue or
+# pull request where the concept is being asked about or reviewed
+# (solicit.py --mark writes it, record.py removes it). Adding,
+# changing or removing one is not an edit the steward re-signs.
+UNSIGNED_KEYS = ("verified", "spheres", "gcmd", "review")
 
 
 def signed_text(text):
@@ -227,12 +230,13 @@ def selftest():
     git(repo, "config", "user.email", "t@example.com")
     git(repo, "config", "user.name", "t")
 
-    def write(rel, body, verified=None, status="stable"):
+    def write(rel, body, verified=None, status="stable", review=None):
         # an event is (by, at) or (by, at, "role: r, source: u"): the OSP
         # extension keys ride inside the same one-line event
         ver = "" if verified is None else "verified:\n" + "".join(
             f"  - {{ by: {e[0]}, at: {e[1]}{', ' + e[2] if len(e) > 2 else ''} }}\n" for e in verified)
-        (repo / rel).write_text(f"---\ntype: dataset-gotcha\nstatus: {status}\n{ver}---\n{body}\n")
+        rev = f"review: {review}\n" if review else ""
+        (repo / rel).write_text(f"---\ntype: dataset-gotcha\nstatus: {status}\n{rev}{ver}---\n{body}\n")
 
     def commit(msg):
         git(repo, "add", "-A")
@@ -303,13 +307,26 @@ def selftest():
     commit("record the provider's confirmation of b")
     rc, out = run()
     assert rc == 0 and "owed 0" in out and "untraced 0" in out and "stable signed 2" in out, out
+    # an ask marked on the concept (review: the issue URL, written by
+    # solicit.py --mark) and its later removal are process metadata,
+    # outside the signed text: neither owes
+    signed_b = [("process:sweep", "2026-01-01T00:00:00Z"), ("human:t", "2026-01-02T00:00:00Z"),
+                ("process:sweep", "2026-02-01T00:00:00Z"), provider]
+    write(b, "another fact, corrected", signed_b, review="https://github.com/o/r/issues/12")
+    rc, out = run()
+    assert rc == 0 and "owed 0" in out and "pending 0" in out, out
+    commit("ask about b")
+    write(b, "another fact, corrected", signed_b)
+    rc, out = run()
+    assert rc == 0 and "owed 0" in out, out
+    commit("the ask is answered")
     # a DIGEST.md beside the concepts is not one of them
     (repo / "knowledge" / "b" / "DIGEST.md").write_text("# What this bundle claims about your products\n")
     commit("digest")
     rc, out = run()
     assert rc == 0 and "stable signed 2" in out and "DIGEST" not in out, out
     print("signature_check selftest: OK (owed, pending, cleared by re-sign, --at, --diff, --report, rename, draft, "
-          "provider event with role and source, digest skipped)")
+          "provider event with role and source, review key unsigned, digest skipped)")
 
 
 def main():

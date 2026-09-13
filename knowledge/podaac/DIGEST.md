@@ -2,7 +2,7 @@
 
 The `podaac` bundle, concept by concept, grouped by the product each one names. Rendered by `tools/digest.py` from the concepts' frontmatter; never edited by hand (the check routine fails when this page is stale).
 
-If you know one of these products, each row's last link opens an issue with the concept and product filled in: say whether the claim is right, and correct it if not. Your answer is recorded on the concept as a verified event in your name, with a link to your reply.
+If you know one of these products, each row's last link opens an issue with the concept and product filled in: say whether the claim is right, and correct it if not. Your answer is recorded on the concept as a verified event in your name, with a link to your reply. A row marked Asked already has an open issue (the maintainer asked someone); answer there.
 
 ## Summary
 
