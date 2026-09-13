@@ -4,6 +4,19 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-13 · STEWARD SIGNING of knowledge/podaac/datasets/oscar-v2.md,
+  knowledge/podaac/datasets/smap-sss-jpl.md,
+  knowledge/podaac/gotchas/oscar-versions-and-latency.md,
+  knowledge/podaac/gotchas/smap-sss-cold-water-sensitivity.md,
+  knowledge/podaac/gotchas/smap-sss-two-producers-differ.md,
+  knowledge/podaac/gotchas/oscar-is-geostrophic-plus-ekman.md,
+  knowledge/podaac/gotchas/smap-sss-coastal-and-sea-ice-contamination.md:
+  maintainer's review of PR 128 recorded on the maintainer's
+  instruction; the two dataset concepts and the three medium gotchas
+  promoted to stable; the two high-severity gotchas keep draft with this
+  first review until a second human review, per the two-review rule The
+  verified event is written on the steward's word. (steward)
+
 - 2026-09-13 · the seven OSCAR and SMAP salinity drafts, index.md and
   DIGEST.md: the coordinator's provenance lint applied. One OSCAR final
   granule (2020-01-01) opened and deleted, and the file-level facts in

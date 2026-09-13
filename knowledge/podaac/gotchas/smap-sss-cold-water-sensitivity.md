@@ -5,6 +5,7 @@ title: "SMAP salinity in cold water: the radiometer's sensitivity to salinity fa
 description: "The L-band brightness temperature changes less per unit of salinity in cold water than in warm water, so the same error in an input (wind speed, galaxy, calibration) becomes a larger salinity error at high latitudes. Both SMAP products carry this in their own terms: the JPL CAP quality flag marks SST below 5 C and its predicted uncertainty includes the cold-water effect; the RSS product flags SST below 5 C as moderate to strong degradation and its perturbation-based uncertainty grows with it. The validation numbers of a few tenths of a salinity unit are tropical and subtropical; the JPL group's own Arctic assessment finds differences to in situ near one salinity unit north of 50N and larger north of 65N, and the RSS notes report high-latitude biases that changed between versions and one still growing near 60S."
 tags: [smap, salinity, sss, sst, cold-water, sensitivity, high-latitude, arctic, southern-ocean, uncertainty]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/128 }
 severity: medium
 # medium: the degradation is documented, flagged in the products'
 # Level 2 records and visible in their Level 3 uncertainty fields, so
@@ -12,7 +13,7 @@ severity: medium
 # thresholds rather than through a field that looks right; no eval
 # case is required at this severity.
 dataset: ../datasets/smap-sss-jpl.md
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: jpl-guide

@@ -5,12 +5,13 @@ title: "Ice sheet boundaries and drainage basins differ by definition: a per-bas
 description: "Two basin schemes are in common use for the ice sheets: the GSFC drainage systems of Zwally and others (2012), drawn on ICESat surface slopes, and the IMBIE basins of Rignot and others, drawn on velocity and archived at NSIDC as NSIDC-0709. They divide the ice sheets differently: under the two definitions the IMBIE 2018 assessment gives West Antarctica areas that differ by close to 300,000 square kilometres. A per-basin height change, volume change or discharge that does not name its basin set, its grounded or floating scope and its ice sheet boundary is not comparable with one computed on the other."
 tags: [icesat2, atl15, its-live, drainage-basins, imbie, zwally, rignot, ice-sheet-boundary, grounding-line, greenland, antarctica]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/129 }
 severity: medium
 # medium: the basin sets are documented and the trap is a comparison
 # inconsistency, not a silently wrong single-product statistic; no
 # eval case is required.
 dataset: ../datasets/icesat2-atl15.md
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: gsfc-drainage-systems

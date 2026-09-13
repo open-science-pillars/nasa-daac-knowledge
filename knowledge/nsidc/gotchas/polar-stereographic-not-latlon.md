@@ -5,13 +5,14 @@ title: "The grids are polar stereographic metres, not latitude and longitude: ce
 description: "ATL15 and the MEaSUREs velocity mosaics are on polar stereographic grids (EPSG 3413 in the north with true scale at 70 N, EPSG 3031 in the south with true scale at 71 S) whose x and y are metres, and a grid that is square in those metres has a ground area per cell that changes with latitude through the projection's scale factor. Summing a field over cells with the nominal spacing squared as the area, or treating x and y as degrees, biases an ice sheet total and misplaces every feature; ATL15 ships the true ice-covered area per cell as ice_area, and ITS_LIVE Version 2 velocities are themselves in map units."
 tags: [icesat2, atl15, its-live, polar-stereographic, epsg-3413, epsg-3031, projection, cell-area, ice-area, volume-change]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/129 }
 severity: medium
 # medium: the projections are documented on every product page and
 # the products ship the area or state the map-unit convention; the
 # error is a few percent to tens of percent on a total and is caught
 # by the product's own area field; no eval case is required.
 dataset: ../datasets/icesat2-atl15.md
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: atl14-15-atbd
