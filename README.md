@@ -32,7 +32,7 @@ moves no authority, and it sits outside the text a signature binds. One
 signed concept feeds every runtime's projection; nothing is re-approved
 per runtime, and a packaging-only change needs no scientific
 re-approval. A provider person who takes the steward rung (below)
-joins the bundle's steward team (`podaac-stewards`, `esdis-stewards`),
+joins the bundle's steward team (`podaac-stewards`, `esdis-stewards`, `nsidc-stewards`),
 which CODEOWNERS already names.
 
 ## Install
