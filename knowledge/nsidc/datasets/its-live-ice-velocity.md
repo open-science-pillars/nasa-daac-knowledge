@@ -6,7 +6,7 @@ description: "Annual mean surface velocity mosaics for sixteen glacier regions i
 tags: [its-live, measures, ice-velocity, velocity-mosaic, autorift, greenland, antarctica, nsidc, cryosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:30:00Z }
 resource: https://nsidc.org/data/nsidc-0776/versions/2
-version: "NSIDC-0776 Version 2 (DOI 10.5067/JQ6337239C96, released July 2025), CMR concept C3618748415-NSIDC_CPRD with 546 granules, annual files 1984 through 2022 and one climatological file per region for 2014 through 2022, verified 2026-09-13; Version 1 (DOI 10.5067/6II6VW8LLWJ7, C3298525133-NSIDC_CPRD, 1985 through 2018, Landsat only) is still listed. Alternatives verified the same day: NSIDC-0725 Version 5 (C3298042936-NSIDC_CPRD, 2014-12-01 through 2023-11-30), NSIDC-0478 Version 2 (C3291179132-NSIDC_CPRD, 2000-09-03 through 2018-05-31), NSIDC-0670 Version 1 (C3291956575-NSIDC_CPRD, 1995-12-01 through 2015-10-31) and NSIDC-0484 Version 2 (C3291177469-NSIDC_CPRD, 1996-01-01 through 2016-12-31)"
+version: "NSIDC-0776 Version 2 (DOI 10.5067/JQ6337239C96; the user guide's version history dates Version 2 to July 2025), CMR concept C3618748415-NSIDC_CPRD with 546 granules, annual files 1984 through 2022 and one climatological file per region for 2014 through 2022, verified 2026-09-13; Version 1 (DOI 10.5067/6II6VW8LLWJ7, C3298525133-NSIDC_CPRD, 1985 through 2018, Landsat only) is still listed. Alternatives verified the same day: NSIDC-0725 Version 5 (C3298042936-NSIDC_CPRD, 2014-12-01 through 2023-11-30), NSIDC-0478 Version 2 (C3291179132-NSIDC_CPRD, 2000-09-03 through 2018-05-31), NSIDC-0670 Version 1 (C3291956575-NSIDC_CPRD, 1995-12-01 through 2015-10-31) and NSIDC-0484 Version 2 (C3291177469-NSIDC_CPRD, 1996-01-01 through 2016-12-31)"
 sources:
   - id: nsidc-0776-page
     resource: https://nsidc.org/data/nsidc-0776/versions/2
@@ -82,8 +82,9 @@ files do not.[^its-live-v1-description][^cmr-its-live] The CMR record
 for Version 2 (concept C3618748415-NSIDC_CPRD) listed 546 granules on
 2026-09-13, named NSIDC-0776_RGI<id>_<year>_V02.0.nc for the annual
 files and NSIDC-0776_RGI<id>_2014-2022_V02.0.nc for the
-climatology.[^cmr-its-live][^nsidc-0776-user-guide] The project asks
-that Gardner and others 2018 be cited beside the data.[^nsidc-0776-page][^gardner-2018]
+climatology.[^cmr-its-live][^nsidc-0776-user-guide] The project site
+and the user guide both ask that Gardner and others 2018 be cited
+beside the data.[^its-live-site][^nsidc-0776-user-guide][^gardner-2018]
 
 **Structure.** An annual file carries v (the hypotenuse of vx and vy),
 vx and vy (the mean annual velocity of a sinusoidal fit to each
@@ -209,6 +210,19 @@ speckle tracking rather than the multi-sensor synthesis:
   velocities, and area per cell varies.
 - [ice-sheet-boundaries-and-drainage-basins](../gotchas/ice-sheet-boundaries-and-drainage-basins.md):
   a per-basin discharge names the basin and gate definition it used.
+
+**Verification.** The NSIDC product pages for NSIDC-0776, NSIDC-0725,
+NSIDC-0478, NSIDC-0670 and NSIDC-0484 and each one's user guide were
+read in full on 2026-09-13, as were the ITS_LIVE project site and the
+version 1 product description and known issues documents it links,
+and the CMR collection records for every product named
+above.[^nsidc-0776-page][^nsidc-0776-user-guide][^nsidc-0725-page][^nsidc-0725-user-guide][^nsidc-0478-page][^nsidc-0478-user-guide][^nsidc-0670-page][^nsidc-0670-user-guide][^nsidc-0484-page][^nsidc-0484-user-guide][^its-live-site][^its-live-v1-description][^its-live-known-issues][^cmr-its-live]
+The NSIDC-0725 guide the version 5 page links still carries Version 4
+in its running header while its version history and file names are
+version 5.[^nsidc-0725-user-guide] Gardner and others 2018 is cited
+on its Crossref record (title, authors, journal, year, volume and
+pages verified the same day) and its abstract; the journal site was
+not reachable from the drafting session.[^gardner-2018]
 
 [^nsidc-0776-page]: NSIDC product page, NSIDC-0776 Version 2
 [^nsidc-0776-user-guide]: NSIDC-0776 Version 2 user guide

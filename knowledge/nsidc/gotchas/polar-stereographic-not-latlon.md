@@ -64,10 +64,18 @@ defined on grids that are square in these projected coordinates, the
 area of each grid cell is different from the square of the grid
 spacing, and the scaling between grid area and true area varies with
 distance from the true-scale latitude.[^atl14-15-atbd] NSIDC's own
-guide to the projection gives the size of the effect on its grids
-(true at 70 degrees): 6 percent distortion at the poles, rising to 31
-percent at the edge of the northern grid and 22 percent at the edge of
-the southern one.[^nsidc-ps-guide] For this reason ATL15 carries
+guide to the projection gives the size of the effect on its sea ice
+grids, which are true at 70 N and at 70 S: 6 percent distortion at
+the poles, rising to 31 percent at the edge of the northern grid and
+22 percent at the edge of the southern one; the guide does not say
+whether those figures are linear or area distortions, and its
+southern grid is true at 70 S where EPSG 3031 is true at 71 S, so the
+figures describe the guide's grids and not ATL15's
+exactly.[^nsidc-ps-guide] The ATL15 grids extend to 59 N and 60 S,
+which is closer to their true-scale latitudes than the guide's grid
+edges, so the distortion inside ATL15's extent is smaller than the
+guide's edge figures; the ATBD gives no figure and provides ice_area
+instead.[^atl15-user-guide][^atl14-15-atbd] For this reason ATL15 carries
 ice_area, the ice-covered area of each cell in square metres computed
 from the 100 m mask and cell areas and accounting for the projection's
 area distortion, and its reduced resolutions are area-weighted
@@ -82,8 +90,9 @@ applied the correction.[^nsidc-0776-user-guide]
 **Wrong-result mode.** An ice sheet volume change formed as the sum of
 delta_h times the nominal cell area (the grid spacing squared) weights
 every cell equally in map space while the ground area they represent
-differs by up to tens of percent between the standard latitude and
-the far edge of the grid; the bias grows with distance from the
+differs from it by an amount the sources bound at a few percent for
+the velocity products' scale and at 6 percent at the pole and tens of
+percent at the edges of NSIDC's wider sea ice grids; the bias grows with distance from the
 true-scale latitude, toward the pole in Antarctica and toward both the
 southern tip of Greenland and the far north of the Arctic regions, so
 it is not uniform and does not cancel between regions of gain and

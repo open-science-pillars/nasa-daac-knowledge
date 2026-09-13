@@ -55,8 +55,8 @@ holds cycles 3 through 29 at 20 km.[^atl15-user-guide] The CMR record
 (concept C3892628343-NSIDC_CPRD, version 005) listed 40 granules on
 2026-09-13, all at cycles 03 through 29 and revision 02, with granule
 time ranges ending on 2025-11-19 or 2025-11-20 by region.[^cmr-atl15] A reprocessed granule keeps its name and
-increments the revision; the superseded one is deleted after some
-days, and the highest revision is the one to use.[^atl15-user-guide]
+increments the revision; NSIDC deletes the superseded one, and the
+highest revision is the one to use.[^atl15-user-guide]
 
 **Structure.** The delta_h group holds the height difference between
 the model surface at each quarterly epoch and the reference surface,
@@ -104,7 +104,10 @@ floating mass change with a firn model, a glacial isostatic adjustment
 model, elastic compensation, tides and the inverse barometer applied
 on top of the altimetry.[^smith-2020] A regional volume change from
 ATL15 is a sum of delta_h or dhdt times ice_area over the cells of a
-named region; the epoch and the lag group are part of the statement.
+named region, which is the area weighting the ATBD itself applies
+when it forms the reduced-resolution averages, with ice_area as the
+ice-covered area of each cell; the epoch and the lag group are part
+of the statement.[^atl14-15-atbd][^atl15-data-dict]
 
 ## Uncertainty
 
@@ -173,6 +176,24 @@ named region; the epoch and the lag group are part of the statement.
   a per-basin total names the basin definition it used.
 - The four Antarctic quadrants overlap by one pixel in the 40 km
   product.[^atl14-15-known-issues]
+
+**Verification.** The product page, the version 5 user guide, the
+ATBD release 005, the data dictionary and the known issues note were
+read in full on 2026-09-13, and the CMR collection and granule records
+were read the same day.[^atl15-page][^atl15-user-guide][^atl14-15-atbd][^atl15-data-dict][^atl14-15-known-issues][^cmr-atl15]
+Two of those documents disagree on one date: the user guide's quality
+section says cycles 1 and 2 comprise all data before April 2020,
+while the ATBD says the planned precise pointing on the reference
+ground tracks began in April 2019 and that release 004 and later
+carry data from 2019 onward; this concept follows the ATBD, and the
+user guide's date reads as a typo to raise with
+NSIDC.[^atl15-user-guide][^atl14-15-atbd] Smith and others 2020 was
+read in full from the NASA technical reports server copy and its
+record verified against the Crossref registry the same day; the
+journal page sits behind a bot check.[^smith-2020] No granule was
+opened from the drafting session (the Earthdata Cloud host was
+unreachable), so the variable names and dimensions above come from
+the data dictionary.[^atl15-data-dict]
 
 [^atl15-page]: NSIDC product page, ATL15 Version 5
 [^atl15-user-guide]: ATL15 Version 5 user guide, NSIDC

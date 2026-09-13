@@ -62,12 +62,13 @@ weight one season over another.[^nsidc-0725-user-guide] The
 multi-year NSIDC-0670 mosaic is likewise an error-weighted average of
 whatever sources covered each point between 1995 and 2015, which its
 guide states is not a uniformly averaged velocity for the twenty
-years.[^nsidc-0670-user-guide] Ice discharge across a gate is the
-velocity normal to the gate times the ice thickness there, integrated
-along the gate, and no velocity mosaic carries a thickness variable;
-Gardner and others 2018 computed Antarctic discharge through an
-optimized flux gate from Landsat velocities spanning 2013 to 2015 and
-compared it with the earlier radar mapping.[^nsidc-0776-user-guide][^gardner-2018] At
+years.[^nsidc-0670-user-guide] Gardner and others 2018 computed
+Antarctic ice discharge through an optimized flux gate from Landsat
+velocities spanning 2013 to 2015 and compared it with the earlier
+radar mapping; the NSIDC-0776 guide names the flux gate cross-section
+as the other factor of a glacier flux beside the velocity, and no
+velocity mosaic's parameter table carries an ice thickness
+variable.[^gardner-2018][^nsidc-0776-user-guide][^nsidc-0725-user-guide] At
 NSIDC that product is BedMachine (NSIDC-0756 for Antarctica, IDBMG4
 for Greenland), which this bundle does not yet describe.[^cmr-bedmachine]
 

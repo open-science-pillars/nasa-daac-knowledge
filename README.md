@@ -1,7 +1,7 @@
 # nasa-daac-knowledge
 
-The provider knowledge bundles of Open Science Pillars, one per NASA
-archive under `knowledge/`: `knowledge/podaac/` holds the peculiarities
+The provider knowledge bundles of Open Science Pillars (PO.DAAC,
+ESDIS, NSIDC), one per NASA archive under `knowledge/`: `knowledge/podaac/` holds the peculiarities
 that make naive analyses of PO.DAAC-archived products (ECCO, SWOT,
 GRACE-FO, MUR, NASA-SSH, RAPID) silently wrong, as reviewable OKF
 concepts with sources, statuses and steward sign-off; `knowledge/esdis/`

@@ -47,9 +47,10 @@ glacial isostatic adjustment term, and its abstract describes the
 error estimates as intended to allow error propagation for mass-change
 estimates, which is to say the propagation is the user's.[^atl14-15-atbd]
 The surface of an ice sheet moves for reasons that carry no ice mass:
-a season of heavy snowfall raises it by the thickness of low-density
-snow, a warm summer lowers it by compaction of the firn, and the
-column-averaged density changes with both. Converting a height change
+the firn's thickness and air content change with anomalies in snow
+accumulation, skin temperature and surface melt, which are the three
+forcings a firn densification model takes, and the column-averaged
+density changes with them.[^smith-2020-supplement] Converting a height change
 into a mass change therefore means computing the change in the total
 firn air content over the interval with a firn densification model
 driven by a climate forcing, removing it from the measured height
@@ -79,8 +80,11 @@ Smith and others 2020 found the gains from increased snow
 accumulation that partially offset the coastal
 losses.[^smith-2020-supplement][^smith-2020]
 The number then carries only delta_h_sigma propagated through the sum,
-which omits the firn term entirely, so the interval is too narrow as
-well as the value being biased. A comparison of such a number with a
+while the reference conversion carries the firn air content trend
+error as its own correlated term beside the altimetry bias and the
+isostatic adjustment error, so the stated interval omits a term the
+conversion requires as well as the value being
+biased.[^atl15-data-dict][^smith-2020-supplement] A comparison of such a number with a
 GRACE mascon mass trend attributes the firn signal to a disagreement
 between the two observing systems.
 

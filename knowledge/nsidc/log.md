@@ -5,7 +5,9 @@ Newest first. One line per change: date, concept path, what changed, who.
 - 2026-09-13 · bundle scaffolded with two dataset concepts
   (datasets/icesat2-atl15.md, datasets/its-live-ice-velocity.md) and
   five gotchas (atl15-height-change-is-not-mass-change at severity
-  high with its eval case drafted in agent-evals under nsidc/cases/,
+  high with its eval case drafted in agent-evals pull request 14 under
+  nsidc/cases/, unregistered in any suite manifest until the
+  coordinator's follow-up,
   atl15-delta-h-reference-epoch, polar-stereographic-not-latlon,
   velocity-mosaic-epochs-and-gaps and
   ice-sheet-boundaries-and-drainage-basins at severity medium): all
@@ -24,5 +26,7 @@ Newest first. One line per change: date, concept path, what changed, who.
   (Gardner and others 2018 is cited on its Crossref record and
   abstract), imbie.org, and the Earthdata Cloud granule host, so no
   granule was opened and the ATL15 variable names come from the data
-  dictionary. (drafted by the knowledge seeder; coordinator review,
+  dictionary. One source disagreement recorded: the ATL15 version 5
+  user guide dates the end of cycles 1 and 2 to April 2020 and the
+  ATBD release 005 to April 2019; the concepts follow the ATBD. (drafted by the knowledge seeder; coordinator review,
   eval registration and roadmap reconciliation pending)
