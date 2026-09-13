@@ -1,7 +1,7 @@
 ---
 type: Attested Computation
 spheres: [hydrosphere, cryosphere]
-title: "Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested, draft)"
+title: "Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested)"
 description: "Sanctioned closure of the global mean sea level budget over a stated period: altimetry against ocean mass plus steric, the monthly residual and every trend with the interval the one sanctioned trend method states, the combined uncertainty with the deep-steric systematic stated separately, a verdict closed_within_uncertainty, the convention's corrections table as receipt facts, and a refusal (exit 3, never a number) for a period that crosses the GRACE to GRACE-FO gap without independent continuity evidence. Proven on a synthetic fixture with a known closure; no real-data anchor exists yet."
 tags: [sea-level, budget, closure, altimetry, nasa-ssh, grace, grace-fo, mascons, argo, steric, manometric, attested]
 runtime: python
@@ -15,7 +15,7 @@ executor:
 attester:
   resource: references/attesters/sea_level_budget_check.py
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: convention-slbc
@@ -68,7 +68,7 @@ sources:
     title: "Roemmich and Gilson (2009), The 2004 to 2008 mean and annual cycle of temperature, salinity, and steric height in the global ocean from the Argo Program, Progress in Oceanography 82, 81 to 100 (the gridded Argo steric estimate)"
 ---
 
-# Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested, draft)
+# Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested)
 
 The sanctioned computation behind any receipted statement that the
 global mean sea level budget closes, or does not, over a period: the

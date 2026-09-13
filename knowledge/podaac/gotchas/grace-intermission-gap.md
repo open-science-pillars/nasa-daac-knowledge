@@ -8,7 +8,7 @@ generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:00:00Z }
 severity: high
 dataset: ../datasets/grace-fo-mascons.md
 eval_case: grace-intermission-gap
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: nasa-tellus-grac-grfo-mascon-cri-grid-rl06

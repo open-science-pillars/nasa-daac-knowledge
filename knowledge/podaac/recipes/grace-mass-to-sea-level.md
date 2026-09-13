@@ -57,7 +57,7 @@ sources:
   - id: low-degree
     resource: ../gotchas/grace-low-degree-replacements.md
     title: "This bundle's degree-1 and C20/C30 gotcha"
-status: draft
+status: stable
 stale_after: 2027-03-13
 ---
 

@@ -59,7 +59,7 @@ sources:
   - id: roemmich-gilson-2009
     resource: https://doi.org/10.1016/j.pocean.2009.03.004
     title: "Roemmich and Gilson (2009), the gridded Argo steric estimate, Progress in Oceanography"
-status: draft
+status: stable
 stale_after: 2027-03-13
 ---
 

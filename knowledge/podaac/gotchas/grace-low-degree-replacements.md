@@ -11,7 +11,7 @@ severity: medium
 # re-application rather than through silently wrong single-product
 # statistics; no eval case is required at this severity.
 dataset: ../datasets/grace-fo-mascons.md
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: nasa-tellus-grac-grfo-mascon-cri-grid-rl06
