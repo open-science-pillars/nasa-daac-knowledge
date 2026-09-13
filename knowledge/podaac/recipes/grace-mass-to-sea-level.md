@@ -8,6 +8,7 @@ generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:00:00Z }
 verified:
   - { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
   - { by: human:PaulMRamirez, at: 2026-09-13T18:50:46Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/126 }
+  - { by: human:PaulMRamirez, at: 2026-09-13T21:22:05Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/127 }
 inputs:
   - dataset: ../datasets/grace-fo-mascons.md
   - collections: "TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4 (the CRI-filtered grid, with its mascon placement and formal-uncertainty files); the unfiltered grid TELLUS_GRAC-GRFO_MASCON_GRID_RL06.3_V4 for the leakage comparison"

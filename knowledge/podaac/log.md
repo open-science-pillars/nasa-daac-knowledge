@@ -4,6 +4,15 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-13 · STEWARD RE-SIGNING of
+  knowledge/podaac/computations/sea-level-budget.md,
+  knowledge/podaac/recipes/sea-level-budget.md,
+  knowledge/podaac/recipes/grace-mass-to-sea-level.md: maintainer's
+  review of PR 127, the first real-data run of the sea level budget,
+  recorded on the maintainer's instruction The new verified event is
+  appended on the steward's word, the earlier events kept as history.
+  (steward)
+
 - 2026-09-13 · STEWARD SIGNING of knowledge/podaac/datasets/oscar-v2.md,
   knowledge/podaac/datasets/smap-sss-jpl.md,
   knowledge/podaac/gotchas/oscar-versions-and-latency.md,
