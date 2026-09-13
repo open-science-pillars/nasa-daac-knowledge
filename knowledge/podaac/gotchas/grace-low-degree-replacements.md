@@ -26,6 +26,15 @@ sources:
   - id: loomis-2019
     resource: https://doi.org/10.1029/2019GL082929
     title: "Loomis, Rachlin and Luthcke, 2019, Improved Earth oblateness rate reveals increased ice sheet losses and mass-driven sea level rise, Geophysical Research Letters (satellite laser ranging C20 and C30, and what the replacement does to ice-sheet and ocean-mass trends)"
+  - id: podaac-grace-docs
+    resource: https://podaac.jpl.nasa.gov/gravity/grace-documentation
+    title: "PO.DAAC GRACE documentation index: the technical notes, including TN-13 (degree-1 geocenter coefficients, one per processing center) and TN-14 (NASA GSFC satellite laser ranging C20 and C30)"
+  - id: tn-13-jpl
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/grace/open/docs/TN-13_GEOC_JPL_RL0601.txt
+    title: "GRACE Technical Note 13c: degree-1 (geocenter) gravity coefficients from JPL RL06"
+  - id: tn-14
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/grace/open/docs/TN-14_C30_C20_GSFC_SLR.txt
+    title: "GRACE Technical Note 14: NASA GSFC SLR C20 and C30 solutions"
   - id: gia
     resource: ./grace-gia-correction.md
     title: "This bundle's GIA gotcha: the same shape of trap, a model choice applied before the user sees the data"
@@ -66,12 +75,21 @@ belong to the spherical-harmonic workflow, not to this one.
 (link above).[^nasa-tellus-grac-grfo-mascon-cri-grid-rl06] The two
 papers document the series and the trend sensitivity.[^sun-2016][^loomis-2019]
 The double-application failure mode follows from the product being
-pre-corrected, as with GIA.[^gia] Drafted without live access to the
-sources from the drafting environment; the maintainer's review checks
-each link before the concept goes stable.
+pre-corrected, as with GIA.[^gia] Live checks on 2026-09-13: the
+PO.DAAC documentation index lists the technical notes by name, TN-13
+for the degree-1 coefficients (one file per processing center) and
+TN-14 for the GSFC laser-ranging C20 and C30 solutions,[^podaac-grace-docs][^tn-13-jpl][^tn-14]
+which fixes the identity of the substituted series; which of them this
+product applies is stated in its release note on the PO.DAAC archive
+host, not reachable from the session, so the maintainer's review reads
+it; the two papers' DOIs resolved to their journal pages, which sat
+behind a bot check.
 
 [^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]: PO.DAAC collection page: TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
 [^grace-tellus]: GRACE Tellus project site: the technical notes on the replacements
 [^sun-2016]: Sun, Riva and Ditmar, 2016, Journal of Geophysical Research: Solid Earth, doi:10.1002/2016JB013073
 [^loomis-2019]: Loomis, Rachlin and Luthcke, 2019, Geophysical Research Letters, doi:10.1029/2019GL082929
+[^podaac-grace-docs]: PO.DAAC GRACE documentation index
+[^tn-13-jpl]: GRACE Technical Note 13c, JPL degree-1 coefficients
+[^tn-14]: GRACE Technical Note 14, GSFC SLR C20 and C30
 [^gia]: This bundle's GIA gotcha

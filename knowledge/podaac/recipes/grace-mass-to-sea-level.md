@@ -108,9 +108,15 @@ only check on the trend across the gap.[^velicogna-2020]
 **Provenance.** Every number quoted from this recipe names the product
 version, the baseline period, the GIA model, the low-degree series,
 the region definition at mascon scale, the window and the gap
-handling. Drafted without live access to the sources from the
-drafting environment; the maintainer's review checks each link before
-the recipe goes stable.
+handling. Live checks on 2026-09-13: the CMR record for the collection
+(version RL06.3Mv04, DOI 10.5067/TEMSC-3JC634) states 4,551 mascons on
+an equal-area 3-degree grid, the CRI partition of the coastal mascons,
+the gain factors as an option for sub-mascon hydrology with Wiese and
+others 2016 as their reference, and the product as the recommended one
+for land-ice applications;[^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]
+the WCRP 2018 budget paper answered on the journal's site;[^wcrp-2018]
+the remaining DOIs resolved to their journal pages behind a bot check,
+so the maintainer's review opens them.
 
 [^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]: PO.DAAC collection page: TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
 [^watkins-2015]: Watkins and others, 2015, Journal of Geophysical Research: Solid Earth, doi:10.1002/2014JB011547
