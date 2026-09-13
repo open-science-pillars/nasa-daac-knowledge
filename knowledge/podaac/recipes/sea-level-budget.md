@@ -5,7 +5,9 @@ title: "Closing the global mean sea level budget: altimetry against GRACE-FO mas
 description: "The three terms of the sea level budget, which product supplies each, which gotcha or convention holds each term's trap (altimetry corrections and era dependence; the Argo deep-steric floor; mass with its GIA model, leakage, the inter-mission gap and the low-degree replacements), the matching-period rule at the month, and how the residual is read: correction consistency before missing physics."
 tags: [sea-level, budget, closure, altimetry, nasa-ssh, grace, grace-fo, argo, steric, manometric, recipe]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
+  - { by: human:PaulMRamirez, at: 2026-09-13T18:50:46Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/126 }
 inputs:
   - dataset: ../datasets/nasa-ssh.md
   - dataset: ../datasets/grace-fo-mascons.md

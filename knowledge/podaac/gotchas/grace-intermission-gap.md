@@ -5,7 +5,9 @@ title: "The GRACE to GRACE-FO gap: an eleven-month hole that a continuous-lookin
 description: "GRACE stopped delivering science data in mid 2017 and GRACE-FO began in mid 2018, so the mascon record has no months between them; earlier battery-management months are missing too. A fit that treats the record as one continuous series puts any offset between the two missions, and the annual cycle the hole removes, into the trend and the acceleration, and nothing raises an error because the monthly files simply skip the missing epochs."
 tags: [grace, grace-fo, gap, inter-mission, trend, acceleration, ice-sheet, ocean-mass, mascons]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:00:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
+  - { by: human:PaulMRamirez, at: 2026-09-13T18:50:46Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/126 }
 severity: high
 dataset: ../datasets/grace-fo-mascons.md
 eval_case: grace-intermission-gap

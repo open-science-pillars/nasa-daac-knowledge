@@ -5,6 +5,16 @@ Newest first. One line per change: date, concept path, what changed, who.
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
 - 2026-09-13 · STEWARD RE-SIGNING of
+  knowledge/podaac/gotchas/grace-intermission-gap.md,
+  knowledge/podaac/gotchas/grace-low-degree-replacements.md,
+  knowledge/podaac/recipes/grace-mass-to-sea-level.md,
+  knowledge/podaac/computations/sea-level-budget.md,
+  knowledge/podaac/recipes/sea-level-budget.md: re-sign after the
+  Crossref and full-text verification pass, on the maintainer's
+  instruction to sign on their behalf The new verified event is appended
+  on the steward's word, the earlier events kept as history. (steward)
+
+- 2026-09-13 · STEWARD RE-SIGNING of
   knowledge/podaac/datasets/grace-fo-mascons.md,
   knowledge/podaac/gotchas/grace-intermission-gap.md,
   knowledge/podaac/gotchas/grace-low-degree-replacements.md,
