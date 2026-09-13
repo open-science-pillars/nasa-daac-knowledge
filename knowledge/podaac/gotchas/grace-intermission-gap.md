@@ -72,9 +72,17 @@ timeline).[^nasa-tellus-grac-grfo-mascon-cri-grid-rl06][^grace-tellus]
 The two cited papers document the gap, the two missions' continuity
 and the bridging evidence for the ice sheets.[^landerer-2020][^velicogna-2020]
 The dataset concept lists the gap among the product's known issues.[^dataset]
-Drafted without live access to the sources from the drafting
-environment; the maintainer's review checks each link before the
-concept goes stable.
+Live checks on 2026-09-13 from a session with the NASA hosts allowed: the
+CMR record for the collection (concept C3195527175-POCLOUD, version
+RL06.3Mv04, DOI 10.5067/TEMSC-3JC634) reports one granule covering
+2002-04-16 through 2026-07-16, so the months that exist and the months
+that do not are read from the file's time axis, not from the catalog;
+the PO.DAAC collection page and its documentation index answered; each
+paper's DOI resolved to its journal page at doi.org, and the pages
+themselves sat behind a bot check, so the papers are cited on their
+titles and abstracts as published and the maintainer's review opens
+them; the product release note on the PO.DAAC archive host was not
+reachable from the session.
 
 [^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]: PO.DAAC collection page: TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
 [^grace-tellus]: GRACE Tellus project site: mission timeline and data availability

@@ -6,7 +6,7 @@ description: "Monthly mass anomaly (equivalent water thickness) on 3-degree masc
 tags: [grace, grace-fo, mascons, mass, podaac]
 generated: { by: knowledge-seeder/claude, at: 2026-07-06T00:00:00Z }
 resource: https://podaac.jpl.nasa.gov/dataset/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
-version: "JPL RL06.3 version 4, CMR-verified 2026-07-04; CRI-filtered grid (TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4) and unfiltered grid (TELLUS_GRAC-GRFO_MASCON_GRID_RL06.3_V4) both live"
+version: "JPL RL06.3 version 4 (RL06.3Mv04, DOI 10.5067/TEMSC-3JC634), CMR-verified 2026-07-04 and again 2026-09-13 with one granule covering 2002-04-16 through 2026-07-16; CRI-filtered grid (TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4) and unfiltered grid (TELLUS_GRAC-GRFO_MASCON_GRID_RL06.3_V4) both live"
 status: stable
 verified: { by: human:PaulMRamirez, at: 2026-07-04T00:00:00Z }
 stale_after: 2027-01-04
@@ -15,7 +15,7 @@ stale_after: 2027-01-04
 # GRACE/GRACE-FO JPL mascon solutions
 
 **Identity.** Monthly surface mass anomalies (expressed as equivalent
-water thickness) estimated directly on 3-degree spherical-cap mass
+water thickness) estimated directly on 4,551 equal-area 3-degree spherical-cap mass
 concentration blocks (mascons) from GRACE (2002-2017) and GRACE-FO
 (2018-present) inter-satellite ranging; the JPL solution line, RL06.3
 v4 as of the verification date. Distributed as 0.5-degree grids that

@@ -39,6 +39,24 @@ run uv run tools/receipt_identity.py --selftest
 run uv run tools/solicit.py --selftest
 run uv run tools/record.py --selftest
 run uv run tools/check_prose.py .
+# The sea level budget chain, end to end on every change: the executor
+# writes a receipt on the fixture, the attester passes it; the refusal
+# path (a period across the inter-mission gap, no bridge) exits 3 and
+# attests as a refusal. Receipts live in a temporary directory only.
+sea_level_budget_chain() {
+  local x=knowledge/podaac/references/computations/sea_level_budget.py
+  local a=knowledge/podaac/references/attesters/sea_level_budget_check.py
+  local tmp; tmp=$(mktemp -d)
+  uv run "$x" --fixture --seed 7 --period 2005-01:2016-12 --runtime run_checks --receipt "$tmp/receipt.json" || return 1
+  uv run "$a" "$tmp/receipt.json" || return 1
+  uv run "$x" --fixture --seed 7 --period 2016-01:2019-12 --runtime run_checks --receipt "$tmp/refusal.json"
+  [ "$?" -eq 3 ] || { echo "sea_level_budget_chain: the gap refusal did not exit 3"; return 1; }
+  uv run "$a" "$tmp/refusal.json" | tee "$tmp/verdict.txt" || return 1
+  grep -q "^PASS refusal" "$tmp/verdict.txt" || { echo "sea_level_budget_chain: the refusal did not attest as a refusal"; return 1; }
+  rm -rf "$tmp"
+}
+run uv run knowledge/podaac/references/attesters/sea_level_budget_check.py --selftest
+run sea_level_budget_chain
 # Sibling plugin clones, when present, have their local concepts checked
 # for owed signatures, their scripts for undeclared dependencies and their
 # prose for the wording rules; an absent sibling is not a failure here.

@@ -54,6 +54,7 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 ## recipes
 
 - [From a regional GRACE mass change to a sea level equivalent, with its uncertainty](recipes/grace-mass-to-sea-level.md), status: draft
+- [Closing the global mean sea level budget: altimetry against GRACE-FO mass plus Argo steric](recipes/sea-level-budget.md), status: draft
 - [Geostrophic velocity and thermal wind on the native grid](recipes/ecco-geostrophic-balance.md), status: stable
 - [Closed heat budget on the ECCO v4r4 native grid](recipes/ecco-heat-budget.md), status: stable
 - [Meridional heat transport at 26.5N from ECCO v4r4](recipes/ecco-mht-26n.md), status: stable
@@ -119,6 +120,7 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [Atlantic overturning at 26.5N from ECCO v4r4 (attested)](computations/ecco-amoc-26n.md), status: stable
 - [ECCO overturning against RAPID at 26.5N (attested)](computations/ecco-rapid-amoc-confrontation.md), status: stable
 - [ECCO regional sea level against NASA-SSH altimetry (attested)](computations/ecco-ssh-vs-altimetry.md), status: draft
+- [Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested, draft)](computations/sea-level-budget.md), status: draft (a synthetic fixture with a known closure proves the chain; no real-data anchor yet; refuses a period across the GRACE to GRACE-FO gap without a bridge)
 
 ## validity-domains
 
