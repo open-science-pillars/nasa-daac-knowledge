@@ -9,8 +9,11 @@ it is written, how it is checked, and honestly which of those is a
 mandate versus a reviewed practice. The archive-observatory repository's
 metadata sweeper and its harness read these requirements; the bundle is
 stewarded separately from podaac/ through CODEOWNERS scoping. Every
-concept stays a draft until the Application Support and Science
-Enabling Team (ASSET) signs it.
+concept is a draft today; the steward promotes one once it has been
+reviewed, and a confirmation from the Application Support and Science
+Enabling Team (ASSET) is invited on each and never required.
+
+What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md).
 
 ## requirements
 
