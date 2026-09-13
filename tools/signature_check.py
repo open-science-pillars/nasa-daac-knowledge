@@ -145,13 +145,16 @@ def later_commits(repo, ref, rel, since):
     return [ln for ln in out.strip().split("\n") if ln.strip()]
 
 
+NOT_CONCEPTS = ("index.md", "log.md", "DIGEST.md")   # bundle files with no frontmatter
+
+
 def concept_files(repo, ref, bundle_rel):
     if ref:
         names = git(repo, "ls-tree", "-r", "--name-only", ref, "--", bundle_rel).split("\n")
-        return sorted(n for n in names if n.endswith(".md") and Path(n).name not in ("index.md", "log.md"))
+        return sorted(n for n in names if n.endswith(".md") and Path(n).name not in NOT_CONCEPTS)
     root = Path(repo) / bundle_rel
     return sorted(p.relative_to(repo).as_posix() for p in root.rglob("*.md")
-                  if p.name not in ("index.md", "log.md"))
+                  if p.name not in NOT_CONCEPTS)
 
 
 def audit(repo: Path, bundle_rel: str, ref=None):
@@ -225,8 +228,10 @@ def selftest():
     git(repo, "config", "user.name", "t")
 
     def write(rel, body, verified=None, status="stable"):
+        # an event is (by, at) or (by, at, "role: r, source: u"): the OSP
+        # extension keys ride inside the same one-line event
         ver = "" if verified is None else "verified:\n" + "".join(
-            f"  - {{ by: {b}, at: {a} }}\n" for b, a in verified)
+            f"  - {{ by: {e[0]}, at: {e[1]}{', ' + e[2] if len(e) > 2 else ''} }}\n" for e in verified)
         (repo / rel).write_text(f"---\ntype: dataset-gotcha\nstatus: {status}\n{ver}---\n{body}\n")
 
     def commit(msg):
@@ -281,7 +286,30 @@ def selftest():
     commit("odd draft")
     rc, out = run()
     assert rc == 0 and "not stable 1" in out, out
-    print("signature_check selftest: OK (owed, pending, cleared by re-sign, --at, --diff, --report, rename, draft)")
+    # a provider's confirmation recorded on their behalf, with role and
+    # source inside the event: the extra keys sit outside the signed text,
+    # the event is found in its commit like any other, and it clears a debt
+    provider = ("human:provider", "2026-04-01T00:00:00Z",
+                "role: provider, source: https://github.com/o/r/issues/9#issuecomment-1")
+    write(b, "another fact, corrected", [("process:sweep", "2026-01-01T00:00:00Z"), ("human:t", "2026-01-02T00:00:00Z"),
+                                          ("process:sweep", "2026-02-01T00:00:00Z")])
+    commit("correct b")
+    rc, out = run()
+    assert rc == 1 and "OWED  knowledge/b/gotchas/b.md" in out, out
+    write(b, "another fact, corrected", [("process:sweep", "2026-01-01T00:00:00Z"), ("human:t", "2026-01-02T00:00:00Z"),
+                                          ("process:sweep", "2026-02-01T00:00:00Z"), provider])
+    rc, out = run()
+    assert rc == 0 and "PENDING  knowledge/b/gotchas/b.md" in out and "owed 0" in out, out
+    commit("record the provider's confirmation of b")
+    rc, out = run()
+    assert rc == 0 and "owed 0" in out and "untraced 0" in out and "stable signed 2" in out, out
+    # a DIGEST.md beside the concepts is not one of them
+    (repo / "knowledge" / "b" / "DIGEST.md").write_text("# What this bundle claims about your products\n")
+    commit("digest")
+    rc, out = run()
+    assert rc == 0 and "stable signed 2" in out and "DIGEST" not in out, out
+    print("signature_check selftest: OK (owed, pending, cleared by re-sign, --at, --diff, --report, rename, draft, "
+          "provider event with role and source, digest skipped)")
 
 
 def main():

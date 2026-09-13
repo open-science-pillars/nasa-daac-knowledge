@@ -14,7 +14,9 @@ ERRORS (OKF v0.2 §11 conformance)
   E1  concept has no parseable YAML frontmatter
   E2  frontmatter missing a non-empty `type`
   E3  `generated` present but malformed (needs mapping with `by`)
-  E4  `verified` present but malformed (mapping or list of {by, at})
+  E4  `verified` present but malformed (mapping or list of {by, at};
+      an event may also carry the OSP extension keys `role` and
+      `source`, allowed by OKF's extensions rule)
   E5  `status` outside draft | stable | deprecated
   E6  `stale_after` not YYYY-MM-DD
   E7  `sources` entry missing `resource`
@@ -28,12 +30,17 @@ ERRORS (OKF v0.2 §11 conformance)
       `sphere_scope: cross-cutting` (the core conventions)
   E11 (OSP) a sphere value outside the five, or `gcmd` not a list of
       strings
+  E12 (OSP) a `verified` event's `role` outside maintainer | provider |
+      community (absent means maintainer), or its `source` not a URL
 
 WARNINGS (SHOULDs and OSP rules)
   W1  body footnote ref has no matching sources id (OKF v0.2 §5.1 join)
   W2  sources id never referenced by a body footnote
   W3  root index.md missing okf_version
-  W4  concept unverified or machine-confirmed only (tier report)
+  W4  concept unverified or machine-confirmed only (tier report; the
+      tiers are unverified, machine-confirmed, human-reviewed and
+      provider-confirmed, the last one a `human:` event with
+      `role: provider`)
   W5  stale: today >= stale_after (OKF v0.2 §5.5)
   W6  log.md date heading not ISO YYYY-MM-DD (OKF v0.2 §9)
   W7  legacy v0.1/v0.6 key present (timestamp, verified_by, evidence,
@@ -45,6 +52,17 @@ WARNINGS (SHOULDs and OSP rules)
       org repository, usually a plugin: provider knowledge must not
       depend on a plugin file; upstream the fact or cite the provider's
       own source
+  W10 (OSP) a `role: provider` event without a `source`: the steward
+      records a provider's confirmation on their behalf with the URL
+      where it was given (an issue reply, a review comment), so a
+      reader can check it. A provider person who is a steward signs
+      with sign.py and needs no source, but the steward team's
+      membership lives on GitHub, not in CODEOWNERS (which names the
+      team), so the checker cannot tell the two apart offline and
+      warns on every provider event that lacks a source
+
+A bundle's DIGEST.md (rendered by digest.py) and its index.md and
+log.md are not concepts and are not parsed as such.
 
 FINDINGS (OSP candidate section 5.10; only under --findings, which
 touches `type: finding` concepts and nothing else)
@@ -75,6 +93,7 @@ touches `type: finding` concepts and nothing else)
 
 Usage: check_okf_v02.py BUNDLE_DIR [--strict] [--findings [--explain]]
                         [--provider REPO]
+       check_okf_v02.py --selftest
 """
 
 import argparse
@@ -83,7 +102,9 @@ import hashlib
 import json
 import math
 import re
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 try:
@@ -106,6 +127,9 @@ ORG_FILE_URL = re.compile(rf"https?://github\.com/{ORG}/([\w.-]+)/(blob|raw|tree
 UNPINNED_REFS = {"main", "master", "HEAD"}
 MD_LINK = re.compile(r"\]\((https?://[^)\s]+)\)")
 PROVIDER_REPO = None   # set by --provider: this bundle's own org repository, enables W9
+ROLES = {"maintainer", "provider", "community"}   # a verified event's role (OSP extension)
+URL_RE = re.compile(r"^https?://\S+$")
+NOT_CONCEPTS = {"index.md", "log.md", "DIGEST.md"}   # bundle files that carry no frontmatter
 
 
 def split_frontmatter(text: str):
@@ -124,11 +148,17 @@ def check_actor(value, where, out, path):
 
 
 def tier(verified) -> str:
+    """The trust tier the events earn: unverified, machine-confirmed,
+    human-reviewed, or provider-confirmed (a human event whose role is
+    provider; an event with no role is the maintainer's)."""
     events = verified if isinstance(verified, list) else [verified] if verified else []
-    bys = [e.get("by", "") for e in events if isinstance(e, dict)]
-    if any(isinstance(b, str) and b.startswith("human:") for b in bys):
+    events = [e for e in events if isinstance(e, dict)]
+    humans = [e for e in events if isinstance(e.get("by"), str) and e["by"].startswith("human:")]
+    if any(e.get("role") == "provider" for e in humans):
+        return "provider-confirmed"
+    if humans:
         return "human-reviewed"
-    return "machine-confirmed" if bys else "unverified"
+    return "machine-confirmed" if events else "unverified"
 
 
 def check_concept(path: Path, out: list, tiers: dict):
@@ -166,11 +196,20 @@ def check_concept(path: Path, out: list, tiers: dict):
         for e in events:
             if not isinstance(e, dict) or "by" not in e or "at" not in e:
                 out.append(("E4", path, "`verified` events need `by` and `at`"))
-            else:
-                check_actor(e["by"], "verified.by", out, path)
+                continue
+            check_actor(e["by"], "verified.by", out, path)
+            role = e.get("role", "maintainer")
+            if role not in ROLES:
+                out.append(("E12", path, f"verified.role '{role}' outside {sorted(ROLES)}"))
+            source = e.get("source")
+            if source is not None and not (isinstance(source, str) and URL_RE.match(source)):
+                out.append(("E12", path, f"verified.source '{source}' is not a URL"))
+            elif role == "provider" and source is None:
+                out.append(("W10", path, f"provider event by {e['by']} has no `source`: "
+                                         "record where the confirmation was given"))
     t = tier(ver)
     tiers[t] = tiers.get(t, 0) + 1
-    if t != "human-reviewed":
+    if t in ("unverified", "machine-confirmed"):
         out.append(("W4", path, f"trust tier: {t}"))
 
     ctype = str(fm.get("type") or "").strip()
@@ -706,10 +745,66 @@ def check_log(path: Path, out: list):
             out.append(("W6", path, f"log heading '{m.group(1)}' not ISO YYYY-MM-DD"))
 
 
+def selftest() -> int:
+    """The verified-event rules on a throwaway bundle: the extension keys
+    role and source (E12, W10, the provider-confirmed tier), E4 unchanged
+    for a missing at, an event with no role still human-reviewed, and
+    DIGEST.md not parsed as a concept."""
+    def concept(verified: str) -> str:
+        return ("---\ntype: dataset-gotcha\nspheres: [hydrosphere]\ntitle: t\nstatus: stable\n"
+                f"generated: {{ by: process:x, at: 2026-01-01T00:00:00Z }}\n{verified}---\n\nBody.\n")
+
+    url = "https://github.com/open-science-pillars/nasa-daac-knowledge/issues/9#issuecomment-1"
+    cases = {
+        "plain.md": "verified: { by: human:Steward, at: 2026-01-02T00:00:00Z }\n",
+        "maintainer.md": "verified: { by: human:Steward, at: 2026-01-02T00:00:00Z, role: maintainer }\n",
+        "provider.md": ("verified:\n  - { by: human:Steward, at: 2026-01-02T00:00:00Z }\n"
+                        f"  - {{ by: human:Provider, at: 2026-01-03T00:00:00Z, role: provider, source: {url} }}\n"),
+        "provider-no-source.md": "verified: { by: human:Provider, at: 2026-01-03T00:00:00Z, role: provider }\n",
+        "bad-role.md": "verified: { by: human:Steward, at: 2026-01-02T00:00:00Z, role: reviewer }\n",
+        "bad-source.md": "verified: { by: human:Steward, at: 2026-01-02T00:00:00Z, role: community, source: an issue }\n",
+        "no-at.md": "verified: { by: human:Steward, role: provider }\n",
+        "machine.md": "verified: { by: process:sweep, at: 2026-01-02T00:00:00Z }\n",
+        "none.md": "",
+    }
+    with tempfile.TemporaryDirectory() as d:
+        bundle = Path(d) / "b"
+        (bundle / "gotchas").mkdir(parents=True)
+        (bundle / "index.md").write_text('---\nokf_version: "0.2"\n---\n# b\n', encoding="utf-8")
+        (bundle / "DIGEST.md").write_text("# What this bundle claims about your products\n", encoding="utf-8")
+        for name, ver in cases.items():
+            (bundle / "gotchas" / name).write_text(concept(ver), encoding="utf-8")
+        r = subprocess.run([sys.executable, __file__, str(bundle)], capture_output=True, text=True)
+        out = r.stdout + r.stderr
+    codes = {}
+    for line in out.split("\n"):
+        m = re.match(r"^(E\d+|W\d+)\s+\S*/(\S+\.md):", line)
+        if m:
+            codes.setdefault(m.group(2), set()).add(m.group(1))
+    assert r.returncode == 1, out
+    assert codes.get("bad-role.md") == {"E12"}, (codes, out)
+    assert codes.get("bad-source.md") == {"E12"}, (codes, out)
+    assert codes.get("no-at.md") == {"E4"}, (codes, out)   # E4 as before; the tier still reads `by`
+    assert codes.get("provider-no-source.md") == {"W10"}, (codes, out)
+    for clean in ("plain.md", "maintainer.md", "provider.md"):
+        assert clean not in codes, (clean, codes, out)
+    assert codes.get("machine.md") == {"W4"} and codes.get("none.md") == {"W4"}, (codes, out)
+    assert "DIGEST.md" not in out, out
+    # provider.md, provider-no-source.md and no-at.md carry a provider role;
+    # plain, maintainer, bad-role and bad-source are human-reviewed
+    assert "provider-confirmed 3" in out and "human-reviewed 4" in out, out
+    assert "machine-confirmed 1" in out and "unverified 1" in out and "concepts: 9" in out, out
+    assert tier({"by": "human:x", "at": "t", "role": "community"}) == "human-reviewed"
+    assert tier([{"by": "process:x", "at": "t"}, {"by": "human:x", "at": "t", "role": "provider"}]) == "provider-confirmed"
+    print("check_okf_v02 selftest: ok (E4, E12, W10, the four tiers, DIGEST.md skipped)")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("bundle", type=Path)
+    ap.add_argument("bundle", type=Path, nargs="?")
+    ap.add_argument("--selftest", action="store_true", help="the verified-event rules on a throwaway bundle")
     ap.add_argument("--strict", action="store_true", help="warnings fail too")
     ap.add_argument("--findings", action="store_true",
                     help="apply the finding rules (candidate section 5.10) to "
@@ -720,6 +815,10 @@ def main() -> int:
                     help="this bundle is a provider (canonical) bundle living in org "
                          "repository REPO; enables W9 for citations into other org repositories")
     args = ap.parse_args()
+    if args.selftest:
+        return selftest()
+    if args.bundle is None:
+        ap.error("BUNDLE_DIR required (or --selftest)")
     global PROVIDER_REPO
     PROVIDER_REPO = args.provider
 
@@ -738,6 +837,8 @@ def main() -> int:
             check_index(path, path.parent == args.bundle, out)
         elif path.name == "log.md":
             check_log(path, out)
+        elif path.name in NOT_CONCEPTS:
+            continue   # the rendered digest: a report on the concepts, not one of them
         else:
             fm, body = check_concept(path, out, tiers)
             if args.findings and fm is not None and fm.get("type") == FINDING_TYPE:

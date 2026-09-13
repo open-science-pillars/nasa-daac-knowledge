@@ -13,7 +13,7 @@ the manifest and its coverage meter is the completeness claim.
 ## families
 
 Ten demo-critical families authored; the remaining sixteen arrive via
-good-first issues at the community handoff. The coverage meter in
+good-first issues, open to the community. The coverage meter in
 tools/check_fields.py tracks progress toward 26/26 families and 90/90
 ShortNames.
 

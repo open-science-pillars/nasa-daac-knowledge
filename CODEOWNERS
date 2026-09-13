@@ -2,17 +2,18 @@
 # build-kit), per the specification's stewardship and canonical-home rules
 # (docs/SPECIFICATION.md in open-science-pillars/marketplace). The tools,
 # gates and releases are the foundation team's; each bundle is its
-# stewards'. One person occupies every team during the interim solo period;
-# a provider steward accepts a bundle by joining its team (the steward
-# playbook), never by an edit here.
+# stewards'. One person occupies every team today; a provider person who
+# takes the steward rung joins the bundle's team (the steward playbook),
+# never by an edit here. A consulted provider's confirmation is recorded
+# on the concept by the steward and needs no entry here.
 * @open-science-pillars/foundation-maintainers
 
 # The PO.DAAC bundle.
 /knowledge/podaac/  @open-science-pillars/podaac-stewards
 
-# The ESDIS cross-archive requirements bundle; the ASSET steward entries
-# join the team at the co-build signing, their names landing with their
-# first verified events, never before.
+# The ESDIS cross-archive requirements bundle; ASSET members who take the
+# steward rung join the team, their names landing with their first
+# verified events, never before.
 /knowledge/esdis/   @open-science-pillars/esdis-stewards
 
 # Runtime projections (ADR B): the Claude package files are the Cowork

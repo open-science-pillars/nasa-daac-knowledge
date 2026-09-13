@@ -10,6 +10,8 @@ per the specification (docs/SPECIFICATION.md in
 open-science-pillars/marketplace); the ocean-science and hydrology
 plugins reach these concepts as a declared, installed dependency.
 
+What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md).
+
 ## datasets
 
 - [ECCO v4 Release 4 ocean state estimate](datasets/ecco-v4r4.md), status: stable

@@ -29,9 +29,9 @@ geosphere added on GRACE); the tag states the scope of the claim and
 moves no authority, and it sits outside the text a signature binds. One
 signed concept feeds every runtime's projection; nothing is re-approved
 per runtime, and a packaging-only change needs no scientific
-re-approval. A provider steward accepts a bundle by joining its steward
-team (`podaac-stewards`, `esdis-stewards`), which CODEOWNERS already
-names.
+re-approval. A provider person who takes the steward rung (below)
+joins the bundle's steward team (`podaac-stewards`, `esdis-stewards`),
+which CODEOWNERS already names.
 
 ## Install
 
@@ -81,10 +81,39 @@ a correction here reaches every install that updates.
 
 ## Stewardship
 
-CODEOWNERS maps each bundle to its steward; the PO.DAAC bundle is
-held by an interim (pro tem) steward pending handoff to a provider
-steward. The handoff trigger: a named provider accepts the CODEOWNERS
-entry and co-reviews three PRs (see the playbook's onboarding section).
+CODEOWNERS maps each bundle to its steward team, and the maintainer
+who holds a bundle is its steward. The steward's signature (a
+`verified` event written by `sign.py`) is the honesty marker on a
+concept: a named person read the claim and stands behind it. It is
+not a gate. A concept ships at whatever trust tier its events have
+earned, and a consumer reads the tier from them: unverified (no
+event), machine-confirmed (process events only), human-reviewed (a
+`human:` event), provider-confirmed (a `human:` event carrying
+`role: provider`). A verified event keeps the OKF shape,
+`{ by: human:<id>, at: <time> }`, and may carry two OSP keys inside
+it: `role` (maintainer, provider or community; absent means
+maintainer) and `source`, the URL where the person gave the
+confirmation.
+
+A person from the organization that produces the data is invited at
+every rung of that ladder and required at none:
+
+- **Consulted.** They read the bundle's `DIGEST.md` ("What this
+  bundle claims about your products", one row per concept about their
+  product, rendered by `digest.py`) and answer a "confirm this
+  concept" issue from its Confirm or correct link. The steward records
+  the answer on their behalf:
+  `uv run tools/sign.py <concept> --role provider --by human:<their id>
+  --source <the reply URL> --log knowledge/<bundle>/log.md --note
+  '<what they confirmed>'`. The event lands as
+  `{ by, at, role: provider, source }` and the concept becomes
+  provider-confirmed; the checker's W10 asks for the source on any
+  provider event recorded without one.
+- **Reviewer.** They review the knowledge pull requests that touch
+  their product.
+- **Steward.** They join the bundle's CODEOWNERS team and sign with
+  `sign.py --role provider` themselves.
+
 Review rules per the specification's stewardship section
 (docs/SPECIFICATION.md in open-science-pillars/marketplace) and the
 [steward playbook](https://github.com/open-science-pillars/marketplace/blob/main/docs/steward-playbook.md);
@@ -93,7 +122,9 @@ how to write a concept is
 and what the checker demands is
 [docs/okf-conformance.md](https://github.com/open-science-pillars/marketplace/blob/main/docs/okf-conformance.md),
 both in the marketplace repository. A release follows
-[docs/release-checklist.md](docs/release-checklist.md) here.
+[docs/release-checklist.md](docs/release-checklist.md) here; the
+bundle owes no provider signature for it, only that no stable concept
+owes its own steward a re-sign (the merge-then-sign rule).
 Eval coverage for high-severity gotchas ships with the plugins that
 depend on this bundle (their evals/ directories, or the eval
 repository a plugin declares as the home of its cases); this repo
@@ -127,7 +158,7 @@ what is on main resolves.
 
 | Tool | Purpose | Who runs it |
 |---|---|---|
-| `run_checks.sh` | The gate: OKF conformance, fields conformance, the negative-knowledge check, the script-dependency check, the wording check, the signature-debt measure and every tool selftest, all offline | A contributor before any pull request; CI on every pull request, on main and on each release tag |
+| `run_checks.sh` | The gate: OKF conformance, fields conformance, the negative-knowledge check, the script-dependency check, the wording check, the signature-debt measure, each bundle's digest up to date, and every tool selftest, all offline | A contributor before any pull request; CI on every pull request, on main and on each release tag |
 | `doctor.py` | Readiness: confirms uv, lists every script and the packages it resolves; `--warm` builds every environment ahead of a first or offline run | Anyone on a new machine |
 | `check_okf_v02.py` | OKF v0.2 conformance of one bundle root | `run_checks.sh`; each plugin's gate on its local bundle; a bundle copied from knowledge-template |
 | `check_fields.py` | The fields concepts agree with the ECCO family manifest (`ecco_v4r4_families.yaml`) | `run_checks.sh` |
@@ -135,7 +166,8 @@ what is on main resolves.
 | `check_script_deps.py` | Every script's PEP 723 header covers what it imports | `run_checks.sh`; each plugin's CI |
 | `check_prose.py` | The wording rules: specification rules cited by name rather than section number, no program bookkeeping in what a reader meets, no em or en dashes | `run_checks.sh`; each plugin's CI |
 | `signature_check.py` | Which stable concepts changed after their steward signed them, measured by the signing commit (the merge-then-sign rule) | `run_checks.sh`, reported on pull requests and main, enforced on a release tag |
-| `sign.py` | Appends the steward's verified event to each named concept and one entry to the bundle log, so paying a signature debt is one command and one commit | The steward |
+| `sign.py` | Appends a verified event to each named concept and one entry to the bundle log, so paying a signature debt is one command and one commit; `--role provider --by human:<id> --source <reply URL>` records a provider person's confirmation on their behalf (`--role community` a user's), the source being where they gave it | The steward |
+| `digest.py` | Renders a bundle's `DIGEST.md`, what the bundle claims about each product: one row per concept with its tier, latest verified date and a Confirm or correct link that opens the confirm-concept issue prefilled; `--check` fails when the committed digest is stale | `run_checks.sh` for `--check`; the steward after a concept change, and the page a provider person reads first |
 | `verify_cmr.py`, `release_delta.py`, `RELEASE-DAY.md` | The ECCO product watch: the family manifest against CMR, the delta a new release introduces, and the day-one playbook | The steward, monthly and on release day |
 | `ecco_v4r4_dois.yaml`, `ecco_cite.py` | The DOI authority and the citation formatter; the selftest cross-checks every DOI the concepts and the family manifest quote against the authority | The cite-ecco skill in ocean-science; `run_checks.sh` for the selftest |
 | `mine_sources.py` | The community-issue miner: drafts gotcha candidates and routes can-I-use-X-for-Y questions and phrasings of a failed attempt to the validity-domain and dead-end registers; needs `GITHUB_TOKEN` | The steward, at a sweep |
