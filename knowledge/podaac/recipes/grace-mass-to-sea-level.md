@@ -30,6 +30,9 @@ sources:
   - id: nasa-tellus-grac-grfo-mascon-cri-grid-rl06
     resource: https://podaac.jpl.nasa.gov/dataset/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
     title: "PO.DAAC collection page: TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4, with the product documentation, the placement and uncertainty files"
+  - id: release-note
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_ReleaseNotes_JPL_MASCON.txt
+    title: "JPL GRACE mascon solution release notes (RL06.3M version 4): what changed between releases, the July 2025 GAD fix, and the placement, land mask and scale factor files unchanged since RL05M"
   - id: watkins-2015
     resource: https://doi.org/10.1002/2014JB011547
     title: "Watkins and others, 2015, Improved methods for observing Earth's time variable mass distribution with GRACE using spherical cap mascons, Journal of Geophysical Research: Solid Earth (the JPL mascon solution and the CRI filter)"
@@ -63,8 +66,10 @@ stale_after: 2027-03-13
 **Method.** The mascon product gives a monthly anomaly of equivalent
 water thickness on 0.5-degree cells that represent 3-degree mascons;
 the information lives at the mascon, so the region is a set of whole
-mascons taken from the placement file, and every sum runs over
-mascons with their true areas, not over cells.[^watkins-2015][^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]
+mascons taken from the placement file (unchanged since RL05M, as the
+release note states, so a region defined on an earlier release still
+holds), and every sum runs over mascons with their true areas, not
+over cells.[^watkins-2015][^nasa-tellus-grac-grfo-mascon-cri-grid-rl06][^release-note]
 For an ice sheet the region is its land mascons with the CRI partition
 along the coast; the scale factors distributed with the product come
 from a land hydrology model and are for hydrology, not for ice.[^wiese-2016]
@@ -114,9 +119,17 @@ an equal-area 3-degree grid, the CRI partition of the coastal mascons,
 the gain factors as an option for sub-mascon hydrology with Wiese and
 others 2016 as their reference, and the product as the recommended one
 for land-ice applications;[^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]
-the WCRP 2018 budget paper answered on the journal's site;[^wcrp-2018]
-the remaining DOIs resolved to their journal pages behind a bot check,
-so the maintainer's review opens them.
+the release note was read: RL06.3M version 4 differs from RL06.1M
+version 3 only in the accelerometer transplant bundle, which touches
+the wide-dead-band months (January and February 2023, and July 2023
+onward), with the GRACE-FO uncertainty calibration updated for
+low-signal land mascons; a July 2025 fix corrected the GAD mass added
+back to the ocean part of land/ocean mascons, and only files whose
+series extends past March 2025 carry it, so a coastal ice-sheet sum
+names the file's last month beside the version;[^release-note] the
+WCRP 2018 budget paper answered on the journal's site;[^wcrp-2018] the
+remaining DOIs resolved to their journal pages behind a bot check, so
+the maintainer's review opens them.
 
 [^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]: PO.DAAC collection page: TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
 [^watkins-2015]: Watkins and others, 2015, Journal of Geophysical Research: Solid Earth, doi:10.1002/2014JB011547
@@ -127,3 +140,4 @@ so the maintainer's review opens them.
 [^gia]: This bundle's GIA gotcha
 [^gap]: This bundle's inter-mission gap gotcha
 [^low-degree]: This bundle's degree-1 and C20/C30 gotcha
+[^release-note]: JPL GRACE mascon solution release notes, RL06.3M version 4

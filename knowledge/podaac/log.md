@@ -4,6 +4,19 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-13 · datasets/grace-fo-mascons.md, gotchas/grace-intermission-gap.md,
+  gotchas/grace-low-degree-replacements.md, recipes/grace-mass-to-sea-level.md,
+  computations/sea-level-budget.md and recipes/sea-level-budget.md: the
+  product release note and the RL06 month list read from the PO.DAAC
+  archive (its CloudFront host now allowed). The dataset concept names
+  ICE-6G_D, TN-14 version 3 and the JPL mascon-consistent geocenter; the
+  gap gotcha counts the missing months from the list (eleven in the gap,
+  August and September 2018, twenty earlier); the low-degree gotcha
+  states which series this product applies and that its degree-1 is not
+  the TN-13 file verbatim; the mass recipe carries the July 2025 GAD fix
+  and the placement files unchanged since RL05M; the budget computation
+  and recipe carry the GAD add-back, and the fixture's removed months are
+  confirmed against the list. (knowledge-seeder/claude)
 - 2026-09-13 · the four GRACE land-ice concepts (datasets/grace-fo-mascons.md,
   gotchas/grace-intermission-gap.md, gotchas/grace-low-degree-replacements.md,
   recipes/grace-mass-to-sea-level.md) re-verified from a session with the

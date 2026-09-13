@@ -7,6 +7,13 @@ tags: [grace, grace-fo, mascons, mass, podaac]
 generated: { by: knowledge-seeder/claude, at: 2026-07-06T00:00:00Z }
 resource: https://podaac.jpl.nasa.gov/dataset/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
 version: "JPL RL06.3 version 4 (RL06.3Mv04, DOI 10.5067/TEMSC-3JC634), CMR-verified 2026-07-04 and again 2026-09-13 with one granule covering 2002-04-16 through 2026-07-16; CRI-filtered grid (TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4) and unfiltered grid (TELLUS_GRAC-GRFO_MASCON_GRID_RL06.3_V4) both live"
+sources:
+  - id: release-note
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_ReleaseNotes_JPL_MASCON.txt
+    title: "JPL GRACE mascon solution release notes (RL06.3M version 4): the GIA model, the low-degree series and the changes between releases"
+  - id: months-rl06
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_Months_RL06.csv
+    title: "GRACE and GRACE-FO RL06 month list (PO.DAAC): the solutions that exist and the months with no coverage"
 status: stable
 verified: { by: human:PaulMRamirez, at: 2026-07-04T00:00:00Z }
 stale_after: 2027-01-04
@@ -27,10 +34,16 @@ collections.
 
 **Structure.** Monthly fields of water-equivalent thickness anomaly
 against a stated baseline period, with scale/gain guidance and the
-uncertainty grids below; a GIA correction (a specific model, per the
-product documentation) is already applied to the standard product.
-Month gaps exist (battery management eras, the 2017-2018
-GRACE-to-GRACE-FO gap).
+uncertainty grids below; a GIA correction is already applied to the
+standard product: ICE-6G_D (Peltier and others 2018) since RL06M,
+removed before the CRI filter and from the released fields, referenced
+to the 2008-01-01 epoch of the static field since the 2020 fix; the
+C20 and C30 terms come from TN-14 version 3 and the degree-1 term from
+JPL's own mascon-consistent geocenter, per the release note.[^release-note]
+Month gaps exist: the product's month list marks July 2017 through May
+2018 and August and September 2018 with no coverage, and twenty earlier
+months missing, mostly the battery-management months from 2011
+on.[^months-rl06]
 
 **Land-ice use.** The mascon product is the standard GRACE input for
 ice-sheet and glacier mass balance and for the mass term of the sea
@@ -72,3 +85,6 @@ grid come from a land hydrology model and are not applied over ice.
 - [grace-low-degree-replacements](../gotchas/grace-low-degree-replacements.md):
   the degree-1 and C20/C30 series the product applies move large-scale
   trends; nothing is re-applied.
+
+[^release-note]: JPL GRACE mascon solution release notes, RL06.3M version 4
+[^months-rl06]: GRACE and GRACE-FO RL06 month list, PO.DAAC

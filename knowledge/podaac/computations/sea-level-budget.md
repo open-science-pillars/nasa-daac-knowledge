@@ -45,6 +45,12 @@ sources:
   - id: recipe-budget
     resource: ../recipes/sea-level-budget.md
     title: "Bundle recipe: the three terms of the budget, which product supplies each, and how the residual is read"
+  - id: release-note
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_ReleaseNotes_JPL_MASCON.txt
+    title: "JPL GRACE mascon solution release notes (RL06.3M version 4): the GAD added back over the ocean part of the mascons, and the July 2025 fix to it"
+  - id: months-rl06
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_Months_RL06.csv
+    title: "GRACE and GRACE-FO RL06 month list (PO.DAAC): the months the fixture removes are checked against it"
   - id: trend-ci
     resource: ecco-trend-ci.md
     title: "The one sanctioned trend method: the interval block every trend here carries, and the calibration behind it"
@@ -111,7 +117,12 @@ the attester refuses a receipt missing any of them:[^convention-slbc]
 - **Inverse barometer**, altimetry and mass: NASA-SSH has the dynamic
   atmospheric correction applied; the mass term states how atmospheric
   pressure over the ocean was handled, or the two disagree by a term
-  that is not sea level.[^nasa-ssh]
+  that is not sea level.[^nasa-ssh] For the mascon product the release
+  note answers: the GAD de-aliasing product (atmosphere and ocean) is
+  added back over the ocean part of the mascons, so the product's ocean
+  mass carries that loading, and a July 2025 fix corrected the amount
+  added back over land/ocean mascons in files whose series extends past
+  March 2025.[^release-note]
 - **Reference frame**, altimetry and mass: the mass term's frame is
   set by the degree-1 series the product substituted, since the
   satellites do not sense it.[^gotcha-low-degree]
@@ -174,8 +185,11 @@ of 0.1 mm per year; altimetry equal to mass plus steric plus deep
 steric plus noise at the stated uncertainty (1.2 mm; mass 1.5 to 1.9
 in an annual pattern; steric 2.2 falling to 1.6 as the array
 matured); and the mass months the real record lacks removed: the
-2017-07 through 2018-05 gap and earlier battery-management months
-patterned on the product's month list. `--fixture-offset MM` injects
+2017-07 through 2018-05 gap, August and September 2018, and the
+seventeen battery-management months from January 2011 through February
+2017, which match the product's public month list from the fixture's
+start in 2005 onward (checked 2026-09-13; the list also lacks June and
+July 2002 and June 2003, before the fixture begins).[^months-rl06] `--fixture-offset MM` injects
 an inter-mission offset into the mass series after the gap, zero by
 default, so a bridged run across the gap has an offset to fail on. The
 receipt records the seed, the offset, the fixture digest and the
@@ -251,10 +265,14 @@ budget adds the smoothing and leakage terms the convention lists and
 is not this computation. Produced by Open Science Pillars, not a NASA
 or JPL product.
 
-**Verification.** The sources are cited by DOI and by bundle path and
-were not fetched from the drafting environment; the maintainer's
-review checks each link and the deep-steric figure against the 2018
-budget before the concept goes stable. The chain is verified on every
+**Verification.** The bundle-path sources are this bundle's own
+concepts. The mascon product's release note and month list were read
+on 2026-09-13 and are the basis of the GAD entry and the fixture's
+month list above;[^release-note][^months-rl06] the four DOIs resolve
+(the ESSD paper answered; the Nature, SEANOE and Elsevier pages sat
+behind a bot check), so the maintainer's review opens them and checks
+the deep-steric figure against the 2018 budget before the concept goes
+stable. The chain is verified on every
 change by the repository's check routine, which runs the attester's
 selftest and the end-to-end fixture run and refusal.
 
@@ -272,3 +290,5 @@ selftest and the end-to-end fixture run and refusal.
 [^frederikse-2020]: Frederikse and others (2020), Nature 584, doi:10.1038/s41586-020-2591-3
 [^argo-doi]: Argo float data and metadata from the Global Data Assembly Centre, doi:10.17882/42182
 [^roemmich-gilson-2009]: Roemmich and Gilson (2009), Progress in Oceanography 82, doi:10.1016/j.pocean.2009.03.004
+[^release-note]: JPL GRACE mascon solution release notes, RL06.3M version 4
+[^months-rl06]: GRACE and GRACE-FO RL06 month list, PO.DAAC

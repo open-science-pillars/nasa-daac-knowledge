@@ -23,6 +23,12 @@ sources:
   - id: velicogna-2020
     resource: https://doi.org/10.1029/2020GL087291
     title: "Velicogna and others, 2020, Continuity of ice sheet mass loss in Greenland and Antarctica from the GRACE and GRACE Follow-On missions, Geophysical Research Letters (how the gap was bridged for the ice sheets, and with what independent evidence)"
+  - id: release-note
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_ReleaseNotes_JPL_MASCON.txt
+    title: "JPL GRACE mascon solution release notes (RL06.3M version 4): the time-correlation procedure spanning GRACE and GRACE-FO, and the GRACE-FO uncertainty calibration"
+  - id: months-rl06
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_Months_RL06.csv
+    title: "GRACE and GRACE-FO RL06 month list (PO.DAAC): every calendar month since April 2002 with its solution index, the days used and the months with no coverage"
   - id: dataset
     resource: ../datasets/grace-fo-mascons.md
     title: "This bundle's mascon dataset concept, which lists the gap among the known issues"
@@ -32,11 +38,15 @@ sources:
 
 **Mechanism.** GRACE ended science operations in 2017 and GRACE-FO
 launched in May 2018, with its first science months following the
-in-orbit checkout; the mascon record therefore has no solutions for
-close to a year between the two missions.[^landerer-2020][^grace-tellus]
-The years before the end of GRACE also carry missing months from
-battery management, and some of the months that exist cover only part
-of a month.[^grace-tellus] The product distributes one file per
+in-orbit checkout; the mascon record therefore has no solutions for the eleven months
+July 2017 through May 2018, and none for August and September 2018
+either.[^landerer-2020][^months-rl06] Twenty months before the gap are
+missing too (June and July 2002, June 2003, then from 2011 the
+battery-management months: January and June 2011, May and October
+2012, March, August and September 2013, February, July and December
+2014, June, October and November 2015, April, September and October
+2016, and February 2017), and some of the months that exist cover only
+part of a calendar month.[^months-rl06][^grace-tellus] The product distributes one file per
 solution epoch, so a series read from the files is a sequence of
 existing months with the holes silently absent; the time axis is
 irregular and nothing in the data marks where a mission ended.[^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]
@@ -77,15 +87,22 @@ CMR record for the collection (concept C3195527175-POCLOUD, version
 RL06.3Mv04, DOI 10.5067/TEMSC-3JC634) reports one granule covering
 2002-04-16 through 2026-07-16, so the months that exist and the months
 that do not are read from the file's time axis, not from the catalog;
-the PO.DAAC collection page and its documentation index answered; each
-paper's DOI resolved to its journal page at doi.org, and the pages
-themselves sat behind a bot check, so the papers are cited on their
-titles and abstracts as published and the maintainer's review opens
-them; the product release note on the PO.DAAC archive host was not
-reachable from the session.
+the product's month list, read the same day, is the record behind the
+counts above (solution 163 is June 2017, the next, 164, is June 2018,
+and August and September 2018 are marked as missing);[^months-rl06]
+the release note states that the time-correlation procedure of the
+solution spans both missions and that the GRACE-FO months carry an
+additional calibrated uncertainty for the missing GRACE-D
+accelerometer, which is the product's own account of continuity, not
+an independent check on it;[^release-note] each paper's DOI resolved
+to its journal page at doi.org, and the pages themselves sat behind a
+bot check, so the papers are cited on their titles and abstracts as
+published and the maintainer's review opens them.
 
 [^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]: PO.DAAC collection page: TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
 [^grace-tellus]: GRACE Tellus project site: mission timeline and data availability
 [^landerer-2020]: Landerer and others, 2020, Geophysical Research Letters, doi:10.1029/2020GL088306
 [^velicogna-2020]: Velicogna and others, 2020, Geophysical Research Letters, doi:10.1029/2020GL087291
 [^dataset]: This bundle's mascon dataset concept
+[^release-note]: JPL GRACE mascon solution release notes, RL06.3M version 4
+[^months-rl06]: GRACE and GRACE-FO RL06 month list, PO.DAAC
