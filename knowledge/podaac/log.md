@@ -4,6 +4,19 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-13 · the seven OSCAR and SMAP salinity drafts, index.md and
+  DIGEST.md: the coordinator's provenance lint applied. One OSCAR final
+  granule (2020-01-01) opened and deleted, and the file-level facts in
+  datasets/oscar-v2.md now cite it (it was created 2022-01-14 and names
+  a newer altimetry product name than the handbook's sample); the CMR
+  granule searches added as sources wherever a granule range is
+  quoted; the CMR revision dates named by field; the SMAP version
+  string reduced to the JPL product with the RSS identities moved to
+  the body; the 35 km coastal reach attributed to the 2018 assessment
+  of the algorithm of that time (the V5 guide states none) and the
+  eval case regraded on the mechanism; surtep sourced to the RSS
+  collection page; every paper source entry now says what was read and
+  when; the bundle one-liner in index.md names every product. (knowledge-seeder/claude)
 - 2026-09-13 · datasets/oscar-v2.md, gotchas/oscar-is-geostrophic-plus-ekman.md
   (high), gotchas/oscar-versions-and-latency.md (medium),
   datasets/smap-sss-jpl.md, gotchas/smap-sss-coastal-and-sea-ice-contamination.md

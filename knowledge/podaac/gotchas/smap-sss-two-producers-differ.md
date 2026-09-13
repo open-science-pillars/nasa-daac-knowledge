@@ -34,10 +34,10 @@ sources:
     title: "PO.DAAC collection page, SMAP_RSS_L3_SSS_SMI_MONTHLY_V6: release date 2024-03-26 at PO.DAAC and the variable table (read 2026-09-13)"
   - id: fore-2016
     resource: https://doi.org/10.1109/TGRS.2016.2601486
-    title: "Fore, Yueh, Tang, Stiles and Hayashi, 2016, Combined active/passive retrievals of ocean vector wind and sea surface salinity with SMAP, IEEE Transactions on Geoscience and Remote Sensing 54, 7396 to 7404: the JPL algorithm (registry record verified; the article was not read)"
+    title: "Fore, Yueh, Tang, Stiles and Hayashi, 2016, Combined active/passive retrievals of ocean vector wind and sea surface salinity with SMAP, IEEE Transactions on Geoscience and Remote Sensing 54, 7396 to 7404: the JPL algorithm (registry record verified 2026-09-13; the record carries no abstract and the article was not read)"
   - id: meissner-2018
     resource: https://doi.org/10.3390/rs10071121
-    title: "Meissner, Wentz and Le Vine, 2018, The salinity retrieval algorithms for the NASA Aquarius version 5 and SMAP version 3 releases, Remote Sensing 10, 1121: the RSS algorithm line, its formal error estimates by input perturbation, and its adaptation from Aquarius to SMAP (abstract read on the registry record)"
+    title: "Meissner, Wentz and Le Vine, 2018, The salinity retrieval algorithms for the NASA Aquarius version 5 and SMAP version 3 releases, Remote Sensing 10, 1121: the RSS algorithm line, its formal error estimates by input perturbation, and its adaptation from Aquarius to SMAP (registry record verified and abstract read there 2026-09-13; the article was not read)"
   - id: dataset
     resource: ../datasets/smap-sss-jpl.md
     title: "This bundle's SMAP salinity dataset concept: both products' collections, DOIs and granule ranges on the verification date"

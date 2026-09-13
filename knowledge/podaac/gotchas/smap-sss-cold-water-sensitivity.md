@@ -24,12 +24,15 @@ sources:
   - id: aquarius-atbd
     resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/smap/open/docs/V6/ATBD_EOM_final.pdf
     title: "Aquarius salinity retrieval algorithm theoretical basis document, end of mission version, Meissner, Wentz and Le Vine, RSS Technical Report 120117, 1 December 2017 (the file the RSS SMAP collections link as their ATBD; the uncertainty chapter read 2026-09-13): the same input error yields a much larger salinity uncertainty in cold water, where the sensitivity of brightness temperature to salinity is low, and the SST of the scene is a major driver of the salinity uncertainty"
+  - id: podaac-rss-monthly
+    resource: https://podaac.jpl.nasa.gov/dataset/SMAP_RSS_L3_SSS_SMI_MONTHLY_V6
+    title: "PO.DAAC collection page, SMAP_RSS_L3_SSS_SMI_MONTHLY_V6: the variable table naming surtep as the ancillary CMC sea surface temperature in kelvin, beside sss_smap and its uncertainty fields (read 2026-09-13)"
   - id: tang-2018
     resource: https://doi.org/10.3390/rs10060869
-    title: "Tang and others, 2018, The potential and challenges of using SMAP sea surface salinity to monitor Arctic Ocean freshwater changes, Remote Sensing 10, 869: RMS difference to in situ under about one salinity unit north of 50N with correlation 0.82, and about 1.2 north of 65N, from nearly 20,000 daily collocations within 12.5 km (abstract read on the registry record)"
+    title: "Tang and others, 2018, The potential and challenges of using SMAP sea surface salinity to monitor Arctic Ocean freshwater changes, Remote Sensing 10, 869: RMS difference to in situ under about one salinity unit north of 50N with correlation 0.82, and about 1.2 north of 65N, from nearly 20,000 daily collocations within 12.5 km (registry record verified and abstract read there 2026-09-13; the article was not read)"
   - id: meissner-2018
     resource: https://doi.org/10.3390/rs10071121
-    title: "Meissner, Wentz and Le Vine, 2018, The salinity retrieval algorithms for the NASA Aquarius version 5 and SMAP version 3 releases, Remote Sensing 10, 1121: formal error estimates by perturbing the algorithm's inputs, and the Aquarius difference to Argo within 0.1 when stratified by SST (abstract read on the registry record)"
+    title: "Meissner, Wentz and Le Vine, 2018, The salinity retrieval algorithms for the NASA Aquarius version 5 and SMAP version 3 releases, Remote Sensing 10, 1121: formal error estimates by perturbing the algorithm's inputs, and the Aquarius difference to Argo within 0.1 when stratified by SST (registry record verified and abstract read there 2026-09-13; the article was not read)"
   - id: dataset
     resource: ../datasets/smap-sss-jpl.md
     title: "This bundle's SMAP salinity dataset concept: the uncertainty field and the low-latitude validation figures"
@@ -91,7 +94,8 @@ systematic, without root-N reduction.[^rss-release]
 
 **Correct approach.** A high-latitude salinity value from SMAP is
 quoted with the product's own uncertainty field for those cells, with
-the SST of the scene (the `anc_sst` or `surtep` field) and the
+the SST of the scene (the JPL `anc_sst` field, or the RSS `surtep`
+field the collection page names as the ancillary CMC SST) and the
 producers' 5 C threshold beside it, and with the regional validation
 numbers (under about one salinity unit north of 50N, about 1.2 north
 of 65N for the JPL product) rather than the tropical
@@ -108,7 +112,8 @@ argument in its uncertainty chapter; the JPL guide's flag table,
 uncertainty section and validation section, and the RSS release
 notes' flag table, uncertainty section, sea-ice table and known
 issues, were all read on 2026-09-13 and are the source of every
-threshold and number above.[^aquarius-atbd][^jpl-guide][^rss-release]
+threshold and number above; the RSS collection page was read the same
+day for the field names.[^aquarius-atbd][^jpl-guide][^rss-release][^podaac-rss-monthly]
 The two papers' records were verified against the Crossref registry
 the same day (title, authors, journal, year) and their abstracts read
 there, which is where the Arctic statistics and the SST-stratified
@@ -118,6 +123,7 @@ read.[^tang-2018][^meissner-2018]
 [^jpl-guide]: SMAP Salinity and Wind Speed Data User's Guide, Version 5.0, JPL, November 2020
 [^rss-release]: RSS SMAP Salinity Version 6.0 release notes, RSS Technical Report 011624
 [^aquarius-atbd]: Aquarius salinity retrieval ATBD, end of mission version, RSS Technical Report 120117
+[^podaac-rss-monthly]: PO.DAAC collection page, SMAP_RSS_L3_SSS_SMI_MONTHLY_V6
 [^tang-2018]: Tang and others, 2018, Remote Sensing, doi:10.3390/rs10060869
 [^meissner-2018]: Meissner, Wentz and Le Vine, 2018, Remote Sensing, doi:10.3390/rs10071121
 [^dataset]: This bundle's SMAP salinity dataset concept

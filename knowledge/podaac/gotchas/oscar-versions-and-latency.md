@@ -19,19 +19,25 @@ sources:
     title: "OSCAR v2.0 User's Handbook, Dohan, October 2021 (read in full 2026-09-13): the source datasets per quality level, the latency, the 2021 initial computation, the SST source change in 2016, and the differences from the third-degree and one-degree products"
   - id: cmr-final
     resource: https://cmr.earthdata.nasa.gov/search/concepts/C2098858642-POCLOUD.umm_json
-    title: "CMR collection record, OSCAR_L4_OC_FINAL_V2.0 (C2098858642-POCLOUD): the abstract's latency statement and the granule range 1993-01-01 through 2026-01-16 (read 2026-09-13)"
+    title: "CMR collection record, OSCAR_L4_OC_FINAL_V2.0 (C2098858642-POCLOUD): the abstract's latency statement and the stated temporal extent 1993-01-01 to 2026-01-17 (read 2026-09-13)"
   - id: cmr-interim
     resource: https://cmr.earthdata.nasa.gov/search/concepts/C2102959417-POCLOUD.umm_json
-    title: "CMR collection record, OSCAR_L4_OC_INTERIM_V2.0 (C2102959417-POCLOUD): granules 2020-01-01 through 2026-08-31 (read 2026-09-13)"
+    title: "CMR collection record, OSCAR_L4_OC_INTERIM_V2.0 (C2102959417-POCLOUD): open-ended temporal extent from 2020-01-01 (read 2026-09-13)"
   - id: cmr-nrt
     resource: https://cmr.earthdata.nasa.gov/search/concepts/C2102958977-POCLOUD.umm_json
-    title: "CMR collection record, OSCAR_L4_OC_NRT_V2.0 (C2102958977-POCLOUD): granules 2021-01-01 through 2026-09-03 (read 2026-09-13)"
+    title: "CMR collection record, OSCAR_L4_OC_NRT_V2.0 (C2102958977-POCLOUD): open-ended temporal extent from 2021-01-01 (read 2026-09-13)"
+  - id: cmr-granules
+    resource: https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2098858642-POCLOUD&page_size=1&sort_key=start_date
+    title: "CMR granule searches run 2026-09-13, one per collection (collection_concept_id C2098858642, C2102959417 and C2102958977, page_size=1, sort_key=start_date and again sort_key=-start_date): first and last granules oscar_currents_final_19930101 and _20260116, oscar_currents_interim_20200101 and _20260831, oscar_currents_nrt_20210101 and _20260903"
+  - id: granule
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/OSCAR_L4_OC_FINAL_V2.0/oscar_currents_final_20200101.nc
+    title: "One final granule (2020-01-01) opened with an Earthdata token on 2026-09-13 and deleted: its date_created is 2022-01-14 and its source attribute names the altimetry input as SEALEVEL_GLO_PHY_L4_MY_008_047 (DOI 10.48670/moi-00148), where the handbook's sample from the same day reads 2021-09-30 and the REP_OBSERVATIONS name"
   - id: podaac-final
     resource: https://podaac.jpl.nasa.gov/dataset/OSCAR_L4_OC_FINAL_V2.0
     title: "PO.DAAC collection page, OSCAR_L4_OC_FINAL_V2.0: the three DOIs' collection family, the start and stop dates and the citation (read 2026-09-13)"
   - id: dohan-2010
     resource: https://doi.org/10.5670/oceanog.2010.08
-    title: "Dohan and Maximenko, 2010, Monitoring ocean currents with satellite sensors, Oceanography 23: the validation the handbook cites for the third-degree product, which is not the version 2 validation (registry record verified; the article was not read)"
+    title: "Dohan and Maximenko, 2010, Monitoring ocean currents with satellite sensors, Oceanography 23: the validation the handbook cites for the third-degree product, which is not the version 2 validation (registry record verified 2026-09-13; the record carries no abstract and the article was not read)"
   - id: dataset
     resource: ../datasets/oscar-v2.md
     title: "This bundle's OSCAR dataset concept: the three collections, their concept ids and DOIs, and the granule ranges on the verification date"
@@ -54,12 +60,18 @@ ERA5.[^guide] The handbook gives latencies of about 1.5 years, about
 one month and two days; the collection abstract gives about one year
 for final.[^guide][^cmr-final] The record was computed in full once in
 early 2021 and has been produced in real time since, the source data
-being read at about the time each file is made.[^guide] The
-collections overlap rather than abut: on 2026-09-13 CMR held final
+being read at about the time each file is made; the one final
+granule opened (2020-01-01) was created on 2022-01-14 and names a
+newer altimetry product name than the handbook's sample from the same
+day, so files have been regenerated since the handbook without a
+version change.[^guide][^granule] The collections overlap rather
+than abut: a first-and-last granule search on 2026-09-13 found final
 granules through 2026-01-16, interim granules from 2020-01-01 through
-2026-08-31, and nrt granules from 2021-01-01 through 2026-09-03, so
-for any day since 2021 up to three files exist with different
-inputs.[^cmr-final][^cmr-interim][^cmr-nrt][^dataset] Version 2 itself
+2026-08-31, and nrt granules from 2021-01-01 through 2026-09-03 (the
+collection records state 1993-01-01 to 2026-01-17 for final and
+open-ended extents from 2020-01-01 and 2021-01-01 for the other
+two), so for any day since 2021 up to three files exist with
+different inputs.[^cmr-granules][^cmr-final][^cmr-interim][^cmr-nrt][^dataset] Version 2 itself
 replaced the third-degree five-day OSCAR: a daily file on a finer grid
 with the geostrophic components added, the maximum-mask velocity and
 the filtered velocity dropped, a changed equatorial model (the
@@ -105,19 +117,22 @@ caveat.[^guide]
 **Verification.** The handbook's source-datasets, latency and
 differences sections were read in full on 2026-09-13 and are the
 producer's statement of the inputs per level and the version 2
-changes.[^guide] The three CMR collection records and their first and
-last granules were read the same day; the overlap above is the
-catalogue state on that date, and the granule ranges move
-daily.[^cmr-final][^cmr-interim][^cmr-nrt] The collection page repeats
+changes.[^guide] The three CMR collection records were read the same
+day and the granule searches run then; the overlap above is the
+catalogue state on that date, and the granule ranges move daily; one
+final granule was opened and deleted the same
+day.[^cmr-final][^cmr-interim][^cmr-nrt][^cmr-granules][^granule] The collection page repeats
 the family and the dates.[^podaac-final] The 2010 paper's record was
 verified against the Crossref registry (title, authors, journal,
 year); it is cited here only as the third-degree validation the
 handbook names.[^dohan-2010]
 
 [^guide]: OSCAR v2.0 User's Handbook, Dohan, October 2021
-[^cmr-final]: CMR collection record, C2098858642-POCLOUD, and its granule range
-[^cmr-interim]: CMR collection record, C2102959417-POCLOUD, and its granule range
-[^cmr-nrt]: CMR collection record, C2102958977-POCLOUD, and its granule range
+[^cmr-final]: CMR collection record, C2098858642-POCLOUD
+[^cmr-interim]: CMR collection record, C2102959417-POCLOUD
+[^cmr-nrt]: CMR collection record, C2102958977-POCLOUD
+[^cmr-granules]: CMR granule searches, first and last granule per collection, 2026-09-13
+[^granule]: One OSCAR final granule, 2020-01-01, opened and deleted on 2026-09-13
 [^podaac-final]: PO.DAAC collection page, OSCAR_L4_OC_FINAL_V2.0
 [^dohan-2010]: Dohan and Maximenko, 2010, Oceanography, doi:10.5670/oceanog.2010.08
 [^dataset]: This bundle's OSCAR dataset concept

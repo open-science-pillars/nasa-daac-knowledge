@@ -25,10 +25,10 @@ sources:
     title: "PO.DAAC collection page, SMAP_RSS_L3_SSS_SMI_8DAY-RUNNINGMEAN_V6: the variable table with gland, fland, gice_est, anc_sea_ice_flag and sea_ice_zones (read 2026-09-13)"
   - id: meissner-2021
     resource: https://doi.org/10.3390/rs13245120
-    title: "Meissner and Manaster, 2021, SMAP salinity retrievals near the sea-ice edge using multi-channel AMSR2 brightness temperatures, Remote Sensing 13, 5120: sea-ice contamination as a large error source, the discriminant flagging and correction the RSS product uses, and undetected icebergs as a cause of spurious retrievals (abstract read on the registry record)"
+    title: "Meissner and Manaster, 2021, SMAP salinity retrievals near the sea-ice edge using multi-channel AMSR2 brightness temperatures, Remote Sensing 13, 5120: sea-ice contamination as a large error source, the discriminant flagging and correction the RSS product uses, and undetected icebergs as a cause of spurious retrievals (registry record verified and abstract read there 2026-09-13; the article was not read)"
   - id: tang-2018
     resource: https://doi.org/10.3390/rs10060869
-    title: "Tang and others, 2018, The potential and challenges of using SMAP sea surface salinity to monitor Arctic Ocean freshwater changes, Remote Sensing 10, 869: the JPL algorithm retrieves in ice-free regions to within 35 km of the coast, retrievals inside the Arctic Circle vary with sea-ice coverage, and the RMS difference to in situ north of 50N is under about one salinity unit (abstract read on the registry record)"
+    title: "Tang and others, 2018, The potential and challenges of using SMAP sea surface salinity to monitor Arctic Ocean freshwater changes, Remote Sensing 10, 869: the JPL group's 2018 assessment of the algorithm of that time, which retrieved in ice-free regions to within 35 km of the coast with the improved land and ice correction, found Arctic retrievals varying with sea-ice coverage, and an RMS difference to in situ north of 50N under about one salinity unit (registry record verified and abstract read there 2026-09-13; the article was not read; the V5 guide states no coastal reach of its own)"
   - id: dataset
     resource: ../datasets/smap-sss-jpl.md
     title: "This bundle's SMAP salinity dataset concept: the L3 structure, the relaxed L3 filter and the alternative producer"
@@ -55,10 +55,11 @@ Level 3 the guide filters on bits 5, 7 and 8 only (high ancillary
 wind, land, ice), states that the criteria are deliberately relaxed,
 and keeps as the only trace the weighted-average `land_fraction` and
 `ice_fraction` of the observations that
-survived.[^jpl-guide][^granule] With this correction the JPL algorithm
-retrieves in ice-free regions to within about 35 km of the coast, and
-Arctic retrievals exist only where and when the ice
-allows.[^tang-2018] In the RSS product two land fractions are carried,
+survived.[^jpl-guide][^granule] The V5 guide states no coastal reach;
+the JPL group's 2018 Arctic assessment of the algorithm of that time
+reported retrievals in ice-free regions to within 35 km of the coast
+with the improved land and ice correction, and Arctic retrievals
+existing only where and when the ice allows.[^tang-2018] In the RSS product two land fractions are carried,
 `gland` (gain-weighted) and `fland` (within the 3 dB footprint), with
 a sidelobe correction from land tables; a cell with either above 0.1
 gets no value (strong contamination); a cell with `gland` above 0.04
@@ -99,9 +100,11 @@ anomaly at the ice edge in the melt season can be sea-ice
 contamination: several salinity units of residual error in the outer
 zones, which averaging does not remove.[^rss-release][^meissner-2021]
 Comparing the JPL and RSS products near a coast compares two
-exclusion rules (about 35 km and 30 to 40 km, different thresholds
-and different smoothing), so their disagreement there is not an
-uncertainty for either.[^tang-2018][^rss-release] A coastal analysis
+exclusion rules (different land-fraction thresholds, different
+smoothing, and a reach the JPL group put at 35 km in its 2018
+assessment against 30 to 40 km stated for RSS), so their
+disagreement there is not an uncertainty for
+either.[^tang-2018][^rss-release] A coastal analysis
 that reads the L3 without the land and ice fields sees a complete
 looking field with no flag, because the JPL Level 3 has none and the
 RSS 70 km product has already dropped the flagged
@@ -116,9 +119,11 @@ contamination threshold, read from the product's own fields
 (`land_fraction` and `ice_fraction` in the JPL Level 3; `gland`,
 `fland`, `gice_est` and, in the 8-day files, `sea_ice_zones` in the
 RSS Level 3), with the number of contributing cells or observations
-carried beside each value and the producer's retrieval limit (about
-35 km of the coast for JPL, 30 to 40 km for RSS) stated as the inner
-edge of what the product can say.[^jpl-guide][^granule][^rss-release][^tang-2018]
+carried beside each value and the product's retrieval limit stated
+as the inner edge of what it can say: 30 to 40 km from land for the
+RSS product by its release notes, and for the JPL product the reach
+the group reported in 2018 (35 km in ice-free conditions), since the
+V5 guide states none.[^jpl-guide][^granule][^rss-release][^tang-2018]
 A series in the marginal ice zone is read with the ice season as its
 sampling, the cells' ice fraction or zone reported, and the residual
 errors the producer quotes per zone beside the value; the RSS
@@ -148,9 +153,10 @@ records were verified against the Crossref registry the same day
 (title, authors, journal, year) and their abstracts read there: the
 2021 paper states sea-ice contamination as a large error source and
 icebergs as a cause of spurious retrievals, and the 2018 paper states
-the 35 km coastal reach, the dependence of Arctic retrievals on ice
-cover and the high-latitude RMS difference; the publisher pages
-themselves were not read.[^meissner-2021][^tang-2018]
+the 35 km coastal reach of the algorithm it assessed, the dependence
+of Arctic retrievals on ice cover and the high-latitude RMS
+difference; the publisher pages themselves were not
+read.[^meissner-2021][^tang-2018]
 
 [^jpl-guide]: SMAP Salinity and Wind Speed Data User's Guide, Version 5.0, JPL, November 2020
 [^granule]: One JPL monthly granule, August 2026, opened and deleted on 2026-09-13

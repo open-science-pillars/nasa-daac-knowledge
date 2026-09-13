@@ -19,13 +19,13 @@ sources:
     title: "PO.DAAC collection page, OSCAR_L4_OC_FINAL_V2.0: the abstract's statement of the inputs and the model, and the variable list (u, v, ug, vg) (read 2026-09-13)"
   - id: bonjean-2002
     resource: https://doi.org/10.1175/1520-0485(2002)032<2938:DMAAOT>2.0.CO;2
-    title: "Bonjean and Lagerloef, 2002, Diagnostic model and analysis of the surface currents in the tropical Pacific Ocean, Journal of Physical Oceanography 32, 2938 to 2954: the diagnostic model the handbook builds on (registry record verified; the journal page was not read)"
+    title: "Bonjean and Lagerloef, 2002, Diagnostic model and analysis of the surface currents in the tropical Pacific Ocean, Journal of Physical Oceanography 32, 2938 to 2954: the diagnostic model the handbook builds on (registry record verified 2026-09-13; the record carries no abstract and the journal page was not read)"
   - id: lagerloef-1999
     resource: https://doi.org/10.1029/1999JC900197
-    title: "Lagerloef, Mitchum, Lukas and Niiler, 1999, Tropical Pacific near-surface currents estimated from altimeter, wind, and drifter data, Journal of Geophysical Research: Oceans 104: steady geostrophic and Ekman dynamics calibrated by 15 m drogued drifters, with geostrophy passing from a beta-plane form at the equator to an f-plane form at two to three degrees (abstract read on the registry record)"
+    title: "Lagerloef, Mitchum, Lukas and Niiler, 1999, Tropical Pacific near-surface currents estimated from altimeter, wind, and drifter data, Journal of Geophysical Research: Oceans 104: steady geostrophic and Ekman dynamics calibrated by 15 m drogued drifters, with geostrophy passing from a beta-plane form at the equator to an f-plane form at two to three degrees (registry record verified and abstract read there 2026-09-13; the journal page was not read)"
   - id: dohan-2017
     resource: https://doi.org/10.1002/2017JC012961
-    title: "Dohan, 2017, Ocean surface currents from satellite data, Journal of Geophysical Research: Oceans: the project's own account that OSCAR calculates global currents from satellite observations with simplified physics (abstract read on the registry record)"
+    title: "Dohan, 2017, Ocean surface currents from satellite data, Journal of Geophysical Research: Oceans: the project's own account that OSCAR calculates global currents from satellite observations with simplified physics (registry record verified and abstract read there 2026-09-13; the journal page was not read)"
   - id: dataset
     resource: ../datasets/oscar-v2.md
     title: "This bundle's OSCAR dataset concept: the file layout, the 30 m average and the absence of an uncertainty field"
