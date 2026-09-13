@@ -5,6 +5,9 @@ title: "Closing the global mean sea level budget: altimetry against GRACE-FO mas
 description: "The three terms of the sea level budget, which product supplies each, which gotcha or convention holds each term's trap (altimetry corrections and era dependence; the Argo deep-steric floor; mass with its GIA model, leakage, the inter-mission gap and the low-degree replacements), the matching-period rule at the month, and how the residual is read: correction consistency before missing physics."
 tags: [sea-level, budget, closure, altimetry, nasa-ssh, grace, grace-fo, argo, steric, manometric, recipe]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
+  - { by: human:PaulMRamirez, at: 2026-09-13T18:50:46Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/126 }
 inputs:
   - dataset: ../datasets/nasa-ssh.md
   - dataset: ../datasets/grace-fo-mascons.md
@@ -50,13 +53,16 @@ sources:
   - id: gotcha-low-degree
     resource: ../gotchas/grace-low-degree-replacements.md
     title: "Bundle gotcha: the degree-1 and C20/C30 replacements"
+  - id: release-note
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_ReleaseNotes_JPL_MASCON.txt
+    title: "JPL GRACE mascon solution release notes (RL06.3M version 4): the GAD de-aliasing signal restored over the ocean part of the mascons"
   - id: wcrp-2018
     resource: https://doi.org/10.5194/essd-10-1551-2018
     title: "WCRP Global Sea Level Budget Group (2018), Global sea-level budget 1993 to present, Earth System Science Data"
   - id: roemmich-gilson-2009
     resource: https://doi.org/10.1016/j.pocean.2009.03.004
     title: "Roemmich and Gilson (2009), the gridded Argo steric estimate, Progress in Oceanography"
-status: draft
+status: stable
 stale_after: 2027-03-13
 ---
 
@@ -86,6 +92,10 @@ concept in this bundle names:
 3. **Mass: the mascons.** The CRI-filtered grids summed over the ocean
    mascons with their true areas, converted to millimeters of sea
    level per the mass recipe, the formal uncertainty carried.[^mascons][^recipe-mass]
+   The product restores the GAD de-aliasing signal over the ocean part
+   of its mascons, so the mass term's atmospheric convention is the
+   product's, and the corrections table says so beside the altimetry
+   correction.[^release-note]
    Four traps hold this term: the GIA model the product already
    subtracted,[^gotcha-gia] coastal leakage into the nearshore ocean
    mascons,[^gotcha-leakage] the 2017 to 2018 inter-mission gap and
@@ -121,9 +131,12 @@ quoted here until then.[^computation]
 **Provenance.** Every number quoted from this recipe names the three
 product versions, the steric estimate and its depth floor, the GIA
 model and low-degree series the mass term carries, the ocean mask, the
-window, the months missing and the gap handling. Drafted without live
-access to the sources from the drafting environment; the maintainer's
-review checks each link before the recipe goes stable.
+window, the months missing and the gap handling. The mascon product's
+release note was read on 2026-09-13, every DOI was verified against
+the Crossref registry the same day, and the 2018 budget paper was
+read in full; the Elsevier page behind Roemmich and Gilson 2009 sits
+behind a bot check, so that paper is cited on its registry
+record.[^release-note][^wcrp-2018][^roemmich-gilson-2009]
 
 [^convention-slbc]: conventions/sea-level-budget-closure.md
 [^computation]: computations/sea-level-budget.md
@@ -136,3 +149,4 @@ review checks each link before the recipe goes stable.
 [^gotcha-low-degree]: gotchas/grace-low-degree-replacements.md
 [^wcrp-2018]: WCRP Global Sea Level Budget Group (2018), Earth System Science Data 10, doi:10.5194/essd-10-1551-2018
 [^roemmich-gilson-2009]: Roemmich and Gilson (2009), Progress in Oceanography 82, doi:10.1016/j.pocean.2009.03.004
+[^release-note]: JPL GRACE mascon solution release notes, RL06.3M version 4

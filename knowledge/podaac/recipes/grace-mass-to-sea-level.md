@@ -5,6 +5,9 @@ title: "From a regional GRACE mass change to a sea level equivalent, with its un
 description: "How a mass change over an ice sheet, a glacier region or a basin, summed at mascon scale from the JPL mascon product, becomes a contribution to global mean sea level in millimeters, and which uncertainty terms travel with it: the formal error, coastal leakage, the GIA model, the low-degree replacements and the inter-mission gap, each stated separately."
 tags: [grace, grace-fo, mascons, ice-sheet, sea-level, sea-level-equivalent, mass-balance, budget]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:00:00Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
+  - { by: human:PaulMRamirez, at: 2026-09-13T18:50:46Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/126 }
 inputs:
   - dataset: ../datasets/grace-fo-mascons.md
   - collections: "TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4 (the CRI-filtered grid, with its mascon placement and formal-uncertainty files); the unfiltered grid TELLUS_GRAC-GRFO_MASCON_GRID_RL06.3_V4 for the leakage comparison"
@@ -14,7 +17,7 @@ expected:
   - quantity: "regional mass change in gigatonnes and its trend in gigatonnes per year"
     statement: "one centimeter of equivalent water thickness over one square kilometer is 1e-5 gigatonnes, so the region's mass in gigatonnes is the sum over its mascons of anomaly (cm) times mascon area (km2) times 1e-5; the trend is the slope of a fit that carries annual and semi-annual terms and treats the 2017 to 2018 gap as a hole"
   - quantity: "sea level equivalent in millimeters of global mean sea level"
-    statement: "one millimeter of global mean sea level is the mass of one millimeter of water over the ocean's area: about 362 gigatonnes for an ocean area of 3.62e8 km2, and the recipe states the ocean area it used, since published budgets differ in the third digit; a mass loss of the region is a sea level rise of that mass divided by that constant"
+    statement: "one millimeter of global mean sea level is the mass of one millimeter of water over the ocean's area: about 362 gigatonnes for an ocean area of 3.62e8 km2 (the 2018 budget rounds to 360), and the recipe states the constant it used, since published budgets differ in the third digit; a mass loss of the region is a sea level rise of that mass divided by that constant"
   - quantity: "numeric anchor"
     statement: "none recorded yet: this recipe is a draft; the attested computation that closes the sea level budget (the sea-level-budget-closure roadmap deliverable, in ocean-science) will record the first anchor and its tolerance"
 expected_uncertainty:
@@ -30,6 +33,9 @@ sources:
   - id: nasa-tellus-grac-grfo-mascon-cri-grid-rl06
     resource: https://podaac.jpl.nasa.gov/dataset/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
     title: "PO.DAAC collection page: TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4, with the product documentation, the placement and uncertainty files"
+  - id: release-note
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_ReleaseNotes_JPL_MASCON.txt
+    title: "JPL GRACE mascon solution release notes (RL06.3M version 4): what changed between releases, the July 2025 GAD fix, and the placement, land mask and scale factor files unchanged since RL05M"
   - id: watkins-2015
     resource: https://doi.org/10.1002/2014JB011547
     title: "Watkins and others, 2015, Improved methods for observing Earth's time variable mass distribution with GRACE using spherical cap mascons, Journal of Geophysical Research: Solid Earth (the JPL mascon solution and the CRI filter)"
@@ -54,7 +60,7 @@ sources:
   - id: low-degree
     resource: ../gotchas/grace-low-degree-replacements.md
     title: "This bundle's degree-1 and C20/C30 gotcha"
-status: draft
+status: stable
 stale_after: 2027-03-13
 ---
 
@@ -63,8 +69,10 @@ stale_after: 2027-03-13
 **Method.** The mascon product gives a monthly anomaly of equivalent
 water thickness on 0.5-degree cells that represent 3-degree mascons;
 the information lives at the mascon, so the region is a set of whole
-mascons taken from the placement file, and every sum runs over
-mascons with their true areas, not over cells.[^watkins-2015][^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]
+mascons taken from the placement file (unchanged since RL05M, as the
+release note states, so a region defined on an earlier release still
+holds), and every sum runs over mascons with their true areas, not
+over cells.[^watkins-2015][^nasa-tellus-grac-grfo-mascon-cri-grid-rl06][^release-note]
 For an ice sheet the region is its land mascons with the CRI partition
 along the coast; the scale factors distributed with the product come
 from a land hydrology model and are for hydrology, not for ice.[^wiese-2016]
@@ -82,8 +90,9 @@ from a land hydrology model and are for hydrology, not for ice.[^wiese-2016]
    with the bridging evidence cited.[^velicogna-2020]
 3. **Sea level equivalent.** One millimeter of global mean sea level
    is the mass of a millimeter of water over the ocean's area, about
-   362 gigatonnes for 3.62e8 square kilometers; the statement names the
-   area it used, because published budgets differ in the third
+   362 gigatonnes for 3.62e8 square kilometers, where the 2018 budget
+   rounds to 360 gigatonnes per millimeter; the statement names the
+   constant it used, because published budgets differ in the third
    digit.[^wcrp-2018] A mass loss contributes a rise of that mass
    divided by the constant.
 
@@ -114,9 +123,19 @@ an equal-area 3-degree grid, the CRI partition of the coastal mascons,
 the gain factors as an option for sub-mascon hydrology with Wiese and
 others 2016 as their reference, and the product as the recommended one
 for land-ice applications;[^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]
-the WCRP 2018 budget paper answered on the journal's site;[^wcrp-2018]
-the remaining DOIs resolved to their journal pages behind a bot check,
-so the maintainer's review opens them.
+the release note was read: RL06.3M version 4 differs from RL06.1M
+version 3 only in the accelerometer transplant bundle, which touches
+the wide-dead-band months (January and February 2023, and July 2023
+onward), with the GRACE-FO uncertainty calibration updated for
+low-signal land mascons; a July 2025 fix corrected the GAD mass added
+back to the ocean part of land/ocean mascons, and only files whose
+series extends past March 2025 carry it, so a coastal ice-sheet sum
+names the file's last month beside the version;[^release-note] the
+WCRP 2018 budget paper was read in full on the journal's site, and the
+360 gigatonnes per millimeter figure is its;[^wcrp-2018] every DOI was
+verified against the Crossref registry the same day (title, authors,
+journal, year) and the Velicogna abstract read there; the Wiley
+journal pages sit behind a bot check.
 
 [^nasa-tellus-grac-grfo-mascon-cri-grid-rl06]: PO.DAAC collection page: TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4
 [^watkins-2015]: Watkins and others, 2015, Journal of Geophysical Research: Solid Earth, doi:10.1002/2014JB011547
@@ -127,3 +146,4 @@ so the maintainer's review opens them.
 [^gia]: This bundle's GIA gotcha
 [^gap]: This bundle's inter-mission gap gotcha
 [^low-degree]: This bundle's degree-1 and C20/C30 gotcha
+[^release-note]: JPL GRACE mascon solution release notes, RL06.3M version 4

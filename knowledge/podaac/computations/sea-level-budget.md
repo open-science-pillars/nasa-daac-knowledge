@@ -1,7 +1,7 @@
 ---
 type: Attested Computation
 spheres: [hydrosphere, cryosphere]
-title: "Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested, draft)"
+title: "Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested)"
 description: "Sanctioned closure of the global mean sea level budget over a stated period: altimetry against ocean mass plus steric, the monthly residual and every trend with the interval the one sanctioned trend method states, the combined uncertainty with the deep-steric systematic stated separately, a verdict closed_within_uncertainty, the convention's corrections table as receipt facts, and a refusal (exit 3, never a number) for a period that crosses the GRACE to GRACE-FO gap without independent continuity evidence. Proven on a synthetic fixture with a known closure; no real-data anchor exists yet."
 tags: [sea-level, budget, closure, altimetry, nasa-ssh, grace, grace-fo, mascons, argo, steric, manometric, attested]
 runtime: python
@@ -15,7 +15,10 @@ executor:
 attester:
   resource: references/attesters/sea_level_budget_check.py
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
-status: draft
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
+  - { by: human:PaulMRamirez, at: 2026-09-13T18:50:46Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/126 }
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: convention-slbc
@@ -45,6 +48,12 @@ sources:
   - id: recipe-budget
     resource: ../recipes/sea-level-budget.md
     title: "Bundle recipe: the three terms of the budget, which product supplies each, and how the residual is read"
+  - id: release-note
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_ReleaseNotes_JPL_MASCON.txt
+    title: "JPL GRACE mascon solution release notes (RL06.3M version 4): the GAD added back over the ocean part of the mascons, and the July 2025 fix to it"
+  - id: months-rl06
+    resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_Months_RL06.csv
+    title: "GRACE and GRACE-FO RL06 month list (PO.DAAC): the months the fixture removes are checked against it"
   - id: trend-ci
     resource: ecco-trend-ci.md
     title: "The one sanctioned trend method: the interval block every trend here carries, and the calibration behind it"
@@ -54,6 +63,9 @@ sources:
   - id: frederikse-2020
     resource: https://doi.org/10.1038/s41586-020-2591-3
     title: "Frederikse and others (2020), The causes of sea-level rise since 1900, Nature 584, 393 to 397"
+  - id: purkey-johnson-2010
+    resource: https://doi.org/10.1175/2010JCLI3682.1
+    title: "Purkey and Johnson (2010), Warming of global abyssal and deep Southern Ocean waters between the 1990s and 2000s: contributions to global heat and sea level rise budgets, Journal of Climate 23, 6336 to 6351 (the deep-steric term the 2018 budget carries)"
   - id: argo-doi
     resource: https://doi.org/10.17882/42182
     title: "Argo (2000 onward), Argo float data and metadata from the Global Data Assembly Centre (Argo GDAC), SEANOE"
@@ -62,7 +74,7 @@ sources:
     title: "Roemmich and Gilson (2009), The 2004 to 2008 mean and annual cycle of temperature, salinity, and steric height in the global ocean from the Argo Program, Progress in Oceanography 82, 81 to 100 (the gridded Argo steric estimate)"
 ---
 
-# Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested, draft)
+# Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested)
 
 The sanctioned computation behind any receipted statement that the
 global mean sea level budget closes, or does not, over a period: the
@@ -111,7 +123,12 @@ the attester refuses a receipt missing any of them:[^convention-slbc]
 - **Inverse barometer**, altimetry and mass: NASA-SSH has the dynamic
   atmospheric correction applied; the mass term states how atmospheric
   pressure over the ocean was handled, or the two disagree by a term
-  that is not sea level.[^nasa-ssh]
+  that is not sea level.[^nasa-ssh] For the mascon product the release
+  note answers: the GAD de-aliasing product (atmosphere and ocean) is
+  added back over the ocean part of the mascons, so the product's ocean
+  mass carries that loading, and a July 2025 fix corrected the amount
+  added back over land/ocean mascons in files whose series extends past
+  March 2025.[^release-note]
 - **Reference frame**, altimetry and mass: the mass term's frame is
   set by the degree-1 series the product substituted, since the
   satellites do not sense it.[^gotcha-low-degree]
@@ -124,9 +141,14 @@ the attester refuses a receipt missing any of them:[^convention-slbc]
 - **Deep steric**: the sampled depth floor of the steric term and the
   systematic below it, stated as a value with its own uncertainty and
   never folded into the noise. The stated value, 0.1 mm per year with
-  an uncertainty of 0.1, is the order the 2018 budget quotes for the
-  ocean below 2000 m and is a stated assumption until a real-data run
-  states its own from the source it cites.[^wcrp-2018]
+  an uncertainty of 0.1, is the order of the term the 2018 budget
+  carries below 2000 m, which it takes as the Purkey and Johnson 2010
+  linear trend for 1990 to 2010 extrapolated: abyssal warming below
+  4000 m, 0.053 with an uncertainty of 0.017, plus deep Southern Ocean
+  warming between 1000 and 4000 m, 0.093 with an uncertainty of 0.081,
+  in millimeters per year. It is a stated assumption until a real-data
+  run states its own from the source it
+  cites.[^wcrp-2018][^purkey-johnson-2010]
 - **Gap handling**: the months missing from the period (the
   inter-mission gap and the battery-management months), the rule that
   a month with no solution in any term is a hole dropped from every
@@ -174,8 +196,11 @@ of 0.1 mm per year; altimetry equal to mass plus steric plus deep
 steric plus noise at the stated uncertainty (1.2 mm; mass 1.5 to 1.9
 in an annual pattern; steric 2.2 falling to 1.6 as the array
 matured); and the mass months the real record lacks removed: the
-2017-07 through 2018-05 gap and earlier battery-management months
-patterned on the product's month list. `--fixture-offset MM` injects
+2017-07 through 2018-05 gap, August and September 2018, and the
+seventeen battery-management months from January 2011 through February
+2017, which match the product's public month list from the fixture's
+start in 2005 onward (checked 2026-09-13; the list also lacks June and
+July 2002 and June 2003, before the fixture begins).[^months-rl06] `--fixture-offset MM` injects
 an inter-mission offset into the mass series after the gap, zero by
 default, so a bridged run across the gap has an offset to fail on. The
 receipt records the seed, the offset, the fixture digest and the
@@ -228,6 +253,12 @@ months missing). Altimetry +3.4553 mm per year, 95 percent interval
 uncertainties 0.2420, plus the deep-steric uncertainty 0.1);
 `closed_within_uncertainty` true. The imposed truth is altimetry 3.5,
 mass 2.1, steric 1.3 and a residual of 0.1, each inside its interval.
+Those rates are the order of the 2018 budget's table for 2005 onward
+(sea level 3.5 with an uncertainty of 0.2, full-depth thermosteric 1.3
+with an uncertainty of 0.4, thermosteric plus GRACE ocean mass 3.6
+with an uncertainty of 0.4, residual minus 0.1 with an uncertainty of
+0.3, in millimeters per year), which is also the published comparison
+the first real-data run reports against.[^wcrp-2018]
 The refusal case the gate and the ocean-science golden exercise is
 2016-01 through 2019-12 with no bridge: exit 3, attested as a
 refusal. The registry entry `sea-level-budget` in
@@ -251,10 +282,17 @@ budget adds the smoothing and leakage terms the convention lists and
 is not this computation. Produced by Open Science Pillars, not a NASA
 or JPL product.
 
-**Verification.** The sources are cited by DOI and by bundle path and
-were not fetched from the drafting environment; the maintainer's
-review checks each link and the deep-steric figure against the 2018
-budget before the concept goes stable. The chain is verified on every
+**Verification.** The bundle-path sources are this bundle's own
+concepts. The mascon product's release note and month list were read
+on 2026-09-13 and are the basis of the GAD entry and the fixture's
+month list above;[^release-note][^months-rl06] every DOI was verified
+against the Crossref registry the same day (title, authors, journal,
+year); the 2018 budget paper was read in full on the journal's site,
+and the deep-steric entry and the fixture paragraph cite what it
+carries;[^wcrp-2018][^purkey-johnson-2010] the Nature abstract and the
+SEANOE landing page were read;[^frederikse-2020][^argo-doi] the
+Elsevier page sits behind a bot check, so Roemmich and Gilson 2009 is
+cited on its registry record.[^roemmich-gilson-2009] The chain is verified on every
 change by the repository's check routine, which runs the attester's
 selftest and the end-to-end fixture run and refusal.
 
@@ -272,3 +310,6 @@ selftest and the end-to-end fixture run and refusal.
 [^frederikse-2020]: Frederikse and others (2020), Nature 584, doi:10.1038/s41586-020-2591-3
 [^argo-doi]: Argo float data and metadata from the Global Data Assembly Centre, doi:10.17882/42182
 [^roemmich-gilson-2009]: Roemmich and Gilson (2009), Progress in Oceanography 82, doi:10.1016/j.pocean.2009.03.004
+[^release-note]: JPL GRACE mascon solution release notes, RL06.3M version 4
+[^months-rl06]: GRACE and GRACE-FO RL06 month list, PO.DAAC
+[^purkey-johnson-2010]: Purkey and Johnson (2010), Journal of Climate 23, doi:10.1175/2010JCLI3682.1

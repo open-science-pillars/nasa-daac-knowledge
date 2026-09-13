@@ -4,6 +4,54 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-13 · STEWARD RE-SIGNING of
+  knowledge/podaac/gotchas/grace-intermission-gap.md,
+  knowledge/podaac/gotchas/grace-low-degree-replacements.md,
+  knowledge/podaac/recipes/grace-mass-to-sea-level.md,
+  knowledge/podaac/computations/sea-level-budget.md,
+  knowledge/podaac/recipes/sea-level-budget.md: re-sign after the
+  Crossref and full-text verification pass, on the maintainer's
+  instruction to sign on their behalf The new verified event is appended
+  on the steward's word, the earlier events kept as history. (steward)
+
+- 2026-09-13 · STEWARD RE-SIGNING of
+  knowledge/podaac/datasets/grace-fo-mascons.md,
+  knowledge/podaac/gotchas/grace-intermission-gap.md,
+  knowledge/podaac/gotchas/grace-low-degree-replacements.md,
+  knowledge/podaac/recipes/grace-mass-to-sea-level.md,
+  knowledge/podaac/computations/sea-level-budget.md,
+  knowledge/podaac/recipes/sea-level-budget.md: maintainer's review of
+  PR 125 (the land-ice GRACE concepts and the sea level budget closure)
+  and of the release-note pass; signatures recorded on the maintainer's
+  instruction The new verified event is appended on the steward's word,
+  the earlier events kept as history. (steward)
+
+- 2026-09-13 · gotchas/grace-intermission-gap.md, gotchas/grace-low-degree-replacements.md,
+  recipes/grace-mass-to-sea-level.md, computations/sea-level-budget.md,
+  recipes/sea-level-budget.md: every cited DOI verified against the Crossref
+  registry (title, authors, journal, year) and the abstracts of the GRACE
+  papers read there; the WCRP 2018 budget read in full. The gap gotcha now
+  states the inter-mission bias as a bound from independent estimates and
+  names the mass budget method as the ice-sheet bridge; the low-degree
+  gotcha carries the trend changes Loomis 2019 quantifies and the
+  accelerometer dates behind the C30 replacement; the mass recipe carries
+  the budget's 360 gigatonnes per millimeter; the computation names Purkey
+  and Johnson 2010 as the deep-steric term the budget carries and the
+  budget's 2005 onward table as the comparison for the first real-data run.
+  (knowledge-seeder/claude)
+- 2026-09-13 · datasets/grace-fo-mascons.md, gotchas/grace-intermission-gap.md,
+  gotchas/grace-low-degree-replacements.md, recipes/grace-mass-to-sea-level.md,
+  computations/sea-level-budget.md and recipes/sea-level-budget.md: the
+  product release note and the RL06 month list read from the PO.DAAC
+  archive (its CloudFront host now allowed). The dataset concept names
+  ICE-6G_D, TN-14 version 3 and the JPL mascon-consistent geocenter; the
+  gap gotcha counts the missing months from the list (eleven in the gap,
+  August and September 2018, twenty earlier); the low-degree gotcha
+  states which series this product applies and that its degree-1 is not
+  the TN-13 file verbatim; the mass recipe carries the July 2025 GAD fix
+  and the placement files unchanged since RL05M; the budget computation
+  and recipe carry the GAD add-back, and the fixture's removed months are
+  confirmed against the list. (knowledge-seeder/claude)
 - 2026-09-13 · the four GRACE land-ice concepts (datasets/grace-fo-mascons.md,
   gotchas/grace-intermission-gap.md, gotchas/grace-low-degree-replacements.md,
   recipes/grace-mass-to-sea-level.md) re-verified from a session with the
