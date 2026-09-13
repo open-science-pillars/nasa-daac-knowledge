@@ -4,6 +4,28 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-13 · STEWARD RE-SIGNING of
+  knowledge/podaac/computations/sea-level-budget.md,
+  knowledge/podaac/recipes/sea-level-budget.md,
+  knowledge/podaac/recipes/grace-mass-to-sea-level.md: maintainer's
+  review of PR 127, the first real-data run of the sea level budget,
+  recorded on the maintainer's instruction The new verified event is
+  appended on the steward's word, the earlier events kept as history.
+  (steward)
+
+- 2026-09-13 · STEWARD SIGNING of knowledge/podaac/datasets/oscar-v2.md,
+  knowledge/podaac/datasets/smap-sss-jpl.md,
+  knowledge/podaac/gotchas/oscar-versions-and-latency.md,
+  knowledge/podaac/gotchas/smap-sss-cold-water-sensitivity.md,
+  knowledge/podaac/gotchas/smap-sss-two-producers-differ.md,
+  knowledge/podaac/gotchas/oscar-is-geostrophic-plus-ekman.md,
+  knowledge/podaac/gotchas/smap-sss-coastal-and-sea-ice-contamination.md:
+  maintainer's review of PR 128 recorded on the maintainer's
+  instruction; the two dataset concepts and the three medium gotchas
+  promoted to stable; the two high-severity gotchas keep draft with this
+  first review until a second human review, per the two-review rule The
+  verified event is written on the steward's word. (steward)
+
 - 2026-09-13 · the seven OSCAR and SMAP salinity drafts, index.md and
   DIGEST.md: the coordinator's provenance lint applied. One OSCAR final
   granule (2020-01-01) opened and deleted, and the file-level facts in
@@ -63,6 +85,23 @@ _Historical note: older entries use build-era shorthand (a "close lint" is a kno
   instruction The new verified event is appended on the steward's word,
   the earlier events kept as history. (steward)
 
+- 2026-09-13 · computations/sea-level-budget.md, recipes/sea-level-budget.md,
+  recipes/grace-mass-to-sea-level.md, references/skills/run-sea-level-budget.md:
+  the first real-data run. references/loaders gains the three term loaders
+  and the stamp assembler (selftests on synthetic inputs);
+  references/retrieval/sea-level-budget-root holds the stamped data root:
+  altimetry from 1,124 NASA-SSH V1.1 grids (2005-01 to 2026-08, the +0.3
+  mm per year GIA convention), steric from Roemmich and Gilson to 2000 dbar
+  (2004-01 to 2026-08), mass from the JPL mascon CRI grid over its ocean
+  mask (2002-04 to 2026-07, the April 2015 pair assigned by the month list),
+  the provider's ocean mass series as a cross-check, SOURCES.json for the
+  downloads. Over 2005-01 through 2016-12 (127 of 144 months) the budget
+  closes: altimetry +3.682, mass +2.299 (provider +2.366), steric +1.104,
+  residual +0.279 [+0.092, +0.466] mm per year against a bar of 0.663.
+  tools/reference_runs.yaml gains the data root and the record run;
+  tools/run_checks.sh verifies the stamp and reruns and attests it. The
+  executor's first caveat now depends on the mode (fixture or record).
+  (knowledge-seeder/claude)
 - 2026-09-13 · gotchas/grace-intermission-gap.md, gotchas/grace-low-degree-replacements.md,
   recipes/grace-mass-to-sea-level.md, computations/sea-level-budget.md,
   recipes/sea-level-budget.md: every cited DOI verified against the Crossref

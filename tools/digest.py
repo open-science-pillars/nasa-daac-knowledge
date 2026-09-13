@@ -138,7 +138,11 @@ def resolve(ref: str, concept: Path, bundle: Path):
         cand = bundle / ref.lstrip("/")
     else:
         cand = concept.parent / ref
-        if not cand.exists():
+        try:
+            found = cand.exists()
+        except OSError:            # a prose value too long to be a file name is not a path
+            return None
+        if not found:
             cand = bundle / ref
     try:
         return cand.resolve().relative_to(bundle.resolve()).as_posix()

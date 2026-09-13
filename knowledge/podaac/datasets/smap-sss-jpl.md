@@ -5,9 +5,10 @@ title: "SMAP sea surface salinity, JPL CAP Level 3 (with the RSS product as the 
 description: "The JPL Combined Active-Passive version 5.0 Level 3 sea surface salinity from the SMAP L-band radiometer: 8-day running means in daily files and monthly means on a 0.25-degree grid at about 60 km resolution from April 2015 onward, with a predicted uncertainty field, HYCOM reference salinity, and land and ice fractions; Remote Sensing Systems produces the alternative SMAP salinity (version 6.0) with a different algorithm, smoothing and flags."
 tags: [smap, salinity, sss, l-band, radiometer, level3, jpl, cap, rss, podaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/128 }
 resource: https://podaac.jpl.nasa.gov/dataset/SMAP_JPL_L3_SSS_CAP_8DAY-RUNNINGMEAN_V5
 version: "JPL CAP V5.0 (user's guide dated 2020-11-12, PO.DAAC release date 2020-12-11), CMR-verified 2026-09-13 (provider POCLOUD) with granule ranges from a first-and-last granule search the same day: SMAP_JPL_L3_SSS_CAP_8DAY-RUNNINGMEAN_V5 (C2208422957-POCLOUD, DOI 10.5067/SMP50-3TPCS, daily files; the first granule record spans 2015-04-30T12 to 2015-05-08T12 and the last SMAP_L3_SSS_20260905_8DAYS_V5.0 spans 2026-09-01T12 to 2026-09-09T12) and SMAP_JPL_L3_SSS_CAP_MONTHLY_V5 (C2208423975-POCLOUD, DOI 10.5067/SMP50-3TMCS, first granule 2015-04, last 2026-08); the RSS alternative is identified in the body"
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: podaac-jpl-8day

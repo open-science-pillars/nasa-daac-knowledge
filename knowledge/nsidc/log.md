@@ -2,6 +2,21 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-13 · STEWARD SIGNING of
+  knowledge/nsidc/datasets/icesat2-atl15.md,
+  knowledge/nsidc/datasets/its-live-ice-velocity.md,
+  knowledge/nsidc/gotchas/atl15-delta-h-reference-epoch.md,
+  knowledge/nsidc/gotchas/polar-stereographic-not-latlon.md,
+  knowledge/nsidc/gotchas/velocity-mosaic-epochs-and-gaps.md,
+  knowledge/nsidc/gotchas/ice-sheet-boundaries-and-drainage-basins.md,
+  knowledge/nsidc/gotchas/atl15-height-change-is-not-mass-change.md:
+  maintainer's review of PR 129 recorded on the maintainer's
+  instruction; the two dataset concepts and the four medium gotchas
+  promoted to stable; atl15-height-change-is-not-mass-change (high
+  severity) keeps draft with this first review until a second human
+  review, per the two-review rule The verified event is written on the
+  steward's word. (steward)
+
 - 2026-09-13 · bundle scaffolded with two dataset concepts
   (datasets/icesat2-atl15.md, datasets/its-live-ice-velocity.md) and
   five gotchas (atl15-height-change-is-not-mass-change at severity

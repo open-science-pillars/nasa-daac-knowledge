@@ -57,11 +57,17 @@ a period outside the record, and a term whose interval the chain
 refuses to state. A refusal receipt attests PASS as a refusal (the
 verdict line carries the word refusal) and is never a number.
 
-## 3. A data root, for the first real run
+## 3. A data root, for a real run
 
-No real-data tree exists in the drafting environment; this is the
-layout the computation reads, so the first real run binds the same
-receipt. `--data-root DIR` in place of `--fixture`:
+The first real run's tree is committed at
+references/retrieval/sea-level-budget-root, built by the loaders under
+references/loaders (slb_altimetry_nasa_ssh.py for the NASA-SSH grids,
+slb_steric_rg.py for the Roemmich and Gilson product, slb_mass_mascons.py
+for the mascon grid, each with `--selftest`) and stamped by
+slb_data_root.py, which writes RECORD.json with the corrections table
+from the loaders' stamps; SOURCES.json records the downloads. This is
+the layout the computation reads. `--data-root DIR` in place of
+`--fixture`:
 
 ```
 DIR/

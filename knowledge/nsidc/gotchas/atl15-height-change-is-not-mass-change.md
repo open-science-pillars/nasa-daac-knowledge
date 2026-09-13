@@ -5,6 +5,7 @@ title: "ATL15 height change is not mass change: the conversion needs a firn mode
 description: "ATL15 delta_h and dhdt are changes in the height of the ice sheet surface. A mass change follows only after the change in firn air content is removed with a firn densification model and the remainder is multiplied by an assumed density, and each step carries an uncertainty the product's error fields do not contain. A dh/dt sum quoted in gigatonnes without a named firn model and its uncertainty is a volume change with a density label, and it misstates the mass balance wherever accumulation or melt has changed the firn."
 tags: [icesat2, atl15, height-change, mass-balance, firn, firn-air-content, density, sea-level, greenland, antarctica]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/129 }
 severity: high
 dataset: ../datasets/icesat2-atl15.md
 eval_case: atl15-height-change-is-not-mass-change

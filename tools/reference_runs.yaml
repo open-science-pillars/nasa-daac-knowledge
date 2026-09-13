@@ -12,6 +12,7 @@
 data_roots:
   fixtures: ~/ECCO_V4r4          # the verified fixture cache, record ecco-v4r4-fixtures-2010
   record: ~/ECCO_V4r4_record     # the verified science record, 1992 to 2017
+  sea-level-budget: knowledge/podaac/references/retrieval/sea-level-budget-root   # the three-term data root, stamped in the tree
 runs:
   heat-budget:
     computation: ecco_heat_budget.py
@@ -58,3 +59,7 @@ runs:
     computation: sea_level_budget.py
     data_root: none
     args: [--fixture, --seed, "7", --period, "2005-01:2016-12", --runtime, reattest]
+  sea-level-budget-record:
+    computation: sea_level_budget.py
+    data_root: sea-level-budget
+    args: [--period, "2005-01:2016-12", --runtime, reattest]

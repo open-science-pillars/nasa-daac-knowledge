@@ -5,13 +5,14 @@ title: "OSCAR final, interim and nrt are three products with different inputs, a
 description: "The three OSCAR version 2 collections share a model and a file layout but not their inputs: final uses delayed-time altimetry and ERA5 winds, interim near-real-time altimetry and ERA5, nrt near-real-time altimetry and NCEP/NCAR reanalysis winds, at latencies of about a year and a half, a month and two days. They overlap over years rather than abutting, so a series extended to the present by switching collections at the end of final puts the altimetry and wind product changes into the record at the seam, and nothing in the files marks it. Version 2 also replaced the third-degree five-day product with a different grid, cadence, equatorial model and smoothing, so third-degree validation and results do not transfer."
 tags: [oscar, surface-currents, versions, latency, near-real-time, interim, final, reprocessing, altimetry, era5, ncep]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/128 }
 severity: medium
 # medium: the collections are documented and separately catalogued, and
 # the trap bites through mixing them or through comparison against the
 # retired product rather than through a silently wrong single-collection
 # statistic; no eval case is required at this severity.
 dataset: ../datasets/oscar-v2.md
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: guide

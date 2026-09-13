@@ -8,6 +8,7 @@ generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:00:00Z }
 verified:
   - { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
   - { by: human:PaulMRamirez, at: 2026-09-13T18:50:46Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/126 }
+  - { by: human:PaulMRamirez, at: 2026-09-13T21:22:05Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/127 }
 inputs:
   - dataset: ../datasets/grace-fo-mascons.md
   - collections: "TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4 (the CRI-filtered grid, with its mascon placement and formal-uncertainty files); the unfiltered grid TELLUS_GRAC-GRFO_MASCON_GRID_RL06.3_V4 for the leakage comparison"
@@ -19,7 +20,7 @@ expected:
   - quantity: "sea level equivalent in millimeters of global mean sea level"
     statement: "one millimeter of global mean sea level is the mass of one millimeter of water over the ocean's area: about 362 gigatonnes for an ocean area of 3.62e8 km2 (the 2018 budget rounds to 360), and the recipe states the constant it used, since published budgets differ in the third digit; a mass loss of the region is a sea level rise of that mass divided by that constant"
   - quantity: "numeric anchor"
-    statement: "none recorded yet: this recipe is a draft; the attested computation that closes the sea level budget (the sea-level-budget-closure roadmap deliverable, in ocean-science) will record the first anchor and its tolerance"
+    statement: "for the global ocean, the sea level budget's real-data run records the mass term from this product's CRI grid over its own ocean mask at +2.299 mm per year over 2005 through 2016 (95 percent half width 0.205), with the provider's own ocean mass series at +2.366 over the same months (../computations/sea-level-budget.md); a regional ice-sheet anchor is not recorded yet"
 expected_uncertainty:
   - quantity: "formal error"
     statement: "from the product's per-mascon uncertainty grids, combined with the product's guidance on spatial correlation rather than as independent errors (sqrt(N) under-states it); the floor of the statement, never the whole of it"

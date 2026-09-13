@@ -59,8 +59,22 @@ sea_level_budget_chain() {
   grep -q "^PASS refusal" "$tmp/verdict.txt" || { echo "sea_level_budget_chain: the refusal did not attest as a refusal"; return 1; }
   rm -rf "$tmp"
 }
+# The real-data anchor: the stamped three-term data root committed under
+# references/retrieval is run for the reference period and attested, so
+# the anchor the computation concept quotes is recomputed on every change.
+sea_level_budget_record() {
+  local x=knowledge/podaac/references/computations/sea_level_budget.py
+  local a=knowledge/podaac/references/attesters/sea_level_budget_check.py
+  local root=knowledge/podaac/references/retrieval/sea-level-budget-root
+  local tmp; tmp=$(mktemp -d)
+  uv run knowledge/podaac/references/loaders/slb_data_root.py --root "$root" --check || return 1
+  uv run "$x" --data-root "$root" --period 2005-01:2016-12 --runtime run_checks --receipt "$tmp/record.json" || return 1
+  uv run "$a" "$tmp/record.json" || return 1
+  rm -rf "$tmp"
+}
 run uv run knowledge/podaac/references/attesters/sea_level_budget_check.py --selftest
 run sea_level_budget_chain
+run sea_level_budget_record
 # Sibling plugin clones, when present, have their local concepts checked
 # for owed signatures, their scripts for undeclared dependencies and their
 # prose for the wording rules; an absent sibling is not a failure here.

@@ -5,9 +5,10 @@ title: "OSCAR version 2 surface currents (final, interim and near-real-time)"
 description: "Daily 0.25-degree global near-surface currents diagnosed from gridded altimetry, reanalysis winds and SST with a geostrophic plus Ekman plus thermal-wind model and averaged over the top 30 m, in three collections of decreasing quality and latency; the files carry total and geostrophic components and no uncertainty field."
 tags: [oscar, surface-currents, ekman, geostrophic, altimetry, level4, podaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/128 }
 resource: https://podaac.jpl.nasa.gov/dataset/OSCAR_L4_OC_FINAL_V2.0
 version: "Version 2.0 in three POCLOUD collections, CMR-verified 2026-09-13 with granule ranges from a first-and-last granule search the same day: final OSCAR_L4_OC_FINAL_V2.0 (C2098858642-POCLOUD, DOI 10.5067/OSCAR-25F20, daily granules 1993-01-01 through 2026-01-16), interim OSCAR_L4_OC_INTERIM_V2.0 (C2102959417-POCLOUD, DOI 10.5067/OSCAR-25I20, 2020-01-01 through 2026-08-31 and ongoing) and near-real-time OSCAR_L4_OC_NRT_V2.0 (C2102958977-POCLOUD, DOI 10.5067/OSCAR-25N20, 2021-01-01 through 2026-09-03 and ongoing); the user handbook is dated October 2021"
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: podaac-final

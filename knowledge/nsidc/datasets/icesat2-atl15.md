@@ -5,6 +5,7 @@ title: "ICESat-2 ATL15 gridded Antarctic and Arctic land ice height change"
 description: "Quarterly surface height difference surfaces relative to the ATL14 reference surface at 1 January 2020, and their rates over quarterly to six-year windows, on 1, 10, 20 and 40 km polar stereographic grids for Antarctica and six Arctic regions, derived from the ATL11 along-track time series; per-cell error fields and an ice-area field ship with the data."
 tags: [icesat2, atl15, atl14, atl11, land-ice, height-change, nsidc, cryosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/129 }
 resource: https://nsidc.org/data/atl15/versions/5
 version: "Version 5 (DOI 10.5067/ATLAS/ATL15.005; derived from ATL11 version 7), CMR concept C3892628343-NSIDC_CPRD, verified 2026-09-13: 40 granules named ATL15_<region>_0329_<nn>km_005_02.nc, that is cycles 3 through 29, with granule time ranges 2019-01-01 through 2025-11-20; the user guide's version history dates the release covering cycle 29 to March 2026 and the retirement of version 4 to June 2026"
 sources:
@@ -29,7 +30,7 @@ sources:
   - id: smith-2020
     resource: https://doi.org/10.1126/science.aaz5845
     title: "Smith and others, 2020, Pervasive ice sheet mass loss reflects competing ocean and atmosphere processes, Science 368, 1239 to 1242 (the reference use of ICESat and ICESat-2 height change for mass balance)"
-status: draft
+status: stable
 stale_after: 2027-03-13
 ---
 

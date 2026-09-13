@@ -5,13 +5,14 @@ title: "JPL CAP and RSS SMAP salinity are two products from one radiometer: diff
 description: "PO.DAAC archives two Level 3 SMAP salinity lines. JPL CAP version 5.0 fits salinity and wind to version 5 brightness temperatures by maximum likelihood and grids to about 60 km with a likelihood-width uncertainty; RSS version 6.0 interpolates version 6 antenna temperatures to 40 km, smooths to about 70 km, uses CCMP winds, an AMSR2 sea-ice scheme and a nine-term formal error budget, and starts a month earlier. Their versions were released three years apart with different bias corrections at high latitude and in the early mission. A series that switches between them, or an anomaly of one against the other's mean, carries those differences as signal, and the spread between them is not an uncertainty for either."
 tags: [smap, salinity, sss, jpl, cap, rss, producers, algorithm, versions, climatology, anomaly]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/128 }
 severity: medium
 # medium: both products are documented and separately catalogued and
 # the trap bites through mixing or cross-comparison rather than through
 # a silently wrong single-product statistic; no eval case is required
 # at this severity.
 dataset: ../datasets/smap-sss-jpl.md
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: jpl-guide

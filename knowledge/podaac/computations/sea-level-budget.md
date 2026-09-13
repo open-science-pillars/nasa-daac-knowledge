@@ -2,7 +2,7 @@
 type: Attested Computation
 spheres: [hydrosphere, cryosphere]
 title: "Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested)"
-description: "Sanctioned closure of the global mean sea level budget over a stated period: altimetry against ocean mass plus steric, the monthly residual and every trend with the interval the one sanctioned trend method states, the combined uncertainty with the deep-steric systematic stated separately, a verdict closed_within_uncertainty, the convention's corrections table as receipt facts, and a refusal (exit 3, never a number) for a period that crosses the GRACE to GRACE-FO gap without independent continuity evidence. Proven on a synthetic fixture with a known closure; no real-data anchor exists yet."
+description: "Sanctioned closure of the global mean sea level budget over a stated period: altimetry against ocean mass plus steric, the monthly residual and every trend with the interval the one sanctioned trend method states, the combined uncertainty with the deep-steric systematic stated separately, a verdict closed_within_uncertainty, the convention's corrections table as receipt facts, and a refusal (exit 3, never a number) for a period that crosses the GRACE to GRACE-FO gap without independent continuity evidence. Proven on a synthetic fixture with a known closure and anchored on a real-data run over 2005 through 2016 that closes within uncertainty."
 tags: [sea-level, budget, closure, altimetry, nasa-ssh, grace, grace-fo, mascons, argo, steric, manometric, attested]
 runtime: python
 parameters:
@@ -18,6 +18,7 @@ generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
 verified:
   - { by: human:PaulMRamirez, at: 2026-09-13T18:39:32Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/125 }
   - { by: human:PaulMRamirez, at: 2026-09-13T18:50:46Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/126 }
+  - { by: human:PaulMRamirez, at: 2026-09-13T21:22:05Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/127 }
 status: stable
 stale_after: 2027-03-13
 sources:
@@ -54,6 +55,12 @@ sources:
   - id: months-rl06
     resource: https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-docs/gracefo/open/docs/GRACE_GRACE-FO_Months_RL06.csv
     title: "GRACE and GRACE-FO RL06 month list (PO.DAAC): the months the fixture removes are checked against it"
+  - id: data-root
+    resource: ../references/retrieval/sea-level-budget-root/RECORD.json
+    title: "The stamped three-term data root committed beside this concept: the loaders' stamps, the corrections table, the manifest of the three term files, and SOURCES.json for the downloads"
+  - id: loaders
+    resource: ../references/loaders/slb_data_root.py
+    title: "The term loaders and the stamp assembler under references/loaders (slb_altimetry_nasa_ssh.py, slb_steric_rg.py, slb_mass_mascons.py, slb_data_root.py), each with a selftest"
   - id: trend-ci
     resource: ecco-trend-ci.md
     title: "The one sanctioned trend method: the interval block every trend here carries, and the calibration behind it"
@@ -87,8 +94,10 @@ cross-product budget the ECCO-internal partition
 in this bundle so that the corrections table the convention demands is
 a set of receipt facts an attester checks rather than a paragraph a
 reader trusts. Version 1 is proven on a synthetic fixture with a known
-closure. No real-data anchor exists yet: the fixture proves the chain,
-not the ocean, and every receipt says so in its caveats.
+closure, and its real-data anchor is the stamped three-term data root
+committed beside it, run for 2005 through 2016 in the reference run
+below.[^data-root] A fixture receipt says in its caveats that it proves
+the chain, not the ocean.
 
 ## Parameters
 
@@ -265,6 +274,32 @@ refusal. The registry entry `sea-level-budget` in
 tools/reference_runs.yaml reruns the fixture run for the
 re-attestation ritual.
 
+**Real-data run (the stamped data root
+sea-level-budget-root-2026-09-13, 2005-01 through 2016-12, measured
+2026-09-13).** The three terms were built by the loaders under
+references/loaders and stamped by the assembler: altimetry from 1,124
+NASA-SSH V1.1 grids as monthly global means with the +0.3 mm per year
+GIA convention; steric from the Roemmich and Gilson product as TEOS-10
+steric height to 2000 dbar over the cells valid in every month; mass
+from the JPL mascon CRI grid over the product's own ocean mask with
+the formal error combined per mascon.[^loaders][^data-root] 127 of
+144 months carry all three terms: sixteen mass months are missing
+(the battery-management months the product's list names) and one
+altimetry month, 2006-11, had too few grids. Altimetry +3.682 mm per
+year, 95 percent half width 0.475; mass +2.299, half width 0.205,
+and the provider's own ocean mass series carried in the data root
+trends at +2.366 over the same months, inside that half width;
+steric +1.104, half width 0.223; residual +0.279, interval [+0.092,
++0.466]. Closure gap +0.179 mm per year against a bar of 0.663
+(quadrature of the term uncertainties 0.563, plus the deep-steric
+uncertainty 0.1); `closed_within_uncertainty` true. Against the 2018
+budget's table for 2005 onward, altimetry sits 0.2 high and mass 0.1
+high, and the steric term 0.2 low as a 0 to 2000 m term against a
+full-depth one, each inside the stated uncertainties.[^wcrp-2018] The
+registry entry `sea-level-budget-record` reruns it, and the
+repository's check routine verifies the stamp, reruns the executor on
+the data root and attests the receipt on every change.
+
 **Pass bar.** There is no measured tolerance to record: the verdict is
 a comparison of the residual trend against the uncertainty the receipt
 itself carries, and the attester recomputes both. The plausibility
@@ -273,9 +308,15 @@ sanity bound on the chain, not a science tolerance.
 
 ## Boundaries
 
-No real-data run has been made and no real-data tree exists in the
-drafting environment; the data-root layout is documented in the run
-instructions so that the first real run binds the same receipt. The
+One real-data run exists, over 2005 through 2016, a period that does
+not cross the inter-mission gap; a run across the gap needs a bridge
+citation and has not been made. The per-month uncertainties of the
+altimetry and steric terms are stated noise floors, since neither
+product ships an error field, and the mass term's formal error treats
+mascons as independent; in the anchor run the sampling half width
+was the larger term for all three. The altimetry term reaches 71
+degrees of latitude, the steric term 64.5 S to 79.5 N, the mass term the whole
+ocean, and the residual carries that mismatch in coverage. The
 steric term below the sampling floor is an acknowledged systematic,
 not a measurement. The verdict is about the global mean; a regional
 budget adds the smoothing and leakage terms the convention lists and
@@ -283,7 +324,9 @@ is not this computation. Produced by Open Science Pillars, not a NASA
 or JPL product.
 
 **Verification.** The bundle-path sources are this bundle's own
-concepts. The mascon product's release note and month list were read
+concepts; the data root and its stamp are committed in this
+repository and the real-data run was made and attested on 2026-09-13
+from them.[^data-root] The mascon product's release note and month list were read
 on 2026-09-13 and are the basis of the GAD entry and the fixture's
 month list above;[^release-note][^months-rl06] every DOI was verified
 against the Crossref registry the same day (title, authors, journal,
@@ -313,3 +356,5 @@ selftest and the end-to-end fixture run and refusal.
 [^release-note]: JPL GRACE mascon solution release notes, RL06.3M version 4
 [^months-rl06]: GRACE and GRACE-FO RL06 month list, PO.DAAC
 [^purkey-johnson-2010]: Purkey and Johnson (2010), Journal of Climate 23, doi:10.1175/2010JCLI3682.1
+[^data-root]: references/retrieval/sea-level-budget-root/RECORD.json, the stamped data root
+[^loaders]: references/loaders, the term loaders and the stamp assembler

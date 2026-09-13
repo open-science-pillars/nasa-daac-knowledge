@@ -15,6 +15,7 @@
 # steward rung join the team, their names landing with their first
 # verified events, never before.
 /knowledge/esdis/   @open-science-pillars/esdis-stewards
+/knowledge/nsidc/   @open-science-pillars/nsidc-stewards
 
 # Runtime projections (ADR B): the Claude package files are the Cowork
 # projection of .osp/package.yaml and belong to the runtime maintainers.

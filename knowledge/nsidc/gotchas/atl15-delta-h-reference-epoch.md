@@ -5,12 +5,13 @@ title: "ATL15 delta_h is relative to the 1 January 2020 reference surface, and e
 description: "delta_h is the height difference between the surface at each quarterly epoch and the ATL14 surface at the reference date 1 January 2020, so it is zero at that epoch and negative or positive on either side of it; the dhdt_lag groups are differences of two delta_h surfaces a fixed interval apart, time-stamped at the midpoint of their window. A trend that reads delta_h as change since the start of the record, or a dhdt value as the rate at its time stamp rather than over its window, is not the height change it claims."
 tags: [icesat2, atl15, delta_h, dhdt, reference-epoch, time-axis, trend]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/129 }
 severity: medium
 # medium: the product documents the epoch and the windows, and the
 # error bites through a misread convention rather than through a
 # silently wrong single-product statistic; no eval case is required.
 dataset: ../datasets/icesat2-atl15.md
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: atl14-15-atbd

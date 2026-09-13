@@ -20,13 +20,13 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 
 ## datasets
 
-- [ICESat-2 ATL15 gridded Antarctic and Arctic land ice height change](datasets/icesat2-atl15.md), status: draft
-- [MEaSUREs ITS_LIVE regional ice velocity mosaics, and the InSAR velocity maps they succeed](datasets/its-live-ice-velocity.md), status: draft
+- [ICESat-2 ATL15 gridded Antarctic and Arctic land ice height change](datasets/icesat2-atl15.md), status: stable
+- [MEaSUREs ITS_LIVE regional ice velocity mosaics, and the InSAR velocity maps they succeed](datasets/its-live-ice-velocity.md), status: stable
 
 ## gotchas
 
 - [ATL15 height change is not mass change: the conversion needs a firn model and a density assumption the product does not carry](gotchas/atl15-height-change-is-not-mass-change.md), severity high, status: draft
-- [ATL15 delta_h is relative to the 1 January 2020 reference surface, and each lagged rate has its own window](gotchas/atl15-delta-h-reference-epoch.md), severity medium, status: draft
-- [The grids are polar stereographic metres, not latitude and longitude: cell area varies, and a sum without the true cell area biases a total](gotchas/polar-stereographic-not-latlon.md), severity medium, status: draft
-- [An annual velocity mosaic is a composite of image pairs with its own effective date and count, and a discharge needs ice thickness from another product](gotchas/velocity-mosaic-epochs-and-gaps.md), severity medium, status: draft
-- [Ice sheet boundaries and drainage basins differ by definition: a per-basin number names the basin set it used](gotchas/ice-sheet-boundaries-and-drainage-basins.md), severity medium, status: draft
+- [ATL15 delta_h is relative to the 1 January 2020 reference surface, and each lagged rate has its own window](gotchas/atl15-delta-h-reference-epoch.md), severity medium, status: stable
+- [The grids are polar stereographic metres, not latitude and longitude: cell area varies, and a sum without the true cell area biases a total](gotchas/polar-stereographic-not-latlon.md), severity medium, status: stable
+- [An annual velocity mosaic is a composite of image pairs with its own effective date and count, and a discharge needs ice thickness from another product](gotchas/velocity-mosaic-epochs-and-gaps.md), severity medium, status: stable
+- [Ice sheet boundaries and drainage basins differ by definition: a per-basin number names the basin set it used](gotchas/ice-sheet-boundaries-and-drainage-basins.md), severity medium, status: stable
