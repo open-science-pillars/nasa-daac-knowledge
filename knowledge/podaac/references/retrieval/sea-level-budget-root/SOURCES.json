@@ -49,7 +49,7 @@
     }
   ],
   "notes": [
-    "mass.csv and mass-stamp.json are absent from this commit: slb_mass_mascons.py refuses the granule because two solutions fall in calendar month 2015-04 (epoch 143 spans 2015-04-01 to 2015-04-30, epoch 144 spans 2015-04-12 to 2015-05-11, both midpoints in April); the provider's own series lists them separately as 2015.29 and 2015.32. The loader does not average or choose between solutions by design, so the policy decision is left to the coordinator.",
+    "mass: the granule's April 2015 pair (one solution spanning 1 to 30 April, the next 12 April to 11 May, both midpoints in April) is handled by the loader's assignment rule, which gives a solution whose midpoint month is already taken to the following month when its span reaches into it and that month is free, as the product's own month list labels it (May 2015); mass-stamp.json records the assignment under month_assignments.",
     "altimetry: seven grids in the set carry no valid ssha cell (outage weeks) and were skipped as non-samples; months 2006-11 and 2020-02 then hold only two grids and are dropped by the min-grids rule."
   ]
 }
