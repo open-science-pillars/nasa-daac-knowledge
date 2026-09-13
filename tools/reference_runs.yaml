@@ -54,3 +54,7 @@ runs:
     needs: steric
     data_root: none
     args: [--source, "{receipt:steric}", --field, steric_mean_m_by_month, --value-units, m, --scale, "1000", --report-units, mm, --deseasonalize, none]
+  sea-level-budget:
+    computation: sea_level_budget.py
+    data_root: none
+    args: [--fixture, --seed, "7", --period, "2005-01:2016-12", --runtime, reattest]

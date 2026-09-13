@@ -4,6 +4,42 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-13 · the four GRACE land-ice concepts (datasets/grace-fo-mascons.md,
+  gotchas/grace-intermission-gap.md, gotchas/grace-low-degree-replacements.md,
+  recipes/grace-mass-to-sea-level.md) re-verified from a session with the
+  NASA hosts allowed: CMR confirms RL06.3Mv04, DOI 10.5067/TEMSC-3JC634, 4,551
+  equal-area 3-degree mascons, one granule 2002-04 through 2026-07, the CRI
+  partition and the gain factors; the PO.DAAC documentation index fixes TN-13
+  and TN-14 as the degree-1 and C20/C30 sources (added as sources on the
+  low-degree gotcha); WCRP 2018 answered on its journal site; the other DOIs
+  resolved to journal pages behind a bot check; the product release note on
+  the archive host was not reachable. Verification paragraphs say exactly
+  what was and was not checked
+- 2026-09-13 · computations/sea-level-budget.md (Attested Computation,
+  draft), recipes/sea-level-budget.md (draft) and
+  references/skills/run-sea-level-budget.md (Reference, draft) drafted
+  for the sea-level-budget-closure roadmap deliverable (ocean-science
+  issue 45), with the sanctioned executor
+  references/computations/sea_level_budget.py (sha256 29f09121f7ec) and
+  the attester references/attesters/sea_level_budget_check.py. The
+  computation closes altimetry against GRACE-FO mass plus Argo steric
+  over a period: monthly residual, four trends with the sanctioned
+  interval (the chain verbatim on a hole-free period, the same method
+  on the calendar epochs where mass months are missing, never
+  interpolated), the combined uncertainty with the deep-steric
+  systematic stated separately, the verdict, and the convention's
+  corrections table as receipt facts; a period across the inter-mission
+  gap refuses without a bridge (exit 3, a refusal receipt the attester
+  passes only as a refusal). Proven on a synthetic fixture with a known
+  closure (seed 7, 2005-01:2016-12: residual trend +0.1091 mm per year,
+  closure gap +0.0091 against a bar of 0.3420, closed); no real-data
+  anchor exists and the concepts say so. tools/reference_runs.yaml
+  gains the sea-level-budget run (no data root), tools/run_checks.sh
+  the attester's selftest and the end-to-end fixture run and refusal;
+  the receipt carries the capability and bundle identity blocks of
+  docs/receipt-identity.md. Sources cited by DOI and bundle path, not
+  fetched from the drafting environment; status draft pending the
+  maintainer's review. (knowledge-seeder/claude)
 - 2026-09-13 · gotchas/grace-intermission-gap.md (severity high, eval case
   grace-intermission-gap in agent-evals), gotchas/grace-low-degree-replacements.md
   (severity medium) and recipes/grace-mass-to-sea-level.md drafted for the

@@ -6,9 +6,9 @@ If you know one of these products, each row's last link opens an issue with the 
 
 ## Summary
 
-108 concepts, 8 products.
+111 concepts, 8 products.
 
-- unverified: 35
+- unverified: 38
 - machine-confirmed: 0
 - human-reviewed: 73
 - provider-confirmed: 0
@@ -119,27 +119,32 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 
 ## GRACE/GRACE-FO JPL mascon solutions
 
-[datasets/grace-fo-mascons.md](datasets/grace-fo-mascons.md): 7 concepts.
+[datasets/grace-fo-mascons.md](datasets/grace-fo-mascons.md): 9 concepts.
 
 | Concept | Type | Severity | Status | Tier | Latest verified | Sources | |
 |---|---|---|---|---|---|---|---|
 | [GRACE/GRACE-FO JPL mascon solutions](datasets/grace-fo-mascons.md) | dataset |  | stable | human-reviewed | 2026-07-04 | 0 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fdatasets%2Fgrace-fo-mascons.md&concept=knowledge%2Fpodaac%2Fdatasets%2Fgrace-fo-mascons.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
+| [Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested, draft)](computations/sea-level-budget.md) | Attested Computation |  | draft | unverified |  | 14 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fcomputations%2Fsea-level-budget.md&concept=knowledge%2Fpodaac%2Fcomputations%2Fsea-level-budget.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
 | [Sea level budget closure: a correction-consistency problem first](conventions/sea-level-budget-closure.md) | convention |  | stable | human-reviewed | 2026-09-04 | 1 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fconventions%2Fsea-level-budget-closure.md&concept=knowledge%2Fpodaac%2Fconventions%2Fsea-level-budget-closure.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
 | [GRACE mascon coastal leakage: land signal bleeds into ocean mascons](gotchas/grace-coastal-leakage.md) | dataset-gotcha | high | stable | human-reviewed | 2026-07-04 | 2 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fgrace-coastal-leakage.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fgrace-coastal-leakage.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
 | [GRACE GIA correction: a model choice already baked into the product](gotchas/grace-gia-correction.md) | dataset-gotcha | medium | stable | human-reviewed | 2026-07-04 | 2 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fgrace-gia-correction.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fgrace-gia-correction.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
 | [The GRACE to GRACE-FO gap: an eleven-month hole that a continuous-looking series hides, and every trend or acceleration fit across it inherits](gotchas/grace-intermission-gap.md) | dataset-gotcha | high | draft | unverified |  | 5 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fgrace-intermission-gap.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fgrace-intermission-gap.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
-| [Degree-1 and C20/C30 replacements: large-scale mass trends from GRACE rest on terms the satellites do not measure, already substituted in the mascon product](gotchas/grace-low-degree-replacements.md) | dataset-gotcha | medium | draft | unverified |  | 5 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fgrace-low-degree-replacements.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fgrace-low-degree-replacements.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
+| [Degree-1 and C20/C30 replacements: large-scale mass trends from GRACE rest on terms the satellites do not measure, already substituted in the mascon product](gotchas/grace-low-degree-replacements.md) | dataset-gotcha | medium | draft | unverified |  | 8 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fgrace-low-degree-replacements.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fgrace-low-degree-replacements.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
 | [From a regional GRACE mass change to a sea level equivalent, with its uncertainty](recipes/grace-mass-to-sea-level.md) | recipe |  | draft | unverified |  | 9 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Frecipes%2Fgrace-mass-to-sea-level.md&concept=knowledge%2Fpodaac%2Frecipes%2Fgrace-mass-to-sea-level.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
+| [Closing the global mean sea level budget: altimetry against GRACE-FO mass plus Argo steric](recipes/sea-level-budget.md) | recipe |  | draft | unverified |  | 11 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Frecipes%2Fsea-level-budget.md&concept=knowledge%2Fpodaac%2Frecipes%2Fsea-level-budget.md&product=GRACE%2FGRACE-FO+JPL+mascon+solutions) |
 
 ## NASA-SSH simple gridded sea surface height anomaly (observational reference)
 
-[datasets/nasa-ssh.md](datasets/nasa-ssh.md): 3 concepts.
+[datasets/nasa-ssh.md](datasets/nasa-ssh.md): 6 concepts.
 
 | Concept | Type | Severity | Status | Tier | Latest verified | Sources | |
 |---|---|---|---|---|---|---|---|
 | [NASA-SSH simple gridded sea surface height anomaly (observational reference)](datasets/nasa-ssh.md) | dataset |  | draft | unverified |  | 5 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fdatasets%2Fnasa-ssh.md&concept=knowledge%2Fpodaac%2Fdatasets%2Fnasa-ssh.md&product=NASA-SSH+simple+gridded+sea+surface+height+anomaly+%28observational+reference%29) |
 | [ECCO regional sea level against NASA-SSH altimetry (attested)](computations/ecco-ssh-vs-altimetry.md) | Attested Computation |  | draft | unverified |  | 8 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fcomputations%2Fecco-ssh-vs-altimetry.md&concept=knowledge%2Fpodaac%2Fcomputations%2Fecco-ssh-vs-altimetry.md&product=NASA-SSH+simple+gridded+sea+surface+height+anomaly+%28observational+reference%29) |
+| [Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested, draft)](computations/sea-level-budget.md) | Attested Computation |  | draft | unverified |  | 14 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fcomputations%2Fsea-level-budget.md&concept=knowledge%2Fpodaac%2Fcomputations%2Fsea-level-budget.md&product=NASA-SSH+simple+gridded+sea+surface+height+anomaly+%28observational+reference%29) |
 | [Sea level rise off the US northeast coast in ECCO v4r4, partitioned and confronted](findings/us-northeast-sea-level-rise.md) | finding |  | draft | unverified |  | 10 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Ffindings%2Fus-northeast-sea-level-rise.md&concept=knowledge%2Fpodaac%2Ffindings%2Fus-northeast-sea-level-rise.md&product=NASA-SSH+simple+gridded+sea+surface+height+anomaly+%28observational+reference%29) |
+| [Closing the global mean sea level budget: altimetry against GRACE-FO mass plus Argo steric](recipes/sea-level-budget.md) | recipe |  | draft | unverified |  | 11 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Frecipes%2Fsea-level-budget.md&concept=knowledge%2Fpodaac%2Frecipes%2Fsea-level-budget.md&product=NASA-SSH+simple+gridded+sea+surface+height+anomaly+%28observational+reference%29) |
+| [Run instructions: attested sea level budget closure](references/skills/run-sea-level-budget.md) | Reference |  | draft | unverified |  | 0 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Freferences%2Fskills%2Frun-sea-level-budget.md&concept=knowledge%2Fpodaac%2Freferences%2Fskills%2Frun-sea-level-budget.md&product=NASA-SSH+simple+gridded+sea+surface+height+anomaly+%28observational+reference%29) |
 
 ## OPERA DSWx-HLS: surface water extent from optical imagery, with cloud as the dominant class
 
