@@ -31,8 +31,13 @@ What it computes, per solution epoch in the granule:
      half width.
   4. The calendar month of each solution from the midpoint of its
      time_bounds. Months the product lacks are simply absent from the
-     file, never filled. Two solutions landing in one calendar month
-     would be refused, not averaged.
+     file, never filled. When two solutions' midpoints fall in one
+     calendar month (the product's April 2015 pair: one spanning
+     April 1 to 30, the next April 12 to May 11), the later solution
+     is assigned to the following month if its span reaches into it
+     and that month is otherwise empty, which is how the product's own
+     month list labels it (MAY 2015); the stamp records every such
+     assignment. Any other collision is refused, never averaged.
 
 Usage:
   slb_mass_mascons.py --granule FILE.nc --out mass.csv [--stamp-out mass-stamp.json]
@@ -80,6 +85,11 @@ def at_epoch(var, i: int) -> np.ndarray:
     return np.asarray(var[:], dtype=float)
 
 
+def next_month(label: str) -> str:
+    y, m = int(label[:4]), int(label[5:])
+    return f"{y + m // 12:04d}-{m % 12 + 1:02d}"
+
+
 def ocean_mean_and_error(lwe, unc, mascon_id, ocean, area):
     """Ocean mean of lwe (cm) and its formal error (cm) over the ocean
     cells, with the error combined per mascon."""
@@ -107,15 +117,28 @@ def run(granule: Path, out: Path, stamp_out: Path | None):
     lat_b = at_epoch(ds["lat_bounds"], 0)
     lon_b = at_epoch(ds["lon_bounds"], 0)
     area = cell_areas_km2(lat_b, lon_b)
-    rows, months_seen, mascon_counts = [], {}, set()
+    rows, months_seen, mascon_counts, assignments = [], {}, set(), []
     n = len(t)
     for i in range(n):
         mid = 0.5 * (tb[i, 0] + tb[i, 1])
         d = nc.num2date(mid, units, cal)
         label = f"{d.year:04d}-{d.month:02d}"
         if label in months_seen:
-            sys.exit(f"two solutions fall in {label} (epochs {months_seen[label]} and {i}); "
-                     "the loader does not average solutions")
+            end = nc.num2date(tb[i, 1], units, cal)
+            end_label = f"{end.year:04d}-{end.month:02d}"
+            following = next_month(label)
+            if end_label == following and following not in months_seen:
+                assignments.append({"epoch": i, "midpoint_month": label, "assigned": following,
+                                    "span": [f"{nc.num2date(tb[i,0], units, cal):%Y-%m-%d}",
+                                             f"{end:%Y-%m-%d}"],
+                                    "reason": "midpoint month already taken by the previous "
+                                              "solution; the span reaches into the following "
+                                              "month, which the product's month list labels it"})
+                label = following
+            else:
+                sys.exit(f"two solutions fall in {label} (epochs {months_seen[label]} and {i}) "
+                         "and the later one does not reach into a free following month; "
+                         "the loader does not average solutions")
         months_seen[label] = i
         lwe = np.ma.filled(np.ma.masked_invalid(ds["lwe_thickness"][i]), np.nan).astype(float)
         unc = np.ma.filled(np.ma.masked_invalid(ds["uncertainty"][i]), np.nan).astype(float)
@@ -144,6 +167,7 @@ def run(granule: Path, out: Path, stamp_out: Path | None):
         "time_coverage": [rows[0][3], rows[-1][4]],
         "months": [rows[0][0], rows[-1][0]],
         "n_solutions": len(rows),
+        "month_assignments": assignments,
         "ocean_mascons": sorted(mascon_counts),
         "ocean_mask": "the granule's land_mask (0 is ocean), every ocean cell, no coastal "
                       "buffer; the CRI partition of the coastal mascons is the product's",
@@ -171,11 +195,12 @@ def selftest():
     with tempfile.TemporaryDirectory() as td:
         p = Path(td) / "toy.nc"
         ds = nc.Dataset(p, "w")
-        ds.createDimension("time", 2); ds.createDimension("lat", 2); ds.createDimension("lon", 2); ds.createDimension("nv", 2)
+        ds.createDimension("time", 3); ds.createDimension("lat", 2); ds.createDimension("lon", 2); ds.createDimension("nv", 2)
         ds.title = "toy"; ds.id = "10.5067/TOY"
         t = ds.createVariable("time", "f8", ("time",)); t.units = "days since 2002-01-01T00:00:00Z"
         tb = ds.createVariable("time_bounds", "f8", ("time", "nv")); tb.units = t.units
-        t[:] = [1100.0, 1130.0]; tb[:] = [[1096.0, 1126.0], [1127.0, 1157.0]]   # Jan and Feb 2005
+        t[:] = [1100.0, 1130.0, 1145.0]
+        tb[:] = [[1096.0, 1126.0], [1127.0, 1157.0], [1138.0, 1167.0]]   # Jan, Feb, and Feb 12 to Mar 13 2005
         lat_b = ds.createVariable("lat_bounds", "f8", ("lat", "nv")); lon_b = ds.createVariable("lon_bounds", "f8", ("lon", "nv"))
         lat_b[:] = [[0, 1], [1, 2]]; lon_b[:] = [[0, 1], [1, 2]]   # stored once, as the product does
         for name in ("lwe_thickness", "uncertainty"):
@@ -184,8 +209,8 @@ def selftest():
             ds.createVariable(name, "f8", ("lat", "lon"))
         ds["mascon_ID"][:] = [[1, 1], [2, 2]]              # mascon 1 is the first row, 2 the second
         ds["land_mask"][:] = [[0, 0], [0, 1]]              # mascon 2 has one land cell
-        ds["lwe_thickness"][:] = [[[2, 2], [-1, -1]]] * 2
-        ds["uncertainty"][:] = [[[1, 1], [2, 2]]] * 2
+        ds["lwe_thickness"][:] = [[[2, 2], [-1, -1]]] * 3
+        ds["uncertainty"][:] = [[[1, 1], [2, 2]]] * 3
         ds.close()
         out = Path(td) / "mass.csv"; st = Path(td) / "stamp.json"
         run(p, out, st)
@@ -198,8 +223,10 @@ def selftest():
         print(f"selftest: mean {got[0]:.4f} mm vs {10*mean:.4f}, error {got[1]:.4f} vs {10*err:.4f}; "
               f"months {[r['month'] for r in rows]}")
         assert abs(got[0] - 10 * mean) < 1e-6 and abs(got[1] - 10 * err) < 1e-6
-        assert [r["month"] for r in rows] == ["2005-01", "2005-02"]
-        print("selftest: OK")
+        assert [r["month"] for r in rows] == ["2005-01", "2005-02", "2005-03"], [r["month"] for r in rows]
+        stamp = json.loads(st.read_text())
+        assert stamp["month_assignments"][0]["assigned"] == "2005-03", stamp["month_assignments"]
+        print("selftest: the third solution (midpoint in February, span into March) is assigned to March; OK")
 
 
 def main():
