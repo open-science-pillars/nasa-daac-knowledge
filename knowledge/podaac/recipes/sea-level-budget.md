@@ -19,7 +19,7 @@ expected:
   - quantity: "the identity"
     statement: "altimetry equals mass plus steric plus the deep-steric term below the Argo floor, within uncertainties, only under consistent bookkeeping; the residual trend is compared with the quadrature of the three term uncertainties plus the deep-steric uncertainty"
   - quantity: "numeric anchor"
-    statement: "none recorded yet: no real-data run exists, and the attested computation's reference run is a synthetic fixture whose known closure proves the chain, not the ocean; the first real-data anchor is recorded in ../computations/sea-level-budget.md when it is measured"
+    statement: "2005-01 through 2016-12 on the stamped data root (127 of 144 months): altimetry +3.682, mass +2.299, steric +1.104 and residual +0.279 mm per year with a 95 percent interval of [+0.092, +0.466]; closure gap +0.179 against a bar of 0.663, closed within uncertainty; recorded with its loaders and stamps in ../computations/sea-level-budget.md"
 expected_uncertainty:
   - quantity: "per term"
     statement: "the larger of the sampling half width from the sanctioned trend chain and the formal error propagated from the product's per-month uncertainties; the mass term's systematics (GIA model, leakage, low-degree replacements) are quoted beside it as the mass recipe states them, never folded into the formal error"
@@ -124,9 +124,10 @@ catch.[^convention-slbc]
 
 **The attested form.** The computation walks these steps with the
 corrections table as receipt facts, four trends with the sanctioned
-interval, and a verdict the attester recomputes; its fixture run is
-the reference until a real-data run is made, and no numeric anchor is
-quoted here until then.[^computation]
+interval, and a verdict the attester recomputes; its real-data run over 2005
+through 2016 closes the budget within uncertainty (residual +0.279
+mm per year against a bar of 0.663) and is the anchor quoted in the
+expectations above.[^computation]
 
 **Provenance.** Every number quoted from this recipe names the three
 product versions, the steric estimate and its depth floor, the GIA

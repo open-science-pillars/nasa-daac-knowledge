@@ -630,8 +630,13 @@ def main(argv=None) -> int:
 
     receipt = finish({**head, "refused": False, **body,
                       "caveats": [
-                          "no real-data anchor exists yet: a fixture run proves the "
-                          "chain, not the ocean",
+                          ("a fixture run proves the chain, not the ocean; the real-data "
+                           "anchor is the stamped data root run the concept records")
+                          if args.fixture else
+                          ("a real-data run on a stamped record: each term loader's stamp "
+                           "in the data root states the product, the mask, the GIA "
+                           "convention and the uncertainty basis, and the residual carries "
+                           "the coverage mismatch between the terms"),
                           "the series and the residual travel at full precision so "
                           "every trend, interval and the verdict are recomputable "
                           "from the receipt",
