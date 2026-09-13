@@ -11,7 +11,7 @@ its monthly extension files), written as the data root's steric.csv.
 What it computes, per calendar month from 2004-01 onward:
 
   1. The full temperature and practical salinity field on the RG grid
-     (1 degree, 64.5S to 64.5N, 58 pressure levels from 2.5 to 1975
+     (1 degree, 64.5S to 79.5N, 58 pressure levels from 2.5 to 1975
      dbar): the 2004 to 2018 climatological mean from the base files
      plus that month's anomaly (from the base files through 2018-12,
      from one extension file per month after).

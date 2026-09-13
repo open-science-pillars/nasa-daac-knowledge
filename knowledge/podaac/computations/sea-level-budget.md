@@ -314,7 +314,7 @@ altimetry and steric terms are stated noise floors, since neither
 product ships an error field, and the mass term's formal error treats
 mascons as independent; in the anchor run the sampling half width
 was the larger term for all three. The altimetry term reaches 71
-degrees of latitude, the steric term 64.5, the mass term the whole
+degrees of latitude, the steric term 64.5 S to 79.5 N, the mass term the whole
 ocean, and the residual carries that mismatch in coverage. The
 steric term below the sampling floor is an acknowledged systematic,
 not a measurement. The verdict is about the global mean; a regional
