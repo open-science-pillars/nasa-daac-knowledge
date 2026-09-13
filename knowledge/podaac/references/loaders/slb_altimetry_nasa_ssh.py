@@ -18,9 +18,10 @@ What it computes:
      refuses.
   2. The calendar month of each grid from its time coordinate (the
      centre of its window), and the month's value as the mean of its
-     grids; the grids share passes, so the month is the sample. A month
-     with fewer than --min-grids grids (default 3) is left out, never
-     filled.
+     grids; the grids share passes, so the month is the sample. A grid
+     with no cell carrying a value (an outage week) is not a sample and
+     is skipped; the stamp lists it. A month with fewer than --min-grids
+     grids (default 3) is left out, never filled.
   3. The GIA convention of the global budget: a linear +0.3 mm per year
      (Peltier 2004, the correction the 2018 WCRP budget applies to
      altimetric global mean sea level) added to the series, referenced
@@ -67,6 +68,18 @@ IDENTITY = ("product_version", "id", "product_short_name", "mean_sea_surface", "
             "institution", "gridding_method", "references")
 
 
+def identity_value(v: str | None) -> str | None:
+    """A DOI spelled with or without a resolver prefix is the same
+    identity: the 2026 grids write references as https://doi.org/... where
+    the earlier grids write the bare DOI."""
+    if v is None:
+        return None
+    for prefix in ("https://doi.org/", "http://doi.org/", "https://dx.doi.org/", "doi:"):
+        if v.lower().startswith(prefix):
+            return v[len(prefix):]
+    return v
+
+
 def sha256(p: Path) -> str:
     h = hashlib.sha256()
     with p.open("rb") as f:
@@ -96,11 +109,11 @@ def run(grid_dir: Path, out: Path, stamp_out: Path | None, start, end, min_grids
     if not files:
         sys.exit(f"{grid_dir} holds no netCDF grids")
     ident, per_month, lat_range, units, n_grids = None, defaultdict(list), [90.0, -90.0], None, 0
-    manifest = {}
+    manifest, empty = {}, []
     for p in files:
         ds = nc.Dataset(p)
         attrs = {a: str(getattr(ds, a)).strip() for a in ds.ncattrs()}
-        this = {k: attrs.get(k) for k in IDENTITY}
+        this = {k: identity_value(attrs.get(k)) for k in IDENTITY}
         if ident and this != ident:
             sys.exit(f"{p.name} identifies a different release or convention than the first "
                      f"grid: {this} vs {ident}")
@@ -112,6 +125,9 @@ def run(grid_dir: Path, out: Path, stamp_out: Path | None, start, end, min_grids
         ds_mean, cells, lo, hi = global_mean_m(ds)
         ds.close()
         if (start and label < start) or (end and label > end):
+            continue
+        if cells == 0:
+            empty.append(p.name)       # no cell carries a value: not a sample of its month
             continue
         manifest[p.name] = sha256(p)
         n_grids += 1
@@ -148,6 +164,7 @@ def run(grid_dir: Path, out: Path, stamp_out: Path | None, start, end, min_grids
         "grids": n_grids, "months": [rows[0][0], rows[-1][0]],
         "grids_per_month": {r[0]: r[2] for r in rows},
         "dropped_months": dropped,
+        "empty_grids": empty,
         "latitude_coverage": lat_range,
         "method": "cos-latitude weighted global mean of ssha per grid over the cells that "
                   "carry a value, metres to mm; months as the mean of their grids",
@@ -164,7 +181,7 @@ def run(grid_dir: Path, out: Path, stamp_out: Path | None, start, end, min_grids
     if stamp_out:
         stamp_out.write_text(json.dumps(stamp, indent=2) + "\n", encoding="utf-8")
     print(f"altimetry.csv: {len(rows)} months {rows[0][0]} to {rows[-1][0]} from {n_grids} grids, "
-          f"noise floor {noise:.3f} mm, {len(dropped)} months dropped")
+          f"noise floor {noise:.3f} mm, {len(dropped)} months dropped, {len(empty)} empty grids skipped")
 
 
 def selftest():

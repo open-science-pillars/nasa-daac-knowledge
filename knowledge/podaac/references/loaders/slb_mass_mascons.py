@@ -71,6 +71,15 @@ def cell_areas_km2(lat_bounds: np.ndarray, lon_bounds: np.ndarray) -> np.ndarray
     return EARTH_RADIUS_KM ** 2 * dlat[:, None] * dlon[None, :]
 
 
+def at_epoch(var, i: int) -> np.ndarray:
+    """The field of a variable at epoch i: the product stores lat_bounds,
+    lon_bounds, land_mask and mascon_ID once, without a time axis, while
+    a per-epoch layout carries time first; both are read the same way."""
+    if "time" in var.dimensions:
+        return np.asarray(var[i], dtype=float)
+    return np.asarray(var[:], dtype=float)
+
+
 def ocean_mean_and_error(lwe, unc, mascon_id, ocean, area):
     """Ocean mean of lwe (cm) and its formal error (cm) over the ocean
     cells, with the error combined per mascon."""
@@ -95,8 +104,8 @@ def run(granule: Path, out: Path, stamp_out: Path | None):
     t = ds["time"]
     tb = np.asarray(ds["time_bounds"][:], dtype=float)
     units, cal = t.units, getattr(t, "calendar", "standard")
-    lat_b = np.asarray(ds["lat_bounds"][0], dtype=float)
-    lon_b = np.asarray(ds["lon_bounds"][0], dtype=float)
+    lat_b = at_epoch(ds["lat_bounds"], 0)
+    lon_b = at_epoch(ds["lon_bounds"], 0)
     area = cell_areas_km2(lat_b, lon_b)
     rows, months_seen, mascon_counts = [], {}, set()
     n = len(t)
@@ -110,8 +119,8 @@ def run(granule: Path, out: Path, stamp_out: Path | None):
         months_seen[label] = i
         lwe = np.ma.filled(np.ma.masked_invalid(ds["lwe_thickness"][i]), np.nan).astype(float)
         unc = np.ma.filled(np.ma.masked_invalid(ds["uncertainty"][i]), np.nan).astype(float)
-        land = np.asarray(ds["land_mask"][i], dtype=float)
-        mid_ = np.asarray(ds["mascon_ID"][i], dtype=float)
+        land = at_epoch(ds["land_mask"], i)
+        mid_ = at_epoch(ds["mascon_ID"], i)
         ocean = (land == 0) & np.isfinite(lwe) & np.isfinite(unc)
         mean_cm, err_cm, nm = ocean_mean_and_error(lwe, unc, mid_, ocean, area)
         mascon_counts.add(nm)
@@ -167,12 +176,14 @@ def selftest():
         t = ds.createVariable("time", "f8", ("time",)); t.units = "days since 2002-01-01T00:00:00Z"
         tb = ds.createVariable("time_bounds", "f8", ("time", "nv")); tb.units = t.units
         t[:] = [1100.0, 1130.0]; tb[:] = [[1096.0, 1126.0], [1127.0, 1157.0]]   # Jan and Feb 2005
-        lat_b = ds.createVariable("lat_bounds", "f8", ("time", "lat", "nv")); lon_b = ds.createVariable("lon_bounds", "f8", ("time", "lon", "nv"))
-        lat_b[:] = [[[0, 1], [1, 2]]] * 2; lon_b[:] = [[[0, 1], [1, 2]]] * 2
-        for name in ("lwe_thickness", "uncertainty", "land_mask", "mascon_ID"):
+        lat_b = ds.createVariable("lat_bounds", "f8", ("lat", "nv")); lon_b = ds.createVariable("lon_bounds", "f8", ("lon", "nv"))
+        lat_b[:] = [[0, 1], [1, 2]]; lon_b[:] = [[0, 1], [1, 2]]   # stored once, as the product does
+        for name in ("lwe_thickness", "uncertainty"):
             ds.createVariable(name, "f8", ("time", "lat", "lon"))
-        ds["mascon_ID"][:] = [[[1, 1], [2, 2]]] * 2        # mascon 1 is the first row, 2 the second
-        ds["land_mask"][:] = [[[0, 0], [0, 1]]] * 2        # mascon 2 has one land cell
+        for name in ("land_mask", "mascon_ID"):
+            ds.createVariable(name, "f8", ("lat", "lon"))
+        ds["mascon_ID"][:] = [[1, 1], [2, 2]]              # mascon 1 is the first row, 2 the second
+        ds["land_mask"][:] = [[0, 0], [0, 1]]              # mascon 2 has one land cell
         ds["lwe_thickness"][:] = [[[2, 2], [-1, -1]]] * 2
         ds["uncertainty"][:] = [[[1, 1], [2, 2]]] * 2
         ds.close()
