@@ -1,4 +1,4 @@
-# podaac-arc bundle: change log
+# podaac bundle: change log
 
 Newest first. One line per change: date, concept path, what changed, who.
 

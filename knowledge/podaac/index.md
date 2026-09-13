@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # podaac bundle (CANONICAL)
 
-The PO.DAAC arc knowledge bundle: ECCO, SWOT, GRACE-FO, GHRSST MUR.
+The PO.DAAC knowledge bundle: ECCO, SWOT, GRACE-FO, GHRSST MUR.
 OKF v0.2 conformant (okf_version: "0.2"; the vendored spec text lives in marketplace docs/upstream). This is the canonical home
 per the specification (docs/SPECIFICATION.md in
 open-science-pillars/marketplace); the ocean-science and hydrology
