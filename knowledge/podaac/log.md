@@ -4,6 +4,32 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-14 · gotchas/mur-foundation-not-skin-sst.md (medium),
+  gotchas/mur-grid-is-not-feature-resolution.md (high),
+  gotchas/mur-sea-ice-edge-and-fill.md (medium),
+  gotchas/mur-analysis-error-is-not-validation.md (medium) and
+  gotchas/mur-nrt-versus-final.md (low): five draft gotchas on the
+  existing MUR dataset concept (issue 133). Sources read on 2026-09-14:
+  the PO.DAAC collection page for MUR-JPL-L4-GLOB-v4.1 (description,
+  variable table, documentation list), the PO.DAAC MUR project page,
+  the GHRSST GDS 2.0 revision 5 document the collection page links as
+  the user's guide (the SST type definitions and the Level 4 product
+  specification, from the PO.DAAC archive copy), the product DOI
+  resolved to its Earthdata catalog record, and the Crossref registry
+  record of Chin, Vazquez-Cuervo and Armstrong 2017 (title, authors,
+  journal, year; the registry carries no abstract and the publisher
+  page sits behind a bot check, so the paper's feature-resolution and
+  residual statements are cited through the bundle's validity domain
+  mur-basin-mean-state). Unreachable: the DataCite record behind the
+  product DOI (data.crosscite.org, blocked by the network policy) and
+  the Elsevier article page. No granule was opened, so the fill
+  temperature under ice and the size of the near-real-time versus
+  retrospective difference are stated as undocumented rather than
+  quoted. The high-severity gotcha names eval case
+  mur-grid-is-not-feature-resolution, drafted in agent-evals under
+  mur/cases/; its manifest registration is the coordinator's
+  follow-up. (knowledge-seeder/claude)
+
 - 2026-09-13 · STEWARD RE-SIGNING of
   knowledge/podaac/computations/sea-level-budget.md,
   knowledge/podaac/recipes/sea-level-budget.md,
