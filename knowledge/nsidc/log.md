@@ -2,6 +2,49 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · sea ice concentration and the Sea Ice Index seeded:
+  two dataset concepts (datasets/nsidc-0051-sea-ice-concentration.md,
+  datasets/sea-ice-index-g02135.md) and five gotchas
+  (sea-ice-pole-hole-by-sensor at severity high with its eval case
+  drafted in agent-evals under nsidc/cases/ on the branch
+  claude/seed-nsidc-sea-ice, unregistered in any suite manifest until
+  the coordinator's follow-up; sea-ice-extent-is-not-area,
+  sea-ice-nrt-versus-final, sea-ice-nasa-team-versus-bootstrap and
+  sea-ice-sensor-transitions at severity medium): all drafts, no
+  signatures; the index gains a line per concept and its heading and
+  introduction now name sea ice beside land ice. Sources read the
+  same day: the NSIDC product pages for NSIDC-0051 version 2,
+  NSIDC-0081 version 2 (retired 18 June 2026), NSIDC-0079 version 4,
+  NSIDC-0803 version 2 and G02135 versions 3 (retired) and 4, with the
+  NSIDC-0051, NSIDC-0081, NSIDC-0079 and G02135 version 3 and 4 user
+  guides; NSIDC Special Report 28 and the summary of Special Report
+  19; Meier's June 2026 assessment of the AMSR2 sensor change; the
+  SMMR, SSM/I and SSMIS sensors summary; the NSIDC help articles on
+  the NASA Team and Bootstrap algorithms and on the month-boundary
+  extent change; NASA Technical Memorandum 104647 (searched, its
+  spillover threshold only); the G02135 tree on
+  noaadata.apps.nsidc.org with the daily and monthly CSV headers and
+  the rows quoted in the concepts; the product DOIs resolved through
+  doi.org; Cavalieri and others 1999, Comiso and others 1997,
+  Cavalieri and others 2012, Meier and others 2011, Comiso and Nishio
+  2008 and Cavalieri and others 1991 verified against the Crossref
+  registry. Not read from the drafting session: the AGU, Wiley,
+  Elsevier and IEEE journal pages (bot checks; the papers are cited
+  on their registry records and, for Cavalieri 1999, its abstract),
+  and no granule or GeoTIFF was opened, so variable names, flag values
+  and grid dimensions come from the user guides. Source disagreements
+  recorded in the concepts: the SMMR to SSM/I pole hole mask date
+  (June/July 1987 in the NSIDC-0051 guide, July/August in the Sea Ice
+  Index guide); the NSIDC-0081 coverage start (2024 on the page, 2023
+  in the guide); the Sea Ice Index guide's instrument table ending
+  F17 at 2022 and its coverage note at 2020 against its data sources
+  section and the files carrying NSIDC-0051 through December 2024.
+  Kept from the brief as sourced: all five gotchas; the near-real-time
+  gotcha is widened to the NSIDC-0803 join because NSIDC-0081 is
+  retired and the Sea Ice Index now joins NSIDC-0051 to AMSR2. (drafted
+  by the knowledge seeder; coordinator review, eval registration and
+  roadmap reconciliation pending)
+
 - 2026-09-13 · STEWARD SIGNING of
   knowledge/nsidc/datasets/icesat2-atl15.md,
   knowledge/nsidc/datasets/its-live-ice-velocity.md,
