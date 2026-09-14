@@ -6,7 +6,7 @@ description: "The Modern-Era Retrospective analysis for Research and Application
 tags: [merra-2, merra2, reanalysis, gmao, gesdisc, atmosphere, precipitation, m2t1nxslv, m2t1nxflx, m2tmnxslv]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
 resource: https://disc.gsfc.nasa.gov/datasets/M2T1NXSLV_5.12.4/summary
-version: "GEOS-5 version 5.12.4 is the assimilation system and the collection version of every MERRA-2 collection; CMR-verified 2026-09-14: M2T1NXSLV C1276812863-GES_DISC (DOI 10.5067/VJAFPLI1CSIV), M2T1NXFLX C1276812838-GES_DISC (10.5067/7MCPBJ41Y0K6), M2TMNXSLV C1276812859-GES_DISC (10.5067/AP1B0BA5PD2K), M2TMNXFLX C1276812868-GES_DISC, M2I1NXASM C1276812820-GES_DISC (10.5067/3Z173KIE2TPD), M2IMNXASM C1276812823-GES_DISC, M2T1NXINT C1276812846-GES_DISC, M2T1NXLND C1276812861-GES_DISC, M2TMNXLND C1276812856-GES_DISC, M2SDNXSLV C1276812843-GES_DISC, M2TUNXSLV C1276812878-GES_DISC, M2I3NPASM C1276812879-GES_DISC, M2IMNPASM C1276812904-GES_DISC, M2T3NVASM C1276812925-GES_DISC; every record begins 1980-01-01 with the ends-at-present flag, and the newest M2T1NXSLV granule that day covered 2026-08-01"
+version: "GEOS-5 version 5.12.4 is the assimilation system and the collection version of every MERRA-2 collection; concept ids CMR-verified 2026-09-14, DOIs read from the GMAO citing page the same day: M2T1NXSLV C1276812863-GES_DISC (DOI 10.5067/VJAFPLI1CSIV), M2T1NXFLX C1276812838-GES_DISC (10.5067/7MCPBJ41Y0K6), M2TMNXSLV C1276812859-GES_DISC (10.5067/AP1B0BA5PD2K), M2TMNXFLX C1276812868-GES_DISC, M2I1NXASM C1276812820-GES_DISC (10.5067/3Z173KIE2TPD), M2IMNXASM C1276812823-GES_DISC, M2T1NXINT C1276812846-GES_DISC, M2T1NXLND C1276812861-GES_DISC, M2TMNXLND C1276812856-GES_DISC, M2SDNXSLV C1276812843-GES_DISC, M2TUNXSLV C1276812878-GES_DISC, M2I3NPASM C1276812879-GES_DISC, M2IMNPASM C1276812904-GES_DISC, M2T3NVASM C1276812925-GES_DISC; every record begins 1980-01-01 with the ends-at-present flag, and the newest M2T1NXSLV granule that day covered 2026-08-01"
 sources:
   - id: cmr-merra2
     resource: https://cmr.earthdata.nasa.gov/search/collections.json?short_name=M2T1NXSLV&provider=GES_DISC
@@ -25,7 +25,7 @@ sources:
     title: "GES DISC collection page for M2I1NXASM 5.12.4 (fetched 2026-09-14, text read from its CMR record: the hourly instantaneous single-level diagnostics stamped on the hour from 00:00 UTC)"
   - id: filespec
     resource: https://gmao.gsfc.nasa.gov/media/publications/zbly36ziNFDFbmYmvhQeVqPhUo/Bosilovich785.pdf
-    title: "Bosilovich, Lucchesi and Suarez, 2016, MERRA-2: File Specification, GMAO Office Note No. 9 (version 1.1, 21 March 2016), read in full 2026-09-14: the grid, the time stamping, the file naming and stream convention, the ESDT short-name rule, every collection's variable table, the budget equations and the precipitation correction note"
+    title: "Bosilovich, Lucchesi and Suarez, 2016, MERRA-2: File Specification, GMAO Office Note No. 9 (version 1.1, 21 March 2016), read in full 2026-09-14: the grid, the time stamping, the file naming and stream convention, the ESDT short-name rule, every collection's variable table (the FLX table with PRECTOT and PRECTOTCORR, the LFO table with PRECCUCORR, PRECLSCORR and PRECSNOCORR), the budget equations and the precipitation correction note"
   - id: readme
     resource: https://goldsmr4.gesdisc.eosdis.nasa.gov/data/MERRA2/M2T1NXSLV.5.12.4/doc/MERRA2.README.pdf
     title: "GES DISC README Document for MERRA-2 Data Products (last revised 1 March 2021), read 2026-09-14: the introduction, the collection tables with their frequency lines, the DOI tables and the reference list"
@@ -56,6 +56,9 @@ sources:
   - id: reichle-2017
     resource: https://doi.org/10.1175/JCLI-D-16-0570.1
     title: "Reichle, Liu, Koster, Draper, Mahanama and Partyka, 2017, Land Surface Precipitation in MERRA-2, Journal of Climate 30, 1643 to 1664 (record and abstract read on the Crossref registry 2026-09-14; the journal page sits behind a bot check)"
+  - id: reichle-2017b
+    resource: https://doi.org/10.1175/JCLI-D-16-0720.1
+    title: "Reichle, Draper, Liu, Girotto, Mahanama, Koster and De Lannoy, 2017, Assessment of MERRA-2 Land Surface Hydrology Estimates, Journal of Climate 30, 2937 to 2960 (record and abstract read on the Crossref registry 2026-09-14: the GRACE terrestrial water storage comparison that reflects known errors in the correcting observations; the journal page sits behind a bot check)"
   - id: bosilovich-2017
     resource: https://doi.org/10.1175/JCLI-D-16-0338.1
     title: "Bosilovich, Robertson, Takacs, Molod and Mocko, 2017, Atmospheric Water Balance and Variability in the MERRA-2 Reanalysis, Journal of Climate 30, 1177 to 1196 (record and abstract read on the Crossref registry 2026-09-14; the journal page sits behind a bot check)"
@@ -132,8 +135,11 @@ June through September 2021 carry MERRA2_401 because those periods
 were reprocessed (an AIRS data issue, and a warm bias in the
 near-surface temperatures).[^filespec][^reproc][^cmr-merra2] Over
 land outside the high latitudes the land surface is forced with an
-observation-corrected precipitation (the variable PRECTOTCORR in the
-FLX and LFO collections), built from the CPCU daily gauge analysis,
+observation-corrected precipitation (the total as PRECTOTCORR in the
+FLX collections, and its bias-corrected components, convective
+PRECCUCORR, large-scale PRECLSCORR and snowfall PRECSNOCORR, in the
+LFO land forcing collections, whose table lists no total), built from
+the CPCU daily gauge analysis,
 or CMAP over Africa and the oceans, disaggregated to hourly with the
 model's own precipitation and tapered to pure model precipitation
 between 42.5 and 62.5 degrees of latitude; the atmosphere's own
@@ -149,7 +155,9 @@ collections migrated since 2023) and the GES DISC subsetter; the GrADS
 Data Server was discontinued in April 2026 and the older subsetting
 interfaces before it.[^cmr-merra2][^reproc] Citation is per
 collection by its DOI, in the form the GMAO and README pages
-give.[^gmao-citing][^readme]
+give.[^gmao-citing][^readme] The GMAO documentation page is the
+index to the file specification and the technical memoranda the
+concepts of this bundle rest on.[^gmao-doc]
 
 ## Uncertainty
 
@@ -183,8 +191,9 @@ give.[^gmao-citing][^readme]
   own errors.** PRECTOTCORR is as good as CPCU and CMAP where they
   apply; against GPCP monthly it beats the model precipitation, its
   diurnal amplitude is better but its phasing less realistic than the
-  model's, and the land hydrology evaluation against GRACE reflects
-  known errors in the observations used for the correction.[^reichle-2017]
+  model's,[^reichle-2017] and the land hydrology evaluation against
+  GRACE reflects known errors in the observations used for the
+  correction.[^reichle-2017b]
 - **Stream spin-up.** High-latitude land moisture and the snow mass
   of the ice sheets carry discontinuities at the stream boundaries,
   because the land restarts came from an offline spin-up forced
@@ -234,4 +243,5 @@ give.[^gmao-citing][^readme]
 [^mccarty-2016]: McCarty and others, 2016, MERRA-2 Input Observations, NASA TM-2016-104606 volume 46
 [^reichle-liu-2014]: Reichle and Liu, 2014, Observation-Corrected Precipitation Estimates in GEOS-5, NASA TM-2014-104606 volume 35
 [^reichle-2017]: Reichle and others, 2017, Journal of Climate, doi:10.1175/JCLI-D-16-0570.1
+[^reichle-2017b]: Reichle and others, 2017, Journal of Climate, doi:10.1175/JCLI-D-16-0720.1
 [^bosilovich-2017]: Bosilovich and others, 2017, Journal of Climate, doi:10.1175/JCLI-D-16-0338.1

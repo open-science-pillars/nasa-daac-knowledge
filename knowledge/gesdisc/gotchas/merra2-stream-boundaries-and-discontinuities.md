@@ -6,10 +6,16 @@ description: "MERRA-2 was run as four streams (MERRA2_100 from 1980, MERRA2_200 
 tags: [merra-2, merra2, streams, discontinuity, observing-system, reprocessing, trend, homogeneity, gesdisc]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
 severity: medium
-# medium: the streams, the reprocessed periods and the observing
-# system dates are documented product history, and they bite through
-# a long-series analysis that ignores them rather than through a
-# single-file read; no eval case is required at this severity.
+# medium, not high, although a series crosses the joins silently:
+# the specification's rule reads high as silently wrong results, and
+# the steps here are confined to named quantities (high-latitude land
+# moisture and its fluxes, ice-sheet snow mass, the middle atmosphere
+# above 5 hPa, the increments and the Southern Ocean budget), bounded
+# by the evaluation, and absent from the means, climatologies and
+# sub-decadal series most analyses take; a multi-decade trend on one
+# of the named quantities is the one use that goes wrong, and the
+# concept names it. Raised to high with an eval case if a reviewer
+# judges that trend use load-bearing for the bundle.
 dataset: ../datasets/merra-2.md
 status: draft
 stale_after: 2027-03-14

@@ -13,7 +13,7 @@ stale_after: 2027-03-14
 sources:
   - id: filespec
     resource: https://gmao.gsfc.nasa.gov/media/publications/zbly36ziNFDFbmYmvhQeVqPhUo/Bosilovich785.pdf
-    title: "Bosilovich, Lucchesi and Suarez, 2016, MERRA-2: File Specification, GMAO Office Note No. 9 (version 1.1), read 2026-09-14: the introduction's paragraph on the observation-based precipitation forcing and its mass-balance warning, the FLX variable table with PRECTOT and PRECTOTCORR, and the land water budget equation in the budget section"
+    title: "Bosilovich, Lucchesi and Suarez, 2016, MERRA-2: File Specification, GMAO Office Note No. 9 (version 1.1), read 2026-09-14: the introduction's paragraph on the observation-based precipitation forcing and its mass-balance warning, the FLX variable table with PRECTOT and PRECTOTCORR, the LFO table with the corrected components PRECCUCORR, PRECLSCORR and PRECSNOCORR and no total, and the land water budget equation in the budget section"
   - id: reichle-liu-2014
     resource: https://gmao.gsfc.nasa.gov/pubs/docs/Reichle734.pdf
     title: "Reichle and Liu, 2014, Observation-Corrected Precipitation Estimates in GEOS-5, NASA Technical Report Series on Global Modeling and Data Assimilation volume 35, read 2026-09-14: the disaggregation method, the latitude tapering (option T) and Africa (option X) rules, the MERRA-2 rows of Table 3 and the paragraph on use in the coupled system"
@@ -43,8 +43,11 @@ sources:
 # PRECTOTCORR versus PRECTOT
 
 **Mechanism.** MERRA-2 produces two total precipitation fields in the
-surface flux collections (M2T1NXFLX hourly, M2TMNXFLX monthly, and
-the LFO land forcing collections). PRECTOT is the precipitation from
+surface flux collections (M2T1NXFLX hourly, M2TMNXFLX monthly); the
+LFO land forcing collections carry no total but the bias-corrected
+components, convective PRECCUCORR, large-scale PRECLSCORR and
+snowfall PRECSNOCORR, per their table in the file
+specification.[^filespec] PRECTOT is the precipitation from
 the atmospheric model physics, the field that closes the atmospheric
 water budget together with evaporation, the transport divergence and
 the analysis increment. PRECTOTCORR is the observation-corrected

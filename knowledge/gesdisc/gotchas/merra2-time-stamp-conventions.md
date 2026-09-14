@@ -6,10 +6,15 @@ description: "The hourly time-averaged collections (M2T1NXSLV, M2T1NXFLX and the
 tags: [merra-2, merra2, time-stamp, time-averaged, instantaneous, diurnal-cycle, gesdisc]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
 severity: medium
-# medium: the offset is documented on every collection page and in
-# the file specification, and it bites through a join across two
-# collections rather than through a single collection read alone;
-# no eval case is required at this severity.
+# medium, not high, although the join fails silently: the
+# specification's rule reads high as silently wrong results, and the
+# result here is misaligned by a bounded thirty minutes, the same size
+# as the averaging interval, so a daily, monthly or seasonal figure is
+# untouched and a bulk flux or diurnal phase is degraded by a fraction
+# of an hour rather than wrong in sign or order of magnitude; the
+# misalignment is also visible to anyone who prints the time
+# coordinate, which the file carries. Raised to high with an eval case
+# if a reviewer judges the diurnal-phase use load-bearing.
 dataset: ../datasets/merra-2.md
 status: draft
 stale_after: 2027-03-14
@@ -47,8 +52,8 @@ M2T1NXSLV and M2T1NXFLX at 00:30, 01:30 through 23:30, the
 three-hourly averages at 01:30, 04:30 and so on; monthly files
 average the calendar month, leap years counted.[^filespec][^gesdisc-m2t1nxslv][^gesdisc-m2i1nxasm]
 Every collection page and every README table says which it is in one
-line, and the daily statistics collection (M2SDNXSLV) is stamped
-daily from 00:30.[^gesdisc-m2t1nxflx][^readme] Inside a file the time
+line,[^gesdisc-m2t1nxflx][^readme] and the daily statistics collection
+(M2SDNXSLV) is stamped daily from 00:30.[^readme] Inside a file the time
 coordinate is minutes since the first time in the file, and that
 first time is the RangeBeginningTime global attribute, so the offset
 is in the metadata and not in the variable's values.[^filespec]

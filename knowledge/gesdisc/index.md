@@ -12,7 +12,10 @@ spec text lives in marketplace docs/upstream). Every concept is a draft
 until the steward promotes it after review, and a confirmation from the
 GES DISC or the product teams is invited on each and never required.
 The hydrology plugin's own IMERG and NLDAS-2 concepts stay in its
-bundle; a concept here names them where it depends on them.
+bundle; a concept here names them where it depends on them. This
+bundle's eval cases live in open-science-pillars/agent-evals under
+merra2/cases/, one per high-severity gotcha, and their registration
+in the evals manifests is the coordinator's step, not this bundle's.
 
 What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md).
 
