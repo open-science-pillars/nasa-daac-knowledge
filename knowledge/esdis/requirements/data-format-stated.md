@@ -3,7 +3,8 @@ type: requirement
 title: Data format stated on the collection
 description: "A collection names the format its files are distributed in, through ArchiveAndDistributionInformation, where Format is required inside an optional block, with a value from the KMS data format vocabulary; the block is Recommended, so the rule is reviewed practice."
 tags: [requirement, data-format, distribution, metadata, cross-archive]
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/142 }
+status: stable
 class: SHOULD
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:27:36Z }
 stale_after: 2027-03-14

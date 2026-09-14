@@ -5,6 +5,7 @@ title: "MERRA-2: the GMAO atmospheric reanalysis, 1980 onward, as the file colle
 description: "The Modern-Era Retrospective analysis for Research and Applications, version 2, produced by the Global Modeling and Assimilation Office with GEOS-5 version 5.12.4 and archived at GES DISC as about a hundred file collections on one 0.625 by 0.5 degree grid: hourly, three-hourly, daily-statistic, monthly and monthly-diurnal, instantaneous or time-averaged, each with its own short name, DOI and CMR concept id. No error fields ship; what stands in is the analysis increment, the documented observing-system epochs and the four production streams."
 tags: [merra-2, merra2, reanalysis, gmao, gesdisc, atmosphere, precipitation, m2t1nxslv, m2t1nxflx, m2tmnxslv]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/144 }
 resource: https://disc.gsfc.nasa.gov/datasets/M2T1NXSLV_5.12.4/summary
 version: "GEOS-5 version 5.12.4 is the assimilation system and the collection version of every MERRA-2 collection; concept ids CMR-verified 2026-09-14, DOIs read from the GMAO citing page the same day: M2T1NXSLV C1276812863-GES_DISC (DOI 10.5067/VJAFPLI1CSIV), M2T1NXFLX C1276812838-GES_DISC (10.5067/7MCPBJ41Y0K6), M2TMNXSLV C1276812859-GES_DISC (10.5067/AP1B0BA5PD2K), M2TMNXFLX C1276812868-GES_DISC, M2I1NXASM C1276812820-GES_DISC (10.5067/3Z173KIE2TPD), M2IMNXASM C1276812823-GES_DISC, M2T1NXINT C1276812846-GES_DISC, M2T1NXLND C1276812861-GES_DISC, M2TMNXLND C1276812856-GES_DISC, M2SDNXSLV C1276812843-GES_DISC, M2TUNXSLV C1276812878-GES_DISC, M2I3NPASM C1276812879-GES_DISC, M2IMNPASM C1276812904-GES_DISC, M2T3NVASM C1276812925-GES_DISC; every record begins 1980-01-01 with the ends-at-present flag, and the newest M2T1NXSLV granule that day covered 2026-08-01"
 sources:
@@ -62,7 +63,7 @@ sources:
   - id: bosilovich-2017
     resource: https://doi.org/10.1175/JCLI-D-16-0338.1
     title: "Bosilovich, Robertson, Takacs, Molod and Mocko, 2017, Atmospheric Water Balance and Variability in the MERRA-2 Reanalysis, Journal of Climate 30, 1177 to 1196 (record and abstract read on the Crossref registry 2026-09-14; the journal page sits behind a bot check)"
-status: draft
+status: stable
 stale_after: 2027-03-14
 ---
 

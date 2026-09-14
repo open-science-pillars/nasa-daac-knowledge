@@ -5,9 +5,10 @@ title: "HLS L30 and S30 keep their sensors' band numbers: B05, B06, B07, B09, B1
 description: "The HLS band codes retain the OLI numbering in L30 and the MSI numbering in S30. B05 is the near infrared in L30 and the first red-edge band in S30; B06 and B07 are the shortwave infrared in L30 and red-edge bands in S30; B09 is cirrus in L30 and water vapour in S30; B10 and B11 are thermal brightness temperature in L30 and cirrus and SWIR 1 in S30; the S30 near infrared and shortwave infrared are B8A, B11 and B12, codes that L30 does not have or means differently. A script keyed on one product's codes either fails on the other for a missing file or silently substitutes a red-edge band for the near infrared in an index."
 tags: [hls, hlsl30, hlss30, band-names, oli, msi, ndvi, red-edge, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/145 }
 severity: medium
 dataset: ../datasets/hls-s30.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: user-guide

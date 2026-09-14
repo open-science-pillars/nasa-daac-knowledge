@@ -5,6 +5,7 @@ title: "The HLS Fmask layer is bit-packed: cloud, shadow, snow, water and aeroso
 description: "The HLS Fmask layer is one byte per pixel in which bit 1 is cloud, bit 2 adjacent to cloud or shadow, bit 3 cloud shadow, bit 4 snow or ice, bit 5 water and bits 6 and 7 the LaSRC aerosol level, with 255 the fill; several bits can be set at once because the labels are resampled to 30 m. It is not the Fmask algorithm's class raster, so a script that tests the byte against class integers (cloud equals 4, water equals 1, clear equals 0) passes clouded and shadowed pixels as clear, throws away clear pixels that carry a water, snow or low-aerosol bit, and reads the fill as a class, and nothing raises an error."
 tags: [hls, hlsl30, hlss30, fmask, qa, cloud-mask, bit-packed, aerosol, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/145 }
 severity: high
 dataset: ../datasets/hls-l30.md
 eval_case: hls-fmask-is-bit-packed

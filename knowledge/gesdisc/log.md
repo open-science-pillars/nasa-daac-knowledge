@@ -2,6 +2,19 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · STEWARD SIGNING of knowledge/gesdisc/datasets/merra-2.md,
+  knowledge/gesdisc/gotchas/merra2-collection-short-names.md,
+  knowledge/gesdisc/gotchas/merra2-grid-weights.md,
+  knowledge/gesdisc/gotchas/merra2-stream-boundaries-and-discontinuities.md,
+  knowledge/gesdisc/gotchas/merra2-time-stamp-conventions.md,
+  knowledge/gesdisc/gotchas/merra2-prectotcorr-versus-prectot.md:
+  maintainer's review of PR 144 recorded on the maintainer's standing
+  instruction for round two of seeding; the non-high concepts promoted
+  to stable; merra2-prectotcorr-versus-prectot (high severity) keeps
+  draft with this first review until a second human review, per the
+  two-review rule. The verified event is written on the steward's word.
+  The verified event is written on the steward's word. (steward)
+
 - 2026-09-14 · bundle's first concepts: one dataset concept
   (datasets/merra-2.md, the reanalysis as its GES DISC file
   collections with their CMR concept ids and DOIs) and five gotchas

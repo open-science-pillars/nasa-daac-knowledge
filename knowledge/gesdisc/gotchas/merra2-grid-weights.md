@@ -5,6 +5,7 @@ title: "The 0.625 by 0.5 degree MERRA-2 grid is a regular latitude-longitude gri
 description: "Every MERRA-2 collection is on the same 576 by 361 regular grid, half a degree in latitude with rows at both poles, interpolated from the model's cubed sphere. A cell's area is proportional to the cosine of its latitude, so an unweighted mean over the grid over-represents the polar rows; the constants collection carries surface fractions and geopotential but no cell-area variable (the specification's revision history records AREA removed from the constants tables), and the land collection's values are per unit land area, so a total also needs the land fraction."
 tags: [merra-2, merra2, grid, area-weights, global-mean, cosine-latitude, land-fraction, gesdisc]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/144 }
 severity: low
 # low: the grid is documented, the weighting is standard practice on
 # any regular latitude-longitude grid, and the error in an unweighted
@@ -12,7 +13,7 @@ severity: low
 # area variable and the land collection's per-land-area convention
 # compounds the mistake.
 dataset: ../datasets/merra-2.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: filespec
