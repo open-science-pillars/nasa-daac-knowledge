@@ -36,7 +36,7 @@ sources:
     title: "Comiso, Cavalieri, Parkinson and Gloersen, 1997, Passive microwave algorithms for sea ice concentration: A comparison of two techniques, Remote Sensing of Environment 60, 357 to 384 (the comparison paper both guides cite; cited on its Crossref record, which carries no abstract, and the publisher page was not fetched)"
   - id: g02135-user-guide
     resource: https://nsidc.org/sites/default/files/documents/user-guide/g02135-v004-userguide.pdf
-    title: "Sea Ice Index Version 4 user guide: the Index is based on the NASA Team algorithm, and its extent values are sensitive to the algorithm used and not comparable across studies without care"
+    title: "Sea Ice Index Version 4 user guide: the Index is based on the NASA Team algorithm, both of its input products (the Goddard record and NSIDC-0803, the AMSR2 record read from 1 January 2025) are created with the NASA Team algorithm, and its extent values are sensitive to the algorithm used and not comparable across studies without care"
   - id: dataset
     resource: ../datasets/nsidc-0051-sea-ice-concentration.md
     title: "This bundle's NSIDC-0051 dataset concept, which lists this trap among the known issues"
@@ -91,9 +91,12 @@ techniques that both guides cite, and NSIDC-0051's product page
 attributes to it the higher Antarctic uncertainty from flooded snow
 and the reliability within the pack in cold
 conditions.[^nt-vs-bt-article][^nsidc-0051-page][^comiso-1997] The
-Sea Ice Index, NSIDC-0081 and NSIDC-0803 are NASA Team products, and
-the Index's guide states that its extent values are sensitive to the
-algorithm used.[^nt-vs-bt-article][^g02135-user-guide]
+Sea Ice Index and NSIDC-0081 are NASA Team products, as the help
+article lists them;[^nt-vs-bt-article] NSIDC-0803, the AMSR2 record
+the Index reads from 1 January 2025, is a NASA Team product on the
+Index guide's word, which states that both of its input products are
+created with the NASA Team algorithm and that its extent values are
+sensitive to the algorithm used.[^g02135-user-guide]
 
 **Wrong-result mode.** A time series that switches from one algorithm
 to the other, or a comparison between a NASA Team extent (the Sea Ice

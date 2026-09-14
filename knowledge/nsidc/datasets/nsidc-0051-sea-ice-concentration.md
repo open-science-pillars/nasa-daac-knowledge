@@ -122,7 +122,7 @@ temperature zeroes ice where the ocean is warmer than 278 K in the
 north and 275 K in the south, manual inspection removes remaining
 spurious ice, and gaps are filled by spatial interpolation of
 brightness temperatures and temporal interpolation of concentrations,
-except the period 2 December 1987 through 12 January 1988, which is
+except the period 3 December 1987 through 12 January 1988, which is
 left missing.[^nsidc-0051-user-guide] Monthly grids are the average of
 the available daily grids, excluding missing pixels; October 1978,
 December 1987 and January 1988 rest on three, two and nineteen days,

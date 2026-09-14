@@ -46,12 +46,13 @@ stale_after: 2027-03-14
 
 **Identity and archive.** The Sea Ice Index is a source of consistent
 sea ice extent and concentration images and of extent and area values
-for the whole Arctic and the whole Antarctic, from November 1978 to
-the present, with trends and anomalies against the 1981 through 2010
-reference period; its stated purpose is a quick look at hemisphere-wide
-change, and its monthly products are the ones it recommends for trend
-analysis because errors in the daily product average out and daily
-variation is often weather.[^g02135-page][^g02135-user-guide] It is a
+for the whole Arctic and the whole Antarctic, daily from 26 October
+1978 and monthly from November 1978 to the present, with trends and
+anomalies against the 1981 through 2010 reference period; its stated
+purpose is a quick look at hemisphere-wide change, and its monthly
+products are the ones it recommends for trend analysis because errors
+in the daily product average out and daily variation is often
+weather.[^g02135-page][^g02135-user-guide] It is a
 NOAA at NSIDC product, not a NASA DAAC product: the citation names the
 National Snow and Ice Data Center as publisher (Fetterer, Knowles,
 Meier, Savoie, Windnagel and Stafford, 2025, DOI 10.7265/a98x-0f50),
@@ -185,10 +186,11 @@ Arctic region mask.[^g02135-user-guide][^noaadata-g02135]
   day-to-day extent change at the start of a month, especially in
   summer.[^daily-change-article][^g02135-user-guide]
 - **Gaps and bad days in the record.** No values for 3 December 1987
-  to 13 January 1988; every-other-day values in the SMMR period; the
+  to 12 January 1988 (the daily file resumes on 13 January 1988);
+  every-other-day values in the SMMR period; the
   14 September 1984 extent is in error and provided for completeness;
   a one-day change larger than 500,000 km2 raises an operator
-  flag.[^g02135-user-guide]
+  flag.[^g02135-user-guide][^noaadata-g02135]
 - **The input records' own uncertainty**: the Goddard record's
   seasonal accuracy, residual weather effects, sensor transitions and
   the AMSR2 differences are those of NSIDC-0051 and
@@ -232,8 +234,16 @@ temporal coverage section dates the Goddard input to 31 December 2020
 "as of January 2017", while its data sources section, the NSIDC-0051
 guide and the monthly files themselves carry NSIDC-0051 through
 December 2024; this concept follows the data sources section and the
-files.[^g02135-user-guide][^noaadata-g02135] The help article on the
-month-boundary extent change was read the same
+files.[^g02135-user-guide][^noaadata-g02135] A second: the Version 4
+guide words the winter gap as no data from 3 December 1987 to
+13 January 1988, while the Northern Hemisphere daily file carries a
+2 December 1987 row and a 13 January 1988 row (from nt_19871202_f08
+and nt_19880113_f08) with nothing between them, so the missing days
+are 3 December 1987 through 12 January 1988 and this concept reads
+the guide's end date as the day the record resumes, which matches
+the NSIDC-0051 guide's count of nineteen days for January
+1988.[^g02135-user-guide][^noaadata-g02135][^nsidc-0051-dataset] The
+help article on the month-boundary extent change was read the same
 day.[^daily-change-article]
 
 [^g02135-page]: NSIDC product page, Sea Ice Index Version 4

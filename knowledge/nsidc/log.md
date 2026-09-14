@@ -2,6 +2,33 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · coordinator's lint applied to the sea ice concepts
+  (datasets/nsidc-0051-sea-ice-concentration.md,
+  datasets/sea-ice-index-g02135.md,
+  gotchas/sea-ice-nasa-team-versus-bootstrap.md, this log): the winter
+  1987 to 1988 gap is corrected against the Northern Hemisphere daily
+  file (N_seaice_extent_daily_v4.0.csv, fetched the same day), which
+  carries rows for 1 and 2 December 1987 and resumes on 13 January
+  1988, so the NSIDC-0051 concept now dates the unfilled period from
+  3 December 1987 (not 2 December) and the Sea Ice Index concept ends
+  it on 12 January 1988 (not 13 January), with the Version 4 guide's
+  own wording of the gap and the file's rows recorded as a source
+  disagreement in that concept's Verification paragraph; the Sea Ice
+  Index identity paragraph now states the daily record from
+  26 October 1978 and the monthly record from November 1978, as its
+  description, version string and the daily file already did; the
+  NASA Team gotcha's statement that NSIDC-0803 is a NASA Team product
+  is now footnoted to the Sea Ice Index Version 4 guide, which says
+  both of its input products are created with the NASA Team
+  algorithm, with the Sea Ice Index and NSIDC-0081 left on the help
+  article that lists them; the seed entry below now says that NASA
+  Technical Memorandum 104647, Comiso and Nishio 2008 and Cavalieri
+  and others 1991 were read and are cited by no concept. No title,
+  status or signature changed; the digest is re-rendered. Applied by
+  the coordinator because the seed session ran out of usage.
+  (coordinator; steward review, eval registration and roadmap
+  reconciliation pending)
+
 - 2026-09-14 · sea ice concentration and the Sea Ice Index seeded:
   two dataset concepts (datasets/nsidc-0051-sea-ice-concentration.md,
   datasets/sea-ice-index-g02135.md) and five gotchas
@@ -21,14 +48,15 @@ Newest first. One line per change: date, concept path, what changed, who.
   19; Meier's June 2026 assessment of the AMSR2 sensor change; the
   SMMR, SSM/I and SSMIS sensors summary; the NSIDC help articles on
   the NASA Team and Bootstrap algorithms and on the month-boundary
-  extent change; NASA Technical Memorandum 104647 (searched, its
-  spillover threshold only); the G02135 tree on
-  noaadata.apps.nsidc.org with the daily and monthly CSV headers and
-  the rows quoted in the concepts; the product DOIs resolved through
-  doi.org; Cavalieri and others 1999, Comiso and others 1997,
-  Cavalieri and others 2012, Meier and others 2011, Comiso and Nishio
-  2008 and Cavalieri and others 1991 verified against the Crossref
-  registry. Not read from the drafting session: the AGU, Wiley,
+  extent change; the G02135 tree on noaadata.apps.nsidc.org with the
+  daily and monthly CSV headers and the rows quoted in the concepts;
+  the product DOIs resolved through doi.org; Cavalieri and others
+  1999, Comiso and others 1997, Cavalieri and others 2012 and Meier
+  and others 2011 verified against the Crossref registry. Read the
+  same day and cited by no concept: NASA Technical Memorandum 104647
+  (searched for its spillover threshold only), Comiso and Nishio 2008
+  and Cavalieri and others 1991 (both verified against the Crossref
+  registry). Not read from the drafting session: the AGU, Wiley,
   Elsevier and IEEE journal pages (bot checks; the papers are cited
   on their registry records and, for Cavalieri 1999, its abstract),
   and no granule or GeoTIFF was opened, so variable names, flag values
