@@ -1,7 +1,7 @@
 ---
 type: dataset-gotcha
 spheres: [atmosphere, geosphere]
-title: "Version 4 R1 re-derived every 2020 and 2021 file with corrected Canadian station inputs and changed nothing else: a Version 4 file for those years is a different estimate under a different DOI"
+title: "Version 4 R1 re-derived every 2020 and 2021 file with corrected Canadian station inputs and changed no earlier year: a Version 4 file for those years is a different estimate under a different DOI"
 description: "Daymet Version 4 R1, published 2022-11-01 under DOI 10.3334/ORNLDAAC/2129, updated all 2020 and 2021 files for every variable after the station inputs used for those years were found to lack January readings for a significant portion of Canadian weather stations; NCEI corrected the ingest feed and the two years were rerun with new inputs. Files outside 2020 and 2021 are unchanged from Version 4 (DOI 10.3334/ORNLDAAC/1840), which is superseded and marked access restricted. A series that mixes Version 4 and R1 files for 2020 and 2021, or cites the Version 4 DOI for data downloaded after the R1 release, carries a version difference concentrated in high-latitude January as if it were weather."
 tags: [daymet, version, v4, v4-r1, release, correction, doi, ghcn, canada, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
@@ -69,10 +69,10 @@ same source is off by the correction. A study that cites DOI
 10.3334/ORNLDAAC/1840 for files obtained after the R1 release names
 the wrong data, and a reproduction that fetches the cited DOI is
 refused, since access to Version 4 is restricted. Because every year
-outside 2020 and 2021 is identical between the two releases, a
-version check on any other year shows nothing, and the files for the
-two changed years have the same names in both releases apart from the
-collection they came from.
+before 2020 is identical between the two releases and 2022 onward
+exists only in R1, a version check on any earlier year shows nothing,
+and the files for the two changed years have the same names in both
+releases apart from the collection they came from.
 
 **Correct approach.** The current product is Version 4 R1 under DOI
 10.3334/ORNLDAAC/2129, and the version of every file in a series is

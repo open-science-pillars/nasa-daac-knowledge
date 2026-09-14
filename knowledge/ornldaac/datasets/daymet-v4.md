@@ -2,7 +2,7 @@
 type: dataset
 spheres: [atmosphere, geosphere]
 title: "Daymet Version 4 (release R1): daily surface weather on a 1 km grid for North America, Hawaii and Puerto Rico"
-description: "Daily minimum and maximum temperature, precipitation, shortwave radiation, vapor pressure, snow water equivalent and day length interpolated from weather stations onto a 1 km Lambert conformal conic grid, one netCDF file per variable, region and year, on a 365-day calendar; the current release is Version 4 R1, whose only change from Version 4 is a rerun of 2020 and 2021 with corrected station inputs. Uncertainty ships as a separate station-level cross-validation dataset, not as a field in the grids."
+description: "Daily minimum and maximum temperature, precipitation, shortwave radiation, vapor pressure, snow water equivalent and day length interpolated from weather stations onto a 1 km Lambert conformal conic grid, one netCDF file per variable, region and year, on a 365-day calendar; the current release is Version 4 R1, whose only change to existing Version 4 files was a rerun of 2020 and 2021 with corrected station inputs; later years are appended under R1. Uncertainty ships as a separate station-level cross-validation dataset, not as a field in the grids."
 tags: [daymet, surface-weather, temperature, precipitation, gridded, lambert-conformal-conic, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
 resource: https://doi.org/10.3334/ORNLDAAC/2129
@@ -149,7 +149,7 @@ Version 4 during an event.[^thornton-2021]
 - **Domain-wide daily error levels, from the paper.** Averaged over
   the 40 years and all stations, the mean daily absolute error is
   about 1.78 degrees Celsius for tmin and 1.52 degrees Celsius for
-  tmax (1.75 in Version 3); the daily precipitation error is lower in
+  tmax (1.75 for tmax in Version 3; tmin unchanged); the daily precipitation error is lower in
   recent years than early in the record as the station networks
   grew.[^thornton-2021]
 - **The error is not uniform.** Station density, terrain and
@@ -167,7 +167,8 @@ Version 4 during an event.[^thornton-2021]
 
 - [daymet-365-day-year](../gotchas/daymet-365-day-year.md): every
   year has 365 days and December 31 is dropped in leap years, so a
-  join on calendar dates misaligns after February in a leap year.
+  positional or generated-date join misaligns after February in a
+  leap year.
 - [daymet-lcc-projection-and-cell-area](../gotchas/daymet-lcc-projection-and-cell-area.md):
   the grid is Lambert conformal conic meters, and a cell's ground
   area is one square kilometer only on the standard parallels.
@@ -175,7 +176,7 @@ Version 4 during an event.[^thornton-2021]
   tiles and mosaics are the same estimates in different files, and
   the three region files differ in extent and start year.
 - [daymet-v4-r1-correction](../gotchas/daymet-v4-r1-correction.md):
-  R1 changed every 2020 and 2021 file and nothing else.
+  R1 changed every 2020 and 2021 file and no earlier year.
 - [daymet-station-sparse-error](../gotchas/daymet-station-sparse-error.md):
   the values are interpolated from stations, and station-sparse
   terrain carries larger error that the cross-validation files

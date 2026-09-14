@@ -1,8 +1,8 @@
 ---
 type: dataset-gotcha
 spheres: [atmosphere, geosphere]
-title: "Every Daymet year has 365 days: leap years keep February 29 and drop December 31, so a calendar-date join misaligns after February in a leap year"
-description: "The Daymet calendar is a 365-day year in every year. In a leap year the files include February 29 and discard December 31, so a leap year's file has 365 time steps whose last one is December 30. Code that labels the steps with a no-leap calendar puts every value from February 29 onward one day late, code that joins a 366-day observation record by position misaligns everything after February 28, and an annual total over a leap year sums 365 days; nothing raises an error, because 365 steps is exactly what every other year has."
+title: "Every Daymet year has 365 days: leap years keep February 29 and drop December 31, so a positional or generated-date join misaligns after February in a leap year"
+description: "The Daymet calendar is a 365-day year in every year. In a leap year the files include February 29 and discard December 31, so a leap year's file has 365 time steps whose last one is December 30. Code that labels the steps with a no-leap calendar puts every value from February 29 onward one day late, code that joins a 366-day observation record by position on a 365-day assumption misaligns everything after February 28, and an annual total over a leap year sums 365 days; nothing raises an error, because 365 steps is exactly what every other year has."
 tags: [daymet, calendar, 365-day, leap-year, time-axis, join, alignment, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
 severity: high

@@ -2,6 +2,22 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · concepts revised on the coordinator's lint, applied by the
+  coordinator because the seed session ran out of usage:
+  gotchas/daymet-lcc-projection-and-cell-area.md (the sign and
+  magnitudes of the cell-count area bias in the wrong-result paragraph
+  and the severity comment now follow the areal scale factors; the
+  subset box is rectangular, not square, in the projection);
+  gotchas/daymet-365-day-year.md (the title now names a positional or
+  generated-date join as what misaligns, since a calendar-date join is
+  the fix; the description says the positional join fails on a 365-day
+  assumption); gotchas/daymet-v4-r1-correction.md (R1 changed no
+  earlier year rather than nothing else, since 2022 onward exists only
+  in R1); datasets/daymet-v4.md (the R1 description and known-issues
+  lines match the new wording, and the Version 3 parenthetical says
+  1.75 was the tmax error, tmin unchanged); index.md lines match the
+  new titles. All still drafts, no signatures. (coordinator)
+
 - 2026-09-14 · first concepts of the bundle, Daymet Version 4 (release
   R1): one dataset concept (datasets/daymet-v4.md) and five gotchas
   (daymet-365-day-year at severity high with its eval case drafted in
