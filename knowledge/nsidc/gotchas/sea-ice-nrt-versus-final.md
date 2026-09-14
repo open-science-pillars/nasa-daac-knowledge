@@ -5,6 +5,7 @@ title: "Near-real-time and final sea ice concentration differ in input and proce
 description: "NSIDC-0081 was the NASA Team near-real-time product: near-real-time brightness temperatures, F16, F17 and F18 SSMIS with F17 tie points applied to F18, automated masks, no manual quality control, unfilled gaps, one to two days of latency, and a documented warning against long-term trends. NSIDC-0051 is the final Goddard record with roughly a year of latency, manual cleaning and gap filling. The Sea Ice Index joined them until Version 3 and reprocessed the near-real-time months when the final data arrived, with monthly differences it measured at generally under 20,000 km2 and at most 1.6 percent; Version 4 joins NSIDC-0051 to NSIDC-0803 (AMSR2) at 1 January 2025 instead, with extent low by up to 3 to 5 percent in summer and area low by up to 6 percent. NSIDC-0081 is retired and NSIDC-0051 has stopped, so every current series contains a join, and a trend that crosses one without naming it reads the processing change as ice change."
 tags: [sea-ice, near-real-time, nrt, nsidc-0081, nsidc-0051, nsidc-0803, amsr2, g02135, sea-ice-index, nasa-team, latency, reprocessing]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/148 }
 severity: medium
 # medium: the Sea Ice Index names the source of every row in a column,
 # the near-real-time guide carries the warning against trends in its
@@ -14,7 +15,7 @@ severity: medium
 # NSIDC-0803, an error of the size of the sensor transitions rather
 # than a silent corruption.
 dataset: ../datasets/sea-ice-index-g02135.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: nsidc-0081-user-guide

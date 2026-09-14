@@ -5,6 +5,7 @@ title: "The Daymet grid is Lambert conformal conic meters, not latitude and long
 description: "Daymet x and y are meters in a Lambert conformal conic projection with standard parallels at 25 N and 60 N, and the 1 km cell is 1 km in those projected meters. A conformal projection keeps angles, not area: the scale is true on the two standard parallels and departs from it elsewhere, so the ground area of a cell is not one square kilometer across the domain, and a total computed as a cell count times one square kilometer is biased. The netCDF subset service returns the projected minimum bounding box of a lat/lon request, larger than the request and rectangular in the projection, not in degrees."
 tags: [daymet, projection, lambert-conformal-conic, cell-area, coordinates, subsetting, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/143 }
 severity: medium
 # medium: the projection and its parameters are stated in the guide
 # and on the project site, so the trap is documented; the error on an
@@ -12,7 +13,7 @@ severity: medium
 # about double at its northern edge, and a plotted field is visibly off when
 # x and y are read as degrees; no eval case is required.
 dataset: ../datasets/daymet-v4.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: ornl-v4-guide

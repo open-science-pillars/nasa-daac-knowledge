@@ -5,6 +5,7 @@ title: "Daymet Version 4 (release R1): daily surface weather on a 1 km grid for 
 description: "Daily minimum and maximum temperature, precipitation, shortwave radiation, vapor pressure, snow water equivalent and day length interpolated from weather stations onto a 1 km Lambert conformal conic grid, one netCDF file per variable, region and year, on a 365-day calendar; the current release is Version 4 R1, whose only change to existing Version 4 files was a rerun of 2020 and 2021 with corrected station inputs; later years are appended under R1. Uncertainty ships as a separate station-level cross-validation dataset, not as a field in the grids."
 tags: [daymet, surface-weather, temperature, precipitation, gridded, lambert-conformal-conic, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/143 }
 resource: https://doi.org/10.3334/ORNLDAAC/2129
 version: "Daymet Version 4 R1 (ORNL DAAC version 4.1, DOI 10.3334/ORNLDAAC/2129, CMR short name Daymet_Daily_V4R1_2129, concept C2532426483-ORNL_CLOUD), CMR-verified 2026-09-14 with 1,176 granules covering 1950-01-01 through 2025-12-31; Version 4 (DOI 10.3334/ORNLDAAC/1840) is superseded and its landing page marks access restricted"
 sources:
@@ -44,7 +45,7 @@ sources:
   - id: crossref-thornton-2021
     resource: https://api.crossref.org/works/10.1038/s41597-021-00973-0
     title: "Crossref registry record for Thornton and others 2021: title, authors, journal, volume and publication date"
-status: draft
+status: stable
 stale_after: 2027-03-14
 ---
 

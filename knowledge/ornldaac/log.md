@@ -2,6 +2,20 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · STEWARD SIGNING of
+  knowledge/ornldaac/datasets/daymet-v4.md,
+  knowledge/ornldaac/gotchas/daymet-lcc-projection-and-cell-area.md,
+  knowledge/ornldaac/gotchas/daymet-station-sparse-error.md,
+  knowledge/ornldaac/gotchas/daymet-tiles-mosaics-regions.md,
+  knowledge/ornldaac/gotchas/daymet-v4-r1-correction.md,
+  knowledge/ornldaac/gotchas/daymet-365-day-year.md: maintainer's review
+  of PR 143 recorded on the maintainer's standing instruction for round
+  two of seeding; the non-high concepts promoted to stable;
+  daymet-365-day-year (high severity) keeps draft with this first review
+  until a second human review, per the two-review rule. The verified
+  event is written on the steward's word. The verified event is written
+  on the steward's word. (steward)
+
 - 2026-09-14 · concepts revised on the coordinator's lint, applied by the
   coordinator because the seed session ran out of usage:
   gotchas/daymet-lcc-projection-and-cell-area.md (the sign and

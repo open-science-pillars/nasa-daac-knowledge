@@ -5,6 +5,7 @@ title: "NSIDC-0051 NASA Team sea ice concentration from Nimbus-7 SMMR and DMSP S
 description: "Daily (every other day under SMMR) and monthly sea ice concentration for both polar regions on the 25 km NSIDC polar stereographic grids, 26 October 1978 to 31 December 2025, from one sensor per day (Nimbus-7 SMMR, DMSP F8, F11 and F13 SSM/I, DMSP F17 SSMIS) with tie points calibrated across each sensor overlap to keep hemispheric extent and area continuous; the pole hole, coast and land are flag values in the concentration variable. Forward processing has stopped and the record is static; NSIDC-0803 (AMSR2) is the DAAC's continuing daily product."
 tags: [nsidc-0051, sea-ice-concentration, nasa-team, smmr, ssmi, ssmis, passive-microwave, polar-stereographic, nsidc, cryosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/148 }
 resource: https://nsidc.org/data/nsidc-0051/versions/2
 version: "Version 2 (DOI 10.5067/MPYG15WAA4WX; DiGirolamo and others 2022, updated yearly), verified 2026-09-14: temporal coverage 26 October 1978 to 31 December 2025 with forward processing stopped and the record kept as a static product; the user guide is dated September 2023 and last updated July 2026; NSIDC-0803 Version 2 (AMSR2) is the alternative the product page names"
 sources:
@@ -35,7 +36,7 @@ sources:
   - id: comiso-1997
     resource: https://doi.org/10.1016/S0034-4257(96)00220-9
     title: "Comiso, Cavalieri, Parkinson and Gloersen, 1997, Passive microwave algorithms for sea ice concentration: A comparison of two techniques, Remote Sensing of Environment 60, 357 to 384 (cited on its Crossref record; the publisher page was not fetched)"
-status: draft
+status: stable
 stale_after: 2027-03-14
 ---
 

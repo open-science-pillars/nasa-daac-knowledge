@@ -5,9 +5,10 @@ title: "chlor_a is a near-surface pigment concentration that the producer calls 
 description: "The chlorophyll-a product is the near-surface concentration of one photosynthetic pigment in mg per cubic metre, retrieved empirically from the color of the sunlit layer, and the ATBD and the collection descriptions call it a proxy metric for phytoplankton biomass. The producer distributes phytoplankton carbon (carbon_phyto) in the same PACE BGC file from a different algorithm, and net primary production as a separate Level 4 product computed from the inherent optical properties and PAR rather than from chlorophyll; the color index component of the retrieval was chosen partly because it tolerates changes in the chlorophyll-specific backscattering, which is the ratio between pigment and particles varying. A chlorophyll map read as a biomass, carbon or productivity map, or a chlorophyll trend read as a change in production or in the standing stock of the water column, carries the varying pigment-to-carbon relation and the surface-only view as if they were the quantity named."
 tags: [chlorophyll, chlor_a, biomass, phytoplankton-carbon, carbon_phyto, primary-production, npp, proxy, near-surface, modis, aqua, pace, oci, obdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/147 }
 severity: medium
 dataset: ../datasets/pace-oci-l3-chlorophyll.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: atbd

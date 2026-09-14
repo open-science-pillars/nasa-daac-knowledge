@@ -5,6 +5,7 @@ title: "Every Daymet year has 365 days: leap years keep February 29 and drop Dec
 description: "The Daymet calendar is a 365-day year in every year. In a leap year the files include February 29 and discard December 31, so a leap year's file has 365 time steps whose last one is December 30. Code that labels the steps with a no-leap calendar puts every value from February 29 onward one day late, code that joins a 366-day observation record by position on a 365-day assumption misaligns everything after February 28, and an annual total over a leap year sums 365 days; nothing raises an error, because 365 steps is exactly what every other year has."
 tags: [daymet, calendar, 365-day, leap-year, time-axis, join, alignment, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/143 }
 severity: high
 # high: the misalignment is silent (every year has the same number of
 # steps, so no length check catches it) and it corrupts daily joins,

@@ -5,9 +5,10 @@ title: "MODIS-Aqua Level 3 mapped chlorophyll-a (OB.DAAC, reprocessing R2022)"
 description: "The Ocean Biology Processing Group's Level 3 mapped chlorophyll-a concentration from MODIS on Aqua: one variable, chlor_a, from the blended OCI algorithm (color index below 0.25 mg per cubic metre, OC3M band ratio above 0.35, a weighted transition between), on 4 km and 9 km equidistant cylindrical grids, as daily, 8-day, monthly, rolling 32-day, seasonal and annual composites plus monthly, seasonal and cumulative climatologies, from 4 July 2002 onward, in the R2022 reprocessing (files carry processing_version R2022.0.3); a separate near-real-time collection runs ahead of the refined record."
 tags: [modis, aqua, chlorophyll, chlor_a, ocean-color, level3, mapped, obdaac, obpg, r2022, oci-algorithm]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/147 }
 resource: https://cmr.earthdata.nasa.gov/search/concepts/C3380709133-OB_CLOUD.umm_json
 version: "Reprocessing R2022 (collection version 2022.0; the files opened on 2026-09-14 carry processing_version R2022.0.3), CMR-verified 2026-09-14: MODISA_L3m_CHL (C3380709133-OB_CLOUD, DOI 10.5067/AQUA/MODIS/L3M/CHL/2022.0, 27028 granule records, temporal extent from 2002-07-04 with no end), its binned companion MODISA_L3b_CHL (C3380708988-OB_CLOUD, DOI 10.5067/AQUA/MODIS/L3B/CHL/2022.0) and the near-real-time collection MODISA_L3m_CHL_NRT (C3380709124-OB_CLOUD); on 2026-09-14 the last refined daily granule was 2026-05-30 and the last near-real-time daily granule was 2026-09-12"
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: cmr-modis

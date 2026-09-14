@@ -2,6 +2,21 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · STEWARD SIGNING of
+  knowledge/nsidc/datasets/nsidc-0051-sea-ice-concentration.md,
+  knowledge/nsidc/datasets/sea-ice-index-g02135.md,
+  knowledge/nsidc/gotchas/sea-ice-extent-is-not-area.md,
+  knowledge/nsidc/gotchas/sea-ice-nasa-team-versus-bootstrap.md,
+  knowledge/nsidc/gotchas/sea-ice-nrt-versus-final.md,
+  knowledge/nsidc/gotchas/sea-ice-sensor-transitions.md,
+  knowledge/nsidc/gotchas/sea-ice-pole-hole-by-sensor.md: maintainer's
+  review of PR 148 recorded on the maintainer's standing instruction for
+  round two of seeding; the non-high concepts promoted to stable;
+  sea-ice-pole-hole-by-sensor (high severity) keeps draft with this
+  first review until a second human review, per the two-review rule. The
+  verified event is written on the steward's word. The verified event is
+  written on the steward's word. (steward)
+
 - 2026-09-14 · coordinator's lint applied to the sea ice concepts
   (datasets/nsidc-0051-sea-ice-concentration.md,
   datasets/sea-ice-index-g02135.md,

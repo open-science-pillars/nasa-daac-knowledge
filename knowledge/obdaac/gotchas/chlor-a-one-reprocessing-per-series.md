@@ -5,9 +5,10 @@ title: "A reprocessing rewrites the whole chlorophyll record and the catalogue k
 description: "OB.DAAC processes every sensor's record with one algorithm and calibration configuration and replaces the entire record when either changes: MODIS-Aqua is in R2022 (files carry R2022.0.3), which retuned both chlorophyll components and moved the CI-to-OCx transition from 0.15 to 0.2 up to 0.25 to 0.35, and PACE OCI has gone through versions 1, 2, 3, 3.1 and 3.2 between April 2024 and April 2026, the last fixing a reflectance correction the producer calls a significant improvement in accuracy and cross-track stability. CMR catalogues only the current version of each collection, the mapped files name their version only in a global attribute, and the refined MODIS-Aqua daily record trailed the near-real-time record by about three and a half months on 2026-09-14, the near-real-time files being processed with ancillary data and a calibration the producer calls less than optimal. A series assembled from files downloaded on different dates, or extended to the present with near-real-time files, therefore steps between processing configurations, and the step is not an ocean change."
 tags: [chlorophyll, chlor_a, reprocessing, r2022, version, near-real-time, nrt, refined, calibration, modis, aqua, pace, oci, obdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/147 }
 severity: medium
 dataset: ../datasets/modis-aqua-l3-chlorophyll.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: atbd

@@ -5,6 +5,7 @@ title: "The Arctic pole hole differs by sensor and each product treats it differ
 description: "Each passive microwave sensor leaves a circle around the North Pole unobserved, and the masked hole shrinks from 1.19 million km2 under SMMR to 0.31 under SSM/I (August 1987), to 0.029 under SSMIS (January 2008), and grows to 0.064 under AMSR2 (January 2025 in the Sea Ice Index). NSIDC-0051 carries the hole as flag value 251 in the concentration variable, NSIDC-0079 as a missing sentinel, and the Sea Ice Index counts it as ice-covered in extent and excludes it from area. An Arctic total formed by summing cells, or by treating the flag as a concentration, steps by the mask difference at each transition, and nothing in the files marks the step as an artefact."
 tags: [sea-ice, pole-hole, nsidc-0051, nsidc-0079, g02135, sea-ice-index, sea-ice-extent, sea-ice-area, smmr, ssmi, ssmis, amsr2, sensor-transition, arctic]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/148 }
 severity: high
 # high: the step is silent (the files carry a flag or an assumption,
 # not an error field), it lands at the sensor changes where a reader

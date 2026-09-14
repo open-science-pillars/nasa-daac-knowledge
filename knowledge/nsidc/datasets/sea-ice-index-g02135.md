@@ -5,6 +5,7 @@ title: "G02135 Sea Ice Index, Version 4: NOAA at NSIDC daily and monthly sea ice
 description: "The Sea Ice Index is a NOAA at NSIDC product, distributed from the NOAA archive at noaadata.apps.nsidc.org beside the NASA DAAC's products and not through Earthdata, that turns the NASA Team concentration grids into hemisphere-wide extent (cells at 15 percent or more) and area (concentration times cell area) values, daily and monthly, with images, GeoTIFFs and shapefiles, from 26 October 1978 to the present. Version 4 (July 2025) takes NSIDC-0051 as input through December 2024 and NSIDC-0803 (AMSR2) from 1 January 2025, drops the near-real-time and final distinction of Version 3, assumes the pole hole is ice-covered for extent and excludes it from area, and states its own steps at the sensor changes."
 tags: [g02135, sea-ice-index, sea-ice-extent, sea-ice-area, noaa-at-nsidc, nasa-team, nsidc-0051, nsidc-0803, amsr2, cryosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/148 }
 resource: https://nsidc.org/data/g02135/versions/4
 version: "Version 4 (DOI 10.7265/a98x-0f50; Fetterer, Knowles, Meier, Savoie, Windnagel and Stafford 2025; released July 2025), verified 2026-09-14 on the NOAA archive listing: daily extent files N_seaice_extent_daily_v4.0.csv and S_seaice_extent_daily_v4.0.csv with rows through 12 September 2026, twelve monthly files per hemisphere named N_MM_extent_v4.0.csv, daily GeoTIFFs by year and month, and the 1981 to 2010 climatology files; Version 3 (DOI 10.7265/N5K072F8) is retired with coverage to 31 July 2025; the level of service was reduced to Basic for funding reasons"
 sources:
@@ -38,7 +39,7 @@ sources:
   - id: nsidc-0803-page
     resource: https://nsidc.org/data/nsidc-0803/versions/2
     title: "NSIDC product page: AMSR2 Daily Polar Gridded Sea Ice Concentrations, Version 2, the input from 1 January 2025"
-status: draft
+status: stable
 stale_after: 2027-03-14
 ---
 

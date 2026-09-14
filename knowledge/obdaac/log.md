@@ -2,6 +2,20 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · STEWARD SIGNING of
+  knowledge/obdaac/datasets/modis-aqua-l3-chlorophyll.md,
+  knowledge/obdaac/datasets/pace-oci-l3-chlorophyll.md,
+  knowledge/obdaac/gotchas/chlor-a-composite-sampling-gaps.md,
+  knowledge/obdaac/gotchas/chlor-a-is-not-biomass.md,
+  knowledge/obdaac/gotchas/chlor-a-one-reprocessing-per-series.md,
+  knowledge/obdaac/gotchas/chlor-a-blended-ocx-and-ci.md: maintainer's
+  review of PR 147 recorded on the maintainer's standing instruction for
+  round two of seeding; the non-high concepts promoted to stable;
+  chlor-a-blended-ocx-and-ci (high severity) keeps draft with this first
+  review until a second human review, per the two-review rule. The
+  verified event is written on the steward's word. The verified event is
+  written on the steward's word. (steward)
+
 - 2026-09-14 · REVISED the six seeded concepts on the coordinator's
   lint, applied by the coordinator because the seed session ran out of
   usage: the log's reason for dropping the orbit-drift gotcha now
