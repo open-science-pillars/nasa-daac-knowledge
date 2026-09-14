@@ -16,7 +16,7 @@ sources:
     title: "UMM common schema v1.18.4: DoiType (DOI or MissingReason) and PreviousVersionType (Version, Description, DOI, Published)"
   - id: umm-c-reqs
     resource: "https://wiki.earthdata.nasa.gov/download/attachments/49448405/EED3-TP-010_Rev04_UMM-C%20%281%29.pdf?api=v2"
-    title: "ESDIS-SDS-REQ-0014 Revision D, Metadata Requirements Base Reference for UMM-C, sections B.2.2.2 Version [R] and B.2.2.4 DOI [R] (PDF attached to the CMR wiki's UMM Documents page)"
+    title: "ESDIS-SDS-REQ-0014, Revision D, Appendix B, Metadata Requirements Base Reference for UMM-C (the cover's own numbering; attached to the CMR wiki's UMM Documents page as EED3-TP-010_Rev04_UMM-C.pdf, approved 2026-07-16), sections B.2.2.2 Version [R] and B.2.2.4 DOI [R]"
   - id: wiki-version
     resource: https://wiki.earthdata.nasa.gov/spaces/CMR/pages/107382970/Version
     title: "CMR wiki, Version: best practices, CMR Validation and ARC priority matrix"
@@ -62,14 +62,17 @@ element is used, then the DOI must be provided".[^wiki-doi] The
 requirements base reference and the wiki both name "datasets that
 will soon be replaced by a new version" as a case where MissingReason
 is appropriate, with the worked explanation "This version will be
-removed from the CMR and the new version will be assigned a
-DOI",[^umm-c-reqs][^wiki-doi] which is the model's own statement that
-a version and its DOI go together. The ARC matrix for the DOI is red
+removed from CMR, and the new version will be assigned a
+DOI"[^wiki-doi] (the requirements base reference's copy reads "from
+the CMR" without the comma),[^umm-c-reqs] which is the model's own
+statement that a version and its DOI go together. The ARC matrix for the DOI is red
 when "The incorrect DOI is listed for the dataset" and when "The
 dataset has a DOI but the metadata indicates that it does
 not".[^wiki-doi]
 
-**What follows for two versions.** Two CMR collection records with
+**What follows for two versions, this concept's inference.** The
+paragraph that follows is drawn from the sources above and is not a
+rule any of them states. Two CMR collection records with
 different Version values and the same DOI cannot both satisfy the
 Version rule against one landing page unless that page states both
 versions, so a DOI shared across ShortName and Version pairs is a

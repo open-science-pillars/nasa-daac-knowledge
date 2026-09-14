@@ -16,7 +16,7 @@ sources:
     title: "UMM-C JSON schema v1.18.7: top-level required array and ProcessingLevelType, re-checked for this concept"
   - id: umm-c-reqs
     resource: "https://wiki.earthdata.nasa.gov/download/attachments/49448405/EED3-TP-010_Rev04_UMM-C%20%281%29.pdf?api=v2"
-    title: "ESDIS-SDS-REQ-0014 Revision D, Metadata Requirements Base Reference for UMM-C, section B.2.2.16 Processing Level [R] (PDF attached to the CMR wiki's UMM Documents page)"
+    title: "ESDIS-SDS-REQ-0014, Revision D, Appendix B, Metadata Requirements Base Reference for UMM-C (the cover's own numbering; attached to the CMR wiki's UMM Documents page as EED3-TP-010_Rev04_UMM-C.pdf, approved 2026-07-16), section B.2.2.16 Processing Level [R]"
   - id: wiki-processing-level
     resource: https://wiki.earthdata.nasa.gov/spaces/CMR/pages/109871916/Processing+Level
     title: "CMR wiki, Processing Level: best practices, element specification and ARC priority matrix"
@@ -38,7 +38,7 @@ Platforms, CollectionProgress and MetadataSpecification, and the
 ProcessingLevelType requires Id (a string of 1 to 80 characters) with
 ProcessingLevelDescription optional, so a record without a processing
 level identifier is invalid against the model
-itself;[^umm-c-schema] version 1.18.7, the newest schema on the CDN,
+itself;[^umm-c-schema] version 1.18.7, the newest version fetched for this round,
 carries the same required array and the same
 type.[^umm-c-schema-1187] The requirements base reference marks the
 element [R], gives ProcessingLevel/ID cardinality 1, tags it
@@ -54,9 +54,10 @@ documents ("It is recommended that the processing level align with
 the EOSDIS data processing levels if at all possible"), and the two
 list the levels differently: the requirements base reference names
 0, 1A, 1B, 2, 3, 4 and the wiki page names 0, 1A, 1B, 1C, 2, 2A, 2B,
-3, 3A, 4.[^umm-c-reqs][^wiki-processing-level] Both state "CMR
-Validation: N/A" beyond the field's presence and length, and the
-ARC matrix is red when the Id is missing or empty or "incorrect for
+3, 3A, 4.[^umm-c-reqs][^wiki-processing-level] The requirements base
+reference states "CMR Validation: N/A" beyond the field's presence
+and length, and the wiki page's CMR Validation section is an unfilled
+placeholder; the ARC matrix is red when the Id is missing or empty or "incorrect for
 the dataset"; an EOSDIS dataset whose level is not an EOSDIS level
 is red in the requirements base reference and yellow on the wiki
 page.[^umm-c-reqs][^wiki-processing-level] At ingest, the Ingest API

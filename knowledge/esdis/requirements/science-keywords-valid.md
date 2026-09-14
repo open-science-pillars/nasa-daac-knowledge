@@ -16,7 +16,7 @@ sources:
     title: "UMM common schema v1.18.4, ScienceKeywordType (Category, Topic, Term required)"
   - id: umm-c-reqs
     resource: "https://wiki.earthdata.nasa.gov/download/attachments/49448405/EED3-TP-010_Rev04_UMM-C%20%281%29.pdf?api=v2"
-    title: "ESDIS-SDS-REQ-0014 Revision D, Metadata Requirements Base Reference for UMM-C, section B.2.3.2 Science Keywords [R] (PDF attached to the CMR wiki's UMM Documents page)"
+    title: "ESDIS-SDS-REQ-0014, Revision D, Appendix B, Metadata Requirements Base Reference for UMM-C (the cover's own numbering; attached to the CMR wiki's UMM Documents page as EED3-TP-010_Rev04_UMM-C.pdf, approved 2026-07-16), section B.2.3.2 Science Keywords [R]"
   - id: wiki-science-keywords
     resource: https://wiki.earthdata.nasa.gov/spaces/CMR/pages/107387205/Science+Keywords
     title: "CMR wiki, Science Keywords: description, best practices, element specification, CMR Validation and ARC priority matrix"
@@ -31,9 +31,17 @@ Every science keyword hierarchy on a collection is a path in the
 Keyword Management System's science keyword scheme, populated from
 Category through Term at least and with no position skipped. The
 existing [platform and instrument keyword](gcmd-keywords-valid.md)
-concept covers the platform and instrument schemes; this one covers
-the science keyword hierarchy, where the sources say more. The class
-is SHOULD because the resolution itself is a warning at the door.
+concept covers the platform and instrument schemes and carries the
+ARC paper's broader criterion, that science keywords conform to GCMD
+conventions or ISO 19115 topic categories; this one covers the
+science keyword hierarchy alone, where the model and the CMR
+documentation say more. The class is SHOULD because the resolution
+itself is a warning at the door. Presence and the three-level
+minimum, stated next, are MUST-grade facts, and they stay inside
+this concept rather than splitting into a separate MUST because they
+bind the same field the same sweeper check reads, and a SHOULD that
+covers a schema requirement understates rather than overstates the
+mandate, which is the safe direction for this bundle's classes.
 
 **What the schema requires.** ScienceKeywords is in the UMM-C
 top-level required array with minItems 1, and its description names

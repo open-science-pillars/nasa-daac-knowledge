@@ -16,7 +16,7 @@ sources:
     title: "UMM-C JSON schema v1.18.4: top-level required array and DirectDistributionInformationType"
   - id: umm-c-reqs
     resource: "https://wiki.earthdata.nasa.gov/download/attachments/49448405/EED3-TP-010_Rev04_UMM-C%20%281%29.pdf?api=v2"
-    title: "ESDIS-SDS-REQ-0014 Revision D, Metadata Requirements Base Reference for UMM-C, section B.2.2.24 Direct Distribution Information (PDF attached to the CMR wiki's UMM Documents page)"
+    title: "ESDIS-SDS-REQ-0014, Revision D, Appendix B, Metadata Requirements Base Reference for UMM-C (the cover's own numbering; attached to the CMR wiki's UMM Documents page as EED3-TP-010_Rev04_UMM-C.pdf, approved 2026-07-16), section B.2.2.24 Direct Distribution Information"
   - id: wiki-ddi
     resource: https://wiki.earthdata.nasa.gov/spaces/CMR/pages/202808820/Direct+Distribution+Information
     title: "CMR wiki, Direct Distribution Information: description, element specification, ARC priority matrix and UMM version history"
@@ -54,10 +54,14 @@ On the collection side, DirectDistributionInformation is an optional
 top-level property (it is not in the UMM-C required array) whose type
 requires Region, S3CredentialsAPIEndpoint and
 S3CredentialsAPIDocumentationURL, with S3BucketAndObjectPrefixNames
-optional;[^umm-c-schema] the requirements base reference gives it
+optional, and Region is a schema enumeration of us-east-1, us-east-2,
+us-west-1 and us-west-2 in v1.18.4;[^umm-c-schema] the requirements
+base reference gives it
 cardinality 0..1 and the tags "Recommended, Normalize", calls it "an
 optional element", and shows a bucket prefix of the form
-s3://lp-prod-protected/MOD11A1.061 as its example.[^umm-c-reqs] The
+s3://lp-prod-protected/MOD11A1.061 as its example; its CMR
+validation note lists us-west-2 and us-east-2 as the valid regions,
+a narrower list than the schema's four.[^umm-c-reqs] The
 wiki page dates the element to UMM-C 1.16.0 (2021-03-24) and states
 what it is for: the sub-elements describe "the information that is
 necessary to pull out data products that are stored in the AWS cloud
@@ -67,9 +71,9 @@ source comes to requiring the granule S3 URL, and it presumes rather
 than mandates it.
 
 **What cloud hosted means to the CMR.** The Search API's cloud_hosted
-parameter, when true, restricts results "to collections that have a
-DirectDistributionInformation element or have been tagged with
-gov.nasa.earthdatacloud.s3".[^cmr-search-api] That disjunction is the
+parameter, when true, restricts results to the collections that have
+a DirectDistributionInformation element or that carry the tag
+gov.nasa.earthdatacloud.s3.[^cmr-search-api] That disjunction is the
 sweeper's population: a collection the CMR returns for
 cloud_hosted=true is the one this rule applies to, and a collection
 found only by the tag, with no DirectDistributionInformation, is a
@@ -77,10 +81,8 @@ finding under the first half of the rule.
 
 **What is reviewed.** The wiki's ARC priority matrix for
 DirectDistributionInformation is red when any of the three required
-sub-elements is missing, when Region is outside the valid values
-(us-east-1, us-east-2, us-west-1, us-west-2 on the wiki; the
-requirements base reference lists us-west-2 and us-east-2 as the CMR
-validation values), when the credentials documentation URL is broken
+sub-elements is missing, when Region is outside the valid values,
+when the credentials documentation URL is broken
 or points at an FTP server, and blue when it is http or
 redirects.[^wiki-ddi][^umm-c-reqs] At ingest, related URL content
 type, type and subtype are always checked against KMS, whether or not
@@ -98,7 +100,7 @@ uses the s3 scheme. pyQuARC: unmapped in this draft; the mapping
 awaits the Application Support and Science Enabling Team (ASSET).
 
 [^umm-g-schema]: UMM-G v1.6.6 RelatedUrlTypeEnum and RelatedUrlType required array, fetched 2026-09-14
-[^umm-c-schema]: UMM-C v1.18.4 required array and DirectDistributionInformationType required array, fetched 2026-09-14
+[^umm-c-schema]: UMM-C v1.18.4 required array, DirectDistributionInformationType required array and DirectDistributionInformationRegionEnum, fetched 2026-09-14
 [^umm-c-reqs]: ESDIS-SDS-REQ-0014 Rev D, B.2.2.24 Direct Distribution Information (best practices, CMR validation, cardinality, tags), read 2026-09-14
 [^wiki-ddi]: Direct Distribution Information wiki page, description, ARC Priority Matrix and UMM Versioning history, page last updated 2026-06-02, read 2026-09-14
 [^wiki-related-urls-granules]: Related URLs (Granules) wiki page, UMM Versioning history entry for 1.6.2, page last updated 2026-06-03, read 2026-09-14

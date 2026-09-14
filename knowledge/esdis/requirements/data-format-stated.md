@@ -16,7 +16,7 @@ sources:
     title: "UMM common schema v1.18.4, GetDataType on a RelatedUrl (Format, KMS-controlled)"
   - id: umm-c-reqs
     resource: "https://wiki.earthdata.nasa.gov/download/attachments/49448405/EED3-TP-010_Rev04_UMM-C%20%281%29.pdf?api=v2"
-    title: "ESDIS-SDS-REQ-0014 Revision D, Metadata Requirements Base Reference for UMM-C, section B.2.2.23 Archive And Distribution Information (PDF attached to the CMR wiki's UMM Documents page)"
+    title: "ESDIS-SDS-REQ-0014, Revision D, Appendix B, Metadata Requirements Base Reference for UMM-C (the cover's own numbering; attached to the CMR wiki's UMM Documents page as EED3-TP-010_Rev04_UMM-C.pdf, approved 2026-07-16), section B.2.2.23 Archive And Distribution Information"
   - id: wiki-archive-collections
     resource: https://wiki.earthdata.nasa.gov/spaces/CMR/pages/135827296/Archive+and+Distribution+Information+for+Collections
     title: "CMR wiki, Archive and Distribution Information for Collections: best practices and element specification"

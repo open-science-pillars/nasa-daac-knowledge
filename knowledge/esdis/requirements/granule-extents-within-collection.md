@@ -16,7 +16,7 @@ sources:
     title: "UMM-G JSON schema v1.6.7, top-level required array (the latest version the CMR ingest documentation accepts)"
   - id: umm-g-reqs
     resource: "https://wiki.earthdata.nasa.gov/download/attachments/49448405/EED3-TP-007_Rev04_UMM-G%20%281%29.pdf?api=v2"
-    title: "ESDIS-SDS-REQ-0015 Revision D, Metadata Requirements Base Reference for UMM-G, sections C.2.7 Temporal Extent and C.2.8 Spatial Extent (PDF attached to the CMR wiki's UMM Documents page)"
+    title: "ESDIS-SDS-REQ-0015, Revision D, Appendix C, Metadata Requirements Base Reference for UMM-G (the cover's own numbering; attached to the CMR wiki's UMM Documents page as EED3-TP-007_Rev04_UMM-G.pdf, approved 2026-07-16), sections C.2.7 Temporal Extent and C.2.8 Spatial Extent"
   - id: wiki-temporal-extents
     resource: https://wiki.earthdata.nasa.gov/spaces/CMR/pages/115937354/Temporal+Extents
     title: "CMR wiki, Temporal Extents (collection): best practices, CMR Validation and ARC priority matrix"
