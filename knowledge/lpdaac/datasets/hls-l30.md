@@ -31,15 +31,21 @@ sources:
   - id: hls-algorithms
     resource: https://hls.gsfc.nasa.gov/algorithms/
     title: "HLS project site, Algorithms page, read 2026-09-14: atmospheric correction, cloud masking and the QA band, spatial co-registration, BRDF normalization with its coefficient table, bandpass adjustment"
+  - id: quick-guide
+    resource: https://lpdaac.usgs.gov/documents/1117/HLS_Quick_Guide_v02.pdf
+    title: "HLS Quick Guide for accessing HLS data in Earthdata Search, updated August 2021, read 2026-09-14: Earthdata Login credentials are required to download HLS data products"
   - id: cmr-l30
     resource: https://cmr.earthdata.nasa.gov/search/collections.umm_json?short_name=HLSL30&version=2.0
-    title: "CMR collection record for HLSL30 v2.0 (concept C2021957657-LPCLOUD), read 2026-09-14: DOI, platforms, temporal extent, version description and the related documents"
+    title: "CMR collection record for HLSL30 v2.0 (concept C2021957657-LPCLOUD), read 2026-09-14: DOI, platforms, temporal extent, version description, the related documents, the distribution information (Earthdata Cloud and HTTPS, COG, the S3 buckets and credentials endpoint) and the Earthdata Search and AppEEARS access links"
   - id: claverie-2018
     resource: https://doi.org/10.1016/j.rse.2018.09.002
     title: "Claverie, Ju, Masek, Dungan, Vermote, Roger, Skakun and Justice (2018), The Harmonized Landsat and Sentinel-2 surface reflectance data set, Remote Sensing of Environment 219, 145 to 161: the paper the user guide cites for the bandpass residual; the publisher page sits behind a bot check, so the paper is cited on its registry record"
   - id: claverie-2018-crossref
     resource: https://api.crossref.org/works/10.1016/j.rse.2018.09.002
     title: "Crossref record for 10.1016/j.rse.2018.09.002, read 2026-09-14: title, the eight authors, journal, volume 219, pages 145 to 161, issued December 2018"
+  - id: dswx
+    resource: ../../podaac/datasets/opera-dswx-hls.md
+    title: "The podaac bundle's OPERA DSWx-HLS concept: its class table, where 252 (snow and ice) and 253 (cloud, shadow and adjacent) are stated to come from the input HLS Fmask quality data"
   - id: s30
     resource: hls-s30.md
     title: "This bundle's HLS S30 concept, the Sentinel-2 half of the suite on the same grid"
@@ -154,6 +160,24 @@ a global land observation every 1.6 days on average at 30 m.[^l30-page]
 Data are produced continuously and are typically available within one
 to two days of acquisition.[^user-guide]
 
+## Access
+
+Cloud-hosted: the product page marks the collection cloud enabled and
+the CMR record distributes it on the Earthdata Cloud over HTTPS, in
+COG at an average of 20 MB per file, from the buckets
+`s3://lp-prod-protected/HLSL30.020` and `s3://lp-prod-public/HLSL30.020` in
+region us-west-2, with temporary S3 credentials issued at
+data.lpdaac.earthdatacloud.nasa.gov/s3credentials.[^l30-page][^cmr-l30]
+Earthdata Login credentials are required to download the
+data.[^quick-guide] The CMR record's data links are an Earthdata
+Search granule search on the collection concept id C2021957657-LPCLOUD and
+AppEEARS; every granule name carries its MGRS tile, so a search by
+concept id and tile returns one tile's record.[^cmr-l30][^user-guide]
+Each layer is a separate COG so that only the needed layers are
+downloaded and, in cloud applications, only the needed spatial subset
+of a tile is read; a workflow that needs the Fmask layer alone fetches
+one file of the granule.[^user-guide]
+
 ## Uncertainty
 
 The product carries no per-pixel reflectance uncertainty field. What
@@ -225,15 +249,19 @@ change a result rather than a file:[^l30-known-issues]
 
 The podaac bundle's OPERA DSWx-HLS surface water concept
 (`knowledge/podaac/datasets/opera-dswx-hls.md`) derives from this
-product and S30; its snow and cloud classes come from this Fmask
-layer, and it is named here rather than restated.
+product and S30; by that concept's class table, its values 252 (snow
+and ice) and 253 (cloud, cloud shadow and adjacent) come from this
+Fmask layer, and the concept is named here rather than
+restated.[^dswx]
 
 [^l30-page]: LP DAAC product page, HLSL30 v2.0, read 2026-09-14
 [^user-guide]: HLS Product User Guide, product version 2.0, April 2026
+[^quick-guide]: HLS Quick Guide for Earthdata Search, August 2021
 [^l30-known-issues]: HLS L30 v2.0 Known Issues, April 2026
 [^hls-l30-page]: HLS project site, L30 product description
 [^hls-algorithms]: HLS project site, Algorithms page
 [^cmr-l30]: CMR collection record C2021957657-LPCLOUD, read 2026-09-14
 [^claverie-2018]: Claverie and others 2018, Remote Sensing of Environment 219, doi:10.1016/j.rse.2018.09.002, cited on its Crossref record
 [^claverie-2018-crossref]: Crossref record for 10.1016/j.rse.2018.09.002, read 2026-09-14
+[^dswx]: the podaac bundle's OPERA DSWx-HLS concept, knowledge/podaac/datasets/opera-dswx-hls.md
 [^s30]: this bundle's HLS S30 concept

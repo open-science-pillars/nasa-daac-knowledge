@@ -17,9 +17,11 @@ Newest first. One line per change: date, concept path, what changed, who.
   L30, S30, tiling system and algorithms pages), the CMR collection
   records C2021957657-LPCLOUD and C2021957295-LPCLOUD, and the Crossref
   record of Claverie and others 2018 (the Elsevier page is behind a bot
-  check and the paper is cited on its registry record). Recorded for
-  the reviewer: the user guide and the project site disagree on the
-  within-zone tile overlap (8 to 10 km against 4,900 m), and the LP DAAC
+  check and the paper is cited on its registry record), plus the HLS
+  Quick Guide for the Earthdata Login requirement. Recorded for
+  the reviewer: the user guide and the project site give different
+  within-zone tile overlap figures (8 to 10 km against 4,900 m, the
+  second half the first, possibly two measures of one geometry), and the LP DAAC
   product page calls the file-name timestamp a production time where
   the guide calls it the input sensing time; the concepts quote both.
   The podaac bundle's OPERA DSWx-HLS concept is named, not repeated.

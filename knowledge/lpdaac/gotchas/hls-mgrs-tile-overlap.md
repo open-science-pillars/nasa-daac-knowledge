@@ -2,7 +2,7 @@
 type: dataset-gotcha
 spheres: [biosphere, geosphere]
 title: "HLS MGRS tiles overlap, each in its own UTM zone: a mosaic or an area sum that concatenates tiles counts the overlap twice"
-description: "HLS grids both products into the Sentinel-2 MGRS tiles, 109,800 m squares in the UTM zone of the tile. Adjacent tiles in one zone overlap, by around 8 to 10 km according to the user guide and around 4,900 m according to the project site, and tiles on either side of a zone boundary overlap more and are in different projections. A pixel in the overlap is delivered in two or more granules, so an area total, a pixel count or a cloud-free composite built by concatenating tiles counts it twice, and a mosaic of two zones' tiles in one of their projections resamples one of them."
+description: "HLS grids both products into the Sentinel-2 MGRS tiles, 109,800 m squares in the UTM zone of the tile. Adjacent tiles in one zone overlap, by around 8 to 10 km in the user guide's words and around 4,900 m in the project site's (the second is half the first, as a per-tile margin against a shared strip would be), and tiles on either side of a zone boundary overlap more and are in different projections. A pixel in the overlap is delivered in two or more granules, so an area total, a pixel count or a cloud-free composite built by concatenating tiles counts it twice, and a mosaic of two zones' tiles in one of their projections resamples one of them."
 tags: [hls, hlsl30, hlss30, mgrs, utm, tiling, overlap, mosaic, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
 severity: medium
@@ -43,14 +43,19 @@ grid zone.[^user-guide] Both products, from Landsat scenes on their
 own WRS-2 path and row grid and from Sentinel-2 granules, are gridded
 into the same tiles, which is what makes the two stackable.[^user-guide][^l30][^s30]
 
-The tiles are not a partition. The guide says adjacent tiles in the
-same UTM zone overlap horizontally and vertically by around 8 to 10
-km, and that two adjacent tiles from neighbouring UTM zones may
-overlap much more; the project site's tiling page says the overlap
-within a zone is around 4,900 m and greater on the zone border. The
-two project documents disagree on the within-zone figure and this
-concept quotes both; either way the overlap is many 30 m
-pixels.[^user-guide][^hls-tiling] Each tile is in its own zone's
+The tiles are not a partition. The guide's sentence is: "Users should
+note that there is horizontal and vertical overlap of around 8-10 km
+between two adjacent tiles in the same UTM zone. For the two adjacent
+tiles from two neighboring UTM zones, the overlap may be much
+greater." The project site's tiling page gives "an overlap of around
+4,900 m between adjacent tiles within the same UTM zone" and greater
+overlap on the zone border.[^user-guide][^hls-tiling] The tiling
+page's figure is half the guide's, which is what two measures of one
+geometry would give: the strip that two neighbouring 109,800 m tiles
+share, and the margin by which each tile extends past the grid square
+its letters name. Neither document says which it measures, so this
+concept quotes both; either way the overlap is many 30 m pixels on
+every side of every tile. Each tile is in its own zone's
 projection, so the two tiles that share a zone border hold the same
 ground in two coordinate systems, and a Landsat scene whose zone is
 the neighbouring one is reprojected before it is gridded, which is

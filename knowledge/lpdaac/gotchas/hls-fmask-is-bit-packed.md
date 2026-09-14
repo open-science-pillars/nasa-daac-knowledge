@@ -114,7 +114,7 @@ the same on L30 and S30, because in v2.0 the cloud and shadow bits
 come exclusively from Fmask 4.7 for both products.[^user-guide]
 
 **Verification.** On any granule, a histogram of the Fmask byte shows
-values above 63 that no class raster would hold, and a count of
+values between 64 and 254 that no class raster would hold, and a count of
 pixels with bit 1 set is at least the count of pixels equal to 2 and
 larger wherever cloud coincides with water, snow or a dilation.
 Decoding the value 100 by the bit table gives low aerosol, water and
