@@ -24,7 +24,7 @@ sources:
     title: "The product DOI, resolved on 2026-09-14 to the Earthdata catalog record for MUR-JPL-L4-GLOB-v4.1, which carries the same description as the collection page"
   - id: dataset
     resource: ../datasets/ghrsst-mur.md
-    title: "This bundle's MUR dataset concept, which names foundation-versus-skin mixing as the standing trap"
+    title: "This bundle's MUR dataset concept (read 2026-09-14), which names foundation-versus-skin mixing as the standing trap"
 ---
 
 # MUR analysed_sst is a foundation temperature
@@ -65,7 +65,8 @@ diurnal cycle or an afternoon peak derived from MUR is zero by
 construction, so a thermal-stress or air-sea flux calculation that
 takes the analysed value as the surface temperature at midday uses a
 pre-dawn quantity in the afternoon and is low on calm, sunny days by
-the whole stratified layer. A match-up against buoys that reports
+the whole stratified layer (this concept's inference from the
+definitions above). A match-up against buoys that reports
 their depth as if it were the same quantity mixes the foundation
 level with a depth temperature, which the specification treats as
 distinct types.[^gds-2-0-r5] The dataset concept names this mixing of
@@ -86,9 +87,9 @@ time of day, or about the diurnal cycle, is outside what the product
 carries and is answered from a skin or subskin product or an in situ
 record with time stamps.[^mur-project]
 
-**Verification.** The analysed_sst variable in any MUR file carries
-the standard_name attribute sea_surface_foundation_temperature, and
-the Level 4 specification defines that name.[^gds-2-0-r5] The
+**Verification.** The Level 4 specification assigns analysed_sst the
+standard name sea_surface_foundation_temperature; no granule was
+opened for this concept to read the attribute.[^gds-2-0-r5] The
 producer's project page states the foundation definition in its own
 words, and the collection page and the DOI's catalog record name the
 nighttime inputs.[^mur-project][^podaac-collection][^doi-product]

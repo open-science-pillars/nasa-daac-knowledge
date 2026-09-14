@@ -4,6 +4,17 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-14 · gotchas/mur-sea-ice-edge-and-fill.md,
+  gotchas/mur-analysis-error-is-not-validation.md,
+  gotchas/mur-foundation-not-skin-sst.md,
+  gotchas/mur-grid-is-not-feature-resolution.md and
+  gotchas/mur-nrt-versus-final.md: the five MUR gotchas revised on the
+  coordinator's lint (reworded the sea ice mechanism and the
+  standard_name, residual, resolution and latency statements to what
+  the sources support; read dates added to the bundle-internal source
+  entries; index titles matched), applied by the coordinator because
+  the seed session ran out of usage. (coordinator)
+
 - 2026-09-14 · gotchas/mur-foundation-not-skin-sst.md (medium),
   gotchas/mur-grid-is-not-feature-resolution.md (high),
   gotchas/mur-sea-ice-edge-and-fill.md (medium),

@@ -2,7 +2,7 @@
 type: dataset-gotcha
 spheres: [hydrosphere]
 title: "MUR analysis_error is the analysis system's own estimate of its error standard deviation, not a comparison against independent measurements: quoted as the accuracy of a value, or divided by root N for a regional mean, it says something the product never measured"
-description: "The GHRSST Level 4 format defines analysis_error as the error standard deviation estimate from the analysis system, documented by the producer, and MUR's variable is the estimated error standard deviation of analysed_sst. It is a product of the interpolation, larger where the inputs were sparse, and the in situ observations MUR ingests are the same iQuam data a buoy comparison would use, so residuals against them are near zero and are not independent validation. The field carries no retrieval bias and no smoothing error, and it is spatially correlated, so a regional error from root N is far too small. An accuracy statement about a MUR value rests on an independent comparison with its scope stated, not on this field."
+description: "The GHRSST Level 4 format defines analysis_error as the error standard deviation estimate from the analysis system, documented by the producer, and MUR's variable is the estimated error standard deviation of analysed_sst. It is a product of the interpolation, larger where the inputs were sparse, and the in situ observations MUR ingests are the same iQuam data a buoy comparison would use, so the mean residual (bias) against them is near zero and is not independent validation. The field carries no retrieval bias and no smoothing error, and it is spatially correlated, so a regional error from root N is far too small. An accuracy statement about a MUR value rests on an independent comparison with its scope stated, not on this field."
 tags: [ghrsst, mur, sst, analysis_error, uncertainty, validation, buoy, iquam, level4]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
 severity: medium
@@ -24,10 +24,10 @@ sources:
     title: "Chin, Vazquez-Cuervo and Armstrong, 2017, A multi-scale high-resolution analysis of global sea surface temperature, Remote Sensing of Environment 200, 154-169: the analysis paper (registry record verified on Crossref 2026-09-14 for title, authors, journal and year; no abstract on the registry and the publisher page behind a bot check, so the article was not read here; its residual statistics are quoted through the bundle's validity domain below)"
   - id: validity-domain
     resource: ../validity-domains/mur-basin-mean-state.md
-    title: "This bundle's draft validity domain for MUR, which quotes the analysis paper's residuals against the ingested iQuam data and against the GHRSST multi-product ensemble and states that neither is independent validation"
+    title: "This bundle's draft validity domain for MUR (read 2026-09-14), which quotes the analysis paper's residual statistics against the ingested iQuam data (bias minus 0.003 C, RMS 0.489 C) and against the GHRSST multi-product ensemble and states that neither is independent validation"
   - id: dataset
     resource: ../datasets/ghrsst-mur.md
-    title: "This bundle's MUR dataset concept, whose uncertainty section states that analysis_error is the product's own estimate, omits systematic retrieval biases and the smoothing, and does not average down by root N"
+    title: "This bundle's MUR dataset concept (read 2026-09-14), whose uncertainty section states that analysis_error is the product's own estimate, omits systematic retrieval biases and the smoothing, and does not average down by root N"
 ---
 
 # MUR analysis_error is not a validation
@@ -42,10 +42,10 @@ observations were sparse or distant and shrinks where they were
 dense, an uncertainty of the analysis with respect to its
 inputs.[^mur-project][^dataset] Nothing independent enters it. The
 in situ observations that MUR ingests are the NOAA iQuam data, the
-same drifting and moored buoy record a match-up would draw on, so the
-product's residuals against those data are near zero and, as the
-analysis paper states through this bundle's validity domain, are not
-an independent validation, and neither is the agreement with the
+same in situ record a match-up would draw on, so the product's mean
+residual (bias) against those data is near zero and, as the analysis
+paper states through this bundle's validity domain, is not an
+independent validation, and neither is the agreement with the
 GHRSST multi-product ensemble, which is an ensemble of peer
 analyses.[^podaac-collection][^chin-2017][^validity-domain] The
 field carries no term for a systematic retrieval bias in the inputs
@@ -57,8 +57,8 @@ region.[^dataset]
 this point is the analysis_error value" quotes the interpolation's
 confidence in itself as if it had been checked against the sea. A
 comparison of MUR against buoys that draws its error bar from
-analysis_error, or that reports a near-zero residual against iQuam
-buoys as validation, closes a circle, because those buoys are inputs
+analysis_error, or that reports a near-zero mean residual (bias)
+against iQuam data as validation, closes a circle, because those buoys are inputs
 to the field being tested.[^podaac-collection][^validity-domain] A
 regional mean with an uncertainty of the mean analysis_error divided
 by the square root of the pixel count claims a precision of

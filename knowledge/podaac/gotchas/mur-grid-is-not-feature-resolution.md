@@ -22,10 +22,10 @@ sources:
     title: "Chin, Vazquez-Cuervo and Armstrong, 2017, A multi-scale high-resolution analysis of global sea surface temperature, Remote Sensing of Environment 200, 154-169: the analysis paper (registry record verified on Crossref 2026-09-14 for title, authors, journal and year; the registry carries no abstract and the publisher page sits behind a bot check, so the article was not read here; its feature-resolution statement is quoted through the bundle's validity domain below)"
   - id: validity-domain
     resource: ../validity-domains/mur-basin-mean-state.md
-    title: "This bundle's draft validity domain for MUR, which quotes the analysis paper's statement that the analysed SST feature resolution is often much lower than the grid resolution and keeps gradient-class claims outside the supported domain"
+    title: "This bundle's draft validity domain for MUR (read 2026-09-14), which quotes the analysis paper's statement that the analysed SST feature resolution is often much lower than the grid resolution and keeps gradient-class claims outside the supported domain"
   - id: dataset
     resource: ../datasets/ghrsst-mur.md
-    title: "This bundle's MUR dataset concept: Level 4 means every pixel has a value because interpolation filled it, and analysis_error rises where observations were sparse"
+    title: "This bundle's MUR dataset concept (read 2026-09-14): Level 4 means every pixel has a value because interpolation filled it, and analysis_error rises where observations were sparse"
 ---
 
 # The MUR grid is not the feature resolution
@@ -82,9 +82,10 @@ statistic is therefore stated with the coverage that supports it: a
 threshold on dt_1km_data or on analysis_error chosen and named, the
 statistic computed on the pixels that pass, and the fraction of
 pixels that passed reported beside it; on the pixels that do not
-pass, the smallest scale the field can carry is the microwave scale
-of order 25 km, and a width smaller than that is not a
-measurement.[^mur-project] A series of front properties is a series
+pass, the finest scale any satellite input constrains is the
+microwave footprint of order 25 km (this is the concept's reading of
+the producer's input resolutions), and a width smaller than that is
+not a measurement.[^mur-project] A series of front properties is a series
 on cloud-free coverage with the gaps kept as gaps, never a daily
 series read straight from the gap-free field. The producer's own
 measure of resolution, the power spectral density, is a statement

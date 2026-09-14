@@ -1,8 +1,8 @@
 ---
 type: dataset-gotcha
 spheres: [hydrosphere]
-title: "MUR near-real-time and retrospective files share one collection and are told apart only by a global attribute: the one-day file is analysed from what had arrived in a day and the four-day file from more, so the same date can carry two values and a series across the latency boundary changes inputs where it changes file kind"
-description: "The MUR v4.1 collection is produced as a retrospective dataset with a four-day latency and a near-real-time dataset with a one-day latency, and the collection page says to read the file's global history attribute to tell which a granule is. A near-real-time analysis cannot contain observations that arrived after its first day, so its inputs are a subset of the retrospective file's and its values can differ for the same day. A result computed from the latest days without recording the file kind is not reproducible against the archive later, and a series that ends at today mixes the two kinds at its end."
+title: "MUR near-real-time and retrospective files share one collection and are told apart only by a global attribute: the one-day and four-day analyses of the same date can differ in value, so a series across the latency boundary changes file kind without saying so"
+description: "The MUR v4.1 collection is produced as a retrospective dataset with a four-day latency and a near-real-time dataset with a one-day latency, and the collection page says to read the file's global history attribute to tell which a granule is. The collection page states the two latencies and nothing about the input windows; this concept's reading is that a near-real-time analysis cannot contain observations that arrived after its first day, so its inputs are a subset of the retrospective file's and its values can differ for the same day. A result computed from the latest days without recording the file kind is not reproducible against the archive later, and a series that ends at today mixes the two kinds at its end."
 tags: [ghrsst, mur, sst, nrt, near-real-time, retrospective, latency, reproducibility, history, level4]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
 severity: low
@@ -21,7 +21,7 @@ sources:
     title: "GHRSST Data Processing Specification version 2.0 revision 5 (2012), the document the PO.DAAC collection page links as the user's guide (read 2026-09-14, the Level 4 overview): Level 4 products are ideally available within 24 hours, and the file carries a global history attribute"
   - id: dataset
     resource: ../datasets/ghrsst-mur.md
-    title: "This bundle's MUR dataset concept, which names the collection and its version"
+    title: "This bundle's MUR dataset concept (read 2026-09-14), which names the collection and its version"
 ---
 
 # MUR near-real-time versus retrospective files
@@ -35,12 +35,14 @@ the file's global metadata history
 attribute.[^podaac-collection][^doi-product] The specification asks
 for Level 4 products within 24 hours and defines the history global
 attribute in the file header, which is where the producer records
-the processing.[^gds-2-0-r5] A one-day analysis is made from the
-observations that had arrived within a day of the analysis time; a
-four-day analysis has three more days for late observations to
-arrive, and an interpolation with more inputs is a different
-interpolation, so the two files for one date can differ in
-value.[^podaac-collection] Which kind sits in the archive for a given
+the processing.[^gds-2-0-r5] The collection page states the two
+latencies and nothing about the input windows; what follows is this
+concept's reading of them.[^podaac-collection] A one-day analysis is
+made from the observations that had arrived within a day of the
+analysis time; a four-day analysis has three more days for late
+observations to arrive, and an interpolation with more inputs is a
+different interpolation, so the two files for one date can differ in
+value. Which kind sits in the archive for a given
 date at a given moment is a property of that moment, and the
 collection page names no other marker of it than the
 attribute.[^podaac-collection]
@@ -75,9 +77,9 @@ description.[^podaac-collection][^doi-product] The specification's
 Level 4 overview and its sample header, read the same day, carry the
 24-hour target and the history attribute.[^gds-2-0-r5] No granule
 was opened for this concept, so how large the difference between the
-two kinds is for a given date is not quantified here; the mechanism
-is the producer's own statement of two latencies under one
-collection.
+two kinds is for a given date is not quantified here; what the
+sources state is two latencies under one collection, and the input
+window reasoning above is this concept's own.
 
 [^podaac-collection]: PO.DAAC collection page, MUR-JPL-L4-GLOB-v4.1
 [^doi-product]: Product DOI 10.5067/GHGMR-4FJ04, resolved to the Earthdata catalog record
