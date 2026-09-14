@@ -5,11 +5,13 @@ title: "OSCAR is a diagnosed geostrophic plus Ekman current, not a measured tota
 description: "OSCAR velocities are an analytical solution of a quasi-steady, linear surface-layer momentum balance driven by altimetric height gradients, reanalysis wind stress and SST gradients, averaged over the top 30 m. Anything that lives in the local acceleration or the nonlinear terms, tides, inertial oscillations, submesoscale and other ageostrophic flow beyond the wind-driven term, is not in the product, and the equator is handled by a separate equatorial solution within five degrees. A comparison against drifters, moorings or ADCPs that treats OSCAR as the total current attributes the missing physics to product error or to the ocean, and the L4 grid gives no hint of it."
 tags: [oscar, surface-currents, geostrophic, ekman, thermal-wind, tides, inertial, ageostrophic, equator, drifters, validation]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/128 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/128 }
+  - { by: human:PaulMRamirez, at: 2026-09-14T12:26:34Z, role: maintainer, source: https://claude.ai/code/session_01DVKYxSeRJWncZVsmaxC4p4 }
 severity: high
 dataset: ../datasets/oscar-v2.md
 eval_case: oscar-is-geostrophic-plus-ekman
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: guide

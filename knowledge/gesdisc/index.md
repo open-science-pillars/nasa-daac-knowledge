@@ -25,7 +25,7 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 
 ## gotchas
 
-- [PRECTOTCORR is the observation-corrected precipitation the land surface saw and PRECTOT is the atmosphere's own: a water budget that mixes them carries the correction as a residual](gotchas/merra2-prectotcorr-versus-prectot.md), severity high, status: draft
+- [PRECTOTCORR is the observation-corrected precipitation the land surface saw and PRECTOT is the atmosphere's own: a water budget that mixes them carries the correction as a residual](gotchas/merra2-prectotcorr-versus-prectot.md), severity high, status: stable
 - [Time-averaged MERRA-2 collections are stamped at the centre of the interval and instantaneous ones on the hour: a join on the stamp alone is half an hour off](gotchas/merra2-time-stamp-conventions.md), severity medium, status: stable
 - [MERRA-2 is four production streams joined at 1992, 2001 and 2011, with reprocessed months carrying their own prefix, and an observing system whose entries leave documented steps: a long series is not one homogeneous record](gotchas/merra2-stream-boundaries-and-discontinuities.md), severity medium, status: stable
 - [The 0.625 by 0.5 degree MERRA-2 grid is a regular latitude-longitude grid: cell area falls toward the poles, no area variable ships, and a plain mean is not a global mean](gotchas/merra2-grid-weights.md), severity low, status: stable

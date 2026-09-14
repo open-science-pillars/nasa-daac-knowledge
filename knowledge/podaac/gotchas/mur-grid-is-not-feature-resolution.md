@@ -5,11 +5,13 @@ title: "The MUR 0.01 degree grid is the posting of an interpolation: the scale a
 description: "MUR posts a gap-free field at 0.01 degree, about one kilometre, by a wavelet multi-scale interpolation of infrared retrievals at kilometre scale, microwave retrievals at about 25 km and in situ points. The producer states that every fine-scale feature comes from the measurements and that the resolution of the map is its internal resolution, not its grid, and the analysis paper states that the feature resolution is often much lower than the grid resolution. Where cloud removed the infrared input the constrained scales are the microwave scales, so a front width, a gradient magnitude or a small-scale statistic read at grid scale varies with the input coverage rather than with the ocean, and a series or a map of such quantities carries the cloud history in it."
 tags: [ghrsst, mur, sst, resolution, interpolation, front, gradient, cloud, dt_1km_data, level4]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-14T12:15:35Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/141 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-14T12:15:35Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/141 }
+  - { by: human:PaulMRamirez, at: 2026-09-14T12:26:34Z, role: maintainer, source: https://claude.ai/code/session_01DVKYxSeRJWncZVsmaxC4p4 }
 severity: high
 dataset: ../datasets/ghrsst-mur.md
 eval_case: mur-grid-is-not-feature-resolution
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: mur-project

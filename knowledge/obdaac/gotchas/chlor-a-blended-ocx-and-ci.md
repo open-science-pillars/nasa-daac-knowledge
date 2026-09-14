@@ -5,11 +5,13 @@ title: "The standard chlor_a is two algorithms blended between 0.25 and 0.35 mg 
 description: "NASA's standard chlorophyll-a for every ocean color sensor is the OCI blend: the three-band color index (CI) of Hu, Lee and Franz for retrievals below 0.25 mg per cubic metre, the OCx blue-to-green band-ratio polynomial above 0.35, and a linear weighting of the two in between, with coefficients retuned in 2019 and adopted in the R2022 reprocessing that also moved the transition from 0.15 to 0.2 up to 0.25 to 0.35. Inside the transition a pixel's value is a weighted mix of two empirical fits to two different reflectance quantities, and where a field crosses it the blend, not the water, shapes the histogram, the gradient and the position of any contour or front placed there. The two components respond differently to atmospheric-correction error and to optically complex water, and the collection descriptions state that coastal and inland retrievals may carry higher uncertainty, with no per-pixel uncertainty in the mapped files to say by how much."
 tags: [chlorophyll, chlor_a, oci-algorithm, ocx, oc3m, oc4, color-index, band-ratio, transition, threshold, oligotrophic, coastal, turbid, modis, aqua, pace, oci, obdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/147 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/147 }
+  - { by: human:PaulMRamirez, at: 2026-09-14T12:26:34Z, role: maintainer, source: https://claude.ai/code/session_01DVKYxSeRJWncZVsmaxC4p4 }
 severity: high
 dataset: ../datasets/modis-aqua-l3-chlorophyll.md
 eval_case: chlor-a-blended-ocx-and-ci
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: atbd

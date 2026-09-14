@@ -2,6 +2,16 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · STEWARD RE-SIGNING of
+  knowledge/asdc/gotchas/ebaf-imbalance-anchored-to-ocean-heating.md:
+  second maintainer review recorded on the maintainer's explicit
+  instruction in the coordinator session, the maintainer having reviewed
+  the concept; promoted to stable under the two-review rule for high
+  severity, with the playbook's preference for a different second
+  reviewer noted, and a provider confirmation still invited The new
+  verified event is appended on the steward's word, the earlier events
+  kept as history. (steward)
+
 - 2026-09-14 · STEWARD SIGNING of
   knowledge/asdc/datasets/ceres-ebaf-ed4-2.md,
   knowledge/asdc/gotchas/ebaf-clear-sky-definitions.md,
