@@ -6,9 +6,9 @@ If you know one of these products, each row's last link opens an issue with the 
 
 ## Summary
 
-118 concepts, 10 products.
+123 concepts, 10 products.
 
-- unverified: 33
+- unverified: 38
 - machine-confirmed: 0
 - human-reviewed: 85
 - provider-confirmed: 0
@@ -110,11 +110,16 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 
 ## GHRSST MUR Level 4 SST
 
-[datasets/ghrsst-mur.md](datasets/ghrsst-mur.md): 2 concepts.
+[datasets/ghrsst-mur.md](datasets/ghrsst-mur.md): 7 concepts.
 
 | Concept | Type | Severity | Status | Tier | Latest verified | Sources | |
 |---|---|---|---|---|---|---|---|
 | [GHRSST MUR Level 4 SST](datasets/ghrsst-mur.md) | dataset |  | stable | human-reviewed | 2026-07-04 | 0 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fdatasets%2Fghrsst-mur.md&concept=knowledge%2Fpodaac%2Fdatasets%2Fghrsst-mur.md&product=GHRSST+MUR+Level+4+SST) |
+| [MUR analysis_error is the analysis system's own estimate of its error standard deviation, not a comparison against independent measurements: quoted as the accuracy of a value, or divided by root N for a regional mean, it says something the product never measured](gotchas/mur-analysis-error-is-not-validation.md) | dataset-gotcha | medium | draft | unverified |  | 6 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fmur-analysis-error-is-not-validation.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fmur-analysis-error-is-not-validation.md&product=GHRSST+MUR+Level+4+SST) |
+| [MUR analysed_sst is a foundation temperature: a comparison against a skin or daytime surface temperature, or a diurnal cycle read from the product, measures the definition and not the ocean](gotchas/mur-foundation-not-skin-sst.md) | dataset-gotcha | medium | draft | unverified |  | 5 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fmur-foundation-not-skin-sst.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fmur-foundation-not-skin-sst.md&product=GHRSST+MUR+Level+4+SST) |
+| [The MUR 0.01 degree grid is the posting of an interpolation: the scale a feature is resolved at is set by the observations available that day at that place, so a front's width or a gradient read from the grid is a property of the analysis, not a measurement](gotchas/mur-grid-is-not-feature-resolution.md) | dataset-gotcha | high | draft | unverified |  | 5 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fmur-grid-is-not-feature-resolution.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fmur-grid-is-not-feature-resolution.md&product=GHRSST+MUR+Level+4+SST) |
+| [MUR near-real-time and retrospective files share one collection and are told apart only by a global attribute: the one-day and four-day analyses of the same date can differ in value, so a series across the latency boundary changes file kind without saying so](gotchas/mur-nrt-versus-final.md) | dataset-gotcha | low | draft | unverified |  | 4 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fmur-nrt-versus-final.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fmur-nrt-versus-final.md&product=GHRSST+MUR+Level+4+SST) |
+| [MUR at the sea ice edge: the field is gap-free under ice too, where no SST retrieval exists and the analysed value is not an observation, and only the mask and sea_ice_fraction fields say which pixels those are](gotchas/mur-sea-ice-edge-and-fill.md) | dataset-gotcha | medium | draft | unverified |  | 5 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fgotchas%2Fmur-sea-ice-edge-and-fill.md&concept=knowledge%2Fpodaac%2Fgotchas%2Fmur-sea-ice-edge-and-fill.md&product=GHRSST+MUR+Level+4+SST) |
 | [MUR L4 SST supports basin-scale mean-state claims outside the high Arctic](validity-domains/mur-basin-mean-state.md) | validity-domain |  | draft | unverified |  | 3 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fvalidity-domains%2Fmur-basin-mean-state.md&concept=knowledge%2Fpodaac%2Fvalidity-domains%2Fmur-basin-mean-state.md&product=GHRSST+MUR+Level+4+SST) |
 
 ## GRACE/GRACE-FO JPL mascon solutions
