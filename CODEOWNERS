@@ -16,6 +16,11 @@
 # verified events, never before.
 /knowledge/esdis/   @open-science-pillars/esdis-stewards
 /knowledge/nsidc/   @open-science-pillars/nsidc-stewards
+/knowledge/gesdisc/   @open-science-pillars/gesdisc-stewards
+/knowledge/asdc/   @open-science-pillars/asdc-stewards
+/knowledge/obdaac/   @open-science-pillars/obdaac-stewards
+/knowledge/lpdaac/   @open-science-pillars/lpdaac-stewards
+/knowledge/ornldaac/   @open-science-pillars/ornldaac-stewards
 
 # Runtime projections (ADR B): the Claude package files are the Cowork
 # projection of .osp/package.yaml and belong to the runtime maintainers.

@@ -1,13 +1,18 @@
 # nasa-daac-knowledge
 
 The provider knowledge bundles of Open Science Pillars (PO.DAAC,
-ESDIS, NSIDC), one per NASA archive under `knowledge/`: `knowledge/podaac/` holds the peculiarities
+ESDIS, NSIDC, GES DISC, ASDC, OB.DAAC, LP DAAC, ORNL DAAC), one per NASA
+archive under `knowledge/`: `knowledge/podaac/` holds the peculiarities
 that make naive analyses of PO.DAAC-archived products (ECCO, SWOT,
 GRACE-FO, MUR, NASA-SSH, RAPID) silently wrong, as reviewable OKF
 concepts with sources, statuses and steward sign-off; `knowledge/esdis/`
 holds the cross-archive metadata requirements; `knowledge/nsidc/`
 holds the NSIDC DAAC land ice products (ICESat-2 ATL15, the MEaSUREs
 ITS_LIVE and InSAR velocity mosaics), the cryosphere's first concepts.
+The `gesdisc/`, `asdc/`, `obdaac/`, `lpdaac/` and `ornldaac/` bundles
+are scaffolded and empty until their first seeded concepts land
+(`tools/scaffold_bundle.py` makes a bundle with its gate lines and
+CODEOWNERS entry).
 It carries no skills and no agents: you use it through
 [ocean-science](https://github.com/open-science-pillars/ocean-science)
 and [hydrology](https://github.com/open-science-pillars/hydrology),
@@ -32,7 +37,8 @@ moves no authority, and it sits outside the text a signature binds. One
 signed concept feeds every runtime's projection; nothing is re-approved
 per runtime, and a packaging-only change needs no scientific
 re-approval. A provider person who takes the steward rung (below)
-joins the bundle's steward team (`podaac-stewards`, `esdis-stewards`, `nsidc-stewards`),
+joins the bundle's steward team (`podaac-stewards`, `esdis-stewards`, `nsidc-stewards`,
+`gesdisc-stewards`, `asdc-stewards`, `obdaac-stewards`, `lpdaac-stewards`, `ornldaac-stewards`),
 which CODEOWNERS already names.
 
 ## Install

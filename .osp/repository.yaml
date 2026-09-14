@@ -6,7 +6,7 @@ repository:
   name: nasa-daac-knowledge
   kind: provider
   status: available
-  audience: Provider knowledge bundles (PO.DAAC, ESDIS, NSIDC), signed by their stewards; installed as a dependency
+  audience: Provider knowledge bundles (PO.DAAC, ESDIS, NSIDC, GES DISC, ASDC, OB.DAAC, LP DAAC, ORNL DAAC), signed by their stewards; installed as a dependency
     of the domain capabilities
 classification:
   spheres: []
