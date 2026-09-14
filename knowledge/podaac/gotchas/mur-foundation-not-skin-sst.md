@@ -5,9 +5,10 @@ title: "MUR analysed_sst is a foundation temperature: a comparison against a ski
 description: "The MUR analysed field carries the CF standard name sea_surface_foundation_temperature, the temperature below the diurnally stratified layer, similar to a pre-dawn value at one to five metres, built from nighttime skin and subskin observations. A skin radiometer, a daytime infrared retrieval or a model skin temperature includes the diurnal warming and the skin effect that the foundation definition removes, so a difference between them and MUR contains those layers before it contains any error, and a diurnal amplitude derived from MUR is zero by construction."
 tags: [ghrsst, mur, sst, foundation, skin, subskin, diurnal, level4, comparison]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:15:35Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/141 }
 severity: medium
 dataset: ../datasets/ghrsst-mur.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: gds-2-0-r5

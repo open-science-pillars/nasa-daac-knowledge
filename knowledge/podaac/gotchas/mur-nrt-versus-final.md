@@ -5,9 +5,10 @@ title: "MUR near-real-time and retrospective files share one collection and are 
 description: "The MUR v4.1 collection is produced as a retrospective dataset with a four-day latency and a near-real-time dataset with a one-day latency, and the collection page says to read the file's global history attribute to tell which a granule is. The collection page states the two latencies and nothing about the input windows; this concept's reading is that a near-real-time analysis cannot contain observations that arrived after its first day, so its inputs are a subset of the retrospective file's and its values can differ for the same day. A result computed from the latest days without recording the file kind is not reproducible against the archive later, and a series that ends at today mixes the two kinds at its end."
 tags: [ghrsst, mur, sst, nrt, near-real-time, retrospective, latency, reproducibility, history, level4]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:15:35Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/141 }
 severity: low
 dataset: ../datasets/ghrsst-mur.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: podaac-collection

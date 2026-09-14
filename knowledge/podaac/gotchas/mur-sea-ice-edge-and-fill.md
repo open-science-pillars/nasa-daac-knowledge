@@ -5,9 +5,10 @@ title: "MUR at the sea ice edge: the field is gap-free under ice too, where no S
 description: "A GHRSST Level 4 file has a value in every ocean pixel and a fill value only on land, so MUR carries an analysed_sst under sea ice, where no SST retrieval exists; the producer's one sentence, that the OSI SAF ice concentration is also used for an improved SST parameterization for the high latitudes, is the only account of how the ice product enters the analysed value, and what an ice-covered pixel carries was not read from a granule. The ice-covered pixels are identified by the sea ice flag of the mask and by sea_ice_fraction, both from the ice product, and the set of such pixels changes daily with the ice. A polar box mean, an ice-edge gradient, a marginal-ice-zone time series or a trend in a seasonally ice-covered region that reads analysed_sst without those two fields mixes unobserved values with analysed ones and carries the ice product's decisions as ocean temperature."
 tags: [ghrsst, mur, sst, sea-ice, ice-edge, marginal-ice-zone, mask, sea_ice_fraction, osi-saf, arctic, antarctic, level4]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:15:35Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/141 }
 severity: medium
 dataset: ../datasets/ghrsst-mur.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: gds-2-0-r5
