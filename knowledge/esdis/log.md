@@ -2,6 +2,20 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · STEWARD SIGNING of
+  knowledge/esdis/requirements/cloud-direct-access-urls.md,
+  knowledge/esdis/requirements/data-format-stated.md,
+  knowledge/esdis/requirements/granule-extents-within-collection.md,
+  knowledge/esdis/requirements/processing-level-stated.md,
+  knowledge/esdis/requirements/science-keywords-valid.md,
+  knowledge/esdis/requirements/version-and-doi-agree.md: maintainer's
+  review of PR 142 recorded on the maintainer's standing instruction for
+  round two of seeding; the non-high concepts promoted to stable; no
+  requirement concept (requirements carry no severity; all six promoted)
+  keeps draft with this first review until a second human review, per
+  the two-review rule. The verified event is written on the steward's
+  word. The verified event is written on the steward's word. (steward)
+
 - 2026-09-14 · requirements round two, six new draft concepts:
   granule-extents-within-collection (SHOULD), cloud-direct-access-urls
   (SHOULD), science-keywords-valid (SHOULD), version-and-doi-agree

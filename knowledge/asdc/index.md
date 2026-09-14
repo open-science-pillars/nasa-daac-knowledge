@@ -18,15 +18,15 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 
 ## datasets
 
-- [CERES EBAF Edition 4.2 and 4.2.1: energy balanced and filled top-of-atmosphere and surface radiative fluxes](datasets/ceres-ebaf-ed4-2.md), status: draft
+- [CERES EBAF Edition 4.2 and 4.2.1: energy balanced and filled top-of-atmosphere and surface radiative fluxes](datasets/ceres-ebaf-ed4-2.md), status: stable
 
 ## gotchas
 
 - [The EBAF net TOA flux is anchored to an in situ ocean heating estimate over a stated decade, so its global mean imbalance is not an independent check of ocean heat content](gotchas/ebaf-imbalance-anchored-to-ocean-heating.md), severity high, status: draft
-- [EBAF carries two clear-sky definitions, the cloud-free-area flux and the total-region flux, and the cloud radiative effect changed definition at Edition 4.1, so a cloud radiative effect names its definition and edition](gotchas/ebaf-clear-sky-definitions.md), severity medium, status: draft
-- [EBAF surface fluxes are radiative transfer output from assimilated and retrieved inputs, adjusted to the observed TOA, so their uncertainty is larger than the TOA fluxes' and shaped by the inputs rather than by the radiometer](gotchas/ebaf-surface-fluxes-are-modelled.md), severity medium, status: draft
-- [EBAF, SYN1deg and SSF answer different questions: EBAF is the balanced monthly climate record, SYN1deg carries the hourly diurnal cycle and the in-atmosphere fluxes, SSF carries the instantaneous footprints, and a diurnal or process study on EBAF misses what SYN1deg carries](gotchas/ebaf-versus-syn1deg-versus-ssf.md), severity medium, status: draft
-- [The EBAF climatology base period, the edition and the release date fix the anomaly baseline: the product's climatology is July 2005 through June 2015, and files of different editions or releases differ in the fields themselves](gotchas/ebaf-climatology-baseline.md), severity low, status: draft
+- [EBAF carries two clear-sky definitions, the cloud-free-area flux and the total-region flux, and the cloud radiative effect changed definition at Edition 4.1, so a cloud radiative effect names its definition and edition](gotchas/ebaf-clear-sky-definitions.md), severity medium, status: stable
+- [EBAF surface fluxes are radiative transfer output from assimilated and retrieved inputs, adjusted to the observed TOA, so their uncertainty is larger than the TOA fluxes' and shaped by the inputs rather than by the radiometer](gotchas/ebaf-surface-fluxes-are-modelled.md), severity medium, status: stable
+- [EBAF, SYN1deg and SSF answer different questions: EBAF is the balanced monthly climate record, SYN1deg carries the hourly diurnal cycle and the in-atmosphere fluxes, SSF carries the instantaneous footprints, and a diurnal or process study on EBAF misses what SYN1deg carries](gotchas/ebaf-versus-syn1deg-versus-ssf.md), severity medium, status: stable
+- [The EBAF climatology base period, the edition and the release date fix the anomaly baseline: the product's climatology is July 2005 through June 2015, and files of different editions or releases differ in the fields themselves](gotchas/ebaf-climatology-baseline.md), severity low, status: stable
 
 ## recipes
 

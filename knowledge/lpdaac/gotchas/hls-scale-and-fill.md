@@ -5,9 +5,10 @@ title: "HLS reflectance is int16 scaled by 0.0001 with -9999 as fill, the therma
 description: "Every HLS reflective band is int16 reflectance times 10,000 with an offset of zero and a fill of -9999; the two L30 thermal bands are int16 brightness temperature in hundredths of a degree Celsius with the same fill; the Fmask byte is unscaled with fill 255; the four angle layers are uint16 hundredths of a degree with fill 40,000. A small number of granules lack the scale_factor and offset tags in their COGs, so a reader that scales by the tag scales those by nothing, and the correction itself writes the fill into pixels whose reflectance fell below -0.2. A mean that includes -9999, or a mixture of scaled and unscaled granules, is wrong by orders of magnitude and visibly so; the trap is in the automatic conversion, not the numbers."
 tags: [hls, hlsl30, hlss30, scale-factor, fill-value, int16, nodata, cog, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/145 }
 severity: low
 dataset: ../datasets/hls-l30.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: user-guide

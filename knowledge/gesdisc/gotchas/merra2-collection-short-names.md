@@ -5,13 +5,14 @@ title: "A MERRA-2 short name encodes time treatment, frequency, vertical structu
 description: "M2T1NXSLV, M2I1NXASM, M2TMNXSLV, M2IMNXASM, M2SDNXSLV and M2TUNXSLV all carry a 2 m air temperature, and M2T1NXFLX, M2T1NXINT, M2T1NXLND and M2T1NXLFO all carry a precipitation, but they are hourly averages, hourly snapshots, monthly means of each, daily statistics and monthly diurnal means, on grid-box or land-only terms. The nine-character short name says which (M2, then I or T or C or S for instantaneous, time-averaged, constant or statistics, a frequency character, N, a vertical letter and a three-letter group), and a catalog or keyword search that stops at the variable name returns several collections whose values differ in meaning while agreeing in name, units and shape."
 tags: [merra-2, merra2, short-name, esdt, collections, cmr, search, gesdisc]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/144 }
 severity: medium
 # medium: the naming rule is documented in the file specification and
 # every collection title spells the treatment out, and the trap bites
 # through a search or a join that ignores the name rather than through
 # a single collection's values; no eval case is required at this severity.
 dataset: ../datasets/merra-2.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: filespec

@@ -5,9 +5,10 @@ title: "HLS L30 version 2.0: Landsat 8 and 9 nadir BRDF-adjusted surface reflect
 description: "HLSL30 v2.0 is the Landsat half of the Harmonized Landsat and Sentinel-2 surface reflectance suite: Landsat 8 and 9 OLI surface reflectance from Collection 2 L1TP input, atmospherically corrected with LaSRC, normalized to a nadir view with a MODIS-derived c-factor, gridded into the Sentinel-2 MGRS tiling at 30 m, and delivered as one Cloud Optimized GeoTIFF per layer: seven reflective NBAR bands, a cirrus top-of-atmosphere band, two TIRS brightness temperature bands, a bit-packed Fmask quality layer and four angle layers. The record starts 2013-04-11 and covers the global land except Antarctica."
 tags: [hls, hlsl30, l30, landsat, oli, tirs, surface-reflectance, nbar, mgrs, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/145 }
 resource: https://lpdaac.usgs.gov/products/hlsl30v002/
 version: "Product version 2.0 (DOI 10.5067/HLS/HLSL30.002), CMR collection C2021957657-LPCLOUD (provider LPCLOUD, short name HLSL30, version 2.0), verified 2026-09-14: temporal extent 2013-04-11 to present with the ends-at-present flag set, 15,972,585 granules listed on the product page that day; the user guide read is the product version 2.0 guide last updated April 2026 and the known issues list is the April 2026 edition"
-status: draft
+status: stable
 stale_after: 2027-03-14
 citation:
   access_date_required: true

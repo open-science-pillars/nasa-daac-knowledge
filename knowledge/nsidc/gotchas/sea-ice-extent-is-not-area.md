@@ -5,6 +5,7 @@ title: "The 15 percent threshold defines extent, and extent is not area: the two
 description: "Sea ice extent is the summed true area of every grid cell whose concentration is 15 percent or more, with the Arctic pole hole counted as ice; sea ice area is the same sum with each cell weighted by its concentration and the pole hole left out, so area is always the smaller. The threshold is a convention the Sea Ice Index calls somewhat arbitrary, concentration inside the edge carries the larger errors (plus or minus 15 percent in the melt season against plus or minus 5 in winter), and a monthly value is the average of daily totals rather than a total of the monthly mean map. A number quoted as ice cover without the quantity, the threshold, the pole hole treatment and the averaging order named is not comparable with another."
 tags: [sea-ice, sea-ice-extent, sea-ice-area, 15-percent, threshold, g02135, sea-ice-index, nsidc-0051, nasa-team, pole-hole]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/148 }
 severity: medium
 # medium: both products document the two definitions on their pages
 # and guides, the monthly files carry both columns side by side so the
@@ -12,7 +13,7 @@ severity: medium
 # always below extent; the error is a comparison of unlike quantities
 # rather than a silently corrupted number.
 dataset: ../datasets/sea-ice-index-g02135.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: g02135-user-guide

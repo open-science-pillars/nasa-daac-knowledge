@@ -5,6 +5,7 @@ title: "Time-averaged MERRA-2 collections are stamped at the centre of the inter
 description: "The hourly time-averaged collections (M2T1NXSLV, M2T1NXFLX and the other tavg1 files) stamp each hour's mean at 00:30, 01:30 and so on, the three-hourly averages at 01:30, 04:30 and so on, while the instantaneous collections (M2I1NXASM, M2I3NPASM) are stamped on the hour from 00:00. A join of an averaged flux with an instantaneous state by time stamp, by nearest hour or by array index pairs a mean over one interval with a snapshot at its edge, and a diurnal phase or a rate computed across the two is shifted by thirty minutes with no error raised."
 tags: [merra-2, merra2, time-stamp, time-averaged, instantaneous, diurnal-cycle, gesdisc]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/144 }
 severity: medium
 # medium, not high, although the join fails silently: the
 # specification's rule reads high as silently wrong results, and the
@@ -16,7 +17,7 @@ severity: medium
 # coordinate, which the file carries. Raised to high with an eval case
 # if a reviewer judges the diurnal-phase use load-bearing.
 dataset: ../datasets/merra-2.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: filespec

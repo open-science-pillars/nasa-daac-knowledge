@@ -5,9 +5,10 @@ title: "EBAF surface fluxes are radiative transfer output from assimilated and r
 description: "The EBAF surface irradiances are computed hourly with the Fu-Liou radiative transfer model from imager cloud properties, reanalysis temperature and humidity, imager aerosols, retrieved surface albedo and skin temperature, then adjusted so that the computed TOA matches the observed EBAF TOA and recomputed. The global annual mean uncertainty of the surface net irradiance is 8 W m-2 against a TOA global mean net set to 0.71 W m-2, and the summary names regional trend artifacts that come from the inputs (MERRA-2's coarse sea surface temperature before April 2006, the Amazon net longwave trend of Edition 4.2, polar downward longwave trends, noisy anomalies over the Andes, Tibet and central eastern Africa). A surface energy budget or trend read from these fields as observations, with a TOA-sized error, misstates both the value and its uncertainty."
 tags: [ceres, ebaf, surface-flux, radiative-transfer, fu-liou, merra-2, lagrange-multiplier, uncertainty, surface-energy-budget]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T05:59:59Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/146 }
 severity: medium
 dataset: ../datasets/ceres-ebaf-ed4-2.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: dqs

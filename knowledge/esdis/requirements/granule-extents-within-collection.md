@@ -3,7 +3,8 @@ type: requirement
 title: Granule extents present and inside the collection's extents
 description: "Granule temporal and spatial extents are recommended, not schema-required, in UMM-G; the wiki's CMR validation sections and the UMM-G requirements base state that an ingested granule's extents must lie within the collection's, and ARC reviews the containment with dated tolerances."
 tags: [requirement, temporal, spatial, granule, consistency, metadata, cross-archive]
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/142 }
+status: stable
 class: SHOULD
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:27:36Z }
 stale_after: 2027-03-14

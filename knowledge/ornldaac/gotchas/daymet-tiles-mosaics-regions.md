@@ -5,13 +5,14 @@ title: "Tiles, mosaics and region files are three cuts of one estimate: the 2-de
 description: "Daymet is computed on 2-degree by 2-degree tiles with a fixed TileID, and the ORNL DAAC mosaics those tiles into one seamless netCDF per variable and year for each of three separately processed regions, continental North America, Hawaii and Puerto Rico. A tile and the mosaic that contains it are the same estimate in different files, not two products or versions. The region files have different extents and start years (Puerto Rico from 1950, the others from 1980), a point in Hawaii lies inside the North America bounding box yet only in the Hawaii file, the CMR collection holds mosaics only, and the single pixel service covers a narrower latitude and longitude window than the North America file and none of Puerto Rico before 1980."
 tags: [daymet, tiles, mosaics, regions, thredds, subsetting, extent, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/143 }
 severity: medium
 # medium: the tile, mosaic and region structure is documented on the
 # project site and in the guide, and a wrong choice usually shows as a
 # missing file or an empty subset rather than a plausible number; no
 # eval case is required.
 dataset: ../datasets/daymet-v4.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: daymet-overview

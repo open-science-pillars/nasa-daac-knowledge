@@ -5,6 +5,7 @@ title: "NASA Team and Bootstrap concentrations are different retrievals from the
 description: "NSIDC-0051 (NASA Team) and NSIDC-0079 (Bootstrap) cover the same grid, the same sensors and the same dates from different channel combinations, tie-point schemes, weather filters and intercalibration targets. NASA Team uses brightness temperature ratios with fixed per-sensor tie points and is insensitive to surface temperature but underestimates thin ice and loses ice types in spring melt; Bootstrap interpolates between brightness temperature clusters with tie points that change daily, retrieves ice down to 10 percent, is less sensitive to thin ice and layering but sensitive to surface temperature, and returns lower concentrations for thin ice types. Both are least accurate in surface melt and thin ice, and the Sea Ice Index is a NASA Team product; an extent or area from one algorithm set beside one from the other differs by algorithm before it differs by ice."
 tags: [sea-ice, nasa-team, bootstrap, nsidc-0051, nsidc-0079, algorithm, tie-points, marginal-ice-zone, melt, thin-ice, g02135]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/148 }
 severity: medium
 # medium: the two products are separately named and documented, the
 # help article tabulates their differences, and the product pages
@@ -13,7 +14,7 @@ severity: medium
 # hidden corruption, and the quantified differences in the read
 # sources are qualitative or bounded at the sensor-transition scale.
 dataset: ../datasets/nsidc-0051-sea-ice-concentration.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: nt-vs-bt-article

@@ -5,9 +5,10 @@ title: "HLS reflectance is harmonized, not native: a nadir BRDF adjustment on bo
 description: "HLS L30 and S30 are nadir BRDF-adjusted reflectance: every reflective band except the cirrus and water vapour bands is normalized with a global set of MODIS-derived c-factor coefficients to a zero view zenith and to a solar zenith that is the mean of the Landsat and Sentinel-2 overpass values at the tile centre for the day. S30 is then adjusted in its seven OLI-equivalent bands by a per-satellite linear fit to the OLI bandpasses, leaving the red-edge, broad NIR, water vapour and cirrus bands as original MSI. So HLS is not the USGS Collection 2 surface reflectance and not the ESA Level-2A product, a comparison against either measures the adjustments, and the residual after adjustment is under 2 per cent with a standard deviation under 0.005 reflectance units, which a study of changes at that scale has to carry."
 tags: [hls, hlsl30, hlss30, nbar, brdf, bandpass, c-factor, harmonization, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/145 }
 severity: medium
 dataset: ../datasets/hls-s30.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: user-guide

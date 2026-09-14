@@ -3,7 +3,8 @@ type: requirement
 title: Science keywords resolve in GCMD KMS
 description: "A collection's science keyword hierarchies (Category, Topic, Term and the optional variable levels) are values of the KMS science keyword scheme; presence and the three-level minimum are schema-required, and the KMS resolution is a CMR ingest warning and an ARC red finding."
 tags: [requirement, gcmd, keywords, science-keywords, metadata, cross-archive]
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/142 }
+status: stable
 class: SHOULD
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:27:36Z }
 stale_after: 2027-03-14

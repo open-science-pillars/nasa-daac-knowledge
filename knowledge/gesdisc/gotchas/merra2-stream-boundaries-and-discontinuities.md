@@ -5,6 +5,7 @@ title: "MERRA-2 is four production streams joined at 1992, 2001 and 2011, with r
 description: "MERRA-2 was run as four streams (MERRA2_100 from 1980, MERRA2_200 from 1992, MERRA2_300 from 2001, MERRA2_400 from 2011), each spun up for one unreleased year from MERRA, and the stream number is only in the file name; high-latitude land moisture and ice-sheet snow mass carry discontinuities at the joins that take years to recover. September 2020 and June to September 2021 were reprocessed and carry MERRA2_401. The assimilated instruments enter on documented dates (SSM/I 1987, ATOVS 1998, AIRS 2002, GPS radio occultation and MLS 2004, IASI 2008, ATMS 2011, CrIS 2012), and the evaluation records the imprints that the global budget constraints did not remove. A trend or a change-point fit across these dates reads the production history as climate."
 tags: [merra-2, merra2, streams, discontinuity, observing-system, reprocessing, trend, homogeneity, gesdisc]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/144 }
 severity: medium
 # medium, not high, although a series crosses the joins silently:
 # the specification's rule reads high as silently wrong results, and
@@ -17,7 +18,7 @@ severity: medium
 # concept names it. Raised to high with an eval case if a reviewer
 # judges that trend use load-bearing for the bundle.
 dataset: ../datasets/merra-2.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: filespec

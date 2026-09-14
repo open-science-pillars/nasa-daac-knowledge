@@ -5,9 +5,10 @@ title: "HLS S30 version 2.0: Sentinel-2 nadir BRDF-adjusted surface reflectance,
 description: "HLSS30 v2.0 is the Sentinel-2 half of the Harmonized Landsat and Sentinel-2 surface reflectance suite: Sentinel-2A, 2B and 2C MSI Level-1C data atmospherically corrected with LaSRC, resampled from 10, 20 and 60 m to 30 m, normalized to a nadir view with a MODIS-derived c-factor, and in the seven bands that OLI shares adjusted by a linear fit to the OLI bandpasses. Thirteen spectral layers keep the MSI numbering (B01 to B12 with B8A), so B05 to B07 are red-edge bands and B11 and B12 the shortwave infrared, beside a bit-packed Fmask layer and four angle layers. The record starts 2015-11-28 and covers the global land except Antarctica."
 tags: [hls, hlss30, s30, sentinel-2, msi, surface-reflectance, nbar, bandpass, mgrs, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/145 }
 resource: https://lpdaac.usgs.gov/products/hlss30v002/
 version: "Product version 2.0 (DOI 10.5067/HLS/HLSS30.002), CMR collection C2021957295-LPCLOUD (provider LPCLOUD, short name HLSS30, version 2.0), verified 2026-09-14: temporal extent 2015-11-28 to present with the ends-at-present flag set, platforms Sentinel-2A, 2B and 2C, 21,845,492 granules listed on the product page that day; the user guide read is the product version 2.0 guide last updated April 2026 and the known issues list is the April 2026 edition"
-status: draft
+status: stable
 stale_after: 2027-03-14
 citation:
   access_date_required: true

@@ -5,9 +5,10 @@ title: "MUR analysis_error is the analysis system's own estimate of its error st
 description: "The GHRSST Level 4 format defines analysis_error as the error standard deviation estimate from the analysis system, documented by the producer, and MUR's variable is the estimated error standard deviation of analysed_sst. It is a product of the interpolation, larger where the inputs were sparse, and the in situ observations MUR ingests are the same iQuam data a buoy comparison would use, so the mean residual (bias) against them is near zero and is not independent validation. The field carries no retrieval bias and no smoothing error, and it is spatially correlated, so a regional error from root N is far too small. An accuracy statement about a MUR value rests on an independent comparison with its scope stated, not on this field."
 tags: [ghrsst, mur, sst, analysis_error, uncertainty, validation, buoy, iquam, level4]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:15:35Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/141 }
 severity: medium
 dataset: ../datasets/ghrsst-mur.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: gds-2-0-r5

@@ -5,6 +5,7 @@ title: "Sensor transitions (SMMR to SSM/I, F8 to F11 to F13 to F17, and on to AM
 description: "NSIDC-0051 joins five sensors on single days (21 August 1987, 19 December 1991, 30 September 1995, 1 January 2008) with tie points regressed over overlaps of 22 days, 16 days, five months and twelve months and tuned to minimize hemispheric extent and area differences; the residual differences the guide tabulates run from 0.70 percent of Northern Hemisphere extent and 1.34 percent of area at the SMMR to F8 join down to a few hundredths of a percent, are statistically significant at the F11 to F13 and F13 to F17 joins, and are larger regionally and in the marginal ice zone. The Sea Ice Index's join to AMSR2 at 1 January 2025 adds differences of up to 0.2 million km2 of extent. A trend or a regional series that treats the record as one instrument reads these residuals as ice change."
 tags: [sea-ice, sensor-transition, intercalibration, tie-points, smmr, ssmi, ssmis, amsr2, f8, f11, f13, f17, nsidc-0051, g02135, sea-ice-index]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/148 }
 severity: medium
 # medium: the guide tabulates the residual differences at every join
 # and dates the joins to the day, the variable name in each file
@@ -13,7 +14,7 @@ severity: medium
 # hemispheric scale and a larger, unquantified one regionally rather
 # than a silently wrong number.
 dataset: ../datasets/nsidc-0051-sea-ice-concentration.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: nsidc-0051-user-guide

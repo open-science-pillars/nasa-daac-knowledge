@@ -25,9 +25,9 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [Platform and instrument keywords resolve in GCMD KMS](requirements/gcmd-keywords-valid.md), class SHOULD, status: draft
 - [Related URLs resolve without error](requirements/links-resolve.md), class SHOULD, status: draft
 - [Collection and granule metadata agree on shared fields](requirements/collection-granule-consistency.md), class SHOULD, status: draft
-- [Granule extents present and inside the collection's extents](requirements/granule-extents-within-collection.md), class SHOULD, status: draft
-- [Cloud-hosted collections carry direct access URLs and S3 distribution information](requirements/cloud-direct-access-urls.md), class SHOULD, status: draft
-- [Science keywords resolve in GCMD KMS](requirements/science-keywords-valid.md), class SHOULD, status: draft
-- [Collection version and DOI agree across versions](requirements/version-and-doi-agree.md), class SHOULD, status: draft
-- [Processing level is a required collection field](requirements/processing-level-stated.md), class MUST, status: draft
-- [Data format stated on the collection](requirements/data-format-stated.md), class SHOULD, status: draft
+- [Granule extents present and inside the collection's extents](requirements/granule-extents-within-collection.md), class SHOULD, status: stable
+- [Cloud-hosted collections carry direct access URLs and S3 distribution information](requirements/cloud-direct-access-urls.md), class SHOULD, status: stable
+- [Science keywords resolve in GCMD KMS](requirements/science-keywords-valid.md), class SHOULD, status: stable
+- [Collection version and DOI agree across versions](requirements/version-and-doi-agree.md), class SHOULD, status: stable
+- [Processing level is a required collection field](requirements/processing-level-stated.md), class MUST, status: stable
+- [Data format stated on the collection](requirements/data-format-stated.md), class SHOULD, status: stable

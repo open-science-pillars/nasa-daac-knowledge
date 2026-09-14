@@ -5,13 +5,14 @@ title: "Version 4 R1 re-derived every 2020 and 2021 file with corrected Canadian
 description: "Daymet Version 4 R1, published 2022-11-01 under DOI 10.3334/ORNLDAAC/2129, updated all 2020 and 2021 files for every variable after the station inputs used for those years were found to lack January readings for a significant portion of Canadian weather stations; NCEI corrected the ingest feed and the two years were rerun with new inputs. Files outside 2020 and 2021 are unchanged from Version 4 (DOI 10.3334/ORNLDAAC/1840), which is superseded and marked access restricted. A series that mixes Version 4 and R1 files for 2020 and 2021, or cites the Version 4 DOI for data downloaded after the R1 release, carries a version difference concentrated in high-latitude January as if it were weather."
 tags: [daymet, version, v4, v4-r1, release, correction, doi, ghcn, canada, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/143 }
 severity: medium
 # medium: the change is stated on the landing pages and in the CMR
 # abstracts, it is confined to two years, and the version is written
 # in each file's global attributes, so a mixed series is detectable
 # from the files; no eval case is required.
 dataset: ../datasets/daymet-v4.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: cmr-daily-v4r1

@@ -5,9 +5,10 @@ title: "PACE OCI Level 3 mapped chlorophyll-a (OB.DAAC, the BGC suite, version 3
 description: "The Ocean Biology Processing Group's Level 3 mapped chlorophyll-a from the Ocean Color Instrument on PACE: since version 3.2 the chlor_a variable lives in the OC_BGC suite file beside phytoplankton carbon, particulate organic carbon and particulate inorganic carbon, on 4 km and 0.1 degree equidistant cylindrical grids as daily, 8-day and monthly composites from 5 March 2024 onward, at provisional maturity, from the same blended OCI algorithm as the heritage sensors with OC4 coefficients; the record has been through five versions (1, 2, 3, 3.1 and 3.2, four reprocessings) since the first release on 11 April 2024, and the catalogue keeps only version 3.2."
 tags: [pace, oci, chlorophyll, chlor_a, ocean-color, level3, mapped, obdaac, obpg, bgc, provisional, oci-algorithm]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/147 }
 resource: https://cmr.earthdata.nasa.gov/search/concepts/C4184125847-OB_CLOUD.umm_json
 version: "Version 3.2 (the April 2026 reprocessing; files carry processing_version 3.2), CMR-verified 2026-09-14: PACE_OCI_L3M_BGC version 3.2 (C4184125847-OB_CLOUD, DOI 10.5067/PACE/OCI/L3M/OC_BGC/3.2, 2000 granule records, temporal extent from 2024-03-05 with no end, first daily granule 2024-03-05, last 2026-07-31) and the near-real-time collection PACE_OCI_L3M_BGC_NRT version 3.2 (C4184125829-OB_CLOUD, no DOI, last daily granule 2026-09-12); no collection with a CHL short name and no binned BGC collection was catalogued on that date"
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: cmr-pace

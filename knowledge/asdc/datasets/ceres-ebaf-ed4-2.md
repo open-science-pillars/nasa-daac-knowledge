@@ -5,6 +5,7 @@ title: "CERES EBAF Edition 4.2 and 4.2.1: energy balanced and filled top-of-atmo
 description: "Monthly and climatological one degree grids of observed top-of-atmosphere (TOA) and computed surface radiative fluxes, all-sky and clear-sky, with cloud radiative effects and basic cloud properties, March 2000 onward; the global mean net TOA flux is adjusted to an in situ ocean heating estimate, the clear-sky maps are spatially filled, and the record is stitched from Terra-only, Terra plus Aqua and NOAA-20-only periods by regional climatology adjustments. Edition 4.2.1 is the update CMR carries; no per-cell uncertainty field ships with the product."
 tags: [ceres, ebaf, radiation-budget, toa-flux, surface-flux, cloud-radiative-effect, asdc]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T05:59:59Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/146 }
 resource: https://ceres.larc.nasa.gov/data/#energy-balanced-and-filled-ebaf
 version: "Edition 4.2 (TOA fluxes released December 2022, surface fluxes February 2023, both revised on January 2, 2024 for March 2000 through June 2023) and its update Edition 4.2.1 (TOA released November 25, 2024, surface March 14, 2025), which is the edition CMR carries: CERES_EBAF Edition4.2.1 (concept C3880496704-LARC_CLOUD, DOI 10.5067/TERRA-AQUA-NOAA20/CERES/EBAF_L3B004.2.1, TOA and surface in one file) and CERES_EBAF-TOA Edition4.2.1 (concept C3880497643-LARC_CLOUD, DOI 10.5067/TERRA-AQUA-NOAA20/CERES/EBAF-TOA_L3B004.2.1), both beginning 2000-03-01 and ongoing, CMR-verified 2026-09-14; no Edition4.2 collection record remains in CMR that day"
 sources:
@@ -44,7 +45,7 @@ sources:
   - id: kato-2025
     resource: https://doi.org/10.1175/JCLI-D-23-0568.1
     title: "Kato and others, 2025, Seamless Continuity in CERES EBAF Surface Radiation Budget across Multiple Satellites, Journal of Climate 38, 2461 to 2478: the surface product's continuity across the satellite records; its abstract gives the Terra-only period as March 2000 through July 2002, where the data quality summary ends it in June 2002 (record and abstract read on the Crossref registry 2026-09-14)"
-status: draft
+status: stable
 stale_after: 2027-03-14
 ---
 

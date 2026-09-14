@@ -5,13 +5,14 @@ title: "Daymet values are interpolated from stations, and the error is not the d
 description: "Every Daymet cell is an estimate from surrounding weather stations, weighted by distance and elevation, and the station network is dense over most of the contiguous United States and very sparse over Arctic Alaska and Canada, northern Mexico and mountainous terrain. The product's uncertainty is a cross-validation statistic per station, and the paper's domain-wide daily mean absolute errors (about 1.8 degrees Celsius for tmin and 1.5 for tmax) are averages over that uneven network; the error in a sparse region is read from the cross-validation files for that region, and the derived variables (shortwave radiation, vapor pressure, snow water equivalent) have no cross-validation at all."
 tags: [daymet, uncertainty, cross-validation, station-density, interpolation, terrain, mean-absolute-error, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/143 }
 severity: low
 # low: the interpolated nature of the product and the cross-validation
 # record are on every product page, and a wrong reading of the error
 # mis-states an uncertainty rather than a value; no eval case is
 # required.
 dataset: ../datasets/daymet-v4.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: thornton-2021

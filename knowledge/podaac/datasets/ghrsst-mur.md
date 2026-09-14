@@ -8,7 +8,9 @@ generated: { by: knowledge-seeder/claude, at: 2026-07-04T00:00:00Z }
 resource: https://podaac.jpl.nasa.gov/dataset/MUR-JPL-L4-GLOB-v4.1
 version: "MUR v4.1 (MUR-JPL-L4-GLOB-v4.1) and MUR25 v04.2 (MUR25-JPL-L4-GLOB-v04.2), both CMR-verified 2026-07-04"
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-07-04T00:00:00Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-07-04T00:00:00Z }
+  - { by: human:PaulMRamirez, at: 2026-09-14T12:15:35Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/141 }
 stale_after: 2027-01-04
 ---
 
@@ -49,6 +51,13 @@ apply).
 ## Known issues
 
 - Product-type mixing (foundation vs skin) is the standing trap for
-  MUR comparisons; no dedicated gotcha concept yet (the caveat lives
-  here and in the QC rules), a candidate for the bundle's next
-  revision.
+  MUR comparisons:
+  [mur-foundation-not-skin-sst](../gotchas/mur-foundation-not-skin-sst.md).
+- The 0.01 degree posting is not the feature resolution:
+  [mur-grid-is-not-feature-resolution](../gotchas/mur-grid-is-not-feature-resolution.md).
+- analysis_error is the analysis's own estimate, not a validation:
+  [mur-analysis-error-is-not-validation](../gotchas/mur-analysis-error-is-not-validation.md).
+- Values under sea ice and the fields that mark them:
+  [mur-sea-ice-edge-and-fill](../gotchas/mur-sea-ice-edge-and-fill.md).
+- Near-real-time versus retrospective files in one collection:
+  [mur-nrt-versus-final](../gotchas/mur-nrt-versus-final.md).

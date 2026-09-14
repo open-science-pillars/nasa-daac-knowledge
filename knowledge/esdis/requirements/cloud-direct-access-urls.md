@@ -3,7 +3,8 @@ type: requirement
 title: Cloud-hosted collections carry direct access URLs and S3 distribution information
 description: "For a collection the CMR counts as cloud hosted, the collection record carries DirectDistributionInformation and its granules carry an S3 URL typed GET DATA VIA DIRECT ACCESS; the type exists in the UMM-G enumeration, the element is Recommended, and no source mandates the granule URL."
 tags: [requirement, urls, cloud, s3, metadata, cross-archive]
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/142 }
+status: stable
 class: SHOULD
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:27:36Z }
 stale_after: 2027-03-14

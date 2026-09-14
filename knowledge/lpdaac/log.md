@@ -2,6 +2,20 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · STEWARD SIGNING of knowledge/lpdaac/datasets/hls-l30.md,
+  knowledge/lpdaac/datasets/hls-s30.md,
+  knowledge/lpdaac/gotchas/hls-band-names-differ.md,
+  knowledge/lpdaac/gotchas/hls-harmonized-not-native.md,
+  knowledge/lpdaac/gotchas/hls-mgrs-tile-overlap.md,
+  knowledge/lpdaac/gotchas/hls-scale-and-fill.md,
+  knowledge/lpdaac/gotchas/hls-fmask-is-bit-packed.md: maintainer's
+  review of PR 145 recorded on the maintainer's standing instruction for
+  round two of seeding; the non-high concepts promoted to stable;
+  hls-fmask-is-bit-packed (high severity) keeps draft with this first
+  review until a second human review, per the two-review rule. The
+  verified event is written on the steward's word. The verified event is
+  written on the steward's word. (steward)
+
 - 2026-09-14 · the bundle's first concepts, HLS version 2.0: two dataset
   concepts (datasets/hls-l30.md, datasets/hls-s30.md) and five gotchas
   (gotchas/hls-fmask-is-bit-packed.md at severity high with its eval

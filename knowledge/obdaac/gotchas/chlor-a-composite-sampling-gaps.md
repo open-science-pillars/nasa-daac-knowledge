@@ -5,9 +5,10 @@ title: "A Level 3 chlorophyll composite is the mean of the observations that sur
 description: "The mapped chlorophyll files are reprojected from binned Level 2 retrievals that passed a flag list (cloud and ice, high solar and sensor zenith, glint, straylight, atmospheric-correction failure, chlorophyll warnings and failures, coccolithophores) and the file's measure attribute is Mean: a monthly value in a cell is the mean of whatever clear, sunlit, unglinted, unflagged retrievals fell in that cell during the month, which can be one observation or thirty, and the mapped file carries no count, weight or day list to say which. Where the sun is too low the retrieval is flagged and masked out of the composite, so the high-latitude monthly series has no winter months; in a cloudy season the mean is of the few clear days, which are not a random sample of the month; instrument outages remove whole days from the daily record; and the monthly, seasonal and cumulative climatologies are recomputed as the record grows and named by their end date, so two files called the January climatology are two different means."
 tags: [chlorophyll, chlor_a, level3, composite, monthly, climatology, binning, sampling, clouds, high-latitude, solar-zenith, flags, outage, modis, aqua, pace, oci, obdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:17:15Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/147 }
 severity: medium
 dataset: ../datasets/modis-aqua-l3-chlorophyll.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: modis-file

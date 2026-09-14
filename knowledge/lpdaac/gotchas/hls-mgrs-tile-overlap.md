@@ -5,9 +5,10 @@ title: "HLS MGRS tiles overlap, each in its own UTM zone: a mosaic or an area su
 description: "HLS grids both products into the Sentinel-2 MGRS tiles, 109,800 m squares in the UTM zone of the tile. Adjacent tiles in one zone overlap, by around 8 to 10 km in the user guide's words and around 4,900 m in the project site's (the second is half the first, as a per-tile margin against a shared strip would be), and tiles on either side of a zone boundary overlap more and are in different projections. A pixel in the overlap is delivered in two or more granules, so an area total, a pixel count or a cloud-free composite built by concatenating tiles counts it twice, and a mosaic of two zones' tiles in one of their projections resamples one of them."
 tags: [hls, hlsl30, hlss30, mgrs, utm, tiling, overlap, mosaic, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/145 }
 severity: medium
 dataset: ../datasets/hls-l30.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: user-guide

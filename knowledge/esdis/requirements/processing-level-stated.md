@@ -3,7 +3,8 @@ type: requirement
 title: Processing level is a required collection field
 description: "ProcessingLevel is in the UMM-C schema's required array and its Id is required within it: a collection record without a processing level identifier is invalid against the metadata model; alignment with the EOSDIS levels is reviewed practice."
 tags: [requirement, processing-level, metadata, cross-archive]
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/142 }
+status: stable
 class: MUST
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:27:36Z }
 stale_after: 2027-03-14
