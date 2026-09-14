@@ -2,6 +2,21 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · STEWARD SIGNING of
+  knowledge/asdc/datasets/ceres-ebaf-ed4-2.md,
+  knowledge/asdc/gotchas/ebaf-clear-sky-definitions.md,
+  knowledge/asdc/gotchas/ebaf-climatology-baseline.md,
+  knowledge/asdc/gotchas/ebaf-surface-fluxes-are-modelled.md,
+  knowledge/asdc/gotchas/ebaf-versus-syn1deg-versus-ssf.md,
+  knowledge/asdc/gotchas/ebaf-imbalance-anchored-to-ocean-heating.md:
+  maintainer's review of PR 146 recorded on the maintainer's standing
+  instruction for round two of seeding; the dataset concept and the four
+  non-high gotchas promoted to stable;
+  ebaf-imbalance-anchored-to-ocean-heating (high severity) keeps draft
+  with this first review until a second human review, per the two-review
+  rule. The verified event is written on the steward's word. The
+  verified event is written on the steward's word. (steward)
+
 - 2026-09-14 · coordinator's lint of the seed pull request applied to
   all six concepts: the data quality summary source pinned to the
   versioned V7 copy (byte-identical to what was read; the listed V8 is

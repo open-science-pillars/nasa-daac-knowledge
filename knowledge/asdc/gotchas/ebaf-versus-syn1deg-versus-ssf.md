@@ -5,9 +5,10 @@ title: "EBAF, SYN1deg and SSF answer different questions: EBAF is the balanced m
 description: "The CERES family is a chain. SSF is the Level 2 footprint product, instantaneous and per instrument; SSF1deg grids it daily and monthly per instrument with a constant-meteorology diurnal assumption; SYN1deg adds hourly geostationary fluxes and clouds, MODIS and VIIRS aerosols and Fu-Liou surface and profile fluxes, and is the product the project names for regional diurnal and process studies; EBAF is built on SSF1deg and SYN1deg, monthly only, with its net flux anchored, its clear-sky filled, its single-satellite periods climatologically adjusted, and cloud properties that are not the ones its fluxes were derived with. An unadjusted SYN1deg net imbalance of about 4.3 W m-2, an EBAF-only diurnal cycle, or EBAF clouds correlated with EBAF fluxes as a process each asks a product a question it does not answer."
 tags: [ceres, ebaf, syn1deg, ssf, ssf1deg, diurnal-cycle, processing-level, product-choice]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T05:59:59Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/146 }
 severity: medium
 dataset: ../datasets/ceres-ebaf-ed4-2.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: ceres-data-page

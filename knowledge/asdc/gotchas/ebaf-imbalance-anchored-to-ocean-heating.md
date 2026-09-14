@@ -5,6 +5,7 @@ title: "The EBAF net TOA flux is anchored to an in situ ocean heating estimate o
 description: "The unadjusted CERES net TOA flux carries an imbalance of several watts per square metre that calibration cannot resolve, and EBAF removes it with a one-time adjustment to the shortwave and longwave fluxes that sets the July 2005 through June 2015 global mean net flux to the in situ Earth heat uptake, 0.71 W m-2, most of it Argo ocean heat content change. A comparison of EBAF's decade-mean imbalance with an ocean heat content series therefore confirms the input, and the anchor's value and period have changed between editions, so a comparison also names which edition set it. The variations about the mean are what the ocean data did not set."
 tags: [ceres, ebaf, energy-imbalance, net-toa-flux, ocean-heat-content, argo, anchoring, edition]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T05:59:59Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/146 }
 severity: high
 dataset: ../datasets/ceres-ebaf-ed4-2.md
 eval_case: ebaf-imbalance-anchored-to-ocean-heating

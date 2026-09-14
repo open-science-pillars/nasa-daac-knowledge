@@ -5,9 +5,10 @@ title: "The EBAF climatology base period, the edition and the release date fix t
 description: "EBAF ships a climatology whose base period is July 2005 through June 2015 in Editions 4.0 through 4.2.1, the same decade the net flux is anchored over, and the single-satellite periods are adjusted to the Terra plus Aqua climatology of the overlap years. An anomaly against a self-built climatology over another window, or a climatology file from one edition or release applied to monthly means from another (Edition 4.2 surface fluxes differ from 4.1 throughout, Edition 4.2.1 differs from 4.2 after March 2022, and the January 2024 revision of 4.2 replaced fields through June 2023), mixes a baseline change into the anomaly."
 tags: [ceres, ebaf, climatology, anomaly, baseline, base-period, edition, release-date]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-14T05:59:59Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/146 }
 severity: low
 dataset: ../datasets/ceres-ebaf-ed4-2.md
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: dqs
