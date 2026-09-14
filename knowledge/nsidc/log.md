@@ -2,6 +2,17 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · STEWARD RE-SIGNING of
+  knowledge/nsidc/gotchas/sea-ice-pole-hole-by-sensor.md,
+  knowledge/nsidc/gotchas/atl15-height-change-is-not-mass-change.md:
+  second maintainer review recorded on the maintainer's explicit
+  instruction in the coordinator session, the maintainer having reviewed
+  the concept; promoted to stable under the two-review rule for high
+  severity, with the playbook's preference for a different second
+  reviewer noted, and a provider confirmation still invited The new
+  verified event is appended on the steward's word, the earlier events
+  kept as history. (steward)
+
 - 2026-09-14 · STEWARD SIGNING of
   knowledge/nsidc/datasets/nsidc-0051-sea-ice-concentration.md,
   knowledge/nsidc/datasets/sea-ice-index-g02135.md,

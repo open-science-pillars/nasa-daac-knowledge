@@ -5,11 +5,13 @@ title: "PRECTOTCORR is the observation-corrected precipitation the land surface 
 description: "MERRA-2 forces its land surface, outside the high latitudes, with precipitation corrected toward gauge and satellite products (PRECTOTCORR), while the atmospheric water budget is closed by the model's own precipitation (PRECTOT); the two differ by the whole correction, which is largest in the tropics, blends to zero between 42.5 and 62.5 degrees of latitude and is absent poleward of that. A land budget closed with PRECTOT, an atmospheric budget closed with PRECTOTCORR, or a land-plus-atmosphere budget with either, returns a residual that is the correction, not a storage change, and nothing in the files raises an error because both fields sit side by side in the same collection with the same units."
 tags: [merra-2, merra2, precipitation, prectotcorr, prectot, water-budget, land-surface, cpcu, cmap, gesdisc]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/144 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-14T12:12:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/144 }
+  - { by: human:PaulMRamirez, at: 2026-09-14T12:26:34Z, role: maintainer, source: https://claude.ai/code/session_01DVKYxSeRJWncZVsmaxC4p4 }
 severity: high
 dataset: ../datasets/merra-2.md
 eval_case: merra2-prectotcorr-versus-prectot
-status: draft
+status: stable
 stale_after: 2027-03-14
 sources:
   - id: filespec

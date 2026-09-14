@@ -22,7 +22,7 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 
 ## gotchas
 
-- [The EBAF net TOA flux is anchored to an in situ ocean heating estimate over a stated decade, so its global mean imbalance is not an independent check of ocean heat content](gotchas/ebaf-imbalance-anchored-to-ocean-heating.md), severity high, status: draft
+- [The EBAF net TOA flux is anchored to an in situ ocean heating estimate over a stated decade, so its global mean imbalance is not an independent check of ocean heat content](gotchas/ebaf-imbalance-anchored-to-ocean-heating.md), severity high, status: stable
 - [EBAF carries two clear-sky definitions, the cloud-free-area flux and the total-region flux, and the cloud radiative effect changed definition at Edition 4.1, so a cloud radiative effect names its definition and edition](gotchas/ebaf-clear-sky-definitions.md), severity medium, status: stable
 - [EBAF surface fluxes are radiative transfer output from assimilated and retrieved inputs, adjusted to the observed TOA, so their uncertainty is larger than the TOA fluxes' and shaped by the inputs rather than by the radiometer](gotchas/ebaf-surface-fluxes-are-modelled.md), severity medium, status: stable
 - [EBAF, SYN1deg and SSF answer different questions: EBAF is the balanced monthly climate record, SYN1deg carries the hourly diurnal cycle and the in-atmosphere fluxes, SSF carries the instantaneous footprints, and a diurnal or process study on EBAF misses what SYN1deg carries](gotchas/ebaf-versus-syn1deg-versus-ssf.md), severity medium, status: stable

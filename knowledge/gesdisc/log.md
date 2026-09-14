@@ -2,6 +2,15 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · STEWARD RE-SIGNING of
+  knowledge/gesdisc/gotchas/merra2-prectotcorr-versus-prectot.md: second
+  maintainer review recorded on the maintainer's explicit instruction in
+  the coordinator session, the maintainer having reviewed the concept;
+  promoted to stable under the two-review rule for high severity, with
+  the playbook's preference for a different second reviewer noted, and a
+  provider confirmation still invited The new verified event is appended
+  on the steward's word, the earlier events kept as history. (steward)
+
 - 2026-09-14 · STEWARD SIGNING of knowledge/gesdisc/datasets/merra-2.md,
   knowledge/gesdisc/gotchas/merra2-collection-short-names.md,
   knowledge/gesdisc/gotchas/merra2-grid-weights.md,

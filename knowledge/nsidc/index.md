@@ -29,12 +29,12 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 
 ## gotchas
 
-- [ATL15 height change is not mass change: the conversion needs a firn model and a density assumption the product does not carry](gotchas/atl15-height-change-is-not-mass-change.md), severity high, status: draft
+- [ATL15 height change is not mass change: the conversion needs a firn model and a density assumption the product does not carry](gotchas/atl15-height-change-is-not-mass-change.md), severity high, status: stable
 - [ATL15 delta_h is relative to the 1 January 2020 reference surface, and each lagged rate has its own window](gotchas/atl15-delta-h-reference-epoch.md), severity medium, status: stable
 - [The grids are polar stereographic metres, not latitude and longitude: cell area varies, and a sum without the true cell area biases a total](gotchas/polar-stereographic-not-latlon.md), severity medium, status: stable
 - [An annual velocity mosaic is a composite of image pairs with its own effective date and count, and a discharge needs ice thickness from another product](gotchas/velocity-mosaic-epochs-and-gaps.md), severity medium, status: stable
 - [Ice sheet boundaries and drainage basins differ by definition: a per-basin number names the basin set it used](gotchas/ice-sheet-boundaries-and-drainage-basins.md), severity medium, status: stable
-- [The Arctic pole hole differs by sensor and each product treats it differently: an Arctic total that ignores it steps at the sensor changes](gotchas/sea-ice-pole-hole-by-sensor.md), severity high, status: draft
+- [The Arctic pole hole differs by sensor and each product treats it differently: an Arctic total that ignores it steps at the sensor changes](gotchas/sea-ice-pole-hole-by-sensor.md), severity high, status: stable
 - [The 15 percent threshold defines extent, and extent is not area: the two series answer different questions and are not interchangeable](gotchas/sea-ice-extent-is-not-area.md), severity medium, status: stable
 - [Near-real-time and final sea ice concentration differ in input and processing, and a series that mixes NSIDC-0081, NSIDC-0051 and NSIDC-0803 steps at the join](gotchas/sea-ice-nrt-versus-final.md), severity medium, status: stable
 - [NASA Team and Bootstrap concentrations are different retrievals from the same brightness temperatures: they differ where ice is thin, melting or marginal, and a series or a comparison that mixes them reads the algorithm as change](gotchas/sea-ice-nasa-team-versus-bootstrap.md), severity medium, status: stable

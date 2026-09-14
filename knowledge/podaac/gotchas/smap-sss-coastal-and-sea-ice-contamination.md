@@ -5,11 +5,13 @@ title: "SMAP salinity near coasts and the sea-ice edge: land and ice inside the 
 description: "An L-band radiometer integrates emission from the whole visible disk weighted by the antenna pattern, so land or sea ice in the sidelobes or the footprint contaminates an ocean cell: land alone can bias SMAP salinity by about one practical salinity unit before correction, and sea ice by several after it. Both producers correct and then exclude: the JPL CAP product removes land- and ice-flagged observations and grids the rest with a relaxed filter, keeping only average land and ice fractions at Level 3; the RSS product retrieves within 30 to 40 km of land, sets missing values above hard thresholds and drops moderately contaminated cells from its 70 km smoothing, and classifies sea-ice zones whose residual errors reach 7.5 salinity units. A salinity series for a shelf, an estuary or the marginal ice zone built from the nearest valid cells therefore samples a changing set of cells whose contamination and coverage vary with season and geometry, and its variability and trend are partly the product's flagging, not the ocean's."
 tags: [smap, salinity, sss, coast, land-contamination, sea-ice, marginal-ice-zone, sidelobe, flags, arctic, antarctic, river-plume]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/128 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/128 }
+  - { by: human:PaulMRamirez, at: 2026-09-14T12:26:34Z, role: maintainer, source: https://claude.ai/code/session_01DVKYxSeRJWncZVsmaxC4p4 }
 severity: high
 dataset: ../datasets/smap-sss-jpl.md
 eval_case: smap-sss-coastal-and-sea-ice-contamination
-status: draft
+status: stable
 stale_after: 2027-03-13
 sources:
   - id: jpl-guide
