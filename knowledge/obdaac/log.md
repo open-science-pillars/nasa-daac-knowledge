@@ -2,6 +2,24 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · REVISED the six seeded concepts on the coordinator's
+  lint, applied by the coordinator because the seed session ran out of
+  usage: the log's reason for dropping the orbit-drift gotcha now
+  names the Aqua Project Science page and the missing effect on the
+  record; datasets/modis-aqua-l3-chlorophyll.md gains the drift as a
+  platform fact in Known issues with a new source (aqua-project) and
+  footnote, and its cmr-granules source title loses a record count;
+  index.md says where the eval cases for the high-severity gotchas
+  live; gotchas/chlor-a-is-not-biomass.md loses an uncited
+  parenthetical on the variable's history; the PACE record is now
+  described as five versions (four reprocessings) in
+  gotchas/chlor-a-one-reprocessing-per-series.md and
+  datasets/pace-oci-l3-chlorophyll.md, and the MODIS-Aqua file name is
+  said to carry no version token; gotchas/chlor-a-blended-ocx-and-ci.md
+  notes the ATBD's 0.25 and 0.35 edges beside Hu 2019's 0.25 to 0.40;
+  gotchas/chlor-a-composite-sampling-gaps.md says low-sun retrievals
+  are flagged and masked rather than not attempted. Digest
+  re-rendered. (coordinator/claude, issue #138)
 - 2026-09-14 · SEEDED the bundle's first six concepts, all draft:
   datasets/modis-aqua-l3-chlorophyll.md (MODISA_L3m_CHL 2022.0,
   C3380709133-OB_CLOUD) and datasets/pace-oci-l3-chlorophyll.md
@@ -10,7 +28,14 @@ Newest first. One line per change: date, concept path, what changed, who.
   chlor-a-composite-sampling-gaps (medium),
   chlor-a-one-reprocessing-per-series (medium) and
   chlor-a-is-not-biomass (medium). The Aqua orbit-drift gotcha in the
-  seed brief was dropped: no reachable source stated it. Sources read:
+  seed brief was dropped: the Aqua Project Science page
+  (https://aqua.nasa.gov/, read 2026-09-14) states that Aqua has been
+  in free drift since its last drag make-up maneuver in December 2021
+  and is drifting to later equatorial crossing times, but no reachable
+  producer source states the effect of the drift on the chlorophyll
+  record, which is what a gotcha's mechanism needs, so the drift is
+  recorded as a platform fact in the MODIS-Aqua dataset concept and
+  not as a gotcha. Sources read:
   the OB.DAAC chlorophyll ATBD v1.1 (2023-11-06), the PACE OCI version
   1, 2 and 3 processing notes (the last dated April 2026), the OB.DAAC
   ancillary-data document, the CMR collection records and granule

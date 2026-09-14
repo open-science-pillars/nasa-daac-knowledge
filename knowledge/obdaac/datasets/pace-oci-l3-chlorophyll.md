@@ -2,7 +2,7 @@
 type: dataset
 spheres: [biosphere, hydrosphere]
 title: "PACE OCI Level 3 mapped chlorophyll-a (OB.DAAC, the BGC suite, version 3.2)"
-description: "The Ocean Biology Processing Group's Level 3 mapped chlorophyll-a from the Ocean Color Instrument on PACE: since version 3.2 the chlor_a variable lives in the OC_BGC suite file beside phytoplankton carbon, particulate organic carbon and particulate inorganic carbon, on 4 km and 0.1 degree equidistant cylindrical grids as daily, 8-day and monthly composites from 5 March 2024 onward, at provisional maturity, from the same blended OCI algorithm as the heritage sensors with OC4 coefficients; the record has been reprocessed five times (versions 1, 2, 3, 3.1 and 3.2) since the first release on 11 April 2024, and the catalogue keeps only version 3.2."
+description: "The Ocean Biology Processing Group's Level 3 mapped chlorophyll-a from the Ocean Color Instrument on PACE: since version 3.2 the chlor_a variable lives in the OC_BGC suite file beside phytoplankton carbon, particulate organic carbon and particulate inorganic carbon, on 4 km and 0.1 degree equidistant cylindrical grids as daily, 8-day and monthly composites from 5 March 2024 onward, at provisional maturity, from the same blended OCI algorithm as the heritage sensors with OC4 coefficients; the record has been through five versions (1, 2, 3, 3.1 and 3.2, four reprocessings) since the first release on 11 April 2024, and the catalogue keeps only version 3.2."
 tags: [pace, oci, chlorophyll, chlor_a, ocean-color, level3, mapped, obdaac, obpg, bgc, provisional, oci-algorithm]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
 resource: https://cmr.earthdata.nasa.gov/search/concepts/C4184125847-OB_CLOUD.umm_json

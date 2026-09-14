@@ -58,8 +58,9 @@ to 0.2 with the 2012 parameterization; the retuning gives lower values than befo
 revision found the straylight mask could be relaxed for 39 percent
 more data on average, so a reprocessing can change values and coverage
 together (the ATBD does not state which mask R2022
-uses).[^atbd][^hu-2019] For PACE OCI the record was reprocessed
-five times in two years: version 1 on 11 April 2024 with the caution
+uses).[^atbd][^hu-2019] For PACE OCI the record has been through
+five versions (1, 2, 3, 3.1 and 3.2, four reprocessings) in two
+years: version 1 on 11 April 2024 with the caution
 that users should expect frequent updates and reprocessing, version 2
 as the first full-mission reprocessing with revised calibration,
 version 3 with a solar-diffuser-only calibration, the first vicarious
@@ -74,8 +75,8 @@ derived.[^pace-v1-notes][^pace-v3-notes] The catalogue keeps one
 version: CMR searches on 2026-09-14 found MODISA_L3m_CHL at 2022.0
 only and PACE_OCI_L3M_BGC at 3.2 only, and the mapped files carry the
 version in a global attribute (processing_version R2022.0.3 or 3.2)
-and, for PACE, in the file name; the MODIS-Aqua file name does not
-change with the reprocessing.[^cmr-collections][^modis-file] The
+and, for PACE, in the file name; the MODIS-Aqua file name carries no
+version token.[^cmr-collections][^modis-file] The
 files of a reprocessed record are new files: the June 2024 MODIS-Aqua
 monthly file was created on 2026-07-10 and the June 2024 PACE monthly
 file on 2026-05-16, months or years after the month they

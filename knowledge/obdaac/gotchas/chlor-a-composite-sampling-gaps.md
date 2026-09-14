@@ -2,7 +2,7 @@
 type: dataset-gotcha
 spheres: [biosphere, hydrosphere]
 title: "A Level 3 chlorophyll composite is the mean of the observations that survived the flags in the period, with no count in the mapped file: a monthly mean is a mean of the sampled days, high latitudes have no winter value, cloudy seasons have few, and a climatology is re-cut every month"
-description: "The mapped chlorophyll files are reprojected from binned Level 2 retrievals that passed a flag list (cloud and ice, high solar and sensor zenith, glint, straylight, atmospheric-correction failure, chlorophyll warnings and failures, coccolithophores) and the file's measure attribute is Mean: a monthly value in a cell is the mean of whatever clear, sunlit, unglinted, unflagged retrievals fell in that cell during the month, which can be one observation or thirty, and the mapped file carries no count, weight or day list to say which. Where the sun is too low there is no retrieval at all, so the high-latitude monthly series has no winter months; in a cloudy season the mean is of the few clear days, which are not a random sample of the month; instrument outages remove whole days from the daily record; and the monthly, seasonal and cumulative climatologies are recomputed as the record grows and named by their end date, so two files called the January climatology are two different means."
+description: "The mapped chlorophyll files are reprojected from binned Level 2 retrievals that passed a flag list (cloud and ice, high solar and sensor zenith, glint, straylight, atmospheric-correction failure, chlorophyll warnings and failures, coccolithophores) and the file's measure attribute is Mean: a monthly value in a cell is the mean of whatever clear, sunlit, unglinted, unflagged retrievals fell in that cell during the month, which can be one observation or thirty, and the mapped file carries no count, weight or day list to say which. Where the sun is too low the retrieval is flagged and masked out of the composite, so the high-latitude monthly series has no winter months; in a cloudy season the mean is of the few clear days, which are not a random sample of the month; instrument outages remove whole days from the daily record; and the monthly, seasonal and cumulative climatologies are recomputed as the record grows and named by their end date, so two files called the January climatology are two different means."
 tags: [chlorophyll, chlor_a, level3, composite, monthly, climatology, binning, sampling, clouds, high-latitude, solar-zenith, flags, outage, modis, aqua, pace, oci, obdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
 severity: medium
@@ -61,8 +61,8 @@ to 3 by 3 pixels without loss of quality, with an average relative
 increase of 39 percent in data quantity for the global ocean, so the
 sampling of a composite is also a property of the processing
 configuration (the ATBD does not state which mask R2022
-uses).[^hu-2019] Where the sun is too low no
-retrieval is attempted (the high solar zenith flag is in the mask
+uses).[^hu-2019] Where the sun is too low the retrieval is flagged
+and masked out of the composite (the high solar zenith flag is in the mask
 list, and the producer's own validation admits pairs only below 75
 degrees solar zenith), so the high-latitude record has no values in
 the dark months; where clouds persist, the month's mean is the mean of

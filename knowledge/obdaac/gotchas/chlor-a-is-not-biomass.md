@@ -83,10 +83,8 @@ where it stands in for biomass, says so as the producer does, as a
 proxy, with the varying pigment-to-carbon relation among the
 uncertainties.[^atbd][^cmr-pace][^pace-file][^pace-v3-notes] What
 chlor_a therefore is: the near-surface concentration of one pigment,
-retrieved from color, the ocean color variable with the longest
-history (every mission since the Coastal Zone Color Scanner has
-produced it), and a proxy for everything else it is used to stand
-for.[^dataset][^atbd]
+retrieved from color, and a proxy for everything else it is used to
+stand for.[^dataset][^atbd]
 
 **Verification.** The ATBD's abstract, plain-language summary and
 introduction were read in full on 2026-09-14 and define the product

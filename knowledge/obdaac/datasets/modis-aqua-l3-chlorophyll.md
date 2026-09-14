@@ -21,7 +21,7 @@ sources:
     title: "CMR collection searches run 2026-09-14: the short-name pattern MODISA_L3m_C* returns only MODISA_L3m_CHL and MODISA_L3m_CHL_NRT, both version 2022.0 under provider OB_CLOUD; a keyword search for MODIS Aqua chlorophyll under provider OB_DAAC returns no satellite collection"
   - id: cmr-granules
     resource: https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C3380709133-OB_CLOUD&temporal=2024-06-15T12:00:00Z,2024-06-15T12:00:01Z&page_size=500
-    title: "CMR granule searches run 2026-09-14 on C3380709133-OB_CLOUD: every granule whose period contains 2024-06-15 (132 records, the 4 km and 9 km files of the DAY, 8D, MO, R32, YR, SNSP, SCSP, SCSU, SCAU, SCWI, MC and CU periods, some climatology files listed under two record names), the granules of calendar 2025 counted by period code and grid, the first granules by start date and the last by descending start date (2026-05-30, daily), and the CMR-Hits header (27028); the same searches on the near-real-time collection C3380709124-OB_CLOUD (last daily granule 2026-09-12)"
+    title: "CMR granule searches run 2026-09-14 on C3380709133-OB_CLOUD: every granule whose period contains 2024-06-15 (the 4 km and 9 km files of the DAY, 8D, MO, R32, YR, SNSP, SCSP, SCSU, SCAU, SCWI, MC and CU periods, some climatology files listed under two record names), the granules of calendar 2025 counted by period code and grid, the first granules by start date and the last by descending start date (2026-05-30, daily), and the CMR-Hits header (27028); the same searches on the near-real-time collection C3380709124-OB_CLOUD (last daily granule 2026-09-12)"
   - id: modis-file
     resource: https://oceandata.sci.gsfc.nasa.gov/opendap/MODISA/L3SMI/2024/0601/AQUA_MODIS.20240601_20240630.L3m.MO.CHL.chlor_a.4km.nc.das
     title: "The attribute listing (OPeNDAP .das, metadata only, no data read) of the June 2024 monthly 4 km file, read 2026-09-14 through the OPeNDAP service the CMR record lists: the chlor_a variable attributes (long name, units, fill, valid range, the reference attribute citing Hu and others 2019 and O'Reilly and Werdell 2019), the grid attributes, temporal_range month, measure Mean, processing_version R2022.0.3, date_created 2026-07-10, the l2_flag_names list, the id naming the binned source file, the product DOI and data_minimum and data_maximum; the same listing read for the daily file of 2026-05-30 (created 2026-07-08), the 9 km cumulative climatology ending 2025-11-30 (temporal_range 24-year, created 2026-07-13) and the 9 km January monthly climatology ending 2026-01-31 (temporal_range 23-year)"
@@ -40,6 +40,9 @@ sources:
   - id: alerts
     resource: https://www.earthdata.nasa.gov/data/alerts-outages/aqua-safe-mode-alert
     title: "Earthdata data alert, Aqua Safe Mode Alert, issued 2022-03-31 and resolved 2022-04-17 (an LP DAAC alert about the instrument, read 2026-09-14): Aqua entered safe mode on 2022-03-31, MODIS produced no science data until it returned to science mode on 2022-04-15, and usable day data resumed on 2022-04-17; the Earthdata alerts list read the same day also names Aqua MODIS data losses on 22, 27 and 28 July 2023 and 22 to 25 March 2024 (titles only)"
+  - id: aqua-project
+    resource: https://aqua.nasa.gov/
+    title: "The Aqua Project Science home page (read 2026-09-14): the statement that, because of fuel limitations, Aqua completed the last of its drag make-up maneuvers in December 2021 and is in a free-drift mode, descending below the A-Train and drifting to later equatorial crossing times and lower altitudes, with a weekly-updated chart of the mean local equator crossing time and altitude through 2027; the page says nothing about the effect on the ocean color products"
   - id: hu-2019
     resource: https://doi.org/10.1029/2019JC014941
     title: "Hu, Feng, Lee, Franz, Bailey, Werdell and Proctor, 2019, Improving satellite global chlorophyll a data products through algorithm refinement and data recovery, Journal of Geophysical Research: Oceans 124, 1524 to 1543 (registry record verified on Crossref and abstract read there 2026-09-14; the publisher page returned 403 to this environment and the article was not read): the OCI2 coefficients and transition, the cross-sensor consistency and the relaxed straylight masking"
@@ -187,6 +190,15 @@ optimal ancillary data exist.[^ancillary]
   safe mode from 2022-03-31 and MODIS produced usable day data again
   from 2022-04-17, and the Earthdata alerts list names Aqua MODIS data
   losses on 22, 27 and 28 July 2023 and 22 to 25 March 2024.[^alerts]
+- The platform is drifting. The Aqua Project Science page states
+  that, because of fuel limitations, Aqua completed the last of its
+  drag make-up maneuvers in December 2021 and is in a free-drift mode,
+  descending below the A-Train and drifting to later equatorial
+  crossing times and lower altitudes, with the crossing time and
+  altitude charted month by month through 2027. No producer source
+  read for this concept states the effect of the drift on this
+  chlorophyll record, so it is recorded here as a platform fact, not
+  as a gotcha.[^aqua-project]
 
 [^cmr-modis]: CMR collection record, C3380709133-OB_CLOUD
 [^cmr-modis-l3b]: CMR collection record, C3380708988-OB_CLOUD
@@ -198,6 +210,7 @@ optimal ancillary data exist.[^ancillary]
 [^obdaac-site]: The OB.DAAC website redirect observed on 2026-09-14
 [^ancillary]: Ancillary Data at OB.DAAC
 [^alerts]: Earthdata data alert, Aqua Safe Mode Alert, and the alerts list, 2026-09-14
+[^aqua-project]: Aqua Project Science home page, read 2026-09-14
 [^hu-2019]: Hu and others, 2019, Journal of Geophysical Research: Oceans, doi:10.1029/2019JC014941
 [^oreilly-werdell-2019]: O'Reilly and Werdell, 2019, Remote Sensing of Environment, doi:10.1016/j.rse.2019.04.021
 [^hu-2012]: Hu, Lee and Franz, 2012, Journal of Geophysical Research: Oceans, doi:10.1029/2011JC007395

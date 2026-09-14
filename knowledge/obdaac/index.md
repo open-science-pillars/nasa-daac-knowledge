@@ -14,6 +14,9 @@ after review, and a confirmation from the OB.DAAC or the Ocean Biology
 Processing Group is invited on each and never required.
 
 What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md).
+Eval cases for this bundle's high-severity gotchas live in the
+agent-evals repository under oceancolor/cases/ and are registered in
+the evals repository's manifests by the coordinator.
 
 ## datasets
 

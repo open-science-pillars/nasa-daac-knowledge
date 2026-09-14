@@ -58,7 +58,8 @@ correction, including sun glint and whitecap
 corrections.[^hu-2012] The 2019 revision retuned both components and
 the transition on a merged HPLC and fluorometric data set, giving
 lower values than the original OCI below 0.05 mg per cubic metre and a
-smoother transition between 0.25 and 0.40, and reported the mean
+smoother transition between 0.25 and 0.40 (the edges the ATBD gives
+for the implementation are 0.25 and 0.35), and reported the mean
 cross-sensor difference in monthly oligotrophic chlorophyll falling
 from about 10 percent with OCx alone to 1 to 2 percent; the R2022
 reprocessing adopted it, and the ATBD states that from R2014 until
