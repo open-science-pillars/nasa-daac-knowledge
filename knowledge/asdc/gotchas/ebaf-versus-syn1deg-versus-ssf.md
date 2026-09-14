@@ -14,8 +14,8 @@ sources:
     resource: https://ceres.larc.nasa.gov/data/
     title: "CERES data products page, read 2026-09-14: the EBAF, SYN1deg, SSF, CRS and SSF1deg entries with their one-line purposes, parameter lists, temporal resolutions and edition notes"
   - id: dqs
-    resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/CERES_EBAF_Ed4.2_DQS.pdf
-    title: "CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, 2026-07-01, read 2026-09-14: the SYN1deg Edition 4 net imbalance, the SSF1deg constant-meteorology diurnal assumption, the diurnal asymmetry ratio from SYN1deg applied to SSF1deg shortwave, the SYN1deg longwave as the basis of EBAF longwave, the surface fluxes from SYN1deg-Month, the SYN1deg gap filling in the early Terra record, and the EBAF cloud properties not being the ones used for the fluxes"
+    resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/Versioned/CERES_EBAF_Ed4.2_DQS_V7.pdf
+    title: "CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, 2026-07-01, the pinned copy (byte-identical to the file the unversioned link served on 2026-09-14; the documentation page lists a version 8 posted 2026-09-09, which was served at neither URL that day and was not read), read 2026-09-14: the SYN1deg Edition 4 net imbalance, the SSF1deg constant-meteorology diurnal assumption, the diurnal asymmetry ratio from SYN1deg applied to SSF1deg shortwave, the SYN1deg longwave as the basis of EBAF longwave, the surface fluxes from SYN1deg-Month, the SYN1deg gap filling in the early Terra record, and the EBAF cloud properties not being the ones used for the fluxes"
   - id: cmr-syn1deg
     resource: https://cmr.earthdata.nasa.gov/search/concepts/C3880454295-LARC_CLOUD.umm_json
     title: "CMR collection record for CER_SYN1deg-Month_Terra-Aqua-NOAA20 Edition4B, read 2026-09-14 (the search that day also returned the 1Hour, MHour and Day collections of the same edition, C3181056140, C3181056152 and C3880454279); beginning 2000-03-01"

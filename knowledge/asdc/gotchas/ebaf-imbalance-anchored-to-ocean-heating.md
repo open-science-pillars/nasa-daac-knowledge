@@ -12,8 +12,8 @@ status: draft
 stale_after: 2027-03-14
 sources:
   - id: dqs
-    resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/CERES_EBAF_Ed4.2_DQS.pdf
-    title: "CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, 2026-07-01, read 2026-09-14: the SYN1deg Edition 4 net imbalance of about 4.3 W m-2 against the expected ocean heating rate of about 0.71 W m-2, the constrainment within uncertainty, and Edition 4.2 balanced with the Edition 4.1 ocean heat storage value over July 2005 through June 2015"
+    resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/Versioned/CERES_EBAF_Ed4.2_DQS_V7.pdf
+    title: "CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, 2026-07-01, the pinned copy (byte-identical to the file the unversioned link served on 2026-09-14; the documentation page lists a version 8 posted 2026-09-09, which was served at neither URL that day and was not read), read 2026-09-14: the SYN1deg Edition 4 net imbalance of about 4.3 W m-2 against the expected ocean heating rate of about 0.71 W m-2, the constrainment within uncertainty, and Edition 4.2 balanced with the Edition 4.1 ocean heat storage value over July 2005 through June 2015"
   - id: dqs-ed4-0
     resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/CERES_EBAF_Ed4.0_DQS.pdf
     title: "CERES_EBAF_Ed4.0 Data Quality Summary, 2018-01-12, read 2026-09-14: the anchoring paragraph with the composition of the 0.71 plus or minus 0.10 W m-2 heat uptake (Argo to 1800 m, below 2000 m, ice and atmosphere), and the Edition 4.0 against 2.8 global mean table"
@@ -106,8 +106,9 @@ statement from EBAF names the edition, the anchor value and its decade
 ocean-side number, its depth range and its period beside it rather than
 as a check. The ocean heat content change itself, for the ECCO state
 estimate, is the podaac bundle's recipe
-[ecco-ocean-heat-content](../../podaac/recipes/ecco-ocean-heat-content.md)
-(volume-weighted on the native grid, changes rather than absolutes),
+knowledge/podaac/recipes/ecco-ocean-heat-content.md (volume-weighted on
+the native grid, changes rather than absolutes; the bundles are
+separate installs, so it is named by bundle path),
 and a comparison uses its change over the chosen window against the
 EBAF net flux anomaly integrated over the same window, never the EBAF
 decade mean.

@@ -9,8 +9,8 @@ resource: https://ceres.larc.nasa.gov/data/#energy-balanced-and-filled-ebaf
 version: "Edition 4.2 (TOA fluxes released December 2022, surface fluxes February 2023, both revised on January 2, 2024 for March 2000 through June 2023) and its update Edition 4.2.1 (TOA released November 25, 2024, surface March 14, 2025), which is the edition CMR carries: CERES_EBAF Edition4.2.1 (concept C3880496704-LARC_CLOUD, DOI 10.5067/TERRA-AQUA-NOAA20/CERES/EBAF_L3B004.2.1, TOA and surface in one file) and CERES_EBAF-TOA Edition4.2.1 (concept C3880497643-LARC_CLOUD, DOI 10.5067/TERRA-AQUA-NOAA20/CERES/EBAF-TOA_L3B004.2.1), both beginning 2000-03-01 and ongoing, CMR-verified 2026-09-14; no Edition4.2 collection record remains in CMR that day"
 sources:
   - id: dqs
-    resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/CERES_EBAF_Ed4.2_DQS.pdf
-    title: "CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, released 2026-07-01, read in full on 2026-09-14 (the documentation page lists a version 8 posted 2026-09-09, but the file served at this link that day is version 7): the product description, the cautions, the satellite records and climatology adjustments, the edition changes"
+    resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/Versioned/CERES_EBAF_Ed4.2_DQS_V7.pdf
+    title: "CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, released 2026-07-01, the pinned copy (byte-identical to the file the unversioned link served on 2026-09-14; the documentation page lists a version 8 posted 2026-09-09, which was served at neither URL that day and was not read), read in full on 2026-09-14: the product description, the cautions, the satellite records and climatology adjustments, the edition changes"
   - id: ceres-data-page
     resource: https://ceres.larc.nasa.gov/data/#energy-balanced-and-filled-ebaf
     title: "CERES data products page (ordering tool), read 2026-09-14: the EBAF and EBAF-TOA entries with their parameter lists, grids and clear-sky wording, the SYN1deg and SSF entries, the availability table"
@@ -43,7 +43,7 @@ sources:
     title: "Loeb and others, 2024, Continuity in Top-of-Atmosphere Earth Radiation Budget Observations, Journal of Climate 37, 6093 to 6108: the NOAA-20 transition and the random error of global monthly anomalies after it (record and abstract read on the Crossref registry 2026-09-14)"
   - id: kato-2025
     resource: https://doi.org/10.1175/JCLI-D-23-0568.1
-    title: "Kato and others, 2025, Seamless Continuity in CERES EBAF Surface Radiation Budget across Multiple Satellites, Journal of Climate 38, 2461 to 2478: the surface product's continuity across the satellite records (record and abstract read on the Crossref registry 2026-09-14)"
+    title: "Kato and others, 2025, Seamless Continuity in CERES EBAF Surface Radiation Budget across Multiple Satellites, Journal of Climate 38, 2461 to 2478: the surface product's continuity across the satellite records; its abstract gives the Terra-only period as March 2000 through July 2002, where the data quality summary ends it in June 2002 (record and abstract read on the Crossref registry 2026-09-14)"
 status: draft
 stale_after: 2027-03-14
 ---
@@ -83,7 +83,9 @@ Aqua from July 2002 through March 2022, and NOAA-20-only from April
 Aqua record by regional climatology adjustments computed over overlap
 periods (July 2002 through June 2007 for Terra, May 2018 through
 March 2022 for NOAA-20), applied to the TOA fluxes, the cloud
-properties and the computed surface fluxes.[^dqs][^loeb-2024][^kato-2025]
+properties and the computed surface fluxes (the Kato and others 2025
+abstract gives the Terra-only period as March 2000 through July 2002;
+the summary's June 2002 is used here).[^dqs][^loeb-2024][^kato-2025]
 Edition 4.2.1 replaced the GEOS-5.4.1 atmosphere, discontinued in July
 2024, with MERRA-2 for the imager cloud retrievals from April 2022
 onward, fixed the incorrect NOAA-20 narrowband-to-broadband
@@ -94,9 +96,10 @@ fluxes; March 2000 through March 2022 is the same in both, and the
 two can be compared from April 2022 through July 2024.[^dqs] The
 January 2024 revision of Edition 4.2 replaced the surface fluxes and
 the TOA total-area clear-sky fluxes from March 2000 through June 2023,
-so an Edition 4.2 file with an end date of June 2023 or earlier is the
-superseded processing; the data quality summary asks that the version
-and release date in the netCDF file be checked against it.[^ceres-data-page][^dqs]
+so two Edition 4.2 files with different release dates carry different
+values for those months; the data quality summary asks that the
+version and release date in the netCDF file be checked against
+it.[^dqs]
 The three data quality summary editions read for this concept all
 anchor the global mean net flux and define the climatology over the
 same decade, July 2005 through June 2015; the anchoring is a one-time
@@ -129,7 +132,13 @@ Earthdata catalog, whose pages carry the DOIs and a temporal extent of
 2000-03-01 to present.[^ceres-data-page][^asdc-catalog-ebaf][^asdc-catalog-ebaf-toa]
 Both CMR records begin 2000-03-01 and end at present, name Terra, Aqua
 and NOAA-20 as platforms, and link the Edition 4.2 data quality
-summary as their quality document.[^cmr-ebaf][^cmr-ebaf-toa] The ASDC
+summary as their quality document.[^cmr-ebaf][^cmr-ebaf-toa] Observed
+on 2026-09-14: the two DOIs resolve to each other's catalog page, the
+combined product's DOI (10.5067/TERRA-AQUA-NOAA20/CERES/EBAF_L3B004.2.1)
+landing on the EBAF-TOA page and the EBAF-TOA DOI on the combined
+product's page, while each page's own DOI field is correct; a user
+following a DOI checks the short name on the page it
+reaches.[^asdc-catalog-ebaf][^asdc-catalog-ebaf-toa] The ASDC
 data set abstract for EBAF-TOA predates Edition 4 (its edition table
 ends at 2.8) and quotes an ocean heat storage term of about
 0.58 W m-2, the Edition 2.6r value, not the Edition 4 anchor.[^asdc-guide]

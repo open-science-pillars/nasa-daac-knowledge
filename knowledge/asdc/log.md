@@ -2,6 +2,18 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-14 · coordinator's lint of the seed pull request applied to
+  all six concepts: the data quality summary source pinned to the
+  versioned V7 copy (byte-identical to what was read; the listed V8 is
+  served nowhere and was not read), the podaac recipe named by bundle
+  path instead of a relative link, the Kato and others 2025 Terra-only
+  period (through July 2002) noted against the summary's June 2002, the
+  DOI cross-resolution observation added to the dataset concept's
+  access paragraph, the edition that introduced the total-region
+  clear-sky flux quoted from the summary, and the January 2024 revision
+  cited to the summary alone (the data page's notice is inside an HTML
+  comment). Statuses unchanged, no signatures. (knowledge-seeder)
+
 - 2026-09-14 · first concepts seeded: one dataset concept
   (datasets/ceres-ebaf-ed4-2.md, CERES EBAF Edition 4.2 and its 4.2.1
   update, the edition CMR carries) and five gotchas

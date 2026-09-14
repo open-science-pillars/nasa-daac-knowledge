@@ -11,8 +11,8 @@ status: draft
 stale_after: 2027-03-14
 sources:
   - id: dqs
-    resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/CERES_EBAF_Ed4.2_DQS.pdf
-    title: "CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, 2026-07-01, read 2026-09-14: the climatological base period July 2005 through June 2015, the anchoring over the same decade, the periods each edition change affects, the climatology adjustments of the single-satellite periods, the version history, and the request to check the version and release date in the netCDF file"
+    resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/Versioned/CERES_EBAF_Ed4.2_DQS_V7.pdf
+    title: "CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, 2026-07-01, the pinned copy (byte-identical to the file the unversioned link served on 2026-09-14; the documentation page lists a version 8 posted 2026-09-09, which was served at neither URL that day and was not read), read 2026-09-14: the climatological base period July 2005 through June 2015, the anchoring over the same decade, the periods each edition change affects, the climatology adjustments of the single-satellite periods, the version history, and the request to check the version and release date in the netCDF file"
   - id: dqs-ed4-1
     resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/Versioned/CERES_EBAF_Ed4.1_DQS_V3.pdf
     title: "CERES_EBAF_Ed4.1 Data Quality Summary, version 3, 2021-12-09, read 2026-09-14 for one fact: the climatological mean values used to calculate deseasonalized monthly anomalies are for a base period of July 2005 through June 2015"
@@ -24,7 +24,7 @@ sources:
     title: "CERES_EBAF_Ed2.8 Data Quality Summary, 2014-03-19, read 2026-09-14 for one fact: the anchoring period of that edition was July 2005 through June 2010"
   - id: ceres-data-page
     resource: https://ceres.larc.nasa.gov/data/#energy-balanced-and-filled-ebaf
-    title: "CERES data products page, read 2026-09-14: the monthly means and climatology entries of the EBAF products, and the January 2024 data notice asking users with an end date of June 2023 or earlier to download again"
+    title: "CERES data products page, read 2026-09-14: the monthly means and climatology entries of the EBAF products"
   - id: dataset
     resource: ../datasets/ceres-ebaf-ed4-2.md
     title: "This bundle's EBAF dataset concept, which lists this trap among the known issues and carries the edition history"
@@ -55,7 +55,7 @@ differs from April 2022 onward; and the January 2024 revision of
 Edition 4.2 replaced the surface fluxes and the TOA total-area
 clear-sky fluxes from March 2000 through June 2023, so that two
 Edition 4.2 files with different release dates carry different
-values for the same months.[^dqs][^ceres-data-page]
+values for the same months.[^dqs]
 
 **Wrong-result mode.** An anomaly series computed against a
 climatology the analyst builds over a different window (the full
@@ -83,11 +83,11 @@ release; a self-built climatology over another window is named as
 such with its window.[^dqs] A series that crosses July 2002 or April
 2022 is voiced with the climatology adjustment in view: the anomaly
 in the single-satellite periods is relative to the Terra plus Aqua
-baseline by construction.[^dqs] An Edition 4.2 file with an end date
-of June 2023 or earlier is replaced by the current release before
-anomalies are formed, and any Edition 4.2 and 4.2.1 comparison is
-confined to April 2022 through July 2024, where the summary says the
-two can be compared.[^ceres-data-page][^dqs]
+baseline by construction.[^dqs] An Edition 4.2 file released before
+January 2024 is replaced by the current release before anomalies are
+formed, and any Edition 4.2 and 4.2.1 comparison is confined to April
+2022 through July 2024, where the summary says the two can be
+compared.[^dqs]
 
 **Verification.** The Edition 4.2 summary states the base period, the
 anchoring decade, the periods each edition change affects, the
@@ -96,8 +96,7 @@ version and release date in the netCDF file be checked against
 it;[^dqs] the Edition 4.1 and 4.0 summaries state the same base
 period, and the Edition 2.8 summary states the earlier anchoring
 period;[^dqs-ed4-1][^dqs-ed4-0][^dqs-ed2-8] the ordering page lists the
-monthly means and climatology entries and carries the January 2024
-notice.[^ceres-data-page] The dataset concept lists this trap among
+monthly means and climatology entries.[^ceres-data-page] The dataset concept lists this trap among
 the product's known issues and carries the edition history.[^dataset]
 
 [^dqs]: CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, 2026-07-01

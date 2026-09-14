@@ -11,8 +11,8 @@ status: draft
 stale_after: 2027-03-14
 sources:
   - id: dqs
-    resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/CERES_EBAF_Ed4.2_DQS.pdf
-    title: "CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, 2026-07-01, read 2026-09-14: the surface flux cautions (MERRA-2 sources through March 2006, the Edition 4.2 skin temperature and Amazon trend, the polar downward longwave trend, the noisy adjustment regions), the Lagrange multiplier adjustment, the inputs (SYN1deg-Month hourly fluxes, MODIS and VIIRS clouds only, MERRA-2 profiles, imager skin temperature under clear sky), the albedo and aerosol corrections, and the January 2024 revision"
+    resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/Versioned/CERES_EBAF_Ed4.2_DQS_V7.pdf
+    title: "CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, 2026-07-01, the pinned copy (byte-identical to the file the unversioned link served on 2026-09-14; the documentation page lists a version 8 posted 2026-09-09, which was served at neither URL that day and was not read), read 2026-09-14: the surface flux cautions (MERRA-2 sources through March 2006, the Edition 4.2 skin temperature and Amazon trend, the polar downward longwave trend, the noisy adjustment regions), the Lagrange multiplier adjustment, the inputs (SYN1deg-Month hourly fluxes, MODIS and VIIRS clouds only, MERRA-2 profiles, imager skin temperature under clear sky), the albedo and aerosol corrections, and the January 2024 revision"
   - id: kato-2018
     resource: https://doi.org/10.1175/JCLI-D-17-0523.1
     title: "Kato and others, 2018, Surface Irradiances of Edition 4.0 CERES EBAF Data Product, Journal of Climate 31, 4501 to 4527: the algorithm (computed TOA forced to EBAF-TOA by adjusting surface, cloud and atmospheric properties; bias corrections from AIRS and from CALIPSO and CloudSat; Lagrange multiplier) and the global annual mean uncertainties (record and abstract read on the Crossref registry 2026-09-14; the journal page was not read)"
@@ -27,7 +27,7 @@ sources:
     title: "ASDC collection page for CERES_EBAF Edition4.2.1, read 2026-09-14: the abstract's statement that the surface fluxes are computed, consistent with EBAF-TOA, with cloud radiative effects from a cloud-free profile in the Fu-Liou radiative transfer model"
   - id: ceres-data-page
     resource: https://ceres.larc.nasa.gov/data/#energy-balanced-and-filled-ebaf
-    title: "CERES data products page, read 2026-09-14: the EBAF entry's surface flux parameters and the January 2024 data notice on the affected surface fluxes"
+    title: "CERES data products page, read 2026-09-14: the EBAF entry's surface flux parameters"
   - id: dataset
     resource: ../datasets/ceres-ebaf-ed4-2.md
     title: "This bundle's EBAF dataset concept, which lists this trap among the known issues and carries the TOA uncertainties"
@@ -77,8 +77,8 @@ sun-synchronous orbit biases the regional surface irradiance in
 regions with strong cloud diurnal cycles, which the climatological
 adjustment removes from the mean but which is the reason the
 single-satellite periods are adjusted at all.[^dqs][^kato-2025]
-The January 2024 revision of Edition 4.2 replaced the surface all-sky
-and clear-sky fluxes from March 2000 through June 2023.[^ceres-data-page][^dqs]
+The January 2024 revision of Edition 4.2 replaced the surface fluxes
+from March 2000 through June 2023.[^dqs]
 
 **Wrong-result mode.** A surface energy budget that takes the EBAF
 surface net radiation as an observation and closes it against
@@ -91,9 +91,8 @@ anomaly over the Andes or Tibet that looks like a signal is where the
 adjustment is largest and the anomalies are noisy.[^dqs][^kato-2018]
 A comparison of EBAF surface fluxes with an in situ radiometer site
 that treats the difference as site error inverts the direction of the
-uncertainty. And an Edition 4.2 surface file with an end date of June
-2023 or earlier is the superseded processing.[^ceres-data-page] The
-file carries the surface variables beside the TOA ones with no
+uncertainty. And an Edition 4.2 surface file released before January
+2024 is the superseded processing.[^dqs] The file carries the surface variables beside the TOA ones with no
 marker of their different provenance.
 
 **Correct approach.** A surface flux statement from EBAF says that
@@ -118,8 +117,7 @@ Lagrange multiplier adjustment, the albedo and aerosol corrections
 and the surface cautions above, and its version history dates the
 January 2024 revision;[^dqs] the ASDC collection page states that the
 surface fluxes are computed and consistent with EBAF-TOA;[^asdc-catalog-ebaf]
-the ordering page carries the data notice on the affected surface
-fluxes.[^ceres-data-page] Kato and others 2018, Kato and others 2025
+the ordering page lists the surface flux parameters.[^ceres-data-page] Kato and others 2018, Kato and others 2025
 and Loeb and others 2018 were verified against the Crossref registry
 on 2026-09-14 (title, authors, journal, volume, pages, year) and their
 abstracts read there, which is where the algorithm description and

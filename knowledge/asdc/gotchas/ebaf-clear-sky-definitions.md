@@ -11,14 +11,14 @@ status: draft
 stale_after: 2027-03-14
 sources:
   - id: dqs
-    resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/CERES_EBAF_Ed4.2_DQS.pdf
-    title: "CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, 2026-07-01, read 2026-09-14: the clear-sky gap problem and its filling, the cloud-free-area flux of Edition 4.0 against the total-region flux added in Edition 4.1, the cloud radiative effect computed from the total-region flux in Edition 4.2, the unphysical cloud effect signs with cloud-free-area fluxes, and the January 2024 revision of the total-area clear-sky fluxes"
+    resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/Versioned/CERES_EBAF_Ed4.2_DQS_V7.pdf
+    title: "CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, 2026-07-01, the pinned copy (byte-identical to the file the unversioned link served on 2026-09-14; the documentation page lists a version 8 posted 2026-09-09, which was served at neither URL that day and was not read), read 2026-09-14: the clear-sky gap problem and its filling, the cloud-free-area flux of Edition 4.0 against the total-region flux added in Edition 4.1, the cloud radiative effect computed from the total-region flux in Edition 4.2, the unphysical cloud effect signs with cloud-free-area fluxes, and the January 2024 revision of the total-area clear-sky fluxes"
   - id: dqs-ed4-0
     resource: https://ceres.larc.nasa.gov/documents/DQ_summaries/CERES_EBAF_Ed4.0_DQS.pdf
     title: "CERES_EBAF_Ed4.0 Data Quality Summary, 2018-01-12, read 2026-09-14: the global mean table for July 2005 through June 2015 (Edition 2.8 against 4.0) with clear-sky fluxes and cloud radiative effects, and the change in net cloud radiative effect from clear-sky changes alone"
   - id: ceres-data-page
     resource: https://ceres.larc.nasa.gov/data/#energy-balanced-and-filled-ebaf
-    title: "CERES data products page, read 2026-09-14: the EBAF-TOA entry (clear-sky for cloud-free areas of the region) and the EBAF entry (clear-sky for the total area of the region), and the January 2024 data notice"
+    title: "CERES data products page, read 2026-09-14: the EBAF-TOA entry (clear-sky for cloud-free areas of the region) and the EBAF entry (clear-sky for the total area of the region)"
   - id: loeb-2020
     resource: https://doi.org/10.1175/JCLI-D-19-0381.1
     title: "Loeb and others, 2020, Toward a Consistent Definition between Satellite and Model Clear-Sky Radiative Fluxes, Journal of Climate 33, 61 to 75: the adjustment from the cloud-free-area to the total-region definition and its global and regional size (record and abstract read on the Crossref registry 2026-09-14; the journal page was not read)"
@@ -39,12 +39,15 @@ gaps wherever a one degree region had no cloud-free footprints, and
 EBAF fills those gaps by inferring clear-sky fluxes from CERES and
 imager measurements so that every region has a value every
 month.[^dqs] That filled flux is still a cloud-free-area quantity.
-Edition 4.0 provided only it; Edition 4.1 and later editions add a
-clear-sky flux for the total region, cloudy portions included with
-their clouds removed, defined to match how climate models compute
-clear-sky fluxes, and the cloud radiative effect in Edition 4.2 is
-all-sky minus that total-region clear-sky flux, where Edition 4.0
-used the cloud-free portions only.[^dqs][^loeb-2020] The size of the
+Edition 4.0 provided only it; the total-region definition entered at
+Edition 4.1, in the summary's words, "in addition to the clear-sky
+flux determined only for the cloud-free portions of a region provided
+in Ed4.0, EBAF Ed4.1 and subsequent editions also include clear-sky
+flux estimates for the total region, which includes the cloudy
+portions", defined to match how climate models compute clear-sky
+fluxes, and the cloud radiative effect in Edition 4.2 is all-sky
+minus that total-region clear-sky flux, where Edition 4.0 used the
+cloud-free portions only.[^dqs][^loeb-2020] The size of the
 difference is the size of the adjustment that converts one definition
 to the other: a global mean longwave adjustment of minus 2.2 W m-2 at
 the TOA and 2.7 W m-2 at the surface, pronounced at high latitudes in
@@ -57,8 +60,8 @@ of the adjustment is small against that of the cloud radiative
 effect.[^loeb-2020] The two EBAF collections are labelled with
 different clear-sky wording on the ordering page, cloud-free areas
 for EBAF-TOA and total area for EBAF, and the January 2024 revision
-of Edition 4.2 replaced the TOA total-area clear-sky fluxes and the
-surface total and cloud-free-area clear-sky fluxes through June
+of Edition 4.2 replaced the TOA total-area clear-sky fluxes (with the
+surface fluxes) from March 2000 through June
 2023.[^ceres-data-page][^dqs] Clear-sky definitions have moved before:
 the net cloud radiative effect of Edition 4.0 was minus 18 W m-2
 against minus 21 W m-2 in Edition 2.8, owing to differences in the
@@ -95,9 +98,9 @@ regional value of one definition stands in for the other, the
 adjustment's regional structure from Loeb and others 2020 (largest at
 high latitudes in winter, under cirrus and over sea ice and heavy
 aerosol) is the size of the error being accepted.[^loeb-2020] An
-Edition 4.2 file with an end date of June 2023 or earlier predates the
-January 2024 revision of the total-area clear-sky fluxes and is
-replaced before use.[^ceres-data-page][^dqs]
+Edition 4.2 file released before January 2024 predates the revision of
+the total-area clear-sky fluxes, and the release date in the file
+says which processing it is.[^dqs]
 
 **Verification.** The Edition 4.2 summary describes both definitions,
 the edition at which the total-region flux entered, the cloud
@@ -105,8 +108,7 @@ radiative effect's definition change from Edition 4.0, and the
 unphysical signs with cloud-free-area fluxes;[^dqs] the Edition 4.0
 summary's global mean table shows the clear-sky and cloud radiative
 effect changes between Editions 2.8 and 4.0;[^dqs-ed4-0] the ordering
-page labels the two collections' clear-sky wording and carries the
-January 2024 notice.[^ceres-data-page] Loeb and others 2020 and Loeb
+page labels the two collections' clear-sky wording.[^ceres-data-page] Loeb and others 2020 and Loeb
 and others 2018 were verified against the Crossref registry on
 2026-09-14 (title, authors, journal, volume, pages, year) and their
 abstracts read there, which is where the adjustment sizes and the net
