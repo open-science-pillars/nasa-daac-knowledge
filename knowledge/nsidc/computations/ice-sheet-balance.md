@@ -1,0 +1,416 @@
+---
+type: Attested Computation
+spheres: [cryosphere]
+title: "Ice sheet mass balance closure from GRACE-FO mascons against altimetric volume change with a firn correction (attested)"
+description: "Sanctioned closure of one ice sheet's mass balance over a stated window: the JPL mascon sum over the ice sheet's land mascons against the altimetric volume change less the GEMB firn air content change times a stated ice density, each as the mean of its annual-lag differences with an interval, the residual formed on the epochs both methods share, the bar its own half width plus the stated mascon selection systematic, a verdict closed_within_uncertainty, the GIA, low-degree, frame, smoothing, firn and density statements as receipt facts, and a refusal (exit 3, never a number) for a window outside the terms' overlap, an ice sheet without a firn term over its altimetry domain, or a window across the GRACE to GRACE-FO gap without continuity evidence. Proven on a synthetic fixture with a planted residual and anchored on a Greenland run over 2003 through 2016 from the stamped data root, read against the IMBIE 2023 assessment."
+tags: [ice-sheet, mass-balance, closure, greenland, antarctica, grace, grace-fo, mascons, altimetry, atl15, its-live, firn, gemb, attested]
+runtime: python
+parameters:
+  - { name: ice_sheet, type: string, required: true }
+  - { name: window, type: string, required: true }
+  - { name: altimetry, type: string, required: false }
+  - { name: ice_density, type: number, required: false }
+  - { name: bridge, type: string, required: false }
+computation: references/computations/ice_sheet_balance.py
+executor:
+  resource: references/skills/run-ice-sheet-balance.md
+  receipt: [run_id, computation, code_sha256, capability, bundle, runtime, generated_utc, data, bound_parameters, refused, window, terms, series, rates, residual, combined_uncertainty, verdict, bookkeeping, caveats]
+attester:
+  resource: references/attesters/ice_sheet_balance_check.py
+generated: { by: knowledge-seeder/claude, at: 2026-09-15T20:00:00Z }
+status: draft
+stale_after: 2027-03-15
+sources:
+  - id: gotcha-firn
+    resource: ../gotchas/atl15-height-change-is-not-mass-change.md
+    title: "Bundle gotcha: a height change becomes a mass change only after the firn air content change is removed and a density applied, each with its own uncertainty"
+  - id: atl15
+    resource: ../datasets/icesat2-atl15.md
+    title: "Bundle dataset concept: ICESat-2 ATL15 gridded land ice height change, the reduced resolutions and their error fields, ice_area"
+  - id: its-live
+    resource: ../datasets/its-live-ice-velocity.md
+    title: "Bundle dataset concept: the MEaSUREs ITS_LIVE products, the project whose elevation change files supply the altimetry and firn terms"
+  - id: bedmachine
+    resource: ../datasets/bedmachine-greenland-antarctica.md
+    title: "Bundle dataset concept: BedMachine, the thickness a discharge through flux gates would need (not read by this computation)"
+  - id: gotcha-gate
+    resource: ../gotchas/bedmachine-mask-and-grounding-line.md
+    title: "Bundle gotcha: a discharge gate sits on grounded ice upstream of the grounding line"
+  - id: gotcha-thickness
+    resource: ../gotchas/bedmachine-thickness-is-interpolated.md
+    title: "Bundle gotcha: the thickness between flight lines is mass conservation or an interpolation, and a discharge carries both factors' errors"
+  - id: gotcha-basins
+    resource: ../gotchas/ice-sheet-boundaries-and-drainage-basins.md
+    title: "Bundle gotcha: a per-region number names the boundary set it used"
+  - id: gotcha-grid
+    resource: ../gotchas/polar-stereographic-not-latlon.md
+    title: "Bundle gotcha: a sum on a polar stereographic grid needs the true cell area"
+  - id: mascons
+    resource: ../../podaac/datasets/grace-fo-mascons.md
+    title: "Podaac bundle dataset concept: GRACE/GRACE-FO JPL mascon solutions, RL06.3 version 4, the mass term's product and its per-mascon uncertainty"
+  - id: gotcha-gia
+    resource: ../../podaac/gotchas/grace-gia-correction.md
+    title: "Podaac bundle gotcha: the GIA model already applied to the mascon product"
+  - id: gotcha-leakage
+    resource: ../../podaac/gotchas/grace-coastal-leakage.md
+    title: "Podaac bundle gotcha: leakage across the coastline in the mascons"
+  - id: gotcha-gap
+    resource: ../../podaac/gotchas/grace-intermission-gap.md
+    title: "Podaac bundle gotcha: the GRACE to GRACE-FO gap and the missing months"
+  - id: gotcha-low-degree
+    resource: ../../podaac/gotchas/grace-low-degree-replacements.md
+    title: "Podaac bundle gotcha: the degree-1 and C20/C30 series substituted in the mascon product"
+  - id: slb
+    resource: ../../podaac/computations/sea-level-budget.md
+    title: "Podaac bundle attested computation: the sea level budget closure whose shape (terms, bookkeeping as receipt facts, fixture, refusal, attester) this computation keeps"
+  - id: data-root
+    resource: ../references/retrieval/ice-sheet-balance-root/RECORD.json
+    title: "The stamped data root committed beside this concept: the loaders' stamps, the bookkeeping and closure tables, the manifest of the term files, and SOURCES.json for the downloads and the granules that could not be fetched"
+  - id: loaders
+    resource: ../references/loaders/isb_data_root.py
+    title: "The term loaders and the stamp assembler under references/loaders (isb_mass_mascons.py, isb_volume_itslive.py, isb_volume_atl15.py, isb_firn_gemb.py, isb_smb_gemb.py, isb_data_root.py), each with a selftest"
+  - id: provider-series
+    resource: https://podaac.jpl.nasa.gov/dataset/GREENLAND_MASS_TELLUS_MASCON_CRI_TIME_SERIES_RL06.3_V4
+    title: "JPL GRACE and GRACE-FO Greenland mass time series, RL06.3Mv04 CRI (PO.DAAC), the provider's own sum the mass stamp is cross-checked against; the Antarctica series is its sibling collection"
+  - id: otosaka-2023
+    resource: https://doi.org/10.5194/essd-15-1597-2023
+    title: "Otosaka and others (2023), Mass balance of the Greenland and Antarctic ice sheets from 1992 to 2020, Earth System Science Data 15, 1597 to 1616 (IMBIE): the reconciled rates by period and the spread between altimetry, gravimetry and the input-output method"
+  - id: smith-2020
+    resource: https://doi.org/10.1126/science.aaz5845
+    title: "Smith and others (2020), Pervasive ice sheet mass loss reflects competing ocean and atmosphere processes, Science 368, 1239 to 1242: the reference conversion of altimetric height change to mass with a firn model"
+---
+
+# Ice sheet mass balance closure from GRACE-FO mascons against altimetric volume change with a firn correction (attested)
+
+The sanctioned computation behind any receipted statement that an
+ice sheet's mass balance closes, or does not, between gravimetry and
+altimetry over a window: the JPL mascon sum over the ice sheet's
+mascons against the altimetric volume change converted to mass with
+the GEMB firn air content change and a stated density, in the shape
+of the podaac bundle's sea level budget closure.[^slb][^gotcha-firn]
+It exists so that the conversion the ATL15 gotcha demands (a firn
+model, a density, the GIA and elastic bookkeeping) is a set of receipt
+facts an attester checks rather than a paragraph a reader trusts, and
+so that the residual between the two observing systems is a stated
+number with a stated bar. Version 1 is proven on a synthetic fixture
+with a planted residual, and its real-data anchor is the stamped data
+root committed beside it, run for Greenland over 2003 through 2016 in
+the reference run below.[^data-root] The third estimate the
+intercomparison literature uses, the input-output balance from a
+surface mass balance and a discharge through flux gates, is not made
+here; the boundaries section says why and names what would make it.
+
+## Parameters
+
+- `ice_sheet` (string, required): `greenland` or `antarctica`.
+- `window` (string, required): an inclusive month range
+  `YYYY-MM:YYYY-MM` of at least two years within the overlap of the
+  terms (the committed root's Greenland overlap is 2002-04 through
+  2023-12; the fixture's is 2003-01 through 2023-12 for the ITS_LIVE
+  term and 2019-01 through 2023-10 for the ATL15 term).
+- `altimetry` (string, optional, default `itslive`): the volume
+  term's product, `itslive` (the ITS_LIVE elevation change, monthly)
+  or `atl15` (ICESat-2 ATL15, quarterly); a root without the named
+  term refuses.
+- `ice_density` (number, optional, default 917): kilograms per cubic
+  metre applied to the firn-corrected volume change; the default is
+  the ice density the GEMB surface mass balance product itself uses,
+  and a run may state another.
+- `bridge` (string, optional): a citation of the independent
+  continuity evidence across the GRACE to GRACE-FO gap; required for
+  a window whose mass months lie on both sides of 2017-07 through
+  2018-05.[^gotcha-gap]
+
+## The terms and the bookkeeping
+
+**Gravimetry.** The JPL RL06.3 version 4 CRI mascon grid summed over
+the ice sheet's land mascons per solution month, in gigatonnes, with
+the product's one-sigma-per-mascon uncertainty combined in quadrature
+over the selected mascons.[^mascons] The Greenland set is the land
+mascons whose land area is at least a quarter Greenland ice by the
+ITS_LIVE Greenland mask binned onto the mascon grid with true cell
+areas, 27 mascons of 2,122,549 square kilometres of land in the
+committed root; the Antarctic set is every land mascon south of 60 S,
+148 mascons, the CRI land mask counting the floating shelves as land.
+A mascon that straddles Nares Strait or Denmark Strait cannot be
+split by any rule, so the mass stamp lists every selected mascon with
+its ice fraction, the four excluded land mascons that carry some
+Greenland ice, and the full-series trend under two other thresholds
+(minus 268.1 Gt per year at 5 percent, minus 244.3 at 50 percent,
+against minus 252.0 at the rule's 25 percent); half that spread,
+11.9 Gt per year, is the selection systematic the bar carries. The
+stamp also records the comparison with the provider's own Greenland
+series over the same 257 months (trends minus 252.0 and minus 255.8
+Gt per year, a standard deviation of 29.0 Gt between the two after
+the mean offset), read for the comparison only and never used to
+adjust the sum.[^provider-series][^data-root] The GIA model
+(ICE-6G_D, subtracted by the product), the low-degree series (C20 and
+C30 from TN-14, degree 1 from JPL's mascon-consistent geocenter), the
+reference frame and the mascon smoothing are stated in the mass stamp
+as the product applied them, nothing re-applied, and travel in the
+receipt's `bookkeeping.mass` block; the coastal leakage the CRI
+filter reduces and does not remove is why the selection systematic is
+stated beside the formal error.[^gotcha-gia][^gotcha-low-degree][^gotcha-leakage]
+
+**Altimetry.** The volume anomaly of the surface height change summed
+with true cell areas over the ice sheet's cells, less the firn air
+content volume anomaly at the same epochs over the same domains,
+times the stated ice density: one kilometre cubed is density over a
+thousand gigatonnes.[^gotcha-firn][^gotcha-grid] The committed
+root's volume term is the ITS_LIVE Greenland elevation change
+(monthly, 1992 through 2023, the same file and the same fixed cell
+sets of 464,999 ice sheet and 23,827 peripheral glacier cells as the
+firn term) because the ATL15 Version 5 granules could not be fetched
+from the drafting environment; the ATL15 loader is verified on its
+selftest, the root's RECORD names the term absent with the reason,
+and a run asking for it refuses.[^its-live][^atl15][^data-root] The
+firn term is the earlier seed's root: the GEMB 1.3.0 firn air content
+anomaly against 2014-01-01 with the GEMB to GSFC-FDM spread as its
+uncertainty, a spread that crosses zero on 29 ice sheet rows, so each
+row's uncertainty is floored at the series median of its domain
+(0.109 m for the ice sheet, 0.072 m for the peripheral glaciers) and
+the receipt says so in `bookkeeping.firn_floor`.[^data-root] Antarctica
+has no grounded firn term in this root (the ITS_LIVE distribution
+carries GEMB output over the floating shelves only), so the Antarctic
+run refuses rather than states a volume as a mass; its mascon and
+grounded volume terms are in the root for the day a grounded firn
+loader lands.
+
+**The rate method.** Each term's rate over the window is the mean of
+its annual-lag differences (the value at an epoch less the value
+twelve months earlier, so the seasonal cycle cancels exactly and a
+monthly mascon hole removes only the differences it touches). Its
+interval takes the effective sample size from the lag-1
+autocorrelation of the differences, floored at the number of
+non-overlapping years (differences a year apart share no epoch),
+Student's t on the effective degrees of freedom, and the larger of
+the sampling error and the formal error the per-epoch uncertainties
+propagate; the receipt states which one the interval rests on. The
+residual is the mean of altimetry minus gravimetry differences on the
+epochs both terms carry, so the interannual signal both observing
+systems see cancels before its scatter is measured, and the bar is
+the residual's own half width plus the selection systematic. The
+verdict `closed_within_uncertainty` is true when the residual lies
+within that bar. A residual that fails to close is read as a
+correction-consistency finding before a missing-physics one: the firn
+model and its forcing, the density, the mascon selection and the
+altimetry record's mission transitions are the first things a reader
+audits, in the bookkeeping block.[^gotcha-firn][^slb]
+
+## The fixture and its known truth
+
+`--fixture --seed N` generates the root deterministically from a
+hash-based Gaussian stream (no numeric library in the path): a
+Greenland-like sheet losing 250 Gt per year with a 120 Gt annual
+cycle peaking in April, an AR(1) interannual component and monthly
+mascon noise of 20 to 30 Gt, the mascon months the real record lacks
+removed (the gap and the battery-management months the sea level
+budget fixture lists); a firn air volume losing 6 cubic kilometres
+per year with a 45 cubic kilometre cycle and a stated uncertainty
+drawn from |N(0.08, 0.06)| metres so that it crosses zero and the
+floor rule is exercised; a monthly ITS_LIVE-shaped volume from 1992
+and a quarterly ATL15-shaped one from 2019, each the ice volume plus
+the firn air plus noise, with the altimetric rate exceeding the
+gravimetric one by a planted +5 Gt per year; and an Antarctic-like
+sheet with mass and volume but no grounded firn term. The receipt
+records the seed, the fixture digest and the generator's digest (the
+executor itself), and the attester regenerates the fixture and
+compares every series value.
+
+## The refusal rule
+
+A run writes a refusal receipt (`refused: true`, a `reason_code` and
+the reason in words) and exits 3, never a number, when the window
+lies outside the overlap of the terms it needs
+(`window-outside-overlap`); when the window is shorter than two years
+or a term has too few epochs in it, or too few annual-lag differences
+are common to both terms (`too-few-epochs`); when the firn term does
+not cover the altimetry domain (`firn-term-missing`, the Antarctic
+case on this root); when the root does not carry the altimetry
+product named (`term-not-in-root`); when the mass months lie on both
+sides of the inter-mission gap with no bridge (`gap-without-bridge`);
+or when a rate's interval cannot be stated (`interval-not-stated`).
+The attester attests a refusal PASS only as a refusal, reproduced
+from the regenerated fixture or from the spans and domains the
+receipt records, and its verdict line reads `PASS refusal`.
+
+## The attester criterion (deterministic, consumer-side)
+
+A run PASSES only when all hold, one `PASS name` or `FAIL name:
+reason` line per check: every declared field present; the code hash
+is the sanctioned file; the `bundle` block names this bundle's
+package, version and release lock digest and the `capability` block
+is well formed; a runtime is named; the fixture regenerated at the
+receipt's seed hashes to the receipt's digest (for a data root, the
+RECORD stamp, its digest and the term file digests are present, and
+with `--data-root DIR` each matches the tree and the recorded root is
+that tree package-relative); the four series are well formed, the
+altimetric mass is the density times the volume less the firn air at
+every epoch, the firn uncertainties are floored, the residual series
+is the difference of the two terms' annual-lag differences on their
+common epochs, and on the fixture every value is what the regenerated
+fixture yields; every rate block, the residual block, the selection
+systematic, the bar and the verdict recompute from the series by an
+independent implementation of the method statement; the bookkeeping
+carries every required statement, the density and firn floor blocks
+agree with the bound parameters and the series, and the gap handling
+agrees with the mass months; and on the fixture the known truth
+holds (the verdict says closed, each rate within 15 and 20 Gt per
+year of the imposed ones, the residual within the larger of 5 Gt per
+year and the bar of the planted one), while on a data root each rate
+lies inside stated plausibility bounds. The selftest covers two
+fixture passes, ten tampers each failing on its check, a wrong
+release, a tampered computation, four refusals and a forged one, a
+bridged run across the gap and the same receipt with its bridge
+stripped, and the data-root path on the fixture written as a root,
+verified against the tree and failed when a file changes.
+
+## Reference run
+
+**Fixture run (seed 7, Greenland, 2019-01 through 2022-12, the ATL15
+term, measured 2026-09-15).** 48 mascon months and 16 quarterly
+altimetry epochs; 12 annual-lag differences common to both.
+Gravimetry minus 252.790 Gt per year, 95 percent interval [minus
+274.535, minus 231.044] on the sampling error; altimetry minus
+245.189, [minus 386.044, minus 104.335] on the formal error, which
+the floored firn spread dominates; residual +15.729 against a bar of
+142.670 (the residual's half width, the selection systematic being
+zero on a synthetic root); `closed_within_uncertainty` true, the
+planted +5 recovered within the bar. **Fixture run (seed 7,
+Greenland, 2003-01 through 2016-12, the ITS_LIVE term).** 152 mascon
+months and 168 altimetry epochs, 128 common differences; gravimetry
+minus 250.649, [minus 261.184, minus 240.113]; altimetry minus
+243.821, [minus 285.038, minus 202.603]; residual +7.999 against a
+bar of 44.971; closed. The imposed truth is gravimetry minus 250 and
+a residual of +5. The refusal case the gate exercises is the ATL15
+window 2019-01 through 2025-12 (outside the fixture's firn term,
+exit 3, attested as a refusal); the Antarctic refusal
+(`firn-term-missing`) is exercised on the committed root. The
+registry entries `ice-sheet-balance` and `ice-sheet-balance-long`
+under `bundle_runs` in tools/reference_runs.yaml name the two
+fixture runs.
+
+**Real-data run (the stamped data root
+ice-sheet-balance-root-2026-09-15, Greenland, 2003-01 through
+2016-12, the ITS_LIVE term, run sha256:88c61519864e16d7 under the
+runtime claude-code, measured 2026-09-15).** 151 of 168 mascon months (the 17 missing are June
+2003 and the battery-management months the product's list names),
+168 altimetry epochs, 127 common differences. Gravimetry minus
+281.297 Gt per year, 95 percent interval [minus 328.727, minus
+233.867] on the sampling error (the year-to-year variability of the
+rate; the formal error at 95 percent is 3.99); altimetry minus
+283.353, [minus 387.747, minus 178.959] on the sampling error (formal
+44.83, the floored firn spread); a volume rate of minus 364.4 cubic
+kilometres per year of which minus 55.4 is firn air. On the 127
+common epochs the altimetry mean is minus 306.421 and the gravimetry
+mean minus 281.297, so the residual is minus 25.123 Gt per year
+against a bar of 140.813 (the residual's half width 128.879, its
+sampling error 58.5 on 12.0 effective years, plus the selection
+systematic 11.934); `closed_within_uncertainty` true. The two rates
+agree in the mean to 2 Gt per year on their own epochs, but the
+residual series scatters by 203 Gt per year from month to month: the
+two records disagree at the annual scale by hundreds of gigatonnes
+per year (the altimetry rate near minus 800 and the gravimetry near
+minus 300 in early 2010, the reverse in early 2013), which is the
+disagreement the bar carries, and it is what a reader who knows the
+products should audit first (the boundaries below). Against the IMBIE
+2023 assessment, whose Table 2 gives Greenland minus 180 with an
+uncertainty of 39 Gt per year for 2002 to 2006, minus 280 with 38 for
+2007 to 2011 and minus 213 with 40 for 2012 to 2016 (an average near
+minus 228 over 2003 to 2016) and whose 2003 to 2018 overlap gives a
+reconciled minus 221 with an uncertainty of 22 with the three
+techniques within a standard deviation of 19 Gt per year of each
+other, both rates here sit about 55 Gt per year more negative,
+outside the assessment's uncertainty and inside the interval each
+rate carries; the provider's own Greenland series, whose full-series
+trend is minus 259.8 with an uncertainty of 21.0 (one sigma, 2002 to
+2026), is 4 Gt per year less negative than the mass stamp's sum over
+the same months.[^otosaka-2023][^provider-series][^data-root] The
+registry entry `ice-sheet-balance-record` reruns it, and the check
+chain the pull request names verifies the stamp, reruns the executor
+on the data root and attests the receipt against the tree on every
+change.
+
+**Pass bar.** There is no measured tolerance to record: the verdict
+is a comparison of the residual against the bar the receipt itself
+carries, and the attester recomputes both. The plausibility bands on
+the fixture (15 and 20 Gt per year around the imposed rates, the
+larger of 5 Gt per year and the bar around the planted residual) are
+sanity bounds on the chain, not a science tolerance.
+
+## Boundaries
+
+One real-data run exists, Greenland over 2003 through 2016, a window
+that does not cross the inter-mission gap; a run across the gap needs
+a bridge citation and has not been made. Antarctica refuses on this
+root for want of a grounded firn air content term: the ITS_LIVE
+distribution carries GEMB output over the floating shelves only, and
+the RACMO2 and MAR alternates the firn stamp names were not read; a
+loader for one of them on the grounded sheet would make the Antarctic
+run without any change to the executor.[^data-root] The
+input-output balance is not made: the root holds no Greenland surface
+mass balance and no grounded Antarctic one, and no discharge, which
+would take the ITS_LIVE velocity mosaics across flux gates on
+grounded ice upstream of the grounding line with BedMachine
+thickness, where the thickness between flight lines is mass
+conservation or an interpolation with errbed saying which and the
+Antarctic guide's mass-conservation threshold is 30 metres per
+year;[^its-live][^bedmachine][^gotcha-gate][^gotcha-thickness] the
+published input-output estimates the reader compares against are
+IMBIE's input-output group, which in Greenland agrees with altimetry
+and gravimetry over 2003 to 2018 within the 19 Gt per year spread
+quoted above.[^otosaka-2023] The altimetry term is the ITS_LIVE
+elevation change and not ATL15, for the reason the data root
+records; an ATL15 run on this executor awaits a fetchable granule.
+The Greenland altimetry domain is the ITS_LIVE mask (the ice sheet
+and the peripheral glaciers) and the gravimetry domain is a set of
+whole mascons that also hold ice-free land, coastal ocean and, at
+the rule's threshold, a share of the Canadian Arctic and Iceland
+signal; the residual carries that mismatch, and the selection
+systematic is its stated size.[^gotcha-basins][^gotcha-leakage] The
+firn uncertainty is a two-model spread, floored, not a formal error;
+the density is one number for the whole sheet; no elastic or GIA
+correction is applied to the altimetry, and the mascon product's GIA
+model is stated, not varied. The intervals on the term rates are
+dominated by the year-to-year variability of the rate itself (the
+sampling error) and are not measurement uncertainties in the
+assessment's sense; the formal error stands beside each. Produced by
+Open Science Pillars, not a NASA, JPL or NSIDC product.
+
+**Verification.** The bundle-path sources are this bundle's and the
+podaac bundle's own concepts; the data root and its stamp are
+committed in this repository and the real-data run was made and
+attested on 2026-09-15 from them.[^data-root][^loaders] The mascon
+granule, the provider's two mass series and the three ITS_LIVE files
+were read on 2026-09-15 and their hashes are in SOURCES.json, as are
+the ATL15 access attempts with their status codes; Otosaka and others
+2023 was read in full on 2026-09-15 through its Crossref record's
+link after the DOI resolved, and its record (title, authors, journal,
+volume, pages, year) was verified against the Crossref registry the
+same day, as was Smith and others 2020, whose text the ATL15 gotcha
+read on 2026-09-13 and which is cited here on its registry
+record.[^otosaka-2023][^smith-2020] The chain is verified on every
+change by the repository's check routine once the coordinator adds
+the lines the pull request names: the attester's selftest, the
+fixture run and its refusal, the loaders' selftests, the data root
+check and the record run attested against the tree.
+
+[^gotcha-firn]: gotchas/atl15-height-change-is-not-mass-change.md, the conversion and its terms
+[^atl15]: datasets/icesat2-atl15.md, the product the ATL15 loader reads
+[^its-live]: datasets/its-live-ice-velocity.md, the ITS_LIVE project whose elevation change files supply the altimetry and firn terms
+[^bedmachine]: datasets/bedmachine-greenland-antarctica.md, the thickness a discharge would need
+[^gotcha-gate]: gotchas/bedmachine-mask-and-grounding-line.md
+[^gotcha-thickness]: gotchas/bedmachine-thickness-is-interpolated.md
+[^gotcha-basins]: gotchas/ice-sheet-boundaries-and-drainage-basins.md
+[^gotcha-grid]: gotchas/polar-stereographic-not-latlon.md
+[^mascons]: podaac bundle, datasets/grace-fo-mascons.md, the mass term's product
+[^gotcha-gia]: podaac bundle, gotchas/grace-gia-correction.md
+[^gotcha-leakage]: podaac bundle, gotchas/grace-coastal-leakage.md
+[^gotcha-gap]: podaac bundle, gotchas/grace-intermission-gap.md
+[^gotcha-low-degree]: podaac bundle, gotchas/grace-low-degree-replacements.md
+[^slb]: podaac bundle, computations/sea-level-budget.md, the pattern this computation keeps
+[^data-root]: references/retrieval/ice-sheet-balance-root/RECORD.json and SOURCES.json, the stamped data root
+[^loaders]: references/loaders, the term loaders and the stamp assembler
+[^provider-series]: JPL GRACE and GRACE-FO Greenland mass time series, RL06.3Mv04 CRI, PO.DAAC
+[^otosaka-2023]: Otosaka and others (2023), Earth System Science Data 15, doi:10.5194/essd-15-1597-2023
+[^smith-2020]: Smith and others (2020), Science 368, doi:10.1126/science.aaz5845

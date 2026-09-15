@@ -1,9 +1,9 @@
 {
-  "purpose": "provenance of the inputs of the ice sheet mass balance closure's firn and surface mass balance data root: the two ITS_LIVE product files that carry GEMB output on AWS, the documents and registry records read to describe them, and the files read during the search that turned out to carry no GEMB field",
-  "credentials": "none used: the its-live-data bucket, nsidc.org, cmr.earthdata.nasa.gov, doi.org and api.crossref.org served every file read without a token; the Earthdata Login token in the environment was not sent and is not recorded here",
+  "purpose": "provenance of the inputs of the ice sheet mass balance closure's data root: the two ITS_LIVE product files that carry GEMB output on AWS (the firn and surface mass balance terms), the JPL mascon grid and the provider's ice sheet mass series (the mass term and its cross-check), the ITS_LIVE elevation change files (the altimetric volume term), the ICESat-2 ATL15 granules that could not be fetched, the documents and registry records read to describe them, and the files read during the search that turned out to carry no GEMB field",
+  "credentials": "the its-live-data bucket, nsidc.org, cmr.earthdata.nasa.gov, doi.org, api.crossref.org and the journal's own site served every file read without a token; the Earthdata Login bearer token in the environment was sent as a request header only, to archive.podaac.earthdata.nasa.gov (the mascon granule and the two provider series, after a 302 to the login without it) and to data.nsidc.earthdatacloud.nasa.gov (the ATL15 granules, after a 401 without it); it is not recorded here",
   "downloads": [
     {
-      "term": "firn (greenland)",
+      "term": "firn (greenland), volume-itslive (greenland), and the ice mask of the mass term's Greenland selection",
       "product": "ITS_LIVE Greenland Grounded Ice Sheet and Peripheral Glacier Ice Elevation Change, version 1.1",
       "doi": "10.5067/ICFVI7DKHZJV",
       "doi_resolution": "https://doi.org/10.5067/ICFVI7DKHZJV answered 302 to the bucket URL below on 2026-09-15; the collection is not in CMR (a search by DOI and by keyword returned nothing on 2026-09-15)",
@@ -16,7 +16,13 @@
       "sha256": "sha256:04c8259891a0a94dfa5f9e4996dfaad57ca13763a988dbbee5cda795a9f4a4b2",
       "file": "Greenland_G1920V01_IceSheetGlacierIceHeight.nc",
       "variables_read": "dfac_gemb, dfac_gsfc, mask, x, y, time and the global attributes",
-      "verification": "HTTP 200, size matches the bucket listing, opened with netCDF4; the file's own doi attribute names the DOI above"
+      "verification": "HTTP 200, size matches the bucket listing, opened with netCDF4; the file's own doi attribute names the DOI above",
+      "re_read": {
+        "retrieved_utc": "2026-09-15T17:53:33Z",
+        "sha256_unchanged": true,
+        "variables_read": "dh, rms, mask, x, y, time and the global attributes, beside dfac_gemb and dfac_gsfc for the regenerated firn term",
+        "why": "the firn and smb stamps were regenerated after their aggregation strings were aligned with the loaders' code and the Greenland DOI normalised; the CSVs came out byte-identical"
+      }
     },
     {
       "term": "firn and smb (antarctica, floating ice shelves)",
@@ -33,7 +39,72 @@
       "sha256": "sha256:1b1050c51dec4d1785a5a8a55a40a1d80ba16aa0cc39e46d68c33dcacd0b0b96",
       "file": "ANT_G1920V01_IceShelfMelt.nc",
       "variables_read": "fac, fac_err, fac_mean, smb, smb_err, smb_mean, ID, mapping, x, y, time and the global attributes",
-      "verification": "HTTP 200, size matches the bucket listing, opened with netCDF4"
+      "verification": "HTTP 200, size matches the bucket listing, opened with netCDF4",
+      "re_read": {
+        "retrieved_utc": "2026-09-15T17:54:12Z",
+        "sha256_unchanged": true,
+        "why": "the firn and smb stamps were regenerated (see the Greenland entry); the CSVs came out byte-identical"
+      }
+    },
+    {
+      "term": "mass (greenland and antarctica)",
+      "product": "JPL GRACE and GRACE-FO MASCON RL06.3Mv04 CRI (TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4), the podaac bundle's dataset concept",
+      "doi": "10.5067/TEMSC-3JC634",
+      "collection_concept_id": "C3195527175-POCLOUD",
+      "query": "direct download of the single granule from the archive by its known path, the same file the sea level budget root reads (its SOURCES.json names the CMR query)",
+      "url": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4/GRCTellus.JPL.200204_202607.GLO.RL06.3M.MSCNv04CRI.nc",
+      "files": 1,
+      "total_bytes": 45989746,
+      "retrieved_utc": "2026-09-15T17:51:05Z",
+      "sha256": "sha256:32b4ee91215a2e1c1bb6196f661ec55972b81e4da4a934b5a5c9ebe17f285a88",
+      "file": "GRCTellus.JPL.200204_202607.GLO.RL06.3M.MSCNv04CRI.nc",
+      "variables_read": "lwe_thickness, uncertainty, land_mask, mascon_ID, lat, lon, lat_bounds, lon_bounds, time, time_bounds and the global attributes",
+      "verification": "HTTP 200 after a 303 to the archive's content host with the token, size and sha256 equal to the sea level budget root's copy of 2026-09-13, opened with netCDF4"
+    },
+    {
+      "term": "mass cross-check (greenland)",
+      "product": "JPL GRACE and GRACE-FO Greenland mass time series, RL06.3Mv04 CRI (GREENLAND_MASS_TELLUS_MASCON_CRI_TIME_SERIES_RL06.3_V4)",
+      "collection_concept_id": "C3206299308-POCLOUD",
+      "query": "https://cmr.earthdata.nasa.gov/search/collections.json?short_name=GREENLAND_MASS_TELLUS_MASCON_CRI_TIME_SERIES_RL06.3_V4&provider=POCLOUD, then the granule list",
+      "url": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/GREENLAND_MASS_TELLUS_MASCON_CRI_TIME_SERIES_RL06.3_V4/greenland_mass_200204_202607.txt",
+      "files": 1,
+      "total_bytes": 10051,
+      "retrieved_utc": "2026-09-15T17:52:54Z",
+      "sha256": "sha256:73744993ffb271770bc9178085d96a612c6626bdd40dc237e09a440323027ea4",
+      "file": "greenland_mass_200204_202607.txt",
+      "copied_into_root": false,
+      "what_was_read": "the header (anomalies relative to April 2002; the trend line, minus 259.82 with an uncertainty of 21.00 Gt per year over April 2002 to July 2026; GIA from ICE6G-D; monthly uncertainties include leakage errors) and the 259 rows",
+      "verification": "HTTP 200, 259 data rows, the header names the same mascon release"
+    },
+    {
+      "term": "mass cross-check (antarctica)",
+      "product": "JPL GRACE and GRACE-FO Antarctica mass time series, RL06.3Mv04 CRI (ANTARCTICA_MASS_TELLUS_MASCON_CRI_TIME_SERIES_RL06.3_V4)",
+      "collection_concept_id": "C3206284786-POCLOUD",
+      "query": "https://cmr.earthdata.nasa.gov/search/collections.json?short_name=ANTARCTICA_MASS_TELLUS_MASCON_CRI_TIME_SERIES_RL06.3_V4&provider=POCLOUD, then the granule list",
+      "url": "https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/ANTARCTICA_MASS_TELLUS_MASCON_CRI_TIME_SERIES_RL06.3_V4/antarctica_mass_200204_202607.txt",
+      "files": 1,
+      "total_bytes": 9996,
+      "retrieved_utc": "2026-09-15T17:52:56Z",
+      "sha256": "sha256:b624697cf54cc3c3a66c2303adb9f7bfa2eb12e49b16b6d076e9057ab4691279",
+      "file": "antarctica_mass_200204_202607.txt",
+      "copied_into_root": false,
+      "what_was_read": "the header (the trend line, minus 129.60 with an uncertainty of 39.00 Gt per year over April 2002 to July 2026) and the 259 rows",
+      "verification": "HTTP 200, 259 data rows"
+    },
+    {
+      "term": "volume-itslive (antarctica, grounded)",
+      "product": "ITS_LIVE Antarctic Ice Sheet grounded ice elevation change, version 1.0 (NSIDC-0782)",
+      "doi": "10.5067/L3LSVDZS15ZV",
+      "query": "S3 listing https://its-live-data.s3.amazonaws.com/?list-type=2&prefix=height_change/Antarctica/Grounded/ on 2026-09-15",
+      "url": "https://its-live-data.s3.amazonaws.com/height_change/Antarctica/Grounded/ANT_G1920V01_GroundedIceHeight.nc",
+      "bucket_last_modified": "2024-01-05",
+      "files": 1,
+      "total_bytes": 2241715487,
+      "retrieved_utc": "2026-09-15T18:04:52Z",
+      "sha256": "sha256:cfa23b4204a05e3137373ee4f2ee997c160be62c32e0deeba13c052bd0c14302",
+      "file": "ANT_G1920V01_GroundedIceHeight.nc",
+      "variables_read": "dh, rmse, quality_flag, basin, x, y, time, mapping and the global attributes",
+      "verification": "HTTP 200, size matches the bucket listing, opened with netCDF4; the zarr copy's metadata (listed on 2026-09-15 as the earlier entry below records) names the same variables and no firn field"
     }
   ],
   "read_during_the_search_not_used": [
@@ -79,6 +150,14 @@
       "url": "https://its-live.jpl.nasa.gov/ and https://its-live.jpl.nasa.gov/documentation/",
       "retrieved_utc": "2026-09-15T13:20Z",
       "what_was_read": "the dataset list (Antarctic elevation change, Greenland elevation change 1992 to 2023 at 1920 m EPSG:3413 monthly, Antarctic ice shelf height change and basal melt), the citations and the NSIDC links; no GEMB product page"
+    },
+    {
+      "url": "https://essd.copernicus.org/articles/15/1597/2023/essd-15-1597-2023.pdf",
+      "reached_through": "the link the Crossref record of doi 10.5194/essd-15-1597-2023 carries (its link field), after https://doi.org/10.5194/essd-15-1597-2023 answered 200 with the article landing page on 2026-09-15T17:53:11Z; the article is CC BY 4.0",
+      "retrieved_utc": "2026-09-15T17:53:26Z",
+      "total_bytes": 3574079,
+      "sha256": "sha256:1b86ac5506c2cf3c41fc02b8f0b290217e373b61c8caa83a75a6af91d85ecb5f",
+      "what_was_read": "Otosaka and others 2023 (IMBIE), read in full as text: the abstract; section 4 on the technique comparison (Greenland 2003 to 2018: altimetry, gravimetry and input-output rates within a standard deviation of 19 Gt per year of each other, reconciled minus 221 with an uncertainty of 22 Gt per year; Antarctica 2003 to 2019: minus 115 with an uncertainty of 24, spread 79); Table 2 (Greenland minus 180 with an uncertainty of 39 for 2002 to 2006, minus 280 with 38 for 2007 to 2011, minus 213 with 40 for 2012 to 2016, minus 257 with 42 for 2017 to 2020, minus 169 with 16 for 1992 to 2020; Antarctica minus 62 with 41, minus 130 with 45, minus 150 with 43, minus 115 with 55, minus 92 with 18 over the same periods); the gravimetry group's spread over 2012 to 2014 in Greenland (median difference 36, standard deviation 30 Gt per year)"
     }
   ],
   "registry_records": [
@@ -122,6 +201,20 @@
       "retrieved_utc": "2026-09-15T13:25Z",
       "verified": "C3327092253-NSIDC_CPRD, version 1, doi 10.5067/SE3XH9RXQWAM, abstract naming GEMB for firn air content and surface mass balance; the user guide link above",
       "role": "the ice shelf product's collection record; the NSIDC-0782, 0793 and 0794 records were read the same way"
+    },
+    {
+      "doi": "10.5194/essd-15-1597-2023",
+      "url": "https://api.crossref.org/works/10.5194/essd-15-1597-2023",
+      "retrieved_utc": "2026-09-15T17:53:09Z",
+      "verified": "Otosaka and 67 others, Mass balance of the Greenland and Antarctic ice sheets from 1992 to 2020, Earth System Science Data 15, 1597 to 1616, 2023; the record carries the abstract and the PDF link",
+      "role": "the published intercomparison the closure's numbers are anchored to"
+    },
+    {
+      "doi": "10.1126/science.aaz5845",
+      "url": "https://api.crossref.org/works/10.1126/science.aaz5845",
+      "retrieved_utc": "2026-09-15T17:50Z",
+      "verified": "Smith and 14 others, Pervasive ice sheet mass loss reflects competing ocean and atmosphere processes, Science 368, 1239 to 1242, 2020",
+      "role": "the reference conversion of altimetric height change to mass with a firn model, read in full by the bundle's ATL15 gotcha on 2026-09-13 from the NASA technical reports server; here on its registry record only"
     }
   ],
   "bucket_listings": [
@@ -130,12 +223,41 @@
       "retrieved_utc": "2026-09-15T13:20Z to 2026-09-15T13:30Z",
       "prefixes_listed": "the top level and height_change, mass_change, ice_masks, documentation, NSIDC, autorift_parameters, composites, datacubes, velocity_mosaic, qgis_project, rgb_mosaics, stac-ingest, catalog_geojson and test-space to two or three levels; gemb, GEMB, firn and smb as prefixes hold no key",
       "finding": "GEMB output appears only inside the two height_change product files above"
+    },
+    {
+      "url": "https://its-live-data.s3.amazonaws.com/?list-type=2&prefix=<prefix>",
+      "retrieved_utc": "2026-09-15T17:45Z to 2026-09-15T17:47Z",
+      "prefixes_listed": "mass_change/, velocity_mosaic/, height_change/Antarctica/, height_change/Antarctica/Grounded/, mass_change/antarctic/ and height_change/Greenland/",
+      "finding": "the grounded Antarctic elevation change file and its zarr copy under height_change/Antarctica/Grounded/ (no firn field, the zarr metadata confirms); the velocity mosaics under velocity_mosaic/v2 and v2.1 (not read: no discharge is computed from this root)"
     }
   ],
   "notes": [
     "The ITS_LIVE distribution on AWS carries no GEMB surface mass balance for Greenland and no GEMB field of any kind over the grounded Antarctic ice sheet; the Antarctic rows of this root cover the floating ice shelves and are labelled so in their domain column.",
     "The ice shelf product's last quarter (time value 2017-12-16) carries no finite fac or smb over the shelves and is skipped as a non-sample by both loaders; the stamps list it under empty_steps_skipped.",
     "The ice shelf product's fac_err field is not used: its values run to tens of metres at the median with 9999 where it has none, and its units attribute (m of ice per year) contradicts the user guide (m); the firn stamp records its percentiles and the Antarctic firn uncertainty is the stated noise floor instead.",
-    "The Greenland product carries no forcing attribute for its GEMB 1.3.0 run and no user guide was found for it on nsidc.org or in the bucket; the stamp leaves the forcing unstated rather than assumed."
+    "The Greenland product carries no forcing attribute for its GEMB 1.3.0 run and no user guide was found for it on nsidc.org or in the bucket; the stamp leaves the forcing unstated rather than assumed.",
+    "The mass term's Greenland mascon set is chosen by the ice fraction rule the mass stamp states (the ITS_LIVE Greenland ice mask binned onto the mascon grid, at least 0.25 of a mascon's land area); the stamp lists the sensitivity to the threshold and the comparison with the provider's own Greenland series (trends minus 251.96 and minus 255.77 Gt per year over the same 257 months).",
+    "The ICESat-2 ATL15 granules could not be fetched from this environment (not_reachable above); the altimetric volume term is the ITS_LIVE elevation change, which shares its grid and cell set with the firn term.",
+    "The ITS_LIVE grounded Antarctic elevation change is read from 2003-01 on (the loader's --antarctic-from), since a cell set fixed over the sparse early record would keep a quarter of the sheet; the Antarctic closure refuses in any case for want of a grounded firn term.",
+    "The firn and smb stamps were regenerated on 2026-09-15 with the aggregation strings aligned with the loaders' code (the fixed cell set is finite in the value and the mean; the error field is read separately) and the Greenland DOI written bare; the CSVs are byte-identical to the earlier ones."
+  ],
+  "not_reachable": [
+    {
+      "term": "volume-atl15 (greenland and antarctica)",
+      "product": "ICESat-2 ATL15 Gridded Antarctic and Arctic Land Ice Height Change, Version 5, the 10 km granules ATL15_GL_0329_10km_005_02.nc and ATL15_A1 to A4_0329_10km_005_02.nc",
+      "doi": "10.5067/ATLAS/ATL15.005",
+      "collection_concept_id": "C3892628343-NSIDC_CPRD",
+      "query": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C3892628343-NSIDC_CPRD&page_size=50 on 2026-09-15 (granule sizes 19.0, 31.5, 24.2, 11.9 and 32.7 MB)",
+      "urls": [
+        "https://data.nsidc.earthdatacloud.nasa.gov/nsidc-cumulus-prod-protected/ATLAS/ATL15/005/2019/01/01/ATL15_GL_0329_10km_005_02.nc",
+        "https://data.nsidc.earthdatacloud.nasa.gov/nsidc-cumulus-prod-protected/ATLAS/ATL15/005/2019/01/01/ATL15_A1_0329_10km_005_02.nc",
+        "https://data.nsidc.earthdatacloud.nasa.gov/nsidc-cumulus-prod-protected/ATLAS/ATL15/005/2019/01/01/ATL15_A2_0329_10km_005_02.nc",
+        "https://data.nsidc.earthdatacloud.nasa.gov/nsidc-cumulus-prod-protected/ATLAS/ATL15/005/2019/01/01/ATL15_A3_0329_10km_005_02.nc",
+        "https://data.nsidc.earthdatacloud.nasa.gov/nsidc-cumulus-prod-protected/ATLAS/ATL15/005/2019/01/01/ATL15_A4_0329_10km_005_02.nc"
+      ],
+      "attempted_utc": "2026-09-15T17:49:44Z to 2026-09-15T17:49:56Z",
+      "outcome": "HTTP 401 without the token; with the token each URL answered 303 to a content host (d3h5e2j7riftk6.cloudfront.net) that this environment's egress policy refused (the proxy answered 403 to the CONNECT), so no granule was fetched; the OPeNDAP link the CMR record carries (https://opendap.earthdata.nasa.gov/collections/C3892628343-NSIDC_CPRD/granules/ATL15_GL_0329_10km_005_02.nc_GOur7vtz) answered 404 on 2026-09-15T17:50Z with a server-side error naming the same content host",
+      "consequence": "the root carries no volume-atl15 term; RECORD.json names it absent, the loader isb_volume_atl15.py is verified on its selftest only, and the closure's altimetry term is volume-itslive"
+    }
   ]
 }

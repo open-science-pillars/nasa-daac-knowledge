@@ -2,6 +2,41 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · ICE SHEET MASS BALANCE CLOSURE seeded (issue 158):
+  knowledge/nsidc/computations/ice-sheet-balance.md (type Attested
+  Computation, draft), knowledge/nsidc/recipes/ice-sheet-balance.md
+  (draft), knowledge/nsidc/references/skills/run-ice-sheet-balance.md,
+  the executor references/computations/ice_sheet_balance.py (fixture
+  and data-root modes, refusal exit 3), the attester
+  references/attesters/ice_sheet_balance_check.py (selftest, and
+  --data-root verification of a receipt against the tree), the loaders
+  references/loaders/isb_mass_mascons.py (the JPL mascon sum per ice
+  sheet with the Greenland selection by the ITS_LIVE ice mask and the
+  provider cross-check), isb_volume_atl15.py (ATL15 delta_h summed
+  with ice_area; selftest only, the granules being unreachable from
+  the drafting environment) and isb_volume_itslive.py (the ITS_LIVE
+  elevation change summed over the firn term's cell sets), the
+  data-root tool isb_data_root.py extended to the mass and volume
+  terms with a closure table, the root
+  references/retrieval/ice-sheet-balance-root regenerated with
+  mass.csv, volume-itslive.csv, their stamps, RECORD.json and
+  SOURCES.json (the firn and smb CSVs byte-identical, their stamps'
+  aggregation strings aligned with the loaders' code and the Greenland
+  DOI written bare), the bundle-keyed registry entries in
+  tools/reference_runs.yaml, and the index's computations and recipes
+  sections. Sources read: the JPL mascon CRI granule and the
+  provider's Greenland and Antarctica mass series from the PO.DAAC
+  archive; the ITS_LIVE Greenland, Antarctic ice shelf and grounded
+  Antarctic elevation change files from the ITS_LIVE bucket; the CMR
+  records of ATL15 and of the mascon time series collections; Otosaka
+  and others 2023 (the IMBIE 2023 assessment) in full through its
+  Crossref record and the DOI's landing page; the Crossref records of
+  Otosaka and others 2023 and Smith and others 2020. The Greenland
+  closure over 2003 through 2016 is anchored to the assessment's
+  reconciled rate and technique spread; the Antarctic run refuses for
+  want of a grounded firn term and the input-output method is stated
+  as an omission. (knowledge seeder)
+
 - 2026-09-15 · STEWARD RE-SIGNING of
   knowledge/nsidc/datasets/bedmachine-greenland-antarctica.md,
   knowledge/nsidc/datasets/icesat2-atl10-freeboard.md,

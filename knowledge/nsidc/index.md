@@ -12,13 +12,17 @@ freeboard, the NASA Team sea ice concentration record (NSIDC-0051)
 and the NOAA at NSIDC Sea Ice Index (G02135) that is built from it,
 as reviewable concepts with sources, statuses and steward sign-off. OKF v0.2 conformant
 (okf_version: "0.2"; the vendored spec text lives in marketplace
-docs/upstream). The six BedMachine and ATL10 concepts are drafts; the
+docs/upstream). The six BedMachine and ATL10 concepts and the
+ice sheet mass balance closure (an attested computation with its
+recipe and run skill, the bundle's first) are drafts; the
 rest are stable after the reviews recorded in log.md, and a
 confirmation from the NSIDC DAAC or the product teams is invited on
 each and never required. The mass
 side of land ice (the GRACE mascons) lives in the podaac bundle and is
 named where a concept here depends on it; the ice thickness a
-discharge needs (BedMachine) is now in this bundle.
+discharge needs (BedMachine) is now in this bundle, and the closure
+reads the podaac bundle's mascon product beside this bundle's
+altimetry and firn terms.
 
 What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md).
 
@@ -47,3 +51,11 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [The BedMachine mask separates ocean, ice-free land, grounded ice and floating ice, and a discharge gate sits on grounded ice upstream of the grounding line, where the thickness is mass conservation and not hydrostatic](gotchas/bedmachine-mask-and-grounding-line.md), severity medium, status: stable
 - [ATL10 freeboard is not sea ice thickness: total freeboard is the air and snow interface above the sea surface, and the conversion to thickness needs a snow depth and three densities the product does not carry](gotchas/atl10-freeboard-is-not-thickness.md), severity high, status: draft
 - [The strong and weak beams of each ATLAS pair differ four to one in energy, and so in photon rate, segment length and precision: which of gtXl and gtXr is strong depends on sc_orient, and a freeboard statistic names its beams](gotchas/atl10-strong-versus-weak-beams.md), severity medium, status: stable
+
+## computations
+
+- [Ice sheet mass balance closure from GRACE-FO mascons against altimetric volume change with a firn correction (attested)](computations/ice-sheet-balance.md), status: draft
+
+## recipes
+
+- [Closing an ice sheet's mass balance: gravimetry against firn-corrected altimetry, and the input-output estimate this bundle cannot yet make](recipes/ice-sheet-balance.md), status: draft
