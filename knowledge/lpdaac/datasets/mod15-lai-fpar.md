@@ -5,9 +5,10 @@ title: "MOD15A2H version 6.1: Terra MODIS leaf area index and FPAR retrieved by 
 description: "MOD15A2H is the Terra MODIS eight-day leaf area index and fraction of absorbed photosynthetically active radiation product at 500 m on the sinusoidal grid, a Level 4 product: for each pixel the main algorithm compares the observed red (648 nm) and near-infrared (858 nm) reflectances with a look-up table of three-dimensional radiative transfer solutions for the pixel's biome type and reports the mean of the acceptable solutions as LAI and FPAR and their dispersion as the standard deviation layers; when no solution is found, a backup regression on NDVI is used, and the algorithm path is recorded in the FparLai_QC byte. Values are uint8 with LAI times 0.1 and FPAR times 0.01, and the codes 249 to 255 above the valid range encode the land cover class of pixels without a retrieval. Collection 6.1 keeps the Collection 6 algorithm and format and differs by the Level-1B calibration."
 tags: [mod15, mod15a2h, modis, terra, lai, fpar, leaf-area-index, look-up-table, sinusoidal, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T17:50:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T18:34:53Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/172 }
 resource: https://lpdaac.usgs.gov/products/mod15a2hv061/
 version: "Collection 6.1 (DOI 10.5067/MODIS/MOD15A2H.061, CMR C2218777082-LPCLOUD, provider LPCLOUD), verified 2026-09-15: temporal extent 2000-02-18 to present with the ends-at-present flag set and collection progress ACTIVE, 349,578 granules listed on the product page that day; the user guide read is the Collection 6.1 guide updated April 21 2020"
-status: draft
+status: stable
 stale_after: 2027-03-15
 citation:
   access_date_required: true

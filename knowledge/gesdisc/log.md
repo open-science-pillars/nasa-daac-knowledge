@@ -2,6 +2,23 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · STEWARD SIGNING of
+  knowledge/gesdisc/datasets/oco2-sif-lite.md,
+  knowledge/gesdisc/connectors/gesdisc-subsetter-opendap.md,
+  knowledge/gesdisc/gotchas/sif-is-not-photosynthesis.md,
+  knowledge/gesdisc/gotchas/sif-two-bands-and-offsets.md,
+  knowledge/gesdisc/gotchas/sif-soundings-are-sparse.md,
+  knowledge/gesdisc/gotchas/sif-daily-correction.md: Maintainer review
+  of the OCO-2 and OCO-3 SIF Lite dataset concept, the GES DISC
+  subsetter and OPeNDAP connector concept and the four SIF gotchas,
+  merged in PR #173 after the coordinator's lint and fix round. Five
+  concepts are promoted to stable; the high-severity
+  sif-is-not-photosynthesis gotcha keeps status draft with this one
+  review until the maintainer's second review. The connector's
+  three-month stale_after is accepted for the September 2026 host
+  retirements. The verified events are written on the steward's word.
+  The verified event is written on the steward's word. (steward)
+
 - 2026-09-15 · third seed, OCO-2 solar-induced fluorescence and the
   GES DISC subsetter: one dataset concept (datasets/oco2-sif-lite.md,
   the OCO2_L2_Lite_SIF 11r and 11.2r and OCO3_L2_Lite_SIF 11r daily

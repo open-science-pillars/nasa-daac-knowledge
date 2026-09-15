@@ -5,9 +5,10 @@ title: "OCO-2 SIF is two retrievals, at 757 and 771 nm, each corrected by a dail
 description: "The Lite file retrieves fluorescence in two windows in the oxygen A-band region, near 757 and 771 nm, the 771 nm value being typically about 1.5 times smaller; the 740 nm value is not retrieved but is 0.75 times the sum of SIF_757nm and 1.5 times SIF_771nm, chosen because 740 nm is near the far-red emission peak and is the reference other sensors report. Every retrieved value is offset-adjusted by subtracting the mean SIF over barren surfaces in a three-day window, per footprint, and the unadjusted values, the relative (fraction of continuum) values and the offset statistics are kept in the file. Version 11 moved the 757 nm window away from the detector edge and made both windows consistent between OCO-2 and OCO-3, so version 11 values differ slightly from version 10. A series or a comparison that mixes wavelengths, mixes adjusted with unadjusted or relative values, or joins version 10 to version 11 files carries a step or a scale factor that is not vegetation."
 tags: [oco-2, oco-3, sif, 757nm, 771nm, 740nm, offset-correction, bias-correction, retrieval-window, version-11, oco2_l2_lite_sif, gesdisc, biosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T18:25:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T18:36:49Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/173 }
 severity: medium
 dataset: ../datasets/oco2-sif-lite.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: ug-v11

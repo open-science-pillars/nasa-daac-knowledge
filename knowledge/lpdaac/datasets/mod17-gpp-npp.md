@@ -5,9 +5,10 @@ title: "MOD17A2H and MOD17A3HGF version 6.1: Terra MODIS gross primary productiv
 description: "MOD17A2H is the Terra MODIS eight-day gross primary productivity product at 500 m on the sinusoidal grid, a Level 4 model output: daily GPP is the product of a biome maximum light use efficiency, attenuated by linear ramps in daily minimum temperature and daytime vapour pressure deficit from GMAO reanalysis, and the absorbed PAR from MOD15 FPAR and 0.45 times the reanalysis shortwave radiation; the file holds the eight-day sums of GPP and of net photosynthesis (GPP less leaf and fine root maintenance respiration computed from MOD15 LAI) as int16 times 0.0001 kg C per square metre, with a quality byte inherited from MOD15. MOD17A3HGF is the year-end product built after the year's MOD15A2H has been screened by its quality label and gap-filled by linear interpolation: annual GPP, annual NPP as 0.8 times (GPP minus maintenance respiration), and a quality layer that is the percentage of growing-season days on which filled LAI and FPAR were used. Since Collection 6.1 a five-year FPAR and LAI climatology replaces contaminated inputs in the eight-day product, and the Collection 6.1 MOD17A2H record begins on 2021-01-01."
 tags: [mod17, mod17a2h, mod17a3hgf, modis, terra, gpp, npp, primary-productivity, light-use-efficiency, bplut, sinusoidal, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T17:50:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T18:34:53Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/172 }
 resource: https://lpdaac.usgs.gov/products/mod17a2hv061/
 version: "Collection 6.1 (MOD17A2H DOI 10.5067/MODIS/MOD17A2H.061, CMR C2565791027-LPCLOUD; MOD17A3HGF DOI 10.5067/MODIS/MOD17A3HGF.061, CMR C2565791034-LPCLOUD; provider LPCLOUD), verified 2026-09-15: MOD17A2H temporal extent 2021-01-01 to present and MOD17A3HGF 2001-01-01 to present, both with the ends-at-present flag set and collection progress ACTIVE, 92,343 and 7,250 granules on the product pages that day; the user guide read is version 1.1 of March 11 2021"
-status: draft
+status: stable
 stale_after: 2027-03-15
 citation:
   access_date_required: true

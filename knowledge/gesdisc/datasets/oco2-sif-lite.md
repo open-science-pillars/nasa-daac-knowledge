@@ -5,6 +5,7 @@ title: "OCO-2 and OCO-3 solar-induced fluorescence Lite files: one netCDF-4 file
 description: "The OCO-2 SIF Lite product (OCO2_L2_Lite_SIF, version 11r through 30 March 2024 and 11.2r from 2 April 2024, DOIs 10.5067/OTRE7KQS8AU8 and 10.5067/8XXUQU7HBGBL) and its OCO-3 sibling (OCO3_L2_Lite_SIF 11r, DOI 10.5067/HC776J71KV41, from 6 August 2019) hold every converged IMAP-DOAS fluorescence sounding of a day that passed the level 1B quality flag: solar-induced chlorophyll fluorescence retrieved in two windows near 757 and 771 nm in the oxygen A-band region, corrected each day by a background over barren surfaces, combined by fixed factors into a 740 nm value, and scaled by a clear-sky geometric factor into a daily average. The values are radiances in W per square metre per steradian per micrometre at footprints of up to about 1.3 by 2.25 km, sparse in space and single-overpass in time; they are not photosynthesis, not gridded and not error-free, and a one-sigma uncertainty, a quality flag, the observation mode and the barren-surface offset statistics ship with every file."
 tags: [oco-2, oco-3, sif, solar-induced-fluorescence, chlorophyll-fluorescence, oco2_l2_lite_sif, oco3_l2_lite_sif, imap-doas, gpp, gesdisc, biosphere, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T18:10:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T18:36:49Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/173 }
 resource: https://disc.gsfc.nasa.gov/datasets/OCO2_L2_Lite_SIF_11.2r/summary
 version: "OCO-2 Lite SIF version 11r (C2248652649-GES_DISC, DOI 10.5067/OTRE7KQS8AU8, 3274 daily files from 2014-09-06 to 2024-03-30, build B11012Ar) and version 11.2r (C2912084771-GES_DISC, DOI 10.5067/8XXUQU7HBGBL, ends-at-present, 818 daily files from 2024-04-02 to 2026-07-27, builds B11217Ar and B11218Ar); OCO-3 Lite SIF version 11r (C2910085832-GES_DISC, DOI 10.5067/HC776J71KV41, ends-at-present, 2069 daily files from 2019-08-06 to 2026-06-28); concept ids, DOIs, extents and counts CMR-verified 2026-09-15, the file structure, field names and formulas read from the July 2025 user guide (version 3.0 revision A, Tables 4-1, 4-4 and 4-11), confirmed against the DAP4 metadata of the 2024-04-02 OCO-2 granule the same day"
 sources:
@@ -62,7 +63,7 @@ sources:
   - id: magney-2019
     resource: https://doi.org/10.1029/2019JG005029
     title: "Magney and others, 2019, Disentangling Changes in the Spectral Shape of Chlorophyll Fluorescence: Implications for Remote Sensing of Photosynthesis, Journal of Geophysical Research Biogeosciences 124, 1491 to 1507 (the paper the user guide cites for the wavelength conversion; record and abstract read on the Crossref registry 2026-09-15: one spectral shape explains 84 percent of the variance across species and the shape is stable beyond 740 nm)"
-status: draft
+status: stable
 stale_after: 2027-03-15
 ---
 

@@ -5,6 +5,7 @@ title: "NDVI and EVI are empirical indices of red and near-infrared contrast, no
 description: "The MOD13 NDVI is a non-linear stretch of the near-infrared to red ratio that confines its values to -1 to 1: as the ratio rises from 5 to 10 to 15 to 20 the NDVI moves from 0.67 to 0.82 to 0.87 to 0.90, so the index becomes insensitive to leaf area above about 2 or 3, is most sensitive to the soil, litter or snow background at intermediate cover, and varies with leaf angle and clumping for the same leaf area. EVI is a separate formula with a blue-band aerosol term and a canopy background adjustment, replaced by a two-band form wherever the blue reflectance is high, and no quality bit says which form produced a pixel. A script that reads a 20 per cent rise in NDVI as 20 per cent more vegetation, that treats a flat NDVI over rainforest as an unchanged canopy, that regresses biomass or leaf area on the index with one relation across cover types, or that uses NDVI and EVI interchangeably reports a property of the index as a property of the land, and nothing raises an error because every value lies in the valid range."
 tags: [mod13, mod13q1, mod13a1, modis, ndvi, evi, saturation, vegetation-index, leaf-area-index, biomass, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T17:50:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T18:34:53Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/172 }
 severity: high
 dataset: ../datasets/mod13-vegetation-indices.md
 eval_case: index-is-not-a-state-variable

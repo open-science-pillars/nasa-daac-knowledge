@@ -2,6 +2,25 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · STEWARD SIGNING of
+  knowledge/lpdaac/datasets/mod13-vegetation-indices.md,
+  knowledge/lpdaac/datasets/mod15-lai-fpar.md,
+  knowledge/lpdaac/datasets/mod17-gpp-npp.md,
+  knowledge/lpdaac/gotchas/composite-day-of-year-layer.md,
+  knowledge/lpdaac/gotchas/index-is-not-a-state-variable.md,
+  knowledge/lpdaac/gotchas/lai-and-gpp-are-model-outputs.md,
+  knowledge/lpdaac/gotchas/sinusoidal-grid-cell-area.md: Maintainer
+  review of the MODIS vegetation concepts (MOD13 vegetation indices,
+  MOD15 LAI and FPAR, MOD17 GPP and NPP, and four gotchas), merged in PR
+  #172 after the coordinator's lint and fix round. Six concepts are
+  promoted to stable; the high-severity index-is-not-a-state-variable
+  gotcha keeps status draft with this one review until the maintainer's
+  second review. Severity calls recorded: the sinusoidal grid gotcha at
+  low and the composite day gotcha at medium follow the seed brief
+  although both wrong-result modes are silent; raising either later owes
+  an eval case. The verified events are written on the steward's word.
+  The verified event is written on the steward's word. (steward)
+
 - 2026-09-15 · fix round on the MODIS vegetation drafts (PR 172): the
   index gotcha's arithmetic corrected (0.67 to 0.82 is about 22 per
   cent, the NDVI step for a ratio doubling from 10 to 20 about 0.09,
