@@ -2,15 +2,15 @@
 type: dataset
 spheres: [atmosphere]
 title: "AIRS version 7 level 3 temperature and water vapour: the daily and monthly 1 degree grids (AIRS3STD, AIRS3STM) as ascending and descending fields on fixed pressure levels with a count and a standard deviation beside every mean"
-description: "The Atmospheric Infrared Sounder on Aqua, gridded by the AIRS science team into the version 7 level 3 standard products at GES DISC: a daily file (AIRS3STD) and a calendar-month file (AIRS3STM) on a 1 by 1 degree grid from 31 August 2002 to the present, each holding separate ascending (1:30 PM local, daytime) and descending (1:30 AM, night-time) grids, temperature on 24 standard pressure levels from 1000 to 1 hPa, water vapour mixing ratio and relative humidity on 12 levels from 1000 to 100 hPa and 12 layers, surface skin and air temperature, total column water vapour, a forecast surface pressure, and for every mean a count of the level 2 retrievals that entered it and their standard deviation. No error field ships; the count and the standard deviation are what stand in, and the guide says the count does not characterise sampling bias."
+description: "The Atmospheric Infrared Sounder on Aqua, gridded by the AIRS science team into the version 7 level 3 standard products at GES DISC: a daily file (AIRS3STD) and a calendar-month file (AIRS3STM) on a 1 by 1 degree grid from 31 August 2002 to the present, each holding separate ascending (1:30 PM local, daytime) and descending (1:30 AM, night-time) grids, temperature on 24 standard pressure levels from 1000 to 1 hPa, water vapour mixing ratio and relative humidity on 12 levels from 1000 to 100 hPa and 12 layers bounded by the standard levels from 1000 to 70 hPa, surface skin and air temperature, total column water vapour, a forecast surface pressure, and for every mean a count of the level 2 retrievals that entered it and their standard deviation. No error field ships; the count and the standard deviation are what stand in, and the guide says the count does not characterise sampling bias."
 tags: [airs, aqua, airs3std, airs3stm, level-3, temperature, water-vapour, humidity, pressure-levels, ascending, descending, gesdisc, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
 resource: https://disc.gsfc.nasa.gov/datasets/AIRS3STD_7.0/summary
-version: "Version 7.0 is the current AIRS science team level 3 release; concept ids and DOIs CMR-verified 2026-09-15, the DOIs resolving on doi.org the same day to the GES DISC pages: AIRS3STD C1701805652-GES_DISC (DOI 10.5067/UO3Q64CTTS1U, daily, from 2002-08-31, newest granule that day 2026-09-13 with processing version v7.0.10.0 in its name), AIRS3STM C1701805662-GES_DISC (DOI 10.5067/UBENJB9D3T2H, monthly, from 2002-09-01, newest granule August 2026 with v7.0.9.3 in its name), the support products AIRS3SPD C1701805657-GES_DISC and AIRS3SPM C1701805668-GES_DISC on 100 levels, and the superseded version 006 records AIRS3STD C1238517289-GES_DISC and AIRS3STM C1238517301-GES_DISC still in CMR; the post-DSM processing versions are v7.0.9.3 from 2021-09-23 and v7.0.10.0 from 2024-12-23 per the JPL memo of 2025-12-10"
+version: "Version 7.0 is the current AIRS science team level 3 release; concept ids and DOIs CMR-verified 2026-09-15, the DOIs resolving on doi.org the same day to the GES DISC pages: AIRS3STD C1701805652-GES_DISC (DOI 10.5067/UO3Q64CTTS1U, daily, from 2002-08-31, newest granule that day 2026-09-13 with processing version v7.0.10.0 in its name), AIRS3STM C1701805662-GES_DISC (DOI 10.5067/UBENJB9D3T2H, monthly, from 2002-09-01, newest granule August 2026 with v7.0.9.3 in its name, as every monthly granule from September 2021 on has), the support products AIRS3SPD C1701805657-GES_DISC and AIRS3SPM C1701805668-GES_DISC on 100 levels, and the superseded version 006 records AIRS3STD C1238517289-GES_DISC and AIRS3STM C1238517301-GES_DISC still in CMR; the post-DSM processing versions are v7.0.9.3 from 2021-09-23 and v7.0.10.0 from 2024-12-23 per Table 1 of the JPL memo of 2025-12-10, but the granule names read 2026-09-15 do not follow that boundary: the daily files still carry v7.0.9.3 through the end of December 2024 and the daily files of late August and early September 2026 mix v7.0.10.0 with v7.0.9.3 on some days"
 sources:
   - id: cmr-airs3std
     resource: https://cmr.earthdata.nasa.gov/search/collections.json?short_name=AIRS3STD&provider=GES_DISC
-    title: "CMR collection search for AIRS3STD, AIRS3STM, AIRS3SPD and AIRS3SPM under the GES_DISC provider, and the UMM records of the four version 7.0 collections (read 2026-09-15: concept ids, DOIs, the 2002 start dates with no end, the 1 degree gridded resolution, the abstracts, the document links and the two publication references; the same day the granule search gave the first and newest AIRS3STD and AIRS3STM granules and the processing versions in their names)"
+    title: "CMR collection search for AIRS3STD, AIRS3STM, AIRS3SPD and AIRS3SPM under the GES_DISC provider, and the UMM records of the four version 7.0 collections (read 2026-09-15: concept ids, DOIs, the 2002 start dates with no end, the 1 degree gridded resolution, the abstracts, the document links and the two publication references; the same day the granule search gave the first and newest AIRS3STD and AIRS3STM granules and the processing versions in their names, and samples around the version boundaries: monthly granules v7.0.4.0 through August 2021 and v7.0.9.3 from September 2021 through August 2026, daily granules v7.0.9.3 on 19 to 27 December 2024 and a mix of v7.0.10.0 and v7.0.9.3 on 24 August to 4 September 2026)"
   - id: gesdisc-airs3std
     resource: https://disc.gsfc.nasa.gov/datasets/AIRS3STD_7.0/summary
     title: "GES DISC collection page for AIRS3STD 7.0 (fetched 2026-09-15; the page is rendered by script, so its text was read from the CMR record it is built from: the grating spectrometer, the 24 hour period per node, the westward progression from the dateline, the gores, the 1 by 1 degree binning and the mean, standard deviation and count maps)"
@@ -25,7 +25,7 @@ sources:
     title: "GES DISC AIRS Documentation index (read 2026-09-15: the current document list with dates, among them the version 7 level 2 and level 3 user guides, the level 3 standard pressure levels note of July 2020, the data outages list of April 2026, the DC restore anomaly memo of March 2026 and the deep space manoeuvre impact report of December 2025)"
   - id: airs-dsm
     resource: https://docserver.gesdisc.eosdis.nasa.gov/public/project/AIRS/AIRS_DSM_Impact.pdf
-    title: "Wang and Yue, 2025, Impact of Deep Space Maneuver (DSM, Sept. 23, 2021) on AIRS products and Post-DSM Corrections, Jet Propulsion Laboratory, 10 December 2025 (read 2026-09-15: the overview and Table 1 of post-DSM processing versions, the two algorithm fixes, the anomaly time series computed against a 2006 to 2015 climatology, and section 8 on the breakpoint in the version 7 time series)"
+    title: "Wang and Yue, 2025, Impact of Deep Space Maneuver (DSM, Sept. 23, 2021) on AIRS products and Post-DSM Corrections, Jet Propulsion Laboratory, 10 December 2025 (read 2026-09-15: the overview and Table 1 of post-DSM processing versions, the two algorithm fixes, the statement that the fully corrected v7.0.9.3 and v7.0.10.0 were released to users in September 2025, the anomaly time series computed against a 2006 to 2015 climatology, and section 8 on the breakpoint in the version 7 time series)"
   - id: airs-dcr
     resource: https://docserver.gesdisc.eosdis.nasa.gov/public/project/AIRS/DC-Restore_Anomaly_Note_Final_260302_ADF1122.pdf
     title: "Pagano, Wang, Goodman and Sterzinger, 2026, AIRS DC Restore Anomaly, AIRS Design File Memo 1122, 2 March 2026 (read 2026-09-15: the anomaly of 19 to 28 January 2026, the modules affected, and the level 2 and level 3 products not generated between those dates)"
@@ -71,8 +71,10 @@ product carries temperature on 24 standard pressure levels (1000,
 20, 15, 10, 7, 5, 3, 2, 1.5 and 1 hPa, ordered from the surface
 upward), geopotential height on the same levels, water vapour mass
 mixing ratio and relative humidity on the 12 levels from 1000 to 100
-hPa, the layer mixing ratio on the 12 layers between them
-(mid-layer pressures 961.8 to 83.7 hPa), and the single-level fields
+hPa, the layer mixing ratio on 12 layers whose boundaries are the
+first 13 standard levels, 1000 down to 70 hPa (mid-layer pressures
+961.8 to 83.7 hPa, the topmost layer being 100 to 70 hPa), and the
+single-level fields
 a climatology reaches for: surface skin temperature, surface air
 temperature, total column water vapour in kilograms per square
 metre, surface mixing ratio and relative humidity, tropopause
@@ -113,7 +115,8 @@ nominal 24 hours per node rather than midnight to midnight: 1:30 PM
 to 1:30 PM UTC for the descending node and 1:30 AM to 1:30 AM for
 the ascending, the gridding starting at the antimeridian and moving
 westward with the orbits so that neighbouring cells are no more than
-about 100 minutes apart, the cell edge sitting on the 180 degree
+about 100 minutes apart by the guide's figure (the collection record
+says about 90), the cell edge sitting on the 180 degree
 meridian, and gores left between the swaths where the day had no
 coverage.[^airs-l3-ug][^gesdisc-airs3std] The monthly file is the
 calendar month, and in version 7 it is the plain arithmetic mean of
@@ -137,7 +140,14 @@ first-guess network, released in September 2025 as v7.0.9.3 (23
 September 2021 to 23 December 2024) and v7.0.10.0 (from 23 December
 2024), replacing the v7.0.7.0 files of May 2022 whose water vapour
 and near-surface fields carried a discontinuity at the manoeuvre
-date.[^airs-dsm][^cmr-airs3std]
+date.[^airs-dsm] The file names read on 2026-09-15 do not follow the
+memo's boundary between the two versions: every monthly granule from
+September 2021 through August 2026 carries v7.0.9.3, the daily
+granules of 19 to 27 December 2024 all carry v7.0.9.3, and the daily
+granules of late August and early September 2026 carry v7.0.10.0 on
+most days and v7.0.9.3 on some, so the processing string in a file's
+name, not the memo's date range, says which version a given file
+is.[^cmr-airs3std][^airs-dsm]
 
 **Access.** Both collections are searchable in CMR by short name
 under the GES_DISC provider and served through Earthdata Search and

@@ -2,7 +2,7 @@
 type: dataset-gotcha
 spheres: [atmosphere]
 title: "AIRS level 3 profiles sit on fixed pressure levels, not model levels, and the lowest levels lie below the terrain: the per-level count falls to zero there, the layer water vapour is integrated below the surface, and a mean at 1000 or 925 hPa over land is a mean over the low ground only"
-description: "The AIRS version 7 level 3 temperature profile is reported on 24 standard pressure levels from 1000 to 1 hPa and water vapour on 12 levels and 12 layers from 1000 to 100 hPa, the same levels in every cell whatever the elevation; where the terrain rises above a level no retrieval reaches it, the level's count (_ct) drops toward zero while TotalCounts stays full, and the cell reads as fill. The layer mixing ratio profile assumes an atmosphere down to 1000 hPa and extends below the surface, while the total column water vapour does not. A regional mean at a low level over topography, a vertical integral of the layers, or a comparison against a reanalysis on model levels or with its own below-ground convention, returns a number the file raised no error about."
+description: "The AIRS version 7 level 3 temperature profile is reported on 24 standard pressure levels from 1000 to 1 hPa and water vapour on 12 levels from 1000 to 100 hPa and 12 layers bounded by the standard levels from 1000 to 70 hPa, the same levels in every cell whatever the elevation; where the terrain rises above a level no retrieval reaches it, the level's count (_ct) drops toward zero while TotalCounts stays full, and the cell reads as fill. The layer mixing ratio profile assumes an atmosphere down to 1000 hPa and extends below the surface, while the total column water vapour does not. A regional mean at a low level over topography, a vertical integral of the layers, or a comparison against a reanalysis on model levels or with its own below-ground convention, returns a number the file raised no error about."
 tags: [airs, aqua, airs3std, airs3stm, pressure-levels, surface-pressure, topography, water-vapour, temperature, gesdisc, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
 severity: high
@@ -13,7 +13,7 @@ stale_after: 2027-03-15
 sources:
   - id: airs-l3-ug
     resource: https://docserver.gesdisc.eosdis.nasa.gov/public/project/AIRS/V7_L3_User_Guide.pdf
-    title: "Tian, Manning, Roman, Thrastarson, Fetzer and Monarrez, 2020, AIRS Version 7 Level 3 Product User Guide, version 1.0, April 2020, JPL (read 2026-09-15: Table 1 of the 24 temperature and 12 water vapour levels and 12 layer midpoints, the StdPressureLev and H2OPressureLev dimension notes, the field table with SurfPres_Forecast, Topography, H2O_MMR_Lyr and TotH2OVap and the _ct and TotalCounts ancillaries, section 1.3 on missing data where topography intrudes into the lower profile, section 4.2 on unequal numbers of samples within profiles due to topography and section 4.4 on the difference between TotH2OVap and the vertical integral of the layers)"
+    title: "Tian, Manning, Roman, Thrastarson, Fetzer and Monarrez, 2020, AIRS Version 7 Level 3 Product User Guide, version 1.0, April 2020, JPL (read 2026-09-15: Table 1 of the 24 temperature and 12 water vapour levels and the 12 layer midpoints from 961.8 to 83.7 hPa, whose boundaries the H2OPressureLay dimension note places at the standard levels, so the layers run 1000 to 70 hPa, the StdPressureLev and H2OPressureLev dimension notes, the field table with SurfPres_Forecast, Topography, H2O_MMR_Lyr and TotH2OVap and the _ct and TotalCounts ancillaries, section 1.3 on missing data where topography intrudes into the lower profile, section 4.2 on unequal numbers of samples within profiles due to topography and section 4.4 on the difference between TotH2OVap and the vertical integral of the layers)"
   - id: cmr-airs3std
     resource: https://cmr.earthdata.nasa.gov/search/collections.json?short_name=AIRS3STD&provider=GES_DISC
     title: "CMR collection and UMM records for AIRS3STD and AIRS3STM 7.0 (read 2026-09-15: the abstract's statement that each mean map has a count map, that counts bound the points per bin, and that surface pressure is among the parameters)"
@@ -35,15 +35,19 @@ and geopotential height on 24 fixed pressure levels (1000, 925, 850,
 700, 600, 500, 400, 300, 250, 200, 150, 100, 70, 50, 30, 20, 15, 10,
 7, 5, 3, 2, 1.5 and 1 hPa, surface upward), water vapour mass mixing
 ratio and relative humidity on the 12 levels from 1000 to 100 hPa,
-and a layer mixing ratio on the 12 layers between those levels, with
-mid-layer pressures from 961.8 to 83.7 hPa; the level 3 levels are a
+and a layer mixing ratio on 12 layers whose boundaries are the
+standard levels from 1000 down to 70 hPa, the topmost layer being 100
+to 70 hPa, with mid-layer pressures from 961.8 to 83.7 hPa; the
+level 3 levels are a
 subset of the 28 level 2 pressure levels, and the support product
 carries 100.[^airs-l3-ug] These are pressure levels, the same in
 every cell, not the terrain-following or hybrid levels of a model:
 the retrieval's own vertical coordinate is the pressure grid, and
 the file carries the terrain separately, as Topography in metres in
 the location grid and as SurfPres_Forecast, the forecast surface
-pressure, in every data grid.[^airs-l3-ug] Where the ground rises
+pressure, in the ascending, descending and TqJoint grids (the field
+table lists it among the standard and TqJoint grid fields, not among
+the microwave-only ones).[^airs-l3-ug] Where the ground rises
 above a level, no retrieval reports that level, and the guide names
 the consequence twice: the monthly product is complete except where
 the retrieval was problematical or "where topography intrudes into
@@ -112,7 +116,8 @@ level the same ensemble, which removes the difference in yield
 between levels that is due to quality control but not the one due
 to terrain.[^airs-l3-ug]
 
-**Verification.** Table 1 of the user guide lists the levels, and
+**Verification.** Table 1 of the user guide lists the levels and the layer midpoints
+(with the layer boundaries at the standard levels), and
 the guide's sections 4.2 and 4.4 state the count drop over
 topography and the below-surface extent of the layers in the words
 quoted above.[^airs-l3-ug] The check a reader runs on one daily

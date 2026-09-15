@@ -15,7 +15,8 @@ GES DISC or the product teams is invited on each and never required.
 The hydrology plugin's own IMERG and NLDAS-2 concepts stay in its
 bundle; a concept here names them where it depends on them. This
 bundle's eval cases live in open-science-pillars/agent-evals under
-merra2/cases/ and airs/cases/, one per high-severity gotcha, and their registration
+merra2/cases/ and airs/cases/ (the OMI row anomaly case lives under
+airs/cases/ as well), one per high-severity gotcha, and their registration
 in the evals manifests is the coordinator's step, not this bundle's.
 
 What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md).

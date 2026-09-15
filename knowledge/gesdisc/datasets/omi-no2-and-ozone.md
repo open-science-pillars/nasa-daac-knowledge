@@ -70,7 +70,8 @@ Dutch-Finnish ultraviolet and visible imaging spectrograph on NASA's
 Aura satellite, launched 15 July 2004, measuring 264 to 504 nm at 60
 simultaneous cross-track positions of 13 by 24 km at nadir, so that
 14 to 15 orbits of 99 minutes cover the sunlit Earth about
-daily.[^schenkeveld-2017][^levelt-2006][^omno2-readme-v5] GES DISC
+daily, a combination of resolution and daily coverage the
+mission's overview paper calls unprecedented.[^schenkeveld-2017][^levelt-2006][^omno2-readme-v5][^levelt-2018] GES DISC
 archives its level 2 orbit files and the daily level 3 grids the
 teams build from them, all beginning 1 October 2004.[^cmr-omi] The
 two level 3 products this concept covers are OMNO2d, the nitrogen
@@ -87,7 +88,9 @@ OMI-Aura_L3-OMNO2d_<yyyy>m<mmdd>_v<version>-<production>.he5, on a
 its edges at 180 W and 90 S, with five fields in molecules per
 square centimetre: ColumnAmountNO2, ColumnAmountNO2CloudScreened,
 ColumnAmountNO2Trop, ColumnAmountNO2TropCloudScreened and
-Weight.[^omno2d-filespec][^omno2-readme-v5] Each column field is the
+Weight; a file holds the daylit portion of about 14 orbits, and
+the collection record describes it as good-quality pixels binned
+and averaged.[^omno2d-filespec][^omno2-readme-v5][^gesdisc-omno2d] Each column field is the
 area-weighted average of the level 2 fields of view that overlap the
 cell after screening: solar zenith angle below 85 degrees, the
 ascending (daylit) orbit with the summary quality bit clear, the
@@ -122,7 +125,7 @@ degree grid of 360 by 180 cells (the first centred at 179.5 W, 89.5
 S) with five fields: ColumnAmountO3 in Dobson units,
 RadiativeCloudFraction, SolarZenithAngle, UVAerosolIndex and
 ViewingZenithAngle; there is no count, weight or standard deviation
-field.[^omto3d-fs-v4][^omto3d-filespec-v3] Its day is the TOMS level
+field; a file holds about 15 orbits.[^omto3d-fs-v4][^omto3d-filespec-v3][^gesdisc-omto3d] Its day is the TOMS level
 3 day, the set of pixels whose centres share a local calendar date,
 which covers the whole sunlit globe once and puts the near-24-hour
 discontinuity at the antimeridian, and which needs three consecutive
@@ -144,7 +147,9 @@ DOI; the level 3 READMEs and file specifications are on the GES
 DISC data tree and document server, the OMTO3d and OMTO3e version
 004 README text files sitting behind an access prompt when fetched.
 The Aura project page the records name redirects to NASA Science and
-carries no product documentation.[^cmr-omi][^aura]
+carries no product documentation; the references the OMTO3d
+records carry are the instrument's calibration and level 0 to 1B
+processing papers rather than a level 3 description.[^cmr-omi][^aura][^dobber-2006]
 
 ## Uncertainty
 
@@ -161,9 +166,10 @@ carries no product documentation.[^cmr-omi][^aura]
   measurement.** The 8 to 10 pixels farthest from nadir are much
   larger than a 0.25 degree cell, so a cell under a swath edge
   carries NO2 from some distance away while a cell under nadir
-  resolves it; Aura's precession moves a fixed cell between the two
-  from day to day, and the Weight field is the only record of
-  which.[^omno2-readme-v5]
+  resolves it; the day-to-day shift of the ground track within the
+  orbit's repeat cycle (what the README calls Aura's precession
+  relative to the fixed grid) moves a fixed cell between the two,
+  and the Weight field is the only record of which.[^omno2-readme-v5]
 - **The row anomaly removes rows.** From 25 June 2007 a blockage in
   the viewing port attenuated the radiance in certain cross-track
   positions, spreading in 2008 and 2009 and changing since; the

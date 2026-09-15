@@ -6,6 +6,11 @@ description: "Neither AIRS level 3 nor the OMI level 3 grids ship an anomaly or 
 tags: [airs, omi, anomaly, climatology, base-period, trend, breakpoint, deep-space-maneuver, row-anomaly, airs3stm, omno2d, omto3d, gesdisc, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
 severity: low
+# low: the base period, version and node are choices a reader makes and
+# can state, the breaks are dated in the documents, and the error is a
+# known difference removable once the base period is named; it inherits
+# the row anomaly's or the manoeuvre's severity only where the base
+# spans them unknowingly.
 dataset: ../datasets/airs-l3-temperature-humidity.md
 status: draft
 stale_after: 2027-03-15

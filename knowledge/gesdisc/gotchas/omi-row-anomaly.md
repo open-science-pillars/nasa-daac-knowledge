@@ -2,7 +2,7 @@
 type: dataset-gotcha
 spheres: [atmosphere]
 title: "The OMI row anomaly has removed cross-track rows since June 2007, growing in 2008 and 2009 and changing since: the level 2 flag names the rows, the level 3 grids drop them, and a series across the onset mixes a change in sampling with a change in the atmosphere"
-description: "From 25 June 2007 a blockage in OMI's viewing port attenuated the radiance in cross-track positions 53 and 54, from 11 May 2008 in positions 37 to 44, from 24 January 2009 in 27 to 44, with further changes in July and August 2011 and a dynamic extent since; the affected pixels carry a nonzero XTrackQualityFlags (and the NO2 team's XTrackQualityFlagsModified), the OMNO2 column fields are fill where flagged, and OMNO2d and OMTO3d exclude the flagged pixels before gridding. The grids still look complete, but in some periods half the fields of view are rejected, the daily coverage has gaps, a cell's weight and its mix of nadir and swath-edge pixels differ before and after, and the NO2 team says a trend spanning the onset is sampled differently on each side of it."
+description: "From 25 June 2007 a blockage in OMI's viewing port attenuated the radiance in cross-track positions 53 and 54, from 11 May 2008 in positions 37 to 44, from 24 January 2009 in 27 to 44, with further changes in July and August 2011 and a dynamic extent since; the affected pixels carry a nonzero XTrackQualityFlags (and, in the version 5.0 NO2 product, the team's XTrackQualityFlagsModified), the OMNO2 column fields are fill where the version's flag is set, and OMNO2d and OMTO3d exclude the flagged pixels before gridding. The grids still look complete, but in some periods half the fields of view are rejected, the daily coverage has gaps, a cell's weight and its mix of nadir and swath-edge pixels differ before and after, and the NO2 team says a trend spanning the onset is sampled differently on each side of it."
 tags: [omi, aura, row-anomaly, xtrackqualityflags, omno2d, omto3d, omno2, omto3, sampling, trend, gesdisc, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
 severity: high
@@ -19,7 +19,7 @@ sources:
     title: "OMI Nitrogen Dioxide Algorithm Team, December 2024, OMNO2 README Document, Collection 4 Version 5.0, document version 10.0 (read 2026-09-15: section 2.4 on the row anomaly and its four effects, the XTrackQualityFlags and XTrackQualityFlagsModified field descriptions, the limitations paragraph on up to 50 percent rejection and on trend analyses across anomaly and non-anomaly periods, the OMNO2d screening table with the flag at 0 or 255, and the known-issues note on residual anomaly patterns)"
   - id: omno2-readme-v4
     resource: https://acdisc.gesdisc.eosdis.nasa.gov/data/Aura_OMI_Level3/OMNO2d.003/doc/README.OMNO2.pdf
-    title: "OMI Nitrogen Dioxide Algorithm Team, December 2019, OMNO2 README Document, Version 4.0, document version 9.0 (read 2026-09-15: the same row anomaly section, the version 4.0 rule that XTrackQualityFlags is fill before June 2007 and the OMNO2d screening on XTrackQualityFlags 0 or 255)"
+    title: "OMI Nitrogen Dioxide Algorithm Team, December 2019, OMNO2 README Document, Version 4.0, document version 9.0 (read 2026-09-15: the same row anomaly section, in 4.0 XTrackQualityFlags is the only row anomaly field, with the team's additional flagging folded into it so that it is not identical to the same-named field in other products, it is fill before June 2007, the column fields are fill where it is nonzero, and OMNO2d screens on it at 0 or 255)"
   - id: omto3d-readme-v3
     resource: https://acdisc.gesdisc.eosdis.nasa.gov/data/Aura_OMI_Level3/OMTO3d.003/doc/OMTO3d_OSIPS_README_V003.doc
     title: "Leonard, 2009, README for OMTO3d, 31 May 2009 (read 2026-09-15 as extracted text: exclusion criterion A5, level 2 observations with the row anomaly flag, bit 6 of the quality flags, set are excluded from the grid)"
@@ -59,21 +59,29 @@ in-flight performance paper for an onset presumably earlier than
 the first flagged date.[^omno2-readme-v5][^schenkeveld-2017] The
 level 1B processing flags the rows, and the flag reaches the level
 2 products as XTrackQualityFlags, nonzero where the radiance is
-affected and, in the version 4.0 NO2 product, fill before June 2007;
-the NO2 team found the level 1B detection could over- or under-flag
-and miss clearly affected rows beside flagged ones, so its products
-carry an additional XTrackQualityFlagsModified with the team's own
-assessment, and in versions 4.0 and 5.0 the column amount fields
-are set to fill wherever the team's flag is set.[^omno2-readme-v5][^omno2-readme-v4]
-The level 3 grids exclude the rows before averaging: OMNO2d takes
-only pixels whose flag is 0 or 255 (fill), and OMTO3d excludes any
+affected and fill before June 2007. Which flag drives the fill
+differs by NO2 product version. In version 4.0 XTrackQualityFlags is
+the only row anomaly field: the team found the level 1B detection
+sometimes missed clearly affected rows beside flagged ones, folded
+its additional flagging into that field (so that, the README says,
+it is not identical to the same-named field in other products), and
+set the column amount fields to fill wherever it is
+nonzero.[^omno2-readme-v4] Version 5.0 keeps XTrackQualityFlags as
+delivered and adds XTrackQualityFlagsModified with the team's own
+assessment, and there the modified flag drives the fill: the column
+fields are fill wherever it is nonzero, only data where it is zero
+or fill are to be used, and the README advises caution where the two
+flags differ.[^omno2-readme-v5] The level 3 grids exclude the rows
+before averaging: OMNO2d takes only pixels whose flag is 0 or 255
+(fill), XTrackQualityFlags in version 4.0 and
+XTrackQualityFlagsModified in version 5.0, and OMTO3d excludes any
 level 2 observation with the row anomaly flag, bit 6 of the quality
 flags, set; the user's guide states the general rule that level 3
 products are produced after filtering the affected scenes, and that
 all rows not listed and all data before the onset are of optimal
 quality.[^omno2-readme-v5][^omto3d-readme-v3][^omi-dug] Every OMI
-record begins 1 October 2004, so each carries about two and a half
-anomaly-free years followed by a record whose swath narrows in
+record begins 1 October 2004, so each carries two years and nine months
+of anomaly-free record followed by a record whose swath narrows in
 steps.[^cmr-omi]
 
 **Wrong-result mode.** A level 3 file looks the same before and
@@ -107,10 +115,11 @@ some rows with residual anomaly patterns may still pass the
 flag.[^omi-dug][^omno2-readme-v5]
 
 **Correct approach.** The flag says which rows: on level 2 the
-analysis keeps only XTrackQualityFlags equal to zero (or, for the
-NO2 team's products, XTrackQualityFlagsModified zero or fill, the
-two flags differing where caution is due), and on level 3 it
-carries the Weight field, which records how much the cell rests on
+analysis keeps only rows whose flag is zero or fill, XTrackQualityFlags
+in the OMTO3 swath and in the version 4.0 NO2 product,
+XTrackQualityFlagsModified in the version 5.0 NO2 product (where
+the rows on which the two flags differ are the ones the README says
+to treat with caution), and on level 3 it carries the Weight field, which records how much the cell rests on
 after the rows were dropped.[^omno2-readme-v5][^omno2-readme-v4] A
 series across the onset states the anomaly dates and, following the
 README, samples the pre-anomaly years with only the cross-track

@@ -6,6 +6,11 @@ description: "AIRS level 3 stores beside every mean a count (_ct) of the level 2
 tags: [airs, omi, level-3, count, weight, totalcounts, sampling, averaging, airs3std, airs3stm, omno2d, omto3d, gesdisc, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
 severity: medium
+# medium, not high, although an unweighted aggregate runs silently: the
+# count and Weight fields sit beside every mean in the file and the
+# guides say what they bound, so the omission is visible to a reader who
+# opens the file, and the averaging-method difference is documented and
+# measured rather than hidden.
 dataset: ../datasets/airs-l3-temperature-humidity.md
 status: draft
 stale_after: 2027-03-15
@@ -76,8 +81,10 @@ field is the sum of those weights, provided so that files and
 regions can be combined as a weighted mean; the README says the
 value in a cell "may not correspond to any one actual measurement",
 that the 8 to 10 pixels farthest from nadir are large enough to
-carry NO2 from some distance away, that precession puts a fixed
-cell under large pixels one day and small ones the next, and that
+carry NO2 from some distance away, that the day-to-day shift of the
+ground track within the orbit's repeat cycle (which the README calls
+precession relative to the fixed grid) puts a fixed cell under large
+pixels one day and small ones the next, and that
 the weights are where to look when a series shows a
 periodicity.[^omno2-readme-v5][^omno2d-filespec] OMTO3d is a weighted
 average by fractional overlap as well, but its file carries five
@@ -98,8 +105,8 @@ monthly with the archived AIRS3STM of the other version, or reads
 the CMR sentence and weights by count to match a version 7 file
 that is not count-weighted, carries the difference as a
 discrepancy.[^airs-l3-ug][^ding-2020][^cmr-airs3stm] A per-cell
-OMNO2d series shows a 16-day beat where the cell alternates between
-nadir and swath-edge pixels, which reads as a signal until the
+OMNO2d series shows a periodicity where the cell alternates between
+nadir and swath-edge pixels as the ground track shifts, which reads as a signal until the
 Weight field is plotted beside it.[^omno2-readme-v5] A cell with a
 count of zero is fill, not zero, and a mean that treats fill as a
 value or a count-zero level as a retrieval fails

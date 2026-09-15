@@ -6,6 +6,11 @@ description: "Every AIRS level 3 file holds separate ascending (_A, sub-satellit
 tags: [airs, aqua, airs3std, airs3stm, ascending, descending, local-time, diurnal-cycle, daily-mean, gesdisc, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
 severity: medium
+# medium, not high, although the average of the two nodes runs silently:
+# the specification's rule reads high as silently wrong results, and here
+# every field name carries its node suffix and the guide states the
+# crossing times, so the two local times are visible in the file and the
+# error a reader makes is a mislabelled sample, not an unseen one.
 dataset: ../datasets/airs-l3-temperature-humidity.md
 status: draft
 stale_after: 2027-03-15
@@ -44,8 +49,12 @@ the ones that pass at 1:30 AM; the guide's stated reason for the
 separation is that it "mitigates the suppression of the diurnal
 signal in the data".[^airs-l3-ug] The daily grid's time window is
 per node and not a calendar day: the descending grid covers 1:30 PM
-to 1:30 PM UTC (centred on the 1:30 AM crossing) and the ascending
-grid 1:30 AM to 1:30 AM, the gridding starting at the antimeridian
+to 1:30 PM UTC and the ascending grid 1:30 AM to 1:30 AM UTC, each
+window opening when that node crosses the antimeridian at its local
+equator-crossing hour (1:30 AM local time for the descending node,
+which is 1:30 PM UTC there; the guide's own wording is that the
+descending period is centred on the 1:30 AM crossing), the gridding
+starting at the antimeridian
 and progressing westward with the orbits so that points in one cell
 are coincident in time and the two parts of a scan line that cross
 the dateline go to different days' files; the per-node start and end
