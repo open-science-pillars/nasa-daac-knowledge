@@ -2,6 +2,20 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · STEWARD SIGNING of
+  knowledge/gesdisc/datasets/airs-l3-temperature-humidity.md,
+  knowledge/gesdisc/datasets/omi-no2-and-ozone.md,
+  knowledge/gesdisc/gotchas/airs-pressure-levels-and-surface-mask.md,
+  knowledge/gesdisc/gotchas/omi-row-anomaly.md,
+  knowledge/gesdisc/gotchas/airs-ascending-descending-nodes.md,
+  knowledge/gesdisc/gotchas/l3-count-field-bounds-a-cell.md,
+  knowledge/gesdisc/gotchas/anomaly-names-its-climatology-period.md:
+  Maintainer review of the AIRS and OMI concepts seeded in PR #161 after
+  the coordinator's lint and fix round; the two datasets and the medium
+  and low gotchas promoted to stable, the two high-severity gotchas keep
+  draft until a second review. The verified event is written on the
+  steward's word. (steward)
+
 - 2026-09-15 · second seed, AIRS profiles and OMI trace gases: two
   dataset concepts (datasets/airs-l3-temperature-humidity.md, the
   version 7 daily and monthly 1 degree grids AIRS3STD and AIRS3STM

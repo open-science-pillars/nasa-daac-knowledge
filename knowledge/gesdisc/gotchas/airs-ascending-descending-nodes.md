@@ -5,6 +5,7 @@ title: "AIRS ascending and descending grids are 1:30 PM and 1:30 AM local time w
 description: "Every AIRS level 3 file holds separate ascending (_A, sub-satellite point moving south to north, 1:30 PM local equator crossing, daytime outside the polar zones) and descending (_D, 1:30 AM, night-time) grids, each with its own count, standard deviation and quality-controlled ensemble, and each daily grid covers a nominal 24 hours offset from midnight: 1:30 PM to 1:30 PM UTC for descending and 1:30 AM to 1:30 AM for ascending, starting at the antimeridian. The guide separates the nodes to keep the diurnal signal. A mean of the two fields is the average of one afternoon and one early-morning sample weighted by whatever counts each node had, not the day's mean; a mean of one node is that local time only; and a daily file joined to a calendar-day series from another product is up to half a day off."
 tags: [airs, aqua, airs3std, airs3stm, ascending, descending, local-time, diurnal-cycle, daily-mean, gesdisc, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T13:59:41Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/161 }
 severity: medium
 # medium, not high, although the average of the two nodes runs silently:
 # the specification's rule reads high as silently wrong results, and here
@@ -12,7 +13,7 @@ severity: medium
 # crossing times, so the two local times are visible in the file and the
 # error a reader makes is a mislabelled sample, not an unseen one.
 dataset: ../datasets/airs-l3-temperature-humidity.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: airs-l3-ug
