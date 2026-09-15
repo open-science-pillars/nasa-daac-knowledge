@@ -32,8 +32,8 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 
 ## recipes
 
-- [Closing the Earth's energy budget: EBAF net TOA flux against Argo ocean heat content plus the published deep and non-ocean terms](recipes/energy-budget.md), status: draft
+- [Closing the Earth's energy budget: EBAF net TOA flux against Argo ocean heat content plus the published deep and non-ocean terms](recipes/energy-budget.md), status: stable
 
 ## computations (OKF v0.2 section 10)
 
-- [Energy budget closure: CERES EBAF net top-of-atmosphere flux against the Argo ocean heat content change (attested)](computations/energy-budget.md), status: draft (a synthetic fixture with a planted level, trend and closure proves the chain; the real-data anchor is the stamped data root under references/retrieval/energy-budget-root, run for 2006 through 2020; refuses a window the radiation record does not cover or an Argo receipt over another window)
+- [Energy budget closure: CERES EBAF net top-of-atmosphere flux against the Argo ocean heat content change (attested)](computations/energy-budget.md), status: stable (a synthetic fixture with a planted level, trend and closure proves the chain; the real-data anchor is the stamped data root under references/retrieval/energy-budget-root, run for 2006 through 2020; refuses a window the radiation record does not cover or an Argo receipt over another window)
