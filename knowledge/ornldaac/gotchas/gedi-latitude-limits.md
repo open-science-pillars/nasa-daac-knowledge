@@ -5,13 +5,14 @@ title: "GEDI observes only between about 51.6 degrees north and south: the L4A a
 description: "The instrument rides the International Space Station, so its footprints lie within the band the station overflies, nominally 51.6 degrees north and south, with a margin of a fraction of a degree from pointing the lasers up to 40 km either side of the ground track. The L4B GeoTIFFs span the full EASE-Grid 2.0, 85 to -85 degrees, with valid cells nominally within 52; the L4A Version 3 collection record's bounding rectangle reaches 56 north and 53 south, a catalog extent that no source read explains. The high-latitude forests north of the band, more than 30 percent of global forest area by the boreal product's own statement, are covered by separate ICESat-2 products at the same archive that are designed to contribute the northern component from 51.6 degrees north. A global sum from L4B is a temperate and tropical sum, a zero or outside-domain cell north of 52 is not a treeless one, and a search box lying wholly north of about 52 returns nothing."
 tags: [gedi, latitude, coverage, iss, boreal, ease-grid, domain, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T14:02:24Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T17:45:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/168 }
 severity: low
 # low: the latitude band is on every product page and in every
 # abstract, the L4B quality flag marks cells outside the domain, and
 # the wrong reading is an omission a reader sees on any map; no eval
 # case is required.
 dataset: ../datasets/gedi-l4b-gridded-biomass.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: ornl-l4b-v2-guide

@@ -5,13 +5,14 @@ title: "Every shot the L4A algorithm could run on carries a biomass prediction, 
 description: "The L4A file holds an AGBD value for every shot on which the algorithm ran (l2_algrunflag), including water, urban and leaf-off shots, waveforms too noisy to penetrate the canopy, shots with degraded pointing or positioning, and track segments where fog or cloud put the highest return in the wrong place. Version 3 gates them with named flags: l2a_quality_flag_rel3 for waveform fidelity, using beam sensitivity thresholds of 0.98 over tropical evergreen forest, 0.95 over other land and 0.5 over water; l4a_quality_flag_rel3 for shots that the applied models represent (land, urban proportion below 50, a prediction stratum, leaf-on unless the model uses RH98 alone, RH100 below 150 m); degrade_include_flag for the degrade codes accepted into the L4B sample; and elev_highestreturn_outlier_flag for outlier segments. A mean, a map or a fusion that takes every shot in the file is built on a sample that the product itself does not consider fit; the L4B cells are built only on high-quality waveforms, and the shipped L4B Version 2.1 grid predates the Version 3 flag names."
 tags: [gedi, quality-flag, degrade-flag, sensitivity, filtering, l4a, gridding, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T14:02:24Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T17:45:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/168 }
 severity: medium
 # medium: the flags are documented in the guide's own frequently asked
 # questions with their definitions, the effect of skipping them is a
 # biased sample rather than a wrong quantity, and the L4B product
 # applies them upstream; no eval case is required.
 dataset: ../datasets/gedi-l4a-footprint-biomass.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: ornl-l4a-v3-guide

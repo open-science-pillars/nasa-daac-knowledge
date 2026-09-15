@@ -2,6 +2,20 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · STEWARD SIGNING of
+  knowledge/ornldaac/datasets/gedi-l4a-footprint-biomass.md,
+  knowledge/ornldaac/datasets/gedi-l4b-gridded-biomass.md,
+  knowledge/ornldaac/gotchas/gedi-footprint-is-not-a-pixel.md,
+  knowledge/ornldaac/gotchas/gedi-l4b-standard-error.md,
+  knowledge/ornldaac/gotchas/gedi-quality-and-degrade-flags.md,
+  knowledge/ornldaac/gotchas/gedi-biomass-is-a-model-output.md,
+  knowledge/ornldaac/gotchas/gedi-latitude-limits.md: Maintainer review
+  of the GEDI L4A and L4B concepts seeded in PR #168 after the
+  coordinator's lint and fix round; the two datasets and the medium and
+  low gotchas promoted to stable, the high-severity footprint gotcha
+  keeps draft until a second review. The verified event is written on
+  the steward's word. (steward)
+
 - 2026-09-15 · GEDI concepts revised on the coordinator's fix round
   (pull request 168): gotchas/gedi-latitude-limits.md (the off-track
   pointing margin is a fraction of a degree, the 56 north and 53 south

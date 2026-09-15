@@ -5,6 +5,7 @@ title: "GEDI L4B gridded mean aboveground biomass density (Version 2.1): 1 km ce
 description: "Level 4B of the Global Ecosystem Dynamics Investigation: for every 1 km cell of the global EASE-Grid 2.0 (EPSG 6933) an estimate of mean aboveground biomass density in megagrams per hectare, inferred by hybrid model-based estimation from the quality-filtered L4A footprints inside the cell, for mission weeks 19 through 223 (2019-04-18 to 2023-03-16) in Version 2.1. Ten cloud-optimized GeoTIFF layers: the mean, two variance components, the standard error of the mean, the percent standard error, the numbers of ground tracks and of footprints, a quality flag, the prediction stratum that links to the L4A model, and the mode of inference. A cell mean covers the whole cell, forest and non-forest; a cell needs at least two ground tracks for a hybrid estimate, and cells without one hold zero. Valid cells lie nominally within 52 degrees of the equator."
 tags: [gedi, biomass, agbd, gridded, 1km, ease-grid, hybrid-inference, standard-error, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T14:02:24Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T17:45:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/168 }
 resource: https://doi.org/10.3334/ORNLDAAC/2299
 version: "GEDI L4B Version 2.1 (DOI 10.3334/ORNLDAAC/2299, CMR short name GEDI_L4B_Gridded_Biomass_V2_1_2299, concept C2792577683-ORNL_CLOUD, published 2023-10-29), CMR-verified 2026-09-15 as a complete collection of 10 granules named GEDI04_B_MW019MW223_02_002_02_R01000M_<layer>.tif covering 2019-04-18 through 2023-03-16; Version 2 (DOI 10.3334/ORNLDAAC/2017, mission weeks 19 through 138, 2019-04-18 to 2021-08-04) is the version whose HTML user guide (revision 2022-04-26) documents the layers"
 sources:
@@ -41,7 +42,7 @@ sources:
   - id: l4a-dataset
     resource: ./gedi-l4a-footprint-biomass.md
     title: "This bundle's GEDI L4A dataset concept, the footprint product family this grid is inferred from"
-status: draft
+status: stable
 stale_after: 2027-03-15
 ---
 

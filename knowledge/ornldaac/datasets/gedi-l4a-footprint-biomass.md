@@ -5,6 +5,7 @@ title: "GEDI L4A footprint aboveground biomass density (Version 3): a modeled bi
 description: "Level 4A of the Global Ecosystem Dynamics Investigation, the waveform lidar on the International Space Station: for each geolocated laser footprint (about 25 m across, 60 m apart along track, on eight tracks about 600 m apart) a prediction of aboveground biomass density in megagrams per hectare and its prediction standard error, with the quality and degrade flags, the scaled relative height metrics that were the model inputs, and the model parameters and covariance that Level 4B needs. The biomass is a model output: linear models of Level 2A relative height metrics, calibrated on simulated waveforms and field plots and stratified by plant functional type and world region. The current version is Version 3 (published 2026-06-08) with updated models and new quality flags; Version 2.1 remains a complete, separately identified collection. The footprints are a sample, not a map, and the band ends near 51.6 degrees north and south."
 tags: [gedi, biomass, agbd, footprint, lidar, iss, plant-functional-type, relative-height, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T14:02:24Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T17:45:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/168 }
 resource: https://doi.org/10.3334/ORNLDAAC/2508
 version: "GEDI L4A Version 3 (DOI 10.3334/ORNLDAAC/2508, CMR short name GEDI_L4A_AGB_Density_V3_2508, concept C4212593885-ORNL_CLOUD, published 2026-06-08, user guide revision 2026-09-02), CMR-verified 2026-09-15 as an active collection with 96,275 sub-orbit granules whose latest acquisition starts 2025-07-09; Version 2.1 (DOI 10.3334/ORNLDAAC/2056, GEDI_L4A_AGB_Density_V2_1_2056, C2237824918-ORNL_CLOUD) is listed complete the same day with 96,318 granules covering 2019-04-17 through 2025-07-09"
 sources:
@@ -38,7 +39,7 @@ sources:
   - id: l4b-dataset
     resource: ./gedi-l4b-gridded-biomass.md
     title: "This bundle's GEDI L4B dataset concept, the 1 km product built from these footprints"
-status: draft
+status: stable
 stale_after: 2027-03-15
 ---
 
