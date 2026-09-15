@@ -2,6 +2,42 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · attested energy budget closure seeded (issue 157): the
+  computation concept computations/energy-budget.md (type Attested
+  Computation), the recipe recipes/energy-budget.md, the run skill
+  references/skills/run-energy-budget.md, the executor
+  references/computations/energy_budget.py (fixture and data-root modes,
+  five refusal codes, exit 3), the attester
+  references/attesters/energy_budget_check.py (selftest, --data-root
+  verification), the loaders references/loaders/eb_ceres_ebaf.py (the
+  EBAF net TOA flux term, selftest, --fetch) and eb_data_root.py
+  (RECORD.json, --check, selftest), the stamped data root
+  references/retrieval/energy-budget-root (toa-net.csv and its stamp
+  from CERES_EBAF_Edition4.2.1_200003-202605.nc read as an OPeNDAP
+  subset, the Argo 0 to 2000 dbar receipt run sha256:0f64c6f9f2f330b6
+  from the ocean-science plugin's committed root, SOURCES.json,
+  RECORD.json), and the registry entry energy-budget in
+  tools/reference_runs.yaml: all drafts, no signatures. Real-data run
+  2006-01 through 2020-12: toa_net +0.8746 against an ocean side of
+  0.7427 W m-2, residual +0.1319 against a bar of 0.1894, closed within
+  uncertainty; anomaly trend +0.3706 W m-2 per decade against the
+  published 0.50 plus or minus 0.47. Sources read the same day: the
+  CERES_EBAF_Ed4.2 Data Quality Summary version 7 (the pinned copy),
+  the CERES geodetic zone weights file and the general product
+  information page (the weights reproduce the product's global mean to
+  2.4e-4 W m-2; a cos-latitude mean sits 0.22 W m-2 above it), the
+  CMR granule listings of CERES_EBAF and CERES_EBAF-TOA Edition 4.2.1,
+  the EBAF granule through 2026-05 via the ASDC OPeNDAP endpoint (the
+  direct download host answers through a CloudFront distribution this
+  environment cannot reach; the TOA-only granule has no OPeNDAP copy),
+  von Schuckmann and others 2023 in full on the journal's site, the
+  Crossref registry records of Loeb and others 2021 (the journal page
+  behind a bot check; its abstract read on the registry), Loeb and
+  others 2018, Johnson and others 2016 and Purkey and Johnson 2010.
+  Observed and left for the reviewer: the anchor decade mean of the
+  product's geodetic global net flux in the file read is 0.7387 W m-2,
+  0.03 above the stated 0.71. (knowledge-seeder)
+
 - 2026-09-14 · STEWARD RE-SIGNING of
   knowledge/asdc/gotchas/ebaf-imbalance-anchored-to-ocean-heating.md:
   second maintainer review recorded on the maintainer's explicit
