@@ -2,7 +2,7 @@
 type: recipe
 spheres: [atmosphere, hydrosphere]
 title: "Closing the Earth's energy budget: EBAF net TOA flux against Argo ocean heat content plus the published deep and non-ocean terms"
-description: "The terms of the energy budget over a window, which product supplies each, which gotcha holds each term's trap (the EBAF anchor to in situ heating over a stated decade; the geodetic weighting the anchor is defined on; the Argo product's depth floor and mapped domain), the rule that the Argo receipt's window is the window, and how the residual is read: the absolute comparison as anchored, the anomaly trend as the independent one."
+description: "The terms of the energy budget over a window, which product supplies each, which gotcha holds each term's trap (the EBAF anchor to in situ heating over a stated decade; the geodetic weighting the anchor is defined on; the Argo product's depth floor and mapped domain), the rule that the Argo receipt's window is the window, and how the residual is read: the absolute comparison as anchored, the anomaly trend as the consistency check in which the anchor cancels."
 tags: [ceres, ebaf, energy-imbalance, net-toa-flux, ocean-heat-content, argo, earth-heat-inventory, anchoring, recipe]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T18:30:00Z }
 inputs:
@@ -10,7 +10,7 @@ inputs:
   - toa_net: "the product's own global mean net TOA flux per calendar month (gtoa_net_all_mon, the geodetic mean the anchor is defined on) with the cos-latitude mean of the one degree grid beside it, from the CERES EBAF Edition 4.2.1 file, the edition and release date stated"
   - ohc_0_2000: "the 0 to 2000 dbar ocean heat content rate over the same window read from the ocean-science plugin's Argo computation receipt (knowledge/computations/argo-ohc.md there; the executor references/computations/argo_ohc.py), the receipt's window equal to the budget's window, its rate over the product's mapped domain and never scaled"
   - deep_ocean: "the published rate below 2000 m, 0.06 plus or minus 0.03 W m-2 over 1992 to 2020, with its source; the Argo receipt states the omission"
-  - non_ocean: "land, cryosphere and atmosphere over 2006 to 2020 as published rates with their sources, 0.0822 plus or minus 0.0174 W m-2 together"
+  - non_ocean: "land, cryosphere and atmosphere over 2006 to 2020 as published rates with their sources, 0.0822 plus or minus 0.0175 W m-2 together"
   - method: "the attested computation ../computations/energy-budget.md: four rate terms per unit Earth surface, the residual, the combined uncertainty, the verdict, the energy over the window, the anomaly trend against the published one, the anchoring as receipt facts"
 expected:
   - quantity: "the identity"
@@ -35,7 +35,7 @@ sources:
     title: "This bundle's EBAF dataset concept: the radiation term's product"
   - id: gotcha-anchor
     resource: ../gotchas/ebaf-imbalance-anchored-to-ocean-heating.md
-    title: "This bundle's gotcha: the anchor, its decade, and why the anomaly is the independent comparison"
+    title: "This bundle's gotcha: the anchor, its decade, and why the anomaly is what the ocean data did not set"
   - id: gotcha-baseline
     resource: ../gotchas/ebaf-climatology-baseline.md
     title: "This bundle's gotcha: the product's climatology base period is the anchor decade"
@@ -84,12 +84,16 @@ this bundle or the ocean-science bundle names:
    separate installs, so it is named by path), read from its receipt
    with its uncertainty and its stamp, never restated: the rate is
    over the Roemmich and Gilson product's mapped open-ocean domain
-   and understates the global ocean by construction, and the product
-   stops at 2000 dbar, so the deep ocean is a separate
-   term.[^ohc-receipt]
+   and understates the global ocean by construction (3.06e14 m2 of
+   mapped domain against about 3.58e14 m2 of global ocean; if the
+   unmapped 15 percent warmed at the domain's rate the reference run's
+   residual would be about +0.03 W m-2 instead of +0.13, so a residual
+   of that size is within what the understatement alone could
+   produce), and the product stops at 2000 dbar, so the deep ocean is
+   a separate term.[^ohc-receipt][^computation]
 3. **The rest, published.** The deep ocean below 2000 m (0.06 plus or
    minus 0.03 W m-2 over 1992 to 2020) and the land, cryosphere and
-   atmosphere over 2006 to 2020 (0.0822 plus or minus 0.0174 W m-2
+   atmosphere over 2006 to 2020 (0.0822 plus or minus 0.0175 W m-2
    together) from the Earth heat inventory, with their sources, never
    measured here.[^vs-2023]
 
@@ -111,11 +115,15 @@ bookkeeping: the weighting (a cos-latitude mean compared with an
 anchor defined on the geodetic mean is 0.22 W m-2 off before any
 physics), the edition and release date of the file, the Argo domain
 and depth floor, and the periods of the published terms, before any
-missing-physics conclusion is drawn.[^computation] The independent
-comparison is the trend of the net flux anomaly against the published
-satellite and in situ trend of the imbalance, 0.50 plus or minus 0.47
-W m-2 per decade, in which the anchor cancels; the receipt states the
-distance.[^loeb-2021]
+missing-physics conclusion is drawn.[^computation] The comparison
+in which the anchor cancels is the trend of the net flux anomaly
+against the published satellite and in situ trend of the imbalance,
+0.50 plus or minus 0.47 W m-2 per decade; the receipt states the
+distance. It is a consistency check, since the published trend is the
+CERES record's own as much as the in situ one; the independent test,
+the CERES anomaly trend against the in situ trend of the heating rate
+over the same window from the Argo receipt's monthly series, is a
+follow-up.[^loeb-2021]
 
 **The attested form.** The computation walks these steps with the
 anchoring, the weighting and the ocean input as receipt facts, four

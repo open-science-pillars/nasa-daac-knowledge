@@ -2,6 +2,20 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · coordinator's fix round applied to the energy budget
+  seed (pull request 174): the attester now enforces the window rule
+  on the pass path (a new ohc-window check, and the tree's Argo receipt
+  must carry the identity copied into the receipt) with the relabel
+  and swap tampers, the refused-receipt and interval-not-stated
+  refusals attested in the selftest; the atmosphere term's 90 percent
+  range scaled to 95 percent (non-ocean 0.0822 plus or minus 0.0175 W
+  m-2, the bars unchanged at four digits); the weighting offset range
+  corrected to 0.14 to 0.28 W m-2; the domain understatement, the
+  make-up of the bar and the consistency-check reading of the anomaly
+  trend stated in the concept and the recipe; the record rebuilt and
+  the quoted run ids updated. Statuses unchanged, no signatures.
+  (knowledge-seeder)
+
 - 2026-09-15 · attested energy budget closure seeded (issue 157): the
   computation concept computations/energy-budget.md (type Attested
   Computation), the recipe recipes/energy-budget.md, the run skill

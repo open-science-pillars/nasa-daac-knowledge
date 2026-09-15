@@ -150,10 +150,11 @@ NON_OCEAN = {
         "cryosphere": {"value_W_m2": 0.030, "uncertainty_W_m2": 0.011,
                        "basis": "about 4 percent of the same 0.76 plus or minus 0.2 W m-2 "
                                 "(section 6 and figure 9), the uncertainty formed the same way"},
-        "atmosphere": {"value_W_m2": 0.0142, "uncertainty_W_m2": 0.0034,
+        "atmosphere": {"value_W_m2": 0.0142, "uncertainty_W_m2": 0.0040,
                        "basis": "the global atmospheric heat content gain of 7.25 plus or minus "
-                                "1.72 TW over 2006 to 2020 (Table 2, a 90 percent range) over "
-                                "the Earth's surface area of 5.10e14 m2"},
+                                "1.72 TW over 2006 to 2020 (Table 2, a 90 percent range, scaled "
+                                "to 95 percent by 1.960 over 1.645 to 2.05 TW) over the Earth's "
+                                "surface area of 5.10e14 m2"},
     },
     "period": "2006 to 2020",
     "source": "von Schuckmann and others (2023), Earth System Science Data 15, 1675 to 1709, "

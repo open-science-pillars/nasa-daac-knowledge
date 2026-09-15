@@ -25,8 +25,12 @@ or `FAIL name: reason`:
                read, the stamp and the Argo receipt's identity are
                present, and with --data-root DIR the record, the CSV,
                the stamp and the Argo receipt in that tree hash to the
-               receipt's digests (without the tree the check says the
-               digests were not verified);
+               receipt's digests and the Argo receipt's run id and
+               bound parameters are the copies in the receipt (without
+               the tree the check says the digests were not verified);
+  ohc-window   on a non-refusal receipt the Argo receipt's window and
+               depth copied into the receipt are the bound window and
+               the 0 to 2000 dbar layer (the fixture plants its own);
   series       the months used and missing partition the window, the
                anomaly is the cos-latitude series minus its own mean,
                and on a fixture the values, the uncertainties and the
@@ -425,6 +429,13 @@ def attest(receipt_path: Path, computation: Path, data_root=None):
                     tree_ohc = json.loads(ohc_path.read_text(encoding="utf-8"))
                 except ValueError:
                     problems.append("the Argo receipt is not JSON")
+                if isinstance(tree_ohc, dict) and (
+                        tree_ohc.get("run_id") != ohc.get("run_id")
+                        or tree_ohc.get("bound_parameters") != ohc.get("bound_parameters")
+                        or tree_ohc.get("code_sha256") != ohc.get("code_sha256")
+                        or tree_ohc.get("refused") != ohc.get("refused")):
+                    problems.append("the Argo receipt's run id, code digest, refusal flag or bound "
+                                    "parameters differ from the identity block copied into the receipt")
             csv_path = tree / "toa-net.csv"
             if csv_path.is_file() and not problems:
                 tree_series = mod.read_csv_series(csv_path)
@@ -475,6 +486,15 @@ def attest(receipt_path: Path, computation: Path, data_root=None):
               f"reason_code {code!r} {'recognized' if recognized else 'unknown'}; {why}")
         verdict = "PASS" if all(c["ok"] for c in checks) else "FAIL"
         return verdict, True, checks, r
+
+    # the Argo receipt's window is the window
+    if data.get("mode") == "fixture":
+        check("ohc-window", True, "the fixture plants its own Argo-shaped receipt over the bound window")
+    else:
+        ob = ((data.get("ohc_receipt") or {}).get("bound_parameters") or {})
+        ok = ob.get("window") == window and ob.get("depth") == mod.OHC_DEPTH and window != ""
+        check("ohc-window", ok, f"the Argo receipt's window {ob.get('window')} and depth {ob.get('depth')} "
+                                f"against the bound window {window} and {mod.OHC_DEPTH} dbar")
 
     # months and series
     months = r.get("months") or {}
@@ -736,11 +756,17 @@ def report(verdict, refusal, checks, r) -> str:
 
 # ---- selftest
 
-def synthetic_root(mod, root: Path, start: str, end: str, seed: int = 11):
+def synthetic_root(mod, root: Path, start: str, end: str, seed: int = 11, smooth: bool = False):
     """A stamped data root from the fixture's own series and a planted
-    Argo-shaped receipt, so the data-root path is exercised offline."""
+    Argo-shaped receipt, so the data-root path is exercised offline;
+    with smooth, the cos-latitude column is a noise-free quadratic, whose
+    residual autocorrelation leaves no degrees of freedom."""
     fx = mod.make_fixture(seed)
     fs = fx["series"]
+    if smooth:
+        n = len(fs["dates"])
+        fs["value_W_m2"] = [0.5 + 1e-4 * (i - n / 2.0) ** 2 for i in range(n)]
+        fs["product_global_W_m2"] = [v - 0.2 for v in fs["value_W_m2"]]
     with (root / "toa-net.csv").open("w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["month", "value_W_m2", "uncertainty_W_m2", "product_global_W_m2"])
@@ -859,6 +885,13 @@ def selftest(computation: Path) -> int:
         assert r["terms"]["ohc_0_2000"]["stamp"].startswith("argo receipt")
         fab = tampered(dr, w / "fab.json", lambda r: r["data"]["files"].__setitem__("toa-net.csv", "sha256:" + "1" * 64))
         assert first_fail(fab, None, root) == "data", verdict_of(fab, None, root)
+        # the pass path enforces the window rule: a relabelled identity block fails ohc-window
+        # without the tree, and a swapped identity block fails data against the tree
+        rl = tampered(dr, w / "relabel.json", lambda r: r["data"]["ohc_receipt"]["bound_parameters"].__setitem__("window", "2008-01:2018-12"))
+        assert first_fail(rl) == "ohc-window", verdict_of(rl)
+        assert "ohc-window" in verdict_of(rl, None, root)[2], verdict_of(rl, None, root)
+        sw = tampered(dr, w / "swap.json", lambda r: r["data"]["ohc_receipt"].__setitem__("run_id", "sha256:other"))
+        assert first_fail(sw, None, root) == "data", verdict_of(sw, None, root)
         # the window mismatch refusal reproduces only against the tree
         mm = w / "mismatch.json"
         assert run(["--data-root", str(root), "--window", "2008-01:2018-12"], mm) == 3
@@ -873,12 +906,24 @@ def selftest(computation: Path) -> int:
         rr = w / "rr.json"
         assert run(["--data-root", str(root), "--ohc-receipt", str(refused_ohc), "--window", "2006-01:2020-12"], rr) == 3
         assert json.loads(rr.read_text())["reason_code"] == "ohc-receipt-refused"
+        assert verdict_of(rr, None, root) == ("PASS", True, []), verdict_of(rr, None, root)
+        assert verdict_of(rr)[2] == ["refusal"], verdict_of(rr)
+        # a smooth series leaves no degrees of freedom: interval-not-stated, reproduced against the tree
+        (w / "smooth").mkdir()
+        smooth = synthetic_root(mod, w / "smooth", "2006-01", "2020-12", smooth=True)
+        ins = w / "ins.json"
+        assert run(["--data-root", str(smooth), "--window", "2006-01:2020-12"], ins) == 3
+        assert json.loads(ins.read_text())["reason_code"] == "interval-not-stated"
+        v, refusal, checks, r = attest(ins, computation, smooth)
+        assert (v, refusal) == ("PASS", True) and "PASS refusal" in report(v, refusal, checks, r), checks
+        assert verdict_of(ins)[2] == ["refusal"], verdict_of(ins)
 
         # the attestation document carries the verdict and the identity blocks
         doc = attestation_doc(*attest(ref, computation), ref, computation)
         assert doc["verdict"] == "PASS" and doc["capability"]["name"] and doc["runtime"]["name"] == "selftest"
         assert {c["name"] for c in doc["checks"]} == {"fields", "code", "release", "runtime", "data",
-                                                       "series", "recompute", "bookkeeping", "plausible"}
+                                                       "ohc-window", "series", "recompute", "bookkeeping",
+                                                       "plausible"}
     print("energy_budget_check selftest: ok")
     return 0
 

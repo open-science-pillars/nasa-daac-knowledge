@@ -4,10 +4,10 @@
     "toa-net.csv": "sha256:1b3bcef1a0fc18e7b913a0c510a29e279ac9267ff4748bf76998d109803d5be8",
     "toa-net-stamp.json": "sha256:fd4ed8b45b752e238bd9f706dba9a9957a633b5dd84043c6a7a7308f8873abdd",
     "ohc-2000-receipt.json": "sha256:aaa4377df17a26fb95c263a5d5d030a8ca6abeb7d5a1df2ea49a13da7d482b13",
-    "SOURCES.json": "sha256:5b0006202488976ee18666cd9f064ba862ebf0a8492e1c0ee7ba6f3e9291446c"
+    "SOURCES.json": "sha256:92f7cbb8d374aa0c3cdf82aaec57e703f79e350483b809c91f10e8077368d9da"
   },
-  "manifest_sha256": "sha256:e2207a7f90e7ac6339e75d53f092ba2f344e7ecacaffb57ee238a163dce9e9e1",
-  "verified_utc": "2026-09-15T18:02:57Z",
+  "manifest_sha256": "sha256:1973d332a0ec6eea28d9ebdaef45d747caf980d19552feb12341b0c65eebfb41",
+  "verified_utc": "2026-09-15T18:48:25Z",
   "terms": {
     "toa-net": {
       "term": "toa-net",

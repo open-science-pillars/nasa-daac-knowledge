@@ -59,6 +59,9 @@ sources:
   - id: data-root
     resource: ../references/retrieval/energy-budget-root/RECORD.json
     title: "The stamped data root committed beside this concept: the loader's stamp, the Argo receipt's identity, the bookkeeping table, the manifest of the four files, and SOURCES.json for the downloads and the documents read"
+  - id: ecco-ohc-recipe
+    resource: ../../podaac/recipes/ecco-ocean-heat-content.md
+    title: "The provider bundle's ECCO ocean heat content recipe: the ocean surface area anchor of 3.5801e8 km2 on the ECCO grid, against which the Argo product's mapped domain is compared"
   - id: loaders
     resource: ../references/loaders/eb_data_root.py
     title: "The loader and the stamp assembler under references/loaders (eb_ceres_ebaf.py, eb_data_root.py), each with a selftest"
@@ -108,7 +111,7 @@ percent level and the stamp it came from:[^vs-2023][^ohc-receipt]
   the anchor of 0.71 W m-2 is defined on it, which is why the absolute
   term is taken from it and not from the cos-latitude mean of the one
   degree grid: the cos-latitude mean sits 0.22 W m-2 above the
-  geodetic mean over the record (0.15 to 0.28 across the annual
+  geodetic mean over the record (0.14 to 0.28 across the annual
   cycle), because the net flux has a strong meridional gradient, and
   the loader writes both columns and the offset between
   them.[^dqs][^geodetic-weights][^opendap-subset] The uncertainty is
@@ -139,16 +142,26 @@ percent level and the stamp it came from:[^vs-2023][^ohc-receipt]
   percent of the 0.76 plus or minus 0.2 W m-2 imbalance the inventory
   states for that era (the uncertainty is the percentage point each
   fraction is rounded to and the fraction of the total's uncertainty,
-  in quadrature), and atmosphere 0.0142 plus or minus 0.0034 W m-2
+  in quadrature), and atmosphere 0.0142 plus or minus 0.0040 W m-2
   from the global atmospheric heat content gain of 7.25 plus or minus
-  1.72 TW over the Earth's area; 0.0822 plus or minus 0.0174 W m-2
-  together.[^vs-2023]
+  1.72 TW over the Earth's area (the paper's range is a 90 percent
+  one and is scaled to 95 percent by 1.960 over 1.645, to 2.05 TW, so
+  that every term in the quadrature is at one level); 0.0822 plus or
+  minus 0.0175 W m-2 together.[^vs-2023]
 
 The residual is toa_net minus the sum of the three ocean-side terms;
 the combined uncertainty is the four in quadrature (the anchor's
 uncertainty inside the toa_net term); the verdict
 `closed_within_uncertainty` is true when the residual lies within it.
-The same four terms are stated as energy over the window (the rate
+What the bar is made of matters for reading the verdict: the toa_net
+uncertainty adds the sampling half width of the window mean (0.138
+W m-2 in the reference run, the AR(1) residual about the monthly
+climatology) to the anchor's 0.10, and the Argo trend's uncertainty is
+likewise a sampling half width, so for a closure over one fixed window
+the combined bar (0.189 in the reference run) is mostly the natural
+variability both sides share, and `closed_within_uncertainty` reads as
+"the residual is within sampling noise" more than as "the two
+instruments agree". The same four terms are stated as energy over the window (the rate
 times the window length times the Earth's area, in zettajoules), and
 the Argo receipt's own fitted and endpoint changes are copied beside
 them with their shorter span, for the reader and not compared.
@@ -172,7 +185,7 @@ years).[^gotcha-anchor][^data-root]
 The adjustment that anchors EBAF is made once to the entire record, so
 its interannual anomalies and its trend come from the radiometry, and
 a comparison of their change with a change in the heat inventory is
-the independent test the product supports.[^gotcha-anchor] The receipt
+the test the product supports without the anchor.[^gotcha-anchor] The receipt
 carries the cos-latitude global mean minus its own mean over the
 months used (never the product's climatology, whose base period is
 the anchor decade),[^gotcha-baseline] and the linear trend of that
@@ -185,10 +198,16 @@ propagates; the term's uncertainty is the larger of the two. The
 receipt states the distance of that trend from the published one, the
 0.50 plus or minus 0.47 W m-2 per decade increase in the Earth's
 energy imbalance from mid-2005 to mid-2019 that satellite and in situ
-observations each yield.[^loeb-2021] The Argo receipt carries no
-acceleration term, so the ocean side of this comparison is the
-published in situ trend, not the receipt; the comparison is a
-bookkeeping term and not the verdict.
+observations each yield.[^loeb-2021] That published trend is the
+CERES record's own trend over mid-2005 to mid-2019 as much as the in
+situ one, so the comparison partly reproduces the same record and is
+a consistency check, not an independent test; the Argo receipt
+carries no acceleration term, so the ocean side is the published in
+situ trend and not the receipt, and the comparison is a bookkeeping
+term and not the verdict. The independent test, the CERES anomaly
+trend against the in situ trend of the heating rate over the same
+window, is computable from the Argo receipt's 180-month series
+(`series.value_ZJ`) and is a follow-up, not this version.
 
 ## The fixture and its known truth
 
@@ -232,7 +251,10 @@ well formed; a runtime is named; the fixture regenerated at the
 receipt's seed hashes to the receipt's digest and so does the
 generator (for a data root, the record, the files, the stamp and the
 Argo receipt's identity are present, and with the tree given they
-hash to the receipt's digests); the months used and missing partition
+hash to the receipt's digests and the tree's Argo receipt carries the
+run id, code digest and bound parameters copied into the receipt);
+the Argo receipt's window and depth copied into the receipt are the
+bound window and the 0 to 2000 dbar layer; the months used and missing partition
 the window and the anomaly is the cos-latitude series minus its mean;
 the window mean with its half width, the anomaly trend with its
 interval and formal error, the four terms, the residual, the combined
@@ -246,23 +268,25 @@ toa_net term between minus 1 and 3 W m-2, the Argo rate between 0 and
 0.3, the anomaly trend within 3 W m-2 per decade of zero), with, on
 the fixture, the recovered window mean within 0.3 W m-2 of the
 planted one and the recovered trend within 1 W m-2 per decade of it.
-The selftest covers a pass, nine tampers each failing on its check, a
-wrong release, a tampered computation, two refusals and a forged one,
-a synthetic data root verified against its tree, a fabricated tree,
-the window mismatch refusal reproduced only against the tree, a
-refused Argo receipt, and the attestation document.
+The selftest covers a pass, eleven tampers each failing on its check
+(a relabelled Argo window and a swapped Argo identity among them), a
+wrong release, a tampered computation, two fixture refusals and a
+forged one, a synthetic data root verified against its tree, a
+fabricated tree, the window mismatch, refused-receipt and
+interval-not-stated refusals reproduced only against the tree, and
+the attestation document.
 
 ## Reference run
 
 **Fixture run (seed 7, 2006-01 through 2020-12, measured 2026-09-15
-under the runtime name knowledge-seeder, run sha256:7dc85f6726fa83bc;
+under the runtime name knowledge-seeder, run sha256:12bc6f13a10cc518;
 the id is bound to the runtime name).** 180 of 180 months. toa_net +1.0448
 W m-2 with an uncertainty of 0.2632 (sampling 0.2434, the anchor
 0.10), against the planted geodetic window mean of 0.8799 (the
 difference is the interannual component's contribution to a fifteen
 year mean, inside the sampling half width); ohc_0_2000 +0.7377 with
 0.0746 (the planted 11.8746 ZJ per year with the planted 1.2);
-deep_ocean 0.06 with 0.03; non_ocean 0.0822 with 0.0174. Residual
+deep_ocean 0.06 with 0.03; non_ocean 0.0822 with 0.0175. Residual
 +0.1649 against a bar of 0.2757; `closed_within_uncertainty` true.
 Anomaly trend +0.1527 W m-2 per decade, 95 percent interval
 [-0.4216, +0.7269], the planted 0.50 inside it. The refusal case the
@@ -273,7 +297,7 @@ the arguments.
 
 **Real-data run (the stamped data root energy-budget-root-2026-09-15,
 2006-01 through 2020-12, measured 2026-09-15 under the runtime name
-knowledge-seeder, run sha256:4c168f2bc0de10ea).** The radiation term was built by the loader
+knowledge-seeder, run sha256:ceaac364b76089a4).** The radiation term was built by the loader
 from the Edition 4.2.1 granule through 2026-05 read through the ASDC
 OPeNDAP endpoint (the direct download host is unreachable from the
 drafting environment, SOURCES.json says so), as 315 monthly global
@@ -285,9 +309,17 @@ width 0.1378 at an effective sample of 87.6 months, the formal error
 0.0801, the anchor 0.10); the cos-latitude window mean is 1.0921 and
 the weighting offset 0.2176 (at most 0.2817 in a month). ohc_0_2000
 +0.6005 with 0.0753 (the receipt's +9.6664 plus or minus 1.2118 ZJ per
-year); deep_ocean 0.06 with 0.03; non_ocean 0.0822 with 0.0174; the
+year); deep_ocean 0.06 with 0.03; non_ocean 0.0822 with 0.0175; the
 ocean side 0.7427 with 0.0829. Residual +0.1319 W m-2 against a bar
-of 0.1894; `closed_within_uncertainty` true. As energy over the
+of 0.1894; `closed_within_uncertainty` true. The ocean term is over
+the Argo product's mapped domain, 3.06e14 m2 against about 3.58e14 m2
+of global ocean on the ECCO grid (the provider bundle's ECCO ocean
+heat content recipe, knowledge/podaac/recipes/ecco-ocean-heat-content.md),
+and if the unmapped 15 percent warmed at the domain's per-area rate
+the term would be about 0.70 W m-2 and the residual about +0.03
+instead of +0.13, so the residual is within what the domain
+understatement alone could produce, and the verdict is not an
+agreement between two complete quantities.[^ecco-ohc-recipe] As energy over the
 fifteen years: toa_net 211.2 with 41.1 ZJ, the ocean side 179.3
 (ocean 145.0 with 18.2, deep 14.5, non-ocean 19.9), residual 31.8
 against a bar of 45.7; the Argo receipt's own fitted change is
@@ -303,7 +335,8 @@ published uncertainty, the ocean side the closer because the
 inventory's ocean is the same kind of estimate.[^vs-2023] The
 toa_net term is not independent of the in situ estimate over the 114
 shared months, which is the caveat the receipt states; the anomaly
-trend is.[^gotcha-anchor] Observed on the file read and left for the
+trend carries no anchor, and its comparison with the published trend
+is a consistency check, as the anomaly section says.[^gotcha-anchor] Observed on the file read and left for the
 reviewer: the mean of the product's geodetic global net flux over the
 anchor decade itself is 0.7387 W m-2, 0.03 above the 0.71 the
 summaries name for the anchor.[^opendap-subset][^dqs]
@@ -366,3 +399,4 @@ the record run attested against the tree.
 [^ohc-receipt]: references/retrieval/energy-budget-root/ohc-2000-receipt.json, the Argo receipt the ocean side is read from
 [^data-root]: references/retrieval/energy-budget-root/RECORD.json, the stamped data root
 [^loaders]: references/loaders, the radiation loader and the stamp assembler
+[^ecco-ohc-recipe]: knowledge/podaac/recipes/ecco-ocean-heat-content.md, the ocean surface area on the ECCO grid

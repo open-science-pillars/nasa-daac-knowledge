@@ -85,7 +85,7 @@
     }
   ],
   "notes": [
-    "weighting: the cos-latitude weighted global mean of toa_net_all_mon sits above the product's geodetic global mean by 0.218 W m-2 on average over the 315 months (0.15 to 0.28 across the annual cycle), because the net flux has a strong meridional gradient and the geodetic weights and the solar division factor 4.0034 shift the balance; the anchor of 0.71 W m-2 applies to the geodetic mean, which is why the computation forms its absolute term from the fourth column of toa-net.csv and its anomaly from the cos-latitude column",
+    "weighting: the cos-latitude weighted global mean of toa_net_all_mon sits above the product's geodetic global mean by 0.218 W m-2 on average over the 315 months (0.14 to 0.28 across the annual cycle), because the net flux has a strong meridional gradient and the geodetic weights and the solar division factor 4.0034 shift the balance; the anchor of 0.71 W m-2 applies to the geodetic mean, which is why the computation forms its absolute term from the fourth column of toa-net.csv and its anomaly from the cos-latitude column",
     "anchor decade: the mean of the product's geodetic global net flux over July 2005 through June 2015 in the file read is 0.7387 W m-2, 0.03 above the 0.71 the summaries name; the cos-latitude mean over the same months is 0.9563 W m-2",
     "no raw product file is committed: the subset lives in a cache outside the tree and is named here by URL and hash"
   ]
