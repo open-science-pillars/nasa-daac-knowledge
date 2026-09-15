@@ -2,11 +2,11 @@
 type: dataset
 spheres: [biosphere, atmosphere]
 title: "OCO-2 and OCO-3 solar-induced fluorescence Lite files: one netCDF-4 file per day of offset-corrected 757 and 771 nm retrievals per sounding, with a derived 740 nm value, a geometric daily correction factor, a three-level quality flag and a one-sigma uncertainty beside every value"
-description: "The OCO-2 SIF Lite product (OCO2_L2_Lite_SIF, version 11r to 31 March 2024 and 11.2r from 2 April 2024, DOIs 10.5067/OTRE7KQS8AU8 and 10.5067/8XXUQU7HBGBL) and its OCO-3 sibling (OCO3_L2_Lite_SIF 11r, DOI 10.5067/HC776J71KV41, from 6 August 2019) hold every converged IMAP-DOAS fluorescence sounding of a day that passed the level 1B quality flag: solar-induced chlorophyll fluorescence retrieved in two windows near 757 and 771 nm in the oxygen A-band region, corrected each day by a background over barren surfaces, combined by fixed factors into a 740 nm value, and scaled by a clear-sky geometric factor into a daily average. The values are radiances in W per square metre per steradian per micrometre at footprints of up to about 1.3 by 2.25 km, sparse in space and single-overpass in time; they are not photosynthesis, not gridded and not error-free, and a one-sigma uncertainty, a quality flag, the observation mode and the barren-surface offset statistics ship with every file."
+description: "The OCO-2 SIF Lite product (OCO2_L2_Lite_SIF, version 11r through 30 March 2024 and 11.2r from 2 April 2024, DOIs 10.5067/OTRE7KQS8AU8 and 10.5067/8XXUQU7HBGBL) and its OCO-3 sibling (OCO3_L2_Lite_SIF 11r, DOI 10.5067/HC776J71KV41, from 6 August 2019) hold every converged IMAP-DOAS fluorescence sounding of a day that passed the level 1B quality flag: solar-induced chlorophyll fluorescence retrieved in two windows near 757 and 771 nm in the oxygen A-band region, corrected each day by a background over barren surfaces, combined by fixed factors into a 740 nm value, and scaled by a clear-sky geometric factor into a daily average. The values are radiances in W per square metre per steradian per micrometre at footprints of up to about 1.3 by 2.25 km, sparse in space and single-overpass in time; they are not photosynthesis, not gridded and not error-free, and a one-sigma uncertainty, a quality flag, the observation mode and the barren-surface offset statistics ship with every file."
 tags: [oco-2, oco-3, sif, solar-induced-fluorescence, chlorophyll-fluorescence, oco2_l2_lite_sif, oco3_l2_lite_sif, imap-doas, gpp, gesdisc, biosphere, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T18:10:00Z }
 resource: https://disc.gsfc.nasa.gov/datasets/OCO2_L2_Lite_SIF_11.2r/summary
-version: "OCO-2 Lite SIF version 11r (C2248652649-GES_DISC, DOI 10.5067/OTRE7KQS8AU8, 3274 daily files from 2014-09-06 to 2024-03-30, build B11012Ar) and version 11.2r (C2912084771-GES_DISC, DOI 10.5067/8XXUQU7HBGBL, ends-at-present, 818 daily files from 2024-04-02 to 2026-07-27, builds B11217Ar and B11218Ar); OCO-3 Lite SIF version 11r (C2910085832-GES_DISC, DOI 10.5067/HC776J71KV41, ends-at-present, 2069 daily files from 2019-08-06 to 2026-06-28); concept ids, DOIs, extents and counts CMR-verified 2026-09-15, the file structure read from the July 2025 user guide (version 3.0 revision A) and from the DAP4 metadata of the 2024-04-02 OCO-2 granule the same day"
+version: "OCO-2 Lite SIF version 11r (C2248652649-GES_DISC, DOI 10.5067/OTRE7KQS8AU8, 3274 daily files from 2014-09-06 to 2024-03-30, build B11012Ar) and version 11.2r (C2912084771-GES_DISC, DOI 10.5067/8XXUQU7HBGBL, ends-at-present, 818 daily files from 2024-04-02 to 2026-07-27, builds B11217Ar and B11218Ar); OCO-3 Lite SIF version 11r (C2910085832-GES_DISC, DOI 10.5067/HC776J71KV41, ends-at-present, 2069 daily files from 2019-08-06 to 2026-06-28); concept ids, DOIs, extents and counts CMR-verified 2026-09-15, the file structure, field names and formulas read from the July 2025 user guide (version 3.0 revision A, Tables 4-1, 4-4 and 4-11), confirmed against the DAP4 metadata of the 2024-04-02 OCO-2 granule the same day"
 sources:
   - id: cmr-oco-sif
     resource: https://cmr.earthdata.nasa.gov/search/collections.umm_json?short_name=OCO2_L2_Lite_SIF&provider=GES_DISC
@@ -16,22 +16,22 @@ sources:
     title: "Kurosu, Frankenberg, Payne and Osterman, 2025, Orbiting Carbon Observatory-2 and -3 Solar Induced Chlorophyll Fluorescence Data User's Guide, Lite File Version 11 and 11.2, version 3.0 revision A, 7 July 2025, JPL (the user's guide the CMR records link; read in full 2026-09-15: the overview, the version 11 changes including the April 2024 meteorology switch and the retrieval window change, the version 10 quality flag and offset correction, the 740 nm conversion, the daily correction factor, the negative-value guidance, and the file structure tables for every group)"
   - id: ug-b10
     resource: https://docserver.gesdisc.eosdis.nasa.gov/public/project/OCO/OCO23_SIF_B10_Product_Description.pdf
-    title: "OCO-2 and OCO-3 Solar Induced Chlorophyll Fluorescence Data User's Guide for the build 10 Lite files (version 2.1, February 2021; the general documentation link on the OCO-3 record, read 2026-09-15: the same quality flag, offset correction and daily correction text as the 2025 guide, which supersedes it)"
+    title: "OCO-2 and OCO-3 Solar Induced Chlorophyll Fluorescence Data User's Guide for the build 10 Lite files (version 2.1, February 2021; the user's guide link on the OCO-2 version 11r record, read 2026-09-15: the same quality flag, offset correction and daily correction text as the 2025 guide, which supersedes it)"
   - id: readme-oco2
     resource: https://docserver.gesdisc.eosdis.nasa.gov/public/project/OCO/README.OCO2.pdf
     title: "Savtchenko, 2021, README Document for Orbiting Carbon Observatory Products, GES DISC, revised 18 February 2021 (read 2026-09-15: the eight soundings over the 0.8 degree swath every 0.333 s with footprints under 2.25 km along track and 0.1 to 1.3 km across at nadir, the retrospective r versions against the forward stream, the one-file-per-day Lite granularity and the Lite file naming)"
   - id: release-112
-    resource: https://oco2.gesdisc.eosdis.nasa.gov/opendap/OCO2_L2_Lite_SIF.11.2r/doc/OCO2_L2_Data_Release_Statement_v11.2_V2_RevA.pdf
-    title: "OCO-2 Data Release Statement, Version 11.2 Lite File Data Release, 1 October 2024, version 2.0 revision A (in the collection's document directory on the GES DISC OPeNDAP server, read 2026-09-15: the version 11 changes including the SIF throughput improvement and the target-mode SIF fix, and the April 2024 boundary between the v11.1 and v11.2 processing)"
+    resource: https://docserver.gesdisc.eosdis.nasa.gov/public/project/OCO/OCO2_L2_Data_Release_Statement_v11.2_V2_RevA.pdf
+    title: "OCO-2 Data Release Statement, Version 11.2 Lite File Data Release, 1 October 2024, version 2.0 revision A (on the GES DISC document server, and in the collection's document directory on the on-premises OPeNDAP server, read 2026-09-15: the version 11 changes including the SIF throughput improvement and the target-mode SIF fix, and the April 2024 boundary between the v11.1 and v11.2 processing)"
   - id: oco3-release
     resource: https://docserver.gesdisc.eosdis.nasa.gov/public/project/OCO/OCO3_L2_Data_Release_Statement_v11_V1_RevA.pdf
     title: "OCO-3 Level 2 Data Release Statement, version 11, version 1 revision A (the product quality assessment link on the OCO-3 record, read 2026-09-15: OCO-3 on the International Space Station since May 2019, science data from August 2019, storage from November 2023 to July 2024, the version 11 pointing and geolocation improvements for the snapshot area maps)"
   - id: oco3-kdi
     resource: https://docserver.gesdisc.eosdis.nasa.gov/public/project/OCO/OCO-3_Known_Data_Issues.pdf
-    title: "OCO-3 Known Data Issues (read 2026-09-15: the table of data gaps of ten orbits or longer caused by station activities, decontamination cycles and anomalies, 2021 to 2023)"
+    title: "OCO-3 Known Data Issues (read 2026-09-15: the table of data gaps of ten orbits or longer caused by station activities, decontamination cycles and anomalies, from July 2021 to an open entry beginning 29 December 2025)"
   - id: opendap-dmr
     resource: https://oco2.gesdisc.eosdis.nasa.gov/opendap/OCO2_L2_Lite_SIF.11.2r/2024/oco2_LtSIF_240402_B11217Ar_241023161757s.nc4.dmr
-    title: "DAP4 metadata of the first version 11.2r OCO-2 granule on the GES DISC on-premises OPeNDAP server (read 2026-09-15 without a credential: 216914 soundings in the day, the dimensions, the flattened group names, the units, descriptions and formulas in the variable attributes, and the global attributes date_time_coverage, product_version B11217Ar, InputBuildId B11.0.08 and B11.2.05, sensor and DOI)"
+    title: "DAP4 metadata of the first version 11.2r OCO-2 granule on the GES DISC on-premises OPeNDAP server (read 2026-09-15 without a credential: 216914 soundings in the day, the dimensions, the flattened group names, the units, descriptions and formulas in the variable attributes, and the global attributes date_time_coverage, product_version B11217Ar, InputBuildId B11.0.08 and B11.2.05, sensor and DOI; the on-premises URL is retired after September 2026 and the durable form of the same metadata is the Cloud OPeNDAP .dmr.xml of the granule behind Earthdata Login)"
   - id: oco2-datacenter
     resource: https://ocov2.jpl.nasa.gov/science/oco-2-data-center/
     title: "OCO-2 project, OCO-2 Data Center page (read 2026-09-15: the Lite products are posted at GES DISC, the retrospective Lite SIF v11r and v11.2r are the reference records, the forward-stream OCO2_L2_Fwd_SIF is removed as retrospective data arrive, the acknowledgement text and the 10 km ground track; the project site carries no separate SIF product page, its product-info and science/sif paths answer 404, and its publications page lists SIF papers without product documentation)"
@@ -90,7 +90,11 @@ JPL processing from GEOS-5 FP-IT to GEOS-IT meteorology: version 11r
 2014 to 30 March 2024 in 3274 daily files, and version 11.2r
 (C2912084771-GES_DISC, DOI 10.5067/8XXUQU7HBGBL) runs from 2 April
 2024 with the ends-at-present flag, 818 daily files to 27 July 2026
-on the day of reading; the OCO-2 project names these retrospective
+on the day of reading; the 11.2r collection record declares coverage
+from 1 September 2014 although its granules begin 2 April 2024, and
+the 11r record declares an end of 31 March 2024 against a last
+granule of 30 March, so a temporal search of 11.2r before 2024
+returns the collection with no granules; the OCO-2 project names these retrospective
 Lite files its reference record and removes the forward-stream
 OCO2_L2_Fwd_SIF files as the retrospective ones
 arrive.[^cmr-oco-sif][^ug-v11][^oco2-datacenter][^readme-oco2]
@@ -104,7 +108,10 @@ global attributes; its record has a hole from November 2023 to July
 2024, when the instrument was in storage on the station, and gaps of
 ten orbits or more from station activities and decontamination
 cycles are tabulated in its known-issues
-list.[^cmr-oco-sif][^ug-v11][^oco3-release][^oco3-kdi] The user
+list.[^cmr-oco-sif][^ug-v11][^oco3-release][^oco3-kdi] The
+guide labels the OCO-3 release V11.2 and the OCO-2 release 11 on its
+cover, the reverse of the archive's collection versions, which are
+11r and 11.2r for OCO-2 and 11r for OCO-3. The user
 guide is JPL-authored and hosted on the GES DISC document server;
 the OCO-2 project site has no product page for SIF of its own, and
 its data center page points to GES DISC.[^ug-v11][^oco2-datacenter]
@@ -154,8 +161,11 @@ so version 11 values differ slightly from version 10 and agree
 better between OCO-2 and OCO-3; SIF at 771 nm is typically about 1.5
 times smaller than at 757 nm, and the 740 nm value is not retrieved
 but formed as 0.75 times the sum of SIF_757nm and 1.5 times
-SIF_771nm, with its uncertainty propagated by the same
-factors.[^ug-v11][^opendap-dmr] The quality flag is a relaxed screen
+SIF_771nm, with its uncertainty propagated by the same factors; the
+guide's Table 4-4 and the file's description attribute carry that
+form, while the guide's section 2.11 prints a formula with a weight
+on 771 nm one third larger, a discrepancy the two-bands gotcha
+records.[^ug-v11][^opendap-dmr] The quality flag is a relaxed screen
 compared with the XCO2 Lite files, because clouds and aerosols do
 not strongly attenuate fluorescence (about 80 percent of the surface
 signal reaches the top of the atmosphere even under cloud optical

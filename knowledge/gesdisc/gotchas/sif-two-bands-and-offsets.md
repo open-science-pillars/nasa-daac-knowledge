@@ -18,10 +18,10 @@ sources:
     title: "OCO-2 and OCO-3 SIF Data User's Guide for the build 10 Lite files, version 2.1, February 2021 (read 2026-09-15: the same offset correction and 740 nm conversion in version 10, before the window change)"
   - id: opendap-dmr
     resource: https://oco2.gesdisc.eosdis.nasa.gov/opendap/OCO2_L2_Lite_SIF.11.2r/2024/oco2_LtSIF_240402_B11217Ar_241023161757s.nc4.dmr
-    title: "DAP4 metadata of the OCO-2 Lite SIF granule of 2024-04-02 (read 2026-09-15: the description attributes carrying the formulas SIF_740nm = 0.75 * (sif_757nm + 1.5 * sif_771nm) and the uncertainty combination, the long names Offset-Adjusted and Raw on the Science group fields, and the Offset group's per-footprint statistics on 227 signal bins)"
+    title: "DAP4 metadata of the OCO-2 Lite SIF granule of 2024-04-02 (read 2026-09-15: the description attributes carrying the formulas SIF_740nm = 0.75 * (sif_757nm + 1.5 * sif_771nm) and the uncertainty combination, the long names Offset-Adjusted and Raw on the Science group fields, and the Offset group's per-footprint statistics on 227 signal bins; the on-premises URL is retired after September 2026 and the durable form of the same metadata is the Cloud OPeNDAP .dmr.xml of the granule behind Earthdata Login)"
   - id: parazoo-2019
     resource: https://doi.org/10.1029/2019JG005289
-    title: "Parazoo and others, 2019, Towards a Harmonized Long-Term Spaceborne Record of Far-Red Solar-Induced Fluorescence, Journal of Geophysical Research Biogeosciences 124, 2518 to 2539 (record and abstract read on the Crossref registry 2026-09-15: sensors and algorithms differ in wavelength, time of day, geometry, cloud effects and footprint area; retrieval methods differ by up to a factor of two in magnitude, attributed largely to retrieval window choice; the assumed spectral shape has negligible effect)"
+    title: "Parazoo and others, 2019, Towards a Harmonized Long-Term Spaceborne Record of Far-Red Solar-Induced Fluorescence, Journal of Geophysical Research Biogeosciences 124, 2518 to 2539 (record and abstract read on the Crossref registry 2026-09-15: sensors and algorithms differ in wavelength, time of day, geometry, cloud effects and footprint area; GOME-2 retrieval methods differ by up to a factor of two in magnitude, attributed largely to retrieval window choice; the assumed spectral shape has negligible effect)"
   - id: magney-2019
     resource: https://doi.org/10.1029/2019JG005029
     title: "Magney and others, 2019, Disentangling Changes in the Spectral Shape of Chlorophyll Fluorescence, Journal of Geophysical Research Biogeosciences 124, 1491 to 1507 (the paper the guide cites for the wavelength conversion; record and abstract read on the Crossref registry 2026-09-15: one spectral shape explains 84 percent of the variance across species and the far-red shape beyond 740 nm is stable)"
@@ -50,7 +50,11 @@ emission peak, and absolute fluorescence varies greatly between 740
 and 771 nm, the product adds a 740 nm field, formed and not
 retrieved: SIF_740nm is 0.75 times the sum of SIF_757nm and 1.5
 times SIF_771nm, and SIF_Uncertainty_740nm combines the two
-one-sigma uncertainties by the same factors; the conversion rests on
+one-sigma uncertainties by the same factors; the guide carries two
+formulas, that one in Table 4-4 and, in section 2.11, 1.5 times the
+sum of SIF_757nm and twice SIF_771nm divided by two, which puts a
+weight one third larger on 771 nm, and the file's own description
+attribute on SIF_740nm carries the Table 4-4 form; the conversion rests on
 leaf-level evidence that one far-red spectral shape explains most of
 the variance across species.[^ug-v11][^opendap-dmr][^magney-2019]
 Biases from the per-footprint instrument line shape and detector
@@ -75,9 +79,9 @@ between products takes a step that is the spectral slope, not the
 vegetation: 757 nm against 771 nm differ by about a factor of 1.5,
 740 nm against 757 nm by the fixed conversion, and a comparison with
 another sensor's 740 nm value that uses the OCO-2 757 nm field
-compares different points on the emission spectrum; across sensors,
-retrieval window choice alone accounts for magnitude differences of
-up to a factor of two.[^ug-v11][^parazoo-2019] A series that joins
+compares different points on the emission spectrum; among GOME-2
+retrieval methods magnitudes differ by up to a factor of two,
+largely attributed to retrieval window choice.[^ug-v11][^parazoo-2019] A series that joins
 version 10 files to version 11 files, or reads the unadjusted or
 relative fields beside the adjusted ones, carries the window change
 or the daily background inside it; the unadjusted value differs from
@@ -103,12 +107,17 @@ adjusted values.[^ug-v11][^opendap-dmr]
 
 **Verification.** The guide's Table 4-4 carries the 740 nm formula
 and the 1.5 ratio, section 2.4 the window change, and section 2.10
-the offset method; the DAP4 metadata of any granule shows the same
-formula in the description attribute of SIF_740nm and the long names
-Offset-Adjusted and Raw on the Science fields.[^ug-v11][^opendap-dmr]
+the offset method; the DAP4 metadata of any granule shows the Table
+4-4 formula in the description attribute of SIF_740nm and the long
+names Offset-Adjusted and Raw on the Science fields, and the
+recomputation check below distinguishes the Table 4-4 form from the
+section 2.11 form, whose 771 nm weight differs by a third; the
+attribute was read on the on-premises server on 15 September 2026
+and is confirmed on the Cloud OPeNDAP copy once that is read behind
+Earthdata Login.[^ug-v11][^opendap-dmr]
 The check a reader runs: on one granule, SIF_740nm recomputed from
-the two Science fields matches the root field to the least
-significant digit, the median of SIF_757nm divided by SIF_771nm over
+the two Science fields by the Table 4-4 form matches the root field
+to the least significant digit and the section 2.11 form does not, the median of SIF_757nm divided by SIF_771nm over
 the good soundings of a vegetated day is near the guide's typical
 1.5, and the difference between SIF_Unadjusted_757nm and SIF_757nm
 is the day's background for that footprint and signal level, whose

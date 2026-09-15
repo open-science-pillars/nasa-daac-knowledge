@@ -38,7 +38,7 @@ sources:
     title: "GES DISC alert of 23 July 2026 (read 2026-09-15: all on-premises OPeNDAP services are turned off between 7 August and 30 September 2026; Cloud OPeNDAP URLs are organised by CMR collection concept id, short name and version rather than by the local directory tree)"
   - id: alert-migration-207
     resource: https://disc.gsfc.nasa.gov/information/alerts?title=Migration%20of%20OPeNDAP%20services%20to%20Earthdata%20cloud%20for%20207%20collections
-    title: "GES DISC alert of 25 June 2026 (read 2026-09-15: the cloud OPeNDAP migration of 207 collections between 25 June and 15 July 2026, the list naming the AIRS level 3 daily and monthly collections AIRS3SPD and AIRS3SPM at version 7.0, AIRX3STD and OMTO3d and OMTO3e at version 004 among others; earlier alerts of March 2024 and April 2025 record M2T1NXSLV and 53 further MERRA-2 collections moving to Cloud OPeNDAP)"
+    title: "GES DISC alert of 25 June 2026 (read 2026-09-15: the cloud OPeNDAP migration of 207 collections between 25 June and 15 July 2026, the list naming the AIRS level 3 support collections AIRS3SPD and AIRS3SPM at version 7.0, AIRX3STD at 006, and OMTO3d and OMTO3e at version 004 among others, and not AIRS3STD or AIRS3STM; earlier alerts of March 2024 and April 2025 record M2T1NXSLV and 53 further MERRA-2 collections moving to Cloud OPeNDAP)"
   - id: alert-servers
     resource: https://disc.gsfc.nasa.gov/information/alerts?title=Retirement%20of%20GES%20DISC%20Data%20Servers%20by%20September%2030%2C%202026
     title: "GES DISC alert of 14 September 2026 (read 2026-09-15: HTTPS access to the on-premises servers under gesdisc.eosdis.nasa.gov ends by 30 September 2026 in phases; data remain free from data.gesdisc.earthdata.nasa.gov; recursive directory download is not available there and granule URL lists come from CMR queries; the GrADS Data Server was discontinued in May 2026 and the THREDDS server no earlier than 31 July 2026 by sibling alerts)"
@@ -63,9 +63,12 @@ sources:
   - id: faq-opendap-url
     resource: https://disc.gsfc.nasa.gov/information/faqs?title=How%20can%20I%20access%20GES%20DISC%20data%20using%20OPeNDAP%20URLs%3F
     title: "GES DISC FAQ, How can I access GES DISC data using OPeNDAP URLs, and the 2021 FAQ on subsetting a large amount of MERRA-2 data (read 2026-09-15: the on-premises URL convention server/path/file.format?subset with .ascii, .nc, .nc4 or .dods, and the older route of OPeNDAP subsets against the GES DISC Subsetter with daily statistics and regridding)"
+  - id: ug-v11
+    resource: https://docserver.gesdisc.eosdis.nasa.gov/public/project/OCO/OCO2_SIF_v11.2_OCO3_v11_Data_Users_Guide_20250707.pdf
+    title: "Kurosu, Frankenberg, Payne and Osterman, 2025, OCO-2 and OCO-3 Solar Induced Chlorophyll Fluorescence Data User's Guide, Lite File Version 11 and 11.2, version 3.0 revision A, 7 July 2025 (read 2026-09-15: Table 4-1, the groups and variables of a Lite file, and Table 4-8, the Metadata group with SoundingId as a 16-digit YYYYMMDDHHMMSSmf identifier)"
   - id: cmr-services
     resource: https://cmr.earthdata.nasa.gov/search/services.umm_json?concept_id=S2874702816-XYZ_PROV
-    title: "CMR service records associated with M2T1NXSLV 5.12.4, AIRS3STD 7.0 and the OCO-2 and OCO-3 Lite SIF collections (read 2026-09-15: the Hyrax OPeNDAP service S2874702816 on all four; on the gridded MERRA-2 and AIRS collections the Harmony OPeNDAP SubSetter with MaskFill S2164732315 (variables, bounding box, GeoJSON shape, temporal, netCDF-4), the Harmony OPeNDAP URL Service S4057306097 returning an OPeNDAP URL instead of a file, the Cloud Giovanni time series S2739607260 (point, up to 100000 granules, CSV) and averaging S3385907677 (bounding box, CSV or GeoTIFF); on the SIF Lite collections the level 2 Harmony subsetter S1962070864 (variables, bounding box, ESRI, KML or GeoJSON shapes, temporal, netCDF-4))"
+    title: "CMR service records associated with M2T1NXSLV 5.12.4, AIRS3STD 7.0 and the OCO-2 and OCO-3 Lite SIF collections (read 2026-09-15: the Hyrax OPeNDAP service S2874702816 on all four; on the gridded MERRA-2 and AIRS collections the Harmony OPeNDAP SubSetter with MaskFill S2164732315 (variables, bounding box, GeoJSON shape, temporal, netCDF-4), the Harmony OPeNDAP URL Service S4057306097 returning an OPeNDAP URL instead of a file, the Cloud Giovanni time series S2739607260 (point, up to 100000 granules, CSV) and averaging S3385907677 (bounding box, CSV or GeoTIFF); on the SIF Lite collections the PO.DAAC L2 Cloud Subsetter S1962070864-POCLOUD, a Harmony service (variables, bounding box, ESRI, KML or GeoJSON shapes, temporal, netCDF-4))"
   - id: cmr-granule
     resource: https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2912084771-GES_DISC&sort_key=start_date&page_size=2
     title: "CMR granule record of the OCO-2 Lite SIF granule of 2024-04-02 (read 2026-09-15: the archive URL on data.gesdisc.earthdata.nasa.gov, the S3 URL and DMR++ sidecar, the s3credentials endpoint, the Cloud OPeNDAP service URL under collections/C2912084771-GES_DISC/granules/, and the on-premises data tree URL)"
@@ -99,19 +102,21 @@ This concept names what each does, the shape of a request, what
 leaves the machine, the credential, and how each fails; the
 hydrology plugin's connector concept for GES DISC through
 earthaccess (knowledge/connectors/gesdisc-earthaccess.md in that
-plugin) records the IMERG and NLDAS-2 pulls over the same Cloud
-OPeNDAP route and the three failure shapes of an unauthorised
-account, and is not restated here.[^howto-data-access]
+plugin) is that plugin's own record of this archive's routes and is
+not restated here.
 
 **What the services are.** Cloud OPeNDAP is the Hyrax server at
 opendap.earthdata.nasa.gov, one endpoint for every DAAC's
 OPeNDAP-enabled granules, which serves a granule's metadata and any
 subset of its variables and index ranges by URL; it is associated in
-CMR with every collection this bundle covers, and the MERRA-2 hourly
-single-level collection moved to it in March 2024, 53 more MERRA-2
-collections in April 2025, and 207 further collections including the
-AIRS level 3 daily and monthly grids and the OMI OMTO3d and OMTO3e
-grids between 25 June and 15 July 2026.[^opendap-cloud-doc][^cmr-services][^alert-migration-207]
+CMR with every collection checked (M2T1NXSLV, AIRS3STD, the two SIF
+Lite collections), and the MERRA-2 hourly single-level collection
+moved to it in March 2024, 53 more MERRA-2 collections in April 2025,
+and 207 further collections between 25 June and 15 July 2026, a list
+that names the AIRS level 3 support grids AIRS3SPD and AIRS3SPM at
+version 7.0, the older AIRX3STD, and the OMI OMTO3d and OMTO3e grids;
+AIRS3STD 7.0 carries the Cloud OPeNDAP service association in CMR,
+whatever the date it moved.[^opendap-cloud-doc][^cmr-services][^alert-migration-207]
 The enterprise subsetter is Harmony, the EOSDIS service at
 harmony.earthdata.nasa.gov that merged the DAACs' subsetters into one
 cloud service; on the gridded MERRA-2 and AIRS collections it runs
@@ -121,7 +126,8 @@ returns an OPeNDAP URL instead of a staged file, and the Cloud
 Giovanni time series (a point, CSV out, up to 100000 granules) and
 area-averaging services (a bounding box, CSV or GeoTIFF out); on the
 OCO SIF Lite files, which are level 2 sounding lists, it runs the
-level 2 subsetter (variables, a bounding box or an ESRI, KML or
+PO.DAAC L2 Cloud Subsetter (S1962070864-POCLOUD, a Harmony service
+operated by PO.DAAC for level 2 collections across DAACs; variables, a bounding box or an ESRI, KML or
 GeoJSON shape, a time range, netCDF-4 out).[^glossary-token][^cmr-services][^howto-l2-enterprise]
 The GES DISC's own services are retiring: the Level 2 Subsetter is
 discontinued no earlier than 15 July 2026, the AIRS level 1 and 2
@@ -212,10 +218,15 @@ probed on 15 September 2026 for the OCO-2 SIF granule of 2 April
 DAP4 metadata with a 200 and no credential; without the application
 authorisation, a download fails and the how-to's remedy is the
 Authorized Apps step.[^probe-cloud][^probe-onprem][^howto-resolve] A
-request for a netCDF-3 encoding of a file holding UInt64 variables
-or groups, which the OCO Lite files do (sounding_id is UInt64),
-returns a 400 error and the remedy is the netCDF-4 encoding; a DAP2
-request to a grouped file returns flattened names.[^opendap-cloud-doc]
+request for a netCDF-3 encoding of a file holding 64-bit integers or
+groups returns a 400 error and the remedy is the netCDF-4 encoding;
+the how-to's inventory for the OCO2_L2_Lite_FP file lists a UInt64
+sounding_id and its groups, and in the SIF Lite file the
+corresponding field is Metadata/SoundingId, the 16-digit identifier
+the guide's Table 4-8 describes, typed as a 64-bit integer in the
+on-premises DMR read on 15 September 2026, with the variables in
+groups; a DAP2 request to a grouped file returns flattened
+names.[^opendap-cloud-doc][^ug-v11][^probe-onprem]
 A wget or curl over a directory wildcard on the archive host is not
 supported, and a script that builds URLs from the on-premises
 directory tree, or calls the JSON-WSP subsetter, stops working as
@@ -233,12 +244,14 @@ file name.[^howto-wget-curl]
 and its access paragraph names Cloud OPeNDAP and the subsetter; the
 AIRS version 7 level 3 grids
 ([airs-l3-temperature-humidity](../datasets/airs-l3-temperature-humidity.md))
-and the OMI OMTO3d and OMTO3e grids
-([omi-no2-and-ozone](../datasets/omi-no2-and-ozone.md)) moved to
-Cloud OPeNDAP in the June and July 2026 migration; and the OCO-2 and
+carry the Cloud OPeNDAP service association in CMR, with the support
+grids AIRS3SPD and AIRS3SPM named in the July 2026 migration list, and
+the OMI OMTO3d and OMTO3e grids
+([omi-no2-and-ozone](../datasets/omi-no2-and-ozone.md)) are in the
+same list; and the OCO-2 and
 OCO-3 SIF Lite files ([oco2-sif-lite](../datasets/oco2-sif-lite.md))
-are level 2 sounding lists, subset by the level 2 Harmony service
-by bounding box, shape and variables, or by index range over
+are level 2 sounding lists, subset by the PO.DAAC L2 Cloud Subsetter
+through Harmony by bounding box, shape and variables, or by index range over
 sounding_dim through OPeNDAP, where a spatial window is not an index
 range and a bounding box is the useful
 constraint.[^merra2][^airs][^omi][^sif][^cmr-services][^alert-migration-207]
@@ -261,6 +274,7 @@ constraint.[^merra2][^airs][^omi][^sif][^cmr-services][^alert-migration-207]
 [^howto-data-access]: GES DISC, Data Access, read 2026-09-15
 [^faq-opendap-url]: GES DISC FAQ on OPeNDAP URLs and on subsetting MERRA-2, read 2026-09-15
 [^cmr-services]: CMR service records associated with the MERRA-2, AIRS and SIF collections, read 2026-09-15
+[^ug-v11]: Kurosu and others, 2025, OCO-2 and OCO-3 SIF Data User's Guide, Lite file version 11 and 11.2
 [^cmr-granule]: CMR granule record of the OCO-2 Lite SIF granule of 2024-04-02, read 2026-09-15
 [^probe-cloud]: Cloud OPeNDAP metadata probe without a credential, 2026-09-15
 [^probe-onprem]: On-premises OPeNDAP metadata probe without a credential, 2026-09-15

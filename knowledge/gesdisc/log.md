@@ -37,7 +37,7 @@ Newest first. One line per change: date, concept path, what changed, who.
   of the subsetting service; the OCO-2 project's data center and
   publications pages; and the Crossref registry records of Doughty
   and others 2022, Sun and others 2017 and 2018, Frankenberg and
-  others 2011 (both), 2012 and 2014, Parazoo and others 2019 and
+  others 2011 (the GOSAT patterns paper), 2012 and 2014, Parazoo and others 2019 and
   Magney and others 2019 (both). Not reached: the OCO-2 project's own
   SIF product page (the site has none; its product-info and
   science/sif paths answer 404), the publisher pages of the Elsevier

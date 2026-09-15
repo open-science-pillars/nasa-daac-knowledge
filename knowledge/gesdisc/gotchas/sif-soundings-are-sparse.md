@@ -21,7 +21,7 @@ sources:
     title: "OCO-2 project, OCO-2 Data Center page (read 2026-09-15: the instrument data are characterised by large gaps in coverage from the narrow 10 km ground track and the inability to see through clouds and thick aerosols, which is why the gridded level 3 CO2 products are assimilation products)"
   - id: opendap-dmr
     resource: https://oco2.gesdisc.eosdis.nasa.gov/opendap/OCO2_L2_Lite_SIF.11.2r/2024/oco2_LtSIF_240402_B11217Ar_241023161757s.nc4.dmr
-    title: "DAP4 metadata of the OCO-2 Lite SIF granule of 2024-04-02 (read 2026-09-15: sounding_dim of 216914 for the day, the corner arrays on vertex_dim of 4, and the MeasurementMode description naming nadir, glint, target, area map and transition)"
+    title: "DAP4 metadata of the OCO-2 Lite SIF granule of 2024-04-02 (read 2026-09-15: sounding_dim of 216914 for the day, the corner arrays on vertex_dim of 4, and the MeasurementMode description naming nadir, glint, target, area map and transition; the on-premises URL is retired after September 2026 and the durable form of the same metadata is the Cloud OPeNDAP .dmr.xml of the granule behind Earthdata Login)"
   - id: cmr-oco-sif
     resource: https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2910085832-GES_DISC&sort_key=start_date&page_size=2
     title: "CMR granule records for OCO3_L2_Lite_SIF 11r and OCO2_L2_Lite_SIF 11.2r (read 2026-09-15: 2069 OCO-3 daily files from 2019-08-06, of which 22 fall between November 2023 and July 2024; 818 OCO-2 version 11.2r files from 2024-04-02, of which 17 fall in November 2025)"
@@ -116,9 +116,10 @@ altitude.[^readme-oco2][^ug-v11] The check a reader runs: one day's
 OCO-2 file gridded to 0.5 degrees leaves most land cells empty and
 the filled ones with counts from one to several hundred; a month
 gridded the same way shows the count varying by an order of
-magnitude between neighbouring cells; and the mean of Daily_SIF_740nm
-over a barren region is near zero with negative and positive
-soundings in roughly equal numbers.[^ug-v11] The OCO-3 storage gap
+magnitude between neighbouring cells; and, by construction of the
+offset correction rather than as a statement of the guide's, the
+mean of Daily_SIF_740nm over a barren region is near zero with
+negative and positive soundings in roughly equal numbers.[^ug-v11] The OCO-3 storage gap
 is visible as 22 daily files between November 2023 and July 2024 in
 the CMR granule listing, and the geolocation improvement for the
 area maps is the release statement's.[^cmr-oco-sif][^oco3-release]
