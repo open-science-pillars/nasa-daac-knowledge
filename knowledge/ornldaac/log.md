@@ -2,6 +2,37 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · GEDI L4A and L4B biomass, round three of seeding
+  (nasa-daac-knowledge issue 155): two dataset concepts
+  (datasets/gedi-l4a-footprint-biomass.md for Version 3, with Version
+  2.1 recorded as the complete prior collection, and
+  datasets/gedi-l4b-gridded-biomass.md for Version 2.1) and five
+  gotchas (gedi-footprint-is-not-a-pixel at severity high with its eval
+  case drafted in agent-evals under gedi/cases/, unregistered in any
+  suite manifest until the coordinator's follow-up;
+  gedi-l4b-standard-error, gedi-quality-and-degrade-flags and
+  gedi-biomass-is-a-model-output at severity medium; gedi-latitude-limits
+  at severity low): all drafts, no signatures. Sources read the same
+  day: the ORNL DAAC user guide for GEDI L4A Version 3 (revision
+  2026-09-02) and the L4A Version 3 landing page; the L4A Version 2.1
+  and L4B Version 2.1 landing pages, read at their Earthdata catalog
+  redirects; the ORNL DAAC user guide for GEDI L4B Version 2 (revision
+  2022-04-26, the readable layer documentation); the CMR collection
+  search for GEDI at ORNL_CLOUD, the collection records and granule
+  searches for L4A Version 3, L4A Version 2.1 and L4B Version 2.1, and
+  the collection record for the circumpolar boreal biomass product from
+  ICESat-2; the doi.org handle records for the three dataset DOIs; the
+  Crossref records, with abstracts, for Dubayah and others 2022
+  (Environmental Research Letters), Kellner and others 2023 (Earth and
+  Space Science) and Patterson and others 2019 (Environmental Research
+  Letters). Not readable from the drafting session: the L4A Version 3
+  and L4B Version 2.1 user guide PDFs, the L4A and L4B algorithm
+  theoretical basis documents and the data dictionaries on
+  data.ornldaac.earthdata.nasa.gov (they redirect to a content delivery
+  host the environment blocks; the versioned guide URLs on
+  daac.ornl.gov redirect there too), the DataCite metadata behind
+  doi.org content negotiation, and the journal article pages. (seeder)
+
 - 2026-09-14 · STEWARD RE-SIGNING of
   knowledge/ornldaac/gotchas/daymet-365-day-year.md: second maintainer
   review recorded on the maintainer's explicit instruction in the
