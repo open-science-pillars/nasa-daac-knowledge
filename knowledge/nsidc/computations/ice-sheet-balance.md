@@ -2,7 +2,7 @@
 type: Attested Computation
 spheres: [cryosphere]
 title: "Ice sheet mass balance closure from GRACE-FO mascons against altimetric volume change with a firn correction (attested)"
-description: "Sanctioned closure of one ice sheet's mass balance over a stated window: the JPL mascon sum over the ice sheet's land mascons against the altimetric volume change less the GEMB firn air content change times a stated ice density, each as the mean of its annual-lag differences with an interval, the residual formed on the epochs both methods share, the bar its own half width plus the stated mascon selection systematic, a verdict closed_within_uncertainty, the GIA, low-degree, frame, smoothing, firn and density statements as receipt facts, and a refusal (exit 3, never a number) for a window outside the terms' overlap, an ice sheet without a firn term over its altimetry domain, or a window across the GRACE to GRACE-FO gap without continuity evidence. Proven on a synthetic fixture with a planted residual and anchored on a Greenland run over 2003 through 2016 from the stamped data root, read against the IMBIE 2023 assessment."
+description: "Sanctioned closure of one ice sheet's mass balance over a stated window: the JPL mascon sum over the ice sheet's land mascons against the altimetric volume change less the GEMB firn air content change times a stated ice density, each as the mean of its annual-lag differences with an interval, the residual formed on the epochs both methods share, the bar its own half width plus the stated mascon selection systematic, a verdict closed_within_uncertainty, the GIA, low-degree, frame, smoothing, firn and density statements as receipt facts, and a refusal (exit 3, never a number) for a window outside the terms' overlap, an ice sheet without a firn term over its altimetry domain, or a window across the GRACE to GRACE-FO gap without continuity evidence. Proven on a synthetic fixture with a planted residual and anchored on a Greenland run over 2003 through 2016 from the stamped data root, read against the IMBIE 2023 assessment. The committed root's altimetry term is the ITS_LIVE elevation change; ICESat-2 ATL15 is the intended product, its loader built and awaiting a fetchable granule."
 tags: [ice-sheet, mass-balance, closure, greenland, antarctica, grace, grace-fo, mascons, altimetry, atl15, its-live, firn, gemb, attested]
 runtime: python
 parameters:
@@ -231,8 +231,13 @@ product named (`term-not-in-root`); when the mass months lie on both
 sides of the inter-mission gap with no bridge (`gap-without-bridge`);
 or when a rate's interval cannot be stated (`interval-not-stated`).
 The attester attests a refusal PASS only as a refusal, reproduced
-from the regenerated fixture or from the spans and domains the
-receipt records, and its verdict line reads `PASS refusal`.
+by re-running the executor's own assembly and compute on the
+regenerated fixture, or on the tree when `--data-root` names it;
+without the tree, a data-root refusal is reproduced from the spans
+and domains the receipt records where it can be
+(`window-outside-overlap`, `firn-term-missing`, `term-not-in-root`,
+`gap-without-bridge`) and taken on the executor's word otherwise.
+The verdict line reads `PASS refusal`.
 
 ## The attester criterion (deterministic, consumer-side)
 
@@ -243,27 +248,38 @@ package, version and release lock digest and the `capability` block
 is well formed; a runtime is named; the fixture regenerated at the
 receipt's seed hashes to the receipt's digest (for a data root, the
 RECORD stamp, its digest and the term file digests are present, and
-with `--data-root DIR` each matches the tree and the recorded root is
-that tree package-relative); the four series are well formed, the
+with `--data-root DIR` each matches the tree and the tree's own
+RECORD manifest, and the recorded root is that tree
+package-relative; the executor itself refuses a term file whose
+digest is not the manifest's); the four series are well formed, the
 altimetric mass is the density times the volume less the firn air at
 every epoch, the firn uncertainties are floored, the residual series
 is the difference of the two terms' annual-lag differences on their
-common epochs, and on the fixture every value is what the regenerated
-fixture yields; every rate block, the residual block, the selection
-systematic, the bar and the verdict recompute from the series by an
-independent implementation of the method statement; the bookkeeping
+common epochs, and every value is what the regenerated fixture
+yields, or with `--data-root` what the tree's term files rebuild
+through the executor's own assembly; every rate block, the residual
+block, the selection systematic, the bar and the verdict recompute
+from the series by a second implementation of the method
+statement; the bookkeeping
 carries every required statement, the density and firn floor blocks
 agree with the bound parameters and the series, and the gap handling
 agrees with the mass months; and on the fixture the known truth
 holds (the verdict says closed, each rate within 15 and 20 Gt per
 year of the imposed ones, the residual within the larger of 5 Gt per
 year and the bar of the planted one), while on a data root each rate
-lies inside stated plausibility bounds. The selftest covers two
-fixture passes, ten tampers each failing on its check, a wrong
-release, a tampered computation, four refusals and a forged one, a
-bridged run across the gap and the same receipt with its bridge
-stripped, and the data-root path on the fixture written as a root,
-verified against the tree and failed when a file changes.
+lies inside stated plausibility bounds. The verdict is scatter-forgiving by
+construction: the bar is the residual's own half width, so it grows
+with the disagreement it measures (2003 through 2016 closes at a bar
+of 141 while 2010 through 2016 fails at 94), and a closed verdict
+over a long window says the two records agree in the mean, not that
+they agree year by year. The selftest covers two fixture passes,
+eleven tampers each failing on its check, a wrong release, a
+tampered computation, all six refusals and a forged one, a bridged
+run across the gap and the same receipt with its bridge stripped, and
+the data-root path on the fixture written as a root: attested against
+the tree, refused by the executor when a term file drifts from the
+manifest, failed against another tree when the manifest is rewritten,
+and failed on its series when they are tampered.
 
 ## Reference run
 
@@ -287,12 +303,12 @@ window 2019-01 through 2025-12 (outside the fixture's firn term,
 exit 3, attested as a refusal); the Antarctic refusal
 (`firn-term-missing`) is exercised on the committed root. The
 registry entries `ice-sheet-balance` and `ice-sheet-balance-long`
-under `bundle_runs` in tools/reference_runs.yaml name the two
+in tools/reference_runs.yaml, each naming this bundle, are the two
 fixture runs.
 
 **Real-data run (the stamped data root
 ice-sheet-balance-root-2026-09-15, Greenland, 2003-01 through
-2016-12, the ITS_LIVE term, run sha256:88c61519864e16d7 under the
+2016-12, the ITS_LIVE term, run sha256:d9f24a2b51b08a22 under the
 runtime claude-code, measured 2026-09-15).** 151 of 168 mascon months (the 17 missing are June
 2003 and the battery-management months the product's list names),
 168 altimetry epochs, 127 common differences. Gravimetry minus
@@ -310,10 +326,26 @@ systematic 11.934); `closed_within_uncertainty` true. The two rates
 agree in the mean to 2 Gt per year on their own epochs, but the
 residual series scatters by 203 Gt per year from month to month: the
 two records disagree at the annual scale by hundreds of gigatonnes
-per year (the altimetry rate near minus 800 and the gravimetry near
-minus 300 in early 2010, the reverse in early 2013), which is the
-disagreement the bar carries, and it is what a reader who knows the
-products should audit first (the boundaries below). Against the IMBIE
+per year, and the receipt's series say which term carries each
+spike. At 2010-01 the annual-lag volume difference is minus 994
+cubic kilometres per year while the firn air difference is minus 78
+(the sheet-wide volume anomaly falls 400 cubic kilometres between
+2009-06 and 2010-01 while the firn air anomaly falls 82), so the
+altimetric loss reads minus 840 Gt per year against the mascons'
+minus 309: that interval, from the end of ICESat in October 2009 to
+the start of CryoSat-2 in July 2010, is where the ITS_LIVE record
+rests on Envisat alone, so the 2010 spike belongs to the volume term
+and its mission transition, which the volume stamp cannot confirm
+because the product records no per-epoch mission composition. At
+2013-01 the volume difference is minus 494 and the firn air
+difference minus 297 (between 2012-06 and 2012-09 the volume drops
+468 cubic kilometres and the firn air anomaly 479, GEMB's response to
+the July 2012 melt), so the firn correction cancels most of the
+surface lowering and the altimetric loss reads minus 180 against the
+mascons' minus 516: the 2013 spike belongs to the firn term. Mascon
+leakage is the least likely carrier, the mascon term's annual-lag
+scatter being 112 Gt per year and the provider's series matching it
+to 29 Gt. Against the IMBIE
 2023 assessment, whose Table 2 gives Greenland minus 180 with an
 uncertainty of 39 Gt per year for 2002 to 2006, minus 280 with 38 for
 2007 to 2011 and minus 213 with 40 for 2012 to 2016 (an average near
@@ -322,10 +354,14 @@ reconciled minus 221 with an uncertainty of 22 with the three
 techniques within a standard deviation of 19 Gt per year of each
 other, both rates here sit about 55 Gt per year more negative,
 outside the assessment's uncertainty and inside the interval each
-rate carries; the provider's own Greenland series, whose full-series
-trend is minus 259.8 with an uncertainty of 21.0 (one sigma, 2002 to
-2026), is 4 Gt per year less negative than the mass stamp's sum over
-the same months.[^otosaka-2023][^provider-series][^data-root] The
+rate carries; the provider's own Greenland series (header trend minus
+259.8 with 21.0 one sigma over 2002 to 2026; minus 255.8 by the same
+least squares over the same 257 months) is 4 Gt per year more
+negative than the mass stamp's sum, and over 2003 through 2016 its
+annual-lag mean is minus 285.4 against this sum's minus 281.3, so the
+offset from the assessment is a property of the mascon product and
+the selection rule, not of this
+sum.[^otosaka-2023][^provider-series][^data-root] The
 registry entry `ice-sheet-balance-record` reruns it, and the check
 chain the pull request names verifies the stamp, reruns the executor
 on the data root and attests the receipt against the tree on every
@@ -340,9 +376,24 @@ sanity bounds on the chain, not a science tolerance.
 
 ## Boundaries
 
-One real-data run exists, Greenland over 2003 through 2016, a window
-that does not cross the inter-mission gap; a run across the gap needs
-a bridge citation and has not been made. Antarctica refuses on this
+One real-data run is the anchor, Greenland over 2003 through 2016, a
+window that does not cross the inter-mission gap; a run across the
+gap needs a bridge citation and has not been made. The anchor's
+closure is a cancellation of two halves of opposite sign: 2003
+through 2009 gives a residual of minus 82 against a bar of 201
+(closed) and 2010 through 2016 gives +109 against 94 (not closed,
+gravimetry minus 324 against altimetry minus 203). The windows after
+2019 on this root do not close either: 2019 through 2022 gives +136
+against 117, 2019 through 2023 gives +157 against 103 with gravimetry
+minus 223 against altimetry minus 66 (a volume rate of minus 148
+cubic kilometres per year of which minus 76 is firn air), and 2020
+through 2023 gives +139 against 138. The provider's mascon series
+tracks the loader's sum in every window (minus 329 against minus 324
+over 2010 through 2016, minus 228 against minus 223 over 2019 through
+2023), so the term that drifts is the ITS_LIVE elevation change with
+its GEMB firn correction, whose altimetric rate after 2019 is far
+from every published Greenland rate; the closure verdict is window
+dependent, and the altimetry term is the suspect. Antarctica refuses on this
 root for want of a grounded firn air content term: the ITS_LIVE
 distribution carries GEMB output over the floating shelves only, and
 the RACMO2 and MAR alternates the firn stamp names were not read; a

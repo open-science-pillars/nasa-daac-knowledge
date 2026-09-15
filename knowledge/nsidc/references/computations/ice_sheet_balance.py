@@ -535,6 +535,9 @@ def read_data_root(root: Path) -> dict:
             raise SystemExit(f"{root} lacks {term}.csv though RECORD.json lists it")
         rows[term] = read_rows(path)
         files[path.name] = sha256_file(path)
+        if (record.get("manifest") or {}).get(path.name) != files[path.name]:
+            raise SystemExit(f"{path.name} does not match the RECORD.json manifest ({files[path.name]} on disk); "
+                             "nothing is computed on a tree that drifted from its stamp")
     for term in ("mass", "firn", "volume-itslive"):
         if term not in rows:
             raise SystemExit(f"RECORD.json lists no {term} term; the closure needs it")

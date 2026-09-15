@@ -102,7 +102,8 @@ DIR/
 
 Months are `YYYY-MM`, unique per ice sheet and domain; a quarterly row
 is one product epoch labelled by its month. The executor reads only
-these files, never a product file, and copies the RECORD summary, its
+these files, never a product file, refuses a term file whose digest
+is not the RECORD manifest's, and copies the RECORD summary, its
 digest and the term file digests into the receipt; the data root is
 recorded package-relative so the run id is the same on any machine.
 `RECORD.json` must carry, under `bookkeeping`, the mass term's `gia`,
@@ -152,7 +153,8 @@ bundle's package name, version and release lock digest in the `bundle`
 block and a well-formed `capability` block, a named runtime, the
 fixture regenerated at the receipt's seed hashing to the receipt's
 digest (or the RECORD stamp and file digests for a data root, checked
-against the tree when `--data-root` is given), the four series well
+against the tree and its manifest when `--data-root` is given, with
+the four series rebuilt from the tree's files), the four series well
 formed with the altimetric mass equal to the density times the volume
 less the firn air at every epoch and the firn uncertainties floored,
 every rate, interval, formal error, the per-term uncertainties, the

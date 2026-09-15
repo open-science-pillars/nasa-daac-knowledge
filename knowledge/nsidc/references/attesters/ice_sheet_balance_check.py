@@ -24,21 +24,23 @@ FAIL name: reason:
                sanctioned executor; for a data root, the RECORD stamp,
                its digest and the term file digests are present, and
                with --data-root DIR each digest matches the tree and
-               the recorded root is that tree, package-relative;
+               the tree's own RECORD.json manifest, and the recorded
+               root is that tree, package-relative;
   series       the four series are well formed on the window, the
                altimetric mass series is the stated density times the
                volume less the firn air volume at every epoch, the firn
                uncertainties are floored above the stated ones, the
                residual series is the difference of the two terms'
-               annual-lag differences on their common epochs, and on
-               a fixture every value is what the regenerated fixture
-               yields (1e-9);
+               annual-lag differences on their common epochs, and
+               every value is what the regenerated fixture yields, or
+               with --data-root what the tree's term files rebuild
+               through the executor's own assembly (1e-9);
   recompute    every rate block (the annual-lag difference mean, its
                effective sample size, interval and formal error), the
                residual block on the common epochs, the selection
                systematic, the bar and the verdict recomputed here from
-               the series match the receipt (1e-9 relative), by an
-               independent implementation of the method statement;
+               the series match the receipt (1e-9 relative), by a
+               second implementation of the method statement;
   bookkeeping  every required statement is present (the mass term's
                GIA, low-degree, frame, smoothing and selection; the
                volume term's reference, mask and not-mass statement;
@@ -56,8 +58,9 @@ A refusal receipt (refused true) attests PASS only as a refusal: the
 identity checks hold, the reason code is one the executor issues, and
 the refusal is reproduced here (on a fixture by re-running the
 executor's own assembly and compute at the bound parameters; on a
-data root from the spans and domains the receipt records, or on the
-executor's word where the tree is needed). The verdict line then
+data root the same way on the tree when --data-root names it, else
+from the spans and domains the receipt records, or on the executor's
+word where the tree is needed). The verdict line then
 carries PASS refusal, and the exit is 0.
 
 --out writes the attestation: the verdict, whether it is a refusal,
@@ -363,16 +366,24 @@ def attest(receipt_path: Path, computation: Path, data_root=None):
         if ok and data_root is not None:
             root = Path(data_root).expanduser().resolve()
             problems = []
+            manifest = {}
             if not (root / "RECORD.json").is_file():
                 problems.append("no RECORD.json in the tree")
             elif sha256_file(root / "RECORD.json") != data["record_sha256"]:
                 problems.append("RECORD.json digest differs from the receipt's")
+            else:
+                try:
+                    manifest = json.loads((root / "RECORD.json").read_text(encoding="utf-8")).get("manifest") or {}
+                except (OSError, ValueError, AttributeError):
+                    problems.append("RECORD.json unreadable")
             for name, digest in files.items():
                 p = root / name
                 if not p.is_file():
                     problems.append(f"{name} missing from the tree")
                 elif sha256_file(p) != digest:
                     problems.append(f"{name} digest differs from the receipt's")
+                if manifest.get(name) != digest:
+                    problems.append(f"{name} digest is not the RECORD.json manifest's ({manifest.get(name)})")
             if mod.relative_root(root) != data["data_root"]:
                 problems.append(f"the tree is {mod.relative_root(root)}, the receipt names {data['data_root']}")
             ok = not problems
@@ -393,6 +404,16 @@ def attest(receipt_path: Path, computation: Path, data_root=None):
                     _, again = mod.compute(terms, start, end, bound.get("bridge"), mod.FIXTURE_BOOKKEEPING, ice_sheet)
                 reproduced = again is not None and again[0] == code
                 why = f"the executor's assembly and compute on the regenerated fixture refuse with {again and again[0]!r}: {reproduced}"
+            elif data_root is not None and (Path(data_root) / "RECORD.json").is_file():
+                try:
+                    tree = mod.read_data_root(Path(data_root))
+                    terms, again = mod.assemble(ice_sheet, altimetry, tree["rows"], float(density or 917.0))
+                    if again is None:
+                        _, again = mod.compute(terms, start, end, bound.get("bridge"), tree["bookkeeping"], ice_sheet)
+                    reproduced = again is not None and again[0] == code
+                    why = f"the executor's assembly and compute on the tree refuse with {again and again[0]!r}: {reproduced}"
+                except SystemExit as e:
+                    why = f"the tree cannot be read: {e}"
             else:
                 spans = (data.get("spans") or {}).get("terms") or {}
                 domains = data.get("domains") or {}
@@ -482,6 +503,23 @@ def attest(receipt_path: Path, computation: Path, data_root=None):
                         maxdev = max(maxdev, max(abs(a - b) for a, b in zip(u[k], s[name][k])))
         series_ok = agree and maxdev <= 1e-9
         detail += f"; the regenerated fixture yields the same epochs and values (max deviation {maxdev:.2e}): {series_ok}"
+    if series_ok and fx is None and data_root is not None and (Path(data_root) / "RECORD.json").is_file():
+        maxdev, agree = 0.0, True
+        try:
+            tree = mod.read_data_root(Path(data_root))
+            terms, again = mod.assemble(ice_sheet, altimetry, tree["rows"], float(density))
+            agree = again is None
+            if agree:
+                for name in SERIES:
+                    u = mod.window_terms(terms[name], start, end)
+                    agree = agree and u["epochs"] == s[name]["epochs"]
+                    if agree:
+                        for k in ("values", "uncertainties"):
+                            maxdev = max(maxdev, max(abs(a - b) for a, b in zip(u[k], s[name][k])))
+        except SystemExit as e:
+            agree, detail = False, detail + f"; the tree cannot be read: {e}"
+        series_ok = agree and maxdev <= 1e-9
+        detail += f"; the tree's term files rebuild the same epochs and values (max deviation {maxdev:.2e}): {series_ok}"
     check("series", series_ok, detail)
 
     # recompute
@@ -760,10 +798,56 @@ def selftest(computation: Path) -> int:
         assert run(["--data-root", str(root), "--ice-sheet", "greenland", "--window", "2003-01:2016-12"], dr) == 0
         assert verdict_of(dr) == ("PASS", False, []), verdict_of(dr)
         assert verdict_of(dr, None, root) == ("PASS", False, []), verdict_of(dr, None, root)
+        # the tree rebuild: a receipt whose series were tampered after the run
+        # fails series against the tree it names
+        t10 = tampered(dr, w / "t10.json", lambda r: r["series"]["volume"]["values"].__setitem__(2, r["series"]["volume"]["values"][2] + 1e-6))
+        assert first_fail(t10, None, root) == "series", verdict_of(t10, None, root)
         doc = json.loads(dr.read_text())
         assert doc["data"]["data_root"] == root.resolve().as_posix() or not doc["data"]["data_root"].startswith("/"), doc["data"]
-        (root / "mass.csv").write_text((root / "mass.csv").read_text() + "\n", encoding="utf-8")
-        assert verdict_of(dr, None, root)[2] == ["data"], verdict_of(dr, None, root)
+        # a value altered in a term file with RECORD.json untouched: the executor
+        # refuses the drifted tree, and the earlier receipt fails data against it
+        lines = (root / "mass.csv").read_text(encoding="utf-8").splitlines()
+        cells = lines[5].split(",")
+        cells[3] = f"{float(cells[3]) + 50.0:.6f}"
+        lines[5] = ",".join(cells)
+        (root / "mass.csv").write_text("\n".join(lines) + "\n", encoding="utf-8")
+        try:
+            run(["--data-root", str(root), "--ice-sheet", "greenland", "--window", "2003-01:2016-12"], w / "drifted.json")
+            raise AssertionError("the executor computed on a tree that drifted from its stamp")
+        except SystemExit as e:
+            assert "manifest" in str(e), e
+        assert first_fail(dr, None, root) == "data", verdict_of(dr, None, root)
+        # the manifest rewritten to the altered file: the executor runs, the receipt
+        # attests on its own and against that tree, and against the committed
+        # tree it fails data
+        rec = json.loads((root / "RECORD.json").read_text(encoding="utf-8"))
+        rec["manifest"]["mass.csv"] = sha256_file(root / "mass.csv")
+        (root / "RECORD.json").write_text(json.dumps(rec, indent=2) + "\n", encoding="utf-8")
+        dr2 = w / "dataroot2.json"
+        assert run(["--data-root", str(root), "--ice-sheet", "greenland", "--window", "2003-01:2016-12"], dr2) == 0
+        assert verdict_of(dr2) == ("PASS", False, []), verdict_of(dr2)
+        assert verdict_of(dr2, None, root) == ("PASS", False, []), verdict_of(dr2, None, root)
+        good = w / "root-good"
+        mod.write_fixture_root(mod.make_fixture(7), good)
+        assert first_fail(dr2, None, good) == "data", verdict_of(dr2, None, good)
+        # term-not-in-root: the ATL15 term removed from a root, reproduced from the tree
+        noatl = w / "root-noatl"
+        mod.write_fixture_root(mod.make_fixture(7), noatl)
+        (noatl / "volume-atl15.csv").unlink()
+        rec = json.loads((noatl / "RECORD.json").read_text(encoding="utf-8"))
+        rec["terms_present"] = [x for x in rec["terms_present"] if x != "volume-atl15"]
+        rec["manifest"].pop("volume-atl15.csv")
+        (noatl / "RECORD.json").write_text(json.dumps(rec, indent=2) + "\n", encoding="utf-8")
+        tnr = w / "term-not-in-root.json"
+        assert run(["--data-root", str(noatl), "--ice-sheet", "greenland", "--window", "2019-01:2022-12", "--altimetry", "atl15"], tnr) == 3
+        assert json.loads(tnr.read_text())["reason_code"] == "term-not-in-root"
+        assert verdict_of(tnr) == ("PASS", True, []), verdict_of(tnr)
+        assert verdict_of(tnr, None, noatl) == ("PASS", True, []), verdict_of(tnr, None, noatl)
+        # interval-not-stated: a short quarterly window whose residual scatter vanishes
+        ins = w / "interval-not-stated.json"
+        assert run(["--fixture", "--seed", "36", "--ice-sheet", "greenland", "--window", "2020-01:2021-12", "--altimetry", "atl15"], ins) == 3
+        assert json.loads(ins.read_text())["reason_code"] == "interval-not-stated", json.loads(ins.read_text())["reason"]
+        assert verdict_of(ins) == ("PASS", True, []), verdict_of(ins)
         # the same root refuses the ATL15 term for Antarctica and reproduces it from the recorded domains
         drf = w / "dataroot-refusal.json"
         assert run(["--data-root", str(root), "--ice-sheet", "antarctica", "--window", "2003-01:2016-12", "--altimetry", "itslive"], drf) == 3

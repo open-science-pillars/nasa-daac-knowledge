@@ -1,5 +1,5 @@
 ---
-type: Recipe
+type: recipe
 spheres: [cryosphere]
 title: "Closing an ice sheet's mass balance: gravimetry against firn-corrected altimetry, and the input-output estimate this bundle cannot yet make"
 description: "The terms of an ice sheet mass balance closure, which product supplies each, which concept holds each term's trap (the mascon GIA model, leakage and selection; the height change that is not a mass change without a firn model and a density; the discharge that needs a grounded flux gate and an interpolated thickness), the annual-lag rule that removes the seasonal cycle, and how the residual is read: correction consistency before missing physics."
@@ -160,8 +160,12 @@ lag-1 autocorrelation of the differences, floored at the number of
 non-overlapping years, and the larger of the sampling and the formal
 error.[^computation] On a smooth altimetry record the sampling error
 is the year-to-year variability of the rate itself, so the term's
-interval says how variable the rate was, and the formal error beside
-it says how well the product measured it.
+interval says how variable the rate was; the formal error beside it
+is only the propagated per-epoch error, and for the mascon term it
+omits leakage by the stamp's own statement (3.99 Gt per year at 95
+percent against a provider monthly one sigma whose median is 23 Gt),
+so neither number is the measurement uncertainty the assessment
+quotes.
 
 **How the residual is read.** The residual is the mean of altimetry
 minus gravimetry differences on the epochs both terms carry, so the
