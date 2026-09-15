@@ -29,9 +29,18 @@ sources:
   - id: crossref-dubayah-2022
     resource: https://api.crossref.org/works/10.1088/1748-9326/ac8694
     title: "Crossref registry record for Dubayah and others 2022, GEDI launches a new era of biomass inference from space, Environmental Research Letters 17, 095001, issued 2022-08-18: the title, the 19 authors, the journal and the abstract (1 km mean biomass densities and national and sub-national aggregates from two years of observations, each with a standard error); the article page was not read"
+  - id: cmr-l4a-v21
+    resource: https://cmr.earthdata.nasa.gov/search/concepts/C2237824918-ORNL_CLOUD.umm_json
+    title: "CMR collection record for GEDI L4A Version 2.1 (DOI 10.3334/ORNLDAAC/2056): the footprint product the Version 2 L4B guide names as its input, created 2022-03-17"
+  - id: cmr-l4a-v3
+    resource: https://cmr.earthdata.nasa.gov/search/concepts/C4212593885-ORNL_CLOUD.umm_json
+    title: "CMR collection record for GEDI L4A Version 3: the creation date 2026-06-08, later than the L4B Version 2.1 publication"
+  - id: ornl-l4a-v3-guide
+    resource: https://daac.ornl.gov/GEDI/guides/GEDI_L4A_AGB_Density_V3.html
+    title: "ORNL DAAC user guide, GEDI L4A Version 3 (documentation revision 2026-09-02): the statement that the footprint quality flags use beam sensitivity thresholds of 0.98 over tropical evergreen forests, 0.95 over other land and 0.5 over water, matching what the Level 2, 4B and 4C products use, and the revisions table naming degrade_include_flag and elev_highestreturn_outlier_flag as new in Version 3"
   - id: l4a-dataset
     resource: ./gedi-l4a-footprint-biomass.md
-    title: "This bundle's GEDI L4A dataset concept, the footprint product this grid is inferred from"
+    title: "This bundle's GEDI L4A dataset concept, the footprint product family this grid is inferred from"
 status: draft
 stale_after: 2027-03-15
 ---
@@ -84,7 +93,10 @@ GEDI domain, 1 land surface, 2 land surface meeting the mission Level
 below 20 Mg/ha); PS, the prediction stratum, a code from 1 to 35 for
 the PFT and world region combination (DBT_Af is 1, GSW_NAm is 35)
 that is also the row of the L4A model_data dataset whose parameters
-and covariance the cell used; and MI, the mode of inference (0 none,
+and covariance the cell used, the 35 codes being every combination of
+the five types and seven regions where the L4A guide counts 32
+prediction strata with models, and which three combinations carry no
+model of their own is not stated in the sources read; and MI, the mode of inference (0 none,
 1 hybrid model-based, 2 generalized hierarchical
 model-based).[^ornl-l4b-v2-guide] The grid is the global EASE-Grid
 2.0 (EPSG 6933, WGS 84, meters), one band per file, 34,704 columns by
@@ -113,9 +125,22 @@ is sparser, in cloudy areas, and where reference ground tracks were
 not sampled because of the mission's second-year orbital resonance
 problem, an unscheduled change in station altitude that repeated
 some tracks at the expense of others.[^ornl-l4b-v2-guide] The
-quality filtering follows the L4A flags with the same beam
-sensitivity thresholds (0.98 over tropical evergreen forests, 0.95
-over other land, 0.5 over water).[^l4a-dataset]
+Version 2 guide names L4A Version 2.1 (DOI 10.3334/ORNLDAAC/2056) as
+the footprint product whose predictions it grids and whose user guide
+describes them.[^ornl-l4b-v2-guide][^cmr-l4a-v21] The Version 2.1
+guide could not be read, so the L4A version behind the Version 2.1
+grid is not stated in a source read; by the dates, L4B Version 2.1
+(published 2023-10-29) predates L4A Version 3 (created 2026-06-08),
+so the shipped grid cannot rest on the Version 3 models or on the
+flags Version 3 introduced (degrade_include_flag and
+elev_highestreturn_outlier_flag), and a Version 3 footprint mean and
+a Version 2.1 cell mean at the same place rest on different model
+sets; this is reasoning from the publication dates, not a statement
+read.[^cmr-l4b-v21][^cmr-l4a-v3][^ornl-l4a-v3-guide] The L4A Version
+3 guide states that the footprint quality flags use a beam
+sensitivity threshold of 0.98 over tropical evergreen forests, 0.95
+over other land and 0.5 over water, matching what the Level 2, 4B and
+4C products use.[^ornl-l4a-v3-guide]
 
 **Releases and identifiers.** Version 2.1 is DOI
 10.3334/ORNLDAAC/2299, CMR concept C2792577683-ORNL_CLOUD, short
@@ -162,9 +187,13 @@ here.[^cmr-gedi-collections]
 - **The mean is a whole-cell mean.** Forest and non-forest area are
   both in it, so the value for a partly forested cell is below the
   forest's own density.[^ornl-l4b-v2-guide]
-- **Zero is not an estimate.** A cell without a hybrid estimate holds
-  zero with MI equal to 0, and QF separates cells outside the GEDI
-  domain from land cells.[^ornl-l4b-v2-guide]
+- **Zero is not an estimate, and -9999 is no data.** The guide states
+  that until the end-of-mission inference all grid cells without a
+  valid hybrid mean hold zero, with MI equal to 0, and QF separates
+  cells outside the GEDI domain from land cells; the file table gives
+  -9999 as the no-data value of MU, V1, V2 and SE and 255 for PE
+  without naming which cells carry it, so which cells hold -9999
+  rather than zero is not stated in the sources read.[^ornl-l4b-v2-guide]
 
 ## Known issues
 
@@ -177,7 +206,9 @@ here.[^cmr-gedi-collections]
 - [gedi-quality-and-degrade-flags](../gotchas/gedi-quality-and-degrade-flags.md):
   the sample behind each cell is the flag-gated one.
 - [gedi-biomass-is-a-model-output](../gotchas/gedi-biomass-is-a-model-output.md):
-  the cell means inherit the L4A models by prediction stratum.
+  the cell means inherit the L4A models of the version they were
+  built from, which predates Version 3, so a Version 3 footprint mean
+  and a Version 2.1 cell rest on different model sets.
 - [gedi-latitude-limits](../gotchas/gedi-latitude-limits.md): the
   files span 85 degrees of latitude, and valid cells stop near 52.
 
@@ -188,4 +219,7 @@ here.[^cmr-gedi-collections]
 [^doi-handle-2299]: doi.org handle record for 10.3334/ORNLDAAC/2299, read 2026-09-15
 [^crossref-patterson-2019]: Crossref record for doi:10.1088/1748-9326/ab18df, read 2026-09-15
 [^crossref-dubayah-2022]: Crossref record for doi:10.1088/1748-9326/ac8694, read 2026-09-15
+[^cmr-l4a-v21]: CMR collection C2237824918-ORNL_CLOUD, read 2026-09-15
+[^cmr-l4a-v3]: CMR collection C4212593885-ORNL_CLOUD, read 2026-09-15
+[^ornl-l4a-v3-guide]: ORNL DAAC user guide, GEDI L4A Version 3, revision 2026-09-02, read 2026-09-15
 [^l4a-dataset]: This bundle's GEDI L4A dataset concept

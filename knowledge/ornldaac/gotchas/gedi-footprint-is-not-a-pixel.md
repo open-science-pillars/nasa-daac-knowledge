@@ -46,10 +46,10 @@ track for a swath about 4.2 km wide, and GEDI is a sampling mission:
 because most field plots are small, the guide notes, GEDI data will
 not intersect most of them during the mission
 life.[^ornl-l4a-v3-guide] Every L4A value is therefore one footprint,
-a modeled biomass density for one 25 m spot, and the spots along a
-transect are separated by more than twice their own diameter while
-the transects are separated by many times the spot size; between and
-beside them the surface is unobserved.[^ornl-l4a-v3-guide] Where the
+a modeled biomass density for one 25 m spot, and the spot centres
+along a transect are 60 m apart, more than twice the 25 m diameter,
+while the transects are 600 m apart, many times the spot size;
+between and beside them the surface is unobserved.[^ornl-l4a-v3-guide] Where the
 tracks fall is not the analyst's choice: the L4B guide records that
 cells go without an estimate more often early in the mission, closer
 to the equator where the station's overpass pattern is sparser, under
@@ -76,10 +76,11 @@ tracks were never observed and whose apparent resolution is the grid
 cell, not the footprint spacing. A polygon's biomass density taken as
 the plain mean of the footprints inside it is a sample mean of a
 clustered, unevenly placed sample: a polygon crossed by one track has
-no variance under the mission's estimator at all, a polygon where two
-tracks cross has a variance the estimator under-states by about 20
-percent, and a polygon whose tracks are concentrated on one side is
-represented by that side.[^ornl-l4b-v2-guide][^crossref-patterson-2019]
+no variance under the mission's estimator at all, a polygon with only
+two tracks has a variance of the kind the estimator's simulations,
+at six United States sites, under-stated by about 20 percent, and a
+polygon whose tracks are concentrated on one side is represented by
+that side.[^ornl-l4b-v2-guide][^crossref-patterson-2019]
 A stock taken as that mean times the polygon area inherits the same
 sampling error plus the model error and carries no standard error
 unless one is built, while the L4B product would report a standard

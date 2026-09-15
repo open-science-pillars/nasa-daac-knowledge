@@ -72,16 +72,21 @@ bounds.[^ornl-l4b-v2-guide]
 **Wrong-result mode.** A cell mean quoted alone, or a sum of cell
 means over a region quoted alone, drops the uncertainty the product
 ships for every estimated cell; a regional standard error assembled
-by treating the cells as independent ignores that the same tracks
-run through neighbouring cells. SE read as the error of an individual
+by treating the cells as independent ignores that the guide's
+sampling unit is the ground track, the cluster of a cluster
+sample,[^ornl-l4b-v2-guide] and that one track runs through
+neighbouring cells, the second half being this concept's reasoning
+from the first. SE read as the error of an individual
 footprint confuses the standard error of a 1 km mean with the L4A
 per-footprint prediction standard error agbd_se, which is a different
 quantity in a different product.[^ornl-l4a-v3-guide] A map of SE, or
 of the ratio SE to MU, that treats a two-track cell and a ten-track
-cell alike reads a number that the estimator under-states by about a
-fifth in the first case and a number close to nominal in the second,
-and a threshold on SE selects preferentially the cells whose few
-tracks happened to agree.[^crossref-patterson-2019] PE read as a
+cell alike reads, in the first case, a number of the kind the
+estimator's simulations at six United States sites under-stated by
+about a fifth,[^crossref-patterson-2019] and in the second a number
+close to nominal; that a threshold on SE then selects preferentially
+the cells whose few tracks happened to agree is this concept's
+reasoning from that result, not a statement in the sources. PE read as a
 continuous percentage reports 100 for every cell whose true percent
 error is 100 or more, and 255 read as a percentage is a no-data
 value.[^ornl-l4b-v2-guide] Zero read as a mean with zero error is a

@@ -117,7 +117,10 @@ North Asia; South America with Central America, the Caribbean and
 southern Mexico; South Asia) define the prediction strata, named like
 DBT_Af in predict_stratum.[^ornl-l4a-v3-guide] Version 3 predicts
 AGBD in 32 prediction strata with 14 linear models (13 in Version
-2.1), fitted on a quality-filtered calibration dataset of 11,687
+2.1); five types by seven regions make 35 combinations, and the L4B
+stratum code table lists all 35, so three combinations carry no model
+of their own, and which three the sources read do not
+say.[^l4b-dataset] The models are fitted on a quality-filtered calibration dataset of 11,687
 simulated waveforms from 24 countries (8,587 for Version 2.1, in 21
 countries per the algorithm
 document).[^ornl-l4a-v3-guide][^crossref-kellner-2023] The models
@@ -138,10 +141,10 @@ algorithm could run (l2_algrunflag); the file removes nothing, and
 the flags gate use.[^ornl-l4a-v3-guide] l2a_quality_flag_rel3 marks
 land surface shots with waveforms of sufficient fidelity for AGBD
 estimation; l4a_quality_flag_rel3 marks shots that are samples of the
-population the applied models represent (l2a_quality_flag set,
-urban_proportion below 50, is_land set, a prediction stratum
-assigned, not a leaf-off acquisition unless the model uses RH98 alone,
-and RH100 below 150 m); both use a beam sensitivity threshold of 0.98
+population the applied models represent (in the guide's own
+spelling, l2a_quality_flag == 1 and is_land_rel3 == 1,
+urban_proportion below 50, a prediction stratum assigned, leaf_off_flag
+not 1 unless the model uses RH98 alone, and RH100 below 150 m); both use a beam sensitivity threshold of 0.98
 over tropical evergreen forests, 0.95 over other land and 0.5 over
 water, as the Level 2, 4B and 4C products
 do.[^ornl-l4a-v3-guide] degrade_flag from L2A marks degraded
@@ -194,7 +197,9 @@ available on request, and its golden weeks (mission weeks 19, 32, 34
 and 38) are a separate collection, C2734289572-ORNL_CLOUD, version
 1.1.[^ornl-l4a-v3-guide][^cmr-gedi-collections] The footprint product
 is the input to the L4B gridded product, and the model_data group
-carries what the L4B algorithm needs.[^ornl-l4a-v3-guide][^l4b-dataset]
+carries what the L4B algorithm needs; the L4B Version 2.1 grid that
+ships was published 2023-10-29, before Version 3, and rests on the
+earlier footprint models.[^ornl-l4a-v3-guide][^l4b-dataset]
 Dubayah and others 2022 in Environmental Research Letters, whose
 registry record names 19 authors, presents the mission's biomass
 inference and the first pan-tropical and temperate estimates from two

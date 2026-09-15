@@ -2,7 +2,7 @@
 type: dataset-gotcha
 spheres: [biosphere]
 title: "GEDI biomass is a model output, not a measurement: L4A AGBD is a linear model of L2A relative height metrics, calibrated on simulated waveforms and field plots and stratified by plant functional type and world region, so a footprint's value changes with the version's models and with the 1 km stratum it falls in"
-description: "The lidar measures a waveform; the biomass is predicted from that waveform's relative height metrics by one of 14 linear models (Version 3) chosen by the combination of plant functional type and world region at the footprint's ground position, the type coming from an infilled 1 km grid derived from MODIS MCD12Q1. The models were fitted on 11,687 simulated waveforms from 24 countries, and their geographic transferability error, the global root mean square error within forested types weighted by land area, is about 51 percent; continental Asia, the evergreen forests of the Southeast Asian islands and north of Australia, and the world's savannas and deciduous tropical forests are under-represented in the calibration. Version 3 refitted the models and changed predictions even where the calibration data did not change. A footprint value read as a measured stock, a difference between versions or across a stratum boundary read as a change on the ground, or a comparison with a field plot that ignores the model error, mis-reads a prediction as an observation."
+description: "The lidar measures a waveform; the biomass is predicted from that waveform's relative height metrics by one of 14 linear models (Version 3) chosen by the combination of plant functional type and world region at the footprint's ground position, the type coming from an infilled 1 km grid derived from MODIS MCD12Q1. The models were fitted on 11,687 simulated waveforms from 24 countries, and their geographic transferability error, stated as one global figure (the root mean square error within forested types weighted by land area, 50.7 percent for Version 3) and not per stratum; continental Asia, the evergreen forests of the Southeast Asian islands and north of Australia, and the world's savannas and deciduous tropical forests are under-represented in the calibration. Version 3 refitted the models and changed predictions even where the calibration data did not change, and the L4B Version 2.1 grid was built before that refit. A footprint value read as a measured stock, a difference between versions or across a stratum boundary read as a change on the ground, or a comparison with a field plot that ignores the model error, mis-reads a prediction as an observation."
 tags: [gedi, biomass, model, calibration, plant-functional-type, world-region, relative-height, version, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T14:02:24Z }
 severity: medium
@@ -28,6 +28,9 @@ sources:
   - id: cmr-l4a-v21
     resource: https://cmr.earthdata.nasa.gov/search/concepts/C2237824918-ORNL_CLOUD.umm_json
     title: "CMR collection record for GEDI L4A Version 2.1: a complete, separately identified collection with its own DOI whose files carry the Version 2.1 models"
+  - id: cmr-l4b-v21
+    resource: https://cmr.earthdata.nasa.gov/search/concepts/C2792577683-ORNL_CLOUD.umm_json
+    title: "CMR collection record for GEDI L4B Version 2.1: the creation date 2023-10-29, earlier than L4A Version 3"
   - id: dataset
     resource: ../datasets/gedi-l4a-footprint-biomass.md
     title: "This bundle's GEDI L4A dataset concept, which lists this trap among the known issues"
@@ -73,12 +76,20 @@ elsewhere.[^ornl-l4a-v3-guide][^crossref-kellner-2023]
 
 **Wrong-result mode.** A footprint value read as a measured stock
 carries no visible sign that it is a prediction with a standard
-error of its own (agbd_se) and a stratum-wide error near half the
-value.[^ornl-l4a-v3-guide] Version 2.1 and Version 3 footprints
+error of its own (agbd_se) and, for the models as a whole, a global
+land-area-weighted root mean square error over forested types near
+half the value, a figure the guide gives globally and not per
+stratum.[^ornl-l4a-v3-guide] Version 2.1 and Version 3 footprints
 mixed in one analysis, or a Version 3 value compared with a Version
 2.1 value at the same place, register the model refit as a change in
 the forest, and the two collections are separately identified with
-their own DOIs for that reason.[^ornl-l4a-v3-guide][^cmr-l4a-v21] A
+their own DOIs for that reason.[^ornl-l4a-v3-guide][^cmr-l4a-v21]
+The same holds across products: the L4B Version 2.1 grid (published
+2023-10-29) predates L4A Version 3 (created 2026-06-08), so its cell
+means rest on the earlier model set, and a Version 3 footprint mean
+compared with a Version 2.1 cell mean at the same place differs by
+the refit before anything else; this is reasoning from the
+publication dates, not a statement read.[^cmr-l4b-v21][^cmr-l4a-v3] A
 step in biomass across a boundary of the 1 km type or region grid,
 where the vegetation is continuous, is the boundary between two
 estimators, and a footprint whose 1 km class does not match its own
@@ -119,4 +130,5 @@ concept lists this trap among the known issues.[^dataset]
 [^crossref-kellner-2023]: Crossref record for doi:10.1029/2022EA002516, read 2026-09-15
 [^cmr-l4a-v3]: CMR collection C4212593885-ORNL_CLOUD, read 2026-09-15
 [^cmr-l4a-v21]: CMR collection C2237824918-ORNL_CLOUD, read 2026-09-15
+[^cmr-l4b-v21]: CMR collection C2792577683-ORNL_CLOUD, read 2026-09-15
 [^dataset]: This bundle's GEDI L4A dataset concept

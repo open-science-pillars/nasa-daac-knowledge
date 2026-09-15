@@ -2,7 +2,7 @@
 type: dataset-gotcha
 spheres: [biosphere]
 title: "GEDI observes only between about 51.6 degrees north and south: the L4A and L4B products carry no footprint or estimated cell for the boreal forest, and the file and record extents (85 degrees in the L4B grid, 56 north in the L4A collection record) are not coverage"
-description: "The instrument rides the International Space Station, so its footprints lie within the band the station overflies, nominally 51.6 degrees north and south, with a few degrees of margin from pointing the lasers up to 40 km either side of the ground track. The L4B GeoTIFFs span the full EASE-Grid 2.0, 85 to -85 degrees, with valid cells nominally within 52; the L4A Version 3 collection record's bounding rectangle reaches 56 north. The high-latitude forests north of the band, more than 30 percent of global forest area by the boreal product's own statement, are covered by separate ICESat-2 products at the same archive that are designed to contribute the northern component from 51.6 degrees north. A global sum from L4B is a temperate and tropical sum, a zero or outside-domain cell north of 52 is not a treeless one, and a search bounded at 55 north returns edge footprints or none."
+description: "The instrument rides the International Space Station, so its footprints lie within the band the station overflies, nominally 51.6 degrees north and south, with a margin of a fraction of a degree from pointing the lasers up to 40 km either side of the ground track. The L4B GeoTIFFs span the full EASE-Grid 2.0, 85 to -85 degrees, with valid cells nominally within 52; the L4A Version 3 collection record's bounding rectangle reaches 56 north and 53 south, a catalog extent that no source read explains. The high-latitude forests north of the band, more than 30 percent of global forest area by the boreal product's own statement, are covered by separate ICESat-2 products at the same archive that are designed to contribute the northern component from 51.6 degrees north. A global sum from L4B is a temperate and tropical sum, a zero or outside-domain cell north of 52 is not a treeless one, and a search box lying wholly north of about 52 returns nothing."
 tags: [gedi, latitude, coverage, iss, boreal, ease-grid, domain, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T14:02:24Z }
 severity: low
@@ -47,12 +47,15 @@ and collects data globally between 51.6 degrees north and 51.6
 degrees south, the latitudes the station overflies; the L4A
 footprints are located within that band, nominally, and the L4B grid
 covers the same latitudes.[^ornl-l4b-v2-guide][^ornl-l4a-v3-guide][^crossref-patterson-2019]
-The band has a margin: the instrument can be rotated on its mount by
-up to 6 degrees, pointing the lasers up to 40 km on either side of
-the station's ground track, so the exact coverage varies slightly by
-orbit, which is why the L4A Version 3 collection record's bounding
-rectangle reaches 56 north and 53 south while the guide's study area
-table says 52 and the L4B record says 52.[^ornl-l4b-v2-guide][^cmr-l4a-v3][^cmr-l4b-v21]
+The band has a small margin: the instrument can be rotated on its
+mount by up to 6 degrees, pointing the lasers up to 40 km on either
+side of the station's ground track, a fraction of a degree of
+latitude, so the exact coverage varies slightly by
+orbit.[^ornl-l4b-v2-guide] The L4A guide's study area table gives 52
+to -52 and the L4B collection record 52 north to 52 south; the L4A
+Version 3 collection record's bounding rectangle reaches 56 north and
+53 south, a catalog extent that no source read
+explains.[^ornl-l4a-v3-guide][^cmr-l4b-v21][^cmr-l4a-v3]
 The L4B GeoTIFFs are cut to the full EASE-Grid 2.0, 85 to -85
 degrees of latitude, with cells holding valid values nominally within
 52 to -52, and the quality flag layer's value 0 marks cells outside
@@ -73,11 +76,12 @@ areas.[^ornl-l4b-v2-guide][^cmr-boreal-v3] A cell north of 52
 degrees in the L4B mean layer holds zero or no data, and read as a
 biomass of zero it turns the domain edge into a treeless line; the
 quality flag distinguishes outside-domain cells from estimated
-ones.[^ornl-l4b-v2-guide] A search or subset bounded at 55 or 56
-north, which the L4A record's bounding rectangle permits, returns the
-few pointed-off-track footprints at the edge of the band or nothing,
-and a study area in the boreal zone has no GEDI biomass at
-all.[^cmr-l4a-v3][^ornl-l4b-v2-guide]
+ones.[^ornl-l4b-v2-guide] A search box lying wholly north of about
+52 degrees, which the L4A record's bounding rectangle permits,
+returns nothing, and a study area in the boreal zone has no GEDI
+biomass at all; a box whose south edge lies below 52 returns
+everything inside the band and nothing above it, so the empty north
+shows only as an absence.[^cmr-l4a-v3][^ornl-l4b-v2-guide]
 
 **Correct approach.** The GEDI products cover the band the station
 overflies, and a global statement built on them is stated for that
