@@ -1,0 +1,141 @@
+{
+  "purpose": "provenance of the inputs of the ice sheet mass balance closure's firn and surface mass balance data root: the two ITS_LIVE product files that carry GEMB output on AWS, the documents and registry records read to describe them, and the files read during the search that turned out to carry no GEMB field",
+  "credentials": "none used: the its-live-data bucket, nsidc.org, cmr.earthdata.nasa.gov, doi.org and api.crossref.org served every file read without a token; the Earthdata Login token in the environment was not sent and is not recorded here",
+  "downloads": [
+    {
+      "term": "firn (greenland)",
+      "product": "ITS_LIVE Greenland Grounded Ice Sheet and Peripheral Glacier Ice Elevation Change, version 1.1",
+      "doi": "10.5067/ICFVI7DKHZJV",
+      "doi_resolution": "https://doi.org/10.5067/ICFVI7DKHZJV answered 302 to the bucket URL below on 2026-09-15; the collection is not in CMR (a search by DOI and by keyword returned nothing on 2026-09-15)",
+      "query": "S3 listing https://its-live-data.s3.amazonaws.com/?list-type=2&prefix=height_change/ on 2026-09-15",
+      "url": "https://its-live-data.s3.amazonaws.com/height_change/Greenland/Greenland_G1920V01_IceSheetGlacierIceHeight.nc",
+      "bucket_last_modified": "2026-03-02",
+      "files": 1,
+      "total_bytes": 1853161765,
+      "retrieved_utc": "2026-09-15T13:32:28Z",
+      "sha256": "sha256:04c8259891a0a94dfa5f9e4996dfaad57ca13763a988dbbee5cda795a9f4a4b2",
+      "file": "Greenland_G1920V01_IceSheetGlacierIceHeight.nc",
+      "variables_read": "dfac_gemb, dfac_gsfc, mask, x, y, time and the global attributes",
+      "verification": "HTTP 200, size matches the bucket listing, opened with netCDF4; the file's own doi attribute names the DOI above"
+    },
+    {
+      "term": "firn and smb (antarctica, floating ice shelves)",
+      "product": "MEaSUREs ITS_LIVE Antarctic Quarterly 1920 m Ice Shelf Height Change and Basal Melt Rates, 1992-2017, Version 1 (NSIDC-0792); the bucket copy carries the title MEaSUREs ITS_LIVE Antarctic Ice Shelf Height Change and Basal Melt Rates, Version 1",
+      "doi": "10.5067/SE3XH9RXQWAM",
+      "collection_concept_id": "C3327092253-NSIDC_CPRD",
+      "doi_resolution": "https://doi.org/10.5067/SE3XH9RXQWAM answered 302 to https://nsidc.org/data/nsidc-0792/versions/1 on 2026-09-15",
+      "query": "S3 listing https://its-live-data.s3.amazonaws.com/?list-type=2&prefix=height_change/Antarctica/ on 2026-09-15; the NSIDC granule NSIDC-0792_19920317-20171216_V01.0.nc (CMR, 2087.47 MB) is the same product behind Earthdata Login and was not downloaded",
+      "url": "https://its-live-data.s3.amazonaws.com/height_change/Antarctica/Floating/ANT_G1920V01_IceShelfMelt.nc",
+      "bucket_last_modified": "2024-01-05",
+      "files": 1,
+      "total_bytes": 2375506533,
+      "retrieved_utc": "2026-09-15T13:33:36Z",
+      "sha256": "sha256:1b1050c51dec4d1785a5a8a55a40a1d80ba16aa0cc39e46d68c33dcacd0b0b96",
+      "file": "ANT_G1920V01_IceShelfMelt.nc",
+      "variables_read": "fac, fac_err, fac_mean, smb, smb_err, smb_mean, ID, mapping, x, y, time and the global attributes",
+      "verification": "HTTP 200, size matches the bucket listing, opened with netCDF4"
+    }
+  ],
+  "read_during_the_search_not_used": [
+    {
+      "url": "https://its-live-data.s3.amazonaws.com/mass_change/antarctic/GravAltm_Antarctica_JPL_MSCN_CRI.200204_202012.v0.1.zip",
+      "product": "JPL GravAltm Antarctica Mascons CRI v0.1 (doi 10.5067/R86GZZTZ8QGO, which resolves to this URL)",
+      "total_bytes": 191445449,
+      "retrieved_utc": "2026-09-15T13:27:00Z",
+      "sha256": "sha256:81f7e4df9b31a0d1af83dbc0432204ddcdb49f23806d069c05c02406ffdfb23d",
+      "contents": "GravAltm_Antarctica_JPL_MSCN_CRI_ps.200204_202012.v0.1.nc (sha256:e27aefdaffaeafe6c559bfca2b3e19c15737999f0a4244148d828bb745bb486f) and GravAltm_Antarctica_JPL_MSCN_CRI_geo.200204_202012.v0.1.nc (sha256:859b7f31e7e7840d263402230c8f8706eb7844f849dd80f7eaf5006bb852b703)",
+      "why_not_used": "monthly mass change (lwe_thickness, uncertainty, land_mask, scale_factor) from a gravimetry and altimetry combination whose firn air content correction cites GEMB (FAC_Model_Reference attribute) but is not distributed as a field; no GEMB variable in either file"
+    },
+    {
+      "url": "https://its-live-data.s3.amazonaws.com/height_change/Antarctica/Grounded/ANT_G1920V01_GroundedIceHeight.zarr/.zmetadata",
+      "product": "ITS_LIVE Antarctic Ice Sheet grounded ice elevation change, version 1.0 (doi 10.5067/L3LSVDZS15ZV, NSIDC-0782)",
+      "retrieved_utc": "2026-09-15T13:22Z",
+      "why_not_used": "the zarr metadata lists basin, dh, h, quality_flag, rmse, time, x, y and mapping; no firn air content or surface mass balance variable, so no grounded Antarctic GEMB field is in the distribution"
+    }
+  ],
+  "documents_read": [
+    {
+      "url": "https://nsidc.org/sites/default/files/documents/user-guide/nsidc-0792-v001-userguide.pdf",
+      "retrieved_utc": "2026-09-15T13:26:32Z",
+      "total_bytes": 226517,
+      "sha256": "sha256:38c8cda7decb1360fd0031e21be7b08121643cff587b40607c1df9cf4564cffb",
+      "what_was_read": "section 1.2.2 (variables fac, fac_err, fac_mean, smb, smb_err, smb_mean in m and m per yr, 104 by 2916 by 2916), 1.3 (EPSG:3031, 1920 m, ulxmap -2798407.5 m), 1.4 (17 March 1992 to 16 December 2017, quarterly), 2.3.1.3 (GEMB calibrated after Ligtenberg and others 2011 and Gardner and others 2023, forced with 3-hourly ERA5 for 1979 to 2017 after a relaxation simulation, daily output converted to monthly and interpolated onto a 5 km grid), 3 (version 1.0, initial release), 6 (references)"
+    },
+    {
+      "url": "https://nsidc.org/sites/default/files/documents/user-guide/nsidc-0782-v001-userguide.pdf",
+      "retrieved_utc": "2026-09-15T13:26:33Z",
+      "total_bytes": 678200,
+      "sha256": "sha256:1df1de41a338de9d6279362c4cddda5f163456985b827211f0358baf984278ce",
+      "what_was_read": "the variable table (glacier_basin adapted from MEaSUREs Antarctic Boundaries version 2, height from the Copernicus DEM); no GEMB, firn or surface mass balance passage"
+    },
+    {
+      "url": "https://its-live-data.s3.amazonaws.com/documentation/ITS_LIVE-Ice-Shelf-Basal-Melt.pdf",
+      "retrieved_utc": "2026-09-15T13:29:27Z",
+      "total_bytes": 953751,
+      "sha256": "sha256:1080ba4851dfb655a3e75780d23fc04c39d57233e91d38944a35c2e6866f3827",
+      "what_was_read": "the 2019 beta (v0) note for the ice shelf melt product: 960 m grid, quarterly (a 5-month centred average every 3 months), firn air content named among the corrections; superseded by the version 1 user guide above and not relied on"
+    },
+    {
+      "url": "https://its-live.jpl.nasa.gov/ and https://its-live.jpl.nasa.gov/documentation/",
+      "retrieved_utc": "2026-09-15T13:20Z",
+      "what_was_read": "the dataset list (Antarctic elevation change, Greenland elevation change 1992 to 2023 at 1920 m EPSG:3413 monthly, Antarctic ice shelf height change and basal melt), the citations and the NSIDC links; no GEMB product page"
+    }
+  ],
+  "registry_records": [
+    {
+      "doi": "10.5194/gmd-16-2277-2023",
+      "url": "https://api.crossref.org/works/10.5194/gmd-16-2277-2023",
+      "retrieved_utc": "2026-09-15T13:22Z",
+      "verified": "Gardner, Schlegel and Larour, Glacier Energy and Mass Balance (GEMB): a model of firn processes for cryosphere research, Geoscientific Model Development 16, 2277 to 2302, 2023",
+      "role": "the GEMB model description both products cite"
+    },
+    {
+      "doi": "10.5194/essd-18-1729-2026",
+      "url": "https://api.crossref.org/works/10.5194/essd-18-1729-2026",
+      "retrieved_utc": "2026-09-15T13:22Z",
+      "verified": "Nilsson and Gardner, Elevation change of the Greenland Ice Sheet and its peripheral glaciers: 1992 to 2023, Earth System Science Data 18, 1729 to 1745, 2026; the abstract names the data DOI 10.5067/ICFVI7DKHZJV",
+      "role": "the Greenland product's paper; read on its registry record and abstract only"
+    },
+    {
+      "doi": "10.5194/tc-17-3409-2023",
+      "url": "https://api.crossref.org/works/10.5194/tc-17-3409-2023",
+      "retrieved_utc": "2026-09-15T13:29Z",
+      "verified": "Paolo, Gardner, Greene, Nilsson, Schodlok, Schlegel and Fricker, Widespread slowdown in thinning rates of West Antarctic ice shelves, The Cryosphere 17, 3409 to 3433, 2023",
+      "role": "the ice shelf product's paper (the user guide's detailed description); read on its registry record and abstract only"
+    },
+    {
+      "doi": "10.5194/essd-14-3573-2022",
+      "url": "https://api.crossref.org/works/10.5194/essd-14-3573-2022",
+      "retrieved_utc": "2026-09-15T13:22Z",
+      "verified": "Nilsson, Gardner and Paolo, Elevation change of the Antarctic Ice Sheet: 1985 to 2020, Earth System Science Data 14, 3573 to 3598, 2022",
+      "role": "the grounded Antarctic product's paper, read while establishing that the grounded product carries no GEMB field"
+    },
+    {
+      "doi": "10.5194/egusphere-2026-4404",
+      "url": "https://api.crossref.org/works/10.5194/egusphere-2026-4404",
+      "retrieved_utc": "2026-09-15T13:28Z",
+      "verified": "Wiese, Nilsson, Schlegel, Gardner, Ellmer and Landerer, Improving Spatial Resolution of Ice Sheet Mass Change using a Data Combination of Satellite Gravimetry and Altimetry, preprint posted 2026-08-25 (Copernicus)",
+      "role": "the GravAltm product's paper, in review; read while establishing that the product carries no GEMB field"
+    },
+    {
+      "url": "https://cmr.earthdata.nasa.gov/search/collections.umm_json?short_name=NSIDC-0792",
+      "retrieved_utc": "2026-09-15T13:25Z",
+      "verified": "C3327092253-NSIDC_CPRD, version 1, doi 10.5067/SE3XH9RXQWAM, abstract naming GEMB for firn air content and surface mass balance; the user guide link above",
+      "role": "the ice shelf product's collection record; the NSIDC-0782, 0793 and 0794 records were read the same way"
+    }
+  ],
+  "bucket_listings": [
+    {
+      "url": "https://its-live-data.s3.amazonaws.com/?list-type=2&delimiter=/&prefix=<prefix>",
+      "retrieved_utc": "2026-09-15T13:20Z to 2026-09-15T13:30Z",
+      "prefixes_listed": "the top level and height_change, mass_change, ice_masks, documentation, NSIDC, autorift_parameters, composites, datacubes, velocity_mosaic, qgis_project, rgb_mosaics, stac-ingest, catalog_geojson and test-space to two or three levels; gemb, GEMB, firn and smb as prefixes hold no key",
+      "finding": "GEMB output appears only inside the two height_change product files above"
+    }
+  ],
+  "notes": [
+    "The ITS_LIVE distribution on AWS carries no GEMB surface mass balance for Greenland and no GEMB field of any kind over the grounded Antarctic ice sheet; the Antarctic rows of this root cover the floating ice shelves and are labelled so in their domain column.",
+    "The ice shelf product's last quarter (time value 2017-12-16) carries no finite fac or smb over the shelves and is skipped as a non-sample by both loaders; the stamps list it under empty_steps_skipped.",
+    "The ice shelf product's fac_err field is not used: its values run to tens of metres at the median with 9999 where it has none, and its units attribute (m of ice per year) contradicts the user guide (m); the firn stamp records its percentiles and the Antarctic firn uncertainty is the stated noise floor instead.",
+    "The Greenland product carries no forcing attribute for its GEMB 1.3.0 run and no user guide was found for it on nsidc.org or in the bucket; the stamp leaves the forcing unstated rather than assumed."
+  ]
+}
