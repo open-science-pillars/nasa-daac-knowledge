@@ -2,6 +2,25 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · fix round on the MODIS vegetation drafts (PR 172): the
+  index gotcha's arithmetic corrected (0.67 to 0.82 is about 22 per
+  cent, the NDVI step for a ratio doubling from 10 to 20 about 0.09,
+  0.08 on the ATBD's rounded values); the fill-code statements in the
+  model outputs gotcha and the MOD15 and MOD17 concepts now rest on the
+  MOD17 guide's statement that the file attribute names one fill while
+  seven exist, with the catalog pages re-read (they render one value)
+  and the CMR variable records for the collections added as sources
+  (they list all seven codes); the day of year gotcha's title softened
+  to "the period's date, not the observation's" because the MOD13 guide
+  states no start-day convention; the MOD17 BPLUT minimum temperature
+  column stated as -8 to -6 with -7 for mixed forest; the annual NPP
+  formula parenthesised in the description; a CMR granule query added
+  showing no 2000 granules in MOD17A3HGF against the guide's caution
+  about 2000; the MOD15 uncertainty opening no longer generalises about
+  the product family; the MOD15 gpp-guide source title names section
+  2.4.2; the MOD13 tile size carries the projection-metre figure the
+  grid gotcha derives. All still drafts. (knowledge-seeder)
+
 - 2026-09-15 · MODIS vegetation indices, LAI and FPAR, GPP and NPP, the
   bundle's third seed (issue 159): three dataset concepts
   (datasets/mod13-vegetation-indices.md, datasets/mod15-lai-fpar.md,

@@ -2,7 +2,7 @@
 type: dataset-gotcha
 spheres: [biosphere, geosphere]
 title: "MOD15 LAI and FPAR and MOD17 GPP and NPP are model outputs, not measurements: a look-up table inversion by biome and a light use efficiency model with fixed biome parameters and reanalysis weather, each with a quality layer that says which algorithm path or which filled input produced the value, and with land cover codes stored inside the data type above the valid range"
-description: "MOD15A2H LAI and FPAR are the mean of the radiative transfer solutions consistent with the pixel's red and near-infrared reflectance for its assigned biome, or a regression on NDVI when no solution is found, and the guide states that the algorithm runs irrespective of input quality and that the SCF_QC path in FparLai_QC is the key quality indicator. MOD17A2H GPP is that FPAR times 0.45 times reanalysis shortwave radiation times a biome light use efficiency ramped by reanalysis temperature and vapour pressure deficit, with contaminated FPAR and LAI replaced by a five-year climatology since Collection 6.1, and its quality byte is the MOD15 byte passed through; MOD17A3HGF recomputes the year with LAI and FPAR interpolated across periods that failed their quality label and reports the share of growing-season days so filled as Npp_QC_500m. Pixels without a retrieval hold land cover codes (249 to 255, 32761 to 32767, 65529 to 65535) that lie inside the data type above the valid range, and the product pages name only one of them as the fill. A script that scales these bytes, averages an LAI series without the path flag, uses MOD17 GPP as an independent check on a model driven by the same weather or FPAR, or reads an eight-day anomaly where the climatology was substituted reports the model and its fills as the land surface."
+description: "MOD15A2H LAI and FPAR are the mean of the radiative transfer solutions consistent with the pixel's red and near-infrared reflectance for its assigned biome, or a regression on NDVI when no solution is found, and the guide states that the algorithm runs irrespective of input quality and that the SCF_QC path in FparLai_QC is the key quality indicator. MOD17A2H GPP is that FPAR times 0.45 times reanalysis shortwave radiation times a biome light use efficiency ramped by reanalysis temperature and vapour pressure deficit, with contaminated FPAR and LAI replaced by a five-year climatology since Collection 6.1, and its quality byte is the MOD15 byte passed through; MOD17A3HGF recomputes the year with LAI and FPAR interpolated across periods that failed their quality label and reports the share of growing-season days so filled as Npp_QC_500m. Pixels without a retrieval hold land cover codes (249 to 255, 32761 to 32767, 65529 to 65535) that lie inside the data type above the valid range; the MOD17 guide states that the file attribute names one fill value while seven exist, the product pages render one, and the CMR variable records list all seven. A script that scales these bytes, averages an LAI series without the path flag, uses MOD17 GPP as an independent check on a model driven by the same weather or FPAR, or reads an eight-day anomaly where the climatology was substituted reports the model and its fills as the land surface."
 tags: [mod15, mod15a2h, mod17, mod17a2h, mod17a3hgf, modis, lai, fpar, gpp, npp, quality, fill-value, model-output, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T17:50:00Z }
 severity: medium
@@ -25,6 +25,12 @@ sources:
   - id: a3hgf-page
     resource: https://lpdaac.usgs.gov/products/mod17a3hgfv061/
     title: "LP DAAC product page for MOD17A3HGF v061, read 2026-09-15: the variables table naming 65529, 32761 and 249 as the fills, and the description of the year-end gap filling by quality label and linear interpolation"
+  - id: cmr-vars-15
+    resource: https://cmr.earthdata.nasa.gov/search/variables.umm_json?concept_id[]=V3144112793-LPCLOUD&concept_id[]=V3144112802-LPCLOUD&concept_id[]=V3144112836-LPCLOUD&concept_id[]=V3144112838-LPCLOUD&concept_id[]=V3144112811-LPCLOUD&concept_id[]=V3144112833-LPCLOUD
+    title: "CMR variable records associated with the MOD15A2H v061 collection (V3144112793, V3144112802, V3144112836, V3144112838, V3144112811 and V3144112833, all LPCLOUD, revisions of August 2024), read 2026-09-15: Fpar_500m and Lai_500m carry the seven science fill values 249 to 255 with their land cover descriptions, the two standard deviation layers 248 to 255 with 248 as the backup method code, and the two quality bytes 255"
+  - id: cmr-vars-17
+    resource: https://cmr.earthdata.nasa.gov/search/variables.umm_json?concept_id[]=V3151335752-LPCLOUD&concept_id[]=V3151335789-LPCLOUD&concept_id[]=V3151335815-LPCLOUD&concept_id[]=V3151347144-LPCLOUD&concept_id[]=V3151347163-LPCLOUD&concept_id[]=V3151347206-LPCLOUD
+    title: "CMR variable records associated with the MOD17A2H and MOD17A3HGF v061 collections (V3151335752, V3151335789, V3151335815, V3151347144, V3151347163 and V3151347206, all LPCLOUD, revisions of August 2024), read 2026-09-15: Gpp_500m, PsnNet_500m and Npp_500m carry the seven science fill values 32761 to 32767, the annual Gpp_500m 65529 to 65535 and Npp_QC_500m 249 to 255, each with its land cover description"
   - id: mod15
     resource: ../datasets/mod15-lai-fpar.md
     title: "This bundle's MOD15 concept, with the retrieval, the layer table, the fill legend and the quality bits"
@@ -102,16 +108,21 @@ urban and unclassified land cover, all inside the uint8 range above
 the valid 0 to 100; on MOD17 the int16 layers hold 32767 and 32766 to
 32761 in the same order, the uint16 annual GPP 65535 to 65529 and the
 uint8 quality layer 255 to 249, again above the valid ranges. The
-product pages list one value per layer as the fill, 249, 248, 32761,
-65529, the lowest code of each range.[^lai-guide][^gpp-guide][^mod15-page][^a2h-page][^a3hgf-page]
+MOD17 guide states the trap directly: the file attributes list one
+fill value while seven exist. The product pages render one value per
+layer as the fill, 249, 248, 32761, 65529, the lowest code of each
+range, and the CMR variable records for the collections, from which
+the catalog's layer tables come, list all seven codes with their land
+cover meanings.[^lai-guide][^gpp-guide][^mod15-page][^a2h-page][^a3hgf-page][^cmr-vars-15][^cmr-vars-17]
 
 **Wrong-result mode.** A script that scales before it screens turns
 the codes into data: an urban pixel's 250 becomes an LAI of 25.0 and
 an FPAR of 2.5, a water pixel's 32766 becomes 3.28 kg C per square
 metre in eight days, and a mean over a tile that includes a coast or
 a city is pulled by exactly the pixels the model did not run on; a
-script that masks only the product page's fill keeps the six other
-codes.[^lai-guide][^gpp-guide][^mod15-page] A mean or trend of LAI
+script that masks only the file attribute's fill, or the one value the
+product page renders, keeps the six other codes the guide and the CMR
+variable records list.[^lai-guide][^gpp-guide][^mod15-page][^cmr-vars-15][^cmr-vars-17] A mean or trend of LAI
 over evergreen broadleaf forest that ignores the path flag averages
 retrievals whose dispersion the guide calls large under saturation
 with backup values regressed on an index that has itself stopped
@@ -168,6 +179,8 @@ expects.[^gpp-guide]
 [^lai-guide]: MODIS Collection 6.1 LAI/FPAR Product User's Guide, April 2020, sections 3 and 6.1, Tables 4 to 7
 [^gpp-guide]: MOD17 User's Guide for Collection 6.1, March 2021, sections 1.3, 2.1 to 2.5, 4.1 and 4.2
 [^mod15-page]: LP DAAC product page, MOD15A2H v061, read 2026-09-15
+[^cmr-vars-15]: CMR variable records for the MOD15A2H v061 collection, read 2026-09-15
+[^cmr-vars-17]: CMR variable records for the MOD17A2H and MOD17A3HGF v061 collections, read 2026-09-15
 [^a2h-page]: LP DAAC product page, MOD17A2H v061, read 2026-09-15
 [^a3hgf-page]: LP DAAC product page, MOD17A3HGF v061, read 2026-09-15
 [^mod15]: this bundle's MOD15 concept

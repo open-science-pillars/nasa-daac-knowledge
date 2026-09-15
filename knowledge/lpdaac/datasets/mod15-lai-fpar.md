@@ -27,10 +27,13 @@ sources:
     title: "MODIS Leaf Area Index and FPAR Product (MOD15) Algorithm Theoretical Basis Document, version 4.0, April 30 1999 (Myneni, Knyazikhin and others), read 2026-09-15 in its overview (the eight-day product produced by compositing using maximum FPAR), section 2.9 (the saturation domain) and section 2.12 (the backup algorithm as biome-dependent regression curves of LAI and FPAR on NDVI)"
   - id: gpp-guide
     resource: https://lpdaac.usgs.gov/documents/972/MOD17_User_Guide_V61.pdf
-    title: "MOD17 User's Guide for Collection 6.1, version 1.1, March 11 2021 (Running and Zhao), read 2026-09-15 for section 2.3: the eight-day MOD15A2H compositing selects the maximum FPAR across the eight days and the same day supplies the LAI, and section 1.3.4: reflectance has low sensitivity to LAI above 3"
+    title: "MOD17 User's Guide for Collection 6.1, version 1.1, March 11 2021 (Running and Zhao), read 2026-09-15 for section 2.3: the eight-day MOD15A2H compositing selects the maximum FPAR across the eight days and the same day supplies the LAI, and section 1.3.4: reflectance has low sensitivity to LAI above 3, and section 2.4.2 (the Terra MOD15A2H start date used for gap filling)"
   - id: cmr
     resource: https://cmr.earthdata.nasa.gov/search/collections.umm_json?short_name=MOD15A2H&version=061
     title: "CMR collection record for MOD15A2H v061 (concept C2218777082-LPCLOUD, revision 52 of 2026-04-16), read 2026-09-15: DOI, platform Terra and instrument MODIS, temporal extent with ends-at-present, processing level 4, the sinusoidal tiling system and 500 m resolution, HDF-EOS2 at 3.5 MB average over HTTPS and the Earthdata Cloud, the S3 buckets and credentials endpoint, and the related documents including the LDOPE quality site and the file specification"
+  - id: cmr-vars
+    resource: https://cmr.earthdata.nasa.gov/search/variables.umm_json?concept_id[]=V3144112793-LPCLOUD&concept_id[]=V3144112802-LPCLOUD&concept_id[]=V3144112836-LPCLOUD&concept_id[]=V3144112838-LPCLOUD&concept_id[]=V3144112811-LPCLOUD&concept_id[]=V3144112833-LPCLOUD
+    title: "CMR variable records associated with the MOD15A2H v061 collection (V3144112793, V3144112802, V3144112836, V3144112838, V3144112811 and V3144112833, all LPCLOUD, revisions of August 2024), read 2026-09-15: Fpar_500m and Lai_500m carry the seven science fill values 249 to 255 with their land cover descriptions, the two standard deviation layers 248 to 255 with 248 as the backup method code, the two quality bytes 255, and the valid ranges and scales of Table 4"
   - id: doi
     resource: https://doi.org/10.5067/MODIS/MOD15A2H.061
     title: "The MOD15A2H DOI, resolved 2026-09-15 to the Earthdata catalog page; a DataCite DOI, for which the Crossref API holds no record"
@@ -182,8 +185,11 @@ vegetation (rock, tundra, desert); 252 perennial snow or ice; 251
 permanent wetlands or inundated marshland; 250 urban or built-up; 249
 unclassified; and on the two standard deviation layers 248 means no
 standard deviation is available because the pixel was produced by the
-backup method.[^lai-guide] The product page lists only the lowest code
-of each range as the fill.[^page] The guide's Table 4 spells the second
+backup method.[^lai-guide] The product page renders only the lowest
+code of each range as the fill, while the CMR variable records for the
+collection, from which the catalog's layer table is rendered, list
+all seven codes with the same land cover meanings the guide
+gives.[^page][^cmr-vars] The guide's Table 4 spells the second
 standard deviation layer with a doubled underscore,
 `LaiStdDev__500m`, where the product page has `LaiStdDev_500m`; the
 product page spelling is used here.[^lai-guide][^page]
@@ -234,8 +240,8 @@ low resolution browse images.[^cmr][^page]
 
 ## Uncertainty
 
-This product is one of the few MODIS land products with a per-pixel
-uncertainty layer for each variable, and its meaning is specific:
+This product carries a per-pixel uncertainty layer for each
+variable, and its meaning is specific:
 
 - **LaiStdDev_500m and FparStdDev_500m.** The dispersion of the
   acceptable solutions of the look-up table inversion, the measure of
@@ -272,6 +278,7 @@ uncertainty layer for each variable, and its meaning is specific:
 [^lai-atbd]: MODIS LAI and FPAR Algorithm Theoretical Basis Document, version 4.0, April 1999
 [^gpp-guide]: MOD17 User's Guide for Collection 6.1, version 1.1, March 2021, sections 1.3.4, 2.3 and 2.4.2
 [^cmr]: CMR collection record C2218777082-LPCLOUD, read 2026-09-15
+[^cmr-vars]: CMR variable records for the MOD15A2H v061 collection, read 2026-09-15
 [^doi]: the MOD15A2H DOI resolved at doi.org, 2026-09-15
 [^myneni-2002]: Myneni and others 2002, Remote Sensing of Environment 83, doi:10.1016/S0034-4257(02)00074-3, cited on its Crossref record
 [^myneni-2002-crossref]: Crossref record for 10.1016/S0034-4257(02)00074-3, read 2026-09-15

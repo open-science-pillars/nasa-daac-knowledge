@@ -2,7 +2,7 @@
 type: dataset
 spheres: [biosphere, geosphere]
 title: "MOD17A2H and MOD17A3HGF version 6.1: Terra MODIS gross primary productivity summed over eight days and gap-filled annual net primary production from a radiation use efficiency model driven by MOD15 FPAR and LAI, GMAO reanalysis weather and a fixed biome parameter table, on 500 m sinusoidal tiles"
-description: "MOD17A2H is the Terra MODIS eight-day gross primary productivity product at 500 m on the sinusoidal grid, a Level 4 model output: daily GPP is the product of a biome maximum light use efficiency, attenuated by linear ramps in daily minimum temperature and daytime vapour pressure deficit from GMAO reanalysis, and the absorbed PAR from MOD15 FPAR and 0.45 times the reanalysis shortwave radiation; the file holds the eight-day sums of GPP and of net photosynthesis (GPP less leaf and fine root maintenance respiration computed from MOD15 LAI) as int16 times 0.0001 kg C per square metre, with a quality byte inherited from MOD15. MOD17A3HGF is the year-end product built after the year's MOD15A2H has been screened by its quality label and gap-filled by linear interpolation: annual GPP, annual NPP as 0.8 times GPP minus maintenance respiration, and a quality layer that is the percentage of growing-season days on which filled LAI and FPAR were used. Since Collection 6.1 a five-year FPAR and LAI climatology replaces contaminated inputs in the eight-day product, and the Collection 6.1 MOD17A2H record begins on 2021-01-01."
+description: "MOD17A2H is the Terra MODIS eight-day gross primary productivity product at 500 m on the sinusoidal grid, a Level 4 model output: daily GPP is the product of a biome maximum light use efficiency, attenuated by linear ramps in daily minimum temperature and daytime vapour pressure deficit from GMAO reanalysis, and the absorbed PAR from MOD15 FPAR and 0.45 times the reanalysis shortwave radiation; the file holds the eight-day sums of GPP and of net photosynthesis (GPP less leaf and fine root maintenance respiration computed from MOD15 LAI) as int16 times 0.0001 kg C per square metre, with a quality byte inherited from MOD15. MOD17A3HGF is the year-end product built after the year's MOD15A2H has been screened by its quality label and gap-filled by linear interpolation: annual GPP, annual NPP as 0.8 times (GPP minus maintenance respiration), and a quality layer that is the percentage of growing-season days on which filled LAI and FPAR were used. Since Collection 6.1 a five-year FPAR and LAI climatology replaces contaminated inputs in the eight-day product, and the Collection 6.1 MOD17A2H record begins on 2021-01-01."
 tags: [mod17, mod17a2h, mod17a3hgf, modis, terra, gpp, npp, primary-productivity, light-use-efficiency, bplut, sinusoidal, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T17:50:00Z }
 resource: https://lpdaac.usgs.gov/products/mod17a2hv061/
@@ -37,6 +37,12 @@ sources:
   - id: cmr-a2hgf
     resource: https://cmr.earthdata.nasa.gov/search/collections.umm_json?short_name=MOD17A2HGF&version=061
     title: "CMR collection record for the gap-filled eight-day product MOD17A2HGF v061 (concept C2565791029-LPCLOUD), read 2026-09-15 for one field: its temporal extent begins 2000-01-01, so it is the collection that carries the Collection 6.1 eight-day record before 2021; that product is not otherwise described here"
+  - id: cmr-a3hgf-granules
+    resource: https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2565791034-LPCLOUD&temporal=2000-01-01T00:00:00Z,2000-12-31T23:59:59Z&page_size=1
+    title: "CMR granule search on C2565791034-LPCLOUD for the calendar year 2000, read 2026-09-15: zero hits, against 290 for 2001, with the earliest granules by start date named MOD17A3HGF.A2001001"
+  - id: cmr-vars
+    resource: https://cmr.earthdata.nasa.gov/search/variables.umm_json?concept_id[]=V3151335752-LPCLOUD&concept_id[]=V3151335789-LPCLOUD&concept_id[]=V3151335815-LPCLOUD&concept_id[]=V3151347144-LPCLOUD&concept_id[]=V3151347163-LPCLOUD&concept_id[]=V3151347206-LPCLOUD
+    title: "CMR variable records associated with the MOD17A2H and MOD17A3HGF v061 collections (V3151335752, V3151335789, V3151335815, V3151347144, V3151347163 and V3151347206, all LPCLOUD, revisions of August 2024), read 2026-09-15: Gpp_500m, PsnNet_500m and Npp_500m carry the seven science fill values 32761 to 32767, the annual Gpp_500m 65529 to 65535 and Npp_QC_500m 249 to 255, each with its land cover description, and the valid ranges and scales of Tables 4.1 and 4.2"
   - id: doi-a2h
     resource: https://doi.org/10.5067/MODIS/MOD17A2H.061
     title: "The MOD17A2H DOI, resolved 2026-09-15 to the Earthdata catalog page; a DataCite DOI, for which the Crossref API holds no record"
@@ -74,7 +80,11 @@ with the ends-at-present flag set.[^cmr-a2h][^a2h-page] MOD17A3HGF is
 "MODIS/Terra Net Primary Production Gap-Filled Yearly L4 Global 500m
 SIN Grid V061", C2565791034-LPCLOUD (short name MOD17A3HGF, version
 061, DOI 10.5067/MODIS/MOD17A3HGF.061), one file per tile and year,
-temporal extent 2001-01-01 to the present.[^cmr-a3hgf][^a3hgf-page]
+temporal extent 2001-01-01 to the present; a CMR granule query on the
+collection for the year 2000 returns no granules, the earliest are
+named A2001001, and the record's total collection file size begin
+date of 2000-01-01 is the only trace of the earlier year in the
+metadata.[^cmr-a3hgf][^a3hgf-page][^cmr-a3hgf-granules]
 Both DOIs resolve at doi.org to the Earthdata catalog pages.[^doi-a2h][^doi-a3hgf]
 On 2026-09-15 the product pages listed 92,343 and 7,250
 granules.[^a2h-page][^a3hgf-page] Granules are sinusoidal tiles at
@@ -127,8 +137,9 @@ coefficients come from the biome properties look-up table (BPLUT), one
 column per University of Maryland land cover class read from the
 MCDLCHKM land cover product; the guide prints the table (Table 2.2)
 with epsilon max from 0.000841 kg C per MJ for open shrubland to
-0.001281 for closed shrubland, minimum temperature ramps from -8 or
--6 to between 8.31 and 12.02 degrees C, and vapour pressure deficit
+0.001281 for closed shrubland, minimum temperature ramps from -8 to
+-6 degrees C (-8 for most classes, -7 for mixed forest, -6 for
+deciduous broadleaf forest) up to between 8.31 and 12.02 degrees C, and vapour pressure deficit
 ramps from 650 or 800 Pa to between 1650 and 5300 Pa.[^gpp-guide] The
 guide calls the assumption that these biome parameters do not vary in
 space or time arguably the most significant in the logic: a
@@ -189,7 +200,11 @@ that the filling generally raises FPAR and so GPP.[^gpp-guide][^a3hgf-page]
 For the first mission year the gap filling had no data from the start
 of the year to the first MOD15A2H, which the guide dates 2000-02-28
 for Terra, and the RANGEBEGINNINGDATE metadata of that year's annual
-file reflects the mission start rather than January 1.[^gpp-guide]
+file reflects the mission start rather than January 1.[^gpp-guide] That
+caution concerns the year 2000, while the Collection 6.1 MOD17A3HGF
+extent begins 2001-01-01 and no 2000 granule exists in the collection,
+so the year the guide warns about is not in this collection as
+read.[^cmr-a3hgf][^cmr-a3hgf-granules]
 
 The meteorology is the GMAO GEOS-5 reanalysis at hourly time step and
 about 0.5 by 0.67 degrees, aggregated to daily minimum and average
@@ -229,8 +244,10 @@ wetlands, 32762 urban or built-up and 32761 unclassified; the uint16
 annual GPP uses 65535 down to 65529 in the same order and the uint8
 quality layer 255 down to 249, with 253 on the non-gap-filled annual
 product also used for data gaps from cloud and snow over vegetated
-pixels.[^gpp-guide] The product pages list only the lowest code of each
-range as the fill.[^a2h-page][^a3hgf-page] All the codes lie inside
+pixels.[^gpp-guide] The product pages render only the lowest code of
+each range as the fill, while the CMR variable records for the two
+collections, from which the catalog's layer tables are rendered, list
+all seven codes with their land cover meanings.[^a2h-page][^a3hgf-page][^cmr-vars] All the codes lie inside
 their data types above the valid ranges, so the valid range is the
 test that separates data from code ([the model outputs
 gotcha](../gotchas/lai-and-gpp-are-model-outputs.md)).[^gpp-guide][^model-gotcha]
@@ -318,6 +335,8 @@ repeated.
 [^cmr-a2h]: CMR collection record C2565791027-LPCLOUD, read 2026-09-15
 [^cmr-a3hgf]: CMR collection record C2565791034-LPCLOUD, read 2026-09-15
 [^cmr-a2hgf]: CMR collection record C2565791029-LPCLOUD, read 2026-09-15 for its temporal extent
+[^cmr-a3hgf-granules]: CMR granule search on C2565791034-LPCLOUD for 2000, read 2026-09-15
+[^cmr-vars]: CMR variable records for the MOD17A2H and MOD17A3HGF v061 collections, read 2026-09-15
 [^doi-a2h]: the MOD17A2H DOI resolved at doi.org, 2026-09-15
 [^doi-a3hgf]: the MOD17A3HGF DOI resolved at doi.org, 2026-09-15
 [^running-2004]: Running and others 2004, BioScience 54(6), doi:10.1641/0006-3568(2004)054[0547:ACSMOG]2.0.CO;2, cited on its Crossref record

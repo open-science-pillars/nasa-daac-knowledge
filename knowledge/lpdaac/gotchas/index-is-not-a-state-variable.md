@@ -100,9 +100,10 @@ concept](../datasets/mod15-lai-fpar.md)).[^gpp-guide][^mod15]
 
 **Wrong-result mode.** A script that treats the index as a linear
 measure of vegetation reports a property of the transform as a
-property of the land. A 20 per cent rise in NDVI from 0.67 to 0.82
-corresponds to a doubling of the NIR to red ratio, and the same
-doubling from 10 to 20 moves the NDVI by 0.08; a relative change
+property of the land. A rise in NDVI from 0.67 to 0.82, about 22 per
+cent, corresponds to a doubling of the NIR to red ratio, and the same
+doubling from 10 to 20 moves the NDVI by about 0.09 (0.08 on the
+document's rounded values); a relative change
 computed on the index is therefore not comparable between a sparse
 and a dense pixel, and a ratio of two NDVI values is not a ratio of
 anything physical.[^vi-atbd] A trend fitted over evergreen broadleaf
@@ -155,8 +156,9 @@ a line, and over snow or bright cloud edges the EVI values sit on a
 different relation, the two-band one.[^vi-guide] Recomputing the ratio
 from the red and NIR reflectance layers of the file reproduces the
 algorithm document's table: pixels with a ratio of 10 have NDVI near
-0.82 and pixels with a ratio of 20 near 0.90, an interval of 0.08 for
-a doubling.[^vi-atbd][^q1-page]
+0.82 and pixels with a ratio of 20 near 0.90, an interval of about
+0.09 for a doubling (0.08 on the document's rounded
+values).[^vi-atbd][^q1-page]
 
 [^vi-atbd]: MODIS Vegetation Index Algorithm Theoretical Basis Document, version 3, April 1999, sections 2.2.3, 2.2.7, 2.2.8, 2.2.9 and 3
 [^vi-guide]: MODIS Vegetation Index User's Guide, version 3.10, September 2019, section 1.2, Tables 1 and 5 and the FAQ

@@ -164,8 +164,9 @@ cloud contaminated; the statement describes the 500 m product.[^vi-guide] Indice
 not computed over the ocean and inland water classes of the land/water
 mask.[^vi-guide]
 
-Tiles are approximately 1200 by 1200 km at the equator, 10 by 10
-degrees, in the sinusoidal projection, which the guide calls an equal
+Tiles are approximately 1200 by 1200 km at the equator (1,111.95 km
+in projection metres on the guide's sphere; the grid gotcha derives
+it), 10 by 10 degrees, in the sinusoidal projection, which the guide calls an equal
 area projection; only tiles with land are processed.[^vi-guide] The
 algorithm document describes the production grid as 36 by 18 tiles,
 648 in all of which about 290 hold land, each tile 4800 by 4800 pixels
