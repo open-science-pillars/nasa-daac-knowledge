@@ -2,6 +2,92 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · coordinator's fix round applied to the BedMachine and
+  ATL10 concepts (nasa-daac-knowledge pull request 162, agent-evals
+  pull request 24): the gravity inversion and seismic bathymetry are
+  now said to supply the cavity bed beneath the floating ice shelves
+  (the Antarctic guide's own phrase, gravity inversion and seismic
+  bathymetry for grounded ice shelves, is quoted beside it); the
+  thickness gotcha's two statements about Gardner and others 2018 are
+  reduced to what the registry abstract bears (a discharge is velocity
+  times thickness, so its interval carries both factors; the
+  reference flux-gate computation is that paper); the mask gotcha no
+  longer attributes budget terms to that abstract; the Antarctic
+  source data span is given twice with its sources (1970 to 2019 on
+  the page and in the guide's temporal section, 1967 to 2020 in the
+  guide's campaign table) and recorded as a disagreement; the
+  Antarctic dataid line quotes the Version 4 table verbatim and the
+  Version 3 label beside it; the retired Greenland Version 5 guide was
+  read and its mask value 4 (non-Greenland land), which the Version 6
+  table no longer lists, is recorded in the dataset concept and the
+  mask gotcha, with a note that no granule was opened to confirm the
+  Version 6 file; the 30 m per year mass conservation threshold is
+  added to the dataset concept; the ATL10 concept names the Version 7
+  geodetic frame in the guide's words with the release 6.1 ITRF2014
+  reprocessing kept as history, says which G10016 is which in the
+  known issues note's words, states that the near-real-time gotcha it
+  links does not name G10016, and states the four-month granule lag
+  as observed (the guide's few-updates-a-year note, no pause in the
+  known issues note); the strong and weak beam gotcha's incidence
+  angle and telemetry window sentences are restated in the note's
+  words and footnoted to it; the index introduction now says the six
+  new concepts are drafts and the rest are stable. Two stable, signed
+  concepts were edited in their text only, status and verified events
+  untouched, for the coordinator to re-sign:
+  gotchas/velocity-mosaic-epochs-and-gaps.md (description, body and a
+  new source entry now point at the BedMachine concept instead of
+  saying the bundle does not yet describe it) and
+  datasets/its-live-ice-velocity.md (its known-issues line now links
+  the BedMachine concept). The seed entry below stands; its eval
+  cases are agent-evals pull request 24. (knowledge seeder, on the
+  coordinator's fix round)
+
+- 2026-09-15 · BedMachine ice thickness and ICESat-2 ATL10 freeboard
+  seeded: two dataset concepts
+  (datasets/bedmachine-greenland-antarctica.md,
+  datasets/icesat2-atl10-freeboard.md) and four gotchas
+  (bedmachine-thickness-is-interpolated and
+  atl10-freeboard-is-not-thickness at severity high with their eval
+  cases drafted in agent-evals under nsidc/cases/ on the branch
+  claude/r3-nsidc-bedmachine-atl10 (agent-evals pull request 24),
+  unregistered in any suite manifest until the coordinator's
+  follow-up;
+  bedmachine-mask-and-grounding-line and
+  atl10-strong-versus-weak-beams at severity medium): all drafts, no
+  signatures; the index gains a line per concept and its introduction
+  now names BedMachine and ATL10 and no longer says BedMachine is
+  absent. The brief named BedMachine Greenland Version 5 and
+  Antarctica Version 3; both are retired pages (13 January 2026 and
+  24 February 2026 in the guides), so the concepts describe Version 6
+  (11 December 2025) and Version 4 (21 January 2026) and cite the
+  retired pages as such. Sources read the same day: the NSIDC product
+  pages for IDBMG4 versions 5 (retired) and 6, NSIDC-0756 versions 3
+  (retired) and 4 and ATL10 version 7, with the IDBMG4 Version 6,
+  NSIDC-0756 Version 4 and ATL10 Version 7 user guides; the ICESat-2
+  sea ice products ATBD release 007 (its background, instrument,
+  ATL10 algorithm, multibeam and constraints sections), the ATL07 and
+  ATL10 known issues note updated 7 January 2026 and the ATL10
+  Version 7 data dictionary; the CMR collection and granule records
+  for the three collections; Morlighem and others 2017 and 2020,
+  Kwok and others 2019 in JGR Oceans and in GRL and Gardner and
+  others 2018 verified against the Crossref registry, with the
+  registry abstracts of the 2017, the two 2019 and the 2018 papers
+  quoted where a concept quotes them. Not read from the drafting
+  session: the Wiley journal pages (bot check), the Nature page
+  (outside the domains the seed was permitted to read) and the
+  Copernicus page; no granule was opened, so variable names, codes
+  and group names come from the guides and the data dictionary.
+  Source disagreements recorded in the concepts: the Greenland
+  guide's processing section and Version 4 history entry on when
+  streamline diffusion replaced kriging (read as one statement); the
+  ATL10 guide's coverage section (AMSR2 AU_SI12 by default) against
+  the known issues note's 15 January 2026 switch to G10016 Version 4
+  (both reported). Kept from the brief as sourced: all four gotchas
+  and both datasets, with the strong and weak beam gotcha widened to
+  the sc_orient mapping and the beam 3 energy the sources carry.
+  (drafted by the knowledge seeder; coordinator review, eval
+  registration and roadmap reconciliation pending)
+
 - 2026-09-14 · STEWARD RE-SIGNING of
   knowledge/nsidc/gotchas/sea-ice-pole-hole-by-sensor.md,
   knowledge/nsidc/gotchas/atl15-height-change-is-not-mass-change.md:
