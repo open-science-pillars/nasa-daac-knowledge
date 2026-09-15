@@ -95,6 +95,36 @@ sea_level_budget_record() {
 run uv run knowledge/podaac/references/attesters/sea_level_budget_check.py --selftest
 run sea_level_budget_chain
 run sea_level_budget_record
+# The asdc energy budget closure: the fixture chain with its refusal, the
+# loader selftests, the stamped data root check, and the real-data anchor
+# run attested against the tree (nasa-daac-knowledge PR #174).
+energy_budget_chain() {
+  local x=knowledge/asdc/references/computations/energy_budget.py
+  local a=knowledge/asdc/references/attesters/energy_budget_check.py
+  local tmp; tmp=$(mktemp -d)
+  uv run "$x" --fixture --seed 7 --window 2006-01:2020-12 --runtime run_checks --receipt "$tmp/receipt.json" || return 1
+  uv run "$a" "$tmp/receipt.json" || return 1
+  uv run "$x" --fixture --seed 7 --window 1998-01:2005-12 --runtime run_checks --receipt "$tmp/refusal.json"
+  [ "$?" -eq 3 ] || { echo "energy_budget_chain: the window refusal did not exit 3"; return 1; }
+  uv run "$a" "$tmp/refusal.json" | tee "$tmp/verdict.txt" || return 1
+  grep -q "^PASS refusal" "$tmp/verdict.txt" || { echo "energy_budget_chain: the refusal did not attest as a refusal"; return 1; }
+  rm -rf "$tmp"
+}
+energy_budget_record() {
+  local x=knowledge/asdc/references/computations/energy_budget.py
+  local a=knowledge/asdc/references/attesters/energy_budget_check.py
+  local root=knowledge/asdc/references/retrieval/energy-budget-root
+  local tmp; tmp=$(mktemp -d)
+  uv run knowledge/asdc/references/loaders/eb_data_root.py --root "$root" --check || return 1
+  uv run "$x" --data-root "$root" --ohc-receipt "$root/ohc-2000-receipt.json" --window 2006-01:2020-12 --runtime run_checks --receipt "$tmp/record.json" || return 1
+  uv run "$a" "$tmp/record.json" --data-root "$root" || return 1
+  rm -rf "$tmp"
+}
+run uv run knowledge/asdc/references/attesters/energy_budget_check.py --selftest
+run uv run knowledge/asdc/references/loaders/eb_ceres_ebaf.py --selftest
+run uv run knowledge/asdc/references/loaders/eb_data_root.py --selftest
+run energy_budget_chain
+run energy_budget_record
 # The ice sheet balance data root (nsidc): the firn and surface mass
 # balance loaders' selftests and the committed root's manifest check.
 run uv run knowledge/nsidc/references/loaders/isb_firn_gemb.py --selftest

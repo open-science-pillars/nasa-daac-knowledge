@@ -14,7 +14,8 @@ executor:
 attester:
   resource: references/attesters/energy_budget_check.py
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T18:30:00Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-15T18:57:33Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/174 }
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: dataset

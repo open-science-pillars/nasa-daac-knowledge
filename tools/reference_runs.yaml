@@ -65,20 +65,15 @@ runs:
     computation: sea_level_budget.py
     data_root: sea-level-budget
     args: [--period, "2005-01:2016-12", --runtime, reattest]
-# Runs of computations in other bundles of this repository, keyed by the
-# bundle they live in and in the same shape as the runs above; the ritual
-# takes --bundle for them (reattest.py --bundle knowledge/asdc ...), and its
-# registry loader and selftest read the podaac runs above only, so these
-# stay here until the loader honours the bundle key.
-bundles:
-  knowledge/asdc:
-    energy-budget:
-      computation: energy_budget.py
-      attester: references/attesters/energy_budget_check.py
-      data_root: none
-      args: [--fixture, --seed, "7", --window, "2006-01:2020-12", --runtime, reattest]
-    energy-budget-record:
-      computation: energy_budget.py
-      attester: references/attesters/energy_budget_check.py
-      data_root: energy-budget
-      args: [--window, "2006-01:2020-12", --runtime, reattest]
+  energy-budget:
+    bundle: knowledge/asdc
+    computation: energy_budget.py
+    attester: references/attesters/energy_budget_check.py
+    data_root: none
+    args: [--fixture, --seed, "7", --window, "2006-01:2020-12", --runtime, reattest]
+  energy-budget-record:
+    bundle: knowledge/asdc
+    computation: energy_budget.py
+    attester: references/attesters/energy_budget_check.py
+    data_root: energy-budget
+    args: [--window, "2006-01:2020-12", --runtime, reattest]

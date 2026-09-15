@@ -2,6 +2,20 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · STEWARD SIGNING of
+  knowledge/asdc/computations/energy-budget.md,
+  knowledge/asdc/recipes/energy-budget.md,
+  knowledge/asdc/references/skills/run-energy-budget.md: Maintainer
+  review of the attested energy budget closure (CERES EBAF net TOA flux
+  against Argo ocean heat content), its recipe and its run skill, merged
+  in PR #174 after the coordinator's review of the chain and a fix round
+  (the attester's window and identity rule, the 90 percent level of the
+  atmosphere term, the domain understatement and the consistency-check
+  wording). Promoted to stable; the check chain is wired into
+  run_checks.sh and the registry runs carry the asdc bundle key. The
+  verified events are written on the steward's word. The verified event
+  is written on the steward's word. (steward)
+
 - 2026-09-15 · coordinator's fix round applied to the energy budget
   seed (pull request 174): the attester now enforces the window rule
   on the pass path (a new ohc-window check, and the tree's Argo receipt
