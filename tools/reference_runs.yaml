@@ -3,8 +3,9 @@
 # concept documents as its reference run on the fixture cache, so a
 # deliberate edit to a computation is re-attested with one command
 # rather than a hunt through the concept for the parameters. A run
-# names its computation (under knowledge/podaac/references/computations),
-# its arguments, and the data root it reads (a key of data_roots, or
+# names its computation (under its bundle's references/computations;
+# the bundle is knowledge/podaac unless the run's `bundle` key names
+# another, such as knowledge/asdc), its arguments, and the data root it reads (a key of data_roots, or
 # none for a computation that reads another run's receipt, named in
 # needs and substituted for "{receipt:NAME}"). The attester is read
 # from the concept whose frontmatter names the computation; a run may

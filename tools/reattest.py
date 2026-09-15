@@ -99,6 +99,14 @@ def frontmatter(text: str) -> str:
     return parts[1] if len(parts) > 2 and text.startswith("---") else ""
 
 
+def run_bundle(spec: dict) -> Path:
+    """The bundle a registry run belongs to: its `bundle` key, a path
+    relative to this repository, or the podaac bundle when it names
+    none. A run in another bundle (asdc, nsidc) names it so the ritual
+    resolves its computation, its concept and its attester there."""
+    return (REPO / spec.get("bundle", "knowledge/podaac")).resolve()
+
+
 def attester_for(computation: Path, bundle: Path = BUNDLE):
     """The attester a concept in this bundle names for this computation."""
     """The attester the concept names for this computation, resolved
@@ -322,12 +330,16 @@ def selftest() -> int:
 
         reg = load_registry()
         for name, spec in reg["runs"].items():
-            assert (COMPUTATIONS / spec["computation"]).is_file(), name
+            b = run_bundle(spec)
+            comps = b / "references" / "computations"
+            assert b.is_dir(), name
+            assert (comps / spec["computation"]).is_file(), name
             assert isinstance(spec.get("args"), list), name
             if spec.get("needs"):
                 assert spec["needs"] in reg["runs"], name
             assert spec.get("data_root", "fixtures") in ("none", *reg["data_roots"]), name
-            assert attester_for(COMPUTATIONS / spec["computation"]) is not None, name
+            att = b / spec["attester"] if spec.get("attester") else attester_for(comps / spec["computation"], b)
+            assert att is not None and att.is_file(), name
     print("reattest selftest: ok")
     return 0
 
@@ -352,9 +364,9 @@ def main() -> int:
     ap.add_argument("computation", nargs="?", type=Path)
     ap.add_argument("args", nargs="*", help="the computation's arguments, after --")
     ap.add_argument("--run", help="a run name from tools/reference_runs.yaml")
-    ap.add_argument("--bundle", type=Path, default=BUNDLE,
-                    help="the knowledge bundle the computation belongs to (default this repository's podaac "
-                         "bundle); the ritual runs in the repository that holds it")
+    ap.add_argument("--bundle", type=Path, default=None,
+                    help="the knowledge bundle the computation belongs to (default: the run's `bundle` key, "
+                         "else this repository's podaac bundle); the ritual runs in the repository that holds it")
     ap.add_argument("--attester", type=Path)
     ap.add_argument("--data-root", type=Path, help="override the registry's data root")
     ap.add_argument("--old", default="HEAD", help="the reference version, a git ref (default HEAD)")
@@ -363,14 +375,18 @@ def main() -> int:
     ap.add_argument("--list", action="store_true", help="list the registry runs")
     ap.add_argument("--selftest", action="store_true")
     a = ap.parse_args()
-    bundle, repo, computations = bundle_paths(a.bundle)
     if a.selftest:
         return selftest()
     reg = load_registry()
     if a.list:
         for name, spec in reg["runs"].items():
-            print(f"{name:<20} {spec['computation']:<40} {' '.join(map(str, spec.get('args', [])))}")
+            b = spec.get("bundle", "knowledge/podaac")
+            print(f"{name:<24} {b:<20} {spec['computation']:<36} {' '.join(map(str, spec.get('args', [])))}")
         return 0
+    # a registry run names its bundle; --bundle overrides it, and a bare
+    # computation path defaults to the podaac bundle
+    chosen = a.bundle or (run_bundle(reg["runs"][a.run]) if a.run and a.run in reg["runs"] else BUNDLE)
+    bundle, repo, computations = bundle_paths(chosen)
 
     keep = a.keep or Path(tempfile.mkdtemp(prefix="reattest-"))
     keep.mkdir(parents=True, exist_ok=True)
@@ -387,7 +403,7 @@ def main() -> int:
         # and their receipts substituted; only the named run is attested.
         for dep in order[:-1]:
             spec = reg["runs"][dep]
-            comp = computations / spec["computation"]
+            comp = run_bundle(spec) / "references" / "computations" / spec["computation"]
             out = keep / f"receipt_{dep}.json"
             rc, text = run_cmd(["uv", "run", comp, *resolve_args(spec, reg, receipts, a.data_root),
                                 "--receipt", out], repo)
