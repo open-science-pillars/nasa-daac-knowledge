@@ -5,9 +5,10 @@ title: "NASADEM heights are not all SRTM: the NUM layer says which pixels are AS
 description: "The NASADEM_HGT height layer is a merge. Where the reprocessed SRTM has a value the height is SRTM; where it is void the height is an error-suppressed ASTER GDEM3 built from draft GDEM3, GDEM2 and ALOS PRISM AW3D30, shifted vertically by an interpolated delta surface so that the seam does not show, and in the last resort interpolation. The companion NUM layer codes the source per pixel: 1 to 23 an SRTM scene count, 41 to 94 PRISM, 110 to 160 GDEM3, 170 to 220 GDEM2, 231 to 234 and 241 to 246 older SRTM and national DEM edits carried through the GDEMs, 250 interpolation, 0 water. An analysis that reads every height as February 2000 radar treats optical stereo surfaces from 2000 to 2013 as the same measurement, and nothing in the height layer marks the difference."
 tags: [nasadem, nasadem-hgt, num, void-fill, aster-gdem, prism, aw3d30, srtm, dem, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/164 }
 severity: medium
 dataset: ../datasets/nasadem.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: user-guide

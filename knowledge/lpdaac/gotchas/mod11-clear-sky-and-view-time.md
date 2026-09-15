@@ -5,6 +5,7 @@ title: "MOD11 is a clear-sky product observed at a varying local time: every val
 description: "MOD11A1 holds a land surface temperature only where the MODIS cloud mask found the pixel clear and a 32 day temporal screen kept it; everywhere else the temperature is the fill value 0 and the quality byte says not produced due to cloud. The value that exists was observed at the local solar time in Day_view_time or Night_view_time, which varies by cell and by day, at the view zenith angle in the angle layer, and above 30 degrees latitude it is one observation chosen among several by view angle in the guide's account, or an average in the product page's. MOD11A2 is the simple average of whatever MOD11A1 values existed in eight days, with the days that contributed flagged bit by bit in Clear_sky_days, and its view time is the average of the times used. A mean built from these fields is therefore a clear-sky mean at a mixture of hours and angles, and a script that reads it as the mean surface temperature of the period at a fixed overpass time attributes the sampling to the surface."
 tags: [mod11, mod11a1, mod11a2, modis, terra, land-surface-temperature, clear-sky, view-time, view-angle, cloud, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/164 }
 severity: high
 dataset: ../datasets/mod11-land-surface-temperature.md
 eval_case: mod11-clear-sky-and-view-time

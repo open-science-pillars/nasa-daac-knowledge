@@ -2,6 +2,23 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · STEWARD RE-SIGNING of
+  knowledge/nsidc/datasets/bedmachine-greenland-antarctica.md,
+  knowledge/nsidc/datasets/icesat2-atl10-freeboard.md,
+  knowledge/nsidc/gotchas/bedmachine-thickness-is-interpolated.md,
+  knowledge/nsidc/gotchas/bedmachine-mask-and-grounding-line.md,
+  knowledge/nsidc/gotchas/atl10-freeboard-is-not-thickness.md,
+  knowledge/nsidc/gotchas/atl10-strong-versus-weak-beams.md,
+  knowledge/nsidc/gotchas/velocity-mosaic-epochs-and-gaps.md,
+  knowledge/nsidc/datasets/its-live-ice-velocity.md: Maintainer review
+  of the BedMachine and ATL10 concepts seeded in PR #162 after the
+  coordinator's lint and fix round; the two datasets and the two medium
+  gotchas promoted to stable, the two high-severity gotchas keep draft
+  until a second review; the velocity mosaic gotcha and the ITS_LIVE
+  dataset concept re-signed after their text was updated to point at the
+  BedMachine concept. The new verified event is appended on the
+  steward's word, the earlier events kept as history. (steward)
+
 - 2026-09-15 · coordinator's fix round applied to the BedMachine and
   ATL10 concepts (nasa-daac-knowledge pull request 162, agent-evals
   pull request 24): the gravity inversion and seismic bathymetry are

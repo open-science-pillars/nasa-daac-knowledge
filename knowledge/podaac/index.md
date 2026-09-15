@@ -26,8 +26,8 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [NASA-SSH simple gridded sea surface height anomaly (observational reference)](datasets/nasa-ssh.md), status: draft
 - [OSCAR version 2 surface currents (final, interim and near-real-time)](datasets/oscar-v2.md), status: stable
 - [SMAP sea surface salinity, JPL CAP Level 3 (with the RSS product as the alternative producer)](datasets/smap-sss-jpl.md), status: stable
-- [CCMP version 3.1 ocean surface wind analysis (RSS, 6-hourly and monthly)](datasets/ccmp-wind-analysis.md), status: draft
-- [ASCAT scatterometer ocean surface winds at PO.DAAC: the OSI SAF operational Level 2 streams, the MetOp-A climate data records and the JPL MEaSUREs inter-calibrated ESDR](datasets/ascat-winds.md), status: draft
+- [CCMP version 3.1 ocean surface wind analysis (RSS, 6-hourly and monthly)](datasets/ccmp-wind-analysis.md), status: stable
+- [ASCAT scatterometer ocean surface winds at PO.DAAC: the OSI SAF operational Level 2 streams, the MetOp-A climate data records and the JPL MEaSUREs inter-calibrated ESDR](datasets/ascat-winds.md), status: stable
 
 ## gotchas
 
@@ -67,9 +67,9 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [MUR analysis_error is the analysis system's own estimate of its error standard deviation, not a comparison against independent measurements: quoted as the accuracy of a value, or divided by root N for a regional mean, it says something the product never measured](gotchas/mur-analysis-error-is-not-validation.md), severity medium, status: stable
 - [MUR near-real-time and retrospective files share one collection and are told apart only by a global attribute: the one-day and four-day analyses of the same date can differ in value, so a series across the latency boundary changes file kind without saying so](gotchas/mur-nrt-versus-final.md), severity low, status: stable
 - [A wind analysis is not an observation: CCMP is complete everywhere because its background model fills every gap, and where no satellite fell in the window, in rain, at the sea ice edge and inside tropical cyclones the value is the adjusted ERA5 field, which nothing but the nobs field marks](gotchas/wind-analysis-is-not-observation.md), severity high, status: draft
-- [Scatterometer winds and CCMP winds are 10 m equivalent-neutral winds relative to the moving sea surface, not the real 10 m wind of a reanalysis or of an anemometer wind brought to 10 m: the reference height, the stability convention and the current-relative frame are each part of the definition](gotchas/neutral-versus-stress-equivalent-wind.md), severity medium, status: draft
-- [Scatterometer rain and sea ice flags decide which cells are winds: a rainy cell or an ice-edge cell carries a plausible wind vector, the two ASCAT product families flag them differently, and a series or a climatology built without the flags, or with all of them, measures the flagging](gotchas/scatterometer-rain-and-ice-flags.md), severity medium, status: draft
-- [A wind stress or air-sea flux computed by a bulk formula carries its inputs' errors and its formula's coefficients: the ESDR stress is one linear drag law on the equivalent neutral wind, a stress from averaged or blended winds is biased low by the nonlinearity, and no product's stress is an observation of stress](gotchas/bulk-flux-inputs-and-coefficients.md), severity medium, status: draft
+- [Scatterometer winds and CCMP winds are 10 m equivalent-neutral winds relative to the moving sea surface, not the real 10 m wind of a reanalysis or of an anemometer wind brought to 10 m: the reference height, the stability convention and the current-relative frame are each part of the definition](gotchas/neutral-versus-stress-equivalent-wind.md), severity medium, status: stable
+- [Scatterometer rain and sea ice flags decide which cells are winds: a rainy cell or an ice-edge cell carries a plausible wind vector, the two ASCAT product families flag them differently, and a series or a climatology built without the flags, or with all of them, measures the flagging](gotchas/scatterometer-rain-and-ice-flags.md), severity medium, status: stable
+- [A wind stress or air-sea flux computed by a bulk formula carries its inputs' errors and its formula's coefficients: the ESDR stress is one linear drag law on the equivalent neutral wind, a stress from averaged or blended winds is biased low by the nonlinearity, and no product's stress is an observation of stress](gotchas/bulk-flux-inputs-and-coefficients.md), severity medium, status: stable
 
 ## recipes
 

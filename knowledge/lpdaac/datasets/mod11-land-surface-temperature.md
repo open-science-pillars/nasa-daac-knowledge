@@ -5,9 +5,10 @@ title: "MOD11A1 and MOD11A2 version 6.1: Terra MODIS clear-sky land surface temp
 description: "MOD11A1 is the daily Terra MODIS land surface temperature and emissivity product at 1 km on the sinusoidal grid, gridded from the MOD11_L2 swath retrievals of the generalized split-window algorithm on bands 31 and 32 under the MOD35 clear-sky test; MOD11A2 is the simple average of the MOD11A1 values over eight days. Each carries separate daytime and nighttime temperature fields (uint16 kelvin times 0.02, fill 0) with their own quality bytes, local solar view times, signed view zenith angles and clear-sky coverage counts, plus band 31 and 32 emissivities assigned from land cover class rather than retrieved. Collection 6.1 keeps the Collection 6 algorithm and format and differs by the Level-1B calibration. Only clear-sky observations exist in the files, so every mean built from them is a clear-sky mean."
 tags: [mod11, mod11a1, mod11a2, modis, terra, land-surface-temperature, lst, emissivity, sinusoidal, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/164 }
 resource: https://lpdaac.usgs.gov/products/mod11a1v061/
 version: "Collection 6.1 (MOD11A1 DOI 10.5067/MODIS/MOD11A1.061, CMR C1748058432-LPCLOUD; MOD11A2 DOI 10.5067/MODIS/MOD11A2.061, CMR C2269056084-LPCLOUD; provider LPCLOUD), verified 2026-09-15: MOD11A1 temporal extent 2000-02-24 to present and MOD11A2 2000-02-18 to present, both with the ends-at-present flag set and collection progress ACTIVE, 3,042,160 and 386,325 granules on the product pages that day; the user guide read is the Collection 6 guide of June 2019 with its Collection 6.1 cover note"
-status: draft
+status: stable
 stale_after: 2027-03-15
 citation:
   access_date_required: true

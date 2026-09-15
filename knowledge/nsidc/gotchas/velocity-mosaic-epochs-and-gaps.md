@@ -5,7 +5,9 @@ title: "An annual velocity mosaic is a composite of image pairs with its own eff
 description: "An annual ITS_LIVE or MEaSUREs velocity mosaic is an error-weighted synthesis of every image pair that overlapped the year, so its value at a pixel represents whatever dates the pairs happened to cover, with a count of pairs (and, in NSIDC-0725, a temporal offset) recording how well; before 2013 many regions have few pairs or none. A flux computed from a mosaic states the mosaic's year, its effective date where the product gives one, and its coverage, and an ice discharge multiplies velocity by ice thickness at the gate, which comes from BedMachine, described in this bundle's BedMachine concept."
 tags: [its-live, measures, ice-velocity, velocity-mosaic, flux-gate, discharge, ice-thickness, bedmachine, count, effective-date, greenland, antarctica]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:30:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/129 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/129 }
+  - { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/162 }
 severity: medium
 # medium: the guides document the compositing, the count field and
 # the coverage limits; the error bites through an unstated epoch or a

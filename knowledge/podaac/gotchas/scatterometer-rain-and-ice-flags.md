@@ -5,9 +5,10 @@ title: "Scatterometer rain and sea ice flags decide which cells are winds: a rai
 description: "Rain and sea ice change the backscatter a scatterometer reads as wind. The OSI SAF files carry a wind vector cell quality flag, an ice probability, an ice age parameter and a backscatter distance; the JPL ESDR carries 23 quality bits (rain, ice edge, ice nearby, coastal, high and low wind among them) and a six-level quality indicator, with rain neither detected nor corrected for ASCAT in that retrieval. CCMP excludes every rain-flagged and ice-influenced retrieval before its analysis. A wind used without its flags includes ice-edge and rain-affected cells as ocean wind; a climatology that drops every flagged cell removes the rainy, convective, high-wind cases, which the MEaSUREs guide reports as more damaging to derivative climatologies than keeping corrected cells; and an ice-edge series is a series of ice decisions."
 tags: [scatterometer, ascat, rain, sea-ice, quality-flags, wvc_quality_flag, ice_prob, quality-indicator, coastal, climatology, ccmp]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/163 }
 severity: medium
 dataset: ../datasets/ascat-winds.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: podaac-b25

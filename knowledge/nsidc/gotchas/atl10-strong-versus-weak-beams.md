@@ -5,6 +5,7 @@ title: "The strong and weak beams of each ATLAS pair differ four to one in energ
 description: "ATLAS transmits three beam pairs; within a pair the strong beam carries about four times the energy of the weak one, returns about 6 signal photons per pulse over snow-covered ice against about 1.5, and is read by 16 detector channels against 4. The weak beam's 150-photon segments are therefore longer, its coarse surface is taken from the adjacent strong beam, and the middle strong beam transmits about 80 percent of the outer two. Whether the strong beam of a pair is the l or the r ground track depends on the spacecraft orientation recorded in sc_orient. The gridded ATL20 product uses the strong beams only, and a statistic that pools all six beams as equals, or picks a track by name assuming it is strong, mixes two precisions and two samplings."
 tags: [icesat2, atlas, atl10, atl07, atl20, strong-beam, weak-beam, sc_orient, beam-pair, photon-rate, segment-length, sea-ice, freeboard]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/162 }
 severity: medium
 # medium: the beam configuration, the orientation flag and the strong
 # beam choice of the gridded product are documented in the ATBD, the
@@ -12,7 +13,7 @@ severity: medium
 # mixed-precision statistic rather than a silently wrong number from
 # the product alone; no eval case is required.
 dataset: ../datasets/icesat2-atl10-freeboard.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: sea-ice-atbd

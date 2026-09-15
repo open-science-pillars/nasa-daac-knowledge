@@ -5,7 +5,9 @@ title: "MEaSUREs ITS_LIVE regional ice velocity mosaics, and the InSAR velocity 
 description: "Annual mean surface velocity mosaics for sixteen glacier regions including Greenland and Antarctica, 1984 through 2022 plus a 2014 to 2022 climatology, at 120 m on polar stereographic or UTM grids, synthesized from tens of millions of Landsat, Sentinel-1 and Sentinel-2 image-pair velocities by autoRIFT; error fields and an image-pair count ship with the data, and the older MEaSUREs Greenland and Antarctic InSAR velocity maps are the alternatives."
 tags: [its-live, measures, ice-velocity, velocity-mosaic, autorift, greenland, antarctica, nsidc, cryosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:30:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/129 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/129 }
+  - { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/162 }
 resource: https://nsidc.org/data/nsidc-0776/versions/2
 version: "NSIDC-0776 Version 2 (DOI 10.5067/JQ6337239C96; the user guide's version history dates Version 2 to July 2025), CMR concept C3618748415-NSIDC_CPRD with 546 granules, annual files 1984 through 2022 and one climatological file per region for 2014 through 2022, verified 2026-09-13; Version 1 (DOI 10.5067/6II6VW8LLWJ7, C3298525133-NSIDC_CPRD, 1985 through 2018, Landsat only) is still listed. Alternatives verified the same day: NSIDC-0725 Version 5 (C3298042936-NSIDC_CPRD, 2014-12-01 through 2023-11-30), NSIDC-0478 Version 2 (C3291179132-NSIDC_CPRD, 2000-09-03 through 2018-05-31), NSIDC-0670 Version 1 (C3291956575-NSIDC_CPRD, 1995-12-01 through 2015-10-31) and NSIDC-0484 Version 2 (C3291177469-NSIDC_CPRD, 1996-01-01 through 2016-12-31)"
 sources:

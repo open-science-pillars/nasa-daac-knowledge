@@ -2,6 +2,19 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · STEWARD SIGNING of knowledge/lpdaac/datasets/nasadem.md,
+  knowledge/lpdaac/datasets/mod11-land-surface-temperature.md,
+  knowledge/lpdaac/gotchas/nasadem-orthometric-versus-ellipsoidal.md,
+  knowledge/lpdaac/gotchas/nasadem-void-fill-and-source-layer.md,
+  knowledge/lpdaac/gotchas/mod11-clear-sky-and-view-time.md,
+  knowledge/lpdaac/gotchas/mod11-day-and-night-are-different.md,
+  knowledge/lpdaac/gotchas/mod11-emissivity-is-classified.md: Maintainer
+  review of the NASADEM and MOD11 concepts seeded in PR #164 after the
+  coordinator's lint and fix round; the two datasets and the medium and
+  low gotchas promoted to stable, the two high-severity gotchas keep
+  draft until a second review. The verified event is written on the
+  steward's word. (steward)
+
 - 2026-09-15 · fix round on the NASADEM and MOD11 drafts (PR 164): the
   MOD11A2 Clear_sky_days and Clear_sky_nights layers are now described
   as one flag bit per day rather than counts, on the guide's statement

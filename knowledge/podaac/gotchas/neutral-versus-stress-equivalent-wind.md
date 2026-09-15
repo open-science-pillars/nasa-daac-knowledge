@@ -5,9 +5,10 @@ title: "Scatterometer winds and CCMP winds are 10 m equivalent-neutral winds rel
 description: "A scatterometer responds to surface roughness, which follows stress, so its retrieval is calibrated as the wind at 10 m that would produce that stress under neutral stability, relative to the moving surface: the equivalent neutral wind. CCMP uses ERA5 neutral-stability winds as its background, adjusted for surface currents, and its files are 10 m neutral winds. A real 10 m wind differs by the stability correction and by the surface current, differences the MEaSUREs guide puts at about a metre per second over much of the ocean and larger where currents or air-sea temperature differences are strong, with a global mean the guide puts as likely very close to zero. A comparison, a bias, a trend of the difference or a bulk formula that mixes the two conventions without saying so measures the definition."
 tags: [scatterometer, ascat, ccmp, equivalent-neutral-wind, stress-equivalent-wind, 10m-wind, stability, surface-current, buoy, reanalysis]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/163 }
 severity: medium
 dataset: ../datasets/ascat-winds.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: measures-guide
