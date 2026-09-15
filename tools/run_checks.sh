@@ -95,6 +95,11 @@ sea_level_budget_record() {
 run uv run knowledge/podaac/references/attesters/sea_level_budget_check.py --selftest
 run sea_level_budget_chain
 run sea_level_budget_record
+# The ice sheet balance data root (nsidc): the firn and surface mass
+# balance loaders' selftests and the committed root's manifest check.
+run uv run knowledge/nsidc/references/loaders/isb_firn_gemb.py --selftest
+run uv run knowledge/nsidc/references/loaders/isb_smb_gemb.py --selftest
+run uv run knowledge/nsidc/references/loaders/isb_data_root.py --root knowledge/nsidc/references/retrieval/ice-sheet-balance-root --check
 # Sibling plugin clones, when present, have their local concepts checked
 # for owed signatures, their scripts for undeclared dependencies and their
 # prose for the wording rules; an absent sibling is not a failure here.
