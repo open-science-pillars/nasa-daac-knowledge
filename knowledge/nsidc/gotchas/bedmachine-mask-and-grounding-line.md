@@ -21,6 +21,9 @@ sources:
   - id: nsidc-0756-user-guide
     resource: https://nsidc.org/sites/default/files/documents/user-guide/nsidc-0756-v004-userguide.pdf
     title: "MEaSUREs BedMachine Antarctica Version 4 user guide: the mask codes including Lake Vostok, hydrostatic equilibrium with a calibrated firn correction on floating ice shelves and continuity across the grounding line, the ice equivalent convention and the firn variable, the bed over ice-free land as REMA, and the statement that mass conservation keeps grounding-line fluxes compatible with accumulation and thinning, read in full 2026-09-15"
+  - id: idbmg4-v5-user-guide
+    resource: https://nsidc.org/sites/default/files/documents/user-guide/idbmg4-v005-userguide.pdf
+    title: "IceBridge BedMachine Greenland Version 5 user guide (retired version): its parameter table, whose mask carries 4 for non-Greenland land, read 2026-09-15 for that table"
   - id: gardner-2018
     resource: https://doi.org/10.5194/tc-12-521-2018
     title: "Gardner and others, 2018, Increased West Antarctic and unchanged East Antarctic ice discharge over the last 7 years, The Cryosphere 12, 521 to 547: the abstract's discharge through an optimized flux gate and the flow accelerations across the grounding lines that account for its increase, record and abstract verified against the Crossref registry 2026-09-15"
@@ -36,7 +39,10 @@ sources:
 
 **Mechanism.** Both BedMachine files carry a mask with the values
 0 ocean, 1 ice-free land, 2 grounded ice and 3 floating ice, and the
-Antarctic file adds 4 for Lake Vostok.[^idbmg4-user-guide][^nsidc-0756-user-guide]
+Antarctic file adds 4 for Lake Vostok; the retired Greenland
+Version 5 guide's table used 4 for non-Greenland land, a value the
+Version 6 table no longer
+lists.[^idbmg4-user-guide][^nsidc-0756-user-guide][^idbmg4-v5-user-guide]
 The boundary between 2 and 3 is where the thickness field changes
 method: on grounded ice it is mass conservation constrained by the
 radar lines (or the interior interpolation methods), and on floating
@@ -73,13 +79,16 @@ shelf: there the thickness is hydrostatic (source 5 in Greenland,
 rather than constrained by radar or by the conservation equation, and
 the ice crossing that gate has already crossed the grounding line, so
 the flux is a shelf flux, less whatever the shelf lost between the
-line and the gate (basal melt is among the budget terms Gardner and
-others 2018 name), and it is not the ice sheet's
+line and the gate, and it is not the flux across the grounding line
+that Gardner and others 2018 compute as the ice sheet's
 discharge.[^nsidc-0756-user-guide][^idbmg4-user-guide][^gardner-2018] A mean
 thickness or an ice volume summed over a bounding box without the
 mask includes floating ice at hydrostatic thickness and, where bed
 and surface are read instead of thickness, includes ocean and land
-pixels where bed minus surface is not ice.[^idbmg4-user-guide][^nsidc-0756-user-guide]
+pixels where bed minus surface is not ice; in a Greenland Version 5
+file the box also holds pixels at mask value 4, non-Greenland land
+(Ellesmere Island and Iceland lie inside the grid's extent), whose
+thickness is not the ice sheet's.[^idbmg4-user-guide][^nsidc-0756-user-guide][^idbmg4-v5-user-guide]
 An Antarctic surface elevation compared with an altimeter's or with
 REMA without adding the firn variable back differs by the firn air
 content, which is a metres-scale quantity the file carries for that
@@ -109,7 +118,8 @@ grounding-line continuity from the Antarctic guide's processing
 section, the ice equivalent convention from its firn air correction
 section, the source codes from both parameter tables, and the bed
 over ice-free land from both processing sections; all read in full
-on 2026-09-15.[^idbmg4-user-guide][^nsidc-0756-user-guide] Gardner
+on 2026-09-15, and the retired Version 5 Greenland guide's table was
+read the same day for its mask value 4.[^idbmg4-user-guide][^nsidc-0756-user-guide][^idbmg4-v5-user-guide] Gardner
 and others 2018 and Morlighem and others 2017 are cited on their
 Crossref records and registry abstracts (verified 2026-09-15); the
 journal pages were not read from the drafting session (the Wiley page
@@ -119,6 +129,7 @@ issues.[^dataset]
 
 [^idbmg4-user-guide]: IceBridge BedMachine Greenland Version 6 user guide, NSIDC
 [^nsidc-0756-user-guide]: MEaSUREs BedMachine Antarctica Version 4 user guide, NSIDC
+[^idbmg4-v5-user-guide]: IceBridge BedMachine Greenland Version 5 user guide (retired), NSIDC
 [^gardner-2018]: Gardner and others, 2018, The Cryosphere, doi:10.5194/tc-12-521-2018
 [^morlighem-2017]: Morlighem and others, 2017, Geophysical Research Letters, doi:10.1002/2017GL074954
 [^dataset]: This bundle's BedMachine dataset concept

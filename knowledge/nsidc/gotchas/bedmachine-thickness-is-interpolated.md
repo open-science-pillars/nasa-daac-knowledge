@@ -2,7 +2,7 @@
 type: dataset-gotcha
 spheres: [cryosphere]
 title: "BedMachine thickness between flight lines is mass conservation or an interpolation, not a measurement: source, dataid and errbed say which method made each pixel and how far to trust it"
-description: "The radar flight lines are sparse; BedMachine fills the space between them with mass conservation where the ice flows fast, with kriging, streamline diffusion or ice flow perturbation analysis in the slow interior, and with hydrostatic equilibrium on floating ice, then stitches the pieces with inverse distance weighting. The thickness at any pixel is therefore a model value whose error the errbed field gives, from 36 m under dense radar coverage to more than 50 m in south Greenland, more than 200 m in East Antarctica and more than 500 m where nothing was sounded, and the source and dataid fields say which method and which data stand behind it. A thickness, a bed depth, a trough or a discharge read from the grid without those fields carries an error that can be a large fraction of the value, and reads a stated 150 m or 500 m grid as a resolution the guide puts at 150 m to 5 km."
+description: "The radar flight lines are sparse; BedMachine fills the space between them with mass conservation where the ice flows fast, with kriging, streamline diffusion or ice flow perturbation analysis in the slow interior, and with hydrostatic equilibrium on floating ice, then stitches the pieces with inverse distance weighting. The thickness at any pixel is therefore a model value whose error the errbed field gives, from 36 m under dense radar coverage to more than 50 m in south Greenland, more than 200 m in East Antarctica and more than 500 m where nothing was sounded, and the source and dataid fields say which method and which data stand behind it. A thickness, a bed depth, a trough or a discharge read from the grid without those fields carries an error that can be a large fraction of the value, and reads a stated 150 m or 500 m grid as a resolution the Greenland guide puts at 150 m to 5 km."
 tags: [bedmachine, idbmg4, nsidc-0756, ice-thickness, mass-conservation, interpolation, kriging, errbed, source, dataid, flight-lines, discharge, flux-gate, greenland, antarctica]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
 severity: high
@@ -57,8 +57,8 @@ the 2017 data, and Antarctica uses ice flow perturbation analysis, an
 inversion of the surface for the bed adopted because kriging, splines
 and streamline diffusion do not reproduce the roughness seen along
 radar profiles; floating ice takes hydrostatic equilibrium, and
-beneath grounded ice shelves gravity inversion and seismic
-bathymetry stand in.[^idbmg4-user-guide][^nsidc-0756-user-guide] The
+gravity inversion and seismic bathymetry supply the cavity bed
+beneath the floating ice shelves.[^idbmg4-user-guide][^nsidc-0756-user-guide] The
 Antarctic guide states that the individual mass conservation maps
 are then stitched together, constrained by flight lines along their
 boundaries, using inverse distance weighting, and combined with the
@@ -98,12 +98,13 @@ mass conservation, so the flux there is a model quantity that the
 method was not designed to conserve.[^idbmg4-user-guide][^nsidc-0756-user-guide]
 A feature narrower than the local true resolution, which reaches
 5 km in Greenland, is not resolved whatever the 150 m posting
-suggests.[^idbmg4-user-guide] A discharge quoted with the velocity
-mosaic's error alone, or with no error, omits the thickness term that
-the reference computation carries: Gardner and others 2018 report
-Antarctic discharge through an optimized flux gate as 1929 gigatonnes
-per year in 2015 with an uncertainty of 40, a figure that includes
-the thickness at the gate.[^gardner-2018]
+suggests.[^idbmg4-user-guide] A discharge is velocity times
+thickness at the gate, so its interval carries both factors, and a
+discharge quoted with the velocity mosaic's error alone, or with no
+error, omits one of them; the reference flux-gate computation is
+Gardner and others 2018, whose abstract reports Antarctic discharge
+through an optimized flux gate as 1929 gigatonnes per year in 2015
+with an uncertainty of 40.[^gardner-2018]
 
 **Correct approach.** A number read from BedMachine is read with its
 three companion fields: source at the same pixels (which method),
@@ -114,9 +115,9 @@ value.[^idbmg4-user-guide][^nsidc-0756-user-guide] A discharge gate
 sits where source is mass conservation, near the flight lines that
 constrain it, on the fast-flowing trunk the method was built for,
 and the thickness error along the gate enters the discharge
-uncertainty as its own term beside the velocity error, which is how
-Gardner and others 2018 voice their flux-gate
-discharge.[^nsidc-0756-user-guide][^idbmg4-user-guide][^gardner-2018]
+uncertainty as its own term beside the velocity error, a discharge
+being the product of the two; the reference flux-gate computation is
+Gardner and others 2018.[^nsidc-0756-user-guide][^idbmg4-user-guide][^gardner-2018]
 A bed feature is stated with the local errbed and the source code of
 the pixels it spans, and a feature narrower than the true resolution
 the guide gives is not a claim the product

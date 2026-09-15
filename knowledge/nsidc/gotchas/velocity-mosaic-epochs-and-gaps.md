@@ -2,7 +2,7 @@
 type: dataset-gotcha
 spheres: [cryosphere]
 title: "An annual velocity mosaic is a composite of image pairs with its own effective date and count, and a discharge needs ice thickness from another product"
-description: "An annual ITS_LIVE or MEaSUREs velocity mosaic is an error-weighted synthesis of every image pair that overlapped the year, so its value at a pixel represents whatever dates the pairs happened to cover, with a count of pairs (and, in NSIDC-0725, a temporal offset) recording how well; before 2013 many regions have few pairs or none. A flux computed from a mosaic states the mosaic's year, its effective date where the product gives one, and its coverage, and an ice discharge multiplies velocity by ice thickness at the gate, which comes from BedMachine, a product this bundle does not yet describe."
+description: "An annual ITS_LIVE or MEaSUREs velocity mosaic is an error-weighted synthesis of every image pair that overlapped the year, so its value at a pixel represents whatever dates the pairs happened to cover, with a count of pairs (and, in NSIDC-0725, a temporal offset) recording how well; before 2013 many regions have few pairs or none. A flux computed from a mosaic states the mosaic's year, its effective date where the product gives one, and its coverage, and an ice discharge multiplies velocity by ice thickness at the gate, which comes from BedMachine, described in this bundle's BedMachine concept."
 tags: [its-live, measures, ice-velocity, velocity-mosaic, flux-gate, discharge, ice-thickness, bedmachine, count, effective-date, greenland, antarctica]
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T20:30:00Z }
 verified: { by: human:PaulMRamirez, at: 2026-09-13T21:10:06Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/129 }
@@ -36,6 +36,9 @@ sources:
   - id: dataset
     resource: ../datasets/its-live-ice-velocity.md
     title: "This bundle's velocity mosaic concept, which lists this trap among the known issues"
+  - id: bedmachine-dataset
+    resource: ../datasets/bedmachine-greenland-antarctica.md
+    title: "This bundle's BedMachine concept: the ice thickness, its error field and its mask that a discharge from a velocity mosaic needs"
 ---
 
 # An annual velocity mosaic is a composite with its own effective date and count
@@ -71,7 +74,8 @@ as the other factor of a glacier flux beside the velocity, and no
 velocity mosaic's parameter table carries an ice thickness
 variable.[^gardner-2018][^nsidc-0776-user-guide][^nsidc-0725-user-guide] At
 NSIDC that product is BedMachine (NSIDC-0756 for Antarctica, IDBMG4
-for Greenland), which this bundle does not yet describe.[^cmr-bedmachine]
+for Greenland), described in this bundle's BedMachine
+concept.[^cmr-bedmachine][^bedmachine-dataset]
 
 **Wrong-result mode.** A discharge labelled with the mosaic's year is
 in fact the discharge at the composite's effective date, which on a
@@ -126,4 +130,5 @@ issues.[^dataset]
 [^nsidc-0670-user-guide]: NSIDC-0670 user guide
 [^gardner-2018]: Gardner and others, 2018, The Cryosphere, doi:10.5194/tc-12-521-2018
 [^cmr-bedmachine]: CMR collection records for BedMachine Antarctica and Greenland
+[^bedmachine-dataset]: This bundle's BedMachine dataset concept
 [^dataset]: This bundle's velocity mosaic concept

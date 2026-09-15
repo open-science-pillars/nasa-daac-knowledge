@@ -204,8 +204,9 @@ speckle tracking rather than the multi-sensor synthesis:
 
 - [velocity-mosaic-epochs-and-gaps](../gotchas/velocity-mosaic-epochs-and-gaps.md):
   a mosaic's effective date and coverage are part of any flux
-  statement, and a discharge needs ice thickness from a product not in
-  this bundle.
+  statement, and a discharge needs ice thickness from
+  [BedMachine](bedmachine-greenland-antarctica.md), described in this
+  bundle.
 - [polar-stereographic-not-latlon](../gotchas/polar-stereographic-not-latlon.md):
   the grids are projected metres, the velocities are map-space
   velocities, and area per cell varies.

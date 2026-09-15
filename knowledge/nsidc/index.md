@@ -12,9 +12,10 @@ freeboard, the NASA Team sea ice concentration record (NSIDC-0051)
 and the NOAA at NSIDC Sea Ice Index (G02135) that is built from it,
 as reviewable concepts with sources, statuses and steward sign-off. OKF v0.2 conformant
 (okf_version: "0.2"; the vendored spec text lives in marketplace
-docs/upstream). Every concept is a draft today; the steward promotes
-one once it has been reviewed, and a confirmation from the NSIDC DAAC
-or the product teams is invited on each and never required. The mass
+docs/upstream). The six BedMachine and ATL10 concepts are drafts; the
+rest are stable after the reviews recorded in log.md, and a
+confirmation from the NSIDC DAAC or the product teams is invited on
+each and never required. The mass
 side of land ice (the GRACE mascons) lives in the podaac bundle and is
 named where a concept here depends on it; the ice thickness a
 discharge needs (BedMachine) is now in this bundle.

@@ -57,19 +57,29 @@ oceans of both hemispheres where the sea ice concentration exceeds
 50 percent and the track is at least 25 km from the coast; the guide
 names the concentration inputs as AMSR2 (AU_SI12) by default, SSMI
 (G02202) where AMSR2 is unavailable and near-real-time SSMI data
-(G10016) after that, and the known issues note
-records that on 15 January 2026 the retired SSMI input was replaced
-by Version 4 of G10016, the AMSR2 near-real-time record, with
-ice-edge differences of 0.4 percent or less between the two inputs
-and a small discontinuity in the ATL07 and ATL10
-records.[^atl10-user-guide][^atl07-10-known-issues] Version 7,
+(G10016) after that; the known issues note records that on
+15 January 2026 the SSMI sea ice concentration data set used as input
+was retired and ATL07 and ATL10 switched to what the note calls the
+AMSR2 Near-Real-Time NOAA/NSIDC Climate Data Record of Passive
+Microwave Sea Ice Concentration, Version 4 of G10016, inter-calibrated
+to match SSMI, with ice-edge differences of 0.4 percent or less and a
+small discontinuity in the ATL07 and ATL10 records; so the G10016 the
+guide names as near-real-time SSMI data and the G10016 Version 4 the
+note names as the AMSR2 record are the same data set id under two
+sensors, and the note is the later
+document.[^atl10-user-guide][^atl07-10-known-issues] Version 7,
 released 23 September 2025, interpolates the reference surface height
 to the freeboard location where neighbouring reference surfaces exist
 (earlier releases used one static value per 10 km section), adds an
 option to include heights computed with a lognormal distribution and
 fixes the oc_depth parameter, which previously held only
 zeros.[^atl10-page][^atl10-user-guide] The CMR record listed 65,074
-granules on 2026-09-15, the newest dated 18 May 2026.[^cmr-atl10]
+granules on 2026-09-15, the newest dated 18 May 2026, about four
+months before the read; the guide states that temporal updates are
+made available a few times per year and are not reflected in its
+version history, and the known issues note updated 7 January 2026
+records no pause, so the lag is stated here as
+observed.[^cmr-atl10][^atl10-user-guide][^atl07-10-known-issues]
 
 **Structure.** Each granule holds an ancillary_data group, six
 ground track groups gt1l through gt3r, METADATA, orbit_info and
@@ -96,11 +106,13 @@ carries the reference ground track, the cycle and sc_orient, which
 records whether the observatory flies forward (the weak beams
 leading the strong beams), backward (the strong beams leading) or in
 transition, so which of a pair's l and r tracks is the strong beam
-depends on it.[^atl10-user-guide][^atl10-data-dict] Points are given
-in geodetic latitude, longitude and ellipsoidal height on WGS 84
-(EPSG 4326) and ITRF2020 (EPSG 9988); the version history records
-that in release 6.1 the data from 13 November 2022 to 26 October
-2023 were reprocessed with ITRF2014 for consistency across the data
+depends on it.[^atl10-user-guide][^atl10-data-dict] The guide's
+geolocation section for Version 7 states that points are presented
+in geodetic latitude, longitude and ellipsoidal height, World
+Geodetic System 1984 (EPSG 4326) and ITRF2020 (EPSG 9988); as
+history, the version table records that release 6.1 of 1 May 2024
+reprocessed the data from 13 November 2022 to 26 October 2023 using
+ITRF2014, replacing ITRF2020, for consistency across the entire data
 set.[^atl10-user-guide] The along-track resolution is not fixed:
 freeboard is estimated for ATL07 segments whose length is the ground
 distance over which about 150 signal photons accumulate, so segments
@@ -206,9 +218,11 @@ this weighting is applied in the gridded product.[^atl07-10-known-issues]
   the beams of a pair differ in energy, photon rate, segment length
   and precision, and which track is strong depends on sc_orient.
 - [sea-ice-nrt-versus-final](../gotchas/sea-ice-nrt-versus-final.md):
-  the coverage mask rests on a sea ice concentration input that
-  changed on 15 January 2026, and that gotcha is this bundle's account
-  of how near-real-time and final concentration records differ.
+  the coverage mask rests on a near-real-time sea ice concentration
+  input (G10016) that changed on 15 January 2026; that gotcha covers
+  NSIDC-0081, NSIDC-0051 and NSIDC-0803 and does not name G10016, and
+  the same caution about a near-real-time record joined to a final
+  one applies here.
 - The swath (multi-beam) freeboards are disabled, so a freeboard is
   always relative to its own beam's reference
   surface.[^atl07-10-known-issues]

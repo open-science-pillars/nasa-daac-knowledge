@@ -58,11 +58,13 @@ consequence that the weak-beam segments are oversampled.[^sea-ice-atbd][^atl07-1
 The strong beams are not identical either: beam 3, the middle strong
 beam, transmits about 80 percent of the energy of beams 1 and 5 (the
 ATBD's relative beam gains are 1.0, 1.0, 0.82, 1.0, 1.0 and 1.0), so
-its segment lengths and photon statistics differ from the other two,
-while its smaller incidence angle raises its photon rate for the
-same surface; and the known issues note records centimetre-scale
-inter-beam differences in the reference sea surface heights,
-especially on strong beam 1.[^atl07-10-known-issues][^sea-ice-atbd]
+its segment lengths and photon statistics differ from the other
+two, while, in the note's words, the reduced incidence angle of the
+middle beam compared to the outer beams generally increases the
+photon rate relative to the other beams for the same surface; and the
+same note records centimetre-scale inter-beam differences in the
+reference sea surface heights, especially on strong
+beam 1.[^atl07-10-known-issues][^sea-ice-atbd]
 The file names the tracks gt1l to gt3r, not strong and weak: the
 data dictionary defines sc_orient as forward (1) when the weak beams
 lead the strong beams, backward (0) when the strong beams lead, and
@@ -92,10 +94,14 @@ beam's, or of beam 3 with beams 1 and 5, reads the energy and
 detector differences as a difference in the ice; and a comparison of
 along-track ATL10 freeboards with the gridded ATL20, which used the
 strong beams only, is a comparison of different beam
-sets.[^sea-ice-atbd][^atl07-10-known-issues] A coverage analysis
-near the coast in the early releases would have read the weak beams'
-saturation gaps in the land and sea ice mask overlap, acute in the
-weak beams at high sun, as an absence of ice.[^atl07-10-known-issues]
+sets.[^sea-ice-atbd][^atl07-10-known-issues] In releases 1 and 2, the note
+records, the processing neglected the additional photons of the
+larger telemetry window in the zone where the land ice and sea ice
+masks overlap, so many shots were treated as saturated and discarded,
+leaving gaps in coverage that were especially acute in the weak beams
+and at high solar elevation in spring and summer (resolved in
+release 3); a coverage analysis of those releases reads such gaps as
+an absence of ice.[^atl07-10-known-issues]
 
 **Correct approach.** A freeboard statistic names the beams it used,
 resolved from sc_orient in orbit_info rather than from the track

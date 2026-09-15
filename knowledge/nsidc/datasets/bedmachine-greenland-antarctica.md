@@ -26,6 +26,12 @@ sources:
   - id: nsidc-0756-v3-page
     resource: https://nsidc.org/data/nsidc-0756/versions/3
     title: "NSIDC product page for MEaSUREs BedMachine Antarctica Version 3 (DOI 10.5067/FPSU0V1MWUB6), marked retired with a more recent version available, read 2026-09-15"
+  - id: idbmg4-v5-user-guide
+    resource: https://nsidc.org/sites/default/files/documents/user-guide/idbmg4-v005-userguide.pdf
+    title: "IceBridge BedMachine Greenland Version 5 user guide (retired version): its parameter table, whose mask carries 4 for non-Greenland land, read 2026-09-15 for that table"
+  - id: nsidc-0756-v3-user-guide
+    resource: https://nsidc.org/sites/default/files/documents/user-guide/nsidc-0756-v003-userguide.pdf
+    title: "MEaSUREs BedMachine Antarctica Version 3 user guide (retired version): its parameter table, whose dataid labels value 1 as REMA, read 2026-09-15 for that table"
   - id: cmr-idbmg4
     resource: https://cmr.earthdata.nasa.gov/search/collections.json?short_name=IDBMG4
     title: "CMR collection record for IDBMG4 (provider NSIDC_CPRD, version 6, concept C3903728370-NSIDC_CPRD) and its granule list, read 2026-09-15"
@@ -61,9 +67,11 @@ nominal year of the data set is 2007.[^idbmg4-user-guide][^idbmg4-page]
 Antarctica is one netCDF file,
 NSIDC-0756_BedMachineAntarctica_19700101-20191001_V04.1.nc, at 500 m
 on the WGS 84 / Antarctic Polar Stereographic grid (EPSG 3031),
-covering 53 S to 90 S; its source data were collected between
-1 January 1970 and 1 October 2019, and its nominal year, 2015, is the
-year of the reference surface digital elevation
+covering 53 S to 90 S; the page and the guide's temporal coverage
+section give the data as collected between 1 January 1970 and
+1 October 2019, while the guide's acquisition section says the radar
+campaigns were flown between 1967 and 2020, and its nominal year,
+2015, is the year of the reference surface digital elevation
 model.[^nsidc-0756-user-guide][^nsidc-0756-page] The CMR records
 (concept C3903728370-NSIDC_CPRD for IDBMG4 version 6, concept
 C3973022985-NSIDC_CPRD for NSIDC-0756 version 4) listed two granules
@@ -94,8 +102,10 @@ dataid, rgi and a mapping variable with the coordinate reference
 system, all in metres where they are
 heights.[^idbmg4-user-guide][^nsidc-0756-user-guide] The mask is 0 for
 ocean, 1 for ice-free land, 2 for grounded ice and 3 for floating ice
-in both files, and Antarctica adds 4 for Lake
-Vostok.[^idbmg4-user-guide][^nsidc-0756-user-guide] The source
+in both Version 6 and Version 4 parameter tables, and Antarctica adds
+4 for Lake Vostok; the retired Greenland Version 5 guide's table also
+carried 4 for non-Greenland land, a value the Version 6 table no
+longer lists.[^idbmg4-user-guide][^nsidc-0756-user-guide][^idbmg4-v5-user-guide] The source
 variable records the method that produced each pixel: in Greenland
 0 none, 1 GIMP DEM, 2 mass conservation, 3 synthetic,
 4 interpolation, 5 hydrostatic equilibrium, 6 kriging, 7 RTopo-2,
@@ -105,9 +115,10 @@ Antarctica 1 REMA or IBCSO v2, 2 mass conservation, 3 interpolation,
 7 seismic, 8 IceBoost and 10 multibeam.[^idbmg4-user-guide][^nsidc-0756-user-guide]
 The dataid variable records the input data source where there is
 one: in Greenland 1 GIMP DEM, 2 radar, 7 seismic bathymetry and
-10 multibeam bathymetry; in Antarctica 0 no data, 1 radar, seismic
-and multibeam (REMA), 2 radar, 7 seismic and
-10 multibeam.[^idbmg4-user-guide][^nsidc-0756-user-guide] The two
+10 multibeam bathymetry; in Antarctica, in the Version 4 table's own
+words, "0 = no data; 1 = radar seismic multibeam (REMA); 2 = radar;
+7 = seismic; 10 = multibeam", where the Version 3 table labelled
+value 1 simply "REMA".[^idbmg4-user-guide][^nsidc-0756-user-guide][^nsidc-0756-v3-user-guide] The two
 files differ in one convention that matters for a thickness: the
 Antarctic surface and thickness are in ice equivalent, that is, with
 a firn air content correction applied so that elevations are lower
@@ -126,9 +137,11 @@ thickness with the satellite-derived ice motion and the surface mass
 balance to solve the mass conservation equation for thickness while
 minimizing the departure from the radar data; it works best in
 well-confined fast flow, where errors in flow direction are small and
-glaciers slide on the bed, and the Greenland algorithm neglects
-motion by internal shear, which the guide calls an excellent
-approximation above 100 m per year.[^idbmg4-user-guide][^nsidc-0756-user-guide]
+glaciers slide on the bed, which the Antarctic guide puts at an ice
+surface velocity above 30 m per year, and the Greenland algorithm
+neglects motion by internal shear, which that guide calls an
+excellent approximation above 100 m per
+year.[^idbmg4-user-guide][^nsidc-0756-user-guide]
 In the slow interior, where errors in flow direction are larger,
 Greenland uses kriging for the 1993 to 2016 data and streamline
 diffusion from the 2017 data onward, and Antarctica uses ice flow
@@ -137,8 +150,10 @@ ice surface, chosen because kriging, splines and streamline diffusion
 struggle to reproduce the roughness seen along radar
 profiles.[^idbmg4-user-guide][^nsidc-0756-user-guide] Floating ice
 shelves take hydrostatic equilibrium with a calibrated firn depth
-correction, gravity inversion and seismic bathymetry stand in beneath
-grounded ice shelves where nothing else reaches, and the Antarctic
+correction, gravity inversion and seismic bathymetry supply the
+cavity bed beneath the floating ice shelves (the Antarctic guide's
+own phrase is gravity inversion and seismic bathymetry for grounded
+ice shelves), and the Antarctic
 guide states that the individual mass conservation maps are stitched
 together, constrained by flight lines along their boundaries, with
 inverse distance weighting, and then combined with the streamline
@@ -235,10 +250,19 @@ gotcha).[^basins-gotcha]
 
 **Verification.** The two product pages, the two Version 6 and
 Version 4 user guides and the retired Version 5 and Version 3 pages
-were read on 2026-09-15, and the CMR collection and granule records
-were read the same day; no granule was opened from the drafting
-session, so the variable names and codes above come from the guides'
-parameter tables.[^idbmg4-page][^idbmg4-user-guide][^nsidc-0756-page][^nsidc-0756-user-guide][^idbmg4-v5-page][^nsidc-0756-v3-page][^cmr-idbmg4][^cmr-nsidc-0756]
+were read on 2026-09-15, the retired Version 5 and Version 3 user
+guides were read the same day for their mask and dataid tables, and
+the CMR collection and granule records were read the same day; no
+granule was opened from the drafting session, so the variable names
+and codes above come from the guides' parameter tables, and whether a
+Version 6 Greenland file still holds any pixel at mask value 4 is not
+confirmed here.[^idbmg4-page][^idbmg4-user-guide][^nsidc-0756-page][^nsidc-0756-user-guide][^idbmg4-v5-page][^nsidc-0756-v3-page][^idbmg4-v5-user-guide][^nsidc-0756-v3-user-guide][^cmr-idbmg4][^cmr-nsidc-0756]
+The Antarctic page and guide give two spans for the source data: the
+temporal coverage is 1 January 1970 to 1 October 2019 on the page and
+in the guide's temporal information section, and the guide's
+acquisition section says the 47 radar campaigns were flown between
+1967 and 2020; this concept reports both with their
+sources.[^nsidc-0756-page][^nsidc-0756-user-guide]
 The two guides do not state the same thing about the Greenland
 interior method's history: the processing section says kriging for
 the 1993 to 2016 data and streamline diffusion from the 2017 data,
@@ -260,6 +284,8 @@ method.[^morlighem-2017][^morlighem-2020]
 [^nsidc-0756-user-guide]: MEaSUREs BedMachine Antarctica Version 4 user guide, NSIDC
 [^idbmg4-v5-page]: NSIDC product page, IceBridge BedMachine Greenland Version 5 (retired)
 [^nsidc-0756-v3-page]: NSIDC product page, MEaSUREs BedMachine Antarctica Version 3 (retired)
+[^idbmg4-v5-user-guide]: IceBridge BedMachine Greenland Version 5 user guide (retired), NSIDC
+[^nsidc-0756-v3-user-guide]: MEaSUREs BedMachine Antarctica Version 3 user guide (retired), NSIDC
 [^cmr-idbmg4]: CMR collection record for IDBMG4
 [^cmr-nsidc-0756]: CMR collection record for NSIDC-0756
 [^morlighem-2017]: Morlighem and others, 2017, Geophysical Research Letters, doi:10.1002/2017GL074954
