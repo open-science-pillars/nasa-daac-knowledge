@@ -2,6 +2,52 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · third seed, OCO-2 solar-induced fluorescence and the
+  GES DISC subsetter: one dataset concept (datasets/oco2-sif-lite.md,
+  the OCO2_L2_Lite_SIF 11r and 11.2r and OCO3_L2_Lite_SIF 11r daily
+  sounding files with their two retrieval bands, the derived 740 nm
+  field, the barren-surface offset, the quality flag, the daily
+  correction factor and the one-sigma uncertainties), four gotchas
+  (sif-is-not-photosynthesis at severity high with its eval case
+  drafted in agent-evals under oco2/cases/, unregistered in any suite
+  manifest until the coordinator's follow-up; sif-two-bands-and-offsets
+  and sif-soundings-are-sparse at severity medium;
+  sif-daily-correction at severity low) and one connector concept
+  (connectors/gesdisc-subsetter-opendap.md: Cloud OPeNDAP, the Harmony
+  enterprise subsetter, the retiring JSON-WSP subsetter and
+  on-premises OPeNDAP, the bearer token, what leaves the machine and
+  the failure modes, with stale_after set three months out to match
+  the September 2026 retirements): all drafts, no signatures. Sources
+  read the same day: the CMR collection, UMM, granule and service
+  records for OCO2_L2_Lite_SIF 11r and 11.2r, OCO3_L2_Lite_SIF 11r,
+  M2T1NXSLV and AIRS3STD 7.0 (GES_DISC provider); the JPL SIF Data
+  User's Guide for Lite file version 11 and 11.2 (July 2025) and the
+  build 10 product description (2021), the GES DISC OCO README
+  (2021), the OCO-2 v11.2 and OCO-3 v11 data release statements and
+  the OCO-3 known data issues, all on the GES DISC document server or
+  the collection's OPeNDAP document directory; the DAP4 metadata of
+  the OCO-2 granule of 2024-04-02 on the on-premises Hyrax server and
+  the credential redirect of the same request on Cloud OPeNDAP; the
+  GES DISC how-tos, alerts, glossary, FAQ and documents on OPeNDAP in
+  the cloud, wget and curl with a bearer token, the Level 3 and 4
+  subsetter, the enterprise Level 2 subsetter, prerequisite files,
+  download problems, Earthdata Login registration, and the 2026
+  retirement and migration notices, read through the site's content
+  API because the pages are script-rendered; the JSON-WSP description
+  of the subsetting service; the OCO-2 project's data center and
+  publications pages; and the Crossref registry records of Doughty
+  and others 2022, Sun and others 2017 and 2018, Frankenberg and
+  others 2011 (both), 2012 and 2014, Parazoo and others 2019 and
+  Magney and others 2019 (both). Not reached: the OCO-2 project's own
+  SIF product page (the site has none; its product-info and
+  science/sif paths answer 404), the publisher pages of the Elsevier
+  and AGU papers (bot check, or a 403 from the proxy on doi.org
+  redirects; records and abstracts read on Crossref instead, the Sun
+  2018 record carrying no abstract), and the GES DISC how-to
+  notebooks hosted on GitHub (outside the source list). The MERRA-2,
+  AIRS and OMI concepts are linked from the connector, not restated.
+  (knowledge-seeder)
+
 - 2026-09-15 · STEWARD SIGNING of
   knowledge/gesdisc/datasets/airs-l3-temperature-humidity.md,
   knowledge/gesdisc/datasets/omi-no2-and-ozone.md,
