@@ -5,9 +5,10 @@ title: "The Daily_SIF fields are the instantaneous retrievals times a clear-sky 
 description: "Each sounding carries a daily_correction_factor computed from the cosine of the solar zenith angle at the observation and its integral over the day in ten-minute steps, under cloud-free conditions and ignoring Rayleigh scattering and gas absorption; Daily_SIF_757nm, Daily_SIF_771nm and Daily_SIF_740nm are the corresponding instantaneous fields multiplied by it. The correction exists because the 13:30 local overpass value of OCO-2, particularly at high latitude, cannot be compared directly with a daily quantity such as GPP; it is a first-order length-of-day scaling whose error is not in the uncertainty fields. A series or comparison that mixes SIF and Daily_SIF, or reads Daily_SIF as a measured daily average, carries a latitude- and season-dependent factor as signal."
 tags: [oco-2, oco-3, sif, daily-correction-factor, daily_sif, solar-zenith-angle, length-of-day, overpass-time, oco2_l2_lite_sif, gesdisc, biosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T18:35:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T18:36:49Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/173 }
 severity: low
 dataset: ../datasets/oco2-sif-lite.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: ug-v11

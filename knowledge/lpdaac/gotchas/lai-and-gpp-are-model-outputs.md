@@ -5,9 +5,10 @@ title: "MOD15 LAI and FPAR and MOD17 GPP and NPP are model outputs, not measurem
 description: "MOD15A2H LAI and FPAR are the mean of the radiative transfer solutions consistent with the pixel's red and near-infrared reflectance for its assigned biome, or a regression on NDVI when no solution is found, and the guide states that the algorithm runs irrespective of input quality and that the SCF_QC path in FparLai_QC is the key quality indicator. MOD17A2H GPP is that FPAR times 0.45 times reanalysis shortwave radiation times a biome light use efficiency ramped by reanalysis temperature and vapour pressure deficit, with contaminated FPAR and LAI replaced by a five-year climatology since Collection 6.1, and its quality byte is the MOD15 byte passed through; MOD17A3HGF recomputes the year with LAI and FPAR interpolated across periods that failed their quality label and reports the share of growing-season days so filled as Npp_QC_500m. Pixels without a retrieval hold land cover codes (249 to 255, 32761 to 32767, 65529 to 65535) that lie inside the data type above the valid range; the MOD17 guide states that the file attribute names one fill value while seven exist, the product pages render one, and the CMR variable records list all seven. A script that scales these bytes, averages an LAI series without the path flag, uses MOD17 GPP as an independent check on a model driven by the same weather or FPAR, or reads an eight-day anomaly where the climatology was substituted reports the model and its fills as the land surface."
 tags: [mod15, mod15a2h, mod17, mod17a2h, mod17a3hgf, modis, lai, fpar, gpp, npp, quality, fill-value, model-output, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T17:50:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T18:34:53Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/172 }
 severity: medium
 dataset: ../datasets/mod15-lai-fpar.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: lai-guide

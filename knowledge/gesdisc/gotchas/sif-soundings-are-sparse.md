@@ -5,9 +5,10 @@ title: "OCO-2 SIF soundings are footprints under 1.3 by 2.25 km along a 10 km gr
 description: "The Lite file is a list of soundings, eight across a swath 0.8 degrees wide every 0.333 s, not a grid; the mission's own maps are means over 0.2 or 0.5 degree cells of the flag 0 and 1 soundings of a season, and the guide states that the retrievals are accurate but imprecise, that averaging n soundings reduces the noise by the square root of n, and that negative values are statistically valid and their removal biases every average. Nadir, glint, target and, on OCO-3, snapshot area map modes sample differently, target and area modes stacking hundreds to thousands of soundings on one site in one overpass; OCO-3 coverage shifts with the station's altitude and its record has documented gaps. A cell value without its count and standard error, a mean with negatives dropped, or a comparison between cells or dates resting on very different numbers of soundings reads sampling as vegetation."
 tags: [oco-2, oco-3, sif, sampling, footprint, gridding, count, standard-error, negative-values, target-mode, snapshot-area-map, oco2_l2_lite_sif, gesdisc, biosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T18:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T18:36:49Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/173 }
 severity: medium
 dataset: ../datasets/oco2-sif-lite.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: ug-v11

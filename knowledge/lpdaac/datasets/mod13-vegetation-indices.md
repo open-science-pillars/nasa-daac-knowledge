@@ -5,9 +5,10 @@ title: "MOD13Q1 and MOD13A1 version 6.1: Terra MODIS NDVI and EVI composited ove
 description: "MOD13Q1 and MOD13A1 are the Terra MODIS vegetation index products at 250 m and 500 m on the sinusoidal grid: for each 16-day period and each pixel, one observation is selected from the eight-day precomposited MOD09 surface reflectance by the constrained-view maximum value rule (the two highest NDVI candidates compared, the smaller view angle kept) and its NDVI and EVI are stored as int16 times 0.0001 with fill -3000, beside the red, NIR, blue and mid-infrared reflectances that produced them, the view zenith, sun zenith and relative azimuth angles, the day of year the selected observation was acquired, a summary pixel reliability rank and a 16-bit quality field. EVI switches to a two-band form over bright surfaces. Collection 6.1 keeps the Collection 6 algorithm and format and differs by the Level-1B calibration."
 tags: [mod13, mod13q1, mod13a1, modis, terra, ndvi, evi, vegetation-index, composite, sinusoidal, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T17:50:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T18:34:53Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/172 }
 resource: https://lpdaac.usgs.gov/products/mod13q1v061/
 version: "Collection 6.1 (MOD13Q1 DOI 10.5067/MODIS/MOD13Q1.061, CMR C1748066515-LPCLOUD; MOD13A1 DOI 10.5067/MODIS/MOD13A1.061, CMR C2565788901-LPCLOUD; provider LPCLOUD), verified 2026-09-15: both with temporal extent 2000-02-18 to present, the ends-at-present flag set and collection progress ACTIVE, 177,776 granules listed on each product page that day; the user guide read is version 3.10 of September 2019 with its Collection 6.1 cover note"
-status: draft
+status: stable
 stale_after: 2027-03-15
 citation:
   access_date_required: true
