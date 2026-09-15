@@ -63,3 +63,32 @@ runs:
     computation: sea_level_budget.py
     data_root: sea-level-budget
     args: [--period, "2005-01:2016-12", --runtime, reattest]
+# Reference runs of another bundle's computations, keyed by the bundle
+# root, in the shape of the runs above: the computation is under that
+# bundle's references/computations, the data root a key of its own
+# data_roots. reattest.py runs a bundle's computation in its own tree
+# through --bundle, but its registry lookup and selftest read only the
+# podaac entries under runs, so these entries are run by hand with the
+# commands their run skill states until the lookup takes the bundle
+# key; the ice sheet balance run skill is
+# knowledge/nsidc/references/skills/run-ice-sheet-balance.md.
+bundle_runs:
+  knowledge/nsidc:
+    data_roots:
+      ice-sheet-balance: knowledge/nsidc/references/retrieval/ice-sheet-balance-root   # the stamped mascon, altimetry and firn root
+    runs:
+      ice-sheet-balance:
+        computation: ice_sheet_balance.py
+        attester: references/attesters/ice_sheet_balance_check.py
+        data_root: none
+        args: [--fixture, --seed, "7", --ice-sheet, greenland, --window, "2019-01:2022-12", --altimetry, atl15, --runtime, reattest]
+      ice-sheet-balance-long:
+        computation: ice_sheet_balance.py
+        attester: references/attesters/ice_sheet_balance_check.py
+        data_root: none
+        args: [--fixture, --seed, "7", --ice-sheet, greenland, --window, "2003-01:2016-12", --altimetry, itslive, --runtime, reattest]
+      ice-sheet-balance-record:
+        computation: ice_sheet_balance.py
+        attester: references/attesters/ice_sheet_balance_check.py
+        data_root: ice-sheet-balance
+        args: [--ice-sheet, greenland, --window, "2003-01:2016-12", --altimetry, itslive, --runtime, reattest]

@@ -109,6 +109,16 @@ CSV_COLUMNS = ["ice_sheet", "domain", "month", "value_m", "uncertainty_m",
                "volume_km3", "area_km2", "n_cells", "sampling"]
 
 
+def bare_doi(text: str) -> str:
+    """The bare DOI of a file attribute that may carry a resolver prefix
+    (the Greenland file writes doi.org/10.5067/...)."""
+    s = text.strip()
+    for prefix in ("https://doi.org/", "http://doi.org/", "https://dx.doi.org/", "doi.org/", "doi:"):
+        if s.lower().startswith(prefix):
+            return s[len(prefix):]
+    return s
+
+
 def sha256(p: Path) -> str:
     h = hashlib.sha256()
     with p.open("rb") as f:
@@ -232,7 +242,7 @@ def read_greenland(path: Path, rows: list, stamp: dict) -> None:
     labels = sorted(months)
     stamp["greenland"] = {
         "product": attrs.get("title", ""),
-        "doi": attrs.get("doi", ""),
+        "doi": bare_doi(attrs.get("doi", "")),
         "product_version": attrs.get("version", ""),
         "granule": path.name,
         "granule_sha256": sha256(path),
@@ -329,9 +339,10 @@ def read_antarctica(path: Path, rows: list, stamp: dict) -> None:
                 "Antarctic Boundaries version 2), land 255; the domain is the floating ice "
                 "shelves only, since no GEMB field over grounded Antarctica is in the ITS_LIVE "
                 "distribution",
-        "aggregation": "area-weighted mean over the fixed set of ice shelf cells finite in fac, "
-                       "fac_err and fac_mean at every time step; the anomaly integrated to km3 "
-                       "of air",
+        "aggregation": "area-weighted mean over the fixed set of ice shelf cells finite in fac "
+                       "at every time step and in fac_mean; the anomaly integrated to km3 of "
+                       "air; fac_err is read only for the statistics in the stamp, where it is "
+                       "finite and below its sentinel",
         "reference": "anomaly against the product's fac_mean (its 1992 to 2017 record mean), "
                      f"whose area-weighted mean over the cell set is {ref_mean:.6f} m",
         "sampling": "quarterly: one row per product time step, labelled by the calendar month "

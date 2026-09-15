@@ -262,7 +262,9 @@ def run(antarctica: Path, out: Path, stamp_out: Path | None):
                         "floating ice shelves only",
                 "aggregation": "sum of smb times cell area times the product's ice density "
                                f"({density} kg per m3) over the fixed set of ice shelf cells "
-                               "finite in smb, smb_err and smb_mean at every time step",
+                               "finite in smb at every time step and in smb_mean; the error "
+                               "sum runs over the subset of those cells finite in smb_err and "
+                               "below its sentinel at each step, and the stamp counts the rest",
                 "sampling": "quarterly: one row per product time step, labelled by the calendar "
                             "month of the time value (the user guide calls it the quarter start "
                             "date); period_years is the interval to the next time value",
