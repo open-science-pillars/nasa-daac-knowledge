@@ -2,6 +2,43 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · NASADEM and MOD11 land surface temperature, the bundle's
+  second seed (issue 154): two dataset concepts (datasets/nasadem.md,
+  datasets/mod11-land-surface-temperature.md) and five gotchas
+  (gotchas/nasadem-orthometric-versus-ellipsoidal.md at severity high
+  with its eval case nasadem-orthometric-versus-ellipsoidal and
+  gotchas/mod11-clear-sky-and-view-time.md at severity high with its
+  eval case mod11-clear-sky-and-view-time, both cases drafted in
+  agent-evals under nasadem/cases/ and unregistered in any suite
+  manifest until the coordinator's follow-up;
+  gotchas/nasadem-void-fill-and-source-layer.md and
+  gotchas/mod11-day-and-night-are-different.md at severity medium;
+  gotchas/mod11-emissivity-is-classified.md at severity low): all
+  drafts, no signatures, spheres geosphere on NASADEM and geosphere and
+  biosphere on MOD11. Sources read the same day: the LP DAAC product
+  pages for NASADEM_HGT, NASADEM_SHHP, MOD11A1 and MOD11A2 (each
+  redirecting to its Earthdata catalog page), the NASADEM user guide
+  version 1.3 (January 2025), the LP DAAC DEM Product Comparison Guide,
+  the SRTM Collection User Guide (October 2015) and the ASTER GDEM
+  version 3 user guide for one statement each, the Collection-6 MODIS
+  LST Products Users' Guide (June 2019) with its Collection 6.1 cover
+  note, the MODIS LST ATBD version 3.3 (1999), the CMR collection
+  records for NASADEM_HGT, NASADEM_SHHP, NASADEM_NC, NASADEM_NUMNC,
+  NASADEM_SC, NASADEM_SIM, MOD11A1 and MOD11A2, the doi.org resolution
+  of the five product DOIs (DataCite, no Crossref record) and the
+  Crossref record of Wan 2014 (the Elsevier page is on a domain outside
+  the seed's reading list and the paper is cited on its registry
+  record). Recorded for the reviewer: the MOD11 user guide and the
+  MOD11A1 product page differ on what a cell holds above 30 degrees
+  latitude when several clear observations exist in a day (one
+  observation chosen by view angle against an average of all), the
+  guide's Table 14 mislabels the eight-day Night_view_time, and no
+  source read gives the global range of the EGM96 undulation, so the
+  datum gotcha quotes the guide's own coastal example instead of a
+  global figure. The LDOPE known issues site and the LAADS file
+  specifications are on domains outside the reading list and were not
+  read. (knowledge-seeder)
+
 - 2026-09-14 · STEWARD RE-SIGNING of
   knowledge/lpdaac/gotchas/hls-fmask-is-bit-packed.md: second maintainer
   review recorded on the maintainer's explicit instruction in the
