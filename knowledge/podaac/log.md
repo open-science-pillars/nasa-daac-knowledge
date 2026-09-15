@@ -4,6 +4,38 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-15 · datasets/ccmp-wind-analysis.md, datasets/ascat-winds.md,
+  gotchas/wind-analysis-is-not-observation.md (high),
+  gotchas/neutral-versus-stress-equivalent-wind.md (medium),
+  gotchas/scatterometer-rain-and-ice-flags.md (medium) and
+  gotchas/bulk-flux-inputs-and-coefficients.md (medium): two draft
+  dataset concepts and four draft gotchas on the air-sea forcing
+  products PO.DAAC holds (issue 151). CMR confirmed on 2026-09-15 that
+  PO.DAAC holds CCMP only as version 3.1 from RSS (6-hourly and monthly
+  collections) and ASCAT as the OSI SAF operational Level 2 streams for
+  MetOp-A, -B and -C, the two MetOp-A climate data records and the JPL
+  MEaSUREs inter-calibrated ESDR (Level 2 wind and stress version 1.1,
+  Level 3 version 1.0, ancillary and derivative collections). Sources
+  read on 2026-09-15: the eighteen CMR collection records, the CMR
+  collection searches, first-and-last granule searches for the fourteen
+  wind collections, the PO.DAAC collection pages for the two CCMP and
+  twelve ASCAT collections, the PO.DAAC MEaSUREs-OSVW project page, the
+  CCMP version 3.1 user guide (July 2024), the MEaSUREs OSVW user's
+  guide (December 2022), the MEaSUREs ESDR Level 2 README (June 2024),
+  the OSI SAF ASCAT calibration and validation note TN/163 (2008) and
+  the PO.DAAC CDR README, all from the PO.DAAC website or document
+  archive; eight product DOIs resolved through doi.org; fourteen
+  reference DOIs verified on the Crossref registry, with the abstracts
+  read there where the record carries one. Not read: the KNMI ASCAT
+  product manual, CDR user guide and anomaly pages (hosts outside the
+  seed's sources), the PO.DAAC MEaSUREs-CCMP project page (it redirects
+  off the PO.DAAC host) and every journal page. No granule was opened.
+  Spheres set to hydrosphere and atmosphere (the checker's vocabulary
+  for the brief's ocean and atmosphere). The high gotcha's eval case
+  wind-analysis-is-not-observation is drafted under ccmp/cases/ in
+  agent-evals on the same branch name; manifest registration is the
+  coordinator's follow-up. (knowledge-seeder/claude)
+
 - 2026-09-14 · STEWARD RE-SIGNING of
   knowledge/podaac/gotchas/oscar-is-geostrophic-plus-ekman.md,
   knowledge/podaac/gotchas/smap-sss-coastal-and-sea-ice-contamination.md,
