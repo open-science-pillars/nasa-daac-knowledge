@@ -1,8 +1,8 @@
 ---
 type: dataset-gotcha
 spheres: [hydrosphere, atmosphere]
-title: "Scatterometer winds and CCMP winds are 10 m equivalent-neutral winds relative to the moving sea surface, not the real 10 m wind an anemometer or a reanalysis reports: the reference height, the stability convention and the current-relative frame are each part of the definition"
-description: "A scatterometer responds to surface roughness, which follows stress, so its retrieval is calibrated as the wind at 10 m that would produce that stress under neutral stability, relative to the moving surface: the equivalent neutral wind. CCMP uses ERA5 neutral-stability winds as its background, adjusted for surface currents, and its files are 10 m neutral winds. A real 10 m wind differs by the stability correction and by the surface current, differences the MEaSUREs guide puts at about a metre per second over much of the ocean and larger where currents or air-sea temperature differences are strong, with a global mean near zero. A comparison, a bias, a trend of the difference or a bulk formula that mixes the two conventions without saying so measures the definition."
+title: "Scatterometer winds and CCMP winds are 10 m equivalent-neutral winds relative to the moving sea surface, not the real 10 m wind of a reanalysis or of an anemometer wind brought to 10 m: the reference height, the stability convention and the current-relative frame are each part of the definition"
+description: "A scatterometer responds to surface roughness, which follows stress, so its retrieval is calibrated as the wind at 10 m that would produce that stress under neutral stability, relative to the moving surface: the equivalent neutral wind. CCMP uses ERA5 neutral-stability winds as its background, adjusted for surface currents, and its files are 10 m neutral winds. A real 10 m wind differs by the stability correction and by the surface current, differences the MEaSUREs guide puts at about a metre per second over much of the ocean and larger where currents or air-sea temperature differences are strong, with a global mean the guide puts as likely very close to zero. A comparison, a bias, a trend of the difference or a bulk formula that mixes the two conventions without saying so measures the definition."
 tags: [scatterometer, ascat, ccmp, equivalent-neutral-wind, stress-equivalent-wind, 10m-wind, stability, surface-current, buoy, reanalysis]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
 severity: medium
@@ -30,7 +30,7 @@ sources:
     title: "CCMP Version 3.1 User Guide, Mears and Henze, 15 July 2024 (read in full 2026-09-15): the choice of ERA5 neutral-stability winds as background because both satellite wind types respond to roughness, which follows stress; the OSCAR current adjustment of ERA5 because satellites sense the wind relative to the moving surface; and the file tables naming uwnd, vwnd and ws as 10 m neutral winds"
   - id: de-kloe-2017
     resource: https://doi.org/10.1109/JSTARS.2017.2685242
-    title: "de Kloe, Stoffelen and Verhoef, 2017, Improved Use of Scatterometer Measurements by Using Stress-Equivalent Reference Winds, IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing 10, 2340 to 2347: the paper the MEaSUREs guide cites as the review of the supposed equivalence between stress, friction velocity and the 10 m equivalent neutral wind, and the origin of the stress-equivalent reference wind (registry record verified 2026-09-15; the record carries no abstract and the article was not read)"
+    title: "de Kloe, Stoffelen and Verhoef, 2017, Improved Use of Scatterometer Measurements by Using Stress-Equivalent Reference Winds, IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing 10, 2340 to 2347: the paper the MEaSUREs guide cites as the review of the supposed equivalence between stress, friction velocity and the 10 m equivalent neutral wind; its subject, the stress-equivalent reference wind, is not defined in the sources read (registry record verified 2026-09-15; the record carries no abstract and the article was not read)"
   - id: portabella-2009
     resource: https://doi.org/10.1175/2008JTECHO578.1
     title: "Portabella and Stoffelen, 2009, On Scatterometer Ocean Stress, Journal of Atmospheric and Oceanic Technology 26, 368 to 382: the abstract's triple-collocation finding that scatterometer winds are as close to real winds as to equivalent neutral winds provided the appropriate scaling is used, with the small stability effects masked by the uncertainty in surface-layer models and their inputs (registry record verified and abstract read there 2026-09-15; the article was not read)"
@@ -45,7 +45,7 @@ sources:
     title: "This bundle's CCMP dataset concept (read 2026-09-15): the ERA5 neutral background, the OSCAR adjustment and the 10 m neutral wind fields"
 ---
 
-# Neutral versus stress-equivalent wind
+# Equivalent-neutral versus real 10 m wind
 
 **Mechanism.** A scatterometer measures the roughness of the sea
 surface, and roughness is generated by the wind stress rather than by
@@ -55,12 +55,15 @@ produce that stress under a neutral boundary layer: the equivalent
 neutral (EN) wind, relative to the moving surface and without account
 for the ocean current.[^measures-guide][^esdr-readme] The ESDR README
 adds the detail that the calibration assumes neutral stability while
-using the friction velocity from a stability-dependent calculation,
-which is the sense in which the retrieval is stress-equivalent; the
-2017 paper the guide cites reviews the supposed equivalence between
-the true stress, the friction velocity and the 10 m equivalent neutral
-wind and, by its title, concerns the use of stress-equivalent
-reference winds.[^esdr-readme][^measures-guide][^de-kloe-2017] On the OSI SAF
+using the friction velocity from a stability-dependent
+calculation.[^esdr-readme] The guide cites a 2017 paper as a review
+of the issues around the supposed equivalence between the true
+stress, the friction velocity and the 10 m equivalent neutral wind;
+that paper's subject, the stress-equivalent reference wind, is a
+quantity distinct from the equivalent neutral wind, and the sources
+read here (the guide, the README and the paper's registry record,
+which carries no abstract) do not state the distinction, so this
+concept does not define it.[^measures-guide][^de-kloe-2017] On the OSI SAF
 side, CMOD5.n is CMOD5 with a 0.7 m/s shift in input wind speed so
 that the retrieved wind is a neutral wind, derived from a triple
 collocation with ECMWF and buoy winds, and the 2008 calibration note
@@ -129,10 +132,11 @@ per second.[^podaac-b25][^podaac-esdr-b]
 
 **Correct approach.** A result from a scatterometer product or from
 CCMP names the convention of the field it used: a 10 m equivalent
-neutral wind relative to the moving surface for the OSI SAF
-`wind_speed`, the ESDR `en_wind_*` and the CCMP fields, or a
-non-neutral, Earth-relative 10 m wind for the ESDR `real_wind_*`
-fields.[^measures-guide][^esdr-readme][^ccmp-guide][^podaac-esdr-b]
+neutral wind relative to the moving surface for the ESDR `en_wind_*`
+and the CCMP fields, a neutral wind by the 2008 CMOD5.n calibration
+note for the OSI SAF `wind_speed` (the current streams run CMOD7.n and
+the KNMI product manual was not read), or a non-neutral,
+Earth-relative 10 m wind for the ESDR `real_wind_*` fields.[^measures-guide][^esdr-readme][^ccmp-guide][^podaac-esdr-b]
 A comparison against an anemometer or a reanalysis converts one side
 to the other's convention and states the inputs of the conversion
 (the stability data, the current product, the anemometer height), or

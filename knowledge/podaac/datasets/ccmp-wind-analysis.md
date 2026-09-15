@@ -54,7 +54,7 @@ sources:
     title: "Manaster, Ricciardulli and Meissner, 2019, Validation of High Ocean Surface Winds from Satellites Using Oil Platform Anemometers, Journal of Atmospheric and Oceanic Technology 36, 803 to 818: the high-wind validation the guide cites, whose abstract reports the analyses of the time (ECMWF, NCEP and the then-current CCMP) significantly lower than anemometer winds with biases growing with wind speed (registry record verified and abstract read there 2026-09-15; the article was not read)"
   - id: oscar
     resource: ../datasets/oscar-v2.md
-    title: "This bundle's OSCAR dataset concept (read 2026-09-15): the surface current product the guide names as the input for the moving-surface adjustment of the ERA5 background, itself computed with ERA5 winds"
+    title: "This bundle's OSCAR dataset concept (read 2026-09-15): the surface current product the guide names, without a collection, as the input for the moving-surface adjustment of the ERA5 background; its final and interim collections compute the wind-driven term from ERA5 winds, the near-real-time one from NCEP/NCAR Reanalysis 1, and its values are averages over the top 30 m"
 ---
 
 # CCMP version 3.1 ocean surface wind analysis
@@ -106,9 +106,11 @@ location-dependent terms to agree with scatterometer
 winds.[^guide][^mears-2022][^oscar] Radiometers measure scalar speed
 only, so wind direction in the analysis comes from the scatterometers
 (QuikSCAT, ASCAT-A, ASCAT-B) and from the background; WindSat's
-direction is not used.[^guide] The scatterometer input is the RSS
+direction is not used.[^guide] The ASCAT input is the RSS
 ASCAT record cross-calibrated across MetOp-A, -B and -C to about 0.1
-m/s at the global monthly scale.[^ricciardulli-2021] Radiometer
+m/s at the global monthly scale, of which the MetOp-C part is
+withheld; QuikSCAT is the other scatterometer
+input.[^ricciardulli-2021][^guide] Radiometer
 retrievals are excluded where total cloud water exceeds 0.18 mm (rain
 likely), scatterometer retrievals flagged for rain by the retrieval's
 own rain detection are excluded, and no retrieval influenced by sea
@@ -202,9 +204,13 @@ carry.[^cmr-6hr][^cmr-monthly][^podaac-6hr]
   comparable to the product's long-term errors, so the guide asks for
   caution with large-scale long-term changes and calls regional
   changes larger than a few tenths of a metre per second usable.[^guide]
-- The OSCAR product used to adjust the ERA5 background is itself
-  computed with ERA5 10 m winds as its wind input, so the two products
-  share an input in both directions.[^guide][^oscar]
+- ERA5 enters CCMP twice: as the background, and inside the OSCAR
+  surface current used to adjust that background, because OSCAR's
+  wind-driven term is computed from ERA5 10 m winds in its final and
+  interim collections (the near-real-time collection uses NCEP/NCAR
+  Reanalysis 1 winds). The guide names the product as OSCAR without
+  saying which collection, and an OSCAR value is an average over the
+  top 30 m rather than a surface current.[^guide][^oscar]
 
 **Verification.** The two CMR collection records, the collection
 search, the granule searches and the two PO.DAAC collection pages were

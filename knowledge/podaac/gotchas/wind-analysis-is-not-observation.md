@@ -1,7 +1,7 @@
 ---
 type: dataset-gotcha
 spheres: [hydrosphere, atmosphere]
-title: "A wind analysis is not an observation: CCMP is complete everywhere because its background model fills every gap, and where no satellite fell in the window, in rain, under sea ice and inside tropical cyclones the value is the adjusted ERA5 field, which nothing but the nobs field marks"
+title: "A wind analysis is not an observation: CCMP is complete everywhere because its background model fills every gap, and where no satellite fell in the window, in rain, at the sea ice edge and inside tropical cyclones the value is the adjusted ERA5 field, which nothing but the nobs field marks"
 description: "CCMP combines satellite winds with an adjusted ERA5 background by a variational analysis that ties the field to the satellites where they exist and relaxes smoothly to the background with distance from a swath. The daily files' nobs field is zero wherever no satellite observation fell inside the 6-hour window, and there the value is the background; rain-flagged and sea-ice-influenced retrievals are excluded before the analysis, so the background also stands in under rain and near ice; the guide states the product does not resolve tropical cyclones and that large-scale decadal changes are comparable to its own long-term errors. A study that treats the grid as observed wind, validates a model with it, or reads a case study or a trend from it without carrying nobs reports the background model and the changing satellite constellation as if they were measurements."
 tags: [ccmp, wind-analysis, level4, era5, background, nobs, data-assimilation, observation, validation, trends, tropical-cyclones]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
@@ -62,8 +62,9 @@ background.[^guide][^podaac-6hr] The exclusions widen that region:
 radiometer winds are dropped where total cloud water exceeds 0.18 mm,
 scatterometer retrievals flagged for rain are dropped, and no retrieval
 influenced by sea ice is used, so under rain and near the ice edge the
-satellites are absent by rule and the background fills
-in.[^guide] The monthly files redefine `nobs` as the number of time
+satellites are absent by rule and the background fills in; whether
+the files carry a value or a fill under sea ice itself was not read
+from a granule.[^guide][^dataset] The monthly files redefine `nobs` as the number of time
 steps averaged at each cell, so the monthly product carries no count
 of satellite contributions at all.[^guide] The guide's own validation
 measures the difference between the two regimes: against the withheld
@@ -105,8 +106,10 @@ statistic of adjusted ERA5, and a case study of a tropical cyclone
 from CCMP describes a field the guide says does not resolve the
 event.[^guide] A model evaluation against CCMP that scores a model in
 a region where CCMP is background compares two models, one of them
-ERA5 with adjustments, and a study that assimilates or validates
-against both ERA5 and CCMP counts one field twice.[^guide][^cmr-6hr] A
+ERA5 with adjustments, and a study that validates against both
+ERA5 and CCMP compares against one field twice wherever no satellite
+contributed, since CCMP is the adjusted ERA5 background
+there.[^guide][^cmr-6hr] A
 trend from the record, especially across the years when satellites
 entered and left the constellation, carries the satellite-model bias
 interaction the product's own versions were built to suppress, and
@@ -156,8 +159,8 @@ verified the same day and carries no abstract; the 2019 abstract
 states the analyses' low bias against anemometers.[^mears-2022][^atlas-2011][^manaster-2019]
 The MEaSUREs guide's Level 3 against Level 4 statement was read in
 full the same day.[^measures-guide] No granule was opened, so the
-`nobs` fill and encoding are not stated here beyond the guide's
-tables.[^dataset]
+`nobs` fill and encoding, and whether ice-covered cells hold a value
+or a fill, are not stated here beyond the guide's tables.[^dataset]
 
 [^guide]: CCMP Version 3.1 User Guide, Mears and Henze, 15 July 2024
 [^cmr-6hr]: CMR collection record, C2916514952-POCLOUD

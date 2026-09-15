@@ -53,10 +53,11 @@ ASCAT file at PO.DAAC therefore carries fields that say which cells
 are winds. The OSI SAF Level 2 files carry `wvc_quality_flag` (the
 wind vector cell quality), `ice_prob` (an ice probability), `ice_age`
 (the a-parameter, in decibels) and `bs_distance` (the backscatter
-distance), and the retrieval's own quality control rejects cells whose
-normalised distance to the model function cone exceeds a threshold
-tuned for a rejection rate of about 0.4 to 0.5 percent, higher toward
-the outer swath; the coastal stream discards every non-sea backscatter
+distance), and the 2008 calibration note for MetOp-A with CMOD5 describes a
+quality control that rejected cells whose normalised distance to the
+model function cone exceeded a threshold tuned, at that time, for a
+rejection rate of about 0.4 to 0.5 percent, higher toward the outer
+swath; the coastal stream discards every non-sea backscatter
 sample before averaging so that it can retrieve to about 15 km from
 the coast where the standard product keeps a static mask of about 35
 km.[^podaac-b25][^calval][^cmr-bcoastal] The bit meanings of

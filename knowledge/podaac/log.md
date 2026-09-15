@@ -5,6 +5,41 @@ Newest first. One line per change: date, concept path, what changed, who.
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
 - 2026-09-15 · datasets/ccmp-wind-analysis.md, datasets/ascat-winds.md,
+  gotchas/wind-analysis-is-not-observation.md,
+  gotchas/neutral-versus-stress-equivalent-wind.md,
+  gotchas/scatterometer-rain-and-ice-flags.md and
+  gotchas/bulk-flux-inputs-and-coefficients.md: the six drafts revised
+  on the coordinator's fix round for issue 151, against the sources
+  already read. The CCMP no-satellite error is stated as the guide's
+  figures (0.75 against 1.25 m/s versus ASCAT-C, 0.97 against 1.45 m/s
+  versus buoys) instead of "doubles"; the claim of a constant air
+  density in the ESDR stress is dropped in both files, the MEaSUREs
+  guide naming the density as a term with no value; the neutral gotcha
+  no longer infers what makes a retrieval stress-equivalent, states
+  that the stress-equivalent reference wind of de Kloe and others 2017
+  is a distinct quantity the sources read do not define (the registry
+  record carries no abstract), is retitled to equivalent-neutral
+  versus real 10 m wind with the anemometer wording corrected, keeps
+  the guide's "likely very close to zero" hedge, and qualifies the OSI
+  SAF convention as neutral by the 2008 CMOD5.n note with the KNMI
+  manual unread (the ASCAT concept says the same); the CCMP concept
+  says ERA5 enters twice (background and OSCAR's wind-driven term in
+  the final and interim collections, the near-real-time one using
+  NCEP/NCAR Reanalysis 1), that the guide names no OSCAR collection
+  and that OSCAR is a top-30 m average, and that the ASCAT input is the
+  RSS record with MetOp-C withheld and QuikSCAT the other scatterometer;
+  the analysis gotcha says a validation against ERA5 and CCMP compares
+  against one field twice where no satellite contributed, and that
+  whether ice-covered cells hold a value or a fill was not read from a
+  granule; the bulk-flux gotcha states that a relative wind error
+  enters the stress at roughly twice its size and drops a footnote that
+  did not bear its sentence; the flags gotcha dates the 0.4 to 0.5
+  percent rejection rate to the 2008 MetOp-A CMOD5 note; the ASCAT
+  granule-search count is reconciled to twelve. The eval case
+  wind-analysis-is-not-observation was re-read against the revised
+  gotcha and needed no change. (knowledge-seeder/claude)
+
+- 2026-09-15 · datasets/ccmp-wind-analysis.md, datasets/ascat-winds.md,
   gotchas/wind-analysis-is-not-observation.md (high),
   gotchas/neutral-versus-stress-equivalent-wind.md (medium),
   gotchas/scatterometer-rain-and-ice-flags.md (medium) and
@@ -17,8 +52,8 @@ _Historical note: older entries use build-era shorthand (a "close lint" is a kno
   MEaSUREs inter-calibrated ESDR (Level 2 wind and stress version 1.1,
   Level 3 version 1.0, ancillary and derivative collections). Sources
   read on 2026-09-15: the eighteen CMR collection records, the CMR
-  collection searches, first-and-last granule searches for the fourteen
-  wind collections, the PO.DAAC collection pages for the two CCMP and
+  collection searches, first-and-last granule searches for the twelve
+  ASCAT wind collections and the two CCMP collections, the PO.DAAC collection pages for the two CCMP and
   twelve ASCAT collections, the PO.DAAC MEaSUREs-OSVW project page, the
   CCMP version 3.1 user guide (July 2024), the MEaSUREs OSVW user's
   guide (December 2022), the MEaSUREs ESDR Level 2 README (June 2024),

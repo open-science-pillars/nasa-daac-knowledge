@@ -52,7 +52,9 @@ estimates it from the scatterometer equivalent neutral wind by the
 bulk relation tau equals air density times the neutral drag
 coefficient times the wind speed times the wind vector, the neutral
 coefficient chosen because an equivalent neutral wind needs no
-adjustment for boundary layer stability.[^measures-guide][^de-kloe-2017]
+adjustment for boundary layer stability; the guide names the air
+density as a term of the relation and gives no value or source for
+it.[^measures-guide][^de-kloe-2017]
 The coefficient is a choice, and the guide records the choice and the
 alternatives: many scatterometer stress applications use the Large et
 al. 1994 formulation, more recent field data (Edson et al. 2013 among
@@ -90,8 +92,10 @@ files missing where an input was unavailable.[^measures-guide] CCMP
 carries no stress or flux field and no uncertainty field, and its
 monthly files note that the average wind speed can be very different
 from the magnitude of the averaged components; a stress from CCMP is
-the user's own bulk computation on an analysis whose error doubles
-where no satellite contributed.[^ccmp-guide][^ccmp] The
+the user's own bulk computation on an analysis whose wind-speed
+standard deviation against the withheld ASCAT-C is 0.75 m/s where a
+satellite contributed and 1.25 m/s where none did, and against moored
+buoys 0.97 against 1.45 m/s.[^ccmp-guide][^ccmp] The
 triple-collocation study of scatterometer stress found two commonly
 used surface-layer models showing little difference in stress and the
 numerical weather prediction dataset generally more uncertain than
@@ -110,15 +114,16 @@ inside a flux product.[^esdr-readme]
 CCMP monthly means underestimates the stress by the nonlinearity the
 guide names, and a stress from the 6-hourly analysis carries the
 background wherever `nobs` is zero, so a stress map has the same
-observed-and-modelled patchwork as the wind map with the errors
-amplified by the square of the speed.[^measures-guide][^ccmp-guide] A
+observed-and-modelled patchwork as the wind map, and because stress
+goes as the square of the speed a relative wind error enters the
+stress at roughly twice its size.[^measures-guide][^ccmp-guide] A
 comparison of the ESDR stress against a stress computed from another
 wind product with another drag law, or against a model's applied
 stress, reports the coefficient difference as a physical difference:
 Large et al. 1994 against the linear law differ above about 8 m/s by
 the guide's own comparison, and the 1.5 to 2 times uncertainty
 scaling of indicator 2 and 3 cells propagates into the stress
-fields.[^measures-guide][^ecco-curl] A stress computed from the ESDR
+fields.[^measures-guide] A stress computed from the ESDR
 `real_wind_*` fields with the same neutral coefficient, or from the
 `en_wind_*` fields with a stability-dependent coefficient, applies the
 stability correction twice or not at all.[^measures-guide] A latent or
@@ -129,7 +134,7 @@ and a flux difference between two wind products is the wind
 difference passed through one formula, not a measured flux
 difference.[^measures-guide][^esdr-readme] A high-wind stress from
 CCMP inherits the analysis's deliberate high bias above about 15 to
-18 m/s, squared.[^ccmp-guide] None of this raises an error: a stress
+18 m/s at roughly twice its relative size.[^ccmp-guide] None of this raises an error: a stress
 field in N m-2 looks the same whichever coefficient produced it.[^podaac-esdr-b]
 
 **Correct approach.** A stress or flux result names the wind product
@@ -160,8 +165,8 @@ on 2026-09-15 (title, authors, journal, year); the 2013, 1994 and 2009
 abstracts were read there and the 2017 record carries no abstract; no
 journal page was read, so the coefficient values are quoted from the
 guide and not from the papers.[^edson-2013][^large-1994][^portabella-2009][^de-kloe-2017]
-No granule was opened, so the air density used in the files is not
-stated here.[^dataset]
+No granule was opened, and the guide gives no value for the air
+density, so the density used in the files is not stated here.[^dataset]
 
 [^measures-guide]: MEaSUREs OSVW user's guide, Hristova-Veleva and others, 1 December 2022
 [^podaac-esdr-b]: PO.DAAC collection page, ASCATB_ESDR_L2_WIND_STRESS_V1.1

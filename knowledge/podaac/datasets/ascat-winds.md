@@ -2,7 +2,7 @@
 type: dataset
 spheres: [hydrosphere, atmosphere]
 title: "ASCAT scatterometer ocean surface winds at PO.DAAC: the OSI SAF operational Level 2 streams, the MetOp-A climate data records and the JPL MEaSUREs inter-calibrated ESDR"
-description: "PO.DAAC distributes two families of ASCAT wind products: the EUMETSAT OSI SAF Level 2 wind vectors retrieved at KNMI (near-real-time 25 km and coastal 12.5 km streams for MetOp-A, -B and -C, of which B and C are ongoing, plus two reprocessed MetOp-A climate data records) and the JPL MEaSUREs Earth System Data Record that re-retrieves MetOp-A and -B with a QuikSCAT-harmonized model function and adds true 10 m winds, wind stress, per-cell uncertainties and a quality indicator. Every wind is a 10 m equivalent-neutral wind relative to the moving surface unless a field says otherwise, and every file carries flags for rain, sea ice and coast that decide which cells are winds."
+description: "PO.DAAC distributes two families of ASCAT wind products: the EUMETSAT OSI SAF Level 2 wind vectors retrieved at KNMI (near-real-time 25 km and coastal 12.5 km streams for MetOp-A, -B and -C, of which B and C are ongoing, plus two reprocessed MetOp-A climate data records) and the JPL MEaSUREs Earth System Data Record that re-retrieves MetOp-A and -B with a QuikSCAT-harmonized model function and adds true 10 m winds, wind stress, per-cell uncertainties and a quality indicator. The ESDR and CCMP winds are 10 m equivalent-neutral winds relative to the moving surface unless a field says otherwise; the OSI SAF winds are neutral winds by the 2008 CMOD5.n calibration note, with the current streams running CMOD7.n and the KNMI product manual not read; and every file carries flags for rain, sea ice and coast that decide which cells are winds."
 tags: [ascat, scatterometer, ocean-winds, metop, osi-saf, knmi, measures, esdr, wind-stress, level2, level3, podaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
 resource: https://podaac.jpl.nasa.gov/dataset/ASCATB-L2-25km
@@ -33,7 +33,7 @@ sources:
     title: "CMR collection record for ASCATB_ESDR_L2_WIND_STRESS_V1.1: abstract (equivalent neutral and true 10 m winds and stress at 12.5 km on the swath, inter-calibrated with MetOp-A, ScatSat-1 and QuikSCAT for an unbroken 1999 to 2022 record, version 1.1 changes, science evaluation by the IOVWST as the stated purpose), DOI, NASA/JPL as processor, the MEaSUREs/OSWV project and the guide and README links; the MetOp-A record C2730520815-POCLOUD, the two Level 3 records (C3402062729 and C3403169610), the two ancillary records (C2705728324 and C2706510710) and the two derivative records (C3401738510 and C3401765750) were read the same way (read 2026-09-15)"
   - id: cmr-granules
     resource: https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2075141559-POCLOUD&page_size=1&sort_key=start_date
-    title: "CMR granule searches, run 2026-09-15 for each of the fourteen wind collections with sort_key=start_date and sort_key=-start_date and the CMR-Hits header: the first and last granule names, dates and counts quoted in the version field; for the MetOp-B 25 km stream the first granule is ascat_20121029_010001_metopb_00588_eps_o_250_2101_ovw.l2 and the last ascat_20260915_102100_metopb_72608_eps_o_250_3301_ovw.l2"
+    title: "CMR granule searches, run 2026-09-15 for each of the twelve ASCAT wind collections named in the version field with sort_key=start_date and sort_key=-start_date and the CMR-Hits header: the first and last granule names, dates and counts quoted in the version field; for the MetOp-B 25 km stream the first granule is ascat_20121029_010001_metopb_00588_eps_o_250_2101_ovw.l2 and the last ascat_20260915_102100_metopb_72608_eps_o_250_3301_ovw.l2"
   - id: podaac-b25
     resource: https://podaac.jpl.nasa.gov/dataset/ASCATB-L2-25km
     title: "PO.DAAC collection page, ASCATB-L2-25km: description, the variable table (bs_distance, ice_age, ice_prob, lat, lon, model_dir, model_speed, time in seconds since 1990-01-01, wind_dir, wind_speed, wvc_index, wvc_quality_flag), documentation links and the citation; the pages for ASCATB-L2-Coastal, ASCATC-L2-25km, ASCATC-L2-Coastal, ASCATA-L2-25km, ASCATA-L2-Coastal, ASCATA_L2_25KM_CDR and ASCATA_L2_COASTAL_CDR were read the same day and carry the same variable table (read 2026-09-15)"
@@ -231,13 +231,15 @@ to CCMP.[^ricciardulli-2021][^measures-guide][^ccmp]
   families; a series at the ice edge or in a rainy region is a series
   of those decisions.
 - [neutral-versus-stress-equivalent-wind](../gotchas/neutral-versus-stress-equivalent-wind.md):
-  the OSI SAF `wind_speed` and the ESDR `en_wind_speed` are 10 m
-  equivalent-neutral winds relative to the moving surface; the ESDR
-  `real_wind_*` fields are the only true 10 m winds.
+  the ESDR `en_wind_speed` is a 10 m equivalent-neutral wind relative
+  to the moving surface, and the OSI SAF `wind_speed` a neutral wind
+  by the 2008 CMOD5.n calibration note (the current streams run CMOD7.n
+  and the KNMI product manual was not read); the ESDR `real_wind_*`
+  fields are the only true 10 m winds.
 - [bulk-flux-inputs-and-coefficients](../gotchas/bulk-flux-inputs-and-coefficients.md):
   the ESDR stress is the EN wind through one linear drag coefficient
-  and a constant air density, and the true wind rests on ERA5 and
-  GlobCurrent inputs.
+  and an air density the guide names without giving a value, and the
+  true wind rests on ERA5 and GlobCurrent inputs.
 - The operational MetOp-A and MetOp-B records list CMOD5.n (MetOp-B)
   and CMOD7.n (MetOp-A) as the model function "currently" used, and
   the records' `latest_granule_end_time` attributes read 2021-08-03
@@ -263,7 +265,7 @@ to CCMP.[^ricciardulli-2021][^measures-guide][^ccmp]
   differences.[^cmr-cdr][^measures-guide][^wentz-2017]
 
 **Verification.** The sixteen CMR collection records, the collection
-search, fourteen granule searches, twelve PO.DAAC collection pages and
+search, twelve granule searches, twelve PO.DAAC collection pages and
 the MEaSUREs project page were read on 2026-09-15; the MEaSUREs guide,
 the ESDR README, the 2008 calibration note and the CDR README were read
 the same day from the PO.DAAC document archive; six product DOIs were
@@ -284,7 +286,7 @@ this concept's sources, were not read.
 [^cmr-a25]: CMR collection record, C2075141524-POCLOUD
 [^cmr-cdr]: CMR collection record, C2491772100-POCLOUD
 [^cmr-esdr-b]: CMR collection record, C2706513160-POCLOUD
-[^cmr-granules]: CMR granule searches, fourteen ASCAT wind collections, first and last granule, 2026-09-15
+[^cmr-granules]: CMR granule searches, twelve ASCAT wind collections, first and last granule, 2026-09-15
 [^podaac-b25]: PO.DAAC collection page, ASCATB-L2-25km
 [^podaac-esdr-b]: PO.DAAC collection page, ASCATB_ESDR_L2_WIND_STRESS_V1.1
 [^podaac-osvw]: PO.DAAC project page, MEaSUREs-OSVW
