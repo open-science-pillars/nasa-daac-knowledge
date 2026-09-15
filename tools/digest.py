@@ -38,8 +38,10 @@ listed under a product when it names it, by any join the bundle uses:
   - a shared tag that names the product: the dataset concept's file
     stem (nasa-ssh) or the stem's first word (ecco, swot, grace, opera,
     rapid, ghrsst), present in the dataset's own `tags` and in the
-    concept's; the bundle tags every ECCO computation and recipe
-    `ecco`, and that tag is how they name the product.
+    concept's, and carried by no other dataset in the bundle (icesat2
+    on both ATL10 and ATL15 names neither); the bundle tags every ECCO
+    computation and recipe `ecco`, and that tag is how they name the
+    product.
 
 A concept that names no product goes in the final section, with the
 same link; a dataset concept is listed first under its own product.
@@ -223,6 +225,13 @@ def join(bundle: Path, concepts: list) -> dict:
     datasets = {c.rel: c for c in concepts if c.type == DATASET_TYPE}
     declared = {rel: shortnames(d, concepts) for rel, d in datasets.items()}
     by_tag = {rel: product_tags(d) for rel, d in datasets.items()}
+    # a first word two products share (icesat2 on ATL10 and ATL15) names
+    # neither; only a tag exactly one product carries is that product's name
+    owners: dict = {}
+    for rel, tags in by_tag.items():
+        for t in tags:
+            owners.setdefault(t, set()).add(rel)
+    by_tag = {rel: {t for t in tags if len(owners[t]) == 1} for rel, tags in by_tag.items()}
     for c in concepts:
         if c.type == DATASET_TYPE:
             c.products = [c.rel]
@@ -335,6 +344,12 @@ def selftest() -> int:
                               "verified: { by: human:Steward, at: 2026-01-02T00:00:00Z }\n---\nAlpha.\n"),
         "datasets/beta.md": ("---\ntype: dataset\ntitle: Beta reference\nstatus: draft\ntags: [altimetry, beta-ref]\n"
                              "resource: https://doi.org/10.5067/EXAMPLE\n---\nBeta.\n"),
+        "datasets/gamma-one.md": ("---\ntype: dataset\ntitle: Gamma one\nstatus: draft\ntags: [gamma, gamma-one]\n---\nOne.\n"),
+        "datasets/gamma-two.md": ("---\ntype: dataset\ntitle: Gamma two\nstatus: draft\ntags: [gamma, gamma-two]\n---\nTwo.\n"),
+        "gotchas/gamma-shared.md": ("---\ntype: dataset-gotcha\ntitle: Gamma family trap\nseverity: low\nstatus: draft\n"
+                                    "tags: [gamma]\n---\nNames the family, not a product.\n"),
+        "gotchas/gamma-two-only.md": ("---\ntype: dataset-gotcha\ntitle: Gamma two trap\nseverity: low\nstatus: draft\n"
+                                      "tags: [gamma, gamma-two]\n---\nNames gamma two by its stem.\n"),
         "computations/attested.md": ("---\ntype: Attested Computation\ntitle: An attested run\nstatus: stable\n"
                                      "tags: [alpha, budget, attested]\n"
                                      "verified: { by: human:Steward, at: 2026-01-06T00:00:00Z }\n---\nRun.\n"),
@@ -369,14 +384,22 @@ def selftest() -> int:
             (bundle / rel).write_text(text, encoding="utf-8")
         text = render(bundle)
         assert text.startswith(f"# {TITLE}\n"), text
-        assert "9 concepts, 2 products." in text, text
-        # beta, the finding and the altimetry doctrine carry no event; the
-        # fields concept a process event; alpha, the recipe, the computation
-        # and the doctrine a human event; the gotcha a provider event
-        assert "- unverified: 3\n- machine-confirmed: 1\n- human-reviewed: 4\n- provider-confirmed: 1\n" in text, text
+        assert "13 concepts, 4 products." in text, text
+        # beta, the gamma products and gotchas, the finding and the altimetry
+        # doctrine carry no event; the fields concept a process event; alpha,
+        # the recipe, the computation and the doctrine a human event; the
+        # gotcha a provider event
+        assert "- unverified: 7\n- machine-confirmed: 1\n- human-reviewed: 4\n- provider-confirmed: 1\n" in text, text
         alpha = text[text.index("## Alpha product"):text.index("## Beta reference")]
-        beta = text[text.index("## Beta reference"):text.index("## Concepts that name no product")]
+        beta = text[text.index("## Beta reference"):text.index("## Gamma one")]
+        gamma_one = text[text.index("## Gamma one"):text.index("## Gamma two")]
+        gamma_two = text[text.index("## Gamma two"):text.index("## Concepts that name no product")]
         rest = text[text.index("## Concepts that name no product"):]
+        # a first word two products share (gamma) names neither; the stem
+        # (gamma-two) still names its product, and the family gotcha names none
+        assert gamma_one.count("\n| [") == 1, gamma_one
+        assert gamma_two.count("\n| [") == 2 and "gotchas/gamma-two-only.md" in gamma_two, gamma_two
+        assert "gotchas/gamma-shared.md" in rest and "gotchas/gamma-shared.md" not in gamma_one + gamma_two, rest
         # the dataset concept leads its own section; the gotcha joins by `dataset`,
         # the fields concept by directory, the recipe by a ShortName family
         # prefix, the computation by the product's tag
@@ -389,7 +412,7 @@ def selftest() -> int:
         assert beta.count("\n| [") == 3 and "recipes/method.md" in beta and "findings/claim.md" in beta, beta
         assert "gotchas/trap.md" not in beta and "conventions/altimetry.md" not in beta
         # a body link to a gotcha is not a product; the doctrines name none
-        assert rest.count("\n| [") == 2 and "conventions/doctrine.md" in rest and "conventions/altimetry.md" in rest, rest
+        assert rest.count("\n| [") == 3 and "conventions/doctrine.md" in rest and "conventions/altimetry.md" in rest, rest
         # the row: escaped title, severity, status, tier, date, source count, the link
         assert ("| [A trap \\| with a pipe](gotchas/trap.md) | dataset-gotcha | high | stable "
                 "| provider-confirmed | 2026-02-03 | 2 | [Confirm or correct](") in alpha, alpha
@@ -427,7 +450,7 @@ def selftest() -> int:
         assert r.returncode == 1 and "missing" in r.stdout, r.stdout + r.stderr
     assert names_shortname("ALPHA_L4_HEAT", "ALPHA_L4_HEAT_FLUX_X") and not names_shortname("ALPHA_L4_HE", "ALPHA_L4_HEAT_FLUX_X")
     assert not names_shortname("ALPHA_L4_HEAT_FLUX_X", "ALPHA_L4_HEAT") and not names_shortname("SHORT_A", "SHORT_A_B")
-    print("digest selftest: ok (joins by path, directory and ShortName; tiers; links; the Asked mark; --check; --stdout)")
+    print("digest selftest: ok (joins by path, directory, ShortName and unshared tag; tiers; links; the Asked mark; --check; --stdout)")
     return 0
 
 
