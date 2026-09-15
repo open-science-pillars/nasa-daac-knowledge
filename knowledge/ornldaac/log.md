@@ -2,6 +2,66 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · GEDI concepts revised on the coordinator's fix round
+  (pull request 168): gotchas/gedi-latitude-limits.md (the off-track
+  pointing margin is a fraction of a degree, the 56 north and 53 south
+  rectangle is a catalog extent no source read explains, and the
+  wrong-result trap is a search box lying wholly north of about 52);
+  datasets/gedi-l4b-gridded-biomass.md (names L4A Version 2.1 as the
+  footprint input the Version 2 guide cites, states by the publication
+  dates that the Version 2.1 grid predates the Version 3 models and
+  flags, cites the Version 3 guide directly for the beam sensitivity
+  thresholds, records the 35 stratum codes against the 32 modeled
+  strata, and separates the zero cells from the -9999 no-data value);
+  gotchas/gedi-quality-and-degrade-flags.md (title and correct approach
+  now say degrade_include_flag names the codes the L4B algorithm admits
+  rather than that the shipped grid was built on that sample; the
+  l4a_quality_flag_rel3 definition quotes the guide's spelling; a
+  wrong-version filter fails on the missing dataset);
+  gotchas/gedi-biomass-is-a-model-output.md (the 50.7 percent figure is
+  the global land-area-weighted figure, not per stratum; the L4B 2.1
+  grid predates the Version 3 refit); gotchas/gedi-footprint-is-not-a-pixel.md
+  and gotchas/gedi-l4b-standard-error.md (Patterson and others' 20
+  percent under-statement stated as a simulation result at six United
+  States sites; the sentences that extend it are marked as this
+  bundle's reasoning); datasets/gedi-l4a-footprint-biomass.md (the 35
+  combinations against 32 strata, the flag definition spelling, the L4B
+  2.1 grid's date). The L4B Version 2.1 user guide PDF remained
+  unreadable (content delivery host blocked; the daac.ornl.gov data
+  path requires an Earthdata login this seed does not use). All still
+  drafts, no signatures. (seeder)
+
+- 2026-09-15 · GEDI L4A and L4B biomass, round three of seeding
+  (nasa-daac-knowledge issue 155): two dataset concepts
+  (datasets/gedi-l4a-footprint-biomass.md for Version 3, with Version
+  2.1 recorded as the complete prior collection, and
+  datasets/gedi-l4b-gridded-biomass.md for Version 2.1) and five
+  gotchas (gedi-footprint-is-not-a-pixel at severity high with its eval
+  case drafted in agent-evals under gedi/cases/, unregistered in any
+  suite manifest until the coordinator's follow-up;
+  gedi-l4b-standard-error, gedi-quality-and-degrade-flags and
+  gedi-biomass-is-a-model-output at severity medium; gedi-latitude-limits
+  at severity low): all drafts, no signatures. Sources read the same
+  day: the ORNL DAAC user guide for GEDI L4A Version 3 (revision
+  2026-09-02) and the L4A Version 3 landing page; the L4A Version 2.1
+  and L4B Version 2.1 landing pages, read at their Earthdata catalog
+  redirects; the ORNL DAAC user guide for GEDI L4B Version 2 (revision
+  2022-04-26, the readable layer documentation); the CMR collection
+  search for GEDI at ORNL_CLOUD, the collection records and granule
+  searches for L4A Version 3, L4A Version 2.1 and L4B Version 2.1, and
+  the collection record for the circumpolar boreal biomass product from
+  ICESat-2; the doi.org handle records for the three dataset DOIs; the
+  Crossref records, with abstracts, for Dubayah and others 2022
+  (Environmental Research Letters), Kellner and others 2023 (Earth and
+  Space Science) and Patterson and others 2019 (Environmental Research
+  Letters). Not readable from the drafting session: the L4A Version 3
+  and L4B Version 2.1 user guide PDFs, the L4A and L4B algorithm
+  theoretical basis documents and the data dictionaries on
+  data.ornldaac.earthdata.nasa.gov (they redirect to a content delivery
+  host the environment blocks; the versioned guide URLs on
+  daac.ornl.gov redirect there too), the DataCite metadata behind
+  doi.org content negotiation, and the journal article pages. (seeder)
+
 - 2026-09-14 · STEWARD RE-SIGNING of
   knowledge/ornldaac/gotchas/daymet-365-day-year.md: second maintainer
   review recorded on the maintainer's explicit instruction in the
