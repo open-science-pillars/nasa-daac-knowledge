@@ -5,6 +5,7 @@ title: "The OMI row anomaly has removed cross-track rows since June 2007, growin
 description: "From 25 June 2007 a blockage in OMI's viewing port attenuated the radiance in cross-track positions 53 and 54, from 11 May 2008 in positions 37 to 44, from 24 January 2009 in 27 to 44, with further changes in July and August 2011 and a dynamic extent since; the affected pixels carry a nonzero XTrackQualityFlags (and, in the version 5.0 NO2 product, the team's XTrackQualityFlagsModified), the OMNO2 column fields are fill where the version's flag is set, and OMNO2d and OMTO3d exclude the flagged pixels before gridding. The grids still look complete, but in some periods half the fields of view are rejected, the daily coverage has gaps, a cell's weight and its mix of nadir and swath-edge pixels differ before and after, and the NO2 team says a trend spanning the onset is sampled differently on each side of it."
 tags: [omi, aura, row-anomaly, xtrackqualityflags, omno2d, omto3d, omno2, omto3, sampling, trend, gesdisc, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T13:59:41Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/161 }
 severity: high
 dataset: ../datasets/omi-no2-and-ozone.md
 eval_case: omi-row-anomaly

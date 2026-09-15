@@ -5,6 +5,7 @@ title: "AIRS level 3 profiles sit on fixed pressure levels, not model levels, an
 description: "The AIRS version 7 level 3 temperature profile is reported on 24 standard pressure levels from 1000 to 1 hPa and water vapour on 12 levels from 1000 to 100 hPa and 12 layers bounded by the standard levels from 1000 to 70 hPa, the same levels in every cell whatever the elevation; where the terrain rises above a level no retrieval reaches it, the level's count (_ct) drops toward zero while TotalCounts stays full, and the cell reads as fill. The layer mixing ratio profile assumes an atmosphere down to 1000 hPa and extends below the surface, while the total column water vapour does not. A regional mean at a low level over topography, a vertical integral of the layers, or a comparison against a reanalysis on model levels or with its own below-ground convention, returns a number the file raised no error about."
 tags: [airs, aqua, airs3std, airs3stm, pressure-levels, surface-pressure, topography, water-vapour, temperature, gesdisc, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T13:59:41Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/161 }
 severity: high
 dataset: ../datasets/airs-l3-temperature-humidity.md
 eval_case: airs-pressure-levels-and-surface-mask

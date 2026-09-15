@@ -5,6 +5,7 @@ title: "A level 3 cell is the average of however many retrievals of whatever qua
 description: "AIRS level 3 stores beside every mean a count (_ct) of the level 2 retrievals that entered it and their standard deviation, plus TotalCounts, the retrievals that fell in the cell whether used or not; OMNO2d stores Weight, the sum of the area and overlap weights of the pixels averaged; OMTO3d stores nothing of the kind. A cell's value can rest on one retrieval or fifty, on near-nadir pixels one day and swath-edge pixels the next, and the retrievals differ in quality within the accepted range. The AIRS version 6 monthly mean weighted each day by its count and so favoured clear days, a bias the guide says grows in multi-year climatologies; version 7 averages the daily means without regard to count. A regional mean, a monthly rebuilt from dailies, or a per-cell trend that ignores the count or weight carries these differences as signal, and the count itself does not measure sampling bias."
 tags: [airs, omi, level-3, count, weight, totalcounts, sampling, averaging, airs3std, airs3stm, omno2d, omto3d, gesdisc, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T13:59:41Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/161 }
 severity: medium
 # medium, not high, although an unweighted aggregate runs silently: the
 # count and Weight fields sit beside every mean in the file and the
@@ -12,7 +13,7 @@ severity: medium
 # opens the file, and the averaging-method difference is documented and
 # measured rather than hidden.
 dataset: ../datasets/airs-l3-temperature-humidity.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: airs-l3-ug

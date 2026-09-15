@@ -5,6 +5,7 @@ title: "AIRS version 7 level 3 temperature and water vapour: the daily and month
 description: "The Atmospheric Infrared Sounder on Aqua, gridded by the AIRS science team into the version 7 level 3 standard products at GES DISC: a daily file (AIRS3STD) and a calendar-month file (AIRS3STM) on a 1 by 1 degree grid from 31 August 2002 to the present, each holding separate ascending (1:30 PM local, daytime) and descending (1:30 AM, night-time) grids, temperature on 24 standard pressure levels from 1000 to 1 hPa, water vapour mixing ratio and relative humidity on 12 levels from 1000 to 100 hPa and 12 layers bounded by the standard levels from 1000 to 70 hPa, surface skin and air temperature, total column water vapour, a forecast surface pressure, and for every mean a count of the level 2 retrievals that entered it and their standard deviation. No error field ships; the count and the standard deviation are what stand in, and the guide says the count does not characterise sampling bias."
 tags: [airs, aqua, airs3std, airs3stm, level-3, temperature, water-vapour, humidity, pressure-levels, ascending, descending, gesdisc, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T13:59:41Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/161 }
 resource: https://disc.gsfc.nasa.gov/datasets/AIRS3STD_7.0/summary
 version: "Version 7.0 is the current AIRS science team level 3 release; concept ids and DOIs CMR-verified 2026-09-15, the DOIs resolving on doi.org the same day to the GES DISC pages: AIRS3STD C1701805652-GES_DISC (DOI 10.5067/UO3Q64CTTS1U, daily, from 2002-08-31, newest granule that day 2026-09-13 with processing version v7.0.10.0 in its name), AIRS3STM C1701805662-GES_DISC (DOI 10.5067/UBENJB9D3T2H, monthly, from 2002-09-01, newest granule August 2026 with v7.0.9.3 in its name, as every monthly granule from September 2021 on has), the support products AIRS3SPD C1701805657-GES_DISC and AIRS3SPM C1701805668-GES_DISC on 100 levels, and the superseded version 006 records AIRS3STD C1238517289-GES_DISC and AIRS3STM C1238517301-GES_DISC still in CMR; the post-DSM processing versions are v7.0.9.3 from 2021-09-23 and v7.0.10.0 from 2024-12-23 per Table 1 of the JPL memo of 2025-12-10, but the granule names read 2026-09-15 do not follow that boundary: the daily files still carry v7.0.9.3 through the end of December 2024 and the daily files of late August and early September 2026 mix v7.0.10.0 with v7.0.9.3 on some days"
 sources:
@@ -47,7 +48,7 @@ sources:
   - id: merra2
     resource: ../datasets/merra-2.md
     title: "This bundle's MERRA-2 dataset concept: the reanalysis AIRS multi-year means are compared against, whose own pressure-level fields are undefined below ground and whose 0.625 by 0.5 degree grid carries the same area-weighting trap as this 1 degree one"
-status: draft
+status: stable
 stale_after: 2027-03-15
 ---
 

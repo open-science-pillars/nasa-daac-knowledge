@@ -5,6 +5,7 @@ title: "OMI level 3 nitrogen dioxide and total ozone: the daily OMNO2d 0.25 degr
 description: "The Ozone Monitoring Instrument on Aura, gridded at GES DISC into two daily level 3 products: OMNO2d, the 0.25 by 0.25 degree total and tropospheric nitrogen dioxide columns with and without a 30 percent cloud screen plus a Weight field that is the only record of how much data a cell rests on, in collection 3 (product version 4.0) and collection 4 (product version 5.0, the forward stream since 2025); and OMTO3d, the 1 by 1 degree TOMS-like total ozone column with radiative cloud fraction, UV aerosol index and the two zenith angles, in versions 003 and 004 both in production, with OMTO3e and OMDOAO3e as the 0.25 degree best-pixel and DOAS siblings. Both are weighted averages of the level 2 pixels overlapping a cell after the row anomaly rows, the descending node and the poor-quality flags are excluded; no uncertainty field ships in either."
 tags: [omi, aura, omno2d, omto3d, omto3e, omdoao3e, nitrogen-dioxide, no2, ozone, total-ozone, level-3, row-anomaly, gesdisc, atmosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T13:59:41Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/161 }
 resource: https://disc.gsfc.nasa.gov/datasets/OMNO2d_004/summary
 version: "Concept ids and DOIs CMR-verified 2026-09-15, the DOIs resolving on doi.org the same day to the GES DISC pages: OMNO2d 004 C3333493715-GES_DISC (DOI 10.5067/Aura/OMI/DATA3407, product version 5.0 on collection 4 level 1B, first granule produced 2025-10-14, newest 2026-09-05) and OMNO2d 003 C1266136111-GES_DISC (DOI 10.5067/Aura/OMI/DATA3007, product version 4.0, newest granule 2026-03-15); OMTO3d 004 C3377057241-GES_DISC (DOI 10.5067/Aura/OMI/DATA3401, PGE 1.0.12, first granule produced 2024-10-18, newest 2026-09-13) and OMTO3d 003 C1266136070-GES_DISC (DOI 10.5067/Aura/OMI/DATA3001, PGE 1.0.7, newest granule 2026-09-13); OMTO3e 004 C3377057279-GES_DISC (10.5067/Aura/OMI/DATA3402); OMDOAO3e 003 C1266136037-GES_DISC (10.5067/Aura/OMI/DATA3005); the level 2 parents OMNO2 004 C3333494968-GES_DISC, OMTO3 004 C3377057082-GES_DISC and OMDOAO3 004 C3454342622-GES_DISC; every record begins 2004-10-01 with no end date"
 sources:
@@ -59,7 +60,7 @@ sources:
   - id: levelt-2018
     resource: https://doi.org/10.5194/acp-18-5699-2018
     title: "Levelt and others, 2018, The Ozone Monitoring Instrument: overview of 14 years in space, Atmospheric Chemistry and Physics 18, 5699 to 5745 (record and abstract read on the Crossref registry 2026-09-15)"
-status: draft
+status: stable
 stale_after: 2027-03-15
 ---
 
