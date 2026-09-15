@@ -2,6 +2,42 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · second seed, AIRS profiles and OMI trace gases: two
+  dataset concepts (datasets/airs-l3-temperature-humidity.md, the
+  version 7 daily and monthly 1 degree grids AIRS3STD and AIRS3STM
+  with their nodes, levels, count and standard deviation fields;
+  datasets/omi-no2-and-ozone.md, the OMNO2d and OMTO3d daily grids
+  with OMTO3e and OMDOAO3e as siblings) and five gotchas
+  (airs-pressure-levels-and-surface-mask and omi-row-anomaly at
+  severity high with their eval cases drafted in agent-evals under
+  airs/cases/, unregistered in any suite manifest until the
+  coordinator's follow-up; airs-ascending-descending-nodes and
+  l3-count-field-bounds-a-cell at severity medium;
+  anomaly-names-its-climatology-period at severity low): all drafts,
+  no signatures. Sources read the same day: the CMR collection, UMM
+  and granule records for AIRS3STD, AIRS3STM, AIRS3SPD, AIRS3SPM
+  (versions 7.0 and 006), OMNO2d, OMTO3d, OMTO3e, OMDOAO3e, OMNO2,
+  OMTO3 and OMDOAO3 (GES_DISC provider), the product DOIs resolved on
+  doi.org; the GES DISC collection pages for AIRS3STD 7.0, AIRS3STM
+  7.0, OMNO2d 004 and OMTO3d 004 (script-rendered, read through their
+  CMR records); the JPL AIRS Version 7 Level 3 Product User Guide
+  (April 2020), the AIRS documentation index, the deep space
+  manoeuvre impact report (December 2025), the DC restore anomaly
+  memo (March 2026) and the data outages list (April 2026), all on
+  the GES DISC document server because the AIRS JPL product pages
+  return 404; the OMI Data User's Guide (2012), the OMNO2 READMEs for
+  versions 4.0 (2019) and 5.0 (2024), the OMNO2d and OMTO3d file
+  specifications (2013 and 2024) and the OMTO3d README (2009); the
+  Crossref registry records of Susskind and others 2014, Kahn and
+  others 2014, Ding and others 2020, Lamsal and others 2021, Levelt
+  and others 2006 and 2018, Dobber and others 2006 and Schenkeveld
+  and others 2017. Not reached: the Aura project site (redirects to
+  NASA Science, no row anomaly page), the OMTO3d and OMTO3e version
+  004 README text files (access prompt), and the KNMI row anomaly
+  pages the OMI documents point to (outside the source list). The
+  MERRA-2 concepts are linked where AIRS is compared with the
+  reanalysis, not restated. (knowledge-seeder)
+
 - 2026-09-14 · STEWARD RE-SIGNING of
   knowledge/gesdisc/gotchas/merra2-prectotcorr-versus-prectot.md: second
   maintainer review recorded on the maintainer's explicit instruction in
