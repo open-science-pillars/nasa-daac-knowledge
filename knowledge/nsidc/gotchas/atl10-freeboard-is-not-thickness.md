@@ -5,6 +5,7 @@ title: "ATL10 freeboard is not sea ice thickness: total freeboard is the air and
 description: "ATL10 gives total freeboard, the height of the air and snow interface above the local sea surface, per ATL07 segment and per beam. Ice thickness follows only through the hydrostatic balance, which scales the freeboard by the water and ice densities and subtracts a snow load term that needs the snow depth and the snow density, all from outside the product; the ICESat-2 mission produces no routine thickness product, the ATBD states that the snow depth is an external input and that the densities vary in space and time, and the Antarctic two-layer model is stated to be undemonstrated. A thickness formed from freeboard by a fixed factor, or a freeboard trend read as a thickness trend, carries the snow load assumption as its result."
 tags: [icesat2, atl10, atl07, sea-ice, freeboard, total-freeboard, thickness, snow-depth, snow-load, hydrostatic, density, arctic, antarctic]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/162 }
 severity: high
 # high: the product's variable is called freeboard, nothing in it
 # resists a multiplication by a factor, and a thickness so formed is

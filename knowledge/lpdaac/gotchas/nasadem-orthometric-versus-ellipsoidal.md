@@ -5,6 +5,7 @@ title: "NASADEM heights are orthometric on the EGM96 geoid while GNSS, ICESat an
 description: "The integer heights in NASADEM_HGT are metres above the EGM96 geoid, converted at the end of processing from the WGS84 ellipsoid heights the SRTM reprocessing and the ICESat control were done on; the floating-point SRTM-only heights in NASADEM_SHHP are still on the ellipsoid. The datum field of the catalogue records reads WGS84/EGM96, naming both. A GNSS receiver, an ICESat or ICESat-2 elevation and a lidar or altimeter height are ellipsoidal, while satellite DEMs such as SRTM, ASTER GDEM and NASADEM itself are on the geoid, and the difference between the two references at a place is the geoid undulation, which the guide's own coastal example shows reaching 17 m where the geoid-referenced product carries the sea at zero. A script that differences an ellipsoidal height against the merged DEM without the geoid, or differences the merged DEM against the SRTM-only DEM to find the fill, gets that separation as its answer and reads it as a bias, a fill, or an elevation change."
 tags: [nasadem, nasadem-hgt, nasadem-shhp, egm96, wgs84, geoid, ellipsoid, orthometric, vertical-datum, srtm, dem, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/164 }
 severity: high
 dataset: ../datasets/nasadem.md
 eval_case: nasadem-orthometric-versus-ellipsoidal

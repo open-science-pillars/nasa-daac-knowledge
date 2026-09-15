@@ -5,9 +5,10 @@ title: "CCMP version 3.1 ocean surface wind analysis (RSS, 6-hourly and monthly)
 description: "Level 4 gridded 10 m neutral-stability ocean vector winds at 0.25 degrees from 1993 onward, produced by Remote Sensing Systems by variationally combining inter-calibrated radiometer and scatterometer winds with an adjusted ERA5 background; PO.DAAC distributes version 3.1 as a 6-hourly and a monthly collection. The files carry a nobs field that says where satellites contributed and no uncertainty field; where nobs is zero the value is the adjusted background."
 tags: [ccmp, ocean-winds, wind-analysis, level4, era5, scatterometer, radiometer, rss, measures, podaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/163 }
 resource: https://podaac.jpl.nasa.gov/dataset/CCMP_WINDS_10M6HR_L4_V3.1
 version: "Version 3.1 from Remote Sensing Systems in two POCLOUD collections, CMR-verified 2026-09-15 with granule ranges from a first-and-last granule search the same day: 6-hourly CCMP_WINDS_10M6HR_L4_V3.1 (C2916514952-POCLOUD, DOI 10.5067/CCMP-6HW10M-L4V31, daily files from 1993-01-02 through 2026-07-20, 12240 granules) and monthly CCMP_WINDS_10MMONTHLY_L4_V3.1 (C2916529935-POCLOUD, DOI 10.5067/CCMP-MW10M-L4V31, monthly files from 1993-01 through 2026-06, 402 granules); both records open-ended, released at PO.DAAC 2024-07-01; the user guide is dated 15 July 2024"
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: podaac-6hr

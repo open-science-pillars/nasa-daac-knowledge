@@ -5,6 +5,7 @@ title: "BedMachine Greenland (IDBMG4 Version 6) and BedMachine Antarctica (NSIDC
 description: "One netCDF-4 file per ice sheet holding bed elevation, ice surface elevation, ice thickness, the thickness and bed error, an ice, ocean and land mask, a geoid offset and a source map that says which method made each pixel, at 150 m on the EPSG 3413 grid for Greenland (nominal year 2007) and 500 m on the EPSG 3031 grid for Antarctica (nominal year 2015). Thickness comes from mass conservation where ice flows fast, from kriging, streamline diffusion or ice flow perturbation analysis in the slow interior and from hydrostatic equilibrium on floating ice, constrained by radar flight lines; the Antarctic surface and thickness are in ice equivalent with the firn air content removed."
 tags: [bedmachine, idbmg4, nsidc-0756, measures, icebridge, ice-thickness, bed-topography, bathymetry, mass-conservation, errbed, greenland, antarctica, nsidc, cryosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/162 }
 resource: https://nsidc.org/data/idbmg4/versions/6
 version: "Greenland IDBMG4 Version 6 (DOI 10.5067/6B6B225B8V2D; the user guide's version history dates Version 6 to 11 December 2025 and the retirement of Version 5 to 13 January 2026), CMR concept C3903728370-NSIDC_CPRD with two granules, BedMachineGreenland-v6.nc and BedMachineGreenland_bed-v6.tif; Antarctica NSIDC-0756 Version 4 (DOI 10.5067/POJQI54A45HX; first public release V4.1 dated 21 January 2026 in the guide, Version 3 retired 24 February 2026), CMR concept C3973022985-NSIDC_CPRD with one granule, NSIDC-0756_BedMachineAntarctica_19700101-20191001_V04.1.nc; both verified 2026-09-15"
 sources:
@@ -47,7 +48,7 @@ sources:
   - id: basins-gotcha
     resource: ../gotchas/ice-sheet-boundaries-and-drainage-basins.md
     title: "This bundle's ice sheet boundaries gotcha, which records from the ATL14 and ATL15 ATBD that the Greenland ice mask of those products is BedMachine v3"
-status: draft
+status: stable
 stale_after: 2027-03-15
 ---
 

@@ -5,9 +5,10 @@ title: "MOD11 Emis_31 and Emis_32 are assigned from land cover class, not retrie
 description: "The band 31 and 32 emissivity layers in MOD11A1 and MOD11A2 come from the classification-based emissivity method: a look-up by land cover type from the MODIS land cover product and the daily snow cover, with a Collection 6 adjustment of up to 0.0063 in arid and semi-arid areas. They are inputs the generalized split-window algorithm needed to retrieve the temperature, stored as uint8 with a scale of 0.002 and an offset of 0.49, and the swath product's quality byte labels them inferred from land cover type. Retrieved emissivities exist in the 6 km MOD11B1 product from the day/night algorithm, not here. A script that reads Emis_31 as a measured surface property, differences it between dates as a change in the surface, or uses it to validate an emissivity retrieval, is reading a classification."
 tags: [mod11, mod11a1, mod11a2, modis, terra, emissivity, land-cover, classification, split-window, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/164 }
 severity: low
 dataset: ../datasets/mod11-land-surface-temperature.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: user-guide

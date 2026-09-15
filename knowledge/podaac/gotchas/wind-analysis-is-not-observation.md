@@ -5,6 +5,7 @@ title: "A wind analysis is not an observation: CCMP is complete everywhere becau
 description: "CCMP combines satellite winds with an adjusted ERA5 background by a variational analysis that ties the field to the satellites where they exist and relaxes smoothly to the background with distance from a swath. The daily files' nobs field is zero wherever no satellite observation fell inside the 6-hour window, and there the value is the background; rain-flagged and sea-ice-influenced retrievals are excluded before the analysis, so the background also stands in under rain and near ice; the guide states the product does not resolve tropical cyclones and that large-scale decadal changes are comparable to its own long-term errors. A study that treats the grid as observed wind, validates a model with it, or reads a case study or a trend from it without carrying nobs reports the background model and the changing satellite constellation as if they were measurements."
 tags: [ccmp, wind-analysis, level4, era5, background, nobs, data-assimilation, observation, validation, trends, tropical-cyclones]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/163 }
 severity: high
 dataset: ../datasets/ccmp-wind-analysis.md
 eval_case: wind-analysis-is-not-observation

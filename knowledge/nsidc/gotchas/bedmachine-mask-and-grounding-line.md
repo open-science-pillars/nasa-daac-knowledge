@@ -5,6 +5,7 @@ title: "The BedMachine mask separates ocean, ice-free land, grounded ice and flo
 description: "BedMachine's mask is 0 ocean, 1 ice-free land, 2 grounded ice and 3 floating ice (Antarctica adds 4 for Lake Vostok), and the thickness field is made by different methods on either side of the 2 to 3 boundary: mass conservation constrained by radar on grounded ice, hydrostatic equilibrium from the surface with a firn correction on floating ice. The bed under ocean is bathymetry, the bed under ice-free land is the surface model itself, and the Antarctic surface and thickness are ice equivalent with the firn air content removed. An ice-sheet discharge is the flux across the grounding line, so its gate sits on grounded ice (mask 2) upstream of the transition to floating ice; a gate on the shelf multiplies a hydrostatic thickness by a shelf velocity and counts ice that has already crossed the line."
 tags: [bedmachine, idbmg4, nsidc-0756, mask, grounded-ice, floating-ice, grounding-line, ice-shelf, hydrostatic, discharge, flux-gate, firn-air-content, greenland, antarctica]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/162 }
 severity: medium
 # medium: the mask codes and the method per regime are in the guides'
 # parameter tables and processing sections, and the source field marks
@@ -12,7 +13,7 @@ severity: medium
 # map rather than through a silently wrong number from the product
 # alone; no eval case is required.
 dataset: ../datasets/bedmachine-greenland-antarctica.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: idbmg4-user-guide

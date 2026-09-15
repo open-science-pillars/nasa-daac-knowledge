@@ -5,9 +5,10 @@ title: "A wind stress or air-sea flux computed by a bulk formula carries its inp
 description: "The MEaSUREs ESDR computes wind stress as air density times a drag coefficient times the equivalent neutral wind speed times the vector, with a linear drag coefficient (7.94e-5 times the wind speed plus 6.12e-4) chosen for agreement with COARE 3.5 up to 20 m/s; the guide records that the Large et al. 1994 formulation would underestimate stress above about 8 m/s, that candidate coefficient models differ most above 10 m/s, and that stress from averaged winds is underestimated because the relation is nonlinear. Its true 10 m winds rest on ERA5 stability inputs and GlobCurrent currents. CCMP carries no stress, and a stress or a heat flux computed from CCMP monthly means, or from any product, inherits the wind product's error where the satellites were absent, the chosen coefficient, the assumed density and the stability and humidity inputs. Two stresses from different coefficients differ by construction, and a flux difference between products is not a measured difference."
 tags: [wind-stress, bulk-formula, drag-coefficient, coare, air-sea-flux, esdr, ccmp, scatterometer, ekman, wind-stress-curl]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/163 }
 severity: medium
 dataset: ../datasets/ascat-winds.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: measures-guide

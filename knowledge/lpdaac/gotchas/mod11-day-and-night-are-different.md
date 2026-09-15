@@ -5,9 +5,10 @@ title: "MOD11 day and night fields are different quantities: two observations at
 description: "Every MOD11A1 and MOD11A2 tile carries LST_Day_1km and LST_Night_1km as separate layers, each from its own overpass, with its own QC byte, its own view time and view angle and its own clear-sky coverage layer (a count on the daily product, one flag bit per day on the eight-day product). The daytime retrieval uses one coefficient set and the nighttime another for bare soil, the simulations behind them span different surface-to-air temperature ranges, and the guide records that the day and night view angles at a location are usually quite different on the same day. A cell can be clear at one and cloudy at the other. A script that reads one field as the land surface temperature, averages the two into a daily mean, or applies the day quality byte to the night field, has combined two samplings into a number that neither observation supports."
 tags: [mod11, mod11a1, mod11a2, modis, terra, land-surface-temperature, day, night, diurnal, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/164 }
 severity: medium
 dataset: ../datasets/mod11-land-surface-temperature.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: user-guide

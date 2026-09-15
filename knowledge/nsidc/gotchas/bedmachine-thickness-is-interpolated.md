@@ -5,6 +5,7 @@ title: "BedMachine thickness between flight lines is mass conservation or an int
 description: "The radar flight lines are sparse; BedMachine fills the space between them with mass conservation where the ice flows fast, with kriging, streamline diffusion or ice flow perturbation analysis in the slow interior, and with hydrostatic equilibrium on floating ice, then stitches the pieces with inverse distance weighting. The thickness at any pixel is therefore a model value whose error the errbed field gives, from 36 m under dense radar coverage to more than 50 m in south Greenland, more than 200 m in East Antarctica and more than 500 m where nothing was sounded, and the source and dataid fields say which method and which data stand behind it. A thickness, a bed depth, a trough or a discharge read from the grid without those fields carries an error that can be a large fraction of the value, and reads a stated 150 m or 500 m grid as a resolution the Greenland guide puts at 150 m to 5 km."
 tags: [bedmachine, idbmg4, nsidc-0756, ice-thickness, mass-conservation, interpolation, kriging, errbed, source, dataid, flight-lines, discharge, flux-gate, greenland, antarctica]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/162 }
 severity: high
 # high: nothing in the thickness field marks a pixel as inferred rather
 # than sounded, the grid spacing reads as a resolution, and a discharge

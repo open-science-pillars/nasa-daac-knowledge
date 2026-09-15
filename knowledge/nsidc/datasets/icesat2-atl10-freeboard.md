@@ -5,6 +5,7 @@ title: "ICESat-2 ATL10 along-track sea ice freeboard, Version 7: total freeboard
 description: "Along-track total freeboard (the height of the air and snow interface above the local sea surface) for every good-quality ATL07 sea ice height segment on each of the six ATLAS ground tracks, where sea ice concentration exceeds 50 percent and the track is at least 25 km from the coast, in HDF5 granules of half an orbit per hemisphere, from 14 October 2018 onward. Each beam's freeboard is the segment height minus that beam's own reference sea surface, estimated from the specular leads within a 10 km section and, since Version 7, interpolated to the segment; segment lengths vary with the 150-photon aggregate, the strong and weak beams of each pair differ in energy by about four to one, and the product carries no ice thickness."
 tags: [icesat2, atlas, atl10, atl07, sea-ice, freeboard, leads, reference-surface, strong-beam, weak-beam, arctic, antarctic, nsidc, cryosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/162 }
 resource: https://nsidc.org/data/atl10/versions/7
 version: "Version 7 (DOI 10.5067/ATLAS/ATL10.007; the user guide's version history dates release 7.0 to 23 September 2025), CMR concept C3565574246-NSIDC_CPRD, verified 2026-09-15: 65,074 granules named ATL10-<hemisphere>_<yyyymmddhhmmss>_<rgt cycle region>_007_<rr>.h5, the collection open-ended from 2018-10-14 with a 91-day temporal resolution, and the newest granules on that day dated 2026-05-18"
 sources:
@@ -32,7 +33,7 @@ sources:
   - id: kwok-2019-grl
     resource: https://doi.org/10.1029/2019GL084976
     title: "Kwok and others, 2019, ICESat-2 Surface Height and Sea Ice Freeboard Assessed With ATM Lidar Acquisitions From Operation IceBridge, Geophysical Research Letters 46, 11228 to 11236, record and abstract verified against the Crossref registry 2026-09-15"
-status: draft
+status: stable
 stale_after: 2027-03-15
 ---
 

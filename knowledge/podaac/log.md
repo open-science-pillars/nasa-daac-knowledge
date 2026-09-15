@@ -4,6 +4,19 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-15 · STEWARD SIGNING of
+  knowledge/podaac/datasets/ccmp-wind-analysis.md,
+  knowledge/podaac/datasets/ascat-winds.md,
+  knowledge/podaac/gotchas/wind-analysis-is-not-observation.md,
+  knowledge/podaac/gotchas/neutral-versus-stress-equivalent-wind.md,
+  knowledge/podaac/gotchas/scatterometer-rain-and-ice-flags.md,
+  knowledge/podaac/gotchas/bulk-flux-inputs-and-coefficients.md:
+  Maintainer review of the CCMP and ASCAT wind concepts seeded in PR
+  #163 after the coordinator's lint and fix round; the two datasets and
+  the three medium gotchas promoted to stable, the high-severity gotcha
+  keeps draft until a second review. The verified event is written on
+  the steward's word. (steward)
+
 - 2026-09-15 · datasets/ccmp-wind-analysis.md, datasets/ascat-winds.md,
   gotchas/wind-analysis-is-not-observation.md,
   gotchas/neutral-versus-stress-equivalent-wind.md,

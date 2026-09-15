@@ -5,9 +5,10 @@ title: "NASADEM version 1: SRTM reprocessed with ICESat control and void-filled 
 description: "NASADEM_HGT is the void-filled digital elevation model of the MEaSUREs NASADEM project: the February 2000 Shuttle Radar Topography Mission raw radar data reprocessed with improved phase unwrapping, corrected against ICESat GLAS ground control and modelled ocean topography, converted from WGS84 ellipsoid heights to EGM96 geoid heights, and filled where SRTM is void with an error-suppressed ASTER GDEM built from GDEM3, GDEM2 and ALOS PRISM AW3D30. It is delivered as one degree tiles of 3601 by 3601 integer metres with a companion NUM layer that says where each height came from and an updated SRTM water body mask; the SRTM-only floating-point ellipsoid heights and their precision are a separate collection, NASADEM_SHHP. Coverage is the land between 60 degrees north and 56 degrees south."
 tags: [nasadem, nasadem-hgt, nasadem-shhp, srtm, dem, elevation, egm96, measures, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:40:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T14:22:23Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/164 }
 resource: https://lpdaac.usgs.gov/products/nasadem_hgtv001/
 version: "Product version 001 (DOI 10.5067/MEASURES/NASADEM/NASADEM_HGT.001), CMR collection C2763264762-LPCLOUD (provider LPCLOUD, short name NASADEM_HGT, version 001), verified 2026-09-15: temporal extent 2000-02-11 to 2000-02-21, collection progress COMPLETE, released 2020-02-13, 14,520 granules on the product page that day; the user guide read is version 1.3 of January 2025"
-status: draft
+status: stable
 stale_after: 2027-03-15
 citation:
   access_date_required: true
