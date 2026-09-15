@@ -12,7 +12,9 @@ marketplace docs/upstream). Every concept is a draft until the steward
 promotes it after review, and a confirmation from the ASDC or the CERES
 team is invited on each and never required. The ocean heat content a
 radiation imbalance is compared against lives in the podaac bundle's
-ECCO recipes; a concept here names them where it depends on them.
+ECCO recipes and in the ocean-science plugin's Argo computation; a
+concept here names them where it depends on them, and the attested
+energy budget reads the Argo receipt.
 
 What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md).
 
@@ -30,4 +32,8 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 
 ## recipes
 
-(none yet)
+- [Closing the Earth's energy budget: EBAF net TOA flux against Argo ocean heat content plus the published deep and non-ocean terms](recipes/energy-budget.md), status: draft
+
+## computations (OKF v0.2 section 10)
+
+- [Energy budget closure: CERES EBAF net top-of-atmosphere flux against the Argo ocean heat content change (attested)](computations/energy-budget.md), status: draft (a synthetic fixture with a planted level, trend and closure proves the chain; the real-data anchor is the stamped data root under references/retrieval/energy-budget-root, run for 2006 through 2020; refuses a window the radiation record does not cover or an Argo receipt over another window)
