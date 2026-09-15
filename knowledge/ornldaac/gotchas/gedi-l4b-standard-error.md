@@ -5,13 +5,14 @@ title: "The L4B standard error is the hybrid estimator's standard error of the c
 description: "Every L4B cell mean comes with SE, the standard error of the mean under hybrid inference, and the product splits it into V1 (the model covariance of the L4A field-to-GEDI model) and V2 (GEDI's sampling of the cell). The size of SE follows the sample: the density of footprints and ground tracks in the cell sets V2, at least two tracks are needed for any variance, and in the estimator's own simulations the variance was under-estimated by about 20 percent when only two clusters were available. PE, the percent standard error, is truncated at 100 with 255 as no data; QF equal to 2 marks only the cells inside the mission's Level 1 requirement (20 Mg/ha or 20 percent). A cell mean quoted without SE, an SE read as the error of a single footprint, a PE of 100 read as exactly 100 percent, or a two-track cell treated as if its SE were as sound as a ten-track cell's, mis-states the uncertainty, and the files do not object."
 tags: [gedi, l4b, standard-error, hybrid-inference, variance, sampling, quality-flag, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T14:02:24Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T17:45:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/168 }
 severity: medium
 # medium: a wrong reading mis-states an uncertainty rather than the
 # cell mean itself, the SE, PE, NC, NS and QF layers are in the same
 # dataset and documented on the product page, and the Level 1
 # requirement flag gives a ready screen; no eval case is required.
 dataset: ../datasets/gedi-l4b-gridded-biomass.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: ornl-l4b-v2-guide

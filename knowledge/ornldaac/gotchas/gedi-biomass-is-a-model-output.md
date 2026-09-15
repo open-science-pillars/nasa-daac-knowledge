@@ -5,6 +5,7 @@ title: "GEDI biomass is a model output, not a measurement: L4A AGBD is a linear 
 description: "The lidar measures a waveform; the biomass is predicted from that waveform's relative height metrics by one of 14 linear models (Version 3) chosen by the combination of plant functional type and world region at the footprint's ground position, the type coming from an infilled 1 km grid derived from MODIS MCD12Q1. The models were fitted on 11,687 simulated waveforms from 24 countries, and their geographic transferability error, stated as one global figure (the root mean square error within forested types weighted by land area, 50.7 percent for Version 3) and not per stratum; continental Asia, the evergreen forests of the Southeast Asian islands and north of Australia, and the world's savannas and deciduous tropical forests are under-represented in the calibration. Version 3 refitted the models and changed predictions even where the calibration data did not change, and the L4B Version 2.1 grid was built before that refit. A footprint value read as a measured stock, a difference between versions or across a stratum boundary read as a change on the ground, or a comparison with a field plot that ignores the model error, mis-reads a prediction as an observation."
 tags: [gedi, biomass, model, calibration, plant-functional-type, world-region, relative-height, version, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T14:02:24Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T17:45:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/168 }
 severity: medium
 # medium: the guide, the abstract and the algorithm document all say
 # the value is a model prediction with a stated standard error and
@@ -13,7 +14,7 @@ severity: medium
 # mechanisms are documented in the file's own model_data group; no
 # eval case is required.
 dataset: ../datasets/gedi-l4a-footprint-biomass.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: ornl-l4a-v3-guide

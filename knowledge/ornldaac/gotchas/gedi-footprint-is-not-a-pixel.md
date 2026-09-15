@@ -5,6 +5,7 @@ title: "A GEDI footprint is a sample, not a pixel: the L4A footprints are 25 m s
 description: "GEDI is a sampling mission. Each L4A value stands for one laser footprint about 25 m across, the footprints sit about 60 m apart along track on eight beam transects about 600 m apart, the swath is about 4.2 km wide, and the tracks fall where the station's orbit, the instrument's pointing, cloud and the mission's outages put them, so the sampled fraction of any area is small and uneven. The L4B product exists because an area mean has to be inferred from that sample: it treats each ground track as a cluster, needs at least two tracks in a cell before it estimates anything, and carries a standard error built from the model covariance and the sampling design. A rasterized or gap-filled surface of footprint values, an area mean taken as the plain average of the footprints in it, or a stock taken as that average times the area, is presented as a map or an estimate of the area when it is a sample statistic of a modeled quantity with no design behind it, and nothing in the files raises an error."
 tags: [gedi, footprint, sampling, pixel, area-mean, hybrid-inference, biomass, ornldaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T14:02:24Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T17:45:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/168 }
 severity: high
 # high: the wrong result is silent (a footprint average or a rasterized
 # surface computes without complaint and looks like a map), it
