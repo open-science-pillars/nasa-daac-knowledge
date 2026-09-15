@@ -6,7 +6,8 @@ okf_version: "0.2"
 
 The GES DISC knowledge bundle: the Goddard Earth Sciences Data and
 Information Services Center's atmospheric and hydrologic products
-(MERRA-2 first), as reviewable concepts with sources, statuses and
+(MERRA-2 first, then the AIRS level 3 soundings and the OMI level 3
+trace gases), as reviewable concepts with sources, statuses and
 steward sign-off. OKF v0.2 conformant (okf_version: "0.2"; the vendored
 spec text lives in marketplace docs/upstream). Every concept is a draft
 until the steward promotes it after review, and a confirmation from the
@@ -14,7 +15,8 @@ GES DISC or the product teams is invited on each and never required.
 The hydrology plugin's own IMERG and NLDAS-2 concepts stay in its
 bundle; a concept here names them where it depends on them. This
 bundle's eval cases live in open-science-pillars/agent-evals under
-merra2/cases/, one per high-severity gotcha, and their registration
+merra2/cases/ and airs/cases/ (the OMI row anomaly case lives under
+airs/cases/ as well), one per high-severity gotcha, and their registration
 in the evals manifests is the coordinator's step, not this bundle's.
 
 What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md).
@@ -22,6 +24,8 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 ## datasets
 
 - [MERRA-2: the GMAO atmospheric reanalysis, 1980 onward, as the file collections a user meets at GES DISC](datasets/merra-2.md), status: stable
+- [AIRS version 7 level 3 temperature and water vapour: the daily and monthly 1 degree grids (AIRS3STD, AIRS3STM) as ascending and descending fields on fixed pressure levels with a count and a standard deviation beside every mean](datasets/airs-l3-temperature-humidity.md), status: draft
+- [OMI level 3 nitrogen dioxide and total ozone: the daily OMNO2d 0.25 degree grid with its Weight field and the daily TOMS-like OMTO3d 1 degree grid, gridded from row-anomaly-screened level 2 retrievals since October 2004](datasets/omi-no2-and-ozone.md), status: draft
 
 ## gotchas
 
@@ -30,6 +34,11 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [MERRA-2 is four production streams joined at 1992, 2001 and 2011, with reprocessed months carrying their own prefix, and an observing system whose entries leave documented steps: a long series is not one homogeneous record](gotchas/merra2-stream-boundaries-and-discontinuities.md), severity medium, status: stable
 - [The 0.625 by 0.5 degree MERRA-2 grid is a regular latitude-longitude grid: cell area falls toward the poles, no area variable ships, and a plain mean is not a global mean](gotchas/merra2-grid-weights.md), severity low, status: stable
 - [A MERRA-2 short name encodes time treatment, frequency, vertical structure and variable group, and the same variable name lives in several collections: a search by variable alone lands on the wrong one](gotchas/merra2-collection-short-names.md), severity medium, status: stable
+- [AIRS level 3 profiles sit on fixed pressure levels, not model levels, and the lowest levels lie below the terrain: the per-level count falls to zero there, the layer water vapour is integrated below the surface, and a mean at 1000 or 925 hPa over land is a mean over the low ground only](gotchas/airs-pressure-levels-and-surface-mask.md), severity high, status: draft
+- [AIRS ascending and descending grids are 1:30 PM and 1:30 AM local time with their own ensembles and their own 24-hour windows: an average of the two is a two-sample diurnal estimate, not a daily mean, and a daily file is not a calendar day](gotchas/airs-ascending-descending-nodes.md), severity medium, status: draft
+- [The OMI row anomaly has removed cross-track rows since June 2007, growing in 2008 and 2009 and changing since: the level 2 flag names the rows, the level 3 grids drop them, and a series across the onset mixes a change in sampling with a change in the atmosphere](gotchas/omi-row-anomaly.md), severity high, status: draft
+- [A level 3 cell is the average of however many retrievals of whatever quality fell in it, and the count or weight field is the only bound on that: an aggregate that drops it treats a one-retrieval cell as a full one, and the AIRS monthly mean changed its weighting between versions 6 and 7](gotchas/l3-count-field-bounds-a-cell.md), severity medium, status: draft
+- [An anomaly names its climatology period: an AIRS or OMI departure is relative to a base period and a processing version, the records carry documented breaks (the 2021 Aqua manoeuvre, the January 2026 AIRS gap, the OMI row anomaly onset, the collection 4 reprocessings), and two anomalies on different bases differ by a number that is not a constant](gotchas/anomaly-names-its-climatology-period.md), severity low, status: draft
 
 ## recipes
 
