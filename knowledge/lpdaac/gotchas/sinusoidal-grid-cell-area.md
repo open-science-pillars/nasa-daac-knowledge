@@ -5,9 +5,10 @@ title: "MODIS sinusoidal cells are equal-area but not 250 m or 500 m squares and
 description: "Every MODIS land tile is a square block of the sinusoidal projection, 10 by 10 degrees at the equator, 4800, 2400 or 1200 cells on a side at the nominal 250 m, 500 m and 1 km, on a sphere of radius 6371007.181 m; the guide calls the projection equal area, and the corners are given accurately only by the projection coordinates in the metadata, while the bounding rectangle and ring point fields give the latitude and longitude of the geographic tile. Ten degrees of arc on that sphere is 1,111,950 m, so the 500 m cell is 463.31 m and covers 0.2147 square kilometres, not 0.25, and a tile away from the equator is not a rectangle of degrees. A script that multiplies a pixel count by 0.25 square kilometres, selects tiles or pixels by a latitude and longitude box, or reprojects the file to a geographic grid with an interpolating resampler before decoding the quality bits and the day of the year layer overstates areas by a sixth, clips the tile along the wrong edges, and blends integers that were never quantities."
 tags: [modis, sinusoidal, projection, tile, cell-area, reprojection, resampling, mod13, mod15, mod17, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T17:50:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T18:34:53Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/172 }
 severity: low
 dataset: ../datasets/mod13-vegetation-indices.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: lai-guide

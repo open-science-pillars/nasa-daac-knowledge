@@ -5,9 +5,10 @@ title: "A MOD13 16-day composite is not an image of one day: each pixel is the o
 description: "For each 16-day period MOD13Q1 and MOD13A1 keep one observation per pixel, chosen since Collection 6 from at most two candidates in the eight-day precomposited surface reflectance by comparing the two highest NDVI values and keeping the smaller view zenith angle, with the plain highest NDVI as backup. The day that observation was acquired is stored per pixel in the composite day of the year layer (int16, 1 to 366, fill -1), and its view zenith, sun zenith and relative azimuth angles in three more layers; the guide states that adjacent pixels can originate from different days with different geometries and residual contamination, and the file name carries the period's date, not the observation's. A script that places every value at the period's nominal date, differences two composites as a change over 16 days, treats a spatial gradient as a surface feature, or compares the composite with a field measurement on the file's date reads the sampling as the signal, and nothing raises an error because the layer is optional to open."
 tags: [mod13, mod13q1, mod13a1, modis, composite, day-of-year, cv-mvc, maximum-value-composite, phenology, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T17:50:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-15T18:34:53Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/172 }
 severity: medium
 dataset: ../datasets/mod13-vegetation-indices.md
-status: draft
+status: stable
 stale_after: 2027-03-15
 sources:
   - id: vi-guide
