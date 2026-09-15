@@ -42,7 +42,7 @@ sources:
     title: "CMR collection record for NASADEM_NC v001 (concept C2763264764-LPCLOUD), read 2026-09-15: the merged DEM in netCDF-4 at 24.8 MB average"
   - id: cmr-numnc
     resource: https://cmr.earthdata.nasa.gov/search/collections.umm_json?short_name=NASADEM_NUMNC
-    title: "CMR collection record for NASADEM_NUMNC v001 (concept C2763264768-LPCLOUD), read 2026-09-15: the merged DEM source layer in netCDF-4"
+    title: "CMR collection record for NASADEM_NUMNC v001 (concept C2763264768-LPCLOUD), read 2026-09-15: the merged DEM source layer in netCDF-4, also at 24.8 MB average"
   - id: cmr-sc
     resource: https://cmr.earthdata.nasa.gov/search/collections.umm_json?short_name=NASADEM_SC
     title: "CMR collection record for NASADEM_SC v001 (concept C2763264770-LPCLOUD), read 2026-09-15: the slope and curvature grouping"
@@ -125,14 +125,18 @@ write the datum as WGS84/EGM96 for the collection as a
 whole.[^cmr-hgt][^dem-guide] The conversion was done last in the
 processing: the SRTM reprocessing and the ICESat control were on the
 ellipsoid, and a conversion array from a standard EGM96 database at
-15 arc second postings, resampled to 1 arc second by bilinear
+15 by 15 arc second postings, as the guide gives it, resampled to 1
+arc second by bilinear
 interpolation, was subtracted from each ellipsoid-referenced quad
 ([the datum gotcha](../gotchas/nasadem-orthometric-versus-ellipsoidal.md)).[^user-guide][^datum-gotcha]
 
 ## Tiles and files
 
-Every product is a flat binary file in big endian byte order with 3601
-rows and 3601 columns, one file per one degree by one degree tile,
+Every product of the binary groupings (the HGT, SHHP, SC, SIM and SSP
+collections of the guide's Table 1) is a flat binary file in big
+endian byte order with 3601 rows and 3601 columns, one file per one
+degree by one degree tile; the NC and NUMNC collections carry the
+merged DEM and its NUM layer in netCDF-4 instead. The tiles are
 named by the geographic coordinate of the tile's southwest corner
 (NASADEM_HGT_n04w075.zip in the guide, s01w047.hgt on the product
 page, s06w059.hgts for the SRTM-only height).[^user-guide][^hgt-page][^shhp-page]

@@ -1,8 +1,8 @@
 ---
 type: dataset-gotcha
 spheres: [geosphere]
-title: "NASADEM heights are orthometric on the EGM96 geoid while GNSS, ICESat and most satellite heights are ellipsoidal on WGS84: a comparison that skips the geoid separation is off by that separation, a smooth field of metres to tens of metres that looks like a DEM bias"
-description: "The integer heights in NASADEM_HGT are metres above the EGM96 geoid, converted at the end of processing from the WGS84 ellipsoid heights the SRTM reprocessing and the ICESat control were done on; the floating-point SRTM-only heights in NASADEM_SHHP are still on the ellipsoid. The datum field of the catalogue records reads WGS84/EGM96, naming both. A GNSS receiver, an ICESat or ICESat-2 elevation and a lidar or altimeter height are ellipsoidal, and the difference between the two references at a place is the geoid undulation, which the guide's own coastal example shows reaching 17 m where the geoid-referenced product carries the sea at zero. A script that differences an ellipsoidal height against the merged DEM without the geoid, or differences the merged DEM against the SRTM-only DEM to find the fill, gets that separation as its answer and reads it as a bias, a fill, or an elevation change."
+title: "NASADEM heights are orthometric on the EGM96 geoid while GNSS, ICESat and ICESat-2, altimetry and lidar heights are ellipsoidal on WGS84: a comparison that skips the geoid separation is off by that separation, a smooth field of metres to tens of metres that looks like a DEM bias"
+description: "The integer heights in NASADEM_HGT are metres above the EGM96 geoid, converted at the end of processing from the WGS84 ellipsoid heights the SRTM reprocessing and the ICESat control were done on; the floating-point SRTM-only heights in NASADEM_SHHP are still on the ellipsoid. The datum field of the catalogue records reads WGS84/EGM96, naming both. A GNSS receiver, an ICESat or ICESat-2 elevation and a lidar or altimeter height are ellipsoidal, while satellite DEMs such as SRTM, ASTER GDEM and NASADEM itself are on the geoid, and the difference between the two references at a place is the geoid undulation, which the guide's own coastal example shows reaching 17 m where the geoid-referenced product carries the sea at zero. A script that differences an ellipsoidal height against the merged DEM without the geoid, or differences the merged DEM against the SRTM-only DEM to find the fill, gets that separation as its answer and reads it as a bias, a fill, or an elevation change."
 tags: [nasadem, nasadem-hgt, nasadem-shhp, egm96, wgs84, geoid, ellipsoid, orthometric, vertical-datum, srtm, dem, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:40:00Z }
 severity: high
@@ -29,6 +29,9 @@ sources:
   - id: dem-guide
     resource: https://lpdaac.usgs.gov/documents/642/DEM_Comparison_Guide.pdf
     title: "LP DAAC DEM Product Comparison Guide, read 2026-09-15: the specification table gives the datum of SRTM and NASADEM as WGS84/EGM96 and of ASTER GDEM as WGS84"
+  - id: astgtm-guide
+    resource: https://lpdaac.usgs.gov/documents/434/ASTGTM_User_Guide_V3.pdf
+    title: "ASTER GDEM version 3 user guide, read 2026-09-15: the product table gives the DEM as referenced to the WGS84/EGM96 geoid, so the comparison guide's WGS84 for ASTER GDEM is a datum label, not an ellipsoidal height"
   - id: atl15
     resource: ../../nsidc/datasets/icesat2-atl15.md
     title: "The nsidc bundle's ICESat-2 ATL15 concept, whose grids are on the WGS 84 ellipsoid with WGS 84 as the vertical datum: an example of a satellite height product on the ellipsoid"
@@ -54,8 +57,9 @@ referenced to the WGS84/EGM96 geoid, and the guide says most DEM
 users want it because it puts the oceans at zero.[^srtm-guide][^user-guide]
 The conversion was the last step: the whole reprocessing, including
 the ripple correction against ICESat, was done on the ellipsoid, and
-a conversion array from a standard EGM96 database at 15 arc second
-postings, bilinearly resampled to 1 arc second, was then differenced
+a conversion array from a standard EGM96 database at 15 by 15 arc
+second postings, as the guide gives it, bilinearly resampled to 1 arc
+second, was then differenced
 from each ellipsoid-referenced quad, so the geoid height is the
 ellipsoid height minus the array, and the SRTM-only collection is the
 product before that subtraction.[^user-guide]
@@ -64,14 +68,21 @@ The catalogue does not make the distinction easy to see. The CMR
 records of both collections give the horizontal datum name as
 WGS84/EGM96, one string naming the ellipsoid of the coordinates and
 the geoid of the heights, and the comparison guide's specification
-table lists the same string against ASTER GDEM's plain
-WGS84.[^cmr-hgt][^dem-guide] The product page layer tables give the
+table lists the same string against ASTER GDEM's plain WGS84, yet the
+ASTER GDEM guide gives that product's heights as referenced to the
+WGS84/EGM96 geoid too, so the shorter string is a datum label and not
+a different reference.[^cmr-hgt][^dem-guide][^astgtm-guide] The
+product page layer tables give the
 DEM and the SRTM-only DEM in metres with no datum column, and the
 product page for the SRTM-only collection does not name the
 ellipsoid; the guide does.[^hgt-page][^shhp-page]
 
-Heights measured from space or by a receiver are ellipsoidal. The
-guide's own control data are: ICESat GLAS elevations are given as
+The heights a comparison brings to the DEM are usually ellipsoidal:
+a GNSS receiver's height, ICESat and ICESat-2 elevations, radar and
+laser altimetry and lidar surveys that report heights above the
+ellipsoid. Satellite DEMs are not: SRTM, ASTER GDEM and NASADEM itself
+are geoid-referenced.[^srtm-guide][^astgtm-guide][^user-guide] The
+guide's own control data are ellipsoidal: ICESat GLAS elevations are given as
 ellipsoid heights on the TOPEX/Poseidon ellipsoid and were shifted to
 WGS84 by a latitude-dependent offset of about 70 cm on average before
 comparison with the ellipsoid-referenced SRTM strips.[^user-guide] The
@@ -140,6 +151,7 @@ undulation is applied to one side.
 [^shhp-page]: LP DAAC product page, NASADEM_SHHP v001, read 2026-09-15
 [^cmr-hgt]: CMR collection records C2763264762-LPCLOUD and C2763266322-LPCLOUD, read 2026-09-15
 [^dem-guide]: LP DAAC DEM Product Comparison Guide, read 2026-09-15
+[^astgtm-guide]: ASTER GDEM version 3 user guide, the WGS84/EGM96 geoid reference
 [^atl15]: the nsidc bundle's ICESat-2 ATL15 concept, knowledge/nsidc/datasets/icesat2-atl15.md
 [^nasadem]: this bundle's NASADEM concept
 [^void-gotcha]: this bundle's gotcha on the void fill and the NUM layer

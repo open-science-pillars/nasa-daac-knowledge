@@ -2,6 +2,22 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · fix round on the NASADEM and MOD11 drafts (PR 164): the
+  MOD11A2 Clear_sky_days and Clear_sky_nights layers are now described
+  as one flag bit per day rather than counts, on the guide's statement
+  for the monthly product and the product page's bit field label, with
+  the bit-to-day assignment recorded as unconfirmed (the file
+  specification is off the reading list); the datum gotcha names the
+  ellipsoidal cases (GNSS, ICESat and ICESat-2, altimetry, lidar) in
+  place of a generalisation and cites the ASTER GDEM guide for that
+  product's geoid reference; the void gotcha's title is qualified to
+  the HGT granule and its NUM bands corrected to 231 to 234 and 241 to
+  246; the NASADEM concept restricts the flat binary statement to the
+  binary groupings and cites the NC and NUMNC file sizes; the
+  emissivity gotcha quotes the representable range 0.492 to 1.0; the 15
+  arc second EGM96 posting is kept as the guide states it. All still
+  drafts. (knowledge-seeder)
+
 - 2026-09-15 · NASADEM and MOD11 land surface temperature, the bundle's
   second seed (issue 154): two dataset concepts (datasets/nasadem.md,
   datasets/mod11-land-surface-temperature.md) and five gotchas

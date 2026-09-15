@@ -1,8 +1,8 @@
 ---
 type: dataset-gotcha
 spheres: [geosphere, biosphere]
-title: "MOD11 day and night fields are different quantities: two observations at different hours and angles, with their own quality bytes and clear-sky counts, and neither is a daily temperature"
-description: "Every MOD11A1 and MOD11A2 tile carries LST_Day_1km and LST_Night_1km as separate layers, each from its own overpass, with its own QC byte, its own view time and view angle and its own clear-sky coverage layer. The daytime retrieval uses one coefficient set and the nighttime another for bare soil, the simulations behind them span different surface-to-air temperature ranges, and the guide records that the day and night view angles at a location are usually quite different on the same day. A cell can be clear at one and cloudy at the other. A script that reads one field as the land surface temperature, averages the two into a daily mean, or applies the day quality byte to the night field, has combined two samplings into a number that neither observation supports."
+title: "MOD11 day and night fields are different quantities: two observations at different hours and angles, with their own quality bytes and clear-sky coverage layers, and neither is a daily temperature"
+description: "Every MOD11A1 and MOD11A2 tile carries LST_Day_1km and LST_Night_1km as separate layers, each from its own overpass, with its own QC byte, its own view time and view angle and its own clear-sky coverage layer (a count on the daily product, one flag bit per day on the eight-day product). The daytime retrieval uses one coefficient set and the nighttime another for bare soil, the simulations behind them span different surface-to-air temperature ranges, and the guide records that the day and night view angles at a location are usually quite different on the same day. A cell can be clear at one and cloudy at the other. A script that reads one field as the land surface temperature, averages the two into a daily mean, or applies the day quality byte to the night field, has combined two samplings into a number that neither observation supports."
 tags: [mod11, mod11a1, mod11a2, modis, terra, land-surface-temperature, day, night, diurnal, lpdaac]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T13:40:00Z }
 severity: medium
@@ -36,8 +36,9 @@ file whose DayNightFlag reads Both, as two sets of layers: LST_Day_1km
 with QC_Day, Day_view_time, Day_view_angl and Clear_day_cov, and
 LST_Night_1km with QC_Night, Night_view_time, Night_view_angl and
 Clear_night_cov.[^user-guide][^a1-page] The eight-day tile keeps the
-same pairing with Clear_sky_days and Clear_sky_nights as the
-counts.[^user-guide][^a2-page] Nothing is shared between the pair
+same pairing with Clear_sky_days and Clear_sky_nights as the flags
+of the days and nights that contributed, one bit per day rather than
+a count.[^user-guide][^a2-page] Nothing is shared between the pair
 except the grid and the two emissivity layers.
 
 The two observations are made at different local solar times and,
@@ -80,7 +81,7 @@ layers have the same shape, type, scale and fill.
 
 **Correct approach.** The daytime and nighttime fields are kept as
 two products of the same tile, each read with its own quality byte,
-its own view time and angle and its own coverage count, and each
+its own view time and angle and its own coverage layer, and each
 named as day or night in whatever is reported. A quantity that needs
 both, such as a day to night difference, is computed only where both
 are valid and is stated as the difference between the two clear-sky

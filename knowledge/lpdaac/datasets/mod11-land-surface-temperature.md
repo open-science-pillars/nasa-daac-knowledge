@@ -24,7 +24,7 @@ sources:
     title: "LP DAAC product page for MOD11A2 v061, read 2026-09-15 (redirects to the Earthdata catalog page for C2269056084-LPCLOUD): description, the simple average statement, the eight-day period rationale, DOI, concept id, temporal extent, granule count, the variables table and the citation"
   - id: user-guide
     resource: https://lpdaac.usgs.gov/documents/715/MOD11_User_Guide_V61.pdf
-    title: "Collection-6 MODIS Land Surface Temperature Products Users' Guide (Wan, June 2019) with the Collection 6.1 cover note, read 2026-09-15: sections 1, 2 (MOD11_L2, Tables 2, 3 and 8), 3 (MOD11A1, Tables 9 and 13), 4 (MOD11A2, Tables 14 and 18), the MOD11B1 description in section 5, and the publications list"
+    title: "Collection-6 MODIS Land Surface Temperature Products Users' Guide (Wan, June 2019) with the Collection 6.1 cover note, read 2026-09-15: sections 1, 2 (MOD11_L2, Tables 2, 3 and 8), 3 (MOD11A1, Tables 9 and 13), 4 (MOD11A2, Tables 14 and 18), the MOD11B1 description in section 5, section 10.1 (the monthly product's clear-sky day flags, one per bit), and the publications list"
   - id: atbd
     resource: https://lpdaac.usgs.gov/documents/119/MOD11_ATBD.pdf
     title: "MODIS Land-Surface Temperature Algorithm Theoretical Basis Document, version 3.3, April 1999 (Wan), read 2026-09-15 in its sections 2.1 (the 1 K accuracy specification), 2.2 (thermal infrared LST exists only in clear sky), 3.1.1.1 (the classification-based emissivity table) and 3.1.5.3 (emissivity knowledge base uncertainty)"
@@ -177,8 +177,17 @@ MOD11A2 has the same twelve layer names with two differences: the
 temperatures are the eight-day averages, the view time and view angle
 are the averages over the days used, and the coverage layers are
 Clear_sky_days and Clear_sky_nights, uint8 with valid range 1 to 255,
-fill 0, described by the guide as the days in clear-sky conditions
-with valid LSTs and by the product page as bit fields.[^user-guide][^a2-page]
+fill 0 and no scale, described by the guide as the days in clear-sky
+conditions with valid LSTs and by the product page as bit
+fields.[^user-guide][^a2-page] They are not counts: the guide says of
+the monthly MOD11C3 product that the days and nights in clear-sky
+conditions with validated LSTs are flagged in each bit of two 32-bit
+unsigned integers, and the eight-day layer's byte with a range to 255
+holds one flag per day of the period in the same design, so the
+number of days that contributed is the number of set bits, not the
+stored value. Which bit stands for the first day of the period is not
+stated in the sources read here, and the file specification the CMR
+record links is on a domain outside this seed's reading list.[^user-guide][^a2-page][^cmr-a2]
 The guide's Table 14 gives Night_view_time the long name "Average view
 zenith angle of nighttime Land-surface Temperature", in hours; the
 name is read here as a copying slip for the average nighttime view
@@ -259,7 +268,7 @@ The tiles carry no per-pixel temperature uncertainty. What stands in:
 - **Sampling.** Every value is a clear-sky observation at its own
   local solar time; a mean over days or over the eight-day period is
   a mean of the clear observations that exist, and the coverage
-  layers say how many there were.[^user-guide][^atbd]
+  layers say which days contributed, as flags.[^user-guide][^atbd]
 
 This bundle's HLS L30 concept carries the Landsat TIRS bands as
 top-of-atmosphere brightness temperature that is not atmospherically

@@ -76,8 +76,8 @@ already inside the temperature: the algorithm document's 1 K accuracy
 holds for land cover types with known emissivities, and the guide's
 own reason for the arid-zone adjustment is that the classified values
 are least certain where bare soil dominates.[^atbd][^user-guide] None
-of this fails, because the layer is a valid raster of plausible values
-between 0.9 and 1.0.
+of this fails, because the layer is a valid raster of values inside
+the representable range of 0.492 to 1.0.[^user-guide]
 
 **Correct approach.** The two layers are read as the emissivity the
 retrieval assumed for the pixel's class on that day, useful for
