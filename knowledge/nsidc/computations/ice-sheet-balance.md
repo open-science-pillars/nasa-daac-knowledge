@@ -13,7 +13,7 @@ parameters:
   - { name: bridge, type: string, required: false }
 computation: references/computations/ice_sheet_balance.py
 executor:
-  resource: references/skills/run-ice-sheet-balance.md
+  resource: references/computations/ice_sheet_balance.py
   receipt: [run_id, computation, code_sha256, capability, bundle, runtime, generated_utc, data, bound_parameters, refused, window, terms, series, rates, residual, combined_uncertainty, verdict, bookkeeping, caveats]
 attester:
   resource: references/attesters/ice_sheet_balance_check.py
@@ -281,6 +281,75 @@ the data-root path on the fixture written as a root: attested against
 the tree, refused by the executor when a term file drifts from the
 manifest, failed against another tree when the manifest is rewritten,
 and failed on its series when they are tampered.
+
+## The data root, for a real run
+
+The run instructions that sat under references/skills/ are retired: a procedure is a skill, and a skill lives in the capability whose sphere this concept names (the placement rule, ADR C in the marketplace repository). That capability, land-ice, is planned and not yet a package, so this computation is unwrapped for now: the executor's usage text (`--help`) states the fixture run, the refusal rule and the receipt path, the attester's usage text states how a receipt is attested, and this section keeps the one part of the retired instructions that is contract and not procedure, the layout of the data root the executor reads. The executor's own usage text still names the retired file for that layout; it is revised, with a fresh reference run, when the wrapping skill lands.
+
+The real run's tree is committed at
+references/retrieval/ice-sheet-balance-root, built by the loaders
+under references/loaders (isb_firn_gemb.py and isb_smb_gemb.py for the
+GEMB terms, isb_mass_mascons.py for the mascon grid,
+isb_volume_itslive.py for the ITS_LIVE elevation change,
+isb_volume_atl15.py for ATL15 when its granules can be fetched, each
+with `--selftest`) and stamped by isb_data_root.py, which writes
+RECORD.json with the bookkeeping and closure tables from the loaders'
+stamps; SOURCES.json records the downloads and the granules that could
+not be fetched. This is the layout the computation reads.
+`--data-root DIR` in place of `--fixture`:
+
+```
+DIR/
+  RECORD.json           the stamp: record name, manifest_sha256, verified_utc,
+                        terms_present, terms_absent, the loaders' stamps and the
+                        bookkeeping table with its closure section
+  mass.csv              ice_sheet, domain (land_mascons), month, value_gt,
+                        uncertainty_gt, ...   one row per ice sheet and solution month
+  firn.csv              ice_sheet, domain, month, value_m, uncertainty_m, volume_km3,
+                        area_km2, ...          the firn root of the earlier seed
+  volume-itslive.csv    ice_sheet, domain, month, value_km3, uncertainty_km3,
+                        uncertainty_correlated_km3, area_km2, ..., sampling, product
+  volume-atl15.csv      the same columns from ATL15, quarterly; absent from the
+                        committed root, and RECORD.json says why
+  smb.csv               the surface mass balance term (ice shelves only; not read
+                        by this computation)
+  <term>-stamp.json     one stamp per term file
+  SOURCES.json          the downloads, with URL, hash and time
+```
+
+Months are `YYYY-MM`, unique per ice sheet and domain; a quarterly row
+is one product epoch labelled by its month. The executor reads only
+these files, never a product file, refuses a term file whose digest
+is not the RECORD manifest's, and copies the RECORD summary, its
+digest and the term file digests into the receipt; the data root is
+recorded package-relative so the run id is the same on any machine.
+`RECORD.json` must carry, under `bookkeeping`, the mass term's `gia`,
+`low_degree`, `reference_frame`, `effective_smoothing`, `selection`
+and `uncertainty_basis`, the volume term's `reference`, `mask`,
+`uncertainty_basis` and `not_mass`, the firn term's `reference`,
+`uncertainty_basis`, `gemb_version` and `forcing`, and a `closure`
+table for both ice sheets; the attester refuses a receipt missing any
+of them.
+
+Which loader produces each file:
+
+- `mass.csv`: the CRI-filtered mascon grid summed over the ice sheet's
+  land mascons per solution month, in gigatonnes, with the per-mascon
+  formal error in quadrature; the Greenland set is the land mascons
+  whose land is at least a quarter Greenland ice by the ITS_LIVE mask,
+  the Antarctic set every land mascon south of 60 S, and the stamp
+  records the selection's sensitivity and the comparison with the
+  provider's own series ([the mascon concept in the podaac bundle](../../podaac/datasets/grace-fo-mascons.md)).
+- `firn.csv` and `smb.csv`: the GEMB firn air content and surface
+  mass balance terms of the earlier seed, unchanged in value.
+- `volume-itslive.csv`: the ITS_LIVE surface elevation change summed
+  to a volume anomaly over the same cell sets as the firn term
+  (Greenland) and over the grounded Antarctic product's cells from
+  2003 on ([the velocity and elevation change products](../datasets/its-live-ice-velocity.md)
+  are the same project's).
+- `volume-atl15.csv`: the ATL15 10 km delta_h summed with ice_area
+  ([the ATL15 concept](../datasets/icesat2-atl15.md)); the loader
+  needs an Earthdata Login and a route to the NSIDC cloud archive.
 
 ## Reference run
 

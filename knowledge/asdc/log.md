@@ -2,6 +2,20 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-16 · knowledge/asdc/computations/energy-budget.md: the run
+  instructions reference references/skills/run-energy-budget.md is
+  retired under the placement rule (ADR C in the marketplace repository:
+  a procedure is a skill in the sphere capability, never a signed
+  reference). executor.resource now names the executor script itself,
+  whose usage text is the contract; the data-root layout, the one part
+  of the retired reference that is contract and not procedure, moved
+  into the concept as its own section. The wrapping skill belongs to the
+  atmospheric-physics capability when that package exists (roadmap
+  c6-unwrapped-computations); until then the computation is unwrapped
+  and the placement gate reports it so. Status unchanged; the edited
+  stable concept is re-signed below on the maintainer's word.
+  (coordinator)
+
 - 2026-09-15 · STEWARD SIGNING of
   knowledge/asdc/computations/energy-budget.md,
   knowledge/asdc/recipes/energy-budget.md,

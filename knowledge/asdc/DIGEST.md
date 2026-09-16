@@ -6,11 +6,11 @@ If you know one of these products, each row's last link opens an issue with the 
 
 ## Summary
 
-9 concepts, 1 products.
+8 concepts, 1 products.
 
 - unverified: 0
 - machine-confirmed: 0
-- human-reviewed: 9
+- human-reviewed: 8
 - provider-confirmed: 0
 
 A tier reads the concept's verified events: unverified (none), machine-confirmed (process events only), human-reviewed (a person signed), provider-confirmed (a person from the organization that produces the data confirmed it).
@@ -34,6 +34,4 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 
 Conventions, requirements, method concepts and anything whose claim is not about one product. The same link applies: confirm or correct.
 
-| Concept | Type | Severity | Status | Tier | Latest verified | Sources | |
-|---|---|---|---|---|---|---|---|
-| [Run instructions: attested energy budget closure](references/skills/run-energy-budget.md) | Reference |  | stable | human-reviewed | 2026-09-15 | 0 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fasdc%2Freferences%2Fskills%2Frun-energy-budget.md&concept=knowledge%2Fasdc%2Freferences%2Fskills%2Frun-energy-budget.md) |
+None.

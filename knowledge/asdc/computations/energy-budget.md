@@ -9,7 +9,7 @@ parameters:
   - { name: window, type: string, required: true }
 computation: references/computations/energy_budget.py
 executor:
-  resource: references/skills/run-energy-budget.md
+  resource: references/computations/energy_budget.py
   receipt: [run_id, computation, code_sha256, capability, bundle, runtime, generated_utc, data, bound_parameters, refused, months, series, terms, toa_net_W_m2, ocean_side_W_m2, residual_W_m2, toa_net_anomaly_trend_W_m2_per_decade, residual, combined_uncertainty, verdict, energy_over_window_ZJ, published_eei, bookkeeping, known_truth, caveats]
 attester:
   resource: references/attesters/energy_budget_check.py
@@ -276,6 +276,67 @@ forged one, a synthetic data root verified against its tree, a
 fabricated tree, the window mismatch, refused-receipt and
 interval-not-stated refusals reproduced only against the tree, and
 the attestation document.
+
+## The data root, for a real run
+
+The run instructions that sat under references/skills/ are retired: a procedure is a skill, and a skill lives in the capability whose sphere this concept names (the placement rule, ADR C in the marketplace repository). That capability, atmospheric-physics, is planned and not yet a package, so this computation is unwrapped for now: the executor's usage text (`--help`) states the fixture run, the refusal rule and the receipt path, the attester's usage text states how a receipt is attested, and this section keeps the one part of the retired instructions that is contract and not procedure, the layout of the data root the executor reads. The executor's own usage text still names the retired file for that layout; it is revised, with a fresh reference run, when the wrapping skill lands.
+
+The real run's tree is committed at
+references/retrieval/energy-budget-root, built by the loader under
+references/loaders (eb_ceres_ebaf.py for the EBAF file, with
+`--selftest` on a synthetic grid and `--fetch` for the download) and
+stamped by eb_data_root.py, which writes RECORD.json with the
+bookkeeping table from the loader's stamp and the Argo receipt;
+SOURCES.json records the download, the documents read and the
+receipt's provenance. This is the layout the computation reads.
+`--data-root DIR` in place of `--fixture`, with `--ohc-receipt PATH`
+naming the Argo receipt (default `DIR/ohc-2000-receipt.json`):
+
+```
+DIR/
+  RECORD.json             the stamp: record name, the manifest of every file,
+                          manifest_sha256, verified_utc, the loader's stamp,
+                          the Argo receipt's identity, and the bookkeeping
+                          table under "bookkeeping"
+  toa-net.csv             month,value_W_m2,uncertainty_W_m2,product_global_W_m2
+                          one row per calendar month: the cos-latitude mean,
+                          the per-month floor, the product's geodetic mean
+  toa-net-stamp.json      what the loader read, from where, when, the product
+                          version, the grid, the weights, the mask, the
+                          aggregation, the anchoring, the cross-check between
+                          the two weightings, the sha256 of the file read
+  ohc-2000-receipt.json   the Argo ocean heat content receipt for the window
+  SOURCES.json            every file read with its URL, hash and time, and
+                          the receipt's provenance
+```
+
+Months are `YYYY-MM`, unique and in order. `bookkeeping` must carry
+`anchoring.statement`, `weighting.statement`, `edition.statement`,
+`uncertainty.basis` and `ocean_input.statement`, each a statement in
+words; the executor refuses a stamp that lacks any of them, and checks
+every file in the manifest against its hash before it reads a number.
+The receipt copies the stamp, the file digests and the Argo receipt's
+identity (its computation, code digest, run id, window, bundle and
+record).
+
+Which tool produces each file:
+
+- `toa-net.csv` and `toa-net-stamp.json`: the loader eb_ceres_ebaf.py, from the
+  Edition 4.2.1 file; with `--fetch` it downloads a netCDF-4 subset of the
+  granule through the ASDC OPeNDAP endpoint into the path `--product` names
+  (outside the tree), first without credentials and then once with the
+  Earthdata Login bearer token from `EARTHDATA_TOKEN` as a request header,
+  which it never writes down. Its usage text states the arguments.
+- `ohc-2000-receipt.json`: the ocean-science plugin's Argo computation
+  (argo_ohc.py) on its committed data root, run in a clone of that plugin
+  beside this repository over the budget's window, attested by its attester
+  (argo_ohc_check.py) before it is placed in the tree; no network.
+- `RECORD.json`: the stamp assembler eb_data_root.py (`--root DIR --record
+  NAME`, then `--root DIR --check`), after SOURCES.json is written.
+
+The data root and the receipt path are recorded package-relative when
+they sit under this repository, so the run id reproduces on any
+machine.
 
 ## Reference run
 
