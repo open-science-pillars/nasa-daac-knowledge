@@ -2,6 +2,70 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-15 · STEWARD SIGNING of
+  knowledge/asdc/computations/energy-budget.md,
+  knowledge/asdc/recipes/energy-budget.md,
+  knowledge/asdc/references/skills/run-energy-budget.md: Maintainer
+  review of the attested energy budget closure (CERES EBAF net TOA flux
+  against Argo ocean heat content), its recipe and its run skill, merged
+  in PR #174 after the coordinator's review of the chain and a fix round
+  (the attester's window and identity rule, the 90 percent level of the
+  atmosphere term, the domain understatement and the consistency-check
+  wording). Promoted to stable; the check chain is wired into
+  run_checks.sh and the registry runs carry the asdc bundle key. The
+  verified events are written on the steward's word. The verified event
+  is written on the steward's word. (steward)
+
+- 2026-09-15 · coordinator's fix round applied to the energy budget
+  seed (pull request 174): the attester now enforces the window rule
+  on the pass path (a new ohc-window check, and the tree's Argo receipt
+  must carry the identity copied into the receipt) with the relabel
+  and swap tampers, the refused-receipt and interval-not-stated
+  refusals attested in the selftest; the atmosphere term's 90 percent
+  range scaled to 95 percent (non-ocean 0.0822 plus or minus 0.0175 W
+  m-2, the bars unchanged at four digits); the weighting offset range
+  corrected to 0.14 to 0.28 W m-2; the domain understatement, the
+  make-up of the bar and the consistency-check reading of the anomaly
+  trend stated in the concept and the recipe; the record rebuilt and
+  the quoted run ids updated. Statuses unchanged, no signatures.
+  (knowledge-seeder)
+
+- 2026-09-15 · attested energy budget closure seeded (issue 157): the
+  computation concept computations/energy-budget.md (type Attested
+  Computation), the recipe recipes/energy-budget.md, the run skill
+  references/skills/run-energy-budget.md, the executor
+  references/computations/energy_budget.py (fixture and data-root modes,
+  five refusal codes, exit 3), the attester
+  references/attesters/energy_budget_check.py (selftest, --data-root
+  verification), the loaders references/loaders/eb_ceres_ebaf.py (the
+  EBAF net TOA flux term, selftest, --fetch) and eb_data_root.py
+  (RECORD.json, --check, selftest), the stamped data root
+  references/retrieval/energy-budget-root (toa-net.csv and its stamp
+  from CERES_EBAF_Edition4.2.1_200003-202605.nc read as an OPeNDAP
+  subset, the Argo 0 to 2000 dbar receipt run sha256:0f64c6f9f2f330b6
+  from the ocean-science plugin's committed root, SOURCES.json,
+  RECORD.json), and the registry entry energy-budget in
+  tools/reference_runs.yaml: all drafts, no signatures. Real-data run
+  2006-01 through 2020-12: toa_net +0.8746 against an ocean side of
+  0.7427 W m-2, residual +0.1319 against a bar of 0.1894, closed within
+  uncertainty; anomaly trend +0.3706 W m-2 per decade against the
+  published 0.50 plus or minus 0.47. Sources read the same day: the
+  CERES_EBAF_Ed4.2 Data Quality Summary version 7 (the pinned copy),
+  the CERES geodetic zone weights file and the general product
+  information page (the weights reproduce the product's global mean to
+  2.4e-4 W m-2; a cos-latitude mean sits 0.22 W m-2 above it), the
+  CMR granule listings of CERES_EBAF and CERES_EBAF-TOA Edition 4.2.1,
+  the EBAF granule through 2026-05 via the ASDC OPeNDAP endpoint (the
+  direct download host answers through a CloudFront distribution this
+  environment cannot reach; the TOA-only granule has no OPeNDAP copy),
+  von Schuckmann and others 2023 in full on the journal's site, the
+  Crossref registry records of Loeb and others 2021 (the journal page
+  behind a bot check; its abstract read on the registry), Loeb and
+  others 2018, Johnson and others 2016 and Purkey and Johnson 2010.
+  Observed and left for the reviewer: the anchor decade mean of the
+  product's geodetic global net flux in the file read is 0.7387 W m-2,
+  0.03 above the stated 0.71. (knowledge-seeder)
+
 - 2026-09-14 · STEWARD RE-SIGNING of
   knowledge/asdc/gotchas/ebaf-imbalance-anchored-to-ocean-heating.md:
   second maintainer review recorded on the maintainer's explicit

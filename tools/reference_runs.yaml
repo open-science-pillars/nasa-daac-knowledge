@@ -15,6 +15,7 @@ data_roots:
   record: ~/ECCO_V4r4_record     # the verified science record, 1992 to 2017
   sea-level-budget: knowledge/podaac/references/retrieval/sea-level-budget-root   # the three-term data root, stamped in the tree
   ice-sheet-balance: knowledge/nsidc/references/retrieval/ice-sheet-balance-root   # the mascon, altimetry and firn root of the nsidc bundle, stamped in the tree
+  energy-budget: knowledge/asdc/references/retrieval/energy-budget-root   # the radiation term and the Argo receipt, stamped in the tree (asdc)
 runs:
   heat-budget:
     computation: ecco_heat_budget.py
@@ -80,3 +81,15 @@ runs:
     computation: ice_sheet_balance.py
     data_root: ice-sheet-balance
     args: [--ice-sheet, greenland, --window, "2003-01:2016-12", --altimetry, itslive, --runtime, reattest]
+  energy-budget:
+    bundle: knowledge/asdc
+    computation: energy_budget.py
+    attester: references/attesters/energy_budget_check.py
+    data_root: none
+    args: [--fixture, --seed, "7", --window, "2006-01:2020-12", --runtime, reattest]
+  energy-budget-record:
+    bundle: knowledge/asdc
+    computation: energy_budget.py
+    attester: references/attesters/energy_budget_check.py
+    data_root: energy-budget
+    args: [--window, "2006-01:2020-12", --runtime, reattest]
