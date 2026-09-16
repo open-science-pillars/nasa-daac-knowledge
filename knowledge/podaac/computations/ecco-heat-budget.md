@@ -10,8 +10,9 @@ parameters:
   - { name: region, type: string, required: false }
 computation: references/computations/ecco_heat_budget.py
 executor:
-  resource: references/skills/run-golden.md
+  resource: references/computations/ecco_heat_budget.py
   receipt: [run_id, code_sha256, data, bound_parameters, residual_max, residual_p999, cells_evaluated]
+  skill: ocean-science/ocean-budget
 attester:
   resource: references/attesters/budget_residual.py
 generated: { by: claude-code/fable-5, at: 2026-08-30T19:20:00Z }

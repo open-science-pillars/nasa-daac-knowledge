@@ -13,6 +13,7 @@ computation: references/computations/ecco_thermal_wind_reconstruction.py
 executor:
   resource: references/computations/ecco_thermal_wind_reconstruction.py
   receipt: [run_id, code_sha256, data, bound_parameters, reference, bands, by_level, level_of_no_motion_caveat, frame_note, fields]
+  skill: ocean-science/ecco
 attester:
   resource: references/attesters/thermal_wind_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-05T15:50:00Z }

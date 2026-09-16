@@ -12,6 +12,7 @@ computation: references/computations/ecco_steric_height.py
 executor:
   resource: references/computations/ecco_steric_height.py
   receipt: [run_id, code_sha256, data, bound_parameters, steric_mean_m_by_month, steric_trend_mm_yr, steric_trend_interval, cells_in_region]
+  skill: ocean-science/sea-level-analysis
 attester:
   resource: references/attesters/steric_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:35:00Z }

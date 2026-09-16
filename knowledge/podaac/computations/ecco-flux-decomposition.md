@@ -13,6 +13,7 @@ computation: references/computations/ecco_flux_decomposition.py
 executor:
   resource: references/computations/ecco_flux_decomposition.py
   receipt: [run_id, code_sha256, data, bound_parameters, resolved_faces, results, mutation_evidence, caveats]
+  skill: ocean-science/ocean-budget
 attester:
   resource: references/attesters/fluxdecomp_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T15:40:00Z }

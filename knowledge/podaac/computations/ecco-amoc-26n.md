@@ -12,6 +12,7 @@ computation: references/computations/ecco_amoc_26n.py
 executor:
   resource: references/computations/ecco_amoc_26n.py
   receipt: [run_id, computation, code_sha256, section_code_sha256, basin_codes_sha256, data, generated_utc, bound_parameters, resolved_section, anchor, results, mutation_evidence, caveats]
+  skill: ocean-science/transport-analysis
 attester:
   resource: references/attesters/rapid_confrontation_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-02T18:50:00Z }

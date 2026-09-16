@@ -11,6 +11,7 @@ computation: references/computations/ecco_curl_ekman.py
 executor:
   resource: references/computations/ecco_curl_ekman.py
   receipt: [run_id, code_sha256, data, bound_parameters, results, method_caveat, fields]
+  skill: ocean-science/ecco
 attester:
   resource: references/attesters/curl_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:35:00Z }

@@ -14,6 +14,7 @@ computation: references/computations/ecco_rapid_amoc_confrontation.py
 executor:
   resource: references/computations/ecco_rapid_amoc_confrontation.py
   receipt: [run_id, computation, code_sha256, method_code_sha256, generated_utc, model, observation, bound_parameters, series, digests, scores, descriptive, caveats]
+  skill: ocean-science/compare-obs
 attester:
   resource: references/attesters/rapid_confrontation_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-02T18:55:00Z }

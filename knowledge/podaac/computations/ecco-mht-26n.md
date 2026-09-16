@@ -9,6 +9,8 @@ parameters:
   - { name: year, type: integer, required: true }
   - { name: basin, type: string, required: false }
 generated: { by: claude-code/fable-5, at: 2026-08-30T19:20:00Z }
+executor:
+  skill: ocean-science/transport-analysis
 status: draft
 ---
 

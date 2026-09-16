@@ -16,6 +16,7 @@ computation: references/computations/ecco_trend_ci.py
 executor:
   resource: references/computations/ecco_trend_ci.py
   receipt: [run_id, code_sha256, data, bound_parameters, series, intermediates, results]
+  skill: ocean-science/ecco
 attester:
   resource: references/attesters/trend_ci_check.py
 calibration: references/computations/ecco_trend_ci_calibration.py

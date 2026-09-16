@@ -12,6 +12,7 @@ computation: references/computations/ecco_section_transport.py
 executor:
   resource: references/computations/ecco_section_transport.py
   receipt: [run_id, code_sha256, data, bound_parameters, resolved_section, results, mutation_evidence, caveats]
+  skill: ocean-science/transport-analysis
 attester:
   resource: references/attesters/section_transport_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T15:20:00Z }

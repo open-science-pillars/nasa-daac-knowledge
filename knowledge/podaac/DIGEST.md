@@ -6,9 +6,9 @@ If you know one of these products, each row's last link opens an issue with the 
 
 ## Summary
 
-129 concepts, 12 products.
+126 concepts, 12 products.
 
-- unverified: 33
+- unverified: 30
 - machine-confirmed: 0
 - human-reviewed: 96
 - provider-confirmed: 0
@@ -41,7 +41,7 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 
 ## ECCO v4 Release 4 ocean state estimate
 
-[datasets/ecco-v4r4.md](datasets/ecco-v4r4.md): 86 concepts.
+[datasets/ecco-v4r4.md](datasets/ecco-v4r4.md): 85 concepts.
 
 | Concept | Type | Severity | Status | Tier | Latest verified | Sources | |
 |---|---|---|---|---|---|---|---|
@@ -110,7 +110,6 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 | [A trend with an honest interval from any ECCO monthly series](recipes/ecco-trend-ci.md) | recipe |  | stable | human-reviewed | 2026-09-04 | 3 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Frecipes%2Fecco-trend-ci.md&concept=knowledge%2Fpodaac%2Frecipes%2Fecco-trend-ci.md&product=ECCO+v4+Release+4+ocean+state+estimate) |
 | [Closed volume budget on the ECCO v4r4 native grid](recipes/ecco-volume-budget.md) | recipe |  | stable | human-reviewed | 2026-09-04 | 2 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Frecipes%2Fecco-volume-budget.md&concept=knowledge%2Fpodaac%2Frecipes%2Fecco-volume-budget.md&product=ECCO+v4+Release+4+ocean+state+estimate) |
 | [Wind-stress curl and Ekman pumping on the native grid](recipes/ecco-wind-stress-curl.md) | recipe |  | stable | human-reviewed | 2026-09-01 | 2 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Frecipes%2Fecco-wind-stress-curl.md&concept=knowledge%2Fpodaac%2Frecipes%2Fecco-wind-stress-curl.md&product=ECCO+v4+Release+4+ocean+state+estimate) |
-| [Run instructions: attested regional sea level partition](references/skills/run-sea-level.md) | Reference |  | draft | unverified |  | 0 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Freferences%2Fskills%2Frun-sea-level.md&concept=knowledge%2Fpodaac%2Freferences%2Fskills%2Frun-sea-level.md&product=ECCO+v4+Release+4+ocean+state+estimate) |
 | [Accessing and subsetting ECCO variables](tutorial/accessing-subsetting-variables.md) | convention |  | draft | unverified |  | 1 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Ftutorial%2Faccessing-subsetting-variables.md&concept=knowledge%2Fpodaac%2Ftutorial%2Faccessing-subsetting-variables.md&product=ECCO+v4+Release+4+ocean+state+estimate) |
 | [ECCO in the NASA Earthdata Cloud on AWS](tutorial/aws-cloud-access.md) | convention |  | draft | unverified |  | 1 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Ftutorial%2Faws-cloud-access.md&concept=knowledge%2Fpodaac%2Ftutorial%2Faws-cloud-access.md&product=ECCO+v4+Release+4+ocean+state+estimate) |
 | [Combining ECCO datasets centered on different grid points](tutorial/combining-datasets.md) | convention |  | draft | unverified |  | 1 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Ftutorial%2Fcombining-datasets.md&concept=knowledge%2Fpodaac%2Ftutorial%2Fcombining-datasets.md&product=ECCO+v4+Release+4+ocean+state+estimate) |
@@ -164,7 +163,7 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 
 ## NASA-SSH simple gridded sea surface height anomaly (observational reference)
 
-[datasets/nasa-ssh.md](datasets/nasa-ssh.md): 6 concepts.
+[datasets/nasa-ssh.md](datasets/nasa-ssh.md): 5 concepts.
 
 | Concept | Type | Severity | Status | Tier | Latest verified | Sources | |
 |---|---|---|---|---|---|---|---|
@@ -173,7 +172,6 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 | [Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested)](computations/sea-level-budget.md) | Attested Computation |  | stable | human-reviewed | 2026-09-13 | 19 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fcomputations%2Fsea-level-budget.md&concept=knowledge%2Fpodaac%2Fcomputations%2Fsea-level-budget.md&product=NASA-SSH+simple+gridded+sea+surface+height+anomaly+%28observational+reference%29) |
 | [Sea level rise off the US northeast coast in ECCO v4r4, partitioned and confronted](findings/us-northeast-sea-level-rise.md) | finding |  | draft | unverified |  | 10 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Ffindings%2Fus-northeast-sea-level-rise.md&concept=knowledge%2Fpodaac%2Ffindings%2Fus-northeast-sea-level-rise.md&product=NASA-SSH+simple+gridded+sea+surface+height+anomaly+%28observational+reference%29) |
 | [Closing the global mean sea level budget: altimetry against GRACE-FO mass plus Argo steric](recipes/sea-level-budget.md) | recipe |  | stable | human-reviewed | 2026-09-13 | 12 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Frecipes%2Fsea-level-budget.md&concept=knowledge%2Fpodaac%2Frecipes%2Fsea-level-budget.md&product=NASA-SSH+simple+gridded+sea+surface+height+anomaly+%28observational+reference%29) |
-| [Run instructions: attested sea level budget closure](references/skills/run-sea-level-budget.md) | Reference |  | draft | unverified |  | 0 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Freferences%2Fskills%2Frun-sea-level-budget.md&concept=knowledge%2Fpodaac%2Freferences%2Fskills%2Frun-sea-level-budget.md&product=NASA-SSH+simple+gridded+sea+surface+height+anomaly+%28observational+reference%29) |
 
 ## OPERA DSWx-HLS: surface water extent from optical imagery, with cloud as the dominant class
 
@@ -248,4 +246,3 @@ Conventions, requirements, method concepts and anything whose claim is not about
 | [NASA Earthdata MCP server (CMR discovery, no login)](connectors/earthdata-mcp.md) | connector |  | draft | unverified |  | 5 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fconnectors%2Fearthdata-mcp.md&concept=knowledge%2Fpodaac%2Fconnectors%2Fearthdata-mcp.md) |
 | [Consistency versus confrontation](conventions/consistency-versus-confrontation.md) | convention |  | stable | human-reviewed | 2026-09-02 | 7 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fconventions%2Fconsistency-versus-confrontation.md&concept=knowledge%2Fpodaac%2Fconventions%2Fconsistency-versus-confrontation.md) |
 | [Marine heatwave definition (Hobday family)](conventions/mhw-definition-hobday.md) | convention |  | draft | unverified |  | 4 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Fconventions%2Fmhw-definition-hobday.md&concept=knowledge%2Fpodaac%2Fconventions%2Fmhw-definition-hobday.md) |
-| [Run instructions: attested ECCO heat budget](references/skills/run-golden.md) | Reference |  | draft | unverified |  | 0 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fpodaac%2Freferences%2Fskills%2Frun-golden.md&concept=knowledge%2Fpodaac%2Freferences%2Fskills%2Frun-golden.md) |

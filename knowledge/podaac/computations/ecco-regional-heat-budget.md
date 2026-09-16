@@ -13,6 +13,7 @@ computation: references/computations/ecco_regional_budget.py
 executor:
   resource: references/computations/ecco_regional_budget.py
   receipt: [run_id, code_sha256, data, bound_parameters, resolved_volume, results, mutation_evidence, caveats]
+  skill: ocean-science/ocean-budget
 attester:
   resource: references/attesters/regional_budget_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T15:00:00Z }

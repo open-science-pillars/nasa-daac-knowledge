@@ -10,8 +10,9 @@ parameters:
   - { name: bridge, type: string, required: false }
 computation: references/computations/sea_level_budget.py
 executor:
-  resource: references/skills/run-sea-level-budget.md
+  resource: references/computations/sea_level_budget.py
   receipt: [run_id, computation, code_sha256, capability, bundle, runtime, generated_utc, data, bound_parameters, refused, months, series, trend_altimetry_mm_yr, trend_mass_mm_yr, trend_steric_mm_yr, trend_residual_mm_yr, trends, combined_uncertainty, verdict, bookkeeping, caveats]
+  skill: ocean-science/sea-level-budget
 attester:
   resource: references/attesters/sea_level_budget_check.py
 generated: { by: knowledge-seeder/claude, at: 2026-09-13T21:00:00Z }
