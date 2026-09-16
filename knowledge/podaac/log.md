@@ -4,6 +4,58 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-16 · STEWARD RE-SIGNING of
+  knowledge/podaac/computations/ecco-amoc-26n.md,
+  knowledge/podaac/computations/ecco-flux-decomposition.md,
+  knowledge/podaac/computations/ecco-geostrophic-balance.md,
+  knowledge/podaac/computations/ecco-heat-budget.md,
+  knowledge/podaac/computations/ecco-ocean-heat-content.md,
+  knowledge/podaac/computations/ecco-rapid-amoc-confrontation.md,
+  knowledge/podaac/computations/ecco-regional-heat-budget.md,
+  knowledge/podaac/computations/ecco-regional-salt-budget.md,
+  knowledge/podaac/computations/ecco-regional-sea-level.md,
+  knowledge/podaac/computations/ecco-regional-volume-budget.md,
+  knowledge/podaac/computations/ecco-section-transport.md,
+  knowledge/podaac/computations/ecco-steric-height.md,
+  knowledge/podaac/computations/ecco-thermal-wind-reconstruction.md,
+  knowledge/podaac/computations/ecco-trend-ci.md,
+  knowledge/podaac/computations/ecco-wind-stress-curl.md,
+  knowledge/podaac/computations/sea-level-budget.md: Re-signed after the
+  placement migration (ADR C): each computation concept names the
+  ocean-science skill that wraps it in executor.skill, and the heat
+  budget, the regional sea level and the sea level budget name their
+  executor scripts in executor.resource; the run-instruction references
+  are retired; no receipt, run id, executor or attester changed. The
+  verified event is written on the steward's word. The new verified
+  event is appended on the steward's word, the earlier events kept as
+  history. (steward)
+
+- 2026-09-16 · every podaac Attested Computation is wrapped, and the three
+  run-instruction references are retired, under the placement rule
+  (ADR C in the marketplace repository: a procedure is a skill in the
+  sphere capability, never a signed reference). Each computation
+  concept now carries executor.skill naming the ocean-science skill
+  that runs its executor and attester (ocean-budget for the heat
+  budget, the three regional budgets, the flux decomposition and the
+  draft salt and volume closures; transport-analysis for the section
+  transport, the overturning at 26.5N and the draft heat transport;
+  compare-obs for the RAPID and altimetry confrontations;
+  sea-level-analysis for the regional partition and the steric height;
+  ecco for the global heat content, the trend method, the geostrophic
+  balance, the wind-stress curl and the thermal-wind reconstruction;
+  sea-level-budget for the sea level budget closure). references/skills/
+  run-golden.md, run-sea-level.md and run-sea-level-budget.md are
+  retired; their staging, run, attest and PASS conditions live in those
+  skills (ocean-science pull request 63), and executor.resource on the
+  heat budget, the regional sea level and the sea level budget names
+  the executor script itself, whose usage text is the contract. The
+  attester budget_residual.py and the executor sea_level_budget.py
+  still name the retired files in their docstrings; the code is not
+  edited, because the signed concepts quote its digests, and the
+  pointers are revised with the next reference run. Statuses
+  unchanged; the sixteen edited stable concepts are re-signed below on
+  the maintainer's word. (coordinator)
+
 - 2026-09-15 · STEWARD SIGNING of
   knowledge/podaac/datasets/ccmp-wind-analysis.md,
   knowledge/podaac/datasets/ascat-winds.md,

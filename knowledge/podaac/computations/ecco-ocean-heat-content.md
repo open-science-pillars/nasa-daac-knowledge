@@ -11,10 +11,13 @@ computation: references/computations/ecco_ohc.py
 executor:
   resource: references/computations/ecco_ohc.py
   receipt: [run_id, code_sha256, data, bound_parameters, anchors, months, ohc_J_by_month, ohc_change_J, cells_evaluated, ohc_baseline_caveat]
+  skill: ocean-science/ecco
 attester:
   resource: references/attesters/ohc_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:11:19Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-05T16:14:15Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-05T16:14:15Z }
+  - { by: human:PaulMRamirez, at: 2026-09-16T05:51:09Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/183 }
 status: stable
 stale_after: 2027-01-04
 sources:

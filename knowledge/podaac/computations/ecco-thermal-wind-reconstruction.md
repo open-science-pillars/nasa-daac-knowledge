@@ -13,10 +13,13 @@ computation: references/computations/ecco_thermal_wind_reconstruction.py
 executor:
   resource: references/computations/ecco_thermal_wind_reconstruction.py
   receipt: [run_id, code_sha256, data, bound_parameters, reference, bands, by_level, level_of_no_motion_caveat, frame_note, fields]
+  skill: ocean-science/ecco
 attester:
   resource: references/attesters/thermal_wind_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-05T15:50:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-05T16:14:15Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-05T16:14:15Z }
+  - { by: human:PaulMRamirez, at: 2026-09-16T05:51:09Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/183 }
 status: stable
 stale_after: 2027-03-05
 sources:

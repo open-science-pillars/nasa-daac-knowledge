@@ -2,6 +2,29 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-16 · STEWARD RE-SIGNING of
+  knowledge/nsidc/computations/ice-sheet-balance.md: Re-signed after the
+  placement migration (ADR C): the concept names its executor script in
+  executor.resource and carries the data-root layout as its own section;
+  the run-instruction reference is retired; no receipt, run id, executor
+  or attester changed. The verified event is written on the steward's
+  word. The new verified event is appended on the steward's word, the
+  earlier events kept as history. (steward)
+
+- 2026-09-16 · knowledge/nsidc/computations/ice-sheet-balance.md: the
+  run instructions reference references/skills/run-ice-sheet-balance.md
+  is retired under the placement rule (ADR C in the marketplace
+  repository: a procedure is a skill in the sphere capability, never a
+  signed reference). executor.resource now names the executor script
+  itself, whose usage text is the contract; the data-root layout, the
+  one part of the retired reference that is contract and not procedure,
+  moved into the concept as its own section. The wrapping skill belongs
+  to the land-ice capability when that package exists (roadmap
+  c6-unwrapped-computations); until then the computation is unwrapped
+  and the placement gate reports it so. Status unchanged; the edited
+  stable concept is re-signed below on the maintainer's word.
+  (coordinator)
+
 - 2026-09-16 · STEWARD SIGNING of
   knowledge/nsidc/computations/ice-sheet-balance.md,
   knowledge/nsidc/recipes/ice-sheet-balance.md,

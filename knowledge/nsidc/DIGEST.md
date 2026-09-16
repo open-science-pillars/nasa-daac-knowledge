@@ -6,11 +6,11 @@ If you know one of these products, each row's last link opens an issue with the 
 
 ## Summary
 
-23 concepts, 6 products.
+22 concepts, 6 products.
 
 - unverified: 0
 - machine-confirmed: 0
-- human-reviewed: 23
+- human-reviewed: 22
 - provider-confirmed: 0
 
 A tier reads the concept's verified events: unverified (none), machine-confirmed (process events only), human-reviewed (a person signed), provider-confirmed (a person from the organization that produces the data confirmed it).
@@ -53,7 +53,7 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 
 ## ICESat-2 ATL15 gridded Antarctic and Arctic land ice height change
 
-[datasets/icesat2-atl15.md](datasets/icesat2-atl15.md): 8 concepts.
+[datasets/icesat2-atl15.md](datasets/icesat2-atl15.md): 7 concepts.
 
 | Concept | Type | Severity | Status | Tier | Latest verified | Sources | |
 |---|---|---|---|---|---|---|---|
@@ -64,11 +64,10 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 | [Ice sheet boundaries and drainage basins differ by definition: a per-basin number names the basin set it used](gotchas/ice-sheet-boundaries-and-drainage-basins.md) | dataset-gotcha | medium | stable | human-reviewed | 2026-09-13 | 9 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fnsidc%2Fgotchas%2Fice-sheet-boundaries-and-drainage-basins.md&concept=knowledge%2Fnsidc%2Fgotchas%2Fice-sheet-boundaries-and-drainage-basins.md&product=ICESat-2+ATL15+gridded+Antarctic+and+Arctic+land+ice+height+change) |
 | [The grids are polar stereographic metres, not latitude and longitude: cell area varies, and a sum without the true cell area biases a total](gotchas/polar-stereographic-not-latlon.md) | dataset-gotcha | medium | stable | human-reviewed | 2026-09-13 | 8 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fnsidc%2Fgotchas%2Fpolar-stereographic-not-latlon.md&concept=knowledge%2Fnsidc%2Fgotchas%2Fpolar-stereographic-not-latlon.md&product=ICESat-2+ATL15+gridded+Antarctic+and+Arctic+land+ice+height+change) |
 | [Closing an ice sheet's mass balance: gravimetry against firn-corrected altimetry, and the input-output estimate this bundle cannot yet make](recipes/ice-sheet-balance.md) | recipe |  | stable | human-reviewed | 2026-09-16 | 19 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fnsidc%2Frecipes%2Fice-sheet-balance.md&concept=knowledge%2Fnsidc%2Frecipes%2Fice-sheet-balance.md&product=ICESat-2+ATL15+gridded+Antarctic+and+Arctic+land+ice+height+change) |
-| [Run instructions: attested ice sheet mass balance closure](references/skills/run-ice-sheet-balance.md) | Reference |  | stable | human-reviewed | 2026-09-16 | 0 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fnsidc%2Freferences%2Fskills%2Frun-ice-sheet-balance.md&concept=knowledge%2Fnsidc%2Freferences%2Fskills%2Frun-ice-sheet-balance.md&product=ICESat-2+ATL15+gridded+Antarctic+and+Arctic+land+ice+height+change) |
 
 ## MEaSUREs ITS_LIVE regional ice velocity mosaics, and the InSAR velocity maps they succeed
 
-[datasets/its-live-ice-velocity.md](datasets/its-live-ice-velocity.md): 7 concepts.
+[datasets/its-live-ice-velocity.md](datasets/its-live-ice-velocity.md): 6 concepts.
 
 | Concept | Type | Severity | Status | Tier | Latest verified | Sources | |
 |---|---|---|---|---|---|---|---|
@@ -78,7 +77,6 @@ A tier reads the concept's verified events: unverified (none), machine-confirmed
 | [The grids are polar stereographic metres, not latitude and longitude: cell area varies, and a sum without the true cell area biases a total](gotchas/polar-stereographic-not-latlon.md) | dataset-gotcha | medium | stable | human-reviewed | 2026-09-13 | 8 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fnsidc%2Fgotchas%2Fpolar-stereographic-not-latlon.md&concept=knowledge%2Fnsidc%2Fgotchas%2Fpolar-stereographic-not-latlon.md&product=MEaSUREs+ITS_LIVE+regional+ice+velocity+mosaics%2C+and+the+InSAR+velocity+maps+they+succeed) |
 | [An annual velocity mosaic is a composite of image pairs with its own effective date and count, and a discharge needs ice thickness from another product](gotchas/velocity-mosaic-epochs-and-gaps.md) | dataset-gotcha | medium | stable | human-reviewed | 2026-09-15 | 8 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fnsidc%2Fgotchas%2Fvelocity-mosaic-epochs-and-gaps.md&concept=knowledge%2Fnsidc%2Fgotchas%2Fvelocity-mosaic-epochs-and-gaps.md&product=MEaSUREs+ITS_LIVE+regional+ice+velocity+mosaics%2C+and+the+InSAR+velocity+maps+they+succeed) |
 | [Closing an ice sheet's mass balance: gravimetry against firn-corrected altimetry, and the input-output estimate this bundle cannot yet make](recipes/ice-sheet-balance.md) | recipe |  | stable | human-reviewed | 2026-09-16 | 19 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fnsidc%2Frecipes%2Fice-sheet-balance.md&concept=knowledge%2Fnsidc%2Frecipes%2Fice-sheet-balance.md&product=MEaSUREs+ITS_LIVE+regional+ice+velocity+mosaics%2C+and+the+InSAR+velocity+maps+they+succeed) |
-| [Run instructions: attested ice sheet mass balance closure](references/skills/run-ice-sheet-balance.md) | Reference |  | stable | human-reviewed | 2026-09-16 | 0 | [Confirm or correct](https://github.com/open-science-pillars/nasa-daac-knowledge/issues/new?template=confirm_concept.yml&title=Confirm%3A+knowledge%2Fnsidc%2Freferences%2Fskills%2Frun-ice-sheet-balance.md&concept=knowledge%2Fnsidc%2Freferences%2Fskills%2Frun-ice-sheet-balance.md&product=MEaSUREs+ITS_LIVE+regional+ice+velocity+mosaics%2C+and+the+InSAR+velocity+maps+they+succeed) |
 
 ## NSIDC-0051 NASA Team sea ice concentration from Nimbus-7 SMMR and DMSP SSM/I and SSMIS, Version 2
 

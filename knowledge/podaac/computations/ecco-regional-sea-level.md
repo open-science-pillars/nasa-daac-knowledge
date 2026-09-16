@@ -10,13 +10,16 @@ parameters:
   - { name: period, type: string, required: true }
 computation: references/computations/ecco_regional_sea_level.py
 executor:
-  resource: references/skills/run-sea-level.md
+  resource: references/computations/ecco_regional_sea_level.py
   receipt: [run_id, code_sha256, data, bound_parameters, ssh_variant, months, cells_evaluated, trend_total_mm_yr, trend_mass_mm_yr, trend_steric_mm_yr, trend_total_interval, trend_mass_interval, trend_steric_interval, partition_residual_max, series_by_month]
+  skill: ocean-science/sea-level-analysis
 attester:
   resource: references/attesters/sea_level_partition.py
 generated: { by: claude-code/fable-5, at: 2026-08-30T22:40:00Z }
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-09-04T22:08:00Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-04T22:08:00Z }
+  - { by: human:PaulMRamirez, at: 2026-09-16T05:51:09Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/183 }
 stale_after: 2027-01-04
 sources:
   - id: convention-slbc

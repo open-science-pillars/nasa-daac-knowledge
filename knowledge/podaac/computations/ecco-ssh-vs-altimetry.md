@@ -14,6 +14,7 @@ computation: references/computations/ecco_ssh_vs_altimetry.py
 executor:
   resource: references/computations/ecco_ssh_vs_altimetry.py
   receipt: [run_id, computation, code_sha256, method_code_sha256, scoring_code_sha256, partition_code_sha256, generated_utc, model, observation, bound_parameters, series, digests, scores, descriptive, caveats]
+  skill: ocean-science/compare-obs
 attester:
   resource: references/attesters/altimetry_confrontation_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-03T06:10:00Z }

@@ -12,10 +12,13 @@ computation: references/computations/ecco_amoc_26n.py
 executor:
   resource: references/computations/ecco_amoc_26n.py
   receipt: [run_id, computation, code_sha256, section_code_sha256, basin_codes_sha256, data, generated_utc, bound_parameters, resolved_section, anchor, results, mutation_evidence, caveats]
+  skill: ocean-science/transport-analysis
 attester:
   resource: references/attesters/rapid_confrontation_check.py
 generated: { by: claude-code/fable-5, at: 2026-09-02T18:50:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-04T02:40:20Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-04T02:40:20Z }
+  - { by: human:PaulMRamirez, at: 2026-09-16T05:51:09Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/183 }
 status: stable
 stale_after: 2027-03-02
 sources:
