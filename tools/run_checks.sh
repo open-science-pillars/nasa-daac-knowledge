@@ -129,7 +129,41 @@ run energy_budget_record
 # balance loaders' selftests and the committed root's manifest check.
 run uv run knowledge/nsidc/references/loaders/isb_firn_gemb.py --selftest
 run uv run knowledge/nsidc/references/loaders/isb_smb_gemb.py --selftest
+# The nsidc ice sheet mass balance closure: the attester selftest, the
+# fixture chain with its overlap refusal, the loader selftests, the
+# stamped data root check, the Greenland real-data anchor attested
+# against the tree and the Antarctic refusal (nasa-daac-knowledge PR #176).
+run uv run knowledge/nsidc/references/attesters/ice_sheet_balance_check.py --selftest
+ice_sheet_balance_chain() {
+  local x=knowledge/nsidc/references/computations/ice_sheet_balance.py
+  local a=knowledge/nsidc/references/attesters/ice_sheet_balance_check.py
+  local tmp; tmp=$(mktemp -d)
+  uv run "$x" --fixture --seed 7 --ice-sheet greenland --window 2019-01:2022-12 --altimetry atl15 --runtime run_checks --receipt "$tmp/receipt.json" || return 1
+  uv run "$a" "$tmp/receipt.json" || return 1
+  uv run "$x" --fixture --seed 7 --ice-sheet greenland --window 2019-01:2025-12 --altimetry atl15 --runtime run_checks --receipt "$tmp/refusal.json"
+  [ "$?" -eq 3 ] || { echo "ice_sheet_balance_chain: the overlap refusal did not exit 3"; return 1; }
+  uv run "$a" "$tmp/refusal.json" | tee "$tmp/verdict.txt" || return 1
+  grep -q "^PASS refusal" "$tmp/verdict.txt" || { echo "ice_sheet_balance_chain: the refusal did not attest as a refusal"; return 1; }
+  rm -rf "$tmp"
+}
+run ice_sheet_balance_chain
+run uv run knowledge/nsidc/references/loaders/isb_mass_mascons.py --selftest
+run uv run knowledge/nsidc/references/loaders/isb_volume_atl15.py --selftest
+run uv run knowledge/nsidc/references/loaders/isb_volume_itslive.py --selftest
 run uv run knowledge/nsidc/references/loaders/isb_data_root.py --root knowledge/nsidc/references/retrieval/ice-sheet-balance-root --check
+ice_sheet_balance_record() {
+  local x=knowledge/nsidc/references/computations/ice_sheet_balance.py
+  local a=knowledge/nsidc/references/attesters/ice_sheet_balance_check.py
+  local root=knowledge/nsidc/references/retrieval/ice-sheet-balance-root
+  local tmp; tmp=$(mktemp -d)
+  uv run "$x" --data-root "$root" --ice-sheet greenland --window 2003-01:2016-12 --altimetry itslive --runtime run_checks --receipt "$tmp/record.json" || return 1
+  uv run "$a" "$tmp/record.json" --data-root "$root" || return 1
+  uv run "$x" --data-root "$root" --ice-sheet antarctica --window 2003-01:2016-12 --runtime run_checks --receipt "$tmp/antarctica.json"
+  [ "$?" -eq 3 ] || { echo "ice_sheet_balance_record: the Antarctic run did not refuse"; return 1; }
+  uv run "$a" "$tmp/antarctica.json" --data-root "$root" | grep -q "^PASS refusal" || return 1
+  rm -rf "$tmp"
+}
+run ice_sheet_balance_record
 # Sibling plugin clones, when present, have their local concepts checked
 # for owed signatures, their scripts for undeclared dependencies and their
 # prose for the wording rules; an absent sibling is not a failure here.
