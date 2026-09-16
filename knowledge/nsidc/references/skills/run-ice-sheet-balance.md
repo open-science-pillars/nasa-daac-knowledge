@@ -4,7 +4,8 @@ spheres: [cryosphere]
 title: "Run instructions: attested ice sheet mass balance closure"
 description: "Executor instructions for the ice sheet mass balance closure: the fixture command, the data-root layout for real inputs and which loader produces each file, the refusal rule, the attester command."
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T20:00:00Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-16T03:06:45Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/176 }
+status: stable
 stale_after: 2027-03-15
 ---
 

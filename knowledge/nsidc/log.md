@@ -2,6 +2,22 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-16 · STEWARD SIGNING of
+  knowledge/nsidc/computations/ice-sheet-balance.md,
+  knowledge/nsidc/recipes/ice-sheet-balance.md,
+  knowledge/nsidc/references/skills/run-ice-sheet-balance.md: Maintainer
+  review of the attested ice sheet mass balance closure (JPL mascon
+  gravimetry against the ITS_LIVE altimetric volume change with the GEMB
+  firn term, ATL15 as the intended product awaiting a fetchable
+  granule), its recipe and its run skill, merged in PR #176 after the
+  coordinator's review of the chain and a fix round (the provider
+  comparison sign, the window-dependent closure and the spike
+  attribution stated, the data root bound to its RECORD manifest, the
+  refusal selftests, the registry runs under the nsidc bundle key).
+  Promoted to stable; the check chain is wired into run_checks.sh. The
+  verified events are written on the steward's word. The verified event
+  is written on the steward's word. (steward)
+
 - 2026-09-15 · ICE SHEET MASS BALANCE CLOSURE seeded (issue 158):
   knowledge/nsidc/computations/ice-sheet-balance.md (type Attested
   Computation, draft), knowledge/nsidc/recipes/ice-sheet-balance.md

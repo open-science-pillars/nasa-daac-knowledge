@@ -54,8 +54,8 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 
 ## computations
 
-- [Ice sheet mass balance closure from GRACE-FO mascons against altimetric volume change with a firn correction (attested)](computations/ice-sheet-balance.md), status: draft
+- [Ice sheet mass balance closure from GRACE-FO mascons against altimetric volume change with a firn correction (attested)](computations/ice-sheet-balance.md), status: stable
 
 ## recipes
 
-- [Closing an ice sheet's mass balance: gravimetry against firn-corrected altimetry, and the input-output estimate this bundle cannot yet make](recipes/ice-sheet-balance.md), status: draft
+- [Closing an ice sheet's mass balance: gravimetry against firn-corrected altimetry, and the input-output estimate this bundle cannot yet make](recipes/ice-sheet-balance.md), status: stable

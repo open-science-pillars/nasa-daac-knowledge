@@ -5,6 +5,7 @@ title: "Closing an ice sheet's mass balance: gravimetry against firn-corrected a
 description: "The terms of an ice sheet mass balance closure, which product supplies each, which concept holds each term's trap (the mascon GIA model, leakage and selection; the height change that is not a mass change without a firn model and a density; the discharge that needs a grounded flux gate and an interpolated thickness), the annual-lag rule that removes the seasonal cycle, and how the residual is read: correction consistency before missing physics."
 tags: [ice-sheet, mass-balance, closure, greenland, antarctica, grace-fo, mascons, altimetry, its-live, atl15, firn, gemb, discharge, recipe]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T20:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-16T03:06:45Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/176 }
 inputs:
   - dataset: ../../podaac/datasets/grace-fo-mascons.md
   - dataset: ../datasets/icesat2-atl15.md
@@ -82,7 +83,7 @@ sources:
   - id: smith-2020
     resource: https://doi.org/10.1126/science.aaz5845
     title: "Smith and others (2020), Pervasive ice sheet mass loss reflects competing ocean and atmosphere processes, Science 368, 1239 to 1242"
-status: draft
+status: stable
 stale_after: 2027-03-15
 ---
 
