@@ -4,6 +4,32 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-16 · STEWARD RE-SIGNING of
+  knowledge/podaac/computations/ecco-amoc-26n.md,
+  knowledge/podaac/computations/ecco-flux-decomposition.md,
+  knowledge/podaac/computations/ecco-geostrophic-balance.md,
+  knowledge/podaac/computations/ecco-heat-budget.md,
+  knowledge/podaac/computations/ecco-ocean-heat-content.md,
+  knowledge/podaac/computations/ecco-rapid-amoc-confrontation.md,
+  knowledge/podaac/computations/ecco-regional-heat-budget.md,
+  knowledge/podaac/computations/ecco-regional-salt-budget.md,
+  knowledge/podaac/computations/ecco-regional-sea-level.md,
+  knowledge/podaac/computations/ecco-regional-volume-budget.md,
+  knowledge/podaac/computations/ecco-section-transport.md,
+  knowledge/podaac/computations/ecco-steric-height.md,
+  knowledge/podaac/computations/ecco-thermal-wind-reconstruction.md,
+  knowledge/podaac/computations/ecco-trend-ci.md,
+  knowledge/podaac/computations/ecco-wind-stress-curl.md,
+  knowledge/podaac/computations/sea-level-budget.md: Re-signed after the
+  placement migration (ADR C): each computation concept names the
+  ocean-science skill that wraps it in executor.skill, and the heat
+  budget, the regional sea level and the sea level budget name their
+  executor scripts in executor.resource; the run-instruction references
+  are retired; no receipt, run id, executor or attester changed. The
+  verified event is written on the steward's word. The new verified
+  event is appended on the steward's word, the earlier events kept as
+  history. (steward)
+
 - 2026-09-16 · every podaac Attested Computation is wrapped, and the three
   run-instruction references are retired, under the placement rule
   (ADR C in the marketplace repository: a procedure is a skill in the

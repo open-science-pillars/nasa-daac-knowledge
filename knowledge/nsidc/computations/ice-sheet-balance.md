@@ -18,7 +18,9 @@ executor:
 attester:
   resource: references/attesters/ice_sheet_balance_check.py
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T20:00:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-16T03:06:45Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/176 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-16T03:06:45Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/176 }
+  - { by: human:PaulMRamirez, at: 2026-09-16T05:50:55Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/183 }
 status: stable
 stale_after: 2027-03-15
 sources:

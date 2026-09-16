@@ -17,7 +17,9 @@ attester:
   resource: references/attesters/sea_level_partition.py
 generated: { by: claude-code/fable-5, at: 2026-08-30T22:40:00Z }
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-09-04T22:08:00Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-04T22:08:00Z }
+  - { by: human:PaulMRamirez, at: 2026-09-16T05:51:09Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/183 }
 stale_after: 2027-01-04
 sources:
   - id: convention-slbc

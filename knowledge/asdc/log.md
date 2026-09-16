@@ -2,6 +2,15 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-16 · STEWARD RE-SIGNING of
+  knowledge/asdc/computations/energy-budget.md: Re-signed after the
+  placement migration (ADR C): the concept names its executor script in
+  executor.resource and carries the data-root layout as its own section;
+  the run-instruction reference is retired; no receipt, run id, executor
+  or attester changed. The verified event is written on the steward's
+  word. The new verified event is appended on the steward's word, the
+  earlier events kept as history. (steward)
+
 - 2026-09-16 · knowledge/asdc/computations/energy-budget.md: the run
   instructions reference references/skills/run-energy-budget.md is
   retired under the placement rule (ADR C in the marketplace repository:
