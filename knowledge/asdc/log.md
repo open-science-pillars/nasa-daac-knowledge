@@ -2,6 +2,38 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-19 · synoptic radiation product seeded (issue 187): the
+  dataset concept datasets/ceres-syn1deg.md (CERES SYN1deg, the
+  synoptic one degree product beside the energy balanced one), the
+  reference concept references/ceres-clear-sky-conventions.md (type
+  convention: the four quantities the radiation products call
+  clear-sky, which one each field carries, and why a cloud radiative
+  effect inherits the convention of the field it subtracts), and three
+  gotchas, gotchas/syn1deg-surface-fluxes-are-modelled-not-measured.md
+  (high; the surface and in-atmosphere fluxes are Fu-Liou output and
+  the tuned fields the ordering page describes as consistent with the
+  observed TOA are the ones the summary advises against using),
+  gotchas/syn1deg-refuses-long-term-trend-use.md (high; the product's
+  own summary refuses trend use and states it is not of climate
+  quality) and gotchas/syn1deg-geostationary-artifacts.md (medium; the
+  observed fluxes are normalized against CERES and the computed ones
+  are not). Sources read 2026-09-19: the CERES_SYN1deg_Ed4A data
+  quality summary version 1 of 5/8/2025 with its TOA and surface
+  accuracy and validation companions of 4/8/2021, the CERES data
+  products and documentation pages, the ASDC SYN1deg data set
+  abstract, the ASDC collection page (which redirects to the Earthdata
+  catalog), the CMR collection record for CER_SYN1deg-Month Edition4B
+  and a short name pattern search over the family, doi.org resolution
+  checks on the Edition4B DOIs and on the DOIs printed in the
+  summary's attribution section, the CERES_EBAF_Ed4.2 summary version
+  8 served that day for the clear-sky conventions, and Crossref
+  records for Rutan and others 2015, Doelling and others 2013,
+  Doelling and others 2016 and Loeb and others 2020. All five
+  concepts are drafts; the two high-severity gotchas carry eval case
+  ids whose cases are proposed under ceres/cases/ in the agent-evals
+  repository, and registration in that repository's manifest is the
+  coordinator's follow-up. (knowledge-seeder)
+
 - 2026-09-16 · STEWARD RE-SIGNING of
   knowledge/asdc/computations/energy-budget.md: Re-signed after the
   placement migration (ADR C): the concept names its executor script in
