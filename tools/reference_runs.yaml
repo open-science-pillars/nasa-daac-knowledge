@@ -83,6 +83,20 @@ runs:
     computation: ice_sheet_balance.py
     data_root: ice-sheet-balance
     args: [--ice-sheet, greenland, --window, "2003-01:2016-12", --altimetry, itslive, --runtime, reattest]
+  # The two altimetry records over the window they share. Both are registered
+  # because the pair is the claim: the parameter changes only the altimetric
+  # term, so a change in either rate is a change in that record and not in the
+  # mascons, and the concept's reference run reads them against each other.
+  ice-sheet-balance-record-itslive-2019:
+    bundle: knowledge/nsidc
+    computation: ice_sheet_balance.py
+    data_root: ice-sheet-balance
+    args: [--ice-sheet, greenland, --window, "2019-01:2023-10", --altimetry, itslive, --runtime, reattest]
+  ice-sheet-balance-record-atl15-2019:
+    bundle: knowledge/nsidc
+    computation: ice_sheet_balance.py
+    data_root: ice-sheet-balance
+    args: [--ice-sheet, greenland, --window, "2019-01:2023-10", --altimetry, atl15, --runtime, reattest]
   # The input-output balance's two fixture runs. Its data root run is not
   # registered: the committed root carries only the velocity term, so the run
   # refuses with exit 3 and this tool requires a run that computes.

@@ -3,6 +3,25 @@
 Newest first. One line per change: date, concept path, what changed, who.
 
 - 2026-09-19 · STEWARD RE-SIGNING of
+  knowledge/nsidc/computations/ice-sheet-balance.md: Re-signed after the
+  ATL15 term landed in the committed root. The environment's egress
+  policy was changed to allow the NSIDC distribution host, the same five
+  granules the two earlier attempts record were fetched unchanged, and
+  the concept now carries both altimetry terms rather than one and a
+  reason the other is missing. The reference run section gains the pair
+  over the window they share, Greenland 2019-01 through 2023-10: the
+  gravimetric side is identical on both, the altimetric rates differ by
+  80 Gt per year, and the verdict turns on which is used. It is read as
+  support for the boundaries' suspicion of the ITS_LIVE term and not as
+  a measured discrepancy, because the two rates' intervals overlap over
+  most of their length. The recorded pre-2019 run reproduces every
+  number it always did; only its run identifier moved, because the
+  identifier binds the data root's manifest and the root gained a term.
+  No executor, attester or loader is edited. The new verified event is
+  appended on the steward's word, the earlier events kept as history.
+  (steward)
+
+- 2026-09-19 · STEWARD RE-SIGNING of
   knowledge/nsidc/computations/ice-sheet-balance.md,
   knowledge/nsidc/computations/ice-sheet-input-output.md: Re-signed
   after the wrap: each concept declares the skill that runs it in the
