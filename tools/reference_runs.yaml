@@ -16,6 +16,7 @@ data_roots:
   sea-level-budget: knowledge/podaac/references/retrieval/sea-level-budget-root   # the three-term data root, stamped in the tree
   ice-sheet-balance: knowledge/nsidc/references/retrieval/ice-sheet-balance-root   # the mascon, altimetry and firn root of the nsidc bundle, stamped in the tree
   energy-budget: knowledge/asdc/references/retrieval/energy-budget-root   # the radiation term and the Argo receipt, stamped in the tree (asdc)
+  cloud-radiative-effect: knowledge/asdc/references/retrieval/cloud-radiative-effect-root   # the all-sky and clear-sky flux means of both conventions, stamped in the tree (asdc)
   ice-sheet-input-output: knowledge/nsidc/references/retrieval/ice-sheet-input-output-root   # the gate velocity term of the input-output balance, stamped in the tree; its thickness and surface mass balance terms are absent, so a run on it refuses
 runs:
   heat-budget:
@@ -109,3 +110,15 @@ runs:
     attester: references/attesters/energy_budget_check.py
     data_root: energy-budget
     args: [--window, "2006-01:2020-12", --runtime, reattest]
+  cloud-radiative-effect:
+    bundle: knowledge/asdc
+    computation: cloud_radiative_effect.py
+    attester: references/attesters/cloud_radiative_effect_check.py
+    data_root: none
+    args: [--fixture, --seed, "7", --region, global, --clear-sky, total-region, --window, "2006-01:2020-12", --runtime, reattest]
+  cloud-radiative-effect-record:
+    bundle: knowledge/asdc
+    computation: cloud_radiative_effect.py
+    attester: references/attesters/cloud_radiative_effect_check.py
+    data_root: cloud-radiative-effect
+    args: [--region, global, --clear-sky, cloud-free-area, --window, "2005-07:2015-06", --runtime, reattest]

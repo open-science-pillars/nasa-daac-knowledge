@@ -3,6 +3,60 @@
 Newest first. One line per change: date, concept path, what changed, who.
 
 - 2026-09-19 · STEWARD SIGNING of
+  knowledge/asdc/computations/cloud-radiative-effect.md,
+  knowledge/asdc/recipes/cloud-radiative-effect.md: Coordinator review
+  of the attested cloud radiative effect on the maintainer's behalf: the
+  attester selftest, the fixture run and its attestation, the convention
+  refusal exiting 3 and attesting as a refusal, both loader selftests,
+  the data root check and the anchored record run were all reproduced,
+  every headline number matching the pull request to the digit; a
+  tampered receipt value and an edited executor were both rejected by
+  the attester with a nonzero exit. The run lands 0.011 watts per square
+  metre from the published global mean net effect, inside the rounding
+  of the published table, and the receipt states that the distance
+  carries that rounding and the edition change and is not a measurement
+  of either. Promoted to stable; the check chain is wired into
+  run_checks.sh. The verified event is written on the steward's word.
+  The verified event is written on the steward's word. (steward)
+
+- 2026-09-19 · cloud radiative effect seeded (issue 188): the attested
+  computation computations/cloud-radiative-effect.md with its executor
+  references/computations/cloud_radiative_effect.py and attester
+  references/attesters/cloud_radiative_effect_check.py, the recipe
+  recipes/cloud-radiative-effect.md, the loaders
+  references/loaders/cre_ceres_fluxes.py and
+  references/loaders/cre_data_root.py, and the stamped data root
+  references/retrieval/cloud-radiative-effect-root
+  (cloud-radiative-effect-root-2026-09-19: the all-sky and clear-sky
+  flux means of eight regions under both clear-sky conventions for the
+  315 months 2000-03 through 2026-05). The clear-sky convention is a
+  declared parameter bound to the two the energy balanced product
+  carries, and a convention it does not carry (pristine, computed
+  cloud-removed, total-sky-no-aerosol) is refused with its reason; the
+  receipt also carries the same terms under the other convention, so
+  the price of the choice is a receipt fact. The real-data anchor is
+  the global cloud-free-area run over July 2005 through June 2015
+  (shortwave -45.8232, longwave +27.9340, net -17.8894 W m-2), which
+  sits -0.023, -0.066 and +0.011 from the published global mean cloud
+  radiative effect in Table 6-1 of the Edition 4.0 data quality
+  summary, inside the 0.1 W m-2 that table is rounded to; the same
+  window and region on the total-region convention gives -19.6352, and
+  over the Antarctic band the difference between the two conventions
+  reverses sign. Sources read 2026-09-19: the CERES_EBAF_Ed4.2 and
+  Ed4.2.1 data quality summary version 8 of 9/10/2026, the
+  CERES_EBAF_Ed4.0 data quality summary of 1/17/2018 for the published
+  table, the CERES one degree zonal geodetic weights, the granule's
+  OPeNDAP metadata response for the variable long names that fix which
+  convention each field carries, the netCDF-4 subset of
+  CERES_EBAF_Edition4.2.1_200003-202605.nc read through the ASDC
+  OPeNDAP endpoint with the Earthdata token, the CMR collection and
+  granule records, and Crossref records for Loeb and others 2020, 2018
+  and 2024. Both concepts are drafts; the computation names no
+  executor.skill, because the atmospheric physics capability that will
+  wrap it is still a planned repository, so the placement gate reports
+  it unwrapped. (knowledge-seeder)
+
+- 2026-09-19 · STEWARD SIGNING of
   knowledge/asdc/datasets/ceres-syn1deg.md,
   knowledge/asdc/conventions/ceres-clear-sky-conventions.md,
   knowledge/asdc/gotchas/syn1deg-geostationary-artifacts.md,

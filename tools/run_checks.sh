@@ -125,6 +125,37 @@ run uv run knowledge/asdc/references/loaders/eb_ceres_ebaf.py --selftest
 run uv run knowledge/asdc/references/loaders/eb_data_root.py --selftest
 run energy_budget_chain
 run energy_budget_record
+
+# The cloud radiative effect (asdc): the fixture run and its attestation,
+# the refusal of a clear-sky convention the product does not carry, and
+# the anchored record run on the committed root.
+cloud_radiative_effect_chain() {
+  local x=knowledge/asdc/references/computations/cloud_radiative_effect.py
+  local a=knowledge/asdc/references/attesters/cloud_radiative_effect_check.py
+  local tmp; tmp=$(mktemp -d)
+  uv run "$x" --fixture --seed 7 --region global --clear-sky total-region --window 2006-01:2020-12 --runtime run_checks --receipt "$tmp/receipt.json" || return 1
+  uv run "$a" "$tmp/receipt.json" || return 1
+  uv run "$x" --fixture --seed 7 --region global --clear-sky pristine --window 2006-01:2020-12 --runtime run_checks --receipt "$tmp/refusal.json"
+  [ "$?" -eq 3 ] || { echo "cloud_radiative_effect_chain: the convention refusal did not exit 3"; return 1; }
+  uv run "$a" "$tmp/refusal.json" | tee "$tmp/verdict.txt" || return 1
+  grep -q "^PASS refusal" "$tmp/verdict.txt" || { echo "cloud_radiative_effect_chain: the refusal did not attest as a refusal"; return 1; }
+  rm -rf "$tmp"
+}
+cloud_radiative_effect_record() {
+  local x=knowledge/asdc/references/computations/cloud_radiative_effect.py
+  local a=knowledge/asdc/references/attesters/cloud_radiative_effect_check.py
+  local root=knowledge/asdc/references/retrieval/cloud-radiative-effect-root
+  local tmp; tmp=$(mktemp -d)
+  uv run knowledge/asdc/references/loaders/cre_data_root.py --root "$root" --check || return 1
+  uv run "$x" --data-root "$root" --region global --clear-sky cloud-free-area --window 2005-07:2015-06 --runtime run_checks --receipt "$tmp/record.json" || return 1
+  uv run "$a" "$tmp/record.json" --data-root "$root" || return 1
+  rm -rf "$tmp"
+}
+run uv run knowledge/asdc/references/attesters/cloud_radiative_effect_check.py --selftest
+run uv run knowledge/asdc/references/loaders/cre_ceres_fluxes.py --selftest
+run uv run knowledge/asdc/references/loaders/cre_data_root.py --selftest
+run cloud_radiative_effect_chain
+run cloud_radiative_effect_record
 # The ice sheet balance data root (nsidc): the firn and surface mass
 # balance loaders' selftests and the committed root's manifest check.
 run uv run knowledge/nsidc/references/loaders/isb_firn_gemb.py --selftest
