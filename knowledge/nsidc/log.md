@@ -23,7 +23,10 @@ Newest first. One line per change: date, concept path, what changed, who.
   observations, and do not cover the same ice (medium). Sources read on
   2026-09-19: the assessment at essd.copernicus.org in full; the
   Greenland elevation change product's paper at essd.copernicus.org in
-  full; the GSFC-FDM description at tc.copernicus.org in full; the
+  full; the GSFC-FDM description at tc.copernicus.org in full (that host
+  is reachable from this session, where the 2026-09-13 entry below
+  records it was not from that one, so a reachability note in a log
+  entry is a dated observation about one session); the
   NSIDC-0792 version 1 user guide and the NSIDC pages for NSIDC-0792,
   ATL15 version 5 and NSIDC-0776 version 2; the ITS_LIVE project site;
   the Crossref records for the assessment, the Greenland product's
