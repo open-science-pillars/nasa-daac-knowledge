@@ -5,6 +5,7 @@ title: "Computing a cloud radiative effect from CERES EBAF: choosing the clear-s
 description: "The terms of a top-of-atmosphere cloud radiative effect over a window and a region, which field supplies each, which concept holds each term's trap (the two clear-sky conventions the product carries and the effect's inheritance of whichever is subtracted; the zonal geodetic weights the product's own global means are formed with; the absence of any surface type mask in the fields read), the rule that the convention is declared and never inferred, and how the result is read: the terms as the convention's, the decomposition residual as a check on the product's fields, the contrast with the other convention as the price of the choice."
 tags: [ceres, ebaf, cloud-radiative-effect, clear-sky, total-region, cloud-free-area, convention, radiation-budget, recipe]
 generated: { by: knowledge-seeder/claude, at: 2026-09-19T07:10:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-19T07:18:47Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/196 }
 inputs:
   - dataset: ../datasets/ceres-ebaf-ed4-2.md
   - all_sky: "the all-sky outgoing shortwave, outgoing longwave and net downward TOA fluxes per calendar month on the one degree grid (toa_sw_all_mon, toa_lw_all_mon, toa_net_all_mon) from the CERES EBAF Edition 4.2.1 file, the edition and release date stated"
@@ -52,7 +53,7 @@ sources:
   - id: data-root
     resource: ../references/retrieval/cloud-radiative-effect-root/RECORD.json
     title: "The stamped data root the real run reads: the loader's stamp, the coverage table and the bookkeeping table"
-status: draft
+status: stable
 stale_after: 2027-03-19
 ---
 

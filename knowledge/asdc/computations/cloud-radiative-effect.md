@@ -16,7 +16,8 @@ executor:
 attester:
   resource: references/attesters/cloud_radiative_effect_check.py
 generated: { by: knowledge-seeder/claude, at: 2026-09-19T07:10:00Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-19T07:18:47Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/196 }
+status: stable
 stale_after: 2027-03-19
 sources:
   - id: convention
