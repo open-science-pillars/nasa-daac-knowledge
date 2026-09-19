@@ -2,6 +2,18 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-19 · knowledge/asdc/computations/energy-budget.md,
+  knowledge/asdc/computations/cloud-radiative-effect.md: each gains
+  its executor.skill key, naming the wrapping skill in the atmosphere
+  sphere capability that the wrapping rule sends it to,
+  atmospheric-physics/energy-budget-closure and
+  atmospheric-physics/cloud-radiative-effect. Nothing else changes:
+  no executor, attester, loader or data root is touched, and no
+  number moves. Both concepts are stable and signed, so both owe a
+  re-sign; the capability's first release is the pull request this
+  key resolves against, and the placement audit stops reporting the
+  two as unwrapped once it merges · claude
+
 - 2026-09-19 · STEWARD SIGNING of
   knowledge/asdc/computations/cloud-radiative-effect.md,
   knowledge/asdc/recipes/cloud-radiative-effect.md: Coordinator review

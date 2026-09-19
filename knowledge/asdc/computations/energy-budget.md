@@ -10,6 +10,7 @@ parameters:
 computation: references/computations/energy_budget.py
 executor:
   resource: references/computations/energy_budget.py
+  skill: atmospheric-physics/energy-budget-closure
   receipt: [run_id, computation, code_sha256, capability, bundle, runtime, generated_utc, data, bound_parameters, refused, months, series, terms, toa_net_W_m2, ocean_side_W_m2, residual_W_m2, toa_net_anomaly_trend_W_m2_per_decade, residual, combined_uncertainty, verdict, energy_over_window_ZJ, published_eei, bookkeeping, known_truth, caveats]
 attester:
   resource: references/attesters/energy_budget_check.py
