@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
   "package": "nasa-daac-knowledge",
-  "version": "2026.9.3",
+  "version": "2026.9.4",
   "package_type": "knowledge",
   "agent_plugins_spec": "1.0.0",
-  "repository_classification_digest": "sha256:56bdca531706cf13939aae30e742f147bdca42b7786685385c79015909285c5a",
+  "repository_classification_digest": "sha256:1bd3b2ba827dda3b5697c25d970d69e86ebf383f56797ec087db30376c81137f",
   "dependencies": {
     "capabilities": {},
     "knowledge": {}
   },
-  "knowledge_digest": "sha256:1b63e9d64b560e25758b15ac2ff22e90b93273e739bfd3b92ff1a86a5787b3e2",
+  "knowledge_digest": "sha256:4fd4f9b10afcfd1396c42b9d162148458b22a8c6c02eb26e9f69745a270b742a",
   "adapters": {
-    "claude": "sha256:b95a9caa5c7e750e18af6a16d7a77c9904c65221baefec24331a50e7231f05f8",
-    "agent-plugins": "sha256:71f06938dee94a28183fddfdabeea4502e99d1f03545eac386ccb1562aa1d488"
+    "claude": "sha256:6034cec79016aa5b0abad1e244d978501e1329f4808733d18036e6b006095ccf",
+    "agent-plugins": "sha256:42df246491f38b4dc983e70143280a6816a2ef8d785c9b399255cbe0aacaedfe"
   }
 }
