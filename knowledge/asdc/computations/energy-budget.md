@@ -18,6 +18,7 @@ generated: { by: knowledge-seeder/claude, at: 2026-09-15T18:30:00Z }
 verified:
   - { by: human:PaulMRamirez, at: 2026-09-15T18:57:33Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/174 }
   - { by: human:PaulMRamirez, at: 2026-09-16T05:50:55Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/183 }
+  - { by: human:PaulMRamirez, at: 2026-09-19T08:13:02Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/199 }
 status: stable
 stale_after: 2027-03-15
 sources:
@@ -282,7 +283,7 @@ the attestation document.
 
 ## The data root, for a real run
 
-The run instructions that sat under references/skills/ are retired: a procedure is a skill, and a skill lives in the capability whose sphere this concept names (the placement rule, ADR C in the marketplace repository). That capability, atmospheric-physics, is planned and not yet a package, so this computation is unwrapped for now: the executor's usage text (`--help`) states the fixture run, the refusal rule and the receipt path, the attester's usage text states how a receipt is attested, and this section keeps the one part of the retired instructions that is contract and not procedure, the layout of the data root the executor reads. The executor's own usage text still names the retired file for that layout; it is revised, with a fresh reference run, when the wrapping skill lands.
+The run instructions that sat under references/skills/ are retired: a procedure is a skill, and a skill lives in the capability whose sphere this concept names (the placement rule, ADR C in the marketplace repository). That capability, atmospheric-physics, was promoted on 2026-09-19 as a wrap-only release, and the skill that runs this computation is `energy-budget-closure` there, named in `executor.skill` above. The executor's usage text (`--help`) states the fixture run, the refusal rule and the receipt path, the attester's usage text states how a receipt is attested, and this section keeps the one part of the retired instructions that is contract and not procedure, the layout of the data root the executor reads. The executor's own usage text still names the retired file for that layout, and is revised with the next reference run, because editing it changes the digest this concept quotes.
 
 The real run's tree is committed at
 references/retrieval/energy-budget-root, built by the loader under
