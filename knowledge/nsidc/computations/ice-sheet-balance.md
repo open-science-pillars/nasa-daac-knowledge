@@ -2,7 +2,7 @@
 type: Attested Computation
 spheres: [cryosphere]
 title: "Ice sheet mass balance closure from GRACE-FO mascons against altimetric volume change with a firn correction (attested)"
-description: "Sanctioned closure of one ice sheet's mass balance over a stated window: the JPL mascon sum over the ice sheet's land mascons against the altimetric volume change less the GEMB firn air content change times a stated ice density, each as the mean of its annual-lag differences with an interval, the residual formed on the epochs both methods share, the bar its own half width plus the stated mascon selection systematic, a verdict closed_within_uncertainty, the GIA, low-degree, frame, smoothing, firn and density statements as receipt facts, and a refusal (exit 3, never a number) for a window outside the terms' overlap, an ice sheet without a firn term over its altimetry domain, or a window across the GRACE to GRACE-FO gap without continuity evidence. Proven on a synthetic fixture with a planted residual and anchored on a Greenland run over 2003 through 2016 from the stamped data root, read against the IMBIE 2023 assessment. The committed root's altimetry term is the ITS_LIVE elevation change; ICESat-2 ATL15 is the intended product, its loader built and awaiting a fetchable granule."
+description: "Sanctioned closure of one ice sheet's mass balance over a stated window: the JPL mascon sum over the ice sheet's land mascons against the altimetric volume change less the GEMB firn air content change times a stated ice density, each as the mean of its annual-lag differences with an interval, the residual formed on the epochs both methods share, the bar its own half width plus the stated mascon selection systematic, a verdict closed_within_uncertainty, the GIA, low-degree, frame, smoothing, firn and density statements as receipt facts, and a refusal (exit 3, never a number) for a window outside the terms' overlap, an ice sheet without a firn term over its altimetry domain, or a window across the GRACE to GRACE-FO gap without continuity evidence. Proven on a synthetic fixture with a planted residual and anchored on a Greenland run over 2003 through 2016 from the stamped data root, read against the IMBIE 2023 assessment. The committed root carries both altimetry terms, the ITS_LIVE elevation change and ICESat-2 ATL15, and a Greenland window they share is run on each: the two rates differ by 80 Gt per year and the verdict turns on which is used."
 tags: [ice-sheet, mass-balance, closure, greenland, antarctica, grace, grace-fo, mascons, altimetry, atl15, its-live, firn, gemb, attested]
 runtime: python
 parameters:
@@ -23,6 +23,7 @@ verified:
   - { by: human:PaulMRamirez, at: 2026-09-16T03:06:45Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/176 }
   - { by: human:PaulMRamirez, at: 2026-09-16T05:50:55Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/183 }
   - { by: human:PaulMRamirez, at: 2026-09-19T08:36:53Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/201 }
+  - { by: human:PaulMRamirez, at: 2026-09-19T20:09:02Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/204 }
 status: stable
 stale_after: 2027-03-15
 sources:
@@ -70,7 +71,7 @@ sources:
     title: "Podaac bundle attested computation: the sea level budget closure whose shape (terms, bookkeeping as receipt facts, fixture, refusal, attester) this computation keeps"
   - id: data-root
     resource: ../references/retrieval/ice-sheet-balance-root/RECORD.json
-    title: "The stamped data root committed beside this concept: the loaders' stamps, the bookkeeping and closure tables, the manifest of the term files, and SOURCES.json for the downloads and the granules that could not be fetched"
+    title: "The stamped data root committed beside this concept: the loaders' stamps, the bookkeeping and closure tables, the manifest of the term files, and SOURCES.json for the downloads, including the two ATL15 attempts an egress policy refused before the third succeeded"
   - id: loaders
     resource: ../references/loaders/isb_data_root.py
     title: "The term loaders and the stamp assembler under references/loaders (isb_mass_mascons.py, isb_volume_itslive.py, isb_volume_atl15.py, isb_firn_gemb.py, isb_smb_gemb.py, isb_data_root.py), each with a selftest"
@@ -162,13 +163,23 @@ with true cell areas over the ice sheet's cells, less the firn air
 content volume anomaly at the same epochs over the same domains,
 times the stated ice density: one kilometre cubed is density over a
 thousand gigatonnes.[^gotcha-firn][^gotcha-grid] The committed
-root's volume term is the ITS_LIVE Greenland elevation change
-(monthly, 1992 through 2023, the same file and the same fixed cell
-sets of 464,999 ice sheet and 23,827 peripheral glacier cells as the
-firn term) because the ATL15 Version 5 granules could not be fetched
-from the drafting environment; the ATL15 loader is verified on its
-selftest, the root's RECORD names the term absent with the reason,
-and a run asking for it refuses.[^its-live][^atl15][^data-root] The
+root carries both volume terms, so the parameter chooses between two
+independent altimetric records over the window they share. The
+ITS_LIVE Greenland elevation change is monthly, 1992 through 2023,
+the same file and the same fixed cell sets of 464,999 ice sheet and
+23,827 peripheral glacier cells as the firn term. The ATL15 term is
+quarterly, 2019-01 through 2026-01, the Version 5 10 km GL granule
+summed over the 20,016 cells whose ice_area is above zero at every
+epoch, one undivided region of 1,748,582 km2 covering the ice sheet
+and the peripheral ice caps together.[^its-live][^atl15][^data-root]
+The two altimetry domains are therefore not the same cell set, and
+neither is the firn domain: the firn term is subtracted over the
+ITS_LIVE cell sets, 1,822,362 km2 in total, which is 4.2 percent
+larger than the ATL15 region. Scaling the firn rate by the area ratio
+moves the ATL15 altimetric rate of the run below by 2.8 Gt per year,
+small against that run's bar of 154 and not nothing; it is a property
+of this root, where one firn product serves two volume grids, and not
+of either product.[^data-root] The
 firn term is the earlier seed's root: the GEMB 1.3.0 firn air content
 anomaly against 2014-01-01 with the GEMB to GSFC-FDM spread as its
 uncertainty, a spread that crosses zero on 29 ice sheet rows, so each
@@ -295,11 +306,11 @@ references/retrieval/ice-sheet-balance-root, built by the loaders
 under references/loaders (isb_firn_gemb.py and isb_smb_gemb.py for the
 GEMB terms, isb_mass_mascons.py for the mascon grid,
 isb_volume_itslive.py for the ITS_LIVE elevation change,
-isb_volume_atl15.py for ATL15 when its granules can be fetched, each
-with `--selftest`) and stamped by isb_data_root.py, which writes
-RECORD.json with the bookkeeping and closure tables from the loaders'
-stamps; SOURCES.json records the downloads and the granules that could
-not be fetched. This is the layout the computation reads.
+isb_volume_atl15.py for ATL15, each with `--selftest`) and stamped by
+isb_data_root.py, which writes RECORD.json with the bookkeeping and
+closure tables from the loaders' stamps; SOURCES.json records the
+downloads, including the two attempts at the ATL15 granules that an
+egress policy refused before the third succeeded. This is the layout the computation reads.
 `--data-root DIR` in place of `--fixture`:
 
 ```
@@ -313,8 +324,8 @@ DIR/
                         area_km2, ...          the firn root of the earlier seed
   volume-itslive.csv    ice_sheet, domain, month, value_km3, uncertainty_km3,
                         uncertainty_correlated_km3, area_km2, ..., sampling, product
-  volume-atl15.csv      the same columns from ATL15, quarterly; absent from the
-                        committed root, and RECORD.json says why
+  volume-atl15.csv      the same columns from ATL15, quarterly, one undivided
+                        Greenland region and the four Antarctic quadrants summed
   smb.csv               the surface mass balance term (ice shelves only; not read
                         by this computation)
   <term>-stamp.json     one stamp per term file
@@ -353,7 +364,9 @@ Which loader produces each file:
   are the same project's).
 - `volume-atl15.csv`: the ATL15 10 km delta_h summed with ice_area
   ([the ATL15 concept](../datasets/icesat2-atl15.md)); the loader
-  needs an Earthdata Login and a route to the NSIDC cloud archive.
+  needs an Earthdata Login and a route to the NSIDC cloud archive,
+  which the archive serves by redirecting a token-bearing request to a
+  content distribution host.
 
 ## Reference run
 
@@ -381,9 +394,12 @@ in tools/reference_runs.yaml, each naming this bundle, are the two
 fixture runs.
 
 **Real-data run (the stamped data root
-ice-sheet-balance-root-2026-09-15, Greenland, 2003-01 through
-2016-12, the ITS_LIVE term, run sha256:d9f24a2b51b08a22 under the
-runtime claude-code, measured 2026-09-15).** 151 of 168 mascon months (the 17 missing are June
+ice-sheet-balance-root-2026-09-19, Greenland, 2003-01 through
+2016-12, the ITS_LIVE term, run sha256:5f704e13835ccc00 under the
+runtime claude-code, measured 2026-09-15 and rerun 2026-09-19).**
+Every number below is the number first measured; the run identifier
+moved because it binds the data root's manifest, and the root gained
+the ATL15 term. 151 of 168 mascon months (the 17 missing are June
 2003 and the battery-management months the product's list names),
 168 altimetry epochs, 127 common differences. Gravimetry minus
 281.297 Gt per year, 95 percent interval [minus 328.727, minus
@@ -441,6 +457,37 @@ chain the pull request names verifies the stamp, reruns the executor
 on the data root and attests the receipt against the tree on every
 change.
 
+**The two altimetry records over the window they share (Greenland,
+2019-01 through 2023-10, the widest window both terms and the firn
+term cover, measured 2026-09-19 under the runtime claude-code).** The
+gravimetric side is the same run on both, minus 220.962 Gt per year,
+because the parameter changes only the altimetric term. On ITS_LIVE
+the altimetric rate is minus 66.832 Gt per year, [minus 241.030,
++107.367], and the residual is +154.131, [+62.117, +246.145], against
+a bar of 103.948, so `closed_within_uncertainty` is false (run
+sha256:c22e7623a3fd9bd7). On ATL15 it is minus 146.812, [minus
+370.152, +76.528], and the residual is +88.944, [minus 53.248,
++231.135], against a bar of 154.126, so the verdict is true (run
+sha256:0782898ea9b8f1a2).
+
+Read this carefully, because the verdict flips and the two records do
+not formally disagree. The altimetric rates differ by 80.0 Gt per
+year, ATL15 the more negative and the nearer both to the gravimetric
+rate and to every published Greenland rate for these years, which is
+what the boundaries below suspected. But their intervals overlap over
+most of their length, so this is not a measurement of a discrepancy
+between the two records: it is one record sitting where the mascons
+sit and the other not. The bars differ too, and for a reason worth
+stating: ATL15's quarterly epochs give 20 of them against ITS_LIVE's
+58 monthly ones, yet the residual's effective sample size is larger
+on ATL15 (14.0 against 6.3), because the monthly ITS_LIVE differences
+are strongly autocorrelated (lag-1 +0.777). So the wider ATL15 bar
+comes from fewer epochs and the narrower ITS_LIVE bar from epochs
+that are not independent, and the flip in the verdict is carried by
+the residual falling from +154 to +89 as much as by the bar. The
+firn domain mismatch stated above moves the ATL15 rate a further 2.8
+Gt per year in the same direction and is not corrected here.
+
 **Pass bar.** There is no measured tolerance to record: the verdict
 is a comparison of the residual against the bar the receipt itself
 carries, and the attester recomputes both. The plausibility bands on
@@ -467,7 +514,10 @@ over 2010 through 2016, minus 228 against minus 223 over 2019 through
 2023), so the term that drifts is the ITS_LIVE elevation change with
 its GEMB firn correction, whose altimetric rate after 2019 is far
 from every published Greenland rate; the closure verdict is window
-dependent, and the altimetry term is the suspect. Antarctica refuses on this
+dependent, and the altimetry term is the suspect. Those windows are
+all ITS_LIVE runs: on ATL15 the 2019 through 2023-10 window closes,
+which is the first independent evidence for that reading rather than
+an inference from the mascons alone. Antarctica refuses on this
 root for want of a grounded firn air content term: the ITS_LIVE
 distribution carries GEMB output over the floating shelves only, and
 the RACMO2 and MAR alternates the firn stamp names were not read; a
@@ -484,9 +534,14 @@ year;[^its-live][^bedmachine][^gotcha-gate][^gotcha-thickness] the
 published input-output estimates the reader compares against are
 IMBIE's input-output group, which in Greenland agrees with altimetry
 and gravimetry over 2003 to 2018 within the 19 Gt per year spread
-quoted above.[^otosaka-2023] The altimetry term is the ITS_LIVE
-elevation change and not ATL15, for the reason the data root
-records; an ATL15 run on this executor awaits a fetchable granule.
+quoted above.[^otosaka-2023] Both altimetry terms are now in
+the root and the run above puts them side by side over 2019-01
+through 2023-10: ATL15 gives an altimetric rate 80 Gt per year more
+negative than ITS_LIVE and the closure closes on it, which supports
+the reading here without settling it, because the two rates'
+intervals overlap. ATL15 begins in 2019, so it cannot test the
+ITS_LIVE record before then, and the pre-2019 anchor stands on
+ITS_LIVE alone.
 The Greenland altimetry domain is the ITS_LIVE mask (the ice sheet
 and the peripheral glaciers) and the gravimetry domain is a set of
 whole mascons that also hold ice-free land, coastal ocean and, at

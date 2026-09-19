@@ -196,6 +196,25 @@ ice_sheet_balance_record() {
 }
 run ice_sheet_balance_record
 
+# The two altimetry records over the window they share, each run and attested.
+# The pair is the claim the concept's reference run makes, so the routine runs
+# both: the parameter changes only the altimetric term, and a change in either
+# rate belongs to that record rather than to the mascons.
+ice_sheet_balance_altimetry_pair() {
+  local x=knowledge/nsidc/references/computations/ice_sheet_balance.py
+  local a=knowledge/nsidc/references/attesters/ice_sheet_balance_check.py
+  local root=knowledge/nsidc/references/retrieval/ice-sheet-balance-root
+  local tmp; tmp=$(mktemp -d)
+  local alt
+  for alt in itslive atl15; do
+    uv run "$x" --data-root "$root" --ice-sheet greenland --window 2019-01:2023-10 \
+      --altimetry "$alt" --runtime run_checks --receipt "$tmp/$alt.json" || return 1
+    uv run "$a" "$tmp/$alt.json" --data-root "$root" || return 1
+  done
+  rm -rf "$tmp"
+}
+run ice_sheet_balance_altimetry_pair
+
 # The nsidc input-output balance: the attester selftest, the fixture chain
 # with its window refusal, the loader selftests, the stamped data root
 # check, and the record run, which refuses because the root carries no

@@ -37,6 +37,7 @@ copy) is UNTRACED. Neither fails.
 import argparse
 import difflib
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -110,9 +111,31 @@ def signed_text(text):
         + "\n---\n" + body.rstrip() + "\n"
 
 
-def history(repo, ref, rel):
-    """[(sha, path-at-that-commit)] newest first, following renames."""
-    out = git(repo, "log", "--follow", "--format=%x00%H", "--name-only",
+def history(repo, ref, rel, follow=True):
+    """[(sha, path-at-that-commit)] newest first.
+
+    follow=True tracks renames, which is what a concept moved between
+    directories needs, and it is the default. It comes at a price: git
+    simplifies history under --follow and drops merge commits, so a
+    signature written while resolving a merge is invisible in it. The
+    caller falls back to follow=False, which keeps every commit that
+    touched the path, when the event it is looking for is not in the
+    followed history.
+
+    Ordered topologically rather than by date, because the caller walks
+    newest first and stops at the first commit without the event it is
+    looking for: two commits written in the same second would otherwise
+    come back in an order git does not promise, and the walk would stop
+    at the wrong one."""
+    if not follow:
+        # No rename tracking here, so the path is the path and --name-only is
+        # not needed to recover it. That matters: git prints no file names for
+        # a merge commit under --name-only, which is exactly the commit this
+        # pass exists to see.
+        out = git(repo, "log", "--full-history", "--topo-order", "--format=%H",
+                  *([ref] if ref else []), "--", rel, check=False)
+        return [(sha, rel) for sha in out.split() if sha.strip()]
+    out = git(repo, "log", "--follow", "--topo-order", "--format=%x00%H", "--name-only",
               *([ref] if ref else []), "--", rel, check=False)
     entries = []
     for block in out.split("\x00"):
@@ -130,17 +153,27 @@ def show(repo, sha, path):
 
 def signing_commit(repo, ref, rel, event):
     """The oldest commit in the file's history that carries `event`,
-    scanning newest first and stopping at the first that lacks it."""
-    found = None
-    for sha, path in history(repo, ref, rel):
-        text = show(repo, sha, path)
-        fm, _ = parse(text) if text is not None else (None, "")
-        if fm is None or event not in human_events(fm):
-            if found is not None:
-                break
-            continue
-        found = (sha, path)
-    return found
+    scanning newest first and stopping at the first that lacks it.
+
+    Searched first in the followed history, which tracks renames, and
+    then in the full history, which keeps the merge commits --follow
+    drops. A signature written while resolving a merge lives only in
+    the second, and a concept whose signature cannot be found at all is
+    reported as unsigned rather than compared, so missing it would hide
+    every later edit to that concept instead of reporting the debt."""
+    for follow in (True, False):
+        found = None
+        for sha, path in history(repo, ref, rel, follow=follow):
+            text = show(repo, sha, path)
+            fm, _ = parse(text) if text is not None else (None, "")
+            if fm is None or event not in human_events(fm):
+                if found is not None:
+                    break
+                continue
+            found = (sha, path)
+        if found is not None:
+            return found
+    return None
 
 
 def later_commits(repo, ref, rel, since):
@@ -325,6 +358,61 @@ def selftest():
     commit("digest")
     rc, out = run()
     assert rc == 0 and "stable signed 2" in out and "DIGEST" not in out, out
+
+    # A signature written while resolving a merge, in a repository of its
+    # own so the case does not inherit the branch or the dirty tree the
+    # sections above leave behind. git simplifies history under --follow and
+    # drops merge commits, and prints no file names for a merge under
+    # --name-only, so a signature that lives only in a merge was invisible:
+    # the concept read as signed-but-uncommitted for ever, and, because the
+    # signing commit was never found, the later edit that owed a re-sign was
+    # never compared and never reported. That is the failure this case exists
+    # to catch, so it asserts the debt and not only the absence of a PENDING.
+    mtmp = Path(tempfile.mkdtemp(prefix="sigcheck-merge-"))
+    mrepo = mtmp / "repo"
+    (mrepo / "knowledge" / "b" / "gotchas").mkdir(parents=True)
+    git(mtmp, "init", "-q", "-b", "main", str(mrepo))
+    git(mrepo, "config", "user.email", "t@example.com")
+    git(mrepo, "config", "user.name", "t")
+    mrel = "knowledge/b/gotchas/m.md"
+
+    def mwrite(events, body):
+        ver = "verified:\n" + "".join(f"  - {{ by: {b}, at: {a} }}\n" for b, a in events)
+        (mrepo / mrel).write_text(f"---\ntype: dataset-gotcha\nstatus: stable\n{ver}---\n{body}\n")
+
+    def mcommit(msg):
+        git(mrepo, "add", "-A")
+        git(mrepo, "commit", "-q", "-m", msg)
+        return git(mrepo, "rev-parse", "HEAD").strip()
+
+    def mrun(*args):
+        r = subprocess.run([sys.executable, __file__, str(mrepo / "knowledge" / "b"), *args],
+                           capture_output=True, text=True)
+        return r.returncode, r.stdout + r.stderr
+
+    one = [("human:t", "2026-01-01T00:00:00Z")]
+    mwrite(one, "a merged fact")
+    mcommit("add m, signed")
+    git(mrepo, "checkout", "-q", "-b", "side")
+    mwrite(one, "a merged fact, sharpened")
+    mcommit("side edits m without re-signing")
+    git(mrepo, "checkout", "-q", "main")
+    (mrepo / "knowledge" / "b" / "elsewhere.txt").write_text("the base moves on\n")
+    mcommit("the base moves on")
+    git(mrepo, "merge", "--no-ff", "--no-commit", "side", check=False)
+    two = one + [("human:t", "2026-03-01T00:00:00Z")]
+    mwrite(two, "a merged fact, sharpened")
+    merge_sha = mcommit("merge side, re-signing m in the resolution")
+    assert len(git(mrepo, "rev-list", "--parents", "-n", "1", merge_sha).split()) == 3, \
+        "the case needs a real merge commit"
+    rc, out = mrun()
+    assert rc == 0 and "owed 0" in out and "pending 0" in out, out
+    # and an edit after it owes, naming the merge as the signing commit
+    mwrite(two, "a merged fact, sharpened again")
+    rc, out = mrun()
+    assert rc == 1 and f"OWED  {mrel}" in out and merge_sha[:7] in out, out
+    shutil.rmtree(mtmp, ignore_errors=True)
+
     print("signature_check selftest: OK (owed, pending, cleared by re-sign, --at, --diff, --report, rename, draft, "
           "provider event with role and source, review key unsigned, digest skipped)")
 
