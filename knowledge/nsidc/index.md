@@ -37,8 +37,8 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [G02135 Sea Ice Index, Version 4: NOAA at NSIDC daily and monthly sea ice extent, area, images and GeoTIFFs from the NASA Team concentration records](datasets/sea-ice-index-g02135.md), status: stable
 - [BedMachine Greenland (IDBMG4 Version 6) and BedMachine Antarctica (NSIDC-0756 Version 4): ice thickness, bed topography, surface, error and mask on the polar stereographic grids](datasets/bedmachine-greenland-antarctica.md), status: stable
 - [ICESat-2 ATL10 along-track sea ice freeboard, Version 7: total freeboard per ATL07 height segment on six beams, from a per-beam reference sea surface found in leads over 10 km sections](datasets/icesat2-atl10-freeboard.md), status: stable
-- [IMBIE 2023: the reconciled multi-method assessment of Greenland and Antarctic ice sheet mass balance, 1992 to 2020](datasets/imbie-ice-sheet-assessment.md), status: draft
-- [The firn model air content term the ice sheet closure subtracts: GEMB and GSFC-FDM firn air content as the ITS_LIVE elevation change products distribute it](datasets/firn-model-air-content.md), status: draft
+- [IMBIE 2023: the reconciled multi-method assessment of Greenland and Antarctic ice sheet mass balance, 1992 to 2020](datasets/imbie-ice-sheet-assessment.md), status: stable
+- [The firn model air content term the ice sheet closure subtracts: GEMB and GSFC-FDM firn air content as the ITS_LIVE elevation change products distribute it](datasets/firn-model-air-content.md), status: stable
 
 ## gotchas
 
@@ -57,7 +57,7 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [ATL10 freeboard is not sea ice thickness: total freeboard is the air and snow interface above the sea surface, and the conversion to thickness needs a snow depth and three densities the product does not carry](gotchas/atl10-freeboard-is-not-thickness.md), severity high, status: draft
 - [The strong and weak beams of each ATLAS pair differ four to one in energy, and so in photon rate, segment length and precision: which of gtXl and gtXr is strong depends on sc_orient, and a freeboard statistic names its beams](gotchas/atl10-strong-versus-weak-beams.md), severity medium, status: stable
 - [The firn air content correction is a spread between models, not a measured term: it sets the uncertainty of an altimetric mass rate and it changes sign inside the record](gotchas/firn-air-content-spread-dominates-the-altimetric-mass-rate.md), severity high, status: draft
-- [An assessment's method groups are not independent measurements of the same thing: they share corrections and records, they cover different ice, and the reconciled uncertainty shrinks by the square root of a count](gotchas/assessment-method-groups-are-not-independent.md), severity medium, status: draft
+- [An assessment's method groups are not independent measurements of the same thing: they share corrections and records, they cover different ice, and the reconciled uncertainty shrinks by the square root of a count](gotchas/assessment-method-groups-are-not-independent.md), severity medium, status: stable
 
 ## computations
 

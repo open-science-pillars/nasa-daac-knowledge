@@ -5,6 +5,7 @@ title: "The SYN1deg documentation refuses long-term trend use in its own words a
 description: "The Edition4A data quality summary states that SYN1deg should not be used to infer long-term trends of clouds or fluxes and is not of climate quality, repeats the point in its computed flux cautions, and sends trend users to EBAF-TOA and EBAF-Surface, which remove the known geostationary artifacts, and cloud trend users to SSF1deg, which is of climate quality but does not cover the diurnal cycle. The refusal is not generic caution: the summaries name a decreasing surface net longwave anomaly trend caused by newer geostationary imagers retrieving higher cloud bases, and a decreasing polar downward longwave trend caused by Terra water vapor channel degradation. A trend fitted to this product's anomalies is a trend the documentation has already attributed to the instruments."
 tags: [ceres, syn1deg, trends, climate-quality, anomalies, geostationary, ebaf, ssf1deg, product-choice]
 generated: { by: knowledge-seeder/claude, at: 2026-09-19T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-19T06:21:35Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/191 }
 severity: high
 dataset: ../datasets/ceres-syn1deg.md
 eval_case: syn1deg-refuses-long-term-trend-use

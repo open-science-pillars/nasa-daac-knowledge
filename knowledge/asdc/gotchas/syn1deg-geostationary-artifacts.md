@@ -5,9 +5,10 @@ title: "Geostationary artifacts sit in the SYN1deg surface and in-atmosphere irr
 description: "The geostationary radiances that fill the hours between CERES overpasses are cross-calibrated and the broadband geostationary TOA fluxes are regressed onto CERES fluxes, which removes most of the artifacts from the observed fluxes. The computed fluxes get no such normalization: they are driven by the geostationary cloud retrievals themselves, whose channel count, view angle and imager generation change across domain boundaries in space and across satellite replacements in time. The summary states outright that there are geostationary artifacts in the Edition4A surface and in-atmosphere irradiances, and the validation documents show one satellite out of family in its own domain and a longitude discontinuity at a domain edge. Geostationary coverage stops at 60 degrees, so the artifact geography stops there too."
 tags: [ceres, syn1deg, geostationary, artifacts, surface-flux, in-atmosphere-flux, cloud-retrieval, view-angle, domain-boundary]
 generated: { by: knowledge-seeder/claude, at: 2026-09-19T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-19T06:21:35Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/191 }
 severity: medium
 dataset: ../datasets/ceres-syn1deg.md
-status: draft
+status: stable
 stale_after: 2027-03-19
 sources:
   - id: syn-dqs

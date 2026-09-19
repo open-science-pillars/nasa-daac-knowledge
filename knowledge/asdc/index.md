@@ -21,7 +21,7 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 ## datasets
 
 - [CERES EBAF Edition 4.2 and 4.2.1: energy balanced and filled top-of-atmosphere and surface radiative fluxes](datasets/ceres-ebaf-ed4-2.md), status: stable
-- [CERES SYN1deg Edition4A, Edition4B and Edition1A: synoptic one degree observed and computed top-of-atmosphere, in-atmosphere and surface fluxes with clouds and aerosols](datasets/ceres-syn1deg.md), status: draft
+- [CERES SYN1deg Edition4A, Edition4B and Edition1A: synoptic one degree observed and computed top-of-atmosphere, in-atmosphere and surface fluxes with clouds and aerosols](datasets/ceres-syn1deg.md), status: stable
 
 ## gotchas
 
@@ -32,15 +32,15 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [The EBAF climatology base period, the edition and the release date fix the anomaly baseline: the product's climatology is July 2005 through June 2015, and files of different editions or releases differ in the fields themselves](gotchas/ebaf-climatology-baseline.md), severity low, status: stable
 - [SYN1deg surface and in-atmosphere fluxes are radiative transfer output, and the tuned fields that would tie them to the observed TOA are the ones the summary advises against using, so the usable computed fluxes in this product are unconstrained](gotchas/syn1deg-surface-fluxes-are-modelled-not-measured.md), severity high, status: draft
 - [The SYN1deg documentation refuses long-term trend use in its own words and states that the product is not of climate quality, and the artifacts it names have the shape of the trends a user would want to report](gotchas/syn1deg-refuses-long-term-trend-use.md), severity high, status: draft
-- [Geostationary artifacts sit in the SYN1deg surface and in-atmosphere irradiances, because the observed TOA fluxes are normalized against CERES and the computed fluxes are not, so structure at a domain boundary or at a satellite change is an input artifact before it is weather](gotchas/syn1deg-geostationary-artifacts.md), severity medium, status: draft
+- [Geostationary artifacts sit in the SYN1deg surface and in-atmosphere irradiances, because the observed TOA fluxes are normalized against CERES and the computed fluxes are not, so structure at a domain boundary or at a satellite change is an input artifact before it is weather](gotchas/syn1deg-geostationary-artifacts.md), severity medium, status: stable
 
 ## recipes
 
 - [Closing the Earth's energy budget: EBAF net TOA flux against Argo ocean heat content plus the published deep and non-ocean terms](recipes/energy-budget.md), status: stable
 
-## references
+## conventions
 
-- [CERES clear-sky conventions: the cloud-free-area flux, the filled cloud-free-area flux, the total-region flux and the computed cloud-removed flux, and the pristine and aerosol-free computations beside them](references/ceres-clear-sky-conventions.md), status: draft
+- [CERES clear-sky conventions: the cloud-free-area flux, the filled cloud-free-area flux, the total-region flux and the computed cloud-removed flux, and the pristine and aerosol-free computations beside them](conventions/ceres-clear-sky-conventions.md), status: stable
 
 ## computations (OKF v0.2 section 10)
 

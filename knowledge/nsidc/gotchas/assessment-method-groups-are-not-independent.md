@@ -5,9 +5,10 @@ title: "An assessment's method groups are not independent measurements of the sa
 description: "The reconciled ice sheet mass balance the IMBIE assessment publishes is an error-weighted mean over three technique groups whose members are themselves error-weighted means, and both steps divide the uncertainty by the square root of the number of contributors. The assessment calls the three techniques independent for that purpose, and its own text records what they share: glacial isostatic adjustment models used on two of them, two surface mass balance models behind every input-output estimate, one satellite gravity record behind sixteen gravimetry estimates, and a peripheral glacier domain that altimetry excludes, gravimetry cannot separate and the input-output method includes. Reading agreement with two groups as two confirmations, or the reconciled interval as the spread of independent measurements, overstates how well a rate is pinned."
 tags: [imbie, assessment, intercomparison, altimetry, gravimetry, input-output, uncertainty, independence, gia, surface-mass-balance, peripheral-glaciers, greenland, antarctica, cryosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-19T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-19T06:21:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/192 }
 severity: medium
 dataset: ../datasets/imbie-ice-sheet-assessment.md
-status: draft
+status: stable
 stale_after: 2027-03-19
 sources:
   - id: assessment

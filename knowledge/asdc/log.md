@@ -2,6 +2,25 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-19 · STEWARD SIGNING of
+  knowledge/asdc/datasets/ceres-syn1deg.md,
+  knowledge/asdc/conventions/ceres-clear-sky-conventions.md,
+  knowledge/asdc/gotchas/syn1deg-geostationary-artifacts.md,
+  knowledge/asdc/gotchas/syn1deg-surface-fluxes-are-modelled-not-measured.md,
+  knowledge/asdc/gotchas/syn1deg-refuses-long-term-trend-use.md:
+  Maintainer review of the synoptic radiation concepts seeded in round
+  four: the dataset, the clear-sky conventions (moved from the
+  references tree to conventions, where the provider bundles keep a
+  convention concept), and the three gotchas. The dataset, the
+  convention and the geostationary artifacts gotcha are promoted to
+  stable; the two high-severity gotchas carry this first review and stay
+  draft for a second. The three provider-facing discrepancies the seed
+  recorded (the two summaries disagreeing on the net imbalance, the two
+  attribution DOIs that do not resolve, and the absent three-hourly
+  collection in the registry) stand as recorded and go to the archive
+  contact. The verified event is written on the steward's word. The
+  verified event is written on the steward's word. (steward)
+
 - 2026-09-19 · synoptic radiation product seeded (issue 187): the
   dataset concept datasets/ceres-syn1deg.md (CERES SYN1deg, the
   synoptic one degree product beside the energy balanced one), the

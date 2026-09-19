@@ -5,6 +5,7 @@ title: "The firn air content correction is a spread between models, not a measur
 description: "Converting an ice sheet volume change into a mass change subtracts the change in firn air content and multiplies the remainder by a density. Neither firn field this bundle reads ships a usable error: the Greenland product ships none and its own paper substitutes the difference between two firn models, and the Antarctic error field is not a firn air content error in the units a budget needs. The resulting term is large enough to set the formal error of the altimetric mass rate, and the anomaly changes sign inside the record, so the correction adds to a loss over some windows and cancels it over others. A mass rate quoted with only the height or volume error omits the term that dominates it, and a closure residual then reads as a disagreement between observing systems."
 tags: [firn, firn-air-content, fac, gemb, gsfc-fdm, its-live, atl15, mass-balance, density, model-spread, uncertainty, greenland, antarctica, cryosphere]
 generated: { by: knowledge-seeder/claude, at: 2026-09-19T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-19T06:21:43Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/192 }
 severity: high
 dataset: ../datasets/firn-model-air-content.md
 eval_case: firn-air-content-spread-dominates-the-altimetric-mass-rate
