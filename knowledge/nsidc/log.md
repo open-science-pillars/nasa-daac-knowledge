@@ -2,21 +2,58 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-19 · STEWARD RE-SIGNING of
+  knowledge/nsidc/computations/ice-sheet-balance.md,
+  knowledge/nsidc/computations/ice-sheet-input-output.md: Re-signed
+  after the wrap: each concept declares the skill that runs it in the
+  land ice capability, promoted the same day as a wrap-only release, and
+  the paragraph in each that said the capability was planned and the
+  computation unwrapped now names the skill. The executors are not
+  edited, so no digest either concept quotes has moved and no reference
+  run changed; the closure's usage text that still names a retired path
+  is revised with the next reference run, for that reason. The new
+  verified event is appended on the steward's word, the earlier events
+  kept as history. (steward)
+
 - 2026-09-19 · knowledge/nsidc/computations/ice-sheet-balance.md,
   knowledge/nsidc/computations/ice-sheet-input-output.md: each gains
   its executor.skill key, naming the wrapping skill in the cryosphere
   sphere capability that the wrapping rule sends it to,
   land-ice/ice-mass-change and land-ice/ice-sheet-input-output.
   Nothing else changes: no executor, attester, loader or data root is
-  touched, and no number moves. The closure is stable and signed, so
-  it owes a re-sign; the input-output computation is still a draft
-  and owes none until the maintainer signs it. The capability's first
+  touched, and no number moves. Both concepts are stable and signed,
+  the input-output computation having been promoted the same day, so
+  both owe a re-sign. The capability's first
   release is the pull request these keys resolve against, and the
   placement audit stops reporting the two as unwrapped once it
   merges. Two sentences in the concept bodies, each saying that the
   capability is planned and the computation unwrapped for now, go
-  stale with this key and are left for the maintainer's re-sign
-  rather than edited here · claude
+  stale with this key and are corrected at the maintainer's re-sign
+  rather than here · claude
+
+- 2026-09-19 · STEWARD SIGNING of
+  knowledge/nsidc/computations/ice-sheet-input-output.md,
+  knowledge/nsidc/recipes/ice-sheet-input-output.md: Coordinator review
+  of the attested input-output balance on the maintainer's behalf: the
+  attester selftest, the fixture run and its attestation, the window
+  refusal exiting 3 and attesting as a refusal, all four loader
+  selftests, the data root check and the record run were reproduced,
+  every headline number matching the pull request; a tampered discharge
+  rate and an edited executor were both rejected with a nonzero exit.
+  The record run refuses, because the thickness term sits behind a
+  distribution host this environment's egress policy refuses and no NASA
+  archive distributes a gridded surface mass balance over grounded ice;
+  the concept states both gaps rather than quoting a fixture as an
+  anchor, which is why it is promoted on the fixture chain alone, as the
+  sea level budget was. The gate set is derived by a recorded rule from
+  the velocity mosaics and nothing was placed by hand. Two provider
+  findings are carried in the concept and the stamp rather than invented
+  as gotchas: the Greenland mosaics carry no floating ice cell, so a
+  margin gate is not a grounding line gate; and the user guide's flux
+  gate sentence cannot be reconciled with the geometry, so the executor
+  divides by the areal scale, states the ground flux, and carries the
+  scale per node so the guide's reading can be recovered. The verified
+  event is written on the steward's word. (steward)
 
 - 2026-09-19 · knowledge/nsidc/computations/ice-sheet-input-output.md,
   knowledge/nsidc/recipes/ice-sheet-input-output.md,

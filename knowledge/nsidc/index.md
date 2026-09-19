@@ -12,17 +12,18 @@ freeboard, the NASA Team sea ice concentration record (NSIDC-0051)
 and the NOAA at NSIDC Sea Ice Index (G02135) that is built from it,
 as reviewable concepts with sources, statuses and steward sign-off. OKF v0.2 conformant
 (okf_version: "0.2"; the vendored spec text lives in marketplace
-docs/upstream). The six BedMachine and ATL10 concepts, the
-ice sheet mass balance closure (an attested computation with its
-recipe and run skill, the bundle's first), the input-output balance
-that is its third estimate (an attested computation with its recipe,
-unwrapped until the land ice capability is promoted) and the four
-land ice anchor concepts (the published multi-method assessment a closure run is read
-against, the firn model air content term the closure subtracts, and
-their two gotchas) are drafts; the
-rest are stable after the reviews recorded in log.md, and a
-confirmation from the NSIDC DAAC or the product teams is invited on
-each and never required. The mass
+docs/upstream). Both attested computations are stable and signed, the
+ice sheet mass balance closure and the input-output balance that is
+its third estimate, each with its recipe and each wrapped by a skill
+in the land ice capability, promoted on 2026-09-19 to host them. What
+the input-output computation is signed for is the method and its
+refusals: its record run refuses, so this bundle carries no real-data
+input-output estimate of any ice sheet. Three high-severity gotchas
+carry one review and stay drafts awaiting a second, the BedMachine
+thickness interpolation, the ATL10 freeboard conversion and the firn
+air content spread; the rest are stable after the reviews recorded in
+log.md, and a confirmation from the NSIDC DAAC or the product teams is
+invited on each and never required. The mass
 side of land ice (the GRACE mascons) lives in the podaac bundle and is
 named where a concept here depends on it; the ice thickness a
 discharge needs (BedMachine) is now in this bundle, and the closure
@@ -64,9 +65,9 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 ## computations
 
 - [Ice sheet mass balance closure from GRACE-FO mascons against altimetric volume change with a firn correction (attested)](computations/ice-sheet-balance.md), status: stable
-- [Ice sheet mass balance by the input-output method: surface mass balance in, gate discharge out (attested)](computations/ice-sheet-input-output.md), status: draft
+- [Ice sheet mass balance by the input-output method: surface mass balance in, gate discharge out (attested)](computations/ice-sheet-input-output.md), status: stable
 
 ## recipes
 
 - [Closing an ice sheet's mass balance: gravimetry against firn-corrected altimetry, and the input-output estimate this bundle cannot yet make](recipes/ice-sheet-balance.md), status: stable
-- [The input-output estimate of an ice sheet's mass balance: what falls on the grounded ice, less what leaves through the gate](recipes/ice-sheet-input-output.md), status: draft
+- [The input-output estimate of an ice sheet's mass balance: what falls on the grounded ice, less what leaves through the gate](recipes/ice-sheet-input-output.md), status: stable

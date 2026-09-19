@@ -2,6 +2,33 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-19 · STEWARD RE-SIGNING of
+  knowledge/asdc/gotchas/ebaf-clear-sky-definitions.md: The clear-sky
+  definitions gotcha gains an eval_case key registering
+  ebaf-clear-sky-definitions, the case written for the atmospheric
+  physics capability's first release: the release makes the convention a
+  parameter an agent binds on every run of the cloud-radiative-effect
+  skill, so the trap is reachable in one command where it used to take a
+  hand-written difference of two flux variables. The claim is not
+  touched and no number moves; the key is inside the signed text, so the
+  concept owes a re-sign and takes one. The new verified event is
+  appended on the steward's word, the earlier events kept as history.
+  (steward)
+
+- 2026-09-19 · STEWARD RE-SIGNING of
+  knowledge/asdc/computations/energy-budget.md,
+  knowledge/asdc/computations/cloud-radiative-effect.md: Re-signed after
+  the wrap: each concept declares the skill that runs it in the
+  atmospheric-physics capability, promoted the same day as a wrap-only
+  release, and the paragraph that said the capability was planned and
+  the computation unwrapped now says which skill runs it. The executors
+  are not edited, so no digest this concept quotes has moved and no
+  reference run changed; the usage text that still names a retired path
+  is revised with the next reference run, for that reason. The new
+  verified event is appended on the steward's word, the earlier events
+  kept as history.
+  (steward)
+
 - 2026-09-19 · knowledge/asdc/computations/energy-budget.md,
   knowledge/asdc/computations/cloud-radiative-effect.md: each gains
   its executor.skill key, naming the wrapping skill in the atmosphere
@@ -29,7 +56,7 @@ Newest first. One line per change: date, concept path, what changed, who.
   carries that rounding and the edition change and is not a measurement
   of either. Promoted to stable; the check chain is wired into
   run_checks.sh. The verified event is written on the steward's word.
-  The verified event is written on the steward's word. (steward)
+  (steward)
 
 - 2026-09-19 · cloud radiative effect seeded (issue 188): the attested
   computation computations/cloud-radiative-effect.md with its executor
@@ -84,8 +111,7 @@ Newest first. One line per change: date, concept path, what changed, who.
   recorded (the two summaries disagreeing on the net imbalance, the two
   attribution DOIs that do not resolve, and the absent three-hourly
   collection in the registry) stand as recorded and go to the archive
-  contact. The verified event is written on the steward's word. The
-  verified event is written on the steward's word. (steward)
+  contact. The verified event is written on the steward's word. (steward)
 
 - 2026-09-19 · synoptic radiation product seeded (issue 187): the
   dataset concept datasets/ceres-syn1deg.md (CERES SYN1deg, the
@@ -124,9 +150,8 @@ Newest first. One line per change: date, concept path, what changed, who.
   placement migration (ADR C): the concept names its executor script in
   executor.resource and carries the data-root layout as its own section;
   the run-instruction reference is retired; no receipt, run id, executor
-  or attester changed. The verified event is written on the steward's
-  word. The new verified event is appended on the steward's word, the
-  earlier events kept as history. (steward)
+  or attester changed. The new verified event is appended on the
+  steward's word, the earlier events kept as history. (steward)
 
 - 2026-09-16 · knowledge/asdc/computations/energy-budget.md: the run
   instructions reference references/skills/run-energy-budget.md is
@@ -153,8 +178,7 @@ Newest first. One line per change: date, concept path, what changed, who.
   atmosphere term, the domain understatement and the consistency-check
   wording). Promoted to stable; the check chain is wired into
   run_checks.sh and the registry runs carry the asdc bundle key. The
-  verified events are written on the steward's word. The verified event
-  is written on the steward's word. (steward)
+  verified events are written on the steward's word. (steward)
 
 - 2026-09-15 · coordinator's fix round applied to the energy budget
   seed (pull request 174): the attester now enforces the window rule
@@ -212,7 +236,7 @@ Newest first. One line per change: date, concept path, what changed, who.
   instruction in the coordinator session, the maintainer having reviewed
   the concept; promoted to stable under the two-review rule for high
   severity, with the playbook's preference for a different second
-  reviewer noted, and a provider confirmation still invited The new
+  reviewer noted, and a provider confirmation still invited. The new
   verified event is appended on the steward's word, the earlier events
   kept as history. (steward)
 
@@ -228,8 +252,7 @@ Newest first. One line per change: date, concept path, what changed, who.
   non-high gotchas promoted to stable;
   ebaf-imbalance-anchored-to-ocean-heating (high severity) keeps draft
   with this first review until a second human review, per the two-review
-  rule. The verified event is written on the steward's word. The
-  verified event is written on the steward's word. (steward)
+  rule. The verified event is written on the steward's word. (steward)
 
 - 2026-09-14 · coordinator's lint of the seed pull request applied to
   all six concepts: the data quality summary source pinned to the

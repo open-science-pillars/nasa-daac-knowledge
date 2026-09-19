@@ -22,6 +22,7 @@ generated: { by: knowledge-seeder/claude, at: 2026-09-15T20:00:00Z }
 verified:
   - { by: human:PaulMRamirez, at: 2026-09-16T03:06:45Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/176 }
   - { by: human:PaulMRamirez, at: 2026-09-16T05:50:55Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/183 }
+  - { by: human:PaulMRamirez, at: 2026-09-19T08:36:53Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/201 }
 status: stable
 stale_after: 2027-03-15
 sources:
@@ -287,7 +288,7 @@ and failed on its series when they are tampered.
 
 ## The data root, for a real run
 
-The run instructions that sat under references/skills/ are retired: a procedure is a skill, and a skill lives in the capability whose sphere this concept names (the placement rule, ADR C in the marketplace repository). That capability, land-ice, is planned and not yet a package, so this computation is unwrapped for now: the executor's usage text (`--help`) states the fixture run, the refusal rule and the receipt path, the attester's usage text states how a receipt is attested, and this section keeps the one part of the retired instructions that is contract and not procedure, the layout of the data root the executor reads. The executor's own usage text still names the retired file for that layout; it is revised, with a fresh reference run, when the wrapping skill lands.
+The run instructions that sat under references/skills/ are retired: a procedure is a skill, and a skill lives in the capability whose sphere this concept names (the placement rule, ADR C in the marketplace repository). That capability, land-ice, was promoted on 2026-09-19 as a wrap-only release, and the skill that runs this computation is `ice-mass-change` there, named in `executor.skill` above. The executor's usage text (`--help`) states the fixture run, the refusal rule and the receipt path, the attester's usage text states how a receipt is attested, and this section keeps the one part of the retired instructions that is contract and not procedure, the layout of the data root the executor reads. The executor's own usage text still names the retired file for that layout, and is revised with the next reference run, because editing it changes the digest this concept quotes.
 
 The real run's tree is committed at
 references/retrieval/ice-sheet-balance-root, built by the loaders

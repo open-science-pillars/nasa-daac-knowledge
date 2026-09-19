@@ -19,7 +19,10 @@ executor:
 attester:
   resource: references/attesters/ice_sheet_input_output_check.py
 generated: { by: knowledge-seeder/claude, at: 2026-09-19T08:00:00Z }
-status: draft
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-19T08:08:31Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/198 }
+  - { by: human:PaulMRamirez, at: 2026-09-19T08:36:53Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/201 }
+status: stable
 stale_after: 2027-03-19
 sources:
   - id: closure
@@ -281,9 +284,10 @@ rewritten, failed on its series when they are tampered, refused as
 ## The data root, for a real run
 
 The run instructions are a skill, not part of this concept: a
-procedure lives in the capability whose sphere this concept names,
-and that capability is planned and not yet a package, so this
-computation is unwrapped for now and `executor.skill` is absent. The
+procedure lives in the capability whose sphere this concept names.
+That capability, land-ice, was promoted on 2026-09-19 as a wrap-only
+release, and the skill that runs this computation is
+`ice-sheet-input-output` there, named in `executor.skill` above. The
 executor's usage text (`--help`) states the fixture run, the refusal
 rule and the receipt path, and this section keeps the part of the
 instructions that is contract and not procedure, the layout of the
