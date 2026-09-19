@@ -17,6 +17,7 @@ data_roots:
   ice-sheet-balance: knowledge/nsidc/references/retrieval/ice-sheet-balance-root   # the mascon, altimetry and firn root of the nsidc bundle, stamped in the tree
   energy-budget: knowledge/asdc/references/retrieval/energy-budget-root   # the radiation term and the Argo receipt, stamped in the tree (asdc)
   cloud-radiative-effect: knowledge/asdc/references/retrieval/cloud-radiative-effect-root   # the all-sky and clear-sky flux means of both conventions, stamped in the tree (asdc)
+  ice-sheet-input-output: knowledge/nsidc/references/retrieval/ice-sheet-input-output-root   # the gate velocity term of the input-output balance, stamped in the tree; its thickness and surface mass balance terms are absent, so a run on it refuses
 runs:
   heat-budget:
     computation: ecco_heat_budget.py
@@ -82,6 +83,21 @@ runs:
     computation: ice_sheet_balance.py
     data_root: ice-sheet-balance
     args: [--ice-sheet, greenland, --window, "2003-01:2016-12", --altimetry, itslive, --runtime, reattest]
+  # The input-output balance's two fixture runs. Its data root run is not
+  # registered: the committed root carries only the velocity term, so the run
+  # refuses with exit 3 and this tool requires a run that computes.
+  ice-sheet-input-output:
+    bundle: knowledge/nsidc
+    computation: ice_sheet_input_output.py
+    attester: references/attesters/ice_sheet_input_output_check.py
+    data_root: none
+    args: [--fixture, --seed, "7", --ice-sheet, greenland, --window, "2005-01:2014-12", --gates, synthetic-outlets, --runtime, reattest]
+  ice-sheet-input-output-long:
+    bundle: knowledge/nsidc
+    computation: ice_sheet_input_output.py
+    attester: references/attesters/ice_sheet_input_output_check.py
+    data_root: none
+    args: [--fixture, --seed, "7", --ice-sheet, greenland, --window, "1995-01:2018-12", --gates, synthetic-outlets, --runtime, reattest]
   energy-budget:
     bundle: knowledge/asdc
     computation: energy_budget.py

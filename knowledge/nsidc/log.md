@@ -2,6 +2,69 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-19 · knowledge/nsidc/computations/ice-sheet-input-output.md,
+  knowledge/nsidc/recipes/ice-sheet-input-output.md,
+  knowledge/nsidc/references/computations/ice_sheet_input_output.py,
+  knowledge/nsidc/references/attesters/ice_sheet_input_output_check.py,
+  knowledge/nsidc/references/loaders/iio_velocity_itslive.py,
+  knowledge/nsidc/references/loaders/iio_thickness_bedmachine.py,
+  knowledge/nsidc/references/loaders/iio_smb_gemb.py,
+  knowledge/nsidc/references/loaders/iio_data_root.py,
+  knowledge/nsidc/references/retrieval/ice-sheet-input-output-root/:
+  the third estimate of an ice sheet's mass balance, the input-output
+  method, as an attested computation with its recipe, its three
+  loaders, its stamped data root and its registry entries. The
+  executor differences a surface mass balance over the grounded
+  domain against a discharge formed node by node across a named flux
+  gate set as the ice density times the velocity normal to the gate
+  times the node width over the projection's areal scale times the
+  thickness; each rate is the mean of its annual epochs with an
+  interval on the effective sample size, the mass rate is their
+  difference epoch by epoch, the bar is its own half width plus the
+  stated gate systematic, and the verdict is whether the rate is
+  distinguishable from zero. Ten refusal codes, exit 3 and never a
+  number, cover a missing term, a missing gate set, a missing
+  velocity epoch family, a gate set that does not span the grounded
+  margin, a gate node whose thickness is an interpolation, a gate
+  node the thickness mask does not call grounded, a missing grounded
+  surface mass balance, a window outside the epochs, too few epochs
+  and an interval that cannot be stated. The attester recomputes the
+  discharge and the annualisation from the term rows by a second
+  implementation, then every rate block, the systematic, the bar and
+  the verdict, and its selftest covers two fixture passes, thirteen
+  tampers, two wrong releases, all eight fixture refusals, a forged
+  refusal and the
+  data-root path with its drift, its rewritten manifest and two
+  data-root refusals. Fixture anchor (seed 7, Greenland, gate set
+  synthetic-outlets, 2005-01 through 2014-12): surface mass balance
+  +400.086 and discharge +490.809 gigatonnes per year, mass rate
+  minus 90.723 against a bar of 67.518, significant, recovering a
+  planted minus 89.0. There is no real-data anchor and the concept
+  says so: the committed root carries the real gate velocity term (12
+  gates, 286 nodes, 11 annual ITS_LIVE mosaics of 2014 through 2024
+  sampled and deleted, only the derived CSV and stamp kept) and
+  declares its other two terms absent, so the record run refuses with
+  term-not-in-root and attests as a refusal. The two reasons are
+  different in kind and both are recorded with their status codes and
+  searches in SOURCES.json: the BedMachine granules for both ice
+  sheets answered 302 without the Earthdata Login token and 303 with
+  it to a content distribution host this environment's egress policy
+  refuses at the connection with 403 to the CONNECT, an access gap;
+  and no gridded surface mass balance over grounded ice is
+  distributed by any NASA archive for either ice sheet, a
+  distribution gap. Read on 2026-09-19: the ITS_LIVE Version 2 user
+  guide at nsidc.org in full, the project's mosaic catalogue and the
+  annual and static listings in the its-live-data bucket, the
+  collection and granule records of NSIDC-0776, IDBMG4 and NSIDC-0756
+  at cmr.earthdata.nasa.gov, the DataCite resolutions of their three
+  DOIs, and the Crossref records of Gardner and others 2018,
+  Morlighem and others 2017 and Otosaka and others 2023. The
+  published assessment's numbers are cited from this bundle's own
+  dataset concept and not restated. Both concepts are drafts with no
+  verified event; the computation carries no executor.skill, because
+  the land ice capability that would wrap it is still planned, and
+  the placement gate reports it as unwrapped. (knowledge-seeder)
+
 - 2026-09-19 · STEWARD SIGNING of
   knowledge/nsidc/datasets/imbie-ice-sheet-assessment.md,
   knowledge/nsidc/datasets/firn-model-air-content.md,
