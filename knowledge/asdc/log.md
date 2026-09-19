@@ -3,6 +3,19 @@
 Newest first. One line per change: date, concept path, what changed, who.
 
 - 2026-09-19 · STEWARD RE-SIGNING of
+  knowledge/asdc/gotchas/ebaf-clear-sky-definitions.md: The clear-sky
+  definitions gotcha gains an eval_case key registering
+  ebaf-clear-sky-definitions, the case written for the atmospheric
+  physics capability's first release: the release makes the convention a
+  parameter an agent binds on every run of the cloud-radiative-effect
+  skill, so the trap is reachable in one command where it used to take a
+  hand-written difference of two flux variables. The claim is not
+  touched and no number moves; the key is inside the signed text, so the
+  concept owes a re-sign and takes one. The new verified event is
+  appended on the steward's word, the earlier events kept as history.
+  (steward)
+
+- 2026-09-19 · STEWARD RE-SIGNING of
   knowledge/asdc/computations/energy-budget.md,
   knowledge/asdc/computations/cloud-radiative-effect.md: Re-signed after
   the wrap: each concept declares the skill that runs it in the
