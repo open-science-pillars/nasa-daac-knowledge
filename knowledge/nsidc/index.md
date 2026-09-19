@@ -14,8 +14,10 @@ as reviewable concepts with sources, statuses and steward sign-off. OKF v0.2 con
 (okf_version: "0.2"; the vendored spec text lives in marketplace
 docs/upstream). The six BedMachine and ATL10 concepts, the
 ice sheet mass balance closure (an attested computation with its
-recipe and run skill, the bundle's first) and the four land ice anchor
-concepts (the published multi-method assessment a closure run is read
+recipe and run skill, the bundle's first), the input-output balance
+that is its third estimate (an attested computation with its recipe,
+unwrapped until the land ice capability is promoted) and the four
+land ice anchor concepts (the published multi-method assessment a closure run is read
 against, the firn model air content term the closure subtracts, and
 their two gotchas) are drafts; the
 rest are stable after the reviews recorded in log.md, and a
@@ -62,7 +64,9 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 ## computations
 
 - [Ice sheet mass balance closure from GRACE-FO mascons against altimetric volume change with a firn correction (attested)](computations/ice-sheet-balance.md), status: stable
+- [Ice sheet mass balance by the input-output method: surface mass balance in, gate discharge out (attested)](computations/ice-sheet-input-output.md), status: draft
 
 ## recipes
 
 - [Closing an ice sheet's mass balance: gravimetry against firn-corrected altimetry, and the input-output estimate this bundle cannot yet make](recipes/ice-sheet-balance.md), status: stable
+- [The input-output estimate of an ice sheet's mass balance: what falls on the grounded ice, less what leaves through the gate](recipes/ice-sheet-input-output.md), status: draft
