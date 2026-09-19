@@ -2,6 +2,23 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-19 · STEWARD SIGNING of
+  knowledge/asdc/computations/cloud-radiative-effect.md,
+  knowledge/asdc/recipes/cloud-radiative-effect.md: Coordinator review
+  of the attested cloud radiative effect on the maintainer's behalf: the
+  attester selftest, the fixture run and its attestation, the convention
+  refusal exiting 3 and attesting as a refusal, both loader selftests,
+  the data root check and the anchored record run were all reproduced,
+  every headline number matching the pull request to the digit; a
+  tampered receipt value and an edited executor were both rejected by
+  the attester with a nonzero exit. The run lands 0.011 watts per square
+  metre from the published global mean net effect, inside the rounding
+  of the published table, and the receipt states that the distance
+  carries that rounding and the edition change and is not a measurement
+  of either. Promoted to stable; the check chain is wired into
+  run_checks.sh. The verified event is written on the steward's word.
+  The verified event is written on the steward's word. (steward)
+
 - 2026-09-19 · cloud radiative effect seeded (issue 188): the attested
   computation computations/cloud-radiative-effect.md with its executor
   references/computations/cloud_radiative_effect.py and attester
