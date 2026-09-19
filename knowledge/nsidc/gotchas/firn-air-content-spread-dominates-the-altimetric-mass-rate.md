@@ -26,6 +26,9 @@ sources:
   - id: nsidc-0792-user-guide
     resource: https://nsidc.org/sites/default/files/documents/user-guide/nsidc-0792-v001-userguide.pdf
     title: "NSIDC-0792 Version 1 user guide, read 2026-09-19: fac, fac_err and fac_mean in metres, and the GEMB run forced with 3-hourly ERA5"
+  - id: gemb
+    resource: https://doi.org/10.5194/gmd-16-2277-2023
+    title: "Gardner, Schlegel and Larour, 2023, Glacier Energy and Mass Balance (GEMB) a model of firn processes for cryosphere research, Geoscientific Model Development 16, 2277 to 2302, read in full 2026-09-19: the model's own account of where its uncertainty lives, its firn air content comparison against another model forced with the same climate data, and its statement that no objective way yet exists to say which model is closer to the truth"
   - id: data-root
     resource: ../references/retrieval/ice-sheet-balance-root/firn-stamp.json
     title: "The firn stamp of the committed ice sheet balance data root: the uncertainty basis for each domain, the Antarctic error field's statistics, and the committed firn.csv series read for the sign statements below"
@@ -97,7 +100,18 @@ forcing and in physics, and the product's paper reports large spatial
 differences in their firn air content rates and a temporal divergence
 around 2005 as melt becomes more prevalent, so the spread is a
 disagreement whose size says nothing about where the truth lies inside
-it.[^nilsson-2026-pdf] Because the anomaly changes sign, a correction
+it. GEMB's own description settles that point: compared against another
+firn model forced with the same regional climate data, its seasonal and
+interannual firn air content variations agree closely over both ice
+sheets while the long-term trends do not, over Greenland one model
+trending positive from 1979 to 2005 where GEMB trends flat, and over
+Antarctica the two taking opposite signs after 2008, and the
+description states that there is no objective way yet to say which is
+closer to the truth.[^nilsson-2026-pdf][^gemb] Two firn models can
+therefore disagree on the sign of a firn air content trend while
+sharing their climate forcing, which is what makes the spread a term
+with a sign problem rather than a bracket around a known
+value.[^gemb] Because the anomaly changes sign, a correction
 calibrated or sanity-checked on one window carries the wrong sign on
 another, and folding the firn term into an effective column density,
 which is the shortcut the absence of an error field invites, fixes its
@@ -124,7 +138,12 @@ because the anomaly changes sign inside the record and a reader cannot
 recover it from the total.[^data-root] A comparison of an altimetric
 mass rate against a gravimetric one, or against a published assessment,
 states which firn model stands behind the altimetric side, since that
-is the term the two do not share.[^computation][^atl15]
+is the term the two do not share.[^computation][^atl15] The
+disagreement between the two observing systems is itself the test GEMB's
+authors name for the firn correction, the comparison of firn-corrected
+altimetry against satellite gravimetry, so a residual that moves with
+the firn term is a result about the correction rather than a defect to
+be averaged away.[^gemb][^computation]
 
 **Verification.** The Greenland product's paper was fetched from the
 publisher and read in full on 2026-09-19, which is where the statement
@@ -141,7 +160,12 @@ units.[^nsidc-0792-user-guide] The sign statements were read on
 root, taking the greenland rows whose domain is ice_sheet: 384 monthly
 epochs from 1992-01 to 2023-12, first, last, maximum and minimum as
 quoted, and the two-model spread exceeding the magnitude of the anomaly
-itself at 26 of those epochs.[^data-root] The formal error the firn
+itself at 26 of those epochs.[^data-root] The GEMB description was
+fetched and read in full on 2026-09-19, after the journal's site became
+reachable part way through this session, for the model's uncertainty
+sources, its firn air content comparison and its statement about which
+model is closer to the truth; it describes the model as of version 1.0,
+which is not the version either product ran.[^gemb] The formal error the firn
 spread sets is the one the closure's reference run records, and the
 firn rate and its interval quoted above are the ones that run prints
 when the repository's check routine reruns it against the committed
@@ -152,6 +176,7 @@ data root, which it did on 2026-09-19.[^computation][^data-root]
 [^nilsson-2026]: Nilsson and Gardner, 2026, doi:10.5194/essd-18-1729-2026
 [^gsfc-fdm]: Medley and others, 2022, doi:10.5194/tc-16-3971-2022
 [^nsidc-0792-user-guide]: NSIDC-0792 Version 1 user guide, read 2026-09-19
+[^gemb]: Gardner, Schlegel and Larour, 2023, Geoscientific Model Development, doi:10.5194/gmd-16-2277-2023
 [^data-root]: The firn stamp and firn.csv of this bundle's committed data root
 [^computation]: This bundle's attested ice sheet mass balance closure
 [^gotcha-height]: This bundle's gotcha that height change is not mass change

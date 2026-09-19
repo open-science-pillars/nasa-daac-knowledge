@@ -36,7 +36,7 @@ sources:
     title: "Medley, Neumann, Zwally, Smith and Stevens, 2022, Simulations of firn processes over the Greenland and Antarctic ice sheets 1980 to 2021, The Cryosphere 16, 3971 to 4011: the GSFC-FDM version 1.2.1 description, the definition of firn air content, the MERRA-2 forcing and the model's own uncertainty"
   - id: gemb
     resource: https://doi.org/10.5194/gmd-16-2277-2023
-    title: "Gardner, Schlegel and Larour, 2023, Glacier Energy and Mass Balance (GEMB) a model of firn processes for cryosphere research, Geoscientific Model Development 16, 2277 to 2302: the model description both products cite, verified on its Crossref registry record on 2026-09-19 because the journal's own site was not reachable from this environment"
+    title: "Gardner, Schlegel and Larour, 2023, Glacier Energy and Mass Balance (GEMB) a model of firn processes for cryosphere research, Geoscientific Model Development 16, 2277 to 2302: the model description both products cite, read in full on 2026-09-19 after the journal's site became reachable from this environment; it describes the model as of version 1.0, which is not the version either product ran"
   - id: itslive-site
     resource: https://its-live.jpl.nasa.gov/
     title: "The ITS_LIVE project site and its documentation index, read 2026-09-19: the elevation change datasets and their NSIDC links; the project distributes no standalone firn product page"
@@ -128,10 +128,27 @@ run.[^data-root][^computation]
 model, is described by Gardner, Schlegel and Larour, 2023,
 Geoscientific Model Development 16, 2277 to 2302; both ITS_LIVE
 products cite it for the model and for the relaxation simulation their
-runs follow.[^gemb][^nsidc-0792-user-guide][^nilsson-2026-pdf] That
-description could not be read from this environment, so it is cited on
-its Crossref registry record and nothing beyond the record and what the
-two product documents say about it is stated here.[^gemb] GSFC-FDM
+runs follow.[^gemb][^nsidc-0792-user-guide][^nilsson-2026-pdf] It is a
+column model of the surface and atmosphere energy and mass exchange and
+of the firn state, with no horizontal communication between columns,
+embedded in the Ice-sheet and Sea-level System Model framework and
+one-way coupled with the atmosphere, so it runs offline against
+whichever climate forcing a run chooses and feeds nothing back; it
+offers several parameterization choices for albedo, subsurface
+shortwave absorption and compaction, and it requires a spin-up of
+thousands of years to initialise a deep firn column, which is why
+computational efficiency is one of its stated design
+goals.[^gemb] That description covers the model as of version 1.0, and
+neither product ran that version: the Greenland file names GEMB 1.3.0
+and the ice shelf product a later revision, so what the description
+establishes here is the model's structure and the choices a run makes,
+not the configuration of either run.[^gemb][^data-root][^nsidc-0792-user-guide]
+The description names ERA5 as the forcing of choice when the model is
+not being compared against another firn model, which is consistent with
+the ice shelf product's stated 3-hourly ERA5 forcing, and it does not
+establish the forcing of the Greenland run, which remains unstated in
+that product's own documents.[^gemb][^nsidc-0792-user-guide][^nilsson-2026-pdf]
+GSFC-FDM
 version 1.2.1 is the Goddard Space Flight Center firn densification
 model: simulations of the Greenland and Antarctic firn columns with the
 Community Firn Model framework, forced by MERRA-2 snowfall,
@@ -190,8 +207,30 @@ metres, ranging spatially from 0.2 to 3.9 metres, and 4.7 metres over
 the Antarctic ice sheet against a mean firn air content of 24.0 metres;
 for the rate they found no usable relationship with the climate forcing
 and adopt a single relative error of 0.134 times the absolute firn
-thickness change rate.[^gsfc-fdm] No equivalent statement is carried
-here for GEMB, because its description was not reachable.[^gemb]
+thickness change rate.[^gsfc-fdm] GEMB's description carries no single
+error figure of that kind. It names instead where the uncertainty
+lives: the parameterizations of albedo, snow grain growth, surface
+roughness, densification and its calibration, and thermal
+conductivity, all worsened once liquid water enters the column, and
+three setup decisions, the spin-up climatology, the spin-up length and
+the vertical resolution of the column.[^gemb] Its own evaluation puts a
+size on what those choices do to a trend. Compared against another firn
+model forced with the same regional climate data, GEMB's seasonal and
+interannual firn air content variations agree closely over both ice
+sheets while the long-term trends do not: over Greenland GEMB shows
+virtually no trend from 1979 to 2005 where the other model trends
+positive, a difference the description attributes to the spin-up
+climatology and calls a known major source of uncertainty in firn air
+content trends, and with that trend removed from both the two series
+run nearly together until 2004, after which GEMB loses about 0.5 metres
+of firn air content and the other model about 1.0 metres to 2015; over
+Antarctica the two are nearly identical until 2008, after which GEMB
+trends slightly positive and the other slightly negative.[^gemb] The
+description states that there is no objective way yet to say which
+model is closer to the truth, and that the most definitive test would
+be to compare firn-corrected altimetry against satellite gravimetry,
+which is the comparison this bundle's closure
+makes.[^gemb][^computation]
 
 The consequence for a mass rate computed from these files is that the
 firn term's uncertainty is a two-model spread rather than a measurement

@@ -29,10 +29,20 @@ Newest first. One line per change: date, concept path, what changed, who.
   the Crossref records for the assessment, the Greenland product's
   paper, the ice shelf product's paper, GEMB and GSFC-FDM; and the DOI
   resolutions for the Greenland product, the archived assessment series
-  and the assessment software. The GEMB model description could not be
-  fetched (gmd.copernicus.org refused the connection through this
-  environment) and is cited on its registry record, which the concept
-  says. The two reference concepts are filed under datasets/ rather
+  and the assessment software. The GEMB model description at
+  gmd.copernicus.org refused the connection at first and was reachable
+  later the same day, once the domain was allowed; it was then read in
+  full, and the firn concept and the high-severity gotcha carry what it
+  says: the model's structure and the choices a run makes, the
+  uncertainty sources it names, its firn air content comparison against
+  another firn model forced with the same climate data (the two agreeing
+  on seasonal and interannual variation and disagreeing on the
+  long-term trend, with opposite signs over Antarctica after 2008), and
+  its statement that no objective way yet exists to say which model is
+  closer to the truth, the test it proposes being the comparison this
+  bundle's closure makes. It describes the model as of version 1.0,
+  which is not the version either product ran, and the concepts say so.
+  The two reference concepts are filed under datasets/ rather
   than directly under references/, which the specification reserves for
   sanctioned code and data roots; the pull request says so for the
   reviewer. Drafts, unsigned. (knowledge-seeder)
