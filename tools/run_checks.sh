@@ -195,6 +195,45 @@ ice_sheet_balance_record() {
   rm -rf "$tmp"
 }
 run ice_sheet_balance_record
+
+# The nsidc input-output balance: the attester selftest, the fixture chain
+# with its window refusal, the loader selftests, the stamped data root
+# check, and the record run, which refuses because the root carries no
+# thickness term (the archive host this environment's egress policy
+# refuses) and no surface mass balance term (no NASA archive distributes
+# one over grounded ice), and attests as a refusal.
+ice_sheet_input_output_chain() {
+  local x=knowledge/nsidc/references/computations/ice_sheet_input_output.py
+  local a=knowledge/nsidc/references/attesters/ice_sheet_input_output_check.py
+  local tmp; tmp=$(mktemp -d)
+  uv run "$x" --fixture --seed 7 --ice-sheet greenland --window 2005-01:2014-12 --gates synthetic-outlets --runtime run_checks --receipt "$tmp/receipt.json" || return 1
+  uv run "$a" "$tmp/receipt.json" || return 1
+  uv run "$x" --fixture --seed 7 --ice-sheet greenland --window 2021-01:2023-12 --gates synthetic-outlets --runtime run_checks --receipt "$tmp/refusal.json"
+  [ "$?" -eq 3 ] || { echo "ice_sheet_input_output_chain: the window refusal did not exit 3"; return 1; }
+  uv run "$a" "$tmp/refusal.json" | tee "$tmp/verdict.txt" || return 1
+  grep -q "^PASS refusal" "$tmp/verdict.txt" || { echo "ice_sheet_input_output_chain: the refusal did not attest as a refusal"; return 1; }
+  rm -rf "$tmp"
+}
+ice_sheet_input_output_record() {
+  local x=knowledge/nsidc/references/computations/ice_sheet_input_output.py
+  local a=knowledge/nsidc/references/attesters/ice_sheet_input_output_check.py
+  local root=knowledge/nsidc/references/retrieval/ice-sheet-input-output-root
+  local tmp; tmp=$(mktemp -d)
+  uv run knowledge/nsidc/references/loaders/iio_data_root.py --root "$root" --check || return 1
+  uv run "$x" --data-root "$root" --ice-sheet greenland --window 2014-01:2023-12 --gates greenland-outlets-v1 --runtime run_checks --receipt "$tmp/record.json"
+  [ "$?" -eq 3 ] || { echo "ice_sheet_input_output_record: the record run did not refuse"; return 1; }
+  uv run "$a" "$tmp/record.json" --data-root "$root" | tee "$tmp/verdict.txt" || return 1
+  grep -q "^PASS refusal" "$tmp/verdict.txt" || { echo "ice_sheet_input_output_record: the record run did not attest as a refusal"; return 1; }
+  rm -rf "$tmp"
+}
+run uv run knowledge/nsidc/references/attesters/ice_sheet_input_output_check.py --selftest
+run uv run knowledge/nsidc/references/loaders/iio_velocity_itslive.py --selftest
+run uv run knowledge/nsidc/references/loaders/iio_thickness_bedmachine.py --selftest
+run uv run knowledge/nsidc/references/loaders/iio_smb_gemb.py --selftest
+run uv run knowledge/nsidc/references/loaders/iio_data_root.py --selftest
+run ice_sheet_input_output_chain
+run ice_sheet_input_output_record
+
 # Sibling plugin clones, when present, have their local concepts checked
 # for owed signatures, their scripts for undeclared dependencies and their
 # prose for the wording rules; an absent sibling is not a failure here.

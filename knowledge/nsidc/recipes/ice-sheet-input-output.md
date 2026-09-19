@@ -5,6 +5,7 @@ title: "The input-output estimate of an ice sheet's mass balance: what falls on 
 description: "The two terms of an input-output mass balance, which product supplies each, which concept holds each term's trap (the velocity mosaic that is a composite in map units, the thickness that is mass conservation in fast flow and an interpolation elsewhere, the mask that decides where the grounding line is, the surface mass balance that no NASA archive distributes over grounded Greenland), the gate rule that makes a node's flux legitimate, and how the result is read beside the gravimetric and altimetric estimates and the published assessment."
 tags: [ice-sheet, mass-balance, input-output, discharge, flux-gate, surface-mass-balance, greenland, antarctica, its-live, bedmachine, velocity, thickness, recipe]
 generated: { by: knowledge-seeder/claude, at: 2026-09-19T08:00:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-19T08:08:31Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/198 }
 inputs:
   - dataset: ../datasets/its-live-ice-velocity.md
   - dataset: ../datasets/bedmachine-greenland-antarctica.md
@@ -69,7 +70,7 @@ sources:
   - id: gardner-2018
     resource: https://doi.org/10.5194/tc-12-521-2018
     title: "Gardner and others (2018), Increased West Antarctic and unchanged East Antarctic ice discharge over the last 7 years, The Cryosphere 12, 521 to 547: the reference flux-gate discharge computation"
-status: draft
+status: stable
 stale_after: 2027-03-19
 ---
 

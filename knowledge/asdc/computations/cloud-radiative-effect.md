@@ -17,7 +17,9 @@ executor:
 attester:
   resource: references/attesters/cloud_radiative_effect_check.py
 generated: { by: knowledge-seeder/claude, at: 2026-09-19T07:10:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-19T07:18:47Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/196 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-19T07:18:47Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/196 }
+  - { by: human:PaulMRamirez, at: 2026-09-19T08:13:02Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/199 }
 status: stable
 stale_after: 2027-03-19
 sources:
@@ -304,13 +306,14 @@ document.
 
 The run instructions belong to a skill in the capability whose sphere
 this concept names, not to this concept (the placement rule, ADR C in
-the marketplace repository). That capability, atmospheric physics, is
-planned and not yet a package, so this computation is unwrapped for
-now and the placement gate reports it so: the executor's usage text
-(`--help`) states the fixture run, the refusal rule and the receipt
-path, the attester's usage text states how a receipt is attested, and
-this section keeps the one part that is contract and not procedure,
-the layout of the data root the executor reads.
+the marketplace repository). That capability, atmospheric physics, was
+promoted on 2026-09-19 as a wrap-only release, and the skill that runs
+this computation is `cloud-radiative-effect` there, named in
+`executor.skill` above: the executor's usage text (`--help`) states
+the fixture run, the refusal rule and the receipt path, the attester's
+usage text states how a receipt is attested, and this section keeps
+the one part that is contract and not procedure, the layout of the
+data root the executor reads.
 
 The real run's tree is committed at
 references/retrieval/cloud-radiative-effect-root, built by the loader
