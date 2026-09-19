@@ -5,9 +5,12 @@ title: "EBAF carries two clear-sky definitions, the cloud-free-area flux and the
 description: "The traditional CERES clear-sky flux is the flux over the cloud-free portions of a one degree region, sampled where cloud-free footprints exist and filled where they do not. Since Edition 4.1 EBAF also carries a clear-sky flux for the total region, the cloudy portions included with their clouds removed, which is the definition climate models use, and the cloud radiative effect is computed from it. The two differ by about 2 W m-2 in the global mean longwave and by more at high latitudes in winter and under cirrus, so a cloud radiative effect compared across editions, or against a model, with the definitions mixed reads the definition change as a change in clouds."
 tags: [ceres, ebaf, clear-sky, cloud-radiative-effect, total-region, cloud-free, edition, model-comparison]
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-14T05:59:59Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/146 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-14T05:59:59Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/146 }
+  - { by: human:PaulMRamirez, at: 2026-09-19T08:26:03Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/202 }
 severity: medium
 dataset: ../datasets/ceres-ebaf-ed4-2.md
+eval_case: ebaf-clear-sky-definitions
 status: stable
 stale_after: 2027-03-14
 sources:
