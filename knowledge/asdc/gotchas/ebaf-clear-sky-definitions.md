@@ -7,7 +7,7 @@ tags: [ceres, ebaf, clear-sky, cloud-radiative-effect, total-region, cloud-free,
 generated: { by: knowledge-seeder/claude, at: 2026-09-14T05:30:00Z }
 verified:
   - { by: human:PaulMRamirez, at: 2026-09-14T05:59:59Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/146 }
-  - { by: human:PaulMRamirez, at: 2026-09-19T08:26:03Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/201 }
+  - { by: human:PaulMRamirez, at: 2026-09-19T08:26:03Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/202 }
 severity: medium
 dataset: ../datasets/ceres-ebaf-ed4-2.md
 eval_case: ebaf-clear-sky-definitions
