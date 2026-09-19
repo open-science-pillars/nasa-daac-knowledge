@@ -12,6 +12,7 @@ parameters:
 computation: references/computations/cloud_radiative_effect.py
 executor:
   resource: references/computations/cloud_radiative_effect.py
+  skill: atmospheric-physics/cloud-radiative-effect
   receipt: [run_id, computation, code_sha256, capability, bundle, runtime, generated_utc, data, bound_parameters, refused, months, series, terms, cre_shortwave_W_m2, cre_longwave_W_m2, cre_net_W_m2, residual, combined_uncertainty, verdict, convention_contrast, published_comparison, bookkeeping, known_truth, caveats]
 attester:
   resource: references/attesters/cloud_radiative_effect_check.py
