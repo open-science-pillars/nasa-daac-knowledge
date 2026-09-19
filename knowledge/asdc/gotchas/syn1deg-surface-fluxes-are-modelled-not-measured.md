@@ -5,6 +5,7 @@ title: "SYN1deg surface and in-atmosphere fluxes are radiative transfer output, 
 description: "No CERES instrument measures a surface or an in-atmosphere flux. In SYN1deg every flux at the surface and at the 70, 200, 500 and 850 hPa levels is a Langley Fu-Liou computation from imager and geostationary cloud retrievals, reanalysis profiles, MATCH aerosols and retrieved albedos. The file carries both the initial untuned fields and the constrained tuned ones, and the summary states that the adjusted shortwave and longwave fluxes contain errors from code bugs, while the TOA validation document states that tuning the computed fluxes to the observed ones was unsuccessful for geostationary clouds. The observed quantity in the file is the TOA flux; the computed TOA flux beside it is not expected to match it, and the hourly surface uncertainty is several times the monthly one."
 tags: [ceres, syn1deg, surface-flux, in-atmosphere-flux, radiative-transfer, fu-liou, tuned-fluxes, entropy, uncertainty]
 generated: { by: knowledge-seeder/claude, at: 2026-09-19T05:30:00Z }
+verified: { by: human:PaulMRamirez, at: 2026-09-19T06:21:35Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/191 }
 severity: high
 dataset: ../datasets/ceres-syn1deg.md
 eval_case: syn1deg-surface-fluxes-are-modelled-not-measured

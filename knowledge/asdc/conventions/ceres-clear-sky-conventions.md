@@ -5,7 +5,8 @@ title: "CERES clear-sky conventions: the cloud-free-area flux, the filled cloud-
 description: "The CERES radiation products carry more than one quantity named clear-sky. An observed clear-sky flux is built from footprints identified as cloud-free and is missing where a region had none; EBAF fills that map and, from Edition4.1, also carries a total-region clear-sky flux defined the way climate models define one; SYN1deg computes clear-sky fluxes by removing the clouds from the same profiles used for all-sky, so their sampling equals the all-sky sampling, and computes pristine and aerosol-free conditions beside them. A cloud radiative effect is all-sky minus clear-sky in every one of these products, so it inherits whichever convention the subtracted field carries, and nothing in a difference of two flux variables records which one that was."
 tags: [ceres, clear-sky, cloud-radiative-effect, convention, ebaf, syn1deg, ssf1deg, pristine, model-comparison]
 generated: { by: knowledge-seeder/claude, at: 2026-09-19T05:30:00Z }
-status: draft
+verified: { by: human:PaulMRamirez, at: 2026-09-19T06:21:35Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/191 }
+status: stable
 stale_after: 2027-03-19
 sources:
   - id: syn-dqs

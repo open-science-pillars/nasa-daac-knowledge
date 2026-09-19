@@ -2,6 +2,20 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-19 · STEWARD SIGNING of
+  knowledge/nsidc/datasets/imbie-ice-sheet-assessment.md,
+  knowledge/nsidc/datasets/firn-model-air-content.md,
+  knowledge/nsidc/gotchas/assessment-method-groups-are-not-independent.md,
+  knowledge/nsidc/gotchas/firn-air-content-spread-dominates-the-altimetric-mass-rate.md:
+  Maintainer review of the land ice anchors seeded in round four: the
+  published multi-method assessment and the firn model air content
+  product as dataset concepts, and the two gotchas that qualify them.
+  The two datasets and the method-independence gotcha are promoted to
+  stable; the high-severity firn spread gotcha carries this first review
+  and stays draft for a second. The verified event is written on the
+  steward's word. The verified event is written on the steward's word.
+  (steward)
+
 - 2026-09-19 · knowledge/nsidc/datasets/imbie-ice-sheet-assessment.md,
   knowledge/nsidc/datasets/firn-model-air-content.md,
   knowledge/nsidc/gotchas/firn-air-content-spread-dominates-the-altimetric-mass-rate.md,
