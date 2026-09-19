@@ -2,6 +2,41 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-19 · knowledge/nsidc/datasets/imbie-ice-sheet-assessment.md,
+  knowledge/nsidc/datasets/firn-model-air-content.md,
+  knowledge/nsidc/gotchas/firn-air-content-spread-dominates-the-altimetric-mass-rate.md,
+  knowledge/nsidc/gotchas/assessment-method-groups-are-not-independent.md:
+  four new drafts, the anchors a land ice capability wrapping the ice
+  sheet mass balance closure consults. The first states what the third
+  IMBIE assessment reports for each ice sheet over each of its six
+  periods and over 1992 to 2020, with its uncertainties, its three
+  technique groups and its aggregation; the second states the firn
+  model air content term the closure subtracts as the two ITS_LIVE
+  elevation change files distribute it, with the model versions
+  (GEMB 1.3.0 and GSFC-FDM 1.2.1 for Greenland, a GEMB run forced with
+  3-hourly ERA5 for the Antarctic ice shelves), the domains, the
+  variable and what its uncertainty rests on. The two gotchas state
+  that the firn spread between models is the dominant uncertainty of an
+  altimetric mass rate and that the term changes sign inside the record
+  (high, with the eval case named on it), and that an assessment's
+  method groups share corrections, records and, in one direction, their
+  observations, and do not cover the same ice (medium). Sources read on
+  2026-09-19: the assessment at essd.copernicus.org in full; the
+  Greenland elevation change product's paper at essd.copernicus.org in
+  full; the GSFC-FDM description at tc.copernicus.org in full; the
+  NSIDC-0792 version 1 user guide and the NSIDC pages for NSIDC-0792,
+  ATL15 version 5 and NSIDC-0776 version 2; the ITS_LIVE project site;
+  the Crossref records for the assessment, the Greenland product's
+  paper, the ice shelf product's paper, GEMB and GSFC-FDM; and the DOI
+  resolutions for the Greenland product, the archived assessment series
+  and the assessment software. The GEMB model description could not be
+  fetched (gmd.copernicus.org refused the connection through this
+  environment) and is cited on its registry record, which the concept
+  says. The two reference concepts are filed under datasets/ rather
+  than directly under references/, which the specification reserves for
+  sanctioned code and data roots; the pull request says so for the
+  reviewer. Drafts, unsigned. (knowledge-seeder)
+
 - 2026-09-16 · STEWARD RE-SIGNING of
   knowledge/nsidc/computations/ice-sheet-balance.md: Re-signed after the
   placement migration (ADR C): the concept names its executor script in
