@@ -2,6 +2,22 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-19 · knowledge/nsidc/computations/ice-sheet-balance.md,
+  knowledge/nsidc/computations/ice-sheet-input-output.md: each gains
+  its executor.skill key, naming the wrapping skill in the cryosphere
+  sphere capability that the wrapping rule sends it to,
+  land-ice/ice-mass-change and land-ice/ice-sheet-input-output.
+  Nothing else changes: no executor, attester, loader or data root is
+  touched, and no number moves. The closure is stable and signed, so
+  it owes a re-sign; the input-output computation is still a draft
+  and owes none until the maintainer signs it. The capability's first
+  release is the pull request these keys resolve against, and the
+  placement audit stops reporting the two as unwrapped once it
+  merges. Two sentences in the concept bodies, each saying that the
+  capability is planned and the computation unwrapped for now, go
+  stale with this key and are left for the maintainer's re-sign
+  rather than edited here · claude
+
 - 2026-09-19 · knowledge/nsidc/computations/ice-sheet-input-output.md,
   knowledge/nsidc/recipes/ice-sheet-input-output.md,
   knowledge/nsidc/references/computations/ice_sheet_input_output.py,

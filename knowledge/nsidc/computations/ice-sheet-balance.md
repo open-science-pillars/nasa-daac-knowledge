@@ -14,6 +14,7 @@ parameters:
 computation: references/computations/ice_sheet_balance.py
 executor:
   resource: references/computations/ice_sheet_balance.py
+  skill: land-ice/ice-mass-change
   receipt: [run_id, computation, code_sha256, capability, bundle, runtime, generated_utc, data, bound_parameters, refused, window, terms, series, rates, residual, combined_uncertainty, verdict, bookkeeping, caveats]
 attester:
   resource: references/attesters/ice_sheet_balance_check.py
