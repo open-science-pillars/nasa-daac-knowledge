@@ -1,5 +1,5 @@
 {
-  "purpose": "provenance of the inputs of the ice sheet mass balance closure's data root: the two ITS_LIVE product files that carry GEMB output on AWS (the firn and surface mass balance terms), the JPL mascon grid and the provider's ice sheet mass series (the mass term and its cross-check), the ITS_LIVE elevation change files (the altimetric volume term), the ICESat-2 ATL15 granules that could not be fetched, the documents and registry records read to describe them, and the files read during the search that turned out to carry no GEMB field",
+  "purpose": "provenance of the inputs of the ice sheet mass balance closure's data root: the two ITS_LIVE product files that carry GEMB output on AWS (the firn and surface mass balance terms), the JPL mascon grid and the provider's ice sheet mass series (the mass term and its cross-check), the ITS_LIVE elevation change files (the altimetric volume term), the ICESat-2 ATL15 granules that could not be fetched, the documents and registry records read to describe them, and the files read during the search that turned out to carry no GEMB field; and the second search for the two gaps this root names, the gridded height change altimetry granules and a grounded Antarctic firn air content term, with what each search reached and what it established",
   "credentials": "the its-live-data bucket, nsidc.org, cmr.earthdata.nasa.gov, doi.org, api.crossref.org and the journal's own site served every file read without a token; the Earthdata Login bearer token in the environment was sent as a request header only, to archive.podaac.earthdata.nasa.gov (the mascon granule and the two provider series, after a 302 to the login without it) and to data.nsidc.earthdatacloud.nasa.gov (the ATL15 granules, after a 401 without it); it is not recorded here",
   "downloads": [
     {
@@ -122,6 +122,26 @@
       "product": "ITS_LIVE Antarctic Ice Sheet grounded ice elevation change, version 1.0 (doi 10.5067/L3LSVDZS15ZV, NSIDC-0782)",
       "retrieved_utc": "2026-09-15T13:22Z",
       "why_not_used": "the zarr metadata lists basin, dh, h, quality_flag, rmse, time, x, y and mapping; no firn air content or surface mass balance variable, so no grounded Antarctic GEMB field is in the distribution"
+    },
+    {
+      "url": "https://its-live-data.s3.amazonaws.com/height_change/Antarctica/Floating/ANT_G1920V01_IceShelfMelt.nc",
+      "product": "MEaSUREs ITS_LIVE Antarctic Quarterly 1920 m Ice Shelf Height Change and Basal Melt Rates, 1992-2017, Version 1 (doi 10.5067/SE3XH9RXQWAM)",
+      "total_bytes": 2375506533,
+      "retrieved_utc": "2026-09-19T05:14:31Z",
+      "sha256": "sha256:1b1050c51dec4d1785a5a8a55a40a1d80ba16aa0cc39e46d68c33dcacd0b0b96",
+      "sha256_unchanged": true,
+      "why_read": "to test whether the firn air content this file carries extends over grounded ice, which would give the grounded Antarctic firn term without a second product",
+      "why_not_used": "it does not. Over the 2916 by 2916 grid the ID variable marks 413719 ice shelf cells (identifiers 1 to 182), 3276620 land cells (255) and 4812717 ocean cells (0). At the first and at a middle time step, fac is finite on every one of the 413719 shelf cells and on none of the land or ocean cells, and fac_mean is finite on none of the 3276620 land cells. The field is masked to the shelves, so no grounded aggregation can be formed from it"
+    },
+    {
+      "url": "https://its-live-data.s3.amazonaws.com/mass_change/antarctic/GravAltm_Antarctica_JPL_MSCN_CRI.200204_202012.v0.1.zip",
+      "product": "JPL GravAltm Antarctica Mascons CRI v0.1 (doi 10.5067/R86GZZTZ8QGO)",
+      "total_bytes": 191445449,
+      "retrieved_utc": "2026-09-19T05:18:41Z",
+      "sha256": "sha256:81f7e4df9b31a0d1af83dbc0432204ddcdb49f23806d069c05c02406ffdfb23d",
+      "sha256_unchanged": true,
+      "why_read": "the only key under mass_change/ in the bucket, re-read to confirm that the firn air content its processing applies is not distributed as a field",
+      "why_not_used": "confirmed. Both files carry lwe_thickness, uncertainty, land_mask, scale_factor, the coordinates and their bounds, and nothing else; the firn air content model is named in the FAC_Model_Reference global attribute (doi 10.5194/gmd-16-2277-2023) and its output is not in the files"
     }
   ],
   "documents_read": [
@@ -158,6 +178,39 @@
       "total_bytes": 3574079,
       "sha256": "sha256:1b86ac5506c2cf3c41fc02b8f0b290217e373b61c8caa83a75a6af91d85ecb5f",
       "what_was_read": "Otosaka and others 2023 (IMBIE), read in full as text: the abstract; section 4 on the technique comparison (Greenland 2003 to 2018: altimetry, gravimetry and input-output rates within a standard deviation of 19 Gt per year of each other, reconciled minus 221 with an uncertainty of 22 Gt per year; Antarctica 2003 to 2019: minus 115 with an uncertainty of 24, spread 79); Table 2 (Greenland minus 180 with an uncertainty of 39 for 2002 to 2006, minus 280 with 38 for 2007 to 2011, minus 213 with 40 for 2012 to 2016, minus 257 with 42 for 2017 to 2020, minus 169 with 16 for 1992 to 2020; Antarctica minus 62 with 41, minus 130 with 45, minus 150 with 43, minus 115 with 55, minus 92 with 18 over the same periods); the gravimetry group's spread over 2012 to 2014 in Greenland (median difference 36, standard deviation 30 Gt per year)"
+    },
+    {
+      "url": "https://nsidc.org/sites/default/files/documents/user-guide/atl15-v005-userguide.pdf",
+      "file": "atl15-v005-userguide.pdf",
+      "retrieved_utc": "2026-09-19T05:12Z",
+      "total_bytes": 974919,
+      "sha256": "sha256:ceff93c7b522c4aaa575b059eb12658ccbd74c50551921a6b4332de5a30aeab3",
+      "what_was_read": "the variables and groups, the reference to the 1 km DEM surface, the quadrant split along the 90 degree meridians, the four grid spacings, the quarterly height difference surfaces, the time-varying ice_area, the caution on cycles 1 and 2, and the version history"
+    },
+    {
+      "url": "https://nsidc.org/sites/default/files/documents/technical-reference/icesat2_atl15_data_dict_v5.pdf",
+      "file": "icesat2_atl15_data_dict_v5.pdf",
+      "retrieved_utc": "2026-09-19T05:12Z",
+      "total_bytes": 426034,
+      "sha256": "sha256:909531f2d9c0daddbcc08c36e9ee3c346db1333cc854087e093ea7b0e7673724",
+      "what_was_read": "the delta_h group's variables and units, read to confirm the fields the loader names"
+    },
+    {
+      "url": "https://nsidc.org/sites/default/files/documents/technical-reference/icesat2_atl14_atl15_known_issues_v005.pdf",
+      "file": "icesat2_atl14_atl15_known_issues_v005.pdf",
+      "retrieved_utc": "2026-09-19T05:12Z",
+      "total_bytes": 47349,
+      "sha256": "sha256:2345d692a2836586ad2160d096087c733c45045f2c184eae80109320ebf1b012",
+      "what_was_read": "the known issues of the current version"
+    },
+    {
+      "url": "https://nsidc.org/sites/default/files/documents/user-guide/nsidc-0792-v001-userguide.pdf",
+      "file": "nsidc-0792-v001-userguide.pdf",
+      "retrieved_utc": "2026-09-19T05:17Z",
+      "total_bytes": 226517,
+      "sha256": "sha256:38c8cda7decb1360fd0031e21be7b08121643cff587b40607c1df9cf4564cffb",
+      "sha256_unchanged": true,
+      "what_was_read": "re-read for the product's stated domain: the parameter list and Table 1 describe firn air content as an ice shelf quantity on the 1920 m grid, with the ice shelf identifiers taken from MEaSUREs Antarctic Boundaries for IPY 2007-2009, Version 2; nothing in it offers a grounded field"
     }
   ],
   "registry_records": [
@@ -215,6 +268,46 @@
       "retrieved_utc": "2026-09-15T17:50Z",
       "verified": "Smith and 14 others, Pervasive ice sheet mass loss reflects competing ocean and atmosphere processes, Science 368, 1239 to 1242, 2020",
       "role": "the reference conversion of altimetric height change to mass with a firn model, read in full by the bundle's ATL15 gotcha on 2026-09-13 from the NASA technical reports server; here on its registry record only"
+    },
+    {
+      "url": "https://cmr.earthdata.nasa.gov/search/collections.umm_json?short_name=ATL15",
+      "retrieved_utc": "2026-09-19T05:10Z",
+      "verified": "two collections: C3892628343-NSIDC_CPRD, Version 5, doi 10.5067/ATLAS/ATL15.005, and C4277566180-NSIDC_CPRD, Version 6, doi 10.5067/ATLAS/ATL15.006, both at NSIDC_CPRD"
+    },
+    {
+      "doi": "10.5067/ATLAS/ATL15.005",
+      "url": "https://doi.org/10.5067/ATLAS/ATL15.005",
+      "retrieved_utc": "2026-09-19T05:20Z",
+      "verified": "302 to nsidc.org/data/atl15/versions/5; the DOI is registered with DataCite and is not in Crossref, so api.crossref.org answers with a not found body"
+    },
+    {
+      "doi": "10.5067/ATLAS/ATL15.006",
+      "url": "https://doi.org/10.5067/ATLAS/ATL15.006",
+      "retrieved_utc": "2026-09-19T05:20Z",
+      "verified": "302 to nsidc.org/data/atl15/versions/6; not in Crossref, as above"
+    },
+    {
+      "doi": "10.5067/7INP6DQAWRC2",
+      "url": "https://doi.org/10.5067/7INP6DQAWRC2",
+      "retrieved_utc": "2026-09-19T05:20Z",
+      "verified": "302 to the algorithm basis document for the land ice height change product on nsidc.org; not in Crossref"
+    },
+    {
+      "doi": "10.5194/gmd-16-2277-2023",
+      "url": "https://api.crossref.org/works/10.5194/gmd-16-2277-2023",
+      "retrieved_utc": "2026-09-19T05:20Z",
+      "verified": "Gardner, Schlegel and Larour, Glacier Energy and Mass Balance (GEMB): a model of firn processes for cryosphere research, Geoscientific Model Development, 2023; re-verified as the firn model the gravimetry and altimetry product names in its FAC_Model_Reference attribute"
+    },
+    {
+      "doi": "10.5194/essd-14-3573-2022",
+      "url": "https://api.crossref.org/works/10.5194/essd-14-3573-2022",
+      "retrieved_utc": "2026-09-19T05:20Z",
+      "verified": "Nilsson, Gardner and Paolo, Elevation change of the Antarctic Ice Sheet: 1985 to 2020, Earth System Science Data, 2022"
+    },
+    {
+      "url": "https://cmr.earthdata.nasa.gov/search/collections.umm_json?short_name=NL_ANTARCTIC_METEO_MODEL",
+      "retrieved_utc": "2026-09-19T05:09Z",
+      "verified": "the only regional climate model record for Antarctica in CMR: a 55 km, 14 year simulation forced at the lateral boundaries by reanalysis, with no DOI, no related URL and no distribution; nothing is fetchable from it"
     }
   ],
   "bucket_listings": [
@@ -239,7 +332,9 @@
     "The mass term's Greenland mascon set is chosen by the ice fraction rule the mass stamp states (the ITS_LIVE Greenland ice mask binned onto the mascon grid, at least 0.25 of a mascon's land area); the stamp lists the sensitivity to the threshold and the comparison with the provider's own Greenland series (trends minus 251.96 and minus 255.77 Gt per year over the same 257 months).",
     "The ICESat-2 ATL15 granules could not be fetched from this environment (not_reachable above); the altimetric volume term is the ITS_LIVE elevation change, which shares its grid and cell set with the firn term.",
     "The ITS_LIVE grounded Antarctic elevation change is read from 2003-01 on (the loader's --antarctic-from), since a cell set fixed over the sparse early record would keep a quarter of the sheet; the Antarctic closure refuses in any case for want of a grounded firn term.",
-    "The firn and smb stamps were regenerated on 2026-09-15 with the aggregation strings aligned with the loaders' code (the fixed cell set is finite in the value and the mean; the error field is read separately) and the Greenland DOI written bare; the CSVs are byte-identical to the earlier ones."
+    "The firn and smb stamps were regenerated on 2026-09-15 with the aggregation strings aligned with the loaders' code (the fixed cell set is finite in the value and the mean; the error field is read separately) and the Greenland DOI written bare; the CSVs are byte-identical to the earlier ones.",
+    "Both gaps this root names were searched again on 2026-09-19 and both stand. The gridded height change granules are blocked by this environment's egress policy on the distribution host and not by the product, the version or the token, so the block moves with the environment rather than with the data. The grounded Antarctic firn air content field does not exist in any NASA distributed archive, so that gap moves only if the set of sources this root is built from is widened to the modelling groups' own archives.",
+    "The firn air content of the ice shelf product was tested cell by cell rather than inferred: it is finite on all 413719 ice shelf cells and on none of the 3276620 land cells at the time steps checked, and the record mean field is finite on none of the land cells. The grounded aggregation the closure would need has no field to read."
   ],
   "not_reachable": [
     {
@@ -258,6 +353,41 @@
       "attempted_utc": "2026-09-15T17:49:44Z to 2026-09-15T17:49:56Z",
       "outcome": "HTTP 401 without the token; with the token each URL answered 303 to a content host (d3h5e2j7riftk6.cloudfront.net) that this environment's egress policy refused (the proxy answered 403 to the CONNECT), so no granule was fetched; the OPeNDAP link the CMR record carries (https://opendap.earthdata.nasa.gov/collections/C3892628343-NSIDC_CPRD/granules/ATL15_GL_0329_10km_005_02.nc_GOur7vtz) answered 404 on 2026-09-15T17:50Z with a server-side error naming the same content host",
       "consequence": "the root carries no volume-atl15 term; RECORD.json names it absent, the loader isb_volume_atl15.py is verified on its selftest only, and the closure's altimetry term is volume-itslive"
+    },
+    {
+      "term": "volume-atl15 (greenland and antarctica), second attempt",
+      "product": "ICESat-2 ATL15 Gridded Antarctic and Arctic Land Ice Height Change, Version 5 (the 10 km granules ATL15_GL_0329_10km_005_02.nc and ATL15_A1 to A4_0329_10km_005_02.nc) and Version 6 (the quarterly 10 km granules ATL15_GL_0331_3mo_10km_006_01.nc and ATL15_A1 to A4_0331_3mo_10km_006_01.nc)",
+      "doi": [
+        "10.5067/ATLAS/ATL15.005",
+        "10.5067/ATLAS/ATL15.006"
+      ],
+      "collection_concept_id": [
+        "C3892628343-NSIDC_CPRD",
+        "C4277566180-NSIDC_CPRD"
+      ],
+      "query": "https://cmr.earthdata.nasa.gov/search/collections.umm_json?short_name=ATL15 on 2026-09-19 returned two collections, Version 5 and Version 6; the granule listings returned 40 granules for Version 5 (ten regions at four grid spacings) and 80 for Version 6 (the same regions and grid spacings at monthly and quarterly steps, cycles 3 to 31, with a 2.5 km grid in place of the 1 km one at the monthly step). Version 5 runs to cycle 29 and its user guide dates that release to March 2026; Version 4 was retired in June 2026",
+      "urls": [
+        "https://data.nsidc.earthdatacloud.nasa.gov/nsidc-cumulus-prod-protected/ATLAS/ATL15/005/2019/01/01/ATL15_GL_0329_10km_005_02.nc",
+        "https://data.nsidc.earthdatacloud.nasa.gov/nsidc-cumulus-prod-protected/ATLAS/ATL15/006/2019/01/01/ATL15_GL_0331_3mo_10km_006_01.nc",
+        "https://data.nsidc.earthdatacloud.nasa.gov/nsidc-cumulus-prod-public/ATLAS/ATL15/005/2019/01/01/ATL15_GL_0329_10km_005_02.nc.iso.xml"
+      ],
+      "attempted_utc": "2026-09-19T05:11Z to 2026-09-19T05:16Z",
+      "outcome": "unchanged from the first attempt, and now established for both versions and for the public as well as the protected bucket. Without a token the protected URL answers 302 to the Earthdata Login authorize endpoint. With the bearer token in the Authorization header it answers 303 to a signed URL on the distribution host d3h5e2j7riftk6.cloudfront.net, and this environment's egress proxy refuses that host with 403 at the CONNECT, an organization policy denial that the proxy documentation says to report rather than retry or route around. The public bucket path redirects to the same host and is refused the same way. The direct access route the CMR granule record carries, s3://nsidc-cumulus-prod-protected/ATLAS/ATL15/005/2019/01/01/, reaches the S3 host, which answers AccessDenied because the bucket is Requester Pays and needs the temporary credentials served at https://data.nsidc.earthdatacloud.nasa.gov/s3credentials; that credential request was refused by this environment's own guardrail, so the route was not taken",
+      "consequence": "the root still carries no volume-atl15 term and RECORD.json still names it absent. The block is the environment's egress policy on the distribution host, not the product, the version or the token: a run whose network policy allows that host can fetch the five 10 km granules of either version and read them with isb_volume_atl15.py, whose archive URL and file names already match the Version 5 granules"
+    },
+    {
+      "term": "firn (antarctica, grounded ice sheet)",
+      "product": "a gridded firn air content field over the grounded Antarctic Ice Sheet from a regional climate model, the alternates the firn stamp lists as not read (the IMAU model output and the model output from the Liege group)",
+      "searched_utc": "2026-09-19T05:08Z to 2026-09-19T05:20Z",
+      "queries": [
+        "https://cmr.earthdata.nasa.gov/search/collections.json?keyword=firn%20air%20content",
+        "https://cmr.earthdata.nasa.gov/search/collections.umm_json?keyword=*firn*&options[keyword][pattern]=true (184 hits, all read)",
+        "https://cmr.earthdata.nasa.gov/search/collections.json?keyword=RACMO, keyword=RACMO2, keyword=MARv3, keyword=IMAU, keyword=Utrecht, keyword=GEMB, keyword=firn%20densification, keyword=firn%20model, keyword=polar%20regional%20climate%20model",
+        "https://cmr.earthdata.nasa.gov/search/collections.json?provider=NSIDC_CPRD&keyword=firn and &keyword=Antarctic (the 77 Antarctic collections read in full)",
+        "https://its-live-data.s3.amazonaws.com/?list-type=2&delimiter=/ and the full key listing of height_change/, mass_change/, ice_masks/ and documentation/"
+      ],
+      "outcome": "no NASA distributed archive carries such a field. In the whole of CMR the only gridded Antarctic firn air content product is NSIDC-0792, the ice shelf product this root already reads, whose firn air content covers the floating shelves only. The one regional climate model record in CMR, NL_ANTARCTIC_METEO_MODEL, is a description-only registry entry for a 55 km, 14 year simulation with no DOI, no data URL and no distribution. The model output the firn stamp names as an alternate is published by the modelling groups themselves rather than by a NASA archive, and those archives are outside the set of sources this root is built from",
+      "consequence": "the firn term still covers the floating ice shelves only, the closure table in RECORD.json still refuses the Antarctic altimetry rate, and the firn stamp's statement that no grounded Antarctic firn air content field is in the distribution stands, now with the checks below behind it"
     }
   ]
 }
