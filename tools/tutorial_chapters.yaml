@@ -171,7 +171,7 @@ chapters:
     concept: podaac/tutorial/ecco-volume-budget-tutorial-checkpoints.md
     overlaps:
       - knowledge/podaac/recipes/ecco-volume-budget.md
-      - knowledge/podaac/computations/ecco-volume-budget.md
+      - ocean-science/knowledge/computations/ecco-volume-budget.md
   - slug: ECCO_v4_Heat_budget_closure
     title: "Global Heat Budget Closure"
     tier: 2
@@ -179,7 +179,7 @@ chapters:
     concept: podaac/tutorial/ecco-heat-budget-tutorial-checkpoints.md
     overlaps:
       - knowledge/podaac/recipes/ecco-heat-budget.md
-      - knowledge/podaac/computations/ecco-heat-budget.md
+      - ocean-science/knowledge/computations/ecco-heat-budget.md
       - knowledge/podaac/gotchas/ecco-geothermal-flux.md
   - slug: ECCO_v4_Salt_and_salinity_budget
     title: "Salt, Salinity and Freshwater Budgets"
@@ -188,7 +188,7 @@ chapters:
     concept: podaac/tutorial/ecco-salt-budget-tutorial-checkpoints.md
     overlaps:
       - knowledge/podaac/recipes/ecco-salt-budget.md
-      - knowledge/podaac/computations/ecco-salt-budget.md
+      - ocean-science/knowledge/computations/ecco-salt-budget.md
   - slug: ECCO_v4_Calculating_the_ECCOv4_ocean_thermal_forcing
     title: "Calculate ocean thermal forcing from ECCOv4r4 data, direct from PO.DAAC S3 storage"
     tier: 2

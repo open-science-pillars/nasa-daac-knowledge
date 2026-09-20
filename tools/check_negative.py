@@ -34,7 +34,12 @@ ROOT is scanned for concepts whose `type` is dead-end or field-state;
 other concepts are left alone. Paths in `subject`, `bears_on`,
 `superseded_by` and `sources` resolve relative to the concept file, or,
 with a leading slash, relative to BUNDLE (default ROOT), so drafts kept
-outside a bundle can point into one. Exit 0 when no N code fires.
+outside a bundle can point into one. A path of the form
+`<package>/knowledge/<category>/<concept>.md` whose first segment is no
+directory of this repository names a concept another package owns, which
+is how a provider bundle cites a computation since a computation became
+a skill; it is recorded and not resolved, because that package is
+installed elsewhere. Exit 0 when no N code fires.
 
 Codes beginning N are errors, NW are warnings:
 
@@ -67,6 +72,7 @@ Codes beginning N are errors, NW are warnings:
       before Reopens if; field-state: Question, Positions, Bearing,
       What would move this)
   N9  a subject, bears_on or superseded_by path resolves to no concept
+      in this bundle and is not another package's concept path
   NW1 a dead-end without stale_after (tools get fixed; date the sweep)
   NW2 title or description phrased as a universal (impossible, never
       works, cannot be done) rather than an attribution
@@ -143,6 +149,25 @@ def is_actor(v) -> bool:
     return isinstance(v, str) and ACTOR.match(v) is not None
 
 
+EXTERNAL = Path("<another package>")   # a concept this repository does not hold
+
+
+def external_package_ref(ref: str, bundle: Path) -> bool:
+    """A concept in another package of the organization, named the way the
+    citation rule names one: `<package>/knowledge/<category>/<concept>.md`,
+    whose first segment is no directory of the repository holding this
+    bundle. A computation is a skill, so a dead-end or a field-state in a
+    provider bundle routinely bears on a concept the capability owns, and
+    that package is a declared dependency installed elsewhere: the
+    reference is recorded rather than resolved. A local path that is only
+    wrong still fires N9, because it does not have this shape."""
+    parts = ref.lstrip("/").split("/")
+    if len(parts) < 4 or parts[1] != "knowledge" or not parts[-1].endswith(".md"):
+        return False
+    repo = bundle.parent
+    return not (repo / parts[0]).exists() and not (bundle / parts[0]).exists()
+
+
 def resolve(ref: str, here: Path, bundle: Path) -> Path | None:
     """A concept path: bundle-relative with a leading slash, else relative
     to the citing file. Fragments and URLs are not concept paths."""
@@ -150,7 +175,9 @@ def resolve(ref: str, here: Path, bundle: Path) -> Path | None:
         return None
     ref = ref.split("#", 1)[0]
     target = (bundle / ref.lstrip("/")) if ref.startswith("/") else (here.parent / ref)
-    return target if target.is_file() else None
+    if target.is_file():
+        return target
+    return EXTERNAL if external_package_ref(ref, bundle) else None
 
 
 def sections(body: str) -> list[str]:
@@ -649,11 +676,22 @@ def selftest() -> int:
             (fs.replace("stale_after: 2027-03-05\n", ""), "N1"),
             (fs.replace("sources: [paper-b]", "sources: [paper-a]"), "NW4"),
             (fs.replace("bears_on: [/datasets/product.md]", "bears_on: [/datasets/missing.md]"), "N9"),
+            # another package's concept is recorded, not resolved; a local
+            # path that merely looks like one still fires N9
+            (fs.replace("bears_on: [/datasets/product.md]",
+                        "bears_on: [ocean-science/knowledge/computations/ecco-amoc-26n.md]"), None),
+            (de.replace("subject: [/datasets/product.md]",
+                        "subject: [ocean-science/knowledge/computations/ecco-regional-heat-budget.md]"), None),
+            (de.replace("subject: [/datasets/product.md]",
+                        "subject: [datasets/knowledge/gone/x.md]"), "N9"),
             (fs.replace("# What would move this", "# What moves it"), "N8"),
         ]
         for text, want in cases:
-            got = codes(text, want)
-            assert want in got, f"expected {want}, got {sorted(got)}"
+            got = codes(text, want or "")
+            if want is None:      # the case must fire nothing at all
+                assert not got, f"expected a clean case, got {sorted(got)}"
+            else:
+                assert want in got, f"expected {want}, got {sorted(got)}"
         # A good field-state marked stable with a human signature passes.
         signed = fs.replace("status: draft", "status: stable\nverified: { by: human:steward, at: 2026-09-05T00:00:00Z }")
         assert not (codes(signed, "") & {"N6"}), "human signature must satisfy N6"
@@ -670,7 +708,7 @@ def selftest() -> int:
         assert n == 1 and "proves nothing" in buf.getvalue(), buf.getvalue()
         fm, _ = frontmatter(out / "candidate-notes.md")
         assert fm and fm["type"] == "dead-end" and fm["status"] == "draft", fm
-        print(f"selftest PASS: {len(cases)} mutations each fired its code; the two exemplars pass "
+        print(f"selftest PASS: {len(cases)} cases each landed as written; the two exemplars pass "
               "clean; the candidate scan drafts a parseable stub")
         return 0
     finally:

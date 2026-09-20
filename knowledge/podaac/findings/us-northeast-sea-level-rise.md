@@ -13,24 +13,24 @@ claim:
   confidence: 0.95
   units: mm/year
   from:
-    receipt: /references/retrieval/exhibit-sea-level-record.json
+    receipt: ocean-science/knowledge/references/retrieval/exhibit-sea-level-record.json
     value: trend_total_interval.trend
     interval: [trend_total_interval.ci_low, trend_total_interval.ci_high]
     confidence: trend_total_interval.confidence
 computations:
-  - concept: /computations/ecco-regional-sea-level.md
-    receipt: /references/retrieval/exhibit-sea-level-record.json
-  - concept: /computations/ecco-ssh-vs-altimetry.md
-    receipt: /references/retrieval/exhibit-ssh-vs-altimetry-record.json
+  - concept: ocean-science/knowledge/computations/ecco-regional-sea-level.md
+    receipt: ocean-science/knowledge/references/retrieval/exhibit-sea-level-record.json
+  - concept: ocean-science/knowledge/computations/ecco-ssh-vs-altimetry.md
+    receipt: ocean-science/knowledge/references/retrieval/exhibit-ssh-vs-altimetry-record.json
 validity:
   declaration: {product: ECCO_L4_SSH_LLC0090GRID_MONTHLY_V4R4, claim: trend, region: "35,45,-75,-65", period: "1992-01:2017-12"}
   verdict: UNADJUDICATED
-  receipt: /references/retrieval/fitness-sea-level-record.json
+  receipt: ocean-science/knowledge/references/retrieval/fitness-sea-level-record.json
   governing: []
 confrontation:
   status: confronted
-  concept: /computations/ecco-ssh-vs-altimetry.md
-  receipt: /references/retrieval/exhibit-ssh-vs-altimetry-record.json
+  concept: ocean-science/knowledge/computations/ecco-ssh-vs-altimetry.md
+  receipt: ocean-science/knowledge/references/retrieval/exhibit-ssh-vs-altimetry-record.json
   observation: /datasets/nasa-ssh.md
 limitations:
   - "The claim holds for the area mean over the box from 35 to 45 degrees north and 75 to 65 degrees west, and for the ECCO v4r4 estimate; nothing is stated for any point inside the box, for the coast itself, or for the ocean."
@@ -48,13 +48,13 @@ status: draft
 stale_after: 2027-03-03
 sources:
   - id: partition
-    resource: ../computations/ecco-regional-sea-level.md
+    resource: ocean-science/knowledge/computations/ecco-regional-sea-level.md
     title: "Regional sea level partition from ECCO (attested): the sanctioned computation, its receipt fields and its attester"
   - id: trend-method
-    resource: ../computations/ecco-trend-ci.md
+    resource: ocean-science/knowledge/computations/ecco-trend-ci.md
     title: "Linear trend with an honest interval from a monthly series (attested): the interval chain every trend and score in this finding uses"
   - id: comparison
-    resource: ../computations/ecco-ssh-vs-altimetry.md
+    resource: ocean-science/knowledge/computations/ecco-ssh-vs-altimetry.md
     title: "ECCO regional sea level against NASA-SSH altimetry (attested): the confrontation, its scores and its independence statement"
   - id: nasa-ssh
     resource: ../datasets/nasa-ssh.md
@@ -301,9 +301,9 @@ are thin, and the receipt shows which.
   sanctioned choices and lands outside tolerance is the refutation.
 
 [^ecco-v4r4]: ECCO v4 Release 4 ocean state estimate, the dataset concept
-[^partition]: Regional sea level partition from ECCO (attested), the computation; its attester is references/attesters/sea_level_partition.py
+[^partition]: Regional sea level partition from ECCO (attested), the computation; its attester is ocean-science/skills/sea-level-analysis/scripts/sea_level_partition.py
 [^trend-method]: Linear trend with an honest interval from a monthly series (attested), the shared interval chain
-[^comparison]: ECCO regional sea level against NASA-SSH altimetry (attested), the comparison; its attester is references/attesters/altimetry_confrontation_check.py
+[^comparison]: ECCO regional sea level against NASA-SSH altimetry (attested), the comparison; its attester is ocean-science/skills/compare-obs/scripts/altimetry_confrontation_check.py
 [^prandi-2021]: Prandi et al. 2021, Scientific Data 8, 1, doi:10.1038/s41597-020-00786-7, abstract; the figure is carried in the comparison receipt under observation.published_uncertainty with this source
 [^large-scale-domain]: ECCO v4r4 native monthly fields support large-scale statistics over 1992-2017, the validity domain, status draft, unsigned
 [^nasa-ssh]: NASA-SSH simple gridded sea surface height anomaly (observational reference), the dataset concept

@@ -14,10 +14,10 @@ verified: { by: human:PaulMRamirez, at: 2026-09-04T22:08:00Z }
 stale_after: 2027-01-05
 sources:
   - id: attested-trend
-    resource: ../computations/ecco-trend-ci.md
+    resource: ocean-science/knowledge/computations/ecco-trend-ci.md
     title: "The attested trend-with-interval computation, its calibration report, and the reference run on the steric series"
   - id: steric-height
-    resource: ../computations/ecco-steric-height.md
+    resource: ocean-science/knowledge/computations/ecco-steric-height.md
     title: "The signed steric height computation whose reference trend, +135.7772 mm per year over twelve months, carried no interval, and whose record run owns the full-record trend and interval"
   - id: santer-2008
     resource: https://doi.org/10.1002/joc.1756
@@ -70,5 +70,5 @@ naive one that still excludes zero, and the numbers live there, not
 here.[^steric-height][^attested-trend]
 
 [^santer-2008]: Santer et al. 2008, doi:10.1002/joc.1756
-[^steric-height]: computations/ecco-steric-height.md, the signed reference run, its anchor, and the record run
-[^attested-trend]: computations/ecco-trend-ci.md, reference run and calibration report
+[^steric-height]: ocean-science/knowledge/computations/ecco-steric-height.md, the signed reference run, its anchor, and the record run
+[^attested-trend]: ocean-science/knowledge/computations/ecco-trend-ci.md, reference run and calibration report

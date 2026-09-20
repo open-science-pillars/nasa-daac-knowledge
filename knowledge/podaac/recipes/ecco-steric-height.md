@@ -13,13 +13,13 @@ status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-computation
-    resource: ../computations/ecco-steric-height.md
+    resource: ocean-science/knowledge/computations/ecco-steric-height.md
     title: "The attested computation this recipe walks: contract, cross-computation anchor, reference run"
   - id: sea-level-partition
-    resource: ../computations/ecco-regional-sea-level.md
+    resource: ocean-science/knowledge/computations/ecco-regional-sea-level.md
     title: "The attested sea-level partition whose steric term anchors the reference trend"
   - id: trend-ci
-    resource: ../computations/ecco-trend-ci.md
+    resource: ocean-science/knowledge/computations/ecco-trend-ci.md
     title: "The sanctioned trend method that states the interval beside every trend here"
 ---
 
@@ -50,6 +50,6 @@ Boussinesq (volume-conserving), so a global-mean steric change is a
 water-mass diagnostic, not a modeled sea-surface rise; the attested
 form carries that caveat as a required receipt field.[^attested-computation]
 
-[^attested-computation]: computations/ecco-steric-height.md, contract and reference run
-[^sea-level-partition]: computations/ecco-regional-sea-level.md, the signed steric trend
-[^trend-ci]: computations/ecco-trend-ci.md, the method behind every interval here
+[^attested-computation]: ocean-science/knowledge/computations/ecco-steric-height.md, contract and reference run
+[^sea-level-partition]: ocean-science/knowledge/computations/ecco-regional-sea-level.md, the signed steric trend
+[^trend-ci]: ocean-science/knowledge/computations/ecco-trend-ci.md, the method behind every interval here

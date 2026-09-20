@@ -19,7 +19,7 @@ sources:
     resource: ../../../../tools/ecco_v4r4_families.yaml
     title: ECCO V4r4 family manifest, the per-variable record of the granule verifications of 2026-07-04 and 2026-08-30 (held to each Schema by tools/check_fields.py)
   - id: fixtures-2010
-    resource: ../../references/retrieval/fixtures-2010-manifest.json
+    resource: ocean-science/knowledge/references/retrieval/fixtures-2010-manifest.json
     title: The manifested 2010 native fixtures (SHA-512 per granule) the dims were re-verified against
 verified:
   - { by: process:cmr-shortname-sweep, at: 2026-08-30T20:07:19Z }
@@ -64,4 +64,4 @@ collections do not close budgets
 [^podaac-landing]: PO.DAAC dataset landing page
 [^cmr-sweep]: CMR ShortName sweep, tools/verify_cmr.py
 [^family-manifest]: ECCO V4r4 family manifest, tools/ecco_v4r4_families.yaml
-[^fixtures-2010]: references/retrieval/fixtures-2010-manifest.json, the manifested 2010 native fixtures
+[^fixtures-2010]: ocean-science/knowledge/references/retrieval/fixtures-2010-manifest.json, the manifested 2010 native fixtures

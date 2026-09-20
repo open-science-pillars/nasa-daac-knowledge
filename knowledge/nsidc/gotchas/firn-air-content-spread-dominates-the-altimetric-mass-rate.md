@@ -31,10 +31,10 @@ sources:
     resource: https://doi.org/10.5194/gmd-16-2277-2023
     title: "Gardner, Schlegel and Larour, 2023, Glacier Energy and Mass Balance (GEMB) a model of firn processes for cryosphere research, Geoscientific Model Development 16, 2277 to 2302, read in full 2026-09-19: the model's own account of where its uncertainty lives, its firn air content comparison against another model forced with the same climate data, and its statement that no objective way yet exists to say which model is closer to the truth"
   - id: data-root
-    resource: ../references/retrieval/ice-sheet-balance-root/firn-stamp.json
+    resource: land-ice/knowledge/references/retrieval/ice-sheet-balance-root/firn-stamp.json
     title: "The firn stamp of the committed ice sheet balance data root: the uncertainty basis for each domain, the Antarctic error field's statistics, and the committed firn.csv series read for the sign statements below"
   - id: computation
-    resource: ../computations/ice-sheet-balance.md
+    resource: land-ice/knowledge/computations/ice-sheet-balance.md
     title: "Bundle attested computation: the ice sheet mass balance closure, whose receipted Greenland run states the altimetric rate's formal error and what sets it"
   - id: gotcha-height
     resource: ./atl15-height-change-is-not-mass-change.md

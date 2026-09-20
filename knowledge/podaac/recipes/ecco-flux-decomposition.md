@@ -13,7 +13,7 @@ status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-computation
-    resource: ../computations/ecco-flux-decomposition.md
+    resource: ocean-science/knowledge/computations/ecco-flux-decomposition.md
     title: "The attested computation this recipe walks: oracles, view-consistency rule, reference numbers"
 ---
 
@@ -35,4 +35,4 @@ the mass-weighted velocity with face length times layer thickness and
 nothing else, and state plainly whether the faces span a basin or the
 inside of a box.[^attested-computation]
 
-[^attested-computation]: computations/ecco-flux-decomposition.md
+[^attested-computation]: ocean-science/knowledge/computations/ecco-flux-decomposition.md

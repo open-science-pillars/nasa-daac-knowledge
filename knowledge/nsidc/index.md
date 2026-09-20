@@ -64,8 +64,15 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 
 ## computations
 
-- [Ice sheet mass balance closure from GRACE-FO mascons against altimetric volume change with a firn correction (attested)](computations/ice-sheet-balance.md), status: stable
-- [Ice sheet mass balance by the input-output method: surface mass balance in, gate discharge out (attested)](computations/ice-sheet-input-output.md), status: stable
+This bundle carries no attested computation. A computation is a skill,
+so the two ice sheet mass balance computations that stood here live in
+the package that runs them, land-ice: the closure at
+land-ice/knowledge/computations/ice-sheet-balance.md and the
+input-output method at
+land-ice/knowledge/computations/ice-sheet-input-output.md, each with
+its executor, attester and loaders in the scripts of the skill beside
+it and its stamped data root under that package's
+`knowledge/references/retrieval/`. The recipes below name them.
 
 ## recipes
 

@@ -73,8 +73,8 @@ evidence whichever server delivered them.
 | root | `~/RAPID_26N/rapid.ac.uk-2026-09-02` |
 | record name | `rapid-26n-v2024.1a` |
 | fetch record | `SOURCE.json` in the tree: every URL, the server's Last-Modified and Content-Length per file, the retrieval time, and the note on the DOI package |
-| manifest | `knowledge/podaac/references/retrieval/rapid-26n-manifest.json` (SHA-256 per file, identity read from the netCDF attributes, the fetch record carried in) |
-| verification report | `knowledge/podaac/references/retrieval/rapid-26n-verification.json` |
+| manifest | `ocean-science/knowledge/references/retrieval/rapid-26n-manifest.json` (SHA-256 per file, identity read from the netCDF attributes, the fetch record carried in) |
+| verification report | `ocean-science/knowledge/references/retrieval/rapid-26n-verification.json` |
 | tool | `tools/obs_record_manifest.py` (`build`, `verify --stamp`) |
 | stamp | `RECORD.json` in the tree: record name, manifest SHA-256, verification time, report SHA-256; machine-local, not committed |
 
@@ -136,7 +136,7 @@ coordinates), `amoc_sigma0`, `amoc_sigma2`, `heat_trans` (PW),
 `frwa_trans` (Sv), and the streamfunctions in depth, sigma0 and sigma2
 coordinates. The README says the depth-space overturning here is the
 same series as in the other files at 10-day resolution. Checked
-(knowledge/podaac/references/derivations/rapid_colocation_checks.py, output
+(ocean-science/skills/compare-obs/scripts/rapid_colocation_checks.py, output
 beside it): it is a ten-day average of the twelve-hourly series, not
 a subsample of it; at coinciding times the two differ by up to
 4.85 Sv and their monthly means by up to 1.90 Sv. Which RAPID

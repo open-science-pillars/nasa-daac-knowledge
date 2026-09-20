@@ -1,7 +1,7 @@
 # Adopter snippet: attach the "closes the budget" badge to a repository.
 # Requires: your notebook or script writes receipt.json (the executor
 # contract from the ECCO heat budget Attested Computation concept,
-# knowledge/podaac/computations/ecco-heat-budget.md) from a data tree the
+# ocean-science/knowledge/computations/ecco-heat-budget.md) from a data tree the
 # verify tool has stamped with RECORD.json. Pin this repository by its
 # release tag ({name}--v{version}); never a branch.
 name: ecco-budget-attestation

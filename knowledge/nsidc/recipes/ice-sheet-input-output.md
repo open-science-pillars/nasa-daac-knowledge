@@ -13,12 +13,12 @@ inputs:
   - velocity: "the surface velocity component normal to each flux gate node, per epoch, from the ITS_LIVE annual regional mosaics at 120 m in the region's polar stereographic projection, in the product's own map units, with the image pair count and the product's qualitative error beside it"
   - thickness: "the ice thickness at the same nodes from BedMachine, with errbed and with the source field that says which method made the pixel, of the product's nominal year"
   - surface_mass_balance: "the surface mass balance rate over the ice sheet's grounded domain, at the product's native sampling, aggregated to each velocity epoch's calendar year as a period weighted mean"
-  - method: "the attested computation ../computations/ice-sheet-input-output.md: the discharge as the node sum of density times normal velocity times node width over the areal scale times thickness, the mass rate as the surface mass balance less the discharge epoch by epoch, each rate the mean of its epochs with an interval, the bar the mass rate's own half width plus the stated gate systematic, the gate and product statements as receipt facts"
+  - method: "the attested computation land-ice/knowledge/computations/ice-sheet-input-output.md: the discharge as the node sum of density times normal velocity times node width over the areal scale times thickness, the mass rate as the surface mass balance less the discharge epoch by epoch, each rate the mean of its epochs with an interval, the bar the mass rate's own half width plus the stated gate systematic, the gate and product statements as receipt facts"
 expected:
   - quantity: "the identity"
-    statement: "the mass rate of the grounded ice sheet equals the surface mass balance over it less the discharge across a gate set that spans its grounded margin, when both terms cover the same ice and the same years; the rate is compared with the bar the receipt carries and is a third estimate of the quantity the gravimetric and altimetric methods of ../computations/ice-sheet-balance.md measure"
+    statement: "the mass rate of the grounded ice sheet equals the surface mass balance over it less the discharge across a gate set that spans its grounded margin, when both terms cover the same ice and the same years; the rate is compared with the bar the receipt carries and is a third estimate of the quantity the gravimetric and altimetric methods of land-ice/knowledge/computations/ice-sheet-balance.md measure"
   - quantity: "numeric anchor"
-    statement: "there is no real-data anchor: the committed data root carries the real ITS_LIVE gate velocities and neither of the other two terms, so the record run is a refusal, and the only recorded numbers are the fixture's (Greenland, gate set synthetic-outlets, 2005-01 through 2014-12, seed 7: surface mass balance +400.086 and discharge +490.809 gigatonnes per year, mass rate minus 90.723 against a bar of 67.518, significant), recorded with their refusals and the reasons the two terms are missing in ../computations/ice-sheet-input-output.md"
+    statement: "there is no real-data anchor: the committed data root carries the real ITS_LIVE gate velocities and neither of the other two terms, so the record run is a refusal, and the only recorded numbers are the fixture's (Greenland, gate set synthetic-outlets, 2005-01 through 2014-12, seed 7: surface mass balance +400.086 and discharge +490.809 gigatonnes per year, mass rate minus 90.723 against a bar of 67.518, significant), recorded with their refusals and the reasons the two terms are missing in land-ice/knowledge/computations/ice-sheet-input-output.md"
 expected_uncertainty:
   - quantity: "per term"
     statement: "the larger of the sampling error (the standard deviation of the annual epochs over the root of the effective sample size from the lag-1 autocorrelation) and the formal error, which is the mean of the per epoch uncertainties because the thickness error and the surface mass balance model error do not resample from year to year; the velocity product's own error is described by its user guide as typically unrealistically low and to be used with the image pair count as a qualitative metric, so a discharge interval built on it is a lower bound"
@@ -26,10 +26,10 @@ expected_uncertainty:
     statement: "the mass rate's own half width on the epochs both terms carry, plus the stated gate systematic, which is half the spread of the discharges under the other gate rules where the velocity stamp records a sensitivity and zero with that reason where it records none; the thickness nominal year, the mosaic's composite date, the surface mass balance model and its forcing enter the bookkeeping, never the bar"
 sources:
   - id: computation
-    resource: ../computations/ice-sheet-input-output.md
+    resource: land-ice/knowledge/computations/ice-sheet-input-output.md
     title: "The attested computation this recipe walks: the terms, the gate rule, the fixture, the refusal rule, the reference run and the reading of the three estimates"
   - id: closure
-    resource: ../computations/ice-sheet-balance.md
+    resource: land-ice/knowledge/computations/ice-sheet-balance.md
     title: "Bundle attested computation: the gravimetric and altimetric estimates of the same mass rate, and their anchored run"
   - id: closure-recipe
     resource: ../recipes/ice-sheet-balance.md
@@ -65,7 +65,7 @@ sources:
     resource: ../datasets/firn-model-air-content.md
     title: "Bundle dataset concept: the firn air content term, which the altimetric method needs and this one does not"
   - id: data-root
-    resource: ../references/retrieval/ice-sheet-input-output-root/RECORD.json
+    resource: land-ice/knowledge/references/retrieval/ice-sheet-input-output-root/RECORD.json
     title: "The stamped data root: the velocity term, the gate table, the absent terms with their reasons, and SOURCES.json"
   - id: gardner-2018
     resource: https://doi.org/10.5194/tc-12-521-2018
@@ -188,8 +188,8 @@ uncertainty and inside their own intervals, and a third estimate is
 what would show whether that offset belongs to the two observing
 systems or to the reconciliation.[^closure][^imbie]
 
-[^computation]: computations/ice-sheet-input-output.md, the attested computation and its refusals
-[^closure]: computations/ice-sheet-balance.md, the gravimetric and altimetric estimates
+[^computation]: land-ice/knowledge/computations/ice-sheet-input-output.md, the attested computation and its refusals
+[^closure]: land-ice/knowledge/computations/ice-sheet-balance.md, the gravimetric and altimetric estimates
 [^closure-recipe]: recipes/ice-sheet-balance.md
 [^its-live]: datasets/its-live-ice-velocity.md
 [^gotcha-mosaic]: gotchas/velocity-mosaic-epochs-and-gaps.md
@@ -201,5 +201,5 @@ systems or to the reconciliation.[^closure][^imbie]
 [^imbie]: datasets/imbie-ice-sheet-assessment.md
 [^gotcha-groups]: gotchas/assessment-method-groups-are-not-independent.md
 [^firn]: datasets/firn-model-air-content.md
-[^data-root]: references/retrieval/ice-sheet-input-output-root/RECORD.json and SOURCES.json
+[^data-root]: land-ice/knowledge/references/retrieval/ice-sheet-input-output-root/RECORD.json and SOURCES.json
 [^gardner-2018]: Gardner and others (2018), The Cryosphere 12, doi:10.5194/tc-12-521-2018

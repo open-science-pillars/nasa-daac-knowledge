@@ -203,12 +203,17 @@ def shortnames(dataset: Concept, concepts: list) -> set:
 
 
 def product_tags(dataset: Concept) -> set:
-    """The tags by which a product is named: its file stem and the
-    stem's first word, when the dataset concept itself carries them."""
+    """The tags by which a product is named: any leading run of the file
+    stem's hyphen-separated words, when the dataset concept itself
+    carries it as a tag. The stem is one such run and so is its first
+    word; the runs between them are what a product whose name is more
+    than one word is tagged by (its-live from its-live-ice-velocity,
+    sea-ice-index from sea-ice-index-g02135)."""
     tags = dataset.fm.get("tags")
     tags = {str(t) for t in tags} if isinstance(tags, list) else set()
-    stem = Path(dataset.rel).stem
-    return {t for t in (stem, stem.split("-")[0]) if t in tags}
+    words = Path(dataset.rel).stem.split("-")
+    runs = {"-".join(words[:n]) for n in range(1, len(words) + 1)}
+    return runs & tags
 
 
 def names_shortname(token: str, name: str) -> bool:

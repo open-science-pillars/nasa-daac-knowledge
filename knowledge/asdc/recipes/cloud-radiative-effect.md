@@ -11,12 +11,12 @@ inputs:
   - all_sky: "the all-sky outgoing shortwave, outgoing longwave and net downward TOA fluxes per calendar month on the one degree grid (toa_sw_all_mon, toa_lw_all_mon, toa_net_all_mon) from the CERES EBAF Edition 4.2.1 file, the edition and release date stated"
   - clear_sky: "the clear-sky triple of the declared convention from the same file: the _clr_t_ fields for total-region, the _clr_c_ fields for cloud-free-area; the long names in the file say which is which, and the product's own cloud radiative effect variables read uses Clear-Sky for total region"
   - weights: "the CERES one degree zonal geodetic weights, the weights the product's own global means are formed with, applied to the zones of the region"
-  - method: "the attested computation ../computations/cloud-radiative-effect.md: three terms in watts per square metre of the region, the decomposition residual, the combined uncertainty, the verdict, the contrast with the other convention, the distance from the published global mean where the run is of its region, convention and period"
+  - method: "the attested computation atmospheric-physics/knowledge/computations/cloud-radiative-effect.md: three terms in watts per square metre of the region, the decomposition residual, the combined uncertainty, the verdict, the contrast with the other convention, the distance from the published global mean where the run is of its region, convention and period"
 expected:
   - quantity: "the identity"
     statement: "the net cloud radiative effect equals the sum of its shortwave and longwave parts; the residual of that decomposition is compared with a stated tolerance of 0.01 W m-2, which is the granularity of the product's fields and not a sampling bar"
   - quantity: "numeric anchor"
-    statement: "global, cloud-free-area, 2005-07 through 2015-06 on the stamped data root (120 of 120 months): shortwave -45.8232, longwave +27.9340, net -17.8894 W m-2, residual -1.1e-04 against a bar of 0.01, decomposition closes; recorded with its loader, its stamp and its run id in ../computations/cloud-radiative-effect.md"
+    statement: "global, cloud-free-area, 2005-07 through 2015-06 on the stamped data root (120 of 120 months): shortwave -45.8232, longwave +27.9340, net -17.8894 W m-2, residual -1.1e-04 against a bar of 0.01, decomposition closes; recorded with its loader, its stamp and its run id in atmospheric-physics/knowledge/computations/cloud-radiative-effect.md"
   - quantity: "the published global mean"
     statement: "the CERES_EBAF_Ed4.0 Data Quality Summary's global mean TOA fluxes for July 2005 through June 2015, a shortwave cloud radiative effect of -45.8, a longwave one of 28.0 and a net one of -17.9 W m-2 on the cloud-free-area definition, which the anchored run sits -0.023, -0.066 and +0.011 from, all inside the 0.1 W m-2 the table is rounded to"
   - quantity: "the price of the convention"
@@ -30,7 +30,7 @@ expected_uncertainty:
     statement: "not a physical closure. The net flux is the solar irradiance minus the two outgoing fluxes, so the decomposition is an identity of the product's own fields and the residual measures whether the stored fields keep it"
 sources:
   - id: computation
-    resource: ../computations/cloud-radiative-effect.md
+    resource: atmospheric-physics/knowledge/computations/cloud-radiative-effect.md
     title: "The attested computation this recipe walks: the terms, the convention parameter, the weighting, the bookkeeping, the fixture, the refusal rule, the reference runs"
   - id: convention
     resource: ../conventions/ceres-clear-sky-conventions.md
@@ -51,7 +51,7 @@ sources:
     resource: https://doi.org/10.1175/JCLI-D-19-0381.1
     title: "Loeb and others (2020), Toward a Consistent Definition between Satellite and Model Clear-Sky Radiative Fluxes, Journal of Climate 33, 61 to 75 (the registry record, 2026-09-19): the total-region methodology and the size and regional shape of the adjustment"
   - id: data-root
-    resource: ../references/retrieval/cloud-radiative-effect-root/RECORD.json
+    resource: atmospheric-physics/knowledge/references/retrieval/cloud-radiative-effect-root/RECORD.json
     title: "The stamped data root the real run reads: the loader's stamp, the coverage table and the bookkeeping table"
 status: stable
 stale_after: 2027-03-19
@@ -162,11 +162,11 @@ subsetting service, and every DOI verified against the Crossref
 registry that day; the journal pages sit behind a bot check and were
 not read.[^dqs][^dqs-ed4-0][^loeb-2020]
 
-[^computation]: computations/cloud-radiative-effect.md
+[^computation]: atmospheric-physics/knowledge/computations/cloud-radiative-effect.md
 [^convention]: conventions/ceres-clear-sky-conventions.md
 [^gotcha-clear-sky]: gotchas/ebaf-clear-sky-definitions.md
 [^dataset]: datasets/ceres-ebaf-ed4-2.md
 [^dqs]: CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 8, 2026-09-10
 [^dqs-ed4-0]: CERES_EBAF_Ed4.0 Data Quality Summary, 2018-01-17, Table 6-1
 [^loeb-2020]: Loeb and others (2020), Journal of Climate 33, doi:10.1175/JCLI-D-19-0381.1
-[^data-root]: references/retrieval/cloud-radiative-effect-root/RECORD.json
+[^data-root]: atmospheric-physics/knowledge/references/retrieval/cloud-radiative-effect-root/RECORD.json

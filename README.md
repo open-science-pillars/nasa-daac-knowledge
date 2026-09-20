@@ -190,10 +190,15 @@ what is on main resolves.
 | `ecco_v4r4_dois.yaml`, `ecco_cite.py` | The DOI authority and the citation formatter; the selftest cross-checks every DOI the concepts and the family manifest quote against the authority | The cite-ecco skill in ocean-science; `run_checks.sh` for the selftest |
 | `mine_sources.py` | The community-issue miner: drafts gotcha candidates and routes can-I-use-X-for-Y questions and phrasings of a failed attempt to the validity-domain and dead-end registers; needs `GITHUB_TOKEN` | The steward, at a sweep |
 | `mcp_smoke.py` | The Earthdata MCP tool-surface smoke, over the network | The steward, at a connector sweep |
-| `receipt_identity.py` | A receipt or attestation names the capability release and the runtime (the convention in `docs/receipt-identity.md`); with `--package DIR` it must match that package | Attesters and each capability's CI; `run_checks.sh` for the selftest |
 | `ecco_budget_badge.py`, `templates/ecco-budget-badge-workflow.yml` | Runs the heat budget attester on a receipt and writes the verdict as a shields.io badge; the template is an adopter's workflow, pinned by release tag | A repository that adopts the workflow |
-| `reattest.py`, `reference_runs.yaml` | After a deliberate edit to a sanctioned computation: one command runs the file on the fixture cache with its reference arguments, attests the fresh receipt, shows the previous version's receipt failing against the new file and a tamper of the new file failing, and drafts the log entry with both hashes | The steward, after an edit to a sanctioned computation |
 | `science_record_*.py`, `obs_record_*.py` | The science and observation record tooling: fetch, manifest and verify the frozen records a finding or an observation cites | An analyst freezing a record; the steward verifying one |
 | `migrate_okf_v02.py` | Migrates a bundle's frontmatter from OKF v0.1 to v0.2, touching only the keys being migrated | A bundle owner with a bundle that predates OKF v0.2 |
+
+A computation is a skill, so this repository no longer holds the code of
+one, nor the tools that ran it. `reattest.py` and `receipt_identity.py`
+are `osp.py reattest` and `osp.py receipt-identity` in build-kit, which
+run them in the package that owns the computation, and
+`reference_runs.yaml` is each capability's own, under its
+`verification/`.
 
 License: Apache-2.0. Cite via CITATION.cff.

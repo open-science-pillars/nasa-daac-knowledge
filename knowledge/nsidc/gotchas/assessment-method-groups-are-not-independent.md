@@ -27,7 +27,7 @@ sources:
     resource: ./firn-air-content-spread-dominates-the-altimetric-mass-rate.md
     title: "Bundle gotcha: the firn model spread that stands behind the altimetry group's conversion and behind this bundle's own altimetric rate"
   - id: computation
-    resource: ../computations/ice-sheet-balance.md
+    resource: land-ice/knowledge/computations/ice-sheet-balance.md
     title: "Bundle attested computation: the closure whose runs are read against the assessment"
 ---
 

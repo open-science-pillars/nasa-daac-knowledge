@@ -89,7 +89,7 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 - [Reconstruct the current from density alone: thermal wind from a level of no motion](recipes/ecco-thermal-wind-reconstruction.md), status: stable
 - [A trend with an honest interval from any ECCO monthly series](recipes/ecco-trend-ci.md), status: stable
 - [ECCO overturning at 26.5N confronted with the RAPID array](recipes/ecco-rapid-amoc-26n.md), status: stable (the first confrontation pair: the other side is an observation at a fixed version)
-- ECCO regional sea level against NASA-SSH altimetry: the second confrontation pair, built as a [computation](computations/ecco-ssh-vs-altimetry.md) with no recipe of its own (the partition recipe and the trend recipe together are the method); the scores are in its receipt
+- ECCO regional sea level against NASA-SSH altimetry: the second confrontation pair, built as a computation with no recipe of its own (ocean-science/knowledge/computations/ecco-ssh-vs-altimetry.md) (the partition recipe and the trend recipe together are the method); the scores are in its receipt
 
 ## tutorial companion (every claim footnotes its tutorial page)
 
@@ -121,26 +121,17 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 
 ## computations (OKF v0.2 section 10)
 
-- [Heat budget closure on the ECCO v4r4 native grid (attested)](computations/ecco-heat-budget.md), status: stable
-- [Salt budget closure on the ECCO v4r4 native grid (attested, draft)](computations/ecco-salt-budget.md), status: draft
-- [Volume budget closure on the ECCO v4r4 native grid (attested, draft)](computations/ecco-volume-budget.md), status: draft
-- [Meridional heat transport at 26.5N from ECCO v4r4 (attested, draft)](computations/ecco-mht-26n.md), status: draft
-- [Regional sea level partition from ECCO (attested)](computations/ecco-regional-sea-level.md), status: stable
-- [Global ocean heat content from ECCO v4r4 (attested)](computations/ecco-ocean-heat-content.md), status: stable
-- [Regional steric height from ECCO v4r4 (attested)](computations/ecco-steric-height.md), status: stable
-- [Geostrophic balance and thermal wind from ECCO v4r4 (attested)](computations/ecco-geostrophic-balance.md), status: stable
-- [Wind-stress curl and Ekman pumping from ECCO v4r4 (attested)](computations/ecco-wind-stress-curl.md), status: stable
-- [Thermal-wind reconstruction from a level of no motion in ECCO v4r4 (attested)](computations/ecco-thermal-wind-reconstruction.md), status: stable
-- [Regional heat budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-heat-budget.md), status: stable
-- [Section transports on the ECCO v4r4 native grid (attested)](computations/ecco-section-transport.md), status: stable
-- [Regional salt budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-salt-budget.md), status: stable
-- [Regional volume budget over a control volume from ECCO v4r4 (attested)](computations/ecco-regional-volume-budget.md), status: stable
-- [Reynolds flux decomposition from ECCO v4r4 (attested)](computations/ecco-flux-decomposition.md), status: stable
-- [Linear trend with an honest interval from a monthly series (attested)](computations/ecco-trend-ci.md), status: stable
-- [Atlantic overturning at 26.5N from ECCO v4r4 (attested)](computations/ecco-amoc-26n.md), status: stable
-- [ECCO overturning against RAPID at 26.5N (attested)](computations/ecco-rapid-amoc-confrontation.md), status: stable
-- [ECCO regional sea level against NASA-SSH altimetry (attested)](computations/ecco-ssh-vs-altimetry.md), status: draft
-- [Sea level budget closure from altimetry, Argo steric and GRACE-FO mass (attested)](computations/sea-level-budget.md), status: stable (a synthetic fixture with a known closure proves the chain; no real-data anchor yet; refuses a period across the GRACE to GRACE-FO gap without a bridge)
+This bundle carries no attested computation. A computation is a skill,
+so the twenty that stood here live in the package that runs them,
+ocean-science, under `knowledge/computations/`, with their executors
+and attesters in the scripts of the skills beside them and their
+receipts under that package's `knowledge/references/retrieval/`. The
+names are unchanged: the heat budget is
+ocean-science/knowledge/computations/ecco-heat-budget.md, the sea level
+closure ocean-science/knowledge/computations/sea-level-budget.md, and
+so through the twenty. What stays here is what this bundle is the
+authority on, the products and the traps, and the recipes above, each
+of which names the computation that owns its numbers.
 
 ## validity-domains
 
@@ -178,7 +169,7 @@ low), the gotcha severity rule applied to negative knowledge: high
 requires the eval case that measures the behavior. The gate runs
 `check_negative.py knowledge/podaac`.
 
-- [The discrete divergence identity was tried as the oracle for regional budget closure; it holds for any array](dead-ends/divergence-identity-as-budget-oracle.md), status: stable, load_bearing high (eval case regional-closure-oracle in agent-evals, under ecco/), subject computations/ecco-regional-heat-budget.md; observed 2026-08-31 in the regional budget design note, which retracted it; reopens never as an oracle (a rim read from raw face fluxes is a different method)
+- [The discrete divergence identity was tried as the oracle for regional budget closure; it holds for any array](dead-ends/divergence-identity-as-budget-oracle.md), status: stable, load_bearing high (eval case regional-closure-oracle in agent-evals, under ecco/), subject ocean-science/knowledge/computations/ecco-regional-heat-budget.md; observed 2026-08-31 in the regional budget design note, which retracted it; reopens never as an oracle (a rim read from raw face fluxes is a different method)
 
 Candidates come from the community miner (dead-end phrasings in
 ECCO-GROUP threads) and from the design notes; each enters as a draft
@@ -197,7 +188,7 @@ question, and `load_bearing` on the same rule as a dead-end. A change in
 the state is a new field-state that supersedes this one, never an edit
 after signature.
 
-- [Whether the Atlantic overturning has weakened over the observational era is disputed](field-states/amoc-observational-era-weakening.md), status: stable, state disputed as of 2026-09-05, four positions on five sources, load_bearing medium, bears on computations/ecco-amoc-26n.md and recipes/ecco-rapid-amoc-26n.md; stale after 2027-03-05
+- [Whether the Atlantic overturning has weakened over the observational era is disputed](field-states/amoc-observational-era-weakening.md), status: stable, state disputed as of 2026-09-05, four positions on five sources, load_bearing medium, bears on ocean-science/knowledge/computations/ecco-amoc-26n.md and recipes/ecco-rapid-amoc-26n.md; stale after 2027-03-05
 
 A dispute is read by a person from the literature; each enters as a
 draft and stays one until the steward signs.

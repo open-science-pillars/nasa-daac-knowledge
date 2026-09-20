@@ -45,5 +45,13 @@ What this bundle claims, for the people who know the data: [DIGEST.md](DIGEST.md
 
 ## computations (OKF v0.2 section 10)
 
-- [Energy budget closure: CERES EBAF net top-of-atmosphere flux against the Argo ocean heat content change (attested)](computations/energy-budget.md), status: stable (a synthetic fixture with a planted level, trend and closure proves the chain; the real-data anchor is the stamped data root under references/retrieval/energy-budget-root, run for 2006 through 2020; refuses a window the radiation record does not cover or an Argo receipt over another window)
-- [Cloud radiative effect at the top of the atmosphere: the CERES EBAF all-sky flux against the clear-sky flux of a declared convention (attested)](computations/cloud-radiative-effect.md), status: stable (a synthetic fixture with a planted effect and a planted convention offset proves the chain; the real-data anchor is the stamped data root under references/retrieval/cloud-radiative-effect-root, run for July 2005 through June 2015 on the cloud-free-area convention and landing 0.011 W m-2 from the published global mean net cloud radiative effect; refuses a clear-sky convention the product does not carry, a window the record does not cover and a region whose mask it cannot resolve)
+This bundle carries no attested computation. A computation is a skill,
+so the two that stood here live in the package that runs them,
+atmospheric-physics: the energy budget closure at
+atmospheric-physics/knowledge/computations/energy-budget.md and the
+cloud radiative effect at
+atmospheric-physics/knowledge/computations/cloud-radiative-effect.md,
+each with its executor, attester and loaders in the scripts of the
+skill beside it and its stamped data root under that package's
+`knowledge/references/retrieval/`. The recipes above name them, and
+the CERES clear-sky convention is still this bundle's to state.

@@ -13,10 +13,10 @@ status: stable
 stale_after: 2027-03-02
 sources:
   - id: overturning-computation
-    resource: ../computations/ecco-amoc-26n.md
+    resource: ocean-science/knowledge/computations/ecco-amoc-26n.md
     title: "The attested overturning computation whose receipt supplies the model series: Atlantic-only section faces, three conventions, the ecco_v4_py anchor, the mutation evidence"
   - id: confrontation-computation
-    resource: ../computations/ecco-rapid-amoc-confrontation.md
+    resource: ocean-science/knowledge/computations/ecco-rapid-amoc-confrontation.md
     title: "The attested confrontation: the colocation, the four scores with intervals, the observational provenance fields, and the attester that recomputes every score"
   - id: rapid-dataset
     resource: ../datasets/rapid-mocha.md
@@ -43,16 +43,16 @@ sources:
     resource: ../conventions/consistency-versus-confrontation.md
     title: "The convention that separates what this recipe shows from what the bundle's internal anchors show"
   - id: trend-method
-    resource: ../computations/ecco-trend-ci.md
+    resource: ocean-science/knowledge/computations/ecco-trend-ci.md
     title: "The sanctioned trend method behind the descriptive trends and the interval chain the scores reuse"
   - id: mht-recipe
     resource: ecco-mht-26n.md
     title: "The heat transport recipe at the same latitude, whose comparison to the array is a quoted spread, not a scored confrontation"
   - id: colocation-derivation
-    resource: ../references/derivations/rapid_colocation_checks.py
+    resource: ocean-science/skills/compare-obs/scripts/rapid_colocation_checks.py
     title: "The derivation that measured the observed-side colocation facts (series against profile maximum, maximum of the monthly mean against mean of the maxima, the ten-day product); output beside it"
   - id: western-boundary-derivation
-    resource: ../references/derivations/ecco_western_boundary_26n.py
+    resource: ocean-science/skills/transport-analysis/scripts/ecco_western_boundary_26n.py
     title: "The derivation that measured the model's western boundary faces against the array's cable, Ekman and mid-ocean components; output beside it"
 ---
 
@@ -297,20 +297,20 @@ From the repository root, the model series over its whole record
 anchor is checked), then the confrontation, then the attester from
 its own directory:
 
-    uv run knowledge/podaac/references/computations/ecco_amoc_26n.py \
+    uv run ocean-science/skills/transport-analysis/scripts/ecco_amoc_26n.py \
         --period 1992-01:2017-12 --scope atlantic \
         --data-root ~/ECCO_V4r4_record --receipt amoc.json
 
-    uv run knowledge/podaac/references/computations/ecco_rapid_amoc_confrontation.py \
+    uv run ocean-science/skills/compare-obs/scripts/ecco_rapid_amoc_confrontation.py \
         --ecco-receipt amoc.json --rapid-root ~/RAPID_26N/rapid.ac.uk-2026-09-02 \
         --receipt confrontation.json
 
-    cd knowledge/podaac/references/attesters && \
+    cd ocean-science/skills/compare-obs/scripts && \
         uv run rapid_confrontation_check.py confrontation.json \
             --model-receipt amoc.json
 
-The reference receipts are `references/retrieval/exhibit-amoc-26n-record.json`
-and `references/retrieval/exhibit-rapid-amoc-26n-confrontation.json`;
+The reference receipts are `ocean-science/knowledge/references/retrieval/exhibit-amoc-26n-record.json`
+and `ocean-science/knowledge/references/retrieval/exhibit-rapid-amoc-26n-confrontation.json`;
 the attester passes on the pair and fails on each of the nine
 doctored variants the confrontation concept
 lists.[^confrontation-computation]
@@ -332,11 +332,11 @@ receipt.[^rapid-doi][^rapid-record][^rapid-dataset]
 [^rapid-doi]: Moat et al. (2026), doi:10.5285/48d0bf43-0598-ceb2-e063-7086abc062f1
 [^cunningham-2007]: Cunningham et al. 2007, Science 317, 935-938, doi:10.1126/science.1141304
 [^kanzow-2007]: Kanzow et al. 2007, Science 317, 938-941, doi:10.1126/science.1141293
-[^overturning-computation]: The attested overturning computation, computations/ecco-amoc-26n.md
-[^colocation-derivation]: references/derivations/rapid_colocation_checks.py and its output rapid-colocation-checks.json, run 2026-09-02
-[^western-boundary-derivation]: references/derivations/ecco_western_boundary_26n.py and its output ecco-western-boundary-26n.json, run 2026-09-02
+[^overturning-computation]: The attested overturning computation, ocean-science/knowledge/computations/ecco-amoc-26n.md
+[^colocation-derivation]: ocean-science/skills/compare-obs/scripts/rapid_colocation_checks.py and its output rapid-colocation-checks.json, run 2026-09-02
+[^western-boundary-derivation]: ocean-science/skills/transport-analysis/scripts/ecco_western_boundary_26n.py and its output ecco-western-boundary-26n.json, run 2026-09-02
 [^v4r4-synopsis]: ECCO Consortium 2021, V4r4 Synopsis, Table 2, doi:10.5281/zenodo.4533349, fetched and read 2026-09-02
-[^confrontation-computation]: The attested confrontation, computations/ecco-rapid-amoc-confrontation.md
-[^trend-method]: The sanctioned trend method, computations/ecco-trend-ci.md
+[^confrontation-computation]: The attested confrontation, ocean-science/knowledge/computations/ecco-rapid-amoc-confrontation.md
+[^trend-method]: The sanctioned trend method, ocean-science/knowledge/computations/ecco-trend-ci.md
 [^mht-recipe]: Meridional heat transport at 26.5N, recipes/ecco-mht-26n.md
 [^rapid-dataset]: RAPID-MOCHA transports at 26.5N, datasets/rapid-mocha.md

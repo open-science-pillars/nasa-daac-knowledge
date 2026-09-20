@@ -13,7 +13,7 @@ status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-computation
-    resource: ../computations/ecco-geostrophic-balance.md
+    resource: ocean-science/knowledge/computations/ecco-geostrophic-balance.md
     title: "The attested computation this recipe walks: contract, disclosure fields, reference run"
   - id: tutorial-geostrophic
     resource: https://ecco-v4-python-tutorial.readthedocs.io/Geostrophic_balance.html
@@ -42,5 +42,5 @@ extra data.[^tutorial-geostrophic] The attested form makes the weaker
 bands required receipt fields, so the flattering number cannot travel
 alone.[^attested-computation]
 
-[^attested-computation]: computations/ecco-geostrophic-balance.md, contract and measured bands
+[^attested-computation]: ocean-science/knowledge/computations/ecco-geostrophic-balance.md, contract and measured bands
 [^tutorial-geostrophic]: ECCO v4 tutorial geostrophic balance chapter

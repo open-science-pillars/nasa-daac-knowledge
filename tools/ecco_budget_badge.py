@@ -7,20 +7,21 @@
 verdict as a shields.io endpoint JSON.
 
 The verdict is the attester's: the file the ECCO heat budget Attested
-Computation concept names (knowledge/podaac/references/attesters/
+Computation concept names (ocean-science/skills/ocean-budget/scripts/
 budget_residual.py), which carries the pass bar inside it; this script
 only translates its exit status into a badge. Deterministic, no
 network, no LLM. The badge message is never hand-set.
 
 This tool lived in the ecco-budget-badge repository until 2026-09-12,
-beside verbatim copies of the attester and the computation; it now
-lives here, beside the originals, and an adopter pins this repository
-by release tag (tools/templates/ecco-budget-badge-workflow.yml).
+beside verbatim copies of the attester and the computation; it moved
+here beside the originals, which moved on to the ocean-science package
+with the computation they run, and an adopter pins this repository by
+release tag (tools/templates/ecco-budget-badge-workflow.yml).
 
 Usage:
   ecco_budget_badge.py receipt.json
-      [--computation knowledge/podaac/references/computations/ecco_heat_budget.py]
-      [--attester knowledge/podaac/references/attesters/budget_residual.py]
+      [--computation ocean-science/skills/ocean-budget/scripts/ecco_heat_budget.py]
+      [--attester ocean-science/skills/ocean-budget/scripts/budget_residual.py]
       [--badge .badges/ecco-budget.json] [--label "ecco heat budget"]
 
 Exit status is the attester's: 0 on PASS, 1 on FAIL (the failing field
