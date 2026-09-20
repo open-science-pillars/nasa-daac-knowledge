@@ -9,7 +9,7 @@
     "capabilities": {},
     "knowledge": {}
   },
-  "knowledge_digest": "sha256:2493d4a1a487ee881d00339b5bac075f048c092226d50f2d431167a7a10c2aef",
+  "knowledge_digest": "sha256:782009cca2e45ff0c680219244dd9b21d9bb360458d0f5058885dcaddd3efe32",
   "adapters": {
     "claude": "sha256:d0f7e90d75735b1e2adc5336af9234bf59728929f4c47c238a4aaf54d9cbc0be",
     "agent-plugins": "sha256:8f3490419c5b5d8f3285caa65dceb09a31b087b955b23f2eb2ca2460b75ca6cc"
