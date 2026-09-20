@@ -42,7 +42,7 @@ sources:
     resource: https://its-live.jpl.nasa.gov/
     title: "The ITS_LIVE project site and its documentation index, read 2026-09-19: the elevation change datasets and their NSIDC links; the project distributes no standalone firn product page"
   - id: data-root
-    resource: ../references/retrieval/ice-sheet-balance-root/RECORD.json
+    resource: land-ice/knowledge/references/retrieval/ice-sheet-balance-root/RECORD.json
     title: "The stamped data root committed in this bundle: the firn stamp with the two granules, their hashes, the variables read, the domains, the cell sets and the uncertainty basis, and SOURCES.json with the reads and their dates"
   - id: gotcha-spread
     resource: ../gotchas/firn-air-content-spread-dominates-the-altimetric-mass-rate.md
@@ -60,7 +60,7 @@ sources:
     resource: ../datasets/its-live-ice-velocity.md
     title: "Bundle dataset concept: the MEaSUREs ITS_LIVE products, the project that distributes the two elevation change files this term lives inside"
   - id: computation
-    resource: ../computations/ice-sheet-balance.md
+    resource: land-ice/knowledge/computations/ice-sheet-balance.md
     title: "Bundle attested computation: the ice sheet mass balance closure that subtracts this term before applying a density"
 ---
 

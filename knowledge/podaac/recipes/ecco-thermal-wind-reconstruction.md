@@ -13,7 +13,7 @@ status: stable
 stale_after: 2027-03-05
 sources:
   - id: attested-computation
-    resource: ../computations/ecco-thermal-wind-reconstruction.md
+    resource: ocean-science/knowledge/computations/ecco-thermal-wind-reconstruction.md
     title: "The attested computation this recipe walks: two-score contract, reference run, where the shear is density-controlled"
   - id: geostrophic-balance
     resource: ecco-geostrophic-balance.md
@@ -92,15 +92,15 @@ the whole summer hemisphere. A "where does density control the shear"
 map is that field, and it changes with the season.
 
 **Run the sanctioned form.** `uv run
-references/computations/ecco_thermal_wind_reconstruction.py --month
+ocean-science/skills/ecco/scripts/ecco_thermal_wind_reconstruction.py --month
 YYYY-MM --receipt tw.json --fields tw_fields.npz`, then `uv run
-references/attesters/thermal_wind_check.py tw.json`. Every script in
+ocean-science/skills/ecco/scripts/thermal_wind_check.py tw.json`. Every script in
 this bundle carries its own dependencies in its header, so `uv run`
 on the script file resolves netCDF4 and numpy by itself; `python
 script.py` or `uv run python script.py` skips that header and fails on
 the first import.
 
-[^attested-computation]: computations/ecco-thermal-wind-reconstruction.md, contract, reference run, and the mixed-layer finding
+[^attested-computation]: ocean-science/knowledge/computations/ecco-thermal-wind-reconstruction.md, contract, reference run, and the mixed-layer finding
 [^geostrophic-balance]: recipes/ecco-geostrophic-balance.md, the two-depth shear identity
 [^tutorial-thermal-wind]: ECCO v4 Python tutorial, Thermal_wind chapter
 [^density-factor]: gotchas/ecco-geostrophic-density-factor.md

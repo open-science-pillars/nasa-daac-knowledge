@@ -13,7 +13,7 @@ status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-computation
-    resource: ../computations/ecco-wind-stress-curl.md
+    resource: ocean-science/knowledge/computations/ecco-wind-stress-curl.md
     title: "The attested computation this recipe walks: local-frame formulation, contract, reference run"
   - id: gradients-curl
     resource: ../tutorial/gradients-and-curl.md
@@ -39,5 +39,5 @@ NOT to be near 1, because the model's vertical velocity contains far
 more than Ekman dynamics, and the attested form refuses any receipt
 that drops that caveat.[^attested-computation]
 
-[^attested-computation]: computations/ecco-wind-stress-curl.md, contract and reference run
+[^attested-computation]: ocean-science/knowledge/computations/ecco-wind-stress-curl.md, contract and reference run
 [^gradients-curl]: tutorial/gradients-and-curl.md

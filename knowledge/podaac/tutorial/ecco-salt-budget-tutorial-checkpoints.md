@@ -29,7 +29,7 @@ tendencies.[^tut-salt]
 
 The bundle's authoritative formulation and measured tolerances are
 owned by [the salt-budget recipe](../recipes/ecco-salt-budget.md) and
-its [attested computation draft](../computations/ecco-salt-budget.md);
+its attested computation draft, ocean-science/knowledge/computations/ecco-salt-budget.md;
 the chapter's checkpoints above are the tutorial's own acceptance
 signals, not the OSP pass bar. Consistent, no layer-decision issue.
 

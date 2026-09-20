@@ -13,7 +13,7 @@ status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-computation
-    resource: ../computations/ecco-section-transport.md
+    resource: ocean-science/knowledge/computations/ecco-section-transport.md
     title: "The attested computation this recipe walks: topology verification, contract, reference runs"
   - id: meridional-transport-skill
     resource: https://github.com/open-science-pillars/ocean-science/blob/14a4eeab071d6f7d10f04e72c4878fef87c8b8de/skills/meridional-transport/SKILL.md
@@ -41,5 +41,5 @@ section with an independent benchmark gets anchored to it two-sided;
 a transport without one is disclosure, not a validated claim, and its
 receipt is required to say so.[^attested-computation]
 
-[^attested-computation]: computations/ecco-section-transport.md
+[^attested-computation]: ocean-science/knowledge/computations/ecco-section-transport.md
 [^meridional-transport-skill]: ocean-science meridional-transport skill at the pinned commit

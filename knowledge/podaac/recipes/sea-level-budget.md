@@ -15,12 +15,12 @@ inputs:
   - altimetry: "the global mean of the NASA-SSH simple grids per calendar month, the dynamic atmospheric correction as the product applies it, the reference-mission era stated"
   - steric: "a gridded Argo steric height (Roemmich and Gilson, or a successor) integrated over its sampled depth range and averaged over the ocean, the depth floor stated; regionally, profiles through core's observations connector, a loader outside the gate"
   - mass: "the CRI-filtered mascon grids summed over the ocean mascons per the mass recipe, in millimeters of sea level equivalent, the formal uncertainty carried, the missing months left as holes"
-  - method: "the attested computation ../computations/sea-level-budget.md: residual per month, four trends with the sanctioned interval, the combined uncertainty with the deep-steric systematic stated separately, the verdict, the corrections table as receipt facts"
+  - method: "the attested computation ocean-science/knowledge/computations/sea-level-budget.md: residual per month, four trends with the sanctioned interval, the combined uncertainty with the deep-steric systematic stated separately, the verdict, the corrections table as receipt facts"
 expected:
   - quantity: "the identity"
     statement: "altimetry equals mass plus steric plus the deep-steric term below the Argo floor, within uncertainties, only under consistent bookkeeping; the residual trend is compared with the quadrature of the three term uncertainties plus the deep-steric uncertainty"
   - quantity: "numeric anchor"
-    statement: "2005-01 through 2016-12 on the stamped data root (127 of 144 months): altimetry +3.682, mass +2.299, steric +1.104 and residual +0.279 mm per year with a 95 percent interval of [+0.092, +0.466]; closure gap +0.179 against a bar of 0.663, closed within uncertainty; recorded with its loaders and stamps in ../computations/sea-level-budget.md"
+    statement: "2005-01 through 2016-12 on the stamped data root (127 of 144 months): altimetry +3.682, mass +2.299, steric +1.104 and residual +0.279 mm per year with a 95 percent interval of [+0.092, +0.466]; closure gap +0.179 against a bar of 0.663, closed within uncertainty; recorded with its loaders and stamps in ocean-science/knowledge/computations/sea-level-budget.md"
 expected_uncertainty:
   - quantity: "per term"
     statement: "the larger of the sampling half width from the sanctioned trend chain and the formal error propagated from the product's per-month uncertainties; the mass term's systematics (GIA model, leakage, low-degree replacements) are quoted beside it as the mass recipe states them, never folded into the formal error"
@@ -31,7 +31,7 @@ sources:
     resource: ../conventions/sea-level-budget-closure.md
     title: "Bundle convention: sea level budget closure, a correction-consistency problem first"
   - id: computation
-    resource: ../computations/sea-level-budget.md
+    resource: ocean-science/knowledge/computations/sea-level-budget.md
     title: "The attested computation this recipe walks: the identity, the bookkeeping, the fixture, the refusal rule, the reference run"
   - id: nasa-ssh
     resource: ../datasets/nasa-ssh.md
@@ -141,7 +141,7 @@ behind a bot check, so that paper is cited on its registry
 record.[^release-note][^wcrp-2018][^roemmich-gilson-2009]
 
 [^convention-slbc]: conventions/sea-level-budget-closure.md
-[^computation]: computations/sea-level-budget.md
+[^computation]: ocean-science/knowledge/computations/sea-level-budget.md
 [^nasa-ssh]: datasets/nasa-ssh.md
 [^mascons]: datasets/grace-fo-mascons.md
 [^recipe-mass]: recipes/grace-mass-to-sea-level.md

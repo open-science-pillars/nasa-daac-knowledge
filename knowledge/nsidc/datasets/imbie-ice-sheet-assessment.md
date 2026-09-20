@@ -33,7 +33,7 @@ sources:
     resource: ../gotchas/ice-sheet-boundaries-and-drainage-basins.md
     title: "Bundle gotcha: a per-region number names the basin set it used; the assessment carries both basin definitions"
   - id: computation
-    resource: ../computations/ice-sheet-balance.md
+    resource: land-ice/knowledge/computations/ice-sheet-balance.md
     title: "Bundle attested computation: the ice sheet mass balance closure whose runs are read against this assessment"
 ---
 

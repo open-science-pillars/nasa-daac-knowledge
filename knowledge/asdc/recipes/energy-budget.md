@@ -9,15 +9,15 @@ verified: { by: human:PaulMRamirez, at: 2026-09-15T18:57:33Z, role: maintainer, 
 inputs:
   - dataset: ../datasets/ceres-ebaf-ed4-2.md
   - toa_net: "the product's own global mean net TOA flux per calendar month (gtoa_net_all_mon, the geodetic mean the anchor is defined on) with the cos-latitude mean of the one degree grid beside it, from the CERES EBAF Edition 4.2.1 file, the edition and release date stated"
-  - ohc_0_2000: "the 0 to 2000 dbar ocean heat content rate over the same window read from the ocean-science plugin's Argo computation receipt (knowledge/computations/argo-ohc.md there; the executor references/computations/argo_ohc.py), the receipt's window equal to the budget's window, its rate over the product's mapped domain and never scaled"
+  - ohc_0_2000: "the 0 to 2000 dbar ocean heat content rate over the same window read from the ocean-science plugin's Argo computation receipt (ocean-science/knowledge/computations/argo-ohc.md; the executor ocean-science/skills/argo-ohc/scripts/argo_ohc.py), the receipt's window equal to the budget's window, its rate over the product's mapped domain and never scaled"
   - deep_ocean: "the published rate below 2000 m, 0.06 plus or minus 0.03 W m-2 over 1992 to 2020, with its source; the Argo receipt states the omission"
   - non_ocean: "land, cryosphere and atmosphere over 2006 to 2020 as published rates with their sources, 0.0822 plus or minus 0.0175 W m-2 together"
-  - method: "the attested computation ../computations/energy-budget.md: four rate terms per unit Earth surface, the residual, the combined uncertainty, the verdict, the energy over the window, the anomaly trend against the published one, the anchoring as receipt facts"
+  - method: "the attested computation atmospheric-physics/knowledge/computations/energy-budget.md: four rate terms per unit Earth surface, the residual, the combined uncertainty, the verdict, the energy over the window, the anomaly trend against the published one, the anchoring as receipt facts"
 expected:
   - quantity: "the identity"
     statement: "the window mean of the net TOA flux equals the ocean heat content rate plus the deep ocean and non-ocean rates within uncertainties; the residual is compared with the four term uncertainties in quadrature, the anchor's in situ uncertainty inside the radiation term"
   - quantity: "numeric anchor"
-    statement: "2006-01 through 2020-12 on the stamped data root (180 of 180 months): toa_net +0.8746, ocean side 0.7427 (Argo 0 to 2000 dbar +0.6005, deep 0.06, non-ocean 0.0822) W m-2, residual +0.1319 against a bar of 0.1894, closed within uncertainty; anomaly trend +0.3706 W m-2 per decade with a 95 percent interval of [+0.0762, +0.6649] against the published 0.50 plus or minus 0.47; recorded with its loader, its receipt and its stamp in ../computations/energy-budget.md"
+    statement: "2006-01 through 2020-12 on the stamped data root (180 of 180 months): toa_net +0.8746, ocean side 0.7427 (Argo 0 to 2000 dbar +0.6005, deep 0.06, non-ocean 0.0822) W m-2, residual +0.1319 against a bar of 0.1894, closed within uncertainty; anomaly trend +0.3706 W m-2 per decade with a 95 percent interval of [+0.0762, +0.6649] against the published 0.50 plus or minus 0.47; recorded with its loader, its receipt and its stamp in atmospheric-physics/knowledge/computations/energy-budget.md"
   - quantity: "the published imbalance"
     statement: "the Earth heat inventory's 0.76 plus or minus 0.2 W m-2 for 2006 to 2020, which the run's radiation term sits 0.11 above and the run's ocean side 0.02 below"
 expected_uncertainty:
@@ -29,7 +29,7 @@ expected_uncertainty:
     statement: "the uncertainties the sources state, carried as stated; the deep ocean over 1992 to 2020 and the non-ocean terms over 2006 to 2020 are rates over other periods than the window, a stated limit"
 sources:
   - id: computation
-    resource: ../computations/energy-budget.md
+    resource: atmospheric-physics/knowledge/computations/energy-budget.md
     title: "The attested computation this recipe walks: the terms, the bookkeeping, the anomaly comparison, the fixture, the refusal rule, the reference run"
   - id: dataset
     resource: ../datasets/ceres-ebaf-ed4-2.md
@@ -50,7 +50,7 @@ sources:
     resource: https://doi.org/10.1029/2021GL093047
     title: "Loeb and others (2021), Satellite and Ocean Data Reveal Marked Increase in Earth's Heating Rate, Geophysical Research Letters 48 (the registry record and abstract, 2026-09-15): the published trend of the imbalance"
   - id: ohc-receipt
-    resource: ../references/retrieval/energy-budget-root/ohc-2000-receipt.json
+    resource: atmospheric-physics/knowledge/references/retrieval/energy-budget-root/ohc-2000-receipt.json
     title: "The Argo ocean heat content receipt in the data root, the ocean term's source"
 status: stable
 stale_after: 2027-03-15
@@ -81,7 +81,7 @@ this bundle or the ocean-science bundle names:
    formed against the window's own mean.[^gotcha-baseline]
 2. **Ocean: the Argo receipt.** The 0 to 2000 dbar rate over the
    window from the ocean-science plugin's attested Argo computation
-   (knowledge/computations/argo-ohc.md in that bundle; the two are
+   (ocean-science/knowledge/computations/argo-ohc.md; the two are
    separate installs, so it is named by path), read from its receipt
    with its uncertainty and its stamp, never restated: the rate is
    over the Roemmich and Gilson product's mapped open-ocean domain
@@ -144,11 +144,11 @@ verified against the Crossref registry, and Loeb and others 2021
 cited on its registry record and abstract, the journal page being
 behind a bot check.[^dqs][^vs-2023][^loeb-2021]
 
-[^computation]: computations/energy-budget.md
+[^computation]: atmospheric-physics/knowledge/computations/energy-budget.md
 [^dataset]: datasets/ceres-ebaf-ed4-2.md
 [^gotcha-anchor]: gotchas/ebaf-imbalance-anchored-to-ocean-heating.md
 [^gotcha-baseline]: gotchas/ebaf-climatology-baseline.md
 [^dqs]: CERES_EBAF_Ed4.2 and Ed4.2.1 Data Quality Summary, version 7, 2026-07-01
 [^vs-2023]: von Schuckmann and others (2023), Earth System Science Data 15, doi:10.5194/essd-15-1675-2023
 [^loeb-2021]: Loeb and others (2021), Geophysical Research Letters 48, doi:10.1029/2021GL093047
-[^ohc-receipt]: references/retrieval/energy-budget-root/ohc-2000-receipt.json
+[^ohc-receipt]: atmospheric-physics/knowledge/references/retrieval/energy-budget-root/ohc-2000-receipt.json

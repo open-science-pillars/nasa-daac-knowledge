@@ -30,7 +30,7 @@ positions:
     held_by: ["Ditlevsen and Ditlevsen (2023)"]
     sources: [ditlevsen-2023]
 bears_on:
-  - /computations/ecco-amoc-26n.md
+  - ocean-science/knowledge/computations/ecco-amoc-26n.md
   - /recipes/ecco-rapid-amoc-26n.md
 sources:
   - id: caesar-2018

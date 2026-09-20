@@ -11,7 +11,7 @@ eval_case: regional-closure-oracle
 generated: { by: claude-code/fable-5, at: 2026-09-05T00:00:00Z }
 stale_after: 2027-03-05
 subject:
-  - /computations/ecco-regional-heat-budget.md
+  - ocean-science/knowledge/computations/ecco-regional-heat-budget.md
 attempt:
   goal: "Validate a regional (control-volume) heat budget without an independent reference, so a box budget could certify itself"
   method: "Show that the sum of pointwise convergence over the box equals the flux through the box rim (the discrete divergence theorem) and treat that agreement as the closure evidence"
@@ -26,7 +26,7 @@ sources:
     resource: ../../../docs/regional-budget-design.md
     title: "The regional budget design note (2026-08-31): the argument as first drafted, its retraction, the random-data check, and the three requirements that replaced it"
   - id: regional-computation
-    resource: ../computations/ecco-regional-heat-budget.md
+    resource: ocean-science/knowledge/computations/ecco-regional-heat-budget.md
     title: "The attested regional heat budget that carries the replacement evidence: disjoint data paths, an absolute and a relative bar, and mutation controls in the receipt"
 ---
 
@@ -78,4 +78,4 @@ tendency is a different method with its own evidence, not this attempt
 retried.[^design-note]
 
 [^design-note]: docs/regional-budget-design.md in open-science-pillars/nasa-daac-knowledge, the section headed "The oracle, corrected"
-[^regional-computation]: computations/ecco-regional-heat-budget.md, the attested computation and its attester
+[^regional-computation]: ocean-science/knowledge/computations/ecco-regional-heat-budget.md, the attested computation and its attester

@@ -14,12 +14,12 @@ inputs:
   - gravimetry: "the JPL CRI mascon grid summed over the ice sheet's land mascons per solution month, in gigatonnes, the per-mascon formal error in quadrature, the selection rule and its sensitivity stated, the missing months left as holes"
   - altimetry: "the surface height change summed with true cell areas to a volume anomaly per epoch (ITS_LIVE elevation change, monthly, or ATL15 delta_h with ice_area, quarterly), less the GEMB firn air content volume anomaly at the same epochs over the same domains, times a stated ice density"
   - firn: "the GEMB firn air content anomaly of the ice sheet balance root, its two-model spread floored at the series median per domain"
-  - method: "the attested computation ../computations/ice-sheet-balance.md: each rate the mean of its annual-lag differences with an interval, the residual on the common epochs with its own half width plus the mascon selection systematic, the verdict, the bookkeeping as receipt facts"
+  - method: "the attested computation land-ice/knowledge/computations/ice-sheet-balance.md: each rate the mean of its annual-lag differences with an interval, the residual on the common epochs with its own half width plus the mascon selection systematic, the verdict, the bookkeeping as receipt facts"
 expected:
   - quantity: "the identity"
     statement: "the gravimetric rate equals the altimetric rate after the firn air content change is removed and a density applied, within the residual's own uncertainty plus the mascon selection systematic, only under consistent bookkeeping; the residual is compared with the bar the receipt carries"
   - quantity: "numeric anchor"
-    statement: "Greenland, 2003-01 through 2016-12 on the stamped data root (151 of 168 mascon months, 168 ITS_LIVE epochs, 127 common annual-lag differences): gravimetry minus 281.297 and altimetry minus 283.353 Gt per year on their own epochs, a residual of minus 25.123 on the common epochs against a bar of 140.813, closed within uncertainty; both rates about 55 Gt per year more negative than the IMBIE 2023 assessment's reconciled rates for the period; recorded with its loaders and stamps in ../computations/ice-sheet-balance.md"
+    statement: "Greenland, 2003-01 through 2016-12 on the stamped data root (151 of 168 mascon months, 168 ITS_LIVE epochs, 127 common annual-lag differences): gravimetry minus 281.297 and altimetry minus 283.353 Gt per year on their own epochs, a residual of minus 25.123 on the common epochs against a bar of 140.813, closed within uncertainty; both rates about 55 Gt per year more negative than the IMBIE 2023 assessment's reconciled rates for the period; recorded with its loaders and stamps in land-ice/knowledge/computations/ice-sheet-balance.md"
 expected_uncertainty:
   - quantity: "per term"
     statement: "the larger of the sampling error (the standard deviation of the annual-lag differences over the root of the effective sample size, floored at the number of non-overlapping years) and the formal error the per-epoch uncertainties propagate, times Student's t; the anchor's term intervals rest on the sampling error and are dominated by the year-to-year variability of the rate, the formal errors (3.99 Gt per year for gravimetry, 44.83 for altimetry) standing beside them"
@@ -27,7 +27,7 @@ expected_uncertainty:
     statement: "the residual's own half width on the common epochs, 128.9 Gt per year in the anchor because the two records disagree by hundreds of gigatonnes per year at the annual scale even though their means agree to 2, plus the stated mascon selection systematic of 11.9; the firn model spread enters the altimetry term's formal error and the GIA model, the density and the leakage enter the bookkeeping, never the bar"
 sources:
   - id: computation
-    resource: ../computations/ice-sheet-balance.md
+    resource: land-ice/knowledge/computations/ice-sheet-balance.md
     title: "The attested computation this recipe walks: the terms, the rate method, the fixture, the refusal rule, the reference run"
   - id: gotcha-firn
     resource: ../gotchas/atl15-height-change-is-not-mass-change.md
@@ -75,7 +75,7 @@ sources:
     resource: ../../podaac/gotchas/grace-low-degree-replacements.md
     title: "Podaac bundle gotcha: the degree-1 and C20/C30 replacements"
   - id: data-root
-    resource: ../references/retrieval/ice-sheet-balance-root/RECORD.json
+    resource: land-ice/knowledge/references/retrieval/ice-sheet-balance-root/RECORD.json
     title: "The stamped data root: the loaders' stamps, the bookkeeping and closure tables, and SOURCES.json"
   - id: otosaka-2023
     resource: https://doi.org/10.5194/essd-15-1597-2023
@@ -191,7 +191,7 @@ root; the numbers the reader compares against are the assessment's
 (minus 115 with an uncertainty of 24 Gt per year over 2003 to 2019,
 with the three techniques spread by 79).[^otosaka-2023]
 
-[^computation]: computations/ice-sheet-balance.md, the attested closure and its reference run
+[^computation]: land-ice/knowledge/computations/ice-sheet-balance.md, the attested closure and its reference run
 [^gotcha-firn]: gotchas/atl15-height-change-is-not-mass-change.md
 [^atl15]: datasets/icesat2-atl15.md
 [^gotcha-epoch]: gotchas/atl15-delta-h-reference-epoch.md
@@ -207,6 +207,6 @@ with the three techniques spread by 79).[^otosaka-2023]
 [^gotcha-leakage]: podaac bundle, gotchas/grace-coastal-leakage.md
 [^gotcha-gap]: podaac bundle, gotchas/grace-intermission-gap.md
 [^gotcha-low-degree]: podaac bundle, gotchas/grace-low-degree-replacements.md
-[^data-root]: references/retrieval/ice-sheet-balance-root/RECORD.json and SOURCES.json
+[^data-root]: land-ice/knowledge/references/retrieval/ice-sheet-balance-root/RECORD.json and SOURCES.json
 [^otosaka-2023]: Otosaka and others (2023), Earth System Science Data 15, doi:10.5194/essd-15-1597-2023
 [^smith-2020]: Smith and others (2020), Science 368, doi:10.1126/science.aaz5845

@@ -13,7 +13,7 @@ status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-computation
-    resource: ../computations/ecco-regional-heat-budget.md
+    resource: ocean-science/knowledge/computations/ecco-regional-heat-budget.md
     title: "The attested computation this recipe walks: contract, mutation evidence, reference run"
   - id: design-note
     resource: ../../../docs/regional-budget-design.md
@@ -43,5 +43,5 @@ ships its own sabotage record: four mutations rerun on every
 execution, each required to fail or to prove it could not matter
 here.[^attested-computation]
 
-[^attested-computation]: computations/ecco-regional-heat-budget.md
+[^attested-computation]: ocean-science/knowledge/computations/ecco-regional-heat-budget.md
 [^design-note]: docs/regional-budget-design.md

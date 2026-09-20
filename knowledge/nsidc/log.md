@@ -2,6 +2,34 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-20 · THE COMPUTATIONS LEAVE THE BUNDLE (ADR E, a computation
+  is a skill). Deleted, every one of them copied into land-ice by its
+  pull request 9 and present on that repository's main before the
+  deletion: knowledge/nsidc/computations/ice-sheet-balance.md and
+  ice-sheet-input-output.md, now land-ice's
+  knowledge/computations/ice-sheet-balance.md and
+  knowledge/computations/ice-sheet-input-output.md; the fourteen
+  scripts under knowledge/nsidc/references/, which are the two
+  executors, the two attesters and the ten loaders, now in the scripts
+  directories of the land-ice skills ice-mass-change and
+  ice-sheet-input-output; and the two stamped data roots under
+  knowledge/nsidc/references/retrieval/, sixteen files, now under
+  land-ice's knowledge/references/retrieval/. Both concepts are
+  re-signed and stable in land-ice as of its pull request 10. No number
+  changed and no knowledge was deleted: the datasets, the gotchas and
+  the two recipes stay, and each one that named an executor, an
+  attester, a loader or a computation concept by bundle path now names
+  it by land-ice package path, for example
+  land-ice/knowledge/computations/ice-sheet-balance.md where it said
+  computations/ice-sheet-balance.md, and
+  land-ice/knowledge/references/retrieval/ice-sheet-balance-root/RECORD.json
+  where it said references/retrieval/ice-sheet-balance-root/RECORD.json.
+  The index says the bundle carries no attested computation and where
+  the two went. In tools/, run_checks.sh loses the five ice sheet
+  chains and their loader selftests and root checks, which are two
+  goldens under land-ice's verification/ now.
+  (migration seed, for the coordinator)
+
 - 2026-09-19 · STEWARD RE-SIGNING of
   knowledge/nsidc/computations/ice-sheet-balance.md: Re-signed after the
   ATL15 term landed in the committed root. The environment's egress

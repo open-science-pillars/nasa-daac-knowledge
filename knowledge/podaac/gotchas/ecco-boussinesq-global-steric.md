@@ -16,7 +16,7 @@ sources:
     resource: https://doi.org/10.1029/94JC00847
     title: "Greatbatch (1994), A note on the representation of steric sea level in models that conserve volume rather than mass, Journal of Geophysical Research: Oceans 99(C6)"
   - id: steric-computation
-    resource: ../computations/ecco-steric-height.md
+    resource: ocean-science/knowledge/computations/ecco-steric-height.md
     title: "The attested steric height computation: a global run cannot pass attestation without the Boussinesq caveat field in its receipt"
 verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
 status: stable
@@ -57,4 +57,4 @@ scalar, which is checkable by confirming the regional pattern is
 unchanged when it is applied.
 
 [^greatbatch-1994]: Greatbatch (1994), J. Geophys. Res. Oceans 99(C6), doi:10.1029/94JC00847
-[^steric-computation]: computations/ecco-steric-height.md, the Boussinesq caveat requirement on global runs
+[^steric-computation]: ocean-science/knowledge/computations/ecco-steric-height.md, the Boussinesq caveat requirement on global runs

@@ -2,6 +2,40 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-20 · THE COMPUTATIONS LEAVE THE BUNDLE (ADR E, a computation
+  is a skill). Deleted, every one of them copied into
+  atmospheric-physics by its pull request 9 and present on that
+  repository's main before the deletion:
+  knowledge/asdc/computations/energy-budget.md and
+  cloud-radiative-effect.md, now atmospheric-physics's
+  knowledge/computations/energy-budget.md and
+  knowledge/computations/cloud-radiative-effect.md; the eight scripts
+  under knowledge/asdc/references/, which are the two executors, the
+  two attesters and the four loaders, now in the scripts directories of
+  the atmospheric-physics skills energy-budget-closure and
+  cloud-radiative-effect; and the two stamped data roots under
+  knowledge/asdc/references/retrieval/, nine files including the Argo
+  receipt the energy budget reads, now under atmospheric-physics's
+  knowledge/references/retrieval/. Both concepts are re-signed and
+  stable in atmospheric-physics as of its pull request 10. No number
+  changed and no knowledge was deleted: the two datasets, the eight
+  gotchas, the clear-sky convention and the two recipes stay, and each
+  one that named an executor, an attester, a loader or a computation
+  concept by bundle path now names it by atmospheric-physics package
+  path, and the energy budget recipe's citation of the ocean-science
+  Argo computation follows that package's own move, from
+  references/computations/argo_ohc.py to
+  ocean-science/skills/argo-ohc/scripts/argo_ohc.py. Two body links of
+  knowledge/asdc/datasets/ceres-syn1deg.md that still pointed into
+  references/ for the clear-sky convention are repaired to
+  ../conventions/; they broke when that concept moved to conventions/
+  and this is the first pass to resolve every path. The index says the
+  bundle carries no attested computation and where the two went. In
+  tools/, run_checks.sh loses the energy budget and cloud radiative
+  effect chains and their selftests, which are two goldens under
+  atmospheric-physics's verification/ now.
+  (migration seed, for the coordinator)
+
 - 2026-09-19 · STEWARD RE-SIGNING of
   knowledge/asdc/gotchas/ebaf-clear-sky-definitions.md: The clear-sky
   definitions gotcha gains an eval_case key registering

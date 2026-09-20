@@ -4,6 +4,41 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-20 · THE COMPUTATIONS LEAVE THE BUNDLE (ADR E, a computation
+  is a skill). Deleted, every one of them copied into ocean-science by
+  its pull request 66 and present on that repository's main before the
+  deletion: the twenty Attested Computation concepts under
+  knowledge/podaac/computations/, which are now ocean-science's
+  knowledge/computations/; the seventy-two files under
+  knowledge/podaac/references/, which are sixteen executors, fifteen
+  attesters, four loaders and four derivation scripts, now in the
+  scripts directories of the ocean-science skills that run them, and
+  the thirty-three data files, the two masks, the calibration table,
+  the two derivation outputs, the ten exhibit receipts, the fitness
+  receipt, the six manifest and verification files and the nine-file
+  sea-level-budget-root, now under ocean-science's
+  knowledge/references/retrieval/. Nothing under knowledge/ in this
+  repository is runnable any more, which is what the decision asks of a
+  knowledge bundle. No number changed and no knowledge was deleted: the
+  datasets, gotchas, conventions, recipes, fields, tutorial pages,
+  validity domains, the dead-end, the field-state and the finding all
+  stay, and each one that named an executor, an attester, a derivation
+  or a computation concept by bundle path now names it by ocean-science
+  package path, for example ocean-science/knowledge/computations/sea-level-budget.md
+  where it said computations/sea-level-budget.md. The index says the
+  bundle carries no attested computation and where the twenty went.
+  Seventeen of the twenty are re-signed and stable in ocean-science as
+  of its pull request 67 and three remain draft there. In tools/,
+  run_checks.sh loses every computation chain and keeps the knowledge
+  checks, and reference_runs.yaml, reattest.py and receipt_identity.py
+  go with the code, the last two as osp.py reattest and osp.py
+  receipt-identity in build-kit. The finding rules are not run here any
+  more: the sea level finding binds its numbers to two computation
+  concepts and three receipts that are ocean-science's now, so its
+  paths point there and the receipt-identity rules of check_okf_v02.py
+  cannot run in a repository that holds no computation. The finding
+  itself is untouched and stays. (migration seed, for the coordinator)
+
 - 2026-09-16 · STEWARD RE-SIGNING of
   knowledge/podaac/computations/ecco-amoc-26n.md,
   knowledge/podaac/computations/ecco-flux-decomposition.md,

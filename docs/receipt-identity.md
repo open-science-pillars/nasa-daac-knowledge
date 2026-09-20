@@ -23,11 +23,13 @@ marketplace repository): a result produced on Claude Code, Claude Cowork
 or Codex is verified under one attester, and its receipt says which
 governed release it is evidence for, so two runtimes can be shown to have
 executed the same release and a qualification record can cite the
-attestation. `tools/receipt_identity.py` checks a receipt or an
-attestation for the two blocks, and with `--package DIR` for agreement
-with a package tree; it runs in the check routine's selftests. The
+attestation. `osp.py receipt-identity` in build-kit checks a receipt or
+an attestation for the two blocks, and with `--package DIR` for
+agreement with a package tree; it runs in the check routine of the
+package that holds the computation. The
 foundation capability's reference computation
 (core, `verification/trend_computation.py` and `trend_attester.py`) is
 the first executor and attester written to this convention. The ECCO
-computations in this bundle predate it; each gains the blocks at its
-next re-attestation, which the ritual in `tools/reattest.py` records.
+computations that were in this bundle predate it; each gains the blocks
+at its next re-attestation in ocean-science, which the ritual in
+`osp.py reattest` records.

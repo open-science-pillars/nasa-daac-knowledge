@@ -14,10 +14,10 @@ verified: { by: human:PaulMRamirez, at: 2026-09-04T22:08:00Z }
 stale_after: 2027-01-05
 sources:
   - id: attested-trend
-    resource: ../computations/ecco-trend-ci.md
+    resource: ocean-science/knowledge/computations/ecco-trend-ci.md
     title: "The sanctioned trend method: the joint fit, its derivation, and the calibration measured on it"
   - id: steric-height
-    resource: ../computations/ecco-steric-height.md
+    resource: ocean-science/knowledge/computations/ecco-steric-height.md
     title: "The steric height computation whose record series is the worked example and whose record receipt owns the joint trend and its interval"
   - id: naked-trend
     resource: ecco-trend-without-effective-n.md
@@ -69,6 +69,6 @@ every monthly series, and the sanctioned method carries the interval
 that the companion trap requires beside every one of these
 numbers.[^naked-trend]
 
-[^attested-trend]: computations/ecco-trend-ci.md, the method statement and its derivation
-[^steric-height]: computations/ecco-steric-height.md, the record run and the 2010 reference run
+[^attested-trend]: ocean-science/knowledge/computations/ecco-trend-ci.md, the method statement and its derivation
+[^steric-height]: ocean-science/knowledge/computations/ecco-steric-height.md, the record run and the 2010 reference run
 [^naked-trend]: gotchas/ecco-trend-without-effective-n.md

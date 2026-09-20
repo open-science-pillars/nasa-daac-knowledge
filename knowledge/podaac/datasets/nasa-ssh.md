@@ -20,7 +20,7 @@ sources:
     resource: https://doi.org/10.1038/s41597-020-00786-7
     title: "Prandi et al. 2021, Local sea level trends, accelerations and uncertainties over 1993-2019, Scientific Data 8, 1: the order of a gridded-altimetry regional trend uncertainty"
   - id: confrontation
-    resource: ../computations/ecco-ssh-vs-altimetry.md
+    resource: ocean-science/knowledge/computations/ecco-ssh-vs-altimetry.md
     title: "The attested comparison that reads this record against ECCO's regional sea level"
   - id: doctrine
     resource: ../conventions/consistency-versus-confrontation.md

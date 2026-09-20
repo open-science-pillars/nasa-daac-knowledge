@@ -13,7 +13,7 @@ status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-computation
-    resource: ../computations/ecco-ocean-heat-content.md
+    resource: ocean-science/knowledge/computations/ecco-ocean-heat-content.md
     title: "The attested computation this recipe walks: sanctioned code, receipt, attester, measured anchors"
   - id: tutorial-scalar
     resource: https://ecco-v4-python-tutorial.readthedocs.io/ECCO_v4_Example_calculations_with_scalar_quantities.html
@@ -43,6 +43,6 @@ resolve.[^ecco-skills-caveats] The sanctioned, receipt-producing form
 of this recipe is the attested computation beside it; a run of that
 code can be attested by anyone from the receipt alone.
 
-[^attested-computation]: computations/ecco-ocean-heat-content.md, the contract, anchors, and reference run
+[^attested-computation]: ocean-science/knowledge/computations/ecco-ocean-heat-content.md, the contract, anchors, and reference run
 [^tutorial-scalar]: ECCO v4 tutorial scalar-quantities chapter
 [^ecco-skills-caveats]: podaac/ecco-skills compute-ocean-heat-content documentation, the two stated caveats

@@ -20,7 +20,7 @@ Companion concept for the closure chapter: the numbers a correct
 walkthrough produces, as the tutorial states them, so an agent
 reproducing the chapter has the chapter's own acceptance signals. The
 authoritative pass bar for OSP work is NOT here: it is owned by
-[the attested computation](../computations/ecco-heat-budget.md), with
+the attested computation, ocean-science/knowledge/computations/ecco-heat-budget.md, with
 the formulation narrative on
 [the recipe](../recipes/ecco-heat-budget.md).
 

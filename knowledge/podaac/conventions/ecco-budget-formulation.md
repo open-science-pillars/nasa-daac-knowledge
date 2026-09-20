@@ -22,10 +22,10 @@ sources:
     title: "ECCO v4 Python tutorial: global volume and sea level budget notebook"
     author: team:ecco-consortium
   - id: sanctioned-heat-code
-    resource: ../references/computations/ecco_heat_budget.py
+    resource: ocean-science/skills/ocean-budget/scripts/ecco_heat_budget.py
     title: "The sanctioned heat budget computation, sha-bound by its attester; the four terms below are its code"
   - id: heat-computation
-    resource: ../computations/ecco-heat-budget.md
+    resource: ocean-science/knowledge/computations/ecco-heat-budget.md
     title: "The attested heat budget, owner of the heat pass bar and its baseline residuals"
   - id: salt-recipe
     resource: ../recipes/ecco-salt-budget.md
@@ -64,7 +64,7 @@ product does not conserve.[^native-gotcha]
 
 What this concept does not own: the pass bars and the measured
 residuals. The heat tolerances and the baseline residual statistics
-are owned by [the attested heat budget](../computations/ecco-heat-budget.md);
+are owned by the attested heat budget, ocean-science/knowledge/computations/ecco-heat-budget.md;
 the salt and volume residuals by their recipes until the attested
 forms are extracted.[^heat-computation][^salt-recipe][^volume-recipe]
 

@@ -164,7 +164,7 @@ Geostationary coverage is between 60 degrees south and 60 degrees
 north, and no geostationary data is used
 poleward.[^syn-dqs][^syn-dqs-toa] Which clear-sky convention each of
 these fields carries is the subject of
-[ceres-clear-sky-conventions](../references/ceres-clear-sky-conventions.md).
+[ceres-clear-sky-conventions](../conventions/ceres-clear-sky-conventions.md).
 
 **Access and identifiers.** The CERES visualization, ordering and
 subsetting tool is the service the summary and the CMR record both
@@ -275,7 +275,7 @@ one.[^cmr-syn-month]
   satellite changes in time.
 - [ebaf-versus-syn1deg-versus-ssf](../gotchas/ebaf-versus-syn1deg-versus-ssf.md):
   which of EBAF, SYN1deg and SSF answers which question.
-- [ceres-clear-sky-conventions](../references/ceres-clear-sky-conventions.md):
+- [ceres-clear-sky-conventions](../conventions/ceres-clear-sky-conventions.md):
   the clear-sky conventions the radiation products carry, and which
   one each field uses.
 

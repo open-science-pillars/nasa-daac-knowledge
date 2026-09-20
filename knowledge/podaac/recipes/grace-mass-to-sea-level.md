@@ -20,7 +20,7 @@ expected:
   - quantity: "sea level equivalent in millimeters of global mean sea level"
     statement: "one millimeter of global mean sea level is the mass of one millimeter of water over the ocean's area: about 362 gigatonnes for an ocean area of 3.62e8 km2 (the 2018 budget rounds to 360), and the recipe states the constant it used, since published budgets differ in the third digit; a mass loss of the region is a sea level rise of that mass divided by that constant"
   - quantity: "numeric anchor"
-    statement: "for the global ocean, the sea level budget's real-data run records the mass term from this product's CRI grid over its own ocean mask at +2.299 mm per year over 2005 through 2016 (95 percent half width 0.205), with the provider's own ocean mass series at +2.366 over the same months (../computations/sea-level-budget.md); a regional ice-sheet anchor is not recorded yet"
+    statement: "for the global ocean, the sea level budget's real-data run records the mass term from this product's CRI grid over its own ocean mask at +2.299 mm per year over 2005 through 2016 (95 percent half width 0.205), with the provider's own ocean mass series at +2.366 over the same months (ocean-science/knowledge/computations/sea-level-budget.md); a regional ice-sheet anchor is not recorded yet"
 expected_uncertainty:
   - quantity: "formal error"
     statement: "from the product's per-mascon uncertainty grids, combined with the product's guidance on spatial correlation rather than as independent errors (sqrt(N) under-states it); the floor of the statement, never the whole of it"

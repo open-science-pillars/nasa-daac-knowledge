@@ -10,16 +10,16 @@ status: stable
 stale_after: 2027-03-02
 sources:
   - id: heat-budget
-    resource: ../computations/ecco-heat-budget.md
+    resource: ocean-science/knowledge/computations/ecco-heat-budget.md
     title: "The attested heat budget: closure to the residual tolerance, the bundle's first internal-consistency check"
   - id: steric-anchor
-    resource: ../computations/ecco-steric-height.md
+    resource: ocean-science/knowledge/computations/ecco-steric-height.md
     title: "The steric height computation and its cross-computation anchor on the sea-level partition, the bundle's first anchor between two of its own methods"
   - id: section-anchor
-    resource: ../computations/ecco-section-transport.md
+    resource: ocean-science/knowledge/computations/ecco-section-transport.md
     title: "The section machinery anchored against an independent implementation of the same integral (ecco_v4_py), still internal consistency"
   - id: confrontation
-    resource: ../computations/ecco-rapid-amoc-confrontation.md
+    resource: ocean-science/knowledge/computations/ecco-rapid-amoc-confrontation.md
     title: "The attested confrontation of the overturning at 26.5N with the RAPID array: the bundle's first comparison whose other side is an observation"
   - id: recipe
     resource: ../recipes/ecco-rapid-amoc-26n.md

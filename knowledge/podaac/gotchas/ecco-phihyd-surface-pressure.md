@@ -14,7 +14,7 @@ status: stable
 stale_after: 2027-01-04
 sources:
   - id: attested-geostrophy
-    resource: ../computations/ecco-geostrophic-balance.md
+    resource: ocean-science/knowledge/computations/ecco-geostrophic-balance.md
     title: "The attested geostrophic balance computation whose receipts measured both the broken and the fixed forms"
   - id: tutorial-geostrophic
     resource: https://ecco-v4-python-tutorial.readthedocs.io/Geostrophic_balance.html
@@ -44,5 +44,5 @@ anchors on.[^attested-geostrophy] The lesson the bundle keeps
 repeating: a plausible field is not a validated one; correlate against
 the model before believing any derived velocity.
 
-[^attested-geostrophy]: computations/ecco-geostrophic-balance.md, the measured broken and fixed runs
+[^attested-geostrophy]: ocean-science/knowledge/computations/ecco-geostrophic-balance.md, the measured broken and fixed runs
 [^tutorial-geostrophic]: ECCO v4 tutorial geostrophic balance chapter
