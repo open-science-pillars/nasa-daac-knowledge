@@ -32,6 +32,7 @@ status: stable
 verified:
   - { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
   - { by: human:PaulMRamirez, at: 2026-09-05T20:22:37Z }
+  - { by: human:PaulMRamirez, at: 2026-09-20T21:41:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/207 }
 stale_after: 2027-01-04
 ---
 

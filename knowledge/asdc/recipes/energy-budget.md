@@ -5,7 +5,9 @@ title: "Closing the Earth's energy budget: EBAF net TOA flux against Argo ocean 
 description: "The terms of the energy budget over a window, which product supplies each, which gotcha holds each term's trap (the EBAF anchor to in situ heating over a stated decade; the geodetic weighting the anchor is defined on; the Argo product's depth floor and mapped domain), the rule that the Argo receipt's window is the window, and how the residual is read: the absolute comparison as anchored, the anomaly trend as the consistency check in which the anchor cancels."
 tags: [ceres, ebaf, energy-imbalance, net-toa-flux, ocean-heat-content, argo, earth-heat-inventory, anchoring, recipe]
 generated: { by: knowledge-seeder/claude, at: 2026-09-15T18:30:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-15T18:57:33Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/174 }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-15T18:57:33Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/174 }
+  - { by: human:PaulMRamirez, at: 2026-09-20T21:41:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/207 }
 inputs:
   - dataset: ../datasets/ceres-ebaf-ed4-2.md
   - toa_net: "the product's own global mean net TOA flux per calendar month (gtoa_net_all_mon, the geodetic mean the anchor is defined on) with the cos-latitude mean of the one degree grid beside it, from the CERES EBAF Edition 4.2.1 file, the edition and release date stated"

@@ -9,7 +9,9 @@ expected: "Reference series us-northeast-coast steric height, 2010-01 through 20
 expected_uncertainty: "The interval is calibrated in the regime it is meant for: at 120 months or more and lag-1 autocorrelation up to 0.8 the measured coverage is 91.8 to 95.1 percent (asserted band 90 to 97.5). At 24 months coverage is 67 to 86 percent and at 12 months 74 to 95, worst at high autocorrelation, and the tool declines to state an interval in up to 7 percent of trials; treat any n_eff below about 10 as a description of the window, not a trend. The interval is a statement about sampling under an AR(1) residual model, not about model or observational error in the series"
 generated: { by: claude-code/fable-5, at: 2026-09-02T05:10:00Z }
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-09-04T22:08:00Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-04T22:08:00Z }
+  - { by: human:PaulMRamirez, at: 2026-09-20T21:41:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/207 }
 stale_after: 2027-01-05
 sources:
   - id: attested-computation

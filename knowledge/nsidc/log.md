@@ -2,6 +2,7 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-20 · 5 concepts (assessment-method-groups-are-not-independent.md, firn-model-air-content.md, ice-sheet-balance.md, ice-sheet-input-output.md, imbie-ice-sheet-assessment.md) · re-signed after the computations moved into the capabilities that run them: each cites the method at its package path instead of the bundle path it used to carry, and the coordinator compared every number in all of them against the copy from before the move, finding none changed · human:PaulMRamirez
 - 2026-09-20 · THE COMPUTATIONS LEAVE THE BUNDLE (ADR E, a computation
   is a skill). Deleted, every one of them copied into land-ice by its
   pull request 9 and present on that repository's main before the

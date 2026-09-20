@@ -4,6 +4,7 @@ Newest first. One line per change: date, concept path, what changed, who.
 
 _Historical note: older entries use build-era shorthand (a "close lint" is a knowledge-linter pass; red/yellow marks are nonconformant/advisory findings; check numbers refer to the linter checks documented in core/agents/knowledge-linter). The decision chains, not the labels, are what teach the standards._
 
+- 2026-09-20 · 22 concepts (amoc-observational-era-weakening.md, consistency-versus-confrontation.md, divergence-identity-as-budget-oracle.md, ecco-boussinesq-global-steric.md, ecco-budget-formulation.md, ecco-flux-decomposition.md, ecco-geostrophic-balance.md, ecco-heat-budget.md, ecco-ocean-heat-content.md, ecco-phihyd-surface-pressure.md, ecco-rapid-amoc-26n.md, ecco-regional-heat-budget.md, ecco-section-transport.md, ecco-steric-height.md, ecco-thermal-wind-reconstruction.md, ecco-trend-ci.md, ecco-trend-deseasonalize-jointly.md, ecco-trend-without-effective-n.md, ecco-wind-stress-curl.md, grace-mass-to-sea-level.md, sea-level-budget.md, temp-salinity.md) · re-signed after the computations moved into the capabilities that run them: each cites the method at its package path instead of the bundle path it used to carry, and the coordinator compared every number in all of them against the copy from before the move, finding none changed · human:PaulMRamirez
 - 2026-09-20 · THE COMPUTATIONS LEAVE THE BUNDLE (ADR E, a computation
   is a skill). Deleted, every one of them copied into ocean-science by
   its pull request 66 and present on that repository's main before the

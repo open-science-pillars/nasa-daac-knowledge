@@ -2,6 +2,7 @@
 
 Newest first. One line per change: date, concept path, what changed, who.
 
+- 2026-09-20 · 3 concepts (ceres-syn1deg.md, cloud-radiative-effect.md, energy-budget.md) · re-signed after the computations moved into the capabilities that run them: each cites the method at its package path instead of the bundle path it used to carry, and the coordinator compared every number in all of them against the copy from before the move, finding none changed · human:PaulMRamirez
 - 2026-09-20 · THE COMPUTATIONS LEAVE THE BUNDLE (ADR E, a computation
   is a skill). Deleted, every one of them copied into
   atmospheric-physics by its pull request 9 and present on that
