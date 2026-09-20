@@ -4,7 +4,9 @@ spheres: [hydrosphere]
 title: "Whether the Atlantic overturning has weakened over the observational era is disputed"
 description: "Four positions on whether the Atlantic meridional overturning circulation has weakened since the mid twentieth century and where the direct record at 26.5N stands: a proxy fingerprint that reads a weakening, a 30-year reconstruction and the array record that show no decline, a reading of the proxy evidence as inconsistent, and an early-warning analysis that projects collapse. Read on 2026-09-05; the signature, when given, attests the state of discourse and takes no side."
 tags: [ecco, amoc, rapid, overturning, discourse, field-state]
-verified: { by: human:PaulMRamirez, at: 2026-09-06T00:34:32Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-06T00:34:32Z }
+  - { by: human:PaulMRamirez, at: 2026-09-20T21:41:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/207 }
 status: stable
 load_bearing: medium
 generated: { by: claude-code/fable-5, at: 2026-09-05T00:00:00Z }

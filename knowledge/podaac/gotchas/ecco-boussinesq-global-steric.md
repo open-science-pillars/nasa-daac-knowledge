@@ -18,7 +18,9 @@ sources:
   - id: steric-computation
     resource: ocean-science/knowledge/computations/ecco-steric-height.md
     title: "The attested steric height computation: a global run cannot pass attestation without the Boussinesq caveat field in its receipt"
-verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
+  - { by: human:PaulMRamirez, at: 2026-09-20T21:41:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/207 }
 status: stable
 stale_after: 2027-03-04
 ---

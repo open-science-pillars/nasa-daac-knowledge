@@ -9,7 +9,9 @@ dataset: ../datasets/ecco-v4r4.md
 eval_case: ecco-phihyd-surface-pressure
 # eval id reserved for the eval-commons seed.
 generated: { by: claude-code/fable-5, at: 2026-09-01T05:35:00Z }
-verified: { by: human:PaulMRamirez, at: 2026-09-01T05:53:24Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-01T05:53:24Z }
+  - { by: human:PaulMRamirez, at: 2026-09-20T21:41:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/207 }
 status: stable
 stale_after: 2027-01-04
 sources:

@@ -6,7 +6,9 @@ description: "The constants, term definitions, sign conventions and discretizati
 tags: [ecco, budgets, formulation, native-grid, llc90, heat-budget, salt-budget, volume-budget, convention]
 generated: { by: claude-code/fable-5, at: 2026-09-04T19:01:47Z }
 status: stable
-verified: { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
+verified:
+  - { by: human:PaulMRamirez, at: 2026-09-04T20:45:44Z }
+  - { by: human:PaulMRamirez, at: 2026-09-20T21:41:20Z, role: maintainer, source: https://github.com/open-science-pillars/nasa-daac-knowledge/pull/207 }
 stale_after: 2027-03-04
 sources:
   - id: tut-heat
