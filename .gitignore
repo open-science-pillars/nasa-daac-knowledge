@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+
+# The publish output, written by osp.py publish beside the checkout.
+dist/
